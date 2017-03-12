@@ -1,0 +1,22 @@
+settings:
+  index.number_of_shards: 10
+  index.number_of_replicas: 0
+  analysis:
+    filter:
+      edge_ngram:
+        min_gram: '2'
+        side: front
+        type: edge_ngram
+        max_gram: '20'
+    analyzer:
+      id_index:
+        filter:
+          - lowercase
+          - edge_ngram
+        type: custom
+        tokenizer: whitespace
+      id_search:
+        filter:
+          - lowercase
+        type: custom
+        tokenizer: whitespace

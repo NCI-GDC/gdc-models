@@ -1,0 +1,515 @@
+dynamic: 'false'
+properties:
+  biotype:
+    type: keyword
+  canonical_transcript_id:
+    type: text
+    fields:
+      analyzed:
+        type: text
+        analyzer: id_search
+      raw:
+        type: keyword
+        store: true
+      search:
+        type: text
+        analyzer: id_search
+  canonical_transcript_length:
+    type: long
+  canonical_transcript_length_cds:
+    type: long
+  canonical_transcript_length_genomic:
+    type: long
+  case:
+    type: nested
+    properties:
+      disease_type:
+        type: text
+        fields:
+          analyzed:
+            type: text
+            analyzer: id_search
+          raw:
+            type: keyword
+            store: true
+          search:
+            type: text
+            analyzer: id_search
+      primary_site:
+        type: text
+        fields:
+          analyzed:
+            type: text
+            analyzer: id_search
+          raw:
+            type: keyword
+            store: true
+          search:
+            type: text
+            analyzer: id_search
+      aliquot_ids:
+        type: keyword
+      analyte_ids:
+        type: keyword
+      case_id:
+        type: keyword
+      demographic:
+        properties:
+          demographic_id:
+            type: keyword
+          ethnicity:
+            type: keyword
+          gender:
+            type: keyword
+          race:
+            type: keyword
+          submitter_id:
+            type: keyword
+          updated_datetime:
+            type: date
+          year_of_birth:
+            type: long
+          year_of_death:
+            type: long
+      diagnoses:
+        type: nested
+        properties:
+          age_at_diagnosis:
+            type: double
+          classification_of_tumor:
+            type: keyword
+          days_to_birth:
+            type: double
+          days_to_death:
+            type: double
+          days_to_last_follow_up:
+            type: double
+          diagnosis_id:
+            type: keyword
+          last_known_disease_status:
+            type: keyword
+          morphology:
+            type: keyword
+          primary_diagnosis:
+            type: keyword
+          prior_malignancy:
+            type: keyword
+          progression_or_recurrence:
+            type: keyword
+          site_of_resection_or_biopsy:
+            type: keyword
+          submitter_id:
+            type: keyword
+          tissue_or_organ_of_origin:
+            type: keyword
+          tumor_grade:
+            type: keyword
+          tumor_stage:
+            type: keyword
+          updated_datetime:
+            type: date
+          vital_status:
+            type: keyword
+      portion_ids:
+        type: keyword
+      project:
+        properties:
+          disease_type:
+            type: keyword
+          name:
+            type: keyword
+          primary_site:
+            type: keyword
+          program:
+            properties:
+              dbgap_accession_number:
+                type: keyword
+              name:
+                type: keyword
+              program_id:
+                type: keyword
+          project_id:
+            type: keyword
+          released:
+            type: boolean
+          state:
+            type: keyword
+      sample_ids:
+        type: keyword
+      slide_ids:
+        type: keyword
+      ssm:
+        type: nested
+        properties:
+          chromosome:
+            type: keyword
+          consequence:
+            type: nested
+            properties:
+              transcript:
+                properties:
+                  aa_change:
+                    type: keyword
+                  annotation:
+                    properties:
+                      amino_acids:
+                        type: keyword
+                      ccds:
+                        type: keyword
+                      cdna_position:
+                        type: keyword
+                      cds_end:
+                        type: long
+                      cds_length:
+                        type: long
+                      cds_position:
+                        type: keyword
+                      cds_start:
+                        type: long
+                      clin_sig:
+                        type: keyword
+                      codons:
+                        type: keyword
+                      dbsnp_rs:
+                        type: keyword
+                      domains:
+                        type: keyword
+                      ensp:
+                        type: keyword
+                      existing_variation:
+                        type: keyword
+                      hgvsc:
+                        type: keyword
+                      hgvsp:
+                        type: keyword
+                      hgvsp_short:
+                        type: keyword
+                      impact:
+                        type: keyword
+                      polyphen:
+                        type: keyword
+                      protein_position:
+                        type: keyword
+                      pubmed:
+                        type: keyword
+                      sift:
+                        type: keyword
+                      swissprot:
+                        type: keyword
+                      transcript_id:
+                        type: keyword
+                      trembl:
+                        type: keyword
+                      uniparc:
+                        type: keyword
+                  consequence_type:
+                    type: keyword
+                  do_not_use:
+                    type: keyword
+                  gene_symbol:
+                    type: keyword
+                  ref_seq_accession:
+                    type: keyword
+                  transcript_id:
+                    type: keyword
+          end_position:
+            type: long
+          genomic_dna_change:
+            type: keyword
+          mutation_subtype:
+            type: keyword
+          mutation_type:
+            type: keyword
+          ncbi_build:
+            type: keyword
+          observation:
+            type: nested
+            properties:
+              center:
+                type: keyword
+              input_bam_file:
+                properties:
+                  normal_bam_uuid:
+                    type: keyword
+                  tumor_bam_uuid:
+                    type: keyword
+              mutation_status:
+                type: keyword
+              normal_genotype:
+                type: object
+              read_depth:
+                properties:
+                  n_depth:
+                    type: long
+                  t_alt_count:
+                    type: long
+                  t_depth:
+                    type: long
+                  t_ref_count:
+                    type: long
+              sample:
+                properties:
+                  matched_norm_sample_barcode:
+                    type: keyword
+                  matched_norm_sample_uuid:
+                    type: keyword
+                  tumor_sample_barcode:
+                    type: keyword
+                  tumor_sample_uuid:
+                    type: keyword
+              src_vcf_id:
+                type: keyword
+              tumor_genotype:
+                properties:
+                  tumor_seq_allele1:
+                    type: keyword
+                  tumor_seq_allele2:
+                    type: keyword
+              validation:
+                properties:
+                  tumor_validation_allele1:
+                    type: keyword
+                  tumor_validation_allele2:
+                    type: keyword
+                  validation_method:
+                    type: keyword
+              variant_calling:
+                properties:
+                  variant_caller:
+                    type: keyword
+                  variant_process:
+                    type: keyword
+          reference_allele:
+            type: keyword
+          ssm_id:
+            type: keyword
+          start_position:
+            type: long
+          tumor_allele:
+            type: keyword
+          variant_type:
+            type: keyword
+      submitter_aliquot_ids:
+        type: keyword
+      submitter_analyte_ids:
+        type: keyword
+      submitter_id:
+        type: keyword
+      submitter_portion_ids:
+        type: keyword
+      submitter_sample_ids:
+        type: keyword
+      submitter_slide_ids:
+        type: keyword
+      summary:
+        properties:
+          data_categories:
+            type: nested
+            properties:
+              data_category:
+                type: keyword
+              file_count:
+                type: long
+      updated_datetime:
+        type: date
+  cytoband:
+    type: text
+    fields:
+      analyzed:
+        type: text
+        analyzer: id_search
+      raw:
+        type: keyword
+        store: true
+      search:
+        type: text
+        analyzer: id_search
+  description:
+    type: text
+  external_db_ids:
+    properties:
+      entrez_gene:
+        type: text
+        fields:
+          analyzed:
+            type: text
+            analyzer: id_search
+          raw:
+            type: keyword
+            store: true
+          search:
+            type: text
+            analyzer: id_search
+      hgnc:
+        type: text
+        fields:
+          analyzed:
+            type: text
+            analyzer: id_search
+          raw:
+            type: keyword
+            store: true
+          search:
+            type: text
+            analyzer: id_search
+      omim_gene:
+        type: text
+        fields:
+          analyzed:
+            type: text
+            analyzer: id_search
+          raw:
+            type: keyword
+            store: true
+          search:
+            type: text
+            analyzer: id_search
+      uniprotkb_swissprot:
+        type: text
+        fields:
+          analyzed:
+            type: text
+            analyzer: id_search
+          raw:
+            type: keyword
+            store: true
+          search:
+            type: text
+            analyzer: id_search
+  gene_chromosome:
+    type: keyword
+  gene_end:
+    type: long
+  gene_id:
+    type: text
+    fields:
+      analyzed:
+        type: text
+        analyzer: id_search
+      raw:
+        type: keyword
+        store: true
+      search:
+        type: text
+        analyzer: id_search
+  gene_start:
+    type: long
+  gene_strand:
+    type: long
+  is_cancer_gene_census:
+    type: boolean
+  name:
+    type: text
+    fields:
+      analyzed:
+        type: text
+        analyzer: id_search
+      raw:
+        type: keyword
+        store: true
+      search:
+        type: text
+        analyzer: id_search
+  symbol:
+    type: text
+    fields:
+      analyzed:
+        type: text
+        analyzer: id_search
+      raw:
+        type: keyword
+        store: true
+      search:
+        type: text
+        analyzer: id_search
+  synonyms:
+    type: text
+    fields:
+      analyzed:
+        type: text
+        analyzer: id_search
+      raw:
+        type: keyword
+        store: true
+      search:
+        type: text
+        analyzer: id_search
+  transcripts:
+    type: nested
+    properties:
+      biotype:
+        type: keyword
+      cdna_coding_end:
+        type: long
+      cdna_coding_start:
+        type: long
+      coding_region_end:
+        type: long
+      coding_region_start:
+        type: long
+      domains:
+        type: nested
+        properties:
+          description:
+            type: keyword
+          end:
+            type: long
+          gff_source:
+            type: keyword
+          hit_name:
+            type: keyword
+          interpro_id:
+            type: keyword
+          start:
+            type: long
+      end:
+        type: long
+      end_exon:
+        type: long
+      exons:
+        type: nested
+        properties:
+          cdna_coding_end:
+            type: long
+          cdna_coding_start:
+            type: long
+          cdna_end:
+            type: long
+          cdna_start:
+            type: long
+          end:
+            type: long
+          end_phase:
+            type: long
+          genomic_coding_end:
+            type: long
+          genomic_coding_start:
+            type: long
+          start:
+            type: long
+          start_phase:
+            type: long
+      id:
+        type: keyword
+      is_canonical:
+        type: boolean
+      length:
+        type: long
+      length_amino_acid:
+        type: long
+      length_cds:
+        type: long
+      name:
+        type: keyword
+      number_of_exons:
+        type: long
+      seq_exon_end:
+        type: long
+      seq_exon_start:
+        type: long
+      start:
+        type: long
+      start_exon:
+        type: long
+      translation_id:
+        type: keyword
