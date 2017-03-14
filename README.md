@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/NCI-GDC/gdc-models.svg)](https://travis-ci.org/NCI-GDC/gdc-models)
+
 #GDC Models
 
 Git repository centrally stores and serves GDC data models defined in static YAML files.
