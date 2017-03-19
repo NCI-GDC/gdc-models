@@ -1,21 +1,22 @@
-index.number_of_shards: 10
-index.number_of_replicas: 0
 analysis:
   filter:
     edge_ngram:
-      min_gram: '2'
+      min_gram: '1'
       side: front
       type: edge_ngram
       max_gram: '20'
   analyzer:
-    id_index:
+    autocomplete_analyzed:
       filter:
-        - lowercase
-        - edge_ngram
-      type: custom
-      tokenizer: whitespace
-    id_search:
+      - lowercase
+      - edge_ngram
+      tokenizer: standard
+    autocomplete_prefix:
       filter:
-        - lowercase
-      type: custom
-      tokenizer: whitespace
+      - lowercase
+      - edge_ngram
+      tokenizer: keyword
+    lowercase_keyword:
+      filter:
+      - lowercase
+      tokenizer: keyword

@@ -23,7 +23,7 @@ def process_yaml(yaml_file, format_yaml):
         yaml_text = y.read()
 
     yaml_data = ruamel.yaml.round_trip_load(yaml_text)
-    yaml_dump = ruamel.yaml.round_trip_dump(yaml_data, indent=2, block_seq_indent=2)
+    yaml_dump = ruamel.yaml.round_trip_dump(yaml_data, indent=2)
 
     if yaml_text != yaml_dump and yaml_dump != '...\n':  # only format it when not empty
         if format_yaml:
