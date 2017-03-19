@@ -24,6 +24,7 @@ If you are prompted to format the YAML, you can just run:
 ```
 > ./scripts/format_yaml.sh
 ```
+Original YAML file is kept with `.bak` suffix. Before proceed with retrying `git commit`, please `diff` the two files to ensure YAML formatting did not create error.
 
 ##Use the data models
 
