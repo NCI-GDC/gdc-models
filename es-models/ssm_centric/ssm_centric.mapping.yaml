@@ -1,24 +1,18 @@
-dynamic: 'false'
+dynamic: strict
 properties:
   chromosome:
     type: keyword
   consequence:
     type: nested
     properties:
+      consequence_id:
+        type: keyword
       transcript:
         properties:
           aa_change:
-            type: text
-            fields:
-              analyzed:
-                type: text
-                analyzer: id_search
-              raw:
-                type: keyword
-                store: true
-              search:
-                type: text
-                analyzer: id_search
+            type: keyword
+            copy_to:
+            - ssm_autocomplete
           aa_end:
             type: long
           aa_start:
@@ -42,6 +36,8 @@ properties:
               clin_sig:
                 type: keyword
               codons:
+                type: keyword
+              cosmic_id:
                 type: keyword
               dbsnp_rs:
                 type: keyword
@@ -76,8 +72,6 @@ properties:
               uniparc:
                 type: keyword
           consequence_type:
-            type: keyword
-          do_not_use:
             type: keyword
           gene:
             properties:
@@ -114,17 +108,9 @@ properties:
               synonyms:
                 type: keyword
           gene_symbol:
-            type: text
-            fields:
-              analyzed:
-                type: text
-                analyzer: id_search
-              raw:
-                type: keyword
-                store: true
-              search:
-                type: text
-                analyzer: id_search
+            type: keyword
+            copy_to:
+            - ssm_autocomplete
           is_canonical:
             type: boolean
           ref_seq_accession:
@@ -134,17 +120,9 @@ properties:
   end_position:
     type: long
   genomic_dna_change:
-    type: text
-    fields:
-      analyzed:
-        type: text
-        analyzer: id_search
-      raw:
-        type: keyword
-        store: true
-      search:
-        type: text
-        analyzer: id_search
+    type: keyword
+    copy_to:
+    - ssm_autocomplete
   mutation_subtype:
     type: keyword
   mutation_type:
@@ -156,38 +134,14 @@ properties:
     properties:
       case:
         properties:
-          disease_type:
-            type: text
-            fields:
-              analyzed:
-                type: text
-                analyzer: id_search
-              raw:
-                type: keyword
-                store: true
-              search:
-                type: text
-                analyzer: id_search
-          primary_site:
-            type: text
-            fields:
-              analyzed:
-                type: text
-                analyzer: id_search
-              raw:
-                type: keyword
-                store: true
-              search:
-                type: text
-                analyzer: id_search
-          aliquot_ids:
-            type: keyword
-          analyte_ids:
-            type: keyword
           case_id:
+            type: keyword
+          created_datetime:
             type: keyword
           demographic:
             properties:
+              created_datetime:
+                type: keyword
               demographic_id:
                 type: keyword
               ethnicity:
@@ -195,6 +149,8 @@ properties:
               gender:
                 type: keyword
               race:
+                type: keyword
+              state:
                 type: keyword
               submitter_id:
                 type: keyword
@@ -210,6 +166,8 @@ properties:
               age_at_diagnosis:
                 type: double
               classification_of_tumor:
+                type: keyword
+              created_datetime:
                 type: keyword
               days_to_birth:
                 type: double
@@ -231,10 +189,42 @@ properties:
                 type: keyword
               site_of_resection_or_biopsy:
                 type: keyword
+              state:
+                type: keyword
               submitter_id:
                 type: keyword
               tissue_or_organ_of_origin:
                 type: keyword
+              treatments:
+                properties:
+                  created_datetime:
+                    type: keyword
+                  days_to_treatment:
+                    type: long
+                  days_to_treatment_end:
+                    type: long
+                  days_to_treatment_start:
+                    type: long
+                  state:
+                    type: keyword
+                  submitter_id:
+                    type: keyword
+                  therapeutic_agents:
+                    type: keyword
+                  treatment_anatomic_site:
+                    type: keyword
+                  treatment_id:
+                    type: keyword
+                  treatment_intent_type:
+                    type: keyword
+                  treatment_or_therapy:
+                    type: keyword
+                  treatment_outcome:
+                    type: keyword
+                  treatment_type:
+                    type: keyword
+                  updated_datetime:
+                    type: date
               tumor_grade:
                 type: keyword
               tumor_stage:
@@ -243,6 +233,28 @@ properties:
                 type: date
               vital_status:
                 type: keyword
+          disease_type:
+            type: keyword
+          exposures:
+            properties:
+              bmi:
+                type: float
+              cigarettes_per_day:
+                type: float
+              exposure_id:
+                type: keyword
+              height:
+                type: float
+              state:
+                type: keyword
+              submitter_id:
+                type: keyword
+              updated_datetime:
+                type: date
+              weight:
+                type: float
+              years_smoked:
+                type: float
           observation:
             type: nested
             properties:
@@ -258,6 +270,8 @@ properties:
                 type: keyword
               normal_genotype:
                 type: object
+              observation_id:
+                type: keyword
               read_depth:
                 properties:
                   n_depth:
@@ -300,7 +314,7 @@ properties:
                     type: keyword
                   variant_process:
                     type: keyword
-          portion_ids:
+          primary_site:
             type: keyword
           project:
             properties:
@@ -324,21 +338,11 @@ properties:
                 type: boolean
               state:
                 type: keyword
-          sample_ids:
-            type: keyword
-          slide_ids:
-            type: keyword
-          submitter_aliquot_ids:
-            type: keyword
-          submitter_analyte_ids:
+          ssm_tested:
+            type: boolean
+          state:
             type: keyword
           submitter_id:
-            type: keyword
-          submitter_portion_ids:
-            type: keyword
-          submitter_sample_ids:
-            type: keyword
-          submitter_slide_ids:
             type: keyword
           summary:
             properties:
@@ -349,15 +353,53 @@ properties:
                     type: keyword
                   file_count:
                     type: long
+              experimental_strategies:
+                properties:
+                  experimental_strategy:
+                    type: keyword
+                  file_count:
+                    type: long
+              file_count:
+                type: long
+              file_size:
+                type: long
+          tissue_source_site:
+            properties:
+              bcr_id:
+                type: keyword
+              code:
+                type: keyword
+              name:
+                type: keyword
+              project:
+                type: keyword
+              tissue_source_site_id:
+                type: keyword
           updated_datetime:
             type: date
+      occurrence_id:
+        type: keyword
   reference_allele:
     type: keyword
+  ssm_autocomplete:
+    type: keyword
+    fields:
+      analyzed:
+        type: text
+        analyzer: autocomplete_analyzed
+        search_analyzer: lowercase_keyword
+      lowercase:
+        type: text
+        analyzer: lowercase_keyword
+      prefix:
+        type: text
+        analyzer: autocomplete_prefix
+        search_analyzer: lowercase_keyword
   ssm_id:
     type: keyword
+    copy_to:
+    - ssm_autocomplete
   start_position:
     type: long
   tumor_allele:
-    type: keyword
-  variant_type:
     type: keyword
