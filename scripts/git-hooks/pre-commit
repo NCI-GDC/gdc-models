@@ -30,6 +30,10 @@ def process_yaml(yaml_file, format_yaml):
             with open(yaml_file, 'w') as y:
                 y.write(yaml_dump)
             print 'Formatted YAML file: ' + yaml_file
+
+            with open(yaml_file + '.bak', 'w') as y:
+                y.write(yaml_text)
+            print 'Original YAML file kept as: ' + yaml_file + '.bak'
             return 0
         else:
             print 'YAML needs to be formatted: ' + yaml_file
