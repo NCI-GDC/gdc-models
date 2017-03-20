@@ -1,0 +1,94 @@
+properties:
+  annotation_id:
+    type: keyword
+    copy_to:
+    - annotation_autocomplete
+  case_id:
+    type: keyword
+    copy_to:
+    - annotation_autocomplete
+  case_submitter_id:
+    type: keyword
+    copy_to:
+    - annotation_autocomplete
+  category:
+    type: keyword
+    copy_to:
+    - annotation_autocomplete
+  classification:
+    type: keyword
+  created_datetime:
+    type: keyword
+  entity_id:
+    type: keyword
+    copy_to:
+    - annotation_autocomplete
+  entity_submitter_id:
+    type: keyword
+    copy_to:
+    - annotation_autocomplete
+  entity_type:
+    type: keyword
+    copy_to:
+    - annotation_autocomplete
+  legacy_created_datetime:
+    type: keyword
+  legacy_updated_datetime:
+    type: keyword
+  notes:
+    type: keyword
+  project:
+    properties:
+      code:
+        type: keyword
+      dbgap_accession_number:
+        type: keyword
+      disease_type:
+        type: keyword
+      intended_release_date:
+        type: keyword
+      name:
+        type: keyword
+      primary_site:
+        type: keyword
+      program:
+        properties:
+          dbgap_accession_number:
+            type: keyword
+          name:
+            type: keyword
+          program_id:
+            type: keyword
+      project_id:
+        type: keyword
+      releasable:
+        type: keyword
+      released:
+        type: keyword
+      state:
+        type: keyword
+  state:
+    type: keyword
+  status:
+    type: keyword
+  submitter_id:
+    type: keyword
+    copy_to:
+    - annotation_autocomplete
+  updated_datetime:
+    type: keyword
+  annotation_autocomplete:
+    type: keyword
+    fields:
+      prefix:
+        type: text
+        analyzer: autocomplete_prefix
+        search_analyzer: lowercase_keyword
+      analyzed:
+        type: text
+        analyzer: autocomplete_analyzed
+        search_analyzer: lowercase_keyword
+      lowercase:
+        type: text
+        analyzer: lowercase_keyword
+        search_analyzer: lowercase_keyword
