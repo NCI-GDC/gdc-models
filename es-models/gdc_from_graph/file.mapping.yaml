@@ -1001,7 +1001,7 @@ properties:
         type: keyword
       submitter_id:
         type: keyword
-        copy_to: 
+        copy_to:
         - file_autocomplete
       submitter_portion_ids:
         type: keyword
@@ -1061,13 +1061,13 @@ properties:
     type: keyword
   data_category:
     type: keyword
-    copy_to: 
+    copy_to:
     - file_autocomplete
   data_format:
     type: keyword
   data_type:
     type: keyword
-    copy_to: 
+    copy_to:
     - file_autocomplete
   downstream_analyses:
     type: nested
@@ -1137,15 +1137,15 @@ properties:
     type: keyword
   experimental_strategy:
     type: keyword
-    copy_to: 
+    copy_to:
     - file_autocomplete
   file_id:
     type: keyword
-    copy_to: 
+    copy_to:
     - file_autocomplete
   file_name:
     type: keyword
-    copy_to: 
+    copy_to:
     - file_autocomplete
   file_size:
     type: long
@@ -1192,7 +1192,7 @@ properties:
         type: keyword
   md5sum:
     type: keyword
-    copy_to: 
+    copy_to:
     - file_autocomplete
   metadata_files:
     type: nested
@@ -1241,7 +1241,7 @@ properties:
     type: keyword
   submitter_id:
     type: keyword
-    copy_to: 
+    copy_to:
     - file_autocomplete
   tags:
     type: keyword
@@ -1249,18 +1249,18 @@ properties:
     type: keyword
   updated_datetime:
     type: keyword
-  file_autocomplete: 
+  file_autocomplete:
     type: keyword
-    fields: 
-      prefix: 
+    fields:
+      prefix:
         type: text
         analyzer: autocomplete_prefix
         search_analyzer: lowercase_keyword
-      analyzed: 
+      analyzed:
         type: text
         analyzer: autocomplete_analyzed
         search_analyzer: lowercase_keyword
-      lowercase: 
+      lowercase:
         type: text
         analyzer: lowercase_keyword
         search_analyzer: lowercase_keyword
