@@ -41,6 +41,8 @@ properties:
                 type: keyword
               dbsnp_rs:
                 type: keyword
+              dbsnp_val_status:
+                type: keyword
               domains:
                 type: keyword
               ensp:
