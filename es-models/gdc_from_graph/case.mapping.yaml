@@ -1,3 +1,4 @@
+dynamic: strict
 properties:
   aliquot_ids:
     type: keyword
@@ -42,7 +43,7 @@ properties:
         type: keyword
   case_id:
     type: keyword
-    copy_to:
+    copy_to: 
     - case_autocomplete
   created_datetime:
     type: keyword
@@ -789,31 +790,6 @@ properties:
               relative_with_cancer_history:
                 type: keyword
               state:
-                type: keyword
-              submitter_id:
-                type: keyword
-              updated_datetime:
-                type: keyword
-          files:
-            type: nested
-            properties:
-              created_datetime:
-                type: keyword
-              error_type:
-                type: keyword
-              file_id:
-                type: keyword
-              file_name:
-                type: keyword
-              file_size:
-                type: long
-              file_state:
-                type: keyword
-              md5sum:
-                type: keyword
-              state:
-                type: keyword
-              state_comment:
                 type: keyword
               submitter_id:
                 type: keyword
@@ -1608,7 +1584,7 @@ properties:
                 properties:
                   aliquot_id:
                     type: keyword
-                    copy_to:
+                    copy_to: 
                     - case_autocomplete
                   aliquot_quantity:
                     type: long
@@ -1681,7 +1657,7 @@ properties:
                     type: keyword
                   submitter_id:
                     type: keyword
-                    copy_to:
+                    copy_to: 
                     - case_autocomplete
                   updated_datetime:
                     type: keyword
@@ -1689,7 +1665,7 @@ properties:
                 type: long
               analyte_id:
                 type: keyword
-                copy_to:
+                copy_to: 
                 - case_autocomplete
               analyte_quantity:
                 type: long
@@ -1750,7 +1726,7 @@ properties:
                 type: keyword
               submitter_id:
                 type: keyword
-                copy_to:
+                copy_to: 
                 - case_autocomplete
               updated_datetime:
                 type: keyword
@@ -1815,7 +1791,7 @@ properties:
             type: keyword
           portion_id:
             type: keyword
-            copy_to:
+            copy_to: 
             - case_autocomplete
           portion_number:
             type: keyword
@@ -1889,13 +1865,13 @@ properties:
                 type: keyword
               slide_id:
                 type: keyword
-                copy_to:
+                copy_to: 
                 - case_autocomplete
               state:
                 type: keyword
               submitter_id:
                 type: keyword
-                copy_to:
+                copy_to: 
                 - case_autocomplete
               updated_datetime:
                 type: keyword
@@ -1903,7 +1879,7 @@ properties:
             type: keyword
           submitter_id:
             type: keyword
-            copy_to:
+            copy_to: 
             - case_autocomplete
           updated_datetime:
             type: keyword
@@ -1913,7 +1889,7 @@ properties:
         type: keyword
       sample_id:
         type: keyword
-        copy_to:
+        copy_to: 
         - case_autocomplete
       sample_type:
         type: keyword
@@ -1925,7 +1901,7 @@ properties:
         type: keyword
       submitter_id:
         type: keyword
-        copy_to:
+        copy_to: 
         - case_autocomplete
       time_between_clamping_and_freezing:
         type: keyword
@@ -1951,7 +1927,7 @@ properties:
     type: keyword
   submitter_id:
     type: keyword
-    copy_to:
+    copy_to: 
     - case_autocomplete
   submitter_portion_ids:
     type: keyword
@@ -1993,18 +1969,18 @@ properties:
         type: keyword
   updated_datetime:
     type: keyword
-  case_autocomplete:
+  case_autocomplete: 
     type: keyword
-    fields:
-      prefix:
+    fields: 
+      prefix: 
         type: text
         analyzer: autocomplete_prefix
         search_analyzer: lowercase_keyword
-      analyzed:
+      analyzed: 
         type: text
         analyzer: autocomplete_analyzed
         search_analyzer: lowercase_keyword
-      lowercase:
+      lowercase: 
         type: text
         analyzer: lowercase_keyword
         search_analyzer: lowercase_keyword
