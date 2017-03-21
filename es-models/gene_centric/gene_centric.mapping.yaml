@@ -6,11 +6,11 @@ properties:
     copy_to:
     - gene_autocomplete
   canonical_transcript_length:
-    type: double
+    type: long
   canonical_transcript_length_cds:
-    type: double
+    type: long
   canonical_transcript_length_genomic:
-    type: double
+    type: long
   case:
     type: nested
     properties:
@@ -194,6 +194,8 @@ properties:
                       cosmic_id:
                         type: keyword
                       dbsnp_rs:
+                        type: keyword
+                      dbsnp_val_status:
                         type: keyword
                       domains:
                         type: keyword

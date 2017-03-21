@@ -1,0 +1,22 @@
+analysis:
+  filter:
+    edge_ngram:
+      min_gram: '1'
+      side: front
+      type: edge_ngram
+      max_gram: '20'
+  analyzer:
+    autocomplete_prefix:
+      tokenizer: keyword
+      filter:
+      - lowercase
+      - edge_ngram
+    autocomplete_analyzed:
+      tokenizer: standard
+      filter:
+      - lowercase
+      - edge_ngram
+    lowercase_keyword:
+      tokenizer: keyword
+      filter:
+      - lowercase

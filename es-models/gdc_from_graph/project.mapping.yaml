@@ -1,0 +1,76 @@
+properties:
+  dbgap_accession_number:
+    type: keyword
+  disease_type:
+    type: keyword
+    copy_to:
+    - project_autocomplete
+  intended_release_date:
+    type: keyword
+  name:
+    type: keyword
+    copy_to:
+    - project_autocomplete
+  primary_site:
+    type: keyword
+    copy_to:
+    - project_autocomplete
+  program:
+    properties:
+      dbgap_accession_number:
+        type: keyword
+      name:
+        type: keyword
+      program_id:
+        type: keyword
+  project_id:
+    type: keyword
+    copy_to:
+    - project_autocomplete
+  releasable:
+    type: keyword
+  released:
+    type: keyword
+  state:
+    type: keyword
+  summary:
+    properties:
+      case_count:
+        type: long
+      data_categories:
+        type: nested
+        properties:
+          case_count:
+            type: long
+          data_category:
+            type: keyword
+          file_count:
+            type: long
+      experimental_strategies:
+        type: nested
+        properties:
+          case_count:
+            type: long
+          experimental_strategy:
+            type: keyword
+          file_count:
+            type: long
+      file_count:
+        type: long
+      file_size:
+        type: long
+  project_autocomplete:
+    type: keyword
+    fields:
+      prefix:
+        type: text
+        analyzer: autocomplete_prefix
+        search_analyzer: lowercase_keyword
+      analyzed:
+        type: text
+        analyzer: autocomplete_analyzed
+        search_analyzer: lowercase_keyword
+      lowercase:
+        type: text
+        analyzer: lowercase_keyword
+        search_analyzer: lowercase_keyword
