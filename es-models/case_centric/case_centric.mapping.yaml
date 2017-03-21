@@ -1,4 +1,3 @@
-dynamic: strict
 properties:
   case_autocomplete:
     type: keyword
