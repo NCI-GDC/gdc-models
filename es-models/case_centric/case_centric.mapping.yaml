@@ -383,7 +383,7 @@ properties:
                 type: long
               start_phase:
                 type: long
-          id:
+          transcript_id:
             type: keyword
           is_canonical:
             type: boolean
