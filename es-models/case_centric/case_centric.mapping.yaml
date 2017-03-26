@@ -1,4 +1,6 @@
 properties:
+  available_variation_data:
+    type: keyword
   case_autocomplete:
     type: keyword
     fields:
@@ -441,8 +443,6 @@ properties:
         type: boolean
       state:
         type: keyword
-  ssm_tested:
-    type: boolean
   state:
     type: keyword
   submitter_id:
