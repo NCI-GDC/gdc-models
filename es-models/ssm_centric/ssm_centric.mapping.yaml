@@ -135,6 +135,8 @@ properties:
     properties:
       case:
         properties:
+          available_variation_data:
+            type: keyword
           case_id:
             type: keyword
           created_datetime:
@@ -339,8 +341,6 @@ properties:
                 type: boolean
               state:
                 type: keyword
-          ssm_tested:
-            type: boolean
           state:
             type: keyword
           submitter_id:
