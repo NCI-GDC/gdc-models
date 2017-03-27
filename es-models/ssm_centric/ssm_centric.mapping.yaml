@@ -167,17 +167,17 @@ properties:
             type: nested
             properties:
               age_at_diagnosis:
-                type: double
+                type: long
               classification_of_tumor:
                 type: keyword
               created_datetime:
                 type: keyword
               days_to_birth:
-                type: double
+                type: long
               days_to_death:
-                type: double
+                type: long
               days_to_last_follow_up:
-                type: double
+                type: long
               diagnosis_id:
                 type: keyword
               last_known_disease_status:
