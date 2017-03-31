@@ -140,11 +140,13 @@ properties:
           case_id:
             type: keyword
           created_datetime:
-            type: keyword
+            type: date
+          days_to_index:
+            type: long
           demographic:
             properties:
               created_datetime:
-                type: keyword
+                type: date
               demographic_id:
                 type: keyword
               ethnicity:
@@ -168,27 +170,97 @@ properties:
             properties:
               age_at_diagnosis:
                 type: long
+              ajcc_clinical_m:
+                type: keyword
+              ajcc_clinical_n:
+                type: keyword
+              ajcc_clinical_stage:
+                type: keyword
+              ajcc_clinical_t:
+                type: keyword
+              ajcc_pathologic_m:
+                type: keyword
+              ajcc_pathologic_n:
+                type: keyword
+              ajcc_pathologic_stage:
+                type: keyword
+              ajcc_pathologic_t:
+                type: keyword
+              ann_arbor_b_symptoms:
+                type: keyword
+              ann_arbor_clinical_stage:
+                type: keyword
+              ann_arbor_extranodal_involvement:
+                type: keyword
+              ann_arbor_pathologic_stage:
+                type: keyword
+              burkitt_lymphoma_clinical_variant:
+                type: keyword
+              cause_of_death:
+                type: keyword
+              circumferential_resection_margin:
+                type: long
               classification_of_tumor:
                 type: keyword
-              created_datetime:
+              colon_polyps_history:
                 type: keyword
+              created_datetime:
+                type: date
               days_to_birth:
                 type: long
               days_to_death:
                 type: long
+              days_to_hiv_diagnosis:
+                type: long
               days_to_last_follow_up:
+                type: long
+              days_to_last_known_disease_status:
+                type: long
+              days_to_new_event:
+                type: long
+              days_to_recurrence:
                 type: long
               diagnosis_id:
                 type: keyword
+              figo_stage:
+                type: keyword
+              hiv_positive:
+                type: keyword
+              hpv_positive_type:
+                type: keyword
+              hpv_status:
+                type: keyword
               last_known_disease_status:
                 type: keyword
+              laterality:
+                type: keyword
+              ldh_level_at_diagnosis:
+                type: long
+              ldh_normal_range_upper:
+                type: long
+              lymph_nodes_positive:
+                type: long
+              lymphatic_invasion_present:
+                type: keyword
+              method_of_diagnosis:
+                type: keyword
               morphology:
+                type: keyword
+              new_event_anatomic_site:
+                type: keyword
+              new_event_type:
+                type: keyword
+              perineural_invasion_present:
                 type: keyword
               primary_diagnosis:
                 type: keyword
               prior_malignancy:
                 type: keyword
+              prior_treatment:
+                type: keyword
               progression_or_recurrence:
+                type: keyword
+              residual_disease:
                 type: keyword
               site_of_resection_or_biopsy:
                 type: keyword
@@ -199,9 +271,10 @@ properties:
               tissue_or_organ_of_origin:
                 type: keyword
               treatments:
+                type: nested
                 properties:
                   created_datetime:
-                    type: keyword
+                    type: date
                   days_to_treatment:
                     type: long
                   days_to_treatment_end:
@@ -234,23 +307,42 @@ properties:
                 type: keyword
               updated_datetime:
                 type: date
+              vascular_invasion_present:
+                type: keyword
               vital_status:
                 type: keyword
+              year_of_diagnosis:
+                type: long
           disease_type:
             type: keyword
           exposures:
+            type: nested
             properties:
+              alcohol_history:
+                type: keyword
+              alcohol_intensity:
+                type: keyword
               bmi:
                 type: float
               cigarettes_per_day:
                 type: float
+              created_datetime:
+                type: date
               exposure_id:
                 type: keyword
               height:
                 type: float
+              pack_years_smoked:
+                type: long
               state:
                 type: keyword
               submitter_id:
+                type: keyword
+              tobacco_smoking_onset_year:
+                type: long
+              tobacco_smoking_quit_year:
+                type: long
+              tobacco_smoking_status:
                 type: keyword
               updated_datetime:
                 type: date
@@ -317,11 +409,38 @@ properties:
                     type: keyword
                   variant_process:
                     type: keyword
+          family_histories:
+            type: nested
+            properties:
+              created_datetime:
+                type: date
+              family_history_id:
+                type: keyword
+              relationship_age_at_diagnosis:
+                type: long
+              relationship_gender:
+                type: keyword
+              relationship_primary_diagnosis:
+                type: keyword
+              relationship_type:
+                type: keyword
+              relative_with_cancer_history:
+                type: keyword
+              state:
+                type: keyword
+              submitter_id:
+                type: keyword
+              updated_datetime:
+                type: date
           primary_site:
             type: keyword
           project:
             properties:
+              dbgap_accession_number:
+                type: keyword
               disease_type:
+                type: keyword
+              intended_release_date:
                 type: keyword
               name:
                 type: keyword
@@ -336,6 +455,8 @@ properties:
                   program_id:
                     type: keyword
               project_id:
+                type: keyword
+              releasable:
                 type: keyword
               released:
                 type: boolean
@@ -355,6 +476,7 @@ properties:
                   file_count:
                     type: long
               experimental_strategies:
+                type: nested
                 properties:
                   experimental_strategy:
                     type: keyword
