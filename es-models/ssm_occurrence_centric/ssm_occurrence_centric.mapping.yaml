@@ -403,8 +403,6 @@ properties:
                     type: keyword
                   codons:
                     type: keyword
-                  cosmic_id:
-                    type: keyword
                   dbsnp_rs:
                     type: keyword
                   dbsnp_val_status:
@@ -483,6 +481,8 @@ properties:
                 type: keyword
               transcript_id:
                 type: keyword
+      cosmic_id:
+        type: keyword
       end_position:
         type: long
       genomic_dna_change:
