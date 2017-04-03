@@ -104,12 +104,10 @@ properties:
                 type: boolean
               symbol:
                 type: keyword
+                copy_to:
+                - ssm_autocomplete
               synonyms:
                 type: keyword
-          gene_symbol:
-            type: keyword
-            copy_to:
-            - ssm_autocomplete
           is_canonical:
             type: boolean
           ref_seq_accession:
