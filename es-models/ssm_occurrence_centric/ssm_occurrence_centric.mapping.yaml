@@ -473,8 +473,6 @@ properties:
                     type: keyword
                   synonyms:
                     type: keyword
-              gene_symbol:
-                type: keyword
               is_canonical:
                 type: boolean
               ref_seq_accession:

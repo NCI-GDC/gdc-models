@@ -276,6 +276,8 @@ properties:
         type: keyword
       entity_id:
         type: keyword
+        copy_to:
+        - file_autocomplete
       entity_submitter_id:
         type: keyword
       entity_type:
@@ -1000,8 +1002,6 @@ properties:
         type: keyword
       submitter_id:
         type: keyword
-        copy_to:
-        - file_autocomplete
       submitter_portion_ids:
         type: keyword
       submitter_sample_ids:

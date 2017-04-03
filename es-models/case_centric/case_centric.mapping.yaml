@@ -358,8 +358,6 @@ properties:
                         type: keyword
                   consequence_type:
                     type: keyword
-                  gene_symbol:
-                    type: keyword
                   ref_seq_accession:
                     type: keyword
                   transcript_id:
