@@ -1,3 +1,5 @@
+_all:
+  enabled: false
 properties:
   chromosome:
     type: keyword
@@ -116,6 +118,10 @@ properties:
     type: keyword
   end_position:
     type: long
+  gene_aa_change:
+    type: keyword
+    copy_to:
+    - ssm_autocomplete
   genomic_dna_change:
     type: keyword
     copy_to:

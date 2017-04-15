@@ -1,3 +1,5 @@
+_all:
+  enabled: false
 properties:
   case:
     properties:
