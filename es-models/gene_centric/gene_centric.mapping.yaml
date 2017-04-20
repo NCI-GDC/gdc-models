@@ -290,6 +290,8 @@ properties:
           consequence:
             type: nested
             properties:
+              consequence_id:
+                type: keyword
               transcript:
                 properties:
                   aa_change:
