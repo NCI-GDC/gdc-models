@@ -290,6 +290,8 @@ properties:
           consequence:
             type: nested
             properties:
+              consequence_id:
+                type: keyword
               transcript:
                 properties:
                   aa_change:
@@ -369,6 +371,8 @@ properties:
           observation:
             type: nested
             properties:
+              observation_id:
+                type: keyword
               center:
                 type: keyword
               input_bam_file:
@@ -380,7 +384,11 @@ properties:
               mutation_status:
                 type: keyword
               normal_genotype:
-                type: object
+                properties:
+                  match_norm_seq_allele2:
+                    type: keyword
+                  match_norm_seq_allele1:
+                    type: keyword
               read_depth:
                 properties:
                   n_depth:
