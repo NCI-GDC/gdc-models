@@ -367,7 +367,6 @@ properties:
                     type: keyword
                   match_norm_seq_allele1:
                     type: keyword
-
               observation_id:
                 type: keyword
               read_depth:
