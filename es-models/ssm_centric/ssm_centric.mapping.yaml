@@ -40,6 +40,8 @@ properties:
                 type: keyword
               dbsnp_rs:
                 type: keyword
+                copy_to:
+                - ssm_autocomplete
               dbsnp_val_status:
                 type: keyword
               domains:
@@ -116,6 +118,8 @@ properties:
             type: keyword
   cosmic_id:
     type: keyword
+    copy_to:
+    - ssm_autocomplete
   end_position:
     type: long
   gene_aa_change:
