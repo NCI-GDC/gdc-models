@@ -1,3 +1,6 @@
+index.mapping.nested_fields.limit: 100
+index.max_result_window: 100mil
+
 analysis:
   filter:
     edge_ngram:
