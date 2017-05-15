@@ -1,3 +1,8 @@
+_all:
+  enabled: false
+_source:
+  excludes:
+  - gene.*
 properties:
   available_variation_data:
     type: keyword
@@ -259,36 +264,10 @@ properties:
     properties:
       biotype:
         type: keyword
-      canonical_transcript_id:
-        type: keyword
-      cytoband:
-        type: keyword
-      description:
-        type: keyword
-      external_db_ids:
-        properties:
-          entrez_gene:
-            type: keyword
-          hgnc:
-            type: keyword
-          omim_gene:
-            type: keyword
-          uniprotkb_swissprot:
-            type: keyword
-      gene_chromosome:
-        type: keyword
-      gene_end:
-        type: long
       gene_id:
         type: keyword
-      gene_start:
-        type: long
-      gene_strand:
-        type: long
       is_cancer_gene_census:
         type: boolean
-      name:
-        type: keyword
       ssm:
         type: nested
         properties:
@@ -448,87 +427,6 @@ properties:
             type: keyword
       symbol:
         type: keyword
-      synonyms:
-        type: keyword
-      transcripts:
-        type: nested
-        properties:
-          biotype:
-            type: keyword
-          cdna_coding_end:
-            type: long
-          cdna_coding_start:
-            type: long
-          coding_region_end:
-            type: long
-          coding_region_start:
-            type: long
-          domains:
-            type: nested
-            properties:
-              description:
-                type: keyword
-              end:
-                type: long
-              gff_source:
-                type: keyword
-              hit_name:
-                type: keyword
-              interpro_id:
-                type: keyword
-              start:
-                type: long
-          end:
-            type: long
-          end_exon:
-            type: long
-          exons:
-            type: nested
-            properties:
-              cdna_coding_end:
-                type: long
-              cdna_coding_start:
-                type: long
-              cdna_end:
-                type: long
-              cdna_start:
-                type: long
-              end:
-                type: long
-              end_phase:
-                type: long
-              genomic_coding_end:
-                type: long
-              genomic_coding_start:
-                type: long
-              start:
-                type: long
-              start_phase:
-                type: long
-          is_canonical:
-            type: boolean
-          length:
-            type: long
-          length_amino_acid:
-            type: long
-          length_cds:
-            type: long
-          name:
-            type: keyword
-          number_of_exons:
-            type: long
-          seq_exon_end:
-            type: long
-          seq_exon_start:
-            type: long
-          start:
-            type: long
-          start_exon:
-            type: long
-          transcript_id:
-            type: keyword
-          translation_id:
-            type: keyword
   primary_site:
     type: keyword
     copy_to:

@@ -1,3 +1,8 @@
+_all:
+  enabled: false
+_source:
+  excludes:
+  - case.*
 properties:
   biotype:
     type: keyword
@@ -18,10 +23,6 @@ properties:
         type: keyword
       case_id:
         type: keyword
-      created_datetime:
-        type: date
-      days_to_index:
-        type: long
       demographic:
         properties:
           created_datetime:

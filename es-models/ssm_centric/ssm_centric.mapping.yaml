@@ -1,3 +1,5 @@
+_all:
+  enabled: false
 properties:
   chromosome:
     type: keyword
@@ -38,6 +40,8 @@ properties:
                 type: keyword
               dbsnp_rs:
                 type: keyword
+                copy_to:
+                - ssm_autocomplete
               dbsnp_val_status:
                 type: keyword
               domains:
@@ -104,8 +108,6 @@ properties:
                 type: boolean
               symbol:
                 type: keyword
-                copy_to:
-                - ssm_autocomplete
               synonyms:
                 type: keyword
           is_canonical:
@@ -116,8 +118,14 @@ properties:
             type: keyword
   cosmic_id:
     type: keyword
+    copy_to:
+    - ssm_autocomplete
   end_position:
     type: long
+  gene_aa_change:
+    type: keyword
+    copy_to:
+    - ssm_autocomplete
   genomic_dna_change:
     type: keyword
     copy_to:

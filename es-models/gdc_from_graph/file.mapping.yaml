@@ -276,8 +276,6 @@ properties:
         type: keyword
       entity_id:
         type: keyword
-        copy_to:
-        - file_autocomplete
       entity_submitter_id:
         type: keyword
       entity_type:
