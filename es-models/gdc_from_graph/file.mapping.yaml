@@ -1256,6 +1256,7 @@ properties:
       analyzed:
         type: text
         analyzer: autocomplete_analyzed
+        search_analyzer: lowercase_keyword
       lowercase:
         type: text
         analyzer: lowercase_keyword
