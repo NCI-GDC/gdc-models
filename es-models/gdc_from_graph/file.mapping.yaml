@@ -1260,4 +1260,3 @@ properties:
       lowercase:
         type: text
         analyzer: lowercase_keyword
-        search_analyzer: lowercase_keyword
