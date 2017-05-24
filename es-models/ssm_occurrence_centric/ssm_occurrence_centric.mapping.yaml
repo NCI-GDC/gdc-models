@@ -489,6 +489,8 @@ properties:
         type: keyword
       end_position:
         type: long
+      gene_aa_change:
+        type: keyword
       genomic_dna_change:
         type: keyword
       mutation_subtype:
