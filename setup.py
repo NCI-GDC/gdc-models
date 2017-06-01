@@ -16,7 +16,8 @@ def get_version():
 setup(
     name = 'gdcmodels',
     version = get_version(),
-    packages = find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
+    packages = find_packages(exclude=[
+        "scripts", "*-models", "*.tests", "*.tests.*", "tests.*", "tests"]),
     install_requires = [
         'PyYAML==3.11'
     ],
