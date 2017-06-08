@@ -1,0 +1,10 @@
+_all:
+  enabled: false
+properties:
+  gene_ids:
+    type: nested
+    properties:
+      case_id:
+        type: keyword
+  gene_set_id:
+    type: keyword
