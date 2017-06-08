@@ -2,9 +2,4 @@ _all:
   enabled: false
 properties:
   ssm_ids:
-    type: nested
-    properties:
-      ssm_id:
-        type: keyword
-  ssm_set_id:
     type: keyword

@@ -2,9 +2,4 @@ _all:
   enabled: false
 properties:
   file_ids:
-    type: nested
-    properties:
-      file_id:
-        type: keyword
-  file_set_id:
     type: keyword
