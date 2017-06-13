@@ -1,5 +1,5 @@
 _all:
   enabled: false
 properties:
-  gene_ids:
+  ids:
     type: keyword

@@ -1,5 +1,5 @@
 _all:
   enabled: false
 properties:
-  file_ids:
+  ids:
     type: keyword

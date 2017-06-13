@@ -1,5 +1,5 @@
 _all:
   enabled: false
 properties:
-  ssm_ids:
+  ids:
     type: keyword
