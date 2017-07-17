@@ -19,7 +19,8 @@ setup(
     packages = find_packages(exclude=[
         "scripts", "*-models", "*.tests", "*.tests.*", "tests.*", "tests"]),
     install_requires = [
-        'PyYAML==3.11'
+        'PyYAML',
+        'elasticsearch'
     ],
     package_data = {
         'gdcmodels': ['es-models/*/*.yaml']

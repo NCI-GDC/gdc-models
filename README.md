@@ -36,4 +36,18 @@ model definitions.
 
 ## Use the data models
 
-Simply clone this repository and fetch YAML files for needed data models.
+### Import ES models into Python code
+
+```
+from gdcmodels import get_es_models
+
+es_models = get_es_models()
+```
+
+### Initialize Elasticsearch index settings and mappings using command line script
+
+```
+# get usage information by: python init_index.py -h
+# initialize Elasticsearch indexes: case_set and file_set, add prefix 'gdc_r52' to index name
+python init_index.py --index case_set file_set --host localhost --prefix gdc_r52
+```
