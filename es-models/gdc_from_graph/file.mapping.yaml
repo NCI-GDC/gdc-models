@@ -445,6 +445,8 @@ properties:
             type: keyword
           prior_treatment:
             type: keyword
+          progression_free_survival:
+            type: long
           progression_or_recurrence:
             type: keyword
           residual_disease:
