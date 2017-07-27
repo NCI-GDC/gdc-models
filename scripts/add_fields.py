@@ -11,6 +11,26 @@ import yaml
 from collections import OrderedDict
 from ruamel.yaml.util import load_yaml_guess_indent
 
+def dump_anydict_as_map(anydict):
+    yaml.add_representer(anydict, _represent_dictorder)
+
+def _represent_dictorder( self, data):
+    if isinstance(data, OurDict):
+        return self.represent_mapping('tag:yaml.org,2002:map', data.__getstate__().items())
+    else:
+        return self.represent_mapping('tag:yaml.org,2002:map', data.items())
+
+class OurDict(Dict, OrderedDict):
+    def __init__(self, data):
+        self.name = data
+        self.otherstuff = 'blah'
+    def __getstate__(self):
+        d = OurDict()
+        d['name'] = self.name
+        d['otherstuff'] = self.otherstuff
+        return d
+
+
 class YamlUpdater(object):
     """ A class to update various Yaml Files within gdc_from_graph"""
 
