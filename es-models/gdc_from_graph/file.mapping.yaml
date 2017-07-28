@@ -328,12 +328,20 @@ properties:
         type: keyword
       created_datetime:
         type: keyword
+      days_to_lost_to_followup:
+        type: long
       days_to_index:
         type: long
       demographic:
         properties:
+          cause_of_death:
+            type: keyword
           created_datetime:
             type: keyword
+          days_to_birth:
+            type: long
+          days_to_death:
+            type: long
           demographic_id:
             type: keyword
           ethnicity:
@@ -347,6 +355,8 @@ properties:
           submitter_id:
             type: keyword
           updated_datetime:
+            type: keyword
+          vital_status:
             type: keyword
           year_of_birth:
             type: long
@@ -381,6 +391,8 @@ properties:
             type: keyword
           ann_arbor_pathologic_stage:
             type: keyword
+          best_overall_response:
+            type: keyword
           burkitt_lymphoma_clinical_variant:
             type: keyword
           cause_of_death:
@@ -393,9 +405,13 @@ properties:
             type: keyword
           created_datetime:
             type: keyword
+          days_to_best_overall_response:
+            type: long
           days_to_birth:
             type: long
           days_to_death:
+            type: long
+          days_to_diagnosis:
             type: long
           days_to_hiv_diagnosis:
             type: long
@@ -417,6 +433,8 @@ properties:
             type: keyword
           hpv_status:
             type: keyword
+          iss_stage:
+            type: keyword
           last_known_disease_status:
             type: keyword
           laterality:
@@ -437,6 +455,8 @@ properties:
             type: keyword
           new_event_type:
             type: keyword
+          overall_survival:
+            type: long
           perineural_invasion_present:
             type: keyword
           primary_diagnosis:
@@ -447,6 +467,8 @@ properties:
             type: keyword
           progression_free_survival:
             type: long
+          progression_free_survival_event:
+            type: keyword
           progression_or_recurrence:
             type: keyword
           residual_disease:
@@ -470,6 +492,8 @@ properties:
                 type: long
               days_to_treatment_start:
                 type: long
+              regimen_or_line_of_therapy:
+                type: keyword
               state:
                 type: keyword
               submitter_id:
@@ -562,6 +586,10 @@ properties:
             type: keyword
           updated_datetime:
             type: keyword
+      index_date:
+        type: keyword
+      lost_to_followup:
+        type: keyword
       portion_ids:
         type: keyword
       primary_site:
