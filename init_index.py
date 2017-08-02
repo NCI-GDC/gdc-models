@@ -30,7 +30,8 @@ def init_index():
     es_models = get_es_models()
 
     es = Elasticsearch(hosts="%s:%s" % (args.host, args.port),
-                        http_auth=(args.user, args.password))
+                        http_auth=(args.user, args.password),
+                        timeout=60)
 
     for i in args.index:
         if not es_models.get(i):
