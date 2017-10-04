@@ -1078,10 +1078,10 @@ properties:
                 type: keyword
               updated_datetime:
                 type: keyword
-      state:
-        type: keyword
-      submitter_id:
-        type: keyword
+          state:
+            type: keyword
+          submitter_id:
+            type: keyword
           time_between_clamping_and_freezing:
             type: keyword
           time_between_excision_and_freezing:
