@@ -508,3 +508,499 @@ properties:
         type: keyword
   updated_datetime:
     type: date
+  sample_ids:
+    type: keyword
+  samples:
+    type: nested
+    properties:
+      slides:
+        type: nested
+        properties:
+          annotations:
+            type: nested
+            properties:
+              annotation_id:
+                type: keyword
+              case_id:
+                type: keyword
+              case_submitter_id:
+                type: keyword
+              category:
+                type: keyword
+              classification:
+                type: keyword
+              created_datetime:
+                type: keyword
+              creator:
+                type: keyword
+              entity_id:
+                type: keyword
+              entity_submitter_id:
+                type: keyword
+              entity_type:
+                type: keyword
+              legacy_created_datetime:
+                type: keyword
+              legacy_updated_datetime:
+                type: keyword
+              notes:
+                type: keyword
+              state:
+                type: keyword
+              status:
+                type: keyword
+              submitter_id:
+                type: keyword
+              updated_datetime:
+                type: keyword
+          created_datetime:
+            type: keyword
+          number_proliferating_cells:
+            type: long
+          percent_eosinophil_infiltration:
+            type: long
+          percent_granulocyte_infiltration:
+            type: long
+          percent_inflam_infiltration:
+            type: long
+          percent_lymphocyte_infiltration:
+            type: long
+          percent_monocyte_infiltration:
+            type: long
+          percent_necrosis:
+            type: long
+          percent_neutrophil_infiltration:
+            type: long
+          percent_normal_cells:
+            type: long
+          percent_stromal_cells:
+            type: long
+          percent_tumor_cells:
+            type: long
+          percent_tumor_nuclei:
+            type: long
+          section_location:
+            type: keyword
+          slide_id:
+            type: keyword
+          state:
+            type: keyword
+          submitter_id:
+            type: keyword
+          updated_datetime:
+            type: keyword
+      annotations:
+        type: nested
+        properties:
+          annotation_id:
+            type: keyword
+          case_id:
+            type: keyword
+          case_submitter_id:
+            type: keyword
+          category:
+            type: keyword
+          classification:
+            type: keyword
+          created_datetime:
+            type: keyword
+          creator:
+            type: keyword
+          entity_id:
+            type: keyword
+          entity_submitter_id:
+            type: keyword
+          entity_type:
+            type: keyword
+          legacy_created_datetime:
+            type: keyword
+          legacy_updated_datetime:
+            type: keyword
+          notes:
+            type: keyword
+          state:
+            type: keyword
+          status:
+            type: keyword
+          submitter_id:
+            type: keyword
+          updated_datetime:
+            type: keyword
+      biospecimen_anatomic_site:
+        type: keyword
+      composition:
+        type: keyword
+      created_datetime:
+        type: keyword
+      current_weight:
+        type: long
+      days_to_collection:
+        type: long
+      days_to_sample_procurement:
+        type: long
+      diagnosis_pathologically_confirmed:
+        type: keyword
+      freezing_method:
+        type: keyword
+      initial_weight:
+        type: long
+      intermediate_dimension:
+        type: keyword
+      is_ffpe:
+        type: keyword
+      longest_dimension:
+        type: keyword
+      method_of_sample_procurement:
+        type: keyword
+      oct_embedded:
+        type: keyword
+      pathology_report_uuid:
+        type: keyword
+      portions:
+        type: nested
+        properties:
+          analytes:
+            type: nested
+            properties:
+              a260_a280_ratio:
+                type: long
+              aliquots:
+                type: nested
+                properties:
+                  aliquot_id:
+                    type: keyword
+                    copy_to:
+                    - case_autocomplete
+                  aliquot_quantity:
+                    type: long
+                  aliquot_volume:
+                    type: long
+                  amount:
+                    type: long
+                  analyte_type:
+                    type: keyword
+                  analyte_type_id:
+                    type: keyword
+                  annotations:
+                    type: nested
+                    properties:
+                      annotation_id:
+                        type: keyword
+                      case_id:
+                        type: keyword
+                      case_submitter_id:
+                        type: keyword
+                      category:
+                        type: keyword
+                      classification:
+                        type: keyword
+                      created_datetime:
+                        type: keyword
+                      creator:
+                        type: keyword
+                      entity_id:
+                        type: keyword
+                      entity_submitter_id:
+                        type: keyword
+                      entity_type:
+                        type: keyword
+                      legacy_created_datetime:
+                        type: keyword
+                      legacy_updated_datetime:
+                        type: keyword
+                      notes:
+                        type: keyword
+                      state:
+                        type: keyword
+                      status:
+                        type: keyword
+                      submitter_id:
+                        type: keyword
+                      updated_datetime:
+                        type: keyword
+                  center:
+                    properties:
+                      center_id:
+                        type: keyword
+                      center_type:
+                        type: keyword
+                      code:
+                        type: keyword
+                      name:
+                        type: keyword
+                      namespace:
+                        type: keyword
+                      short_name:
+                        type: keyword
+                  concentration:
+                    type: long
+                  created_datetime:
+                    type: keyword
+                  source_center:
+                    type: keyword
+                  state:
+                    type: keyword
+                  submitter_id:
+                    type: keyword
+                    copy_to:
+                    - case_autocomplete
+                  updated_datetime:
+                    type: keyword
+              amount:
+                type: long
+              analyte_id:
+                type: keyword
+                copy_to:
+                - case_autocomplete
+              analyte_quantity:
+                type: long
+              analyte_type:
+                type: keyword
+              analyte_type_id:
+                type: keyword
+              analyte_volume:
+                type: long
+              annotations:
+                type: nested
+                properties:
+                  annotation_id:
+                    type: keyword
+                  case_id:
+                    type: keyword
+                  case_submitter_id:
+                    type: keyword
+                  category:
+                    type: keyword
+                  classification:
+                    type: keyword
+                  created_datetime:
+                    type: keyword
+                  creator:
+                    type: keyword
+                  entity_id:
+                    type: keyword
+                  entity_submitter_id:
+                    type: keyword
+                  entity_type:
+                    type: keyword
+                  legacy_created_datetime:
+                    type: keyword
+                  legacy_updated_datetime:
+                    type: keyword
+                  notes:
+                    type: keyword
+                  state:
+                    type: keyword
+                  status:
+                    type: keyword
+                  submitter_id:
+                    type: keyword
+                  updated_datetime:
+                    type: keyword
+              concentration:
+                type: long
+              created_datetime:
+                type: keyword
+              normal_tumor_genotype_snp_match:
+                type: keyword
+              ribosomal_rna_28s_16s_ratio:
+                type: long
+              spectrophotometer_method:
+                type: keyword
+              state:
+                type: keyword
+              submitter_id:
+                type: keyword
+                copy_to:
+                - case_autocomplete
+              updated_datetime:
+                type: keyword
+              well_number:
+                type: keyword
+          annotations:
+            type: nested
+            properties:
+              annotation_id:
+                type: keyword
+              case_id:
+                type: keyword
+              case_submitter_id:
+                type: keyword
+              category:
+                type: keyword
+              classification:
+                type: keyword
+              created_datetime:
+                type: keyword
+              creator:
+                type: keyword
+              entity_id:
+                type: keyword
+              entity_submitter_id:
+                type: keyword
+              entity_type:
+                type: keyword
+              legacy_created_datetime:
+                type: keyword
+              legacy_updated_datetime:
+                type: keyword
+              notes:
+                type: keyword
+              state:
+                type: keyword
+              status:
+                type: keyword
+              submitter_id:
+                type: keyword
+              updated_datetime:
+                type: keyword
+          center:
+            properties:
+              center_id:
+                type: keyword
+              center_type:
+                type: keyword
+              code:
+                type: keyword
+              name:
+                type: keyword
+              namespace:
+                type: keyword
+              short_name:
+                type: keyword
+          created_datetime:
+            type: keyword
+          creation_datetime:
+            type: long
+          is_ffpe:
+            type: keyword
+          portion_id:
+            type: keyword
+            copy_to:
+            - case_autocomplete
+          portion_number:
+            type: keyword
+          slides:
+            type: nested
+            properties:
+              annotations:
+                type: nested
+                properties:
+                  annotation_id:
+                    type: keyword
+                  case_id:
+                    type: keyword
+                  case_submitter_id:
+                    type: keyword
+                  category:
+                    type: keyword
+                  classification:
+                    type: keyword
+                  created_datetime:
+                    type: keyword
+                  creator:
+                    type: keyword
+                  entity_id:
+                    type: keyword
+                  entity_submitter_id:
+                    type: keyword
+                  entity_type:
+                    type: keyword
+                  legacy_created_datetime:
+                    type: keyword
+                  legacy_updated_datetime:
+                    type: keyword
+                  notes:
+                    type: keyword
+                  state:
+                    type: keyword
+                  status:
+                    type: keyword
+                  submitter_id:
+                    type: keyword
+                  updated_datetime:
+                    type: keyword
+              created_datetime:
+                type: keyword
+              number_proliferating_cells:
+                type: long
+              percent_eosinophil_infiltration:
+                type: long
+              percent_granulocyte_infiltration:
+                type: long
+              percent_inflam_infiltration:
+                type: long
+              percent_lymphocyte_infiltration:
+                type: long
+              percent_monocyte_infiltration:
+                type: long
+              percent_necrosis:
+                type: long
+              percent_neutrophil_infiltration:
+                type: long
+              percent_normal_cells:
+                type: long
+              percent_stromal_cells:
+                type: long
+              percent_tumor_cells:
+                type: long
+              percent_tumor_nuclei:
+                type: long
+              section_location:
+                type: keyword
+              slide_id:
+                type: keyword
+                copy_to:
+                - case_autocomplete
+              state:
+                type: keyword
+              submitter_id:
+                type: keyword
+                copy_to:
+                - case_autocomplete
+              updated_datetime:
+                type: keyword
+          state:
+            type: keyword
+          submitter_id:
+            type: keyword
+            copy_to:
+            - case_autocomplete
+          updated_datetime:
+            type: keyword
+          weight:
+            type: long
+      preservation_method:
+        type: keyword
+      sample_id:
+        type: keyword
+        copy_to:
+        - case_autocomplete
+      sample_type:
+        type: keyword
+      sample_type_id:
+        type: keyword
+      shortest_dimension:
+        type: keyword
+      state:
+        type: keyword
+      submitter_id:
+        type: keyword
+        copy_to:
+        - case_autocomplete
+      time_between_clamping_and_freezing:
+        type: keyword
+      time_between_excision_and_freezing:
+        type: keyword
+      tissue_type:
+        type: keyword
+      tumor_code:
+        type: keyword
+      tumor_code_id:
+        type: keyword
+      tumor_descriptor:
+        type: keyword
+      updated_datetime:
+        type: keyword
+  slide_ids:
+    type: keyword
