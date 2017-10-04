@@ -1002,10 +1002,86 @@ properties:
             type: keyword
           shortest_dimension:
             type: keyword
-          state:
-            type: keyword
-          submitter_id:
-            type: keyword
+          slides:
+            type: nested
+            properties:
+              annotations:
+                type: nested
+                properties:
+                  annotation_id:
+                    type: keyword
+                  case_id:
+                    type: keyword
+                  case_submitter_id:
+                    type: keyword
+                  category:
+                    type: keyword
+                  classification:
+                    type: keyword
+                  created_datetime:
+                    type: keyword
+                  creator:
+                    type: keyword
+                  entity_id:
+                    type: keyword
+                  entity_submitter_id:
+                    type: keyword
+                  entity_type:
+                    type: keyword
+                  legacy_created_datetime:
+                    type: keyword
+                  legacy_updated_datetime:
+                    type: keyword
+                  notes:
+                    type: keyword
+                  state:
+                    type: keyword
+                  status:
+                    type: keyword
+                  submitter_id:
+                    type: keyword
+                  updated_datetime:
+                    type: keyword
+              created_datetime:
+                type: keyword
+              number_proliferating_cells:
+                type: long
+              percent_eosinophil_infiltration:
+                type: long
+              percent_granulocyte_infiltration:
+                type: long
+              percent_inflam_infiltration:
+                type: long
+              percent_lymphocyte_infiltration:
+                type: long
+              percent_monocyte_infiltration:
+                type: long
+              percent_necrosis:
+                type: long
+              percent_neutrophil_infiltration:
+                type: long
+              percent_normal_cells:
+                type: long
+              percent_stromal_cells:
+                type: long
+              percent_tumor_cells:
+                type: long
+              percent_tumor_nuclei:
+                type: long
+              section_location:
+                type: keyword
+              slide_id:
+                type: keyword
+              state:
+                type: keyword
+              submitter_id:
+                type: keyword
+              updated_datetime:
+                type: keyword
+      state:
+        type: keyword
+      submitter_id:
+        type: keyword
           time_between_clamping_and_freezing:
             type: keyword
           time_between_excision_and_freezing:
