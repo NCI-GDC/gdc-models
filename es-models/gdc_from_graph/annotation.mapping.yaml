@@ -1,8 +1,22 @@
 properties:
-  annotation_id:
+  annotation_autocomplete:
+    fields:
+      analyzed:
+        analyzer: autocomplete_analyzed
+        search_analyzer: lowercase_keyword
+        type: text
+      lowercase:
+        analyzer: lowercase_keyword
+        type: text
+      prefix:
+        analyzer: autocomplete_prefix
+        search_analyzer: lowercase_keyword
+        type: text
     type: keyword
+  annotation_id:
     copy_to:
     - annotation_autocomplete
+    type: keyword
   case_id:
     type: keyword
   case_submitter_id:
@@ -63,17 +77,3 @@ properties:
     type: keyword
   updated_datetime:
     type: keyword
-  annotation_autocomplete:
-    type: keyword
-    fields:
-      prefix:
-        type: text
-        analyzer: autocomplete_prefix
-        search_analyzer: lowercase_keyword
-      analyzed:
-        type: text
-        analyzer: autocomplete_analyzed
-        search_analyzer: lowercase_keyword
-      lowercase:
-        type: text
-        analyzer: lowercase_keyword

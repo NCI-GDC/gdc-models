@@ -34,7 +34,6 @@ properties:
           year_of_death:
             type: long
       diagnoses:
-        type: nested
         properties:
           age_at_diagnosis:
             type: long
@@ -139,7 +138,6 @@ properties:
           tissue_or_organ_of_origin:
             type: keyword
           treatments:
-            type: nested
             properties:
               created_datetime:
                 type: date
@@ -169,6 +167,7 @@ properties:
                 type: keyword
               updated_datetime:
                 type: date
+            type: nested
           tumor_grade:
             type: keyword
           tumor_stage:
@@ -181,10 +180,10 @@ properties:
             type: keyword
           year_of_diagnosis:
             type: long
+        type: nested
       disease_type:
         type: keyword
       exposures:
-        type: nested
         properties:
           alcohol_history:
             type: keyword
@@ -218,8 +217,31 @@ properties:
             type: float
           years_smoked:
             type: float
-      observation:
         type: nested
+      family_histories:
+        properties:
+          created_datetime:
+            type: date
+          family_history_id:
+            type: keyword
+          relationship_age_at_diagnosis:
+            type: long
+          relationship_gender:
+            type: keyword
+          relationship_primary_diagnosis:
+            type: keyword
+          relationship_type:
+            type: keyword
+          relative_with_cancer_history:
+            type: keyword
+          state:
+            type: keyword
+          submitter_id:
+            type: keyword
+          updated_datetime:
+            type: date
+        type: nested
+      observation:
         properties:
           center:
             type: keyword
@@ -233,9 +255,9 @@ properties:
             type: keyword
           normal_genotype:
             properties:
-              match_norm_seq_allele2:
-                type: keyword
               match_norm_seq_allele1:
+                type: keyword
+              match_norm_seq_allele2:
                 type: keyword
           observation_id:
             type: keyword
@@ -281,29 +303,7 @@ properties:
                 type: keyword
               variant_process:
                 type: keyword
-      family_histories:
         type: nested
-        properties:
-          created_datetime:
-            type: date
-          family_history_id:
-            type: keyword
-          relationship_age_at_diagnosis:
-            type: long
-          relationship_gender:
-            type: keyword
-          relationship_primary_diagnosis:
-            type: keyword
-          relationship_type:
-            type: keyword
-          relative_with_cancer_history:
-            type: keyword
-          state:
-            type: keyword
-          submitter_id:
-            type: keyword
-          updated_datetime:
-            type: date
       primary_site:
         type: keyword
       project:
@@ -341,19 +341,19 @@ properties:
       summary:
         properties:
           data_categories:
-            type: nested
             properties:
               data_category:
                 type: keyword
               file_count:
                 type: long
-          experimental_strategies:
             type: nested
+          experimental_strategies:
             properties:
               experimental_strategy:
                 type: keyword
               file_count:
                 type: long
+            type: nested
           file_count:
             type: long
           file_size:
@@ -377,7 +377,6 @@ properties:
       chromosome:
         type: keyword
       consequence:
-        type: nested
         properties:
           consequence_id:
             type: keyword
@@ -485,6 +484,7 @@ properties:
                 type: keyword
               transcript_id:
                 type: keyword
+        type: nested
       cosmic_id:
         type: keyword
       end_position:
@@ -508,18 +508,18 @@ properties:
       tumor_allele:
         type: keyword
   ssm_occurrence_autocomplete:
-    type: keyword
     fields:
       analyzed:
-        type: text
         analyzer: autocomplete_analyzed
         search_analyzer: lowercase_keyword
+        type: text
       lowercase:
-        type: text
         analyzer: lowercase_keyword
-      prefix:
         type: text
+      prefix:
         analyzer: autocomplete_prefix
         search_analyzer: lowercase_keyword
+        type: text
+    type: keyword
   ssm_occurrence_id:
     type: keyword

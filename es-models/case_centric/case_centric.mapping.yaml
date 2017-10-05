@@ -7,23 +7,23 @@ properties:
   available_variation_data:
     type: keyword
   case_autocomplete:
-    type: keyword
     fields:
       analyzed:
-        type: text
         analyzer: autocomplete_analyzed
         search_analyzer: lowercase_keyword
+        type: text
       lowercase:
-        type: text
         analyzer: lowercase_keyword
-      prefix:
         type: text
+      prefix:
         analyzer: autocomplete_prefix
         search_analyzer: lowercase_keyword
-  case_id:
+        type: text
     type: keyword
+  case_id:
     copy_to:
     - case_autocomplete
+    type: keyword
   created_datetime:
     type: date
   days_to_index:
@@ -51,7 +51,6 @@ properties:
       year_of_death:
         type: long
   diagnoses:
-    type: nested
     properties:
       age_at_diagnosis:
         type: long
@@ -156,7 +155,6 @@ properties:
       tissue_or_organ_of_origin:
         type: keyword
       treatments:
-        type: nested
         properties:
           created_datetime:
             type: date
@@ -186,6 +184,7 @@ properties:
             type: keyword
           updated_datetime:
             type: date
+        type: nested
       tumor_grade:
         type: keyword
       tumor_stage:
@@ -198,12 +197,12 @@ properties:
         type: keyword
       year_of_diagnosis:
         type: long
+    type: nested
   disease_type:
-    type: keyword
     copy_to:
     - case_autocomplete
+    type: keyword
   exposures:
-    type: nested
     properties:
       alcohol_history:
         type: keyword
@@ -237,8 +236,8 @@ properties:
         type: float
       years_smoked:
         type: float
-  family_histories:
     type: nested
+  family_histories:
     properties:
       created_datetime:
         type: date
@@ -260,8 +259,8 @@ properties:
         type: keyword
       updated_datetime:
         type: date
-  gene:
     type: nested
+  gene:
     properties:
       biotype:
         type: keyword
@@ -270,12 +269,10 @@ properties:
       is_cancer_gene_census:
         type: boolean
       ssm:
-        type: nested
         properties:
           chromosome:
             type: keyword
           consequence:
-            type: nested
             properties:
               consequence_id:
                 type: keyword
@@ -343,6 +340,7 @@ properties:
                     type: keyword
                   transcript_id:
                     type: keyword
+            type: nested
           cosmic_id:
             type: keyword
           end_position:
@@ -356,10 +354,7 @@ properties:
           ncbi_build:
             type: keyword
           observation:
-            type: nested
             properties:
-              observation_id:
-                type: keyword
               center:
                 type: keyword
               input_bam_file:
@@ -372,10 +367,12 @@ properties:
                 type: keyword
               normal_genotype:
                 properties:
-                  match_norm_seq_allele2:
-                    type: keyword
                   match_norm_seq_allele1:
                     type: keyword
+                  match_norm_seq_allele2:
+                    type: keyword
+              observation_id:
+                type: keyword
               read_depth:
                 properties:
                   n_depth:
@@ -418,6 +415,7 @@ properties:
                     type: keyword
                   variant_process:
                     type: keyword
+            type: nested
           reference_allele:
             type: keyword
           ssm_id:
@@ -426,30 +424,32 @@ properties:
             type: long
           tumor_allele:
             type: keyword
+        type: nested
       symbol:
         type: keyword
+    type: nested
   primary_site:
-    type: keyword
     copy_to:
     - case_autocomplete
+    type: keyword
   project:
     properties:
       dbgap_accession_number:
         type: keyword
       disease_type:
-        type: keyword
         copy_to:
         - case_autocomplete
+        type: keyword
       intended_release_date:
         type: keyword
       name:
-        type: keyword
         copy_to:
         - case_autocomplete
+        type: keyword
       primary_site:
-        type: keyword
         copy_to:
         - case_autocomplete
+        type: keyword
       program:
         properties:
           dbgap_accession_number:
@@ -459,9 +459,9 @@ properties:
           program_id:
             type: keyword
       project_id:
-        type: keyword
         copy_to:
         - case_autocomplete
+        type: keyword
       releasable:
         type: keyword
       released:
@@ -471,25 +471,25 @@ properties:
   state:
     type: keyword
   submitter_id:
-    type: keyword
     copy_to:
     - case_autocomplete
+    type: keyword
   summary:
     properties:
       data_categories:
-        type: nested
         properties:
           data_category:
             type: keyword
           file_count:
             type: long
-      experimental_strategies:
         type: nested
+      experimental_strategies:
         properties:
           experimental_strategy:
             type: keyword
           file_count:
             type: long
+        type: nested
       file_count:
         type: long
       file_size:

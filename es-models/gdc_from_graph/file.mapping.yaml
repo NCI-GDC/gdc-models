@@ -12,7 +12,6 @@ properties:
       created_datetime:
         type: keyword
       input_files:
-        type: nested
         properties:
           access:
             type: keyword
@@ -50,10 +49,10 @@ properties:
             type: keyword
           updated_datetime:
             type: keyword
+        type: nested
       metadata:
         properties:
           read_groups:
-            type: nested
             properties:
               RIN:
                 type: long
@@ -100,7 +99,6 @@ properties:
               read_group_name:
                 type: keyword
               read_group_qcs:
-                type: nested
                 properties:
                   adapter_content:
                     type: keyword
@@ -154,6 +152,7 @@ properties:
                     type: keyword
                   workflow_version:
                     type: keyword
+                type: nested
               read_length:
                 type: long
               sequencing_center:
@@ -184,6 +183,7 @@ properties:
                 type: keyword
               updated_datetime:
                 type: keyword
+            type: nested
       state:
         type: keyword
       submitter_id:
@@ -201,7 +201,6 @@ properties:
       workflow_version:
         type: keyword
   annotations:
-    type: nested
     properties:
       annotation_id:
         type: keyword
@@ -237,6 +236,7 @@ properties:
         type: keyword
       updated_datetime:
         type: keyword
+    type: nested
   archive:
     properties:
       archive_id:
@@ -270,7 +270,6 @@ properties:
       updated_datetime:
         type: keyword
   associated_entities:
-    type: nested
     properties:
       case_id:
         type: keyword
@@ -280,15 +279,14 @@ properties:
         type: keyword
       entity_type:
         type: keyword
-  cases:
     type: nested
+  cases:
     properties:
       aliquot_ids:
         type: keyword
       analyte_ids:
         type: keyword
       annotations:
-        type: nested
         properties:
           annotation_id:
             type: keyword
@@ -324,13 +322,14 @@ properties:
             type: keyword
           updated_datetime:
             type: keyword
+        type: nested
       case_id:
         type: keyword
       created_datetime:
         type: keyword
-      days_to_lost_to_followup:
-        type: long
       days_to_index:
+        type: long
+      days_to_lost_to_followup:
         type: long
       demographic:
         properties:
@@ -363,7 +362,6 @@ properties:
           year_of_death:
             type: long
       diagnoses:
-        type: nested
         properties:
           age_at_diagnosis:
             type: long
@@ -482,7 +480,6 @@ properties:
           tissue_or_organ_of_origin:
             type: keyword
           treatments:
-            type: nested
             properties:
               created_datetime:
                 type: keyword
@@ -514,6 +511,7 @@ properties:
                 type: keyword
               updated_datetime:
                 type: keyword
+            type: nested
           tumor_grade:
             type: keyword
           tumor_stage:
@@ -526,10 +524,10 @@ properties:
             type: keyword
           year_of_diagnosis:
             type: long
+        type: nested
       disease_type:
         type: keyword
       exposures:
-        type: nested
         properties:
           alcohol_history:
             type: keyword
@@ -563,8 +561,8 @@ properties:
             type: long
           years_smoked:
             type: long
-      family_histories:
         type: nested
+      family_histories:
         properties:
           created_datetime:
             type: keyword
@@ -586,6 +584,7 @@ properties:
             type: keyword
           updated_datetime:
             type: keyword
+        type: nested
       index_date:
         type: keyword
       lost_to_followup:
@@ -625,10 +624,8 @@ properties:
       sample_ids:
         type: keyword
       samples:
-        type: nested
         properties:
           annotations:
-            type: nested
             properties:
               annotation_id:
                 type: keyword
@@ -664,6 +661,7 @@ properties:
                 type: keyword
               updated_datetime:
                 type: keyword
+            type: nested
           biospecimen_anatomic_site:
             type: keyword
           composition:
@@ -695,15 +693,12 @@ properties:
           pathology_report_uuid:
             type: keyword
           portions:
-            type: nested
             properties:
               analytes:
-                type: nested
                 properties:
                   a260_a280_ratio:
                     type: long
                   aliquots:
-                    type: nested
                     properties:
                       aliquot_id:
                         type: keyword
@@ -718,7 +713,6 @@ properties:
                       analyte_type_id:
                         type: keyword
                       annotations:
-                        type: nested
                         properties:
                           annotation_id:
                             type: keyword
@@ -754,6 +748,7 @@ properties:
                             type: keyword
                           updated_datetime:
                             type: keyword
+                        type: nested
                       center:
                         properties:
                           center_id:
@@ -780,6 +775,7 @@ properties:
                         type: keyword
                       updated_datetime:
                         type: keyword
+                    type: nested
                   amount:
                     type: long
                   analyte_id:
@@ -793,7 +789,6 @@ properties:
                   analyte_volume:
                     type: long
                   annotations:
-                    type: nested
                     properties:
                       annotation_id:
                         type: keyword
@@ -829,6 +824,7 @@ properties:
                         type: keyword
                       updated_datetime:
                         type: keyword
+                    type: nested
                   concentration:
                     type: long
                   created_datetime:
@@ -847,8 +843,8 @@ properties:
                     type: keyword
                   well_number:
                     type: keyword
-              annotations:
                 type: nested
+              annotations:
                 properties:
                   annotation_id:
                     type: keyword
@@ -884,6 +880,7 @@ properties:
                     type: keyword
                   updated_datetime:
                     type: keyword
+                type: nested
               center:
                 properties:
                   center_id:
@@ -909,10 +906,8 @@ properties:
               portion_number:
                 type: keyword
               slides:
-                type: nested
                 properties:
                   annotations:
-                    type: nested
                     properties:
                       annotation_id:
                         type: keyword
@@ -948,6 +943,7 @@ properties:
                         type: keyword
                       updated_datetime:
                         type: keyword
+                    type: nested
                   created_datetime:
                     type: keyword
                   number_proliferating_cells:
@@ -984,6 +980,7 @@ properties:
                     type: keyword
                   updated_datetime:
                     type: keyword
+                type: nested
               state:
                 type: keyword
               submitter_id:
@@ -992,6 +989,7 @@ properties:
                 type: keyword
               weight:
                 type: long
+            type: nested
           preservation_method:
             type: keyword
           sample_id:
@@ -1020,6 +1018,7 @@ properties:
             type: keyword
           updated_datetime:
             type: keyword
+        type: nested
       slide_ids:
         type: keyword
       state:
@@ -1039,19 +1038,19 @@ properties:
       summary:
         properties:
           data_categories:
-            type: nested
             properties:
               data_category:
                 type: keyword
               file_count:
                 type: long
-          experimental_strategies:
             type: nested
+          experimental_strategies:
             properties:
               experimental_strategy:
                 type: keyword
               file_count:
                 type: long
+            type: nested
           file_count:
             type: long
           file_size:
@@ -1070,6 +1069,7 @@ properties:
             type: keyword
       updated_datetime:
         type: keyword
+    type: nested
   center:
     properties:
       center_id:
@@ -1087,17 +1087,16 @@ properties:
   created_datetime:
     type: keyword
   data_category:
-    type: keyword
     copy_to:
     - file_autocomplete
+    type: keyword
   data_format:
     type: keyword
   data_type:
-    type: keyword
     copy_to:
     - file_autocomplete
+    type: keyword
   downstream_analyses:
-    type: nested
     properties:
       analysis_id:
         type: keyword
@@ -1106,7 +1105,6 @@ properties:
       created_datetime:
         type: keyword
       output_files:
-        type: nested
         properties:
           access:
             type: keyword
@@ -1144,6 +1142,7 @@ properties:
             type: keyword
           updated_datetime:
             type: keyword
+        type: nested
       state:
         type: keyword
       submitter_id:
@@ -1160,26 +1159,40 @@ properties:
         type: keyword
       workflow_version:
         type: keyword
+    type: nested
   error_type:
     type: keyword
   experimental_strategy:
-    type: keyword
     copy_to:
     - file_autocomplete
+    type: keyword
+  file_autocomplete:
+    fields:
+      analyzed:
+        analyzer: autocomplete_analyzed
+        search_analyzer: lowercase_keyword
+        type: text
+      lowercase:
+        analyzer: lowercase_keyword
+        type: text
+      prefix:
+        analyzer: autocomplete_prefix
+        search_analyzer: lowercase_keyword
+        type: text
+    type: keyword
   file_id:
-    type: keyword
     copy_to:
     - file_autocomplete
+    type: keyword
   file_name:
-    type: keyword
     copy_to:
     - file_autocomplete
+    type: keyword
   file_size:
     type: long
   file_state:
     type: keyword
   index_files:
-    type: nested
     properties:
       access:
         type: keyword
@@ -1217,12 +1230,12 @@ properties:
         type: keyword
       updated_datetime:
         type: keyword
+    type: nested
   md5sum:
-    type: keyword
     copy_to:
     - file_autocomplete
+    type: keyword
   metadata_files:
-    type: nested
     properties:
       access:
         type: keyword
@@ -1256,6 +1269,7 @@ properties:
         type: keyword
       updated_datetime:
         type: keyword
+    type: nested
   origin:
     type: keyword
   platform:
@@ -1267,26 +1281,12 @@ properties:
   state_comment:
     type: keyword
   submitter_id:
-    type: keyword
     copy_to:
     - file_autocomplete
+    type: keyword
   tags:
     type: keyword
   type:
     type: keyword
   updated_datetime:
     type: keyword
-  file_autocomplete:
-    type: keyword
-    fields:
-      prefix:
-        type: text
-        analyzer: autocomplete_prefix
-        search_analyzer: lowercase_keyword
-      analyzed:
-        type: text
-        analyzer: autocomplete_analyzed
-        search_analyzer: lowercase_keyword
-      lowercase:
-        type: text
-        analyzer: lowercase_keyword
