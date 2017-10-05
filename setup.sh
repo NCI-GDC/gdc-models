@@ -2,8 +2,8 @@
 
 set -efu
 
-printf "Install Python library for ruamel.yaml ... "
-pip install ruamel.yaml
+printf "Install Python library for PyYAML ... "
+pip install PyYAML
 printf "done!\n"
 
 printf "Setting up pre-commit git hook ... "
