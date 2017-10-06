@@ -7,9 +7,9 @@ properties:
   biotype:
     type: keyword
   canonical_transcript_id:
-    type: keyword
     copy_to:
     - gene_autocomplete
+    type: keyword
   canonical_transcript_length:
     type: long
   canonical_transcript_length_cds:
@@ -17,7 +17,6 @@ properties:
   canonical_transcript_length_genomic:
     type: long
   case:
-    type: nested
     properties:
       available_variation_data:
         type: keyword
@@ -46,7 +45,6 @@ properties:
           year_of_death:
             type: long
       diagnoses:
-        type: nested
         properties:
           age_at_diagnosis:
             type: long
@@ -151,7 +149,6 @@ properties:
           tissue_or_organ_of_origin:
             type: keyword
           treatments:
-            type: nested
             properties:
               created_datetime:
                 type: date
@@ -181,6 +178,7 @@ properties:
                 type: keyword
               updated_datetime:
                 type: date
+            type: nested
           tumor_grade:
             type: keyword
           tumor_stage:
@@ -193,10 +191,10 @@ properties:
             type: keyword
           year_of_diagnosis:
             type: long
+        type: nested
       disease_type:
         type: keyword
       exposures:
-        type: nested
         properties:
           alcohol_history:
             type: keyword
@@ -230,8 +228,8 @@ properties:
             type: float
           years_smoked:
             type: float
-      family_histories:
         type: nested
+      family_histories:
         properties:
           created_datetime:
             type: date
@@ -253,6 +251,7 @@ properties:
             type: keyword
           updated_datetime:
             type: date
+        type: nested
       primary_site:
         type: keyword
       project:
@@ -284,12 +283,10 @@ properties:
           state:
             type: keyword
       ssm:
-        type: nested
         properties:
           chromosome:
             type: keyword
           consequence:
-            type: nested
             properties:
               consequence_id:
                 type: keyword
@@ -357,6 +354,7 @@ properties:
                     type: keyword
                   transcript_id:
                     type: keyword
+            type: nested
           cosmic_id:
             type: keyword
           end_position:
@@ -370,10 +368,7 @@ properties:
           ncbi_build:
             type: keyword
           observation:
-            type: nested
             properties:
-              observation_id:
-                type: keyword
               center:
                 type: keyword
               input_bam_file:
@@ -386,10 +381,12 @@ properties:
                 type: keyword
               normal_genotype:
                 properties:
-                  match_norm_seq_allele2:
-                    type: keyword
                   match_norm_seq_allele1:
                     type: keyword
+                  match_norm_seq_allele2:
+                    type: keyword
+              observation_id:
+                type: keyword
               read_depth:
                 properties:
                   n_depth:
@@ -432,6 +429,7 @@ properties:
                     type: keyword
                   variant_process:
                     type: keyword
+            type: nested
           reference_allele:
             type: keyword
           ssm_id:
@@ -440,6 +438,7 @@ properties:
             type: long
           tumor_allele:
             type: keyword
+        type: nested
       state:
         type: keyword
       submitter_id:
@@ -447,19 +446,19 @@ properties:
       summary:
         properties:
           data_categories:
-            type: nested
             properties:
               data_category:
                 type: keyword
               file_count:
                 type: long
-          experimental_strategies:
             type: nested
+          experimental_strategies:
             properties:
               experimental_strategy:
                 type: keyword
               file_count:
                 type: long
+            type: nested
           file_count:
             type: long
           file_size:
@@ -478,52 +477,53 @@ properties:
             type: keyword
       updated_datetime:
         type: date
+    type: nested
   cytoband:
-    type: keyword
     copy_to:
     - gene_autocomplete
+    type: keyword
   description:
     type: text
   external_db_ids:
     properties:
       entrez_gene:
-        type: keyword
         copy_to:
         - gene_autocomplete
+        type: keyword
       hgnc:
-        type: keyword
         copy_to:
         - gene_autocomplete
+        type: keyword
       omim_gene:
-        type: keyword
         copy_to:
         - gene_autocomplete
+        type: keyword
       uniprotkb_swissprot:
-        type: keyword
         copy_to:
         - gene_autocomplete
+        type: keyword
   gene_autocomplete:
-    type: keyword
     fields:
       analyzed:
-        type: text
         analyzer: autocomplete_analyzed
         search_analyzer: lowercase_keyword
+        type: text
       lowercase:
-        type: text
         analyzer: lowercase_keyword
-      prefix:
         type: text
+      prefix:
         analyzer: autocomplete_prefix
         search_analyzer: lowercase_keyword
+        type: text
+    type: keyword
   gene_chromosome:
     type: keyword
   gene_end:
     type: long
   gene_id:
-    type: keyword
     copy_to:
     - gene_autocomplete
+    type: keyword
   gene_start:
     type: long
   gene_strand:
@@ -531,19 +531,18 @@ properties:
   is_cancer_gene_census:
     type: boolean
   name:
-    type: keyword
     copy_to:
     - gene_autocomplete
+    type: keyword
   symbol:
-    type: keyword
     copy_to:
     - gene_autocomplete
+    type: keyword
   synonyms:
-    type: keyword
     copy_to:
     - gene_autocomplete
+    type: keyword
   transcripts:
-    type: nested
     properties:
       biotype:
         type: keyword
@@ -556,7 +555,6 @@ properties:
       coding_region_start:
         type: long
       domains:
-        type: nested
         properties:
           description:
             type: keyword
@@ -570,12 +568,12 @@ properties:
             type: keyword
           start:
             type: long
+        type: nested
       end:
         type: long
       end_exon:
         type: long
       exons:
-        type: nested
         properties:
           cdna_coding_end:
             type: long
@@ -597,6 +595,7 @@ properties:
             type: long
           start_phase:
             type: long
+        type: nested
       is_canonical:
         type: boolean
       length:
@@ -618,10 +617,11 @@ properties:
       start_exon:
         type: long
       transcript_id:
-        type: keyword
         copy_to:
         - gene_autocomplete
+        type: keyword
       translation_id:
-        type: keyword
         copy_to:
         - gene_autocomplete
+        type: keyword
+    type: nested

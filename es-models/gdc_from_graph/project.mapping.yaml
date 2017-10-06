@@ -2,19 +2,19 @@ properties:
   dbgap_accession_number:
     type: keyword
   disease_type:
-    type: keyword
     copy_to:
     - project_autocomplete
+    type: keyword
   intended_release_date:
     type: keyword
   name:
-    type: keyword
     copy_to:
     - project_autocomplete
+    type: keyword
   primary_site:
-    type: keyword
     copy_to:
     - project_autocomplete
+    type: keyword
   program:
     properties:
       dbgap_accession_number:
@@ -23,10 +23,24 @@ properties:
         type: keyword
       program_id:
         type: keyword
-  project_id:
+  project_autocomplete:
+    fields:
+      analyzed:
+        analyzer: autocomplete_analyzed
+        search_analyzer: lowercase_keyword
+        type: text
+      lowercase:
+        analyzer: lowercase_keyword
+        type: text
+      prefix:
+        analyzer: autocomplete_prefix
+        search_analyzer: lowercase_keyword
+        type: text
     type: keyword
+  project_id:
     copy_to:
     - project_autocomplete
+    type: keyword
   releasable:
     type: keyword
   released:
@@ -38,7 +52,6 @@ properties:
       case_count:
         type: long
       data_categories:
-        type: nested
         properties:
           case_count:
             type: long
@@ -46,8 +59,8 @@ properties:
             type: keyword
           file_count:
             type: long
-      experimental_strategies:
         type: nested
+      experimental_strategies:
         properties:
           case_count:
             type: long
@@ -55,21 +68,8 @@ properties:
             type: keyword
           file_count:
             type: long
+        type: nested
       file_count:
         type: long
       file_size:
         type: long
-  project_autocomplete:
-    type: keyword
-    fields:
-      prefix:
-        type: text
-        analyzer: autocomplete_prefix
-        search_analyzer: lowercase_keyword
-      analyzed:
-        type: text
-        analyzer: autocomplete_analyzed
-        search_analyzer: lowercase_keyword
-      lowercase:
-        type: text
-        analyzer: lowercase_keyword

@@ -1,13 +1,4 @@
-index.mapping.nested_fields.limit: 100
-index.max_result_window: 100000000
-
 analysis:
-  filter:
-    edge_ngram:
-      min_gram: '1'
-      side: front
-      type: edge_ngram
-      max_gram: '20'
   analyzer:
     autocomplete_analyzed:
       filter:
@@ -23,3 +14,11 @@ analysis:
       filter:
       - lowercase
       tokenizer: keyword
+  filter:
+    edge_ngram:
+      max_gram: '20'
+      min_gram: '1'
+      side: front
+      type: edge_ngram
+index.mapping.nested_fields.limit: 100
+index.max_result_window: 100000000
