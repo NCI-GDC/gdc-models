@@ -57,14 +57,18 @@ properties:
                 type: keyword
               impact:
                 type: keyword
-              polyphen:
+              polyphen_impact:
                 type: keyword
+              polyphen_score:
+                type: float
               protein_position:
                 type: keyword
               pubmed:
                 type: keyword
-              sift:
+              sift_impact:
                 type: keyword
+              sift_score:
+                type: float
               swissprot:
                 type: keyword
               transcript_id:
