@@ -384,6 +384,8 @@ properties:
             type: nested
           observation:
             properties:
+              access:
+                type: keyword
               center:
                 type: keyword
               input_bam_file:
@@ -401,6 +403,8 @@ properties:
                   match_norm_seq_allele2:
                     type: keyword
               observation_id:
+                type: keyword
+              project_id:
                 type: keyword
               read_depth:
                 properties:
