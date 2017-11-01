@@ -280,6 +280,8 @@ properties:
       entity_type:
         type: keyword
     type: nested
+  awg_acl:
+    type: keyword
   cases:
     properties:
       aliquot_ids:

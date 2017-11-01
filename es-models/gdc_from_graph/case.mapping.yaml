@@ -553,6 +553,8 @@ properties:
             type: keyword
           updated_datetime:
             type: keyword
+      awg_acl:
+        type: keyword
       center:
         properties:
           center_id:
