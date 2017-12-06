@@ -354,6 +354,8 @@ properties:
                         type: keyword
                   consequence_type:
                     type: keyword
+                  is_canonical:
+                    type: boolean
                   ref_seq_accession:
                     type: keyword
                   transcript_id:
