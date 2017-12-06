@@ -55,8 +55,6 @@ properties:
                 type: keyword
               hgvsp_short:
                 type: keyword
-              impact:
-                type: keyword
               polyphen_impact:
                 type: keyword
               polyphen_score:
@@ -76,6 +74,8 @@ properties:
               trembl:
                 type: keyword
               uniparc:
+                type: keyword
+              vep_impact:
                 type: keyword
           consequence_type:
             type: keyword
