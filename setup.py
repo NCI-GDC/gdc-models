@@ -26,7 +26,7 @@ try:
             'elasticsearch'
         ],
         package_data={
-            'gdcmodels': ['gdcmodels/data/*/*.yaml']
+            'gdcmodels': ['data/*/*.yaml']
         }
     )
 except Exception as e:
