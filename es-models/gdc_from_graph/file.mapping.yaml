@@ -536,7 +536,7 @@ properties:
           bmi:
             type: long
           cigarettes_per_day:
-            type: long
+            type: float
           created_datetime:
             type: keyword
           exposure_id:
