@@ -13,16 +13,23 @@ def get_version():
         return f.read().strip()
 
 
-setup(
-    name = 'gdcmodels',
-    version = get_version(),
-    packages = find_packages(exclude=[
-        "scripts", "*-models", "*.tests", "*.tests.*", "tests.*", "tests"]),
-    install_requires = [
-        'PyYAML',
-        'elasticsearch'
-    ],
-    package_data = {
-        'gdcmodels': ['es-models/*/*.yaml']
-    }
-)
+# Blatant theft of: https://stackoverflow.com/questions/4519127/setuptools-package-data-folder-location/26533921#26533921
+try:
+    os.symlink('../es-models/', 'gdcmodels/data')
+    setup(
+        name='gdcmodels',
+        version=get_version(),
+        packages=find_packages(exclude=[
+            "scripts", "*-models", "*.tests", "*.tests.*", "tests.*", "tests"]),
+        install_requires=[
+            'PyYAML',
+            'elasticsearch'
+        ],
+        package_data={
+            'gdcmodels': ['data/*/*.yaml']
+        }
+    )
+except Exception as e:
+    print e.message
+finally:
+    os.unlink('gdcmodels/data')
