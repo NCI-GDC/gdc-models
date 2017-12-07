@@ -1,7 +1,8 @@
 import re
 import yaml
 from os import listdir
-from os.path import dirname, abspath, isfile, join as pj
+import pkg_resources
+from os.path import isfile, join as pj
 
 
 def load_yaml(filename):
@@ -16,7 +17,7 @@ def get_es_models():
     dict is structured similarly as Elasticsearch's '_settings', '_mapping' return
     """
 
-    es_model_dir = pj(abspath(dirname(__file__)), 'es-models')
+    es_model_dir = pkg_resources.resource_filename('gdcmodels', 'es-models')
 
     es_models = {}
 
