@@ -15,7 +15,7 @@ def get_version():
 
 # Blatant theft of: https://stackoverflow.com/questions/4519127/setuptools-package-data-folder-location/26533921#26533921
 try:
-    os.symlink('../es-models', 'gdcmodels')
+    os.symlink('../es-models/', 'gdcmodels/data')
     setup(
         name='gdcmodels',
         version=get_version(),
@@ -26,8 +26,10 @@ try:
             'elasticsearch'
         ],
         package_data={
-            'gdcmodels': ['gdcmodels/*/*.yaml']
+            'gdcmodels': ['gdcmodels/data/*/*.yaml']
         }
     )
+except Exception as e:
+    print e.message
 finally:
-    os.unlink('gdcmodels')
+    os.unlink('gdcmodels/data')
