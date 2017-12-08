@@ -17,7 +17,7 @@ def get_es_models():
     dict is structured similarly as Elasticsearch's '_settings', '_mapping' return
     """
 
-    es_model_dir = pkg_resources.resource_filename('gdcmodels', 'data')
+    es_model_dir = pkg_resources.resource_filename('gdcmodels', 'es-models')
 
     es_models = {}
 
