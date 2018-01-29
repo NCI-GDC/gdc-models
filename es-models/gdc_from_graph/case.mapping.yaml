@@ -66,6 +66,8 @@ properties:
     type: long
   demographic:
     properties:
+      age_at_index:
+        type: long
       cause_of_death:
         type: keyword
       created_datetime:
@@ -253,6 +255,8 @@ properties:
         type: keyword
       vascular_invasion_present:
         type: keyword
+      vascular_invasion_type:
+        type: keyword
       vital_status:
         type: keyword
       year_of_diagnosis:
@@ -356,6 +360,10 @@ properties:
                 type: long
               file_state:
                 type: keyword
+              imaging_date:
+                type: keyword
+              magnification:
+                type: long
               md5sum:
                 type: keyword
               platform:
@@ -391,12 +399,22 @@ properties:
                     type: keyword
                   flow_cell_barcode:
                     type: keyword
+                  fragment_maximum_length:
+                    type: long
+                  fragment_mean_length:
+                    type: long
+                  fragment_minimum_length:
+                    type: long
+                  fragment_standard_deviation_length:
+                    type: long
                   includes_spike_ins:
                     type: keyword
                   instrument_model:
                     type: keyword
                   is_paired_end:
                     type: keyword
+                  lane_number:
+                    type: long
                   library_name:
                     type: keyword
                   library_preparation_kit_catalog_number:
@@ -412,6 +430,8 @@ properties:
                   library_strand:
                     type: keyword
                   library_strategy:
+                    type: keyword
+                  multiplex_barcode:
                     type: keyword
                   platform:
                     type: keyword
@@ -607,6 +627,10 @@ properties:
                 type: long
               file_state:
                 type: keyword
+              imaging_date:
+                type: keyword
+              magnification:
+                type: long
               md5sum:
                 type: keyword
               platform:
@@ -651,6 +675,8 @@ properties:
         type: long
       file_state:
         type: keyword
+      imaging_date:
+        type: keyword
       index_files:
         properties:
           access:
@@ -675,6 +701,10 @@ properties:
             type: long
           file_state:
             type: keyword
+          imaging_date:
+            type: keyword
+          magnification:
+            type: long
           md5sum:
             type: keyword
           platform:
@@ -690,6 +720,8 @@ properties:
           updated_datetime:
             type: keyword
         type: nested
+      magnification:
+        type: long
       md5sum:
         type: keyword
       metadata_files:
