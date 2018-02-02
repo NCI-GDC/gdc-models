@@ -1,5 +1,8 @@
 _all:
   enabled: false
+_size:
+  enabled: true
+  store: 'yes'
 _source:
   excludes:
   - case.*
