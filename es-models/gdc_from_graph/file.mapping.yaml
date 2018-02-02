@@ -1,3 +1,6 @@
+_size:
+  enabled: true
+  store: 'yes'
 properties:
   access:
     type: keyword
