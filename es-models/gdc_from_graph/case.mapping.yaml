@@ -82,6 +82,8 @@ properties:
         type: keyword
       gender:
         type: keyword
+      premature_at_birth:
+        type: keyword
       race:
         type: keyword
       state:
@@ -92,6 +94,8 @@ properties:
         type: keyword
       vital_status:
         type: keyword
+      weeks_gestation_at_birth:
+        type: long
       year_of_birth:
         type: long
       year_of_death:
@@ -266,6 +270,10 @@ properties:
     type: keyword
   exposures:
     properties:
+      alcohol_days_per_week:
+        type: long
+      alcohol_drinks_per_day:
+        type: long
       alcohol_history:
         type: keyword
       alcohol_intensity:
@@ -519,6 +527,8 @@ properties:
                   target_capture_kit_vendor:
                     type: keyword
                   target_capture_kit_version:
+                    type: keyword
+                  target_capture_kit:
                     type: keyword
                   to_trim_adapter_sequence:
                     type: keyword
@@ -788,11 +798,17 @@ properties:
     type: keyword
   project:
     properties:
+      awg_review:
+        type: keyword
       dbgap_accession_number:
         type: keyword
       disease_type:
         type: keyword
       intended_release_date:
+        type: keyword
+      in_review:
+        type: keyword
+      is_legacy:
         type: keyword
       name:
         type: keyword
@@ -812,7 +828,13 @@ properties:
         type: keyword
       released:
         type: keyword
+      release_requested:
+        type: keyword
+      request_submission:
+        type: keyword
       state:
+        type: keyword
+      submission_enabled:
         type: keyword
   sample_ids:
     type: keyword
@@ -822,9 +844,13 @@ properties:
         properties:
           annotation_id:
             type: keyword
+          biospecimen_laterality:
+            type: keyword
           case_id:
             type: keyword
           case_submitter_id:
+            type: keyword
+          catalog_reference:
             type: keyword
           category:
             type: keyword
@@ -834,18 +860,26 @@ properties:
             type: keyword
           creator:
             type: keyword
+          distance_normal_to_tumor:
+            type: keyword
+          distributor_reference:
+            type: keyword
           entity_id:
             type: keyword
           entity_submitter_id:
             type: keyword
           entity_type:
             type: keyword
+          growth_rate:
+            type: long
           legacy_created_datetime:
             type: keyword
           legacy_updated_datetime:
             type: keyword
           notes:
             type: keyword
+          passage_count:
+            type: long
           state:
             type: keyword
           status:
