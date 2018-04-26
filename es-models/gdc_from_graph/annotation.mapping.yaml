@@ -17,6 +17,8 @@ properties:
     copy_to:
     - annotation_autocomplete
     type: keyword
+  batch_id:
+    type: long
   case_id:
     type: keyword
   case_submitter_id:

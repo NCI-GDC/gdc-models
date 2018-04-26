@@ -9,12 +9,16 @@ properties:
         type: keyword
       analysis_type:
         type: keyword
+      batch_id:
+        type: long
       created_datetime:
         type: keyword
       input_files:
         properties:
           access:
             type: keyword
+          batch_id:
+            type: long
           created_datetime:
             type: keyword
           data_category:
@@ -68,6 +72,8 @@ properties:
                 type: keyword
               base_caller_version:
                 type: keyword
+              batch_id:
+                type: long
               created_datetime:
                 type: keyword
               experiment_name:
@@ -120,6 +126,8 @@ properties:
                     type: keyword
                   basic_statistics:
                     type: keyword
+                  batch_id:
+                    type: long
                   created_datetime:
                     type: keyword
                   encoding:
@@ -222,6 +230,8 @@ properties:
     properties:
       annotation_id:
         type: keyword
+      batch_id:
+        type: long
       case_id:
         type: keyword
       case_submitter_id:
@@ -259,6 +269,8 @@ properties:
     properties:
       archive_id:
         type: keyword
+      batch_id:
+        type: long
       created_datetime:
         type: keyword
       data_category:
@@ -308,6 +320,8 @@ properties:
         properties:
           annotation_id:
             type: keyword
+          batch_id:
+            type: long
           case_id:
             type: keyword
           case_submitter_id:
@@ -341,6 +355,8 @@ properties:
           updated_datetime:
             type: keyword
         type: nested
+      batch_id:
+        type: long
       case_id:
         type: keyword
       created_datetime:
@@ -352,6 +368,8 @@ properties:
       demographic:
         properties:
           age_at_index:
+            type: long
+          batch_id:
             type: long
           cause_of_death:
             type: keyword
@@ -413,6 +431,8 @@ properties:
             type: keyword
           ann_arbor_pathologic_stage:
             type: keyword
+          batch_id:
+            type: long
           best_overall_response:
             type: keyword
           burkitt_lymphoma_clinical_variant:
@@ -505,6 +525,8 @@ properties:
             type: keyword
           treatments:
             properties:
+              batch_id:
+                type: long
               created_datetime:
                 type: keyword
               days_to_treatment:
@@ -563,6 +585,8 @@ properties:
             type: keyword
           alcohol_intensity:
             type: keyword
+          batch_id:
+            type: long
           bmi:
             type: long
           cigarettes_per_day:
@@ -594,6 +618,8 @@ properties:
         type: nested
       family_histories:
         properties:
+          batch_id:
+            type: long
           created_datetime:
             type: keyword
           family_history_id:
@@ -671,6 +697,8 @@ properties:
             properties:
               annotation_id:
                 type: keyword
+              batch_id:
+                type: long
               biospecimen_laterality:
                 type: keyword
               case_id:
@@ -716,6 +744,8 @@ properties:
               updated_datetime:
                 type: keyword
             type: nested
+          batch_id:
+            type: long
           biospecimen_anatomic_site:
             type: keyword
           composition:
@@ -770,6 +800,8 @@ properties:
                         properties:
                           annotation_id:
                             type: keyword
+                          batch_id:
+                            type: long
                           case_id:
                             type: keyword
                           case_submitter_id:
@@ -803,6 +835,8 @@ properties:
                           updated_datetime:
                             type: keyword
                         type: nested
+                      batch_id:
+                        type: long
                       center:
                         properties:
                           center_id:
@@ -846,6 +880,8 @@ properties:
                     properties:
                       annotation_id:
                         type: keyword
+                      batch_id:
+                        type: long
                       case_id:
                         type: keyword
                       case_submitter_id:
@@ -879,6 +915,8 @@ properties:
                       updated_datetime:
                         type: keyword
                     type: nested
+                  batch_id:
+                    type: long
                   concentration:
                     type: long
                   created_datetime:
@@ -902,6 +940,8 @@ properties:
                 properties:
                   annotation_id:
                     type: keyword
+                  batch_id:
+                    type: long
                   case_id:
                     type: keyword
                   case_submitter_id:
@@ -949,6 +989,8 @@ properties:
                     type: keyword
                   short_name:
                     type: keyword
+              batch_id:
+                type: long
               created_datetime:
                 type: keyword
               creation_datetime:
@@ -965,6 +1007,8 @@ properties:
                     properties:
                       annotation_id:
                         type: keyword
+                      batch_id:
+                        type: long
                       case_id:
                         type: keyword
                       case_submitter_id:
@@ -998,6 +1042,8 @@ properties:
                       updated_datetime:
                         type: keyword
                     type: nested
+                  batch_id:
+                    type: long
                   created_datetime:
                     type: keyword
                   number_proliferating_cells:
@@ -1138,6 +1184,8 @@ properties:
         type: keyword
       short_name:
         type: keyword
+  batch_id:
+    type: long
   created_datetime:
     type: keyword
   data_category:
@@ -1156,12 +1204,16 @@ properties:
         type: keyword
       analysis_type:
         type: keyword
+      batch_id:
+        type: long
       created_datetime:
         type: keyword
       output_files:
         properties:
           access:
             type: keyword
+          batch_id:
+            type: long
           created_datetime:
             type: keyword
           data_category:
@@ -1256,6 +1308,8 @@ properties:
     properties:
       access:
         type: keyword
+      batch_id:
+        type: long
       created_datetime:
         type: keyword
       data_category:
@@ -1305,6 +1359,8 @@ properties:
     properties:
       access:
         type: keyword
+      batch_id:
+        type: long
       created_datetime:
         type: keyword
       data_category:
