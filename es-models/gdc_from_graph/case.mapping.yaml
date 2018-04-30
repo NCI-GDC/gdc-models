@@ -540,6 +540,8 @@ properties:
                     type: keyword
                   submitter_id:
                     type: keyword
+                  target_capture_kit:
+                    type: keyword
                   target_capture_kit_catalog_number:
                     type: keyword
                   target_capture_kit_name:
@@ -549,8 +551,6 @@ properties:
                   target_capture_kit_vendor:
                     type: keyword
                   target_capture_kit_version:
-                    type: keyword
-                  target_capture_kit:
                     type: keyword
                   to_trim_adapter_sequence:
                     type: keyword
@@ -607,6 +607,8 @@ properties:
             type: keyword
           updated_datetime:
             type: keyword
+      batch_id:
+        type: long
       center:
         properties:
           center_id:
@@ -621,8 +623,6 @@ properties:
             type: keyword
           short_name:
             type: keyword
-      batch_id:
-        type: long
       created_datetime:
         type: keyword
       data_category:
@@ -838,9 +838,9 @@ properties:
         type: keyword
       disease_type:
         type: keyword
-      intended_release_date:
-        type: keyword
       in_review:
+        type: keyword
+      intended_release_date:
         type: keyword
       is_legacy:
         type: keyword
@@ -860,9 +860,9 @@ properties:
         type: keyword
       releasable:
         type: keyword
-      released:
-        type: keyword
       release_requested:
+        type: keyword
+      released:
         type: keyword
       request_submission:
         type: keyword
@@ -1018,6 +1018,8 @@ properties:
                       updated_datetime:
                         type: keyword
                     type: nested
+                  batch_id:
+                    type: long
                   center:
                     properties:
                       center_id:
@@ -1032,8 +1034,6 @@ properties:
                         type: keyword
                       short_name:
                         type: keyword
-                  batch_id:
-                    type: long
                   concentration:
                     type: long
                   created_datetime:
