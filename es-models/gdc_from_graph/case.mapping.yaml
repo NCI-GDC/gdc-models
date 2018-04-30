@@ -358,8 +358,6 @@ properties:
                 type: keyword
               file_size:
                 type: long
-              file_state:
-                type: keyword
               imaging_date:
                 type: keyword
               magnification:
@@ -559,8 +557,6 @@ properties:
             type: keyword
           file_size:
             type: long
-          file_state:
-            type: keyword
           md5sum:
             type: keyword
           revision:
@@ -625,8 +621,6 @@ properties:
                 type: keyword
               file_size:
                 type: long
-              file_state:
-                type: keyword
               imaging_date:
                 type: keyword
               magnification:
@@ -673,8 +667,6 @@ properties:
         type: keyword
       file_size:
         type: long
-      file_state:
-        type: keyword
       imaging_date:
         type: keyword
       index_files:
@@ -699,8 +691,6 @@ properties:
             type: keyword
           file_size:
             type: long
-          file_state:
-            type: keyword
           imaging_date:
             type: keyword
           magnification:
@@ -744,8 +734,6 @@ properties:
             type: keyword
           file_size:
             type: long
-          file_state:
-            type: keyword
           md5sum:
             type: keyword
           state:
