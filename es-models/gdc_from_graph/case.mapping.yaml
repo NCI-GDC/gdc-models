@@ -450,6 +450,8 @@ properties:
                 type: keyword
               platform:
                 type: keyword
+              read_pair_number:
+                type: keyword
               revision:
                 type: long
               state:
@@ -578,8 +580,6 @@ properties:
                     type: nested
                   read_length:
                     type: long
-                  read_pair_number:
-                    type: keyword
                   sequencing_center:
                     type: keyword
                   sequencing_date:
@@ -721,6 +721,8 @@ properties:
                 type: keyword
               platform:
                 type: keyword
+              read_pair_number:
+                type: keyword
               revision:
                 type: long
               state:
@@ -795,6 +797,8 @@ properties:
             type: keyword
           platform:
             type: keyword
+          read_pair_number:
+            type: keyword
           revision:
             type: long
           state:
@@ -848,6 +852,8 @@ properties:
       origin:
         type: keyword
       platform:
+        type: keyword
+      read_pair_number:
         type: keyword
       revision:
         type: long
