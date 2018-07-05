@@ -1,5 +1,8 @@
 _all:
   enabled: false
+_source:
+  excludes:
+  - case.observation.*
 properties:
   case:
     properties:
@@ -241,6 +244,8 @@ properties:
         type: nested
       observation:
         properties:
+          acl:
+            type: keyword
           center:
             type: keyword
           input_bam_file:

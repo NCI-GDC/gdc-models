@@ -1,5 +1,8 @@
 _all:
   enabled: false
+_source:
+  excludes:
+  - occurrence.*
 properties:
   chromosome:
     type: keyword
@@ -382,6 +385,8 @@ properties:
             type: nested
           observation:
             properties:
+              acl:
+                type: keyword
               center:
                 type: keyword
               input_bam_file:
