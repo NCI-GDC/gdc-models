@@ -347,7 +347,7 @@ properties:
               gene_id:
                 type: keyword
               is_cancer_gene_census:
-                type: keyword
+                type: boolean
               symbol:
                 type: keyword
         type: nested
