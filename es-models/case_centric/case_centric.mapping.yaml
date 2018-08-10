@@ -262,13 +262,13 @@ properties:
     properties:
       biotype:
         type: keyword
-      cna:
+      cnv:
         properties:
           chromosome:
             type: keyword
-          cna_change:
+          cnv_change:
             type: keyword
-          cna_id:
+          cnv_id:
             type: keyword
           consequence:
             properties:

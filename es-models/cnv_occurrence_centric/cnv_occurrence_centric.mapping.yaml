@@ -326,15 +326,15 @@ properties:
             type: keyword
       updated_datetime:
         type: date
-  cna:
+  cnv:
     properties:
       chromosome:
         type: keyword
-      cna_change:
+      cnv_change:
         type: keyword
-      cna_id:
+      cnv_id:
         copy_to:
-        - cna_occurrence_autocomplete
+        - cnv_occurrence_autocomplete
         type: keyword
       consequence:
         properties:
@@ -361,7 +361,7 @@ properties:
         type: long
       variant_status:
         type: keyword
-  cna_occurrence_autocomplete:
+  cnv_occurrence_autocomplete:
     fields:
       analyzed:
         analyzer: autocomplete_analyzed
@@ -375,5 +375,5 @@ properties:
         search_analyzer: lowercase_keyword
         type: text
     type: keyword
-  cna_occurrence_id:
+  cnv_occurrence_id:
     type: keyword
