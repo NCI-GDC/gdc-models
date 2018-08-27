@@ -2,9 +2,6 @@ _all:
   enabled: false
 _size:
   enabled: true
-_source:
-  excludes:
-  - case.*
 properties:
   biotype:
     type: keyword
