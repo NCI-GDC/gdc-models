@@ -1,8 +1,5 @@
 _all:
   enabled: false
-_source:
-  excludes:
-  - occurrence.*
 properties:
   chromosome:
     type: keyword

@@ -1,8 +1,5 @@
 _all:
   enabled: false
-_source:
-  excludes:
-  - gene.*
 properties:
   available_variation_data:
     type: keyword

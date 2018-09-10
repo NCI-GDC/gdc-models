@@ -1,8 +1,5 @@
 _all:
   enabled: false
-_source:
-  excludes:
-  - case.*
 properties:
   biotype:
     type: keyword
