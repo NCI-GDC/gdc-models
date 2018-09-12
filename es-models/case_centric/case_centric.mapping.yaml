@@ -290,6 +290,8 @@ properties:
             type: keyword
           observation:
             properties:
+              acl:
+                type: keyword
               observation_id:
                 type: keyword
               sample:
@@ -405,6 +407,8 @@ properties:
             type: keyword
           observation:
             properties:
+              acl:
+                type: keyword
               center:
                 type: keyword
               input_bam_file:

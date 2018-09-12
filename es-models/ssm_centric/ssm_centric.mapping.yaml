@@ -382,6 +382,8 @@ properties:
             type: nested
           observation:
             properties:
+              acl:
+                type: keyword
               center:
                 type: keyword
               input_bam_file:
