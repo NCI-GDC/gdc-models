@@ -1,5 +1,8 @@
 _all:
   enabled: false
+_source:
+  excludes:
+  - case.*
 properties:
   biotype:
     type: keyword
@@ -50,8 +53,6 @@ properties:
             type: keyword
           observation:
             properties:
-              acl:
-                type: keyword
               observation_id:
                 type: keyword
               sample:

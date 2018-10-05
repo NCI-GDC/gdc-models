@@ -1,5 +1,8 @@
 _all:
   enabled: false
+_source:
+  excludes:
+  - gene.*
 properties:
   available_variation_data:
     type: keyword
@@ -290,8 +293,6 @@ properties:
             type: keyword
           observation:
             properties:
-              acl:
-                type: keyword
               observation_id:
                 type: keyword
               sample:

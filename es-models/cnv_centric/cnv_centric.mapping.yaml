@@ -286,8 +286,6 @@ properties:
             type: nested
           observation:
             properties:
-              acl:
-                type: keyword
               observation_id:
                 type: keyword
               sample:

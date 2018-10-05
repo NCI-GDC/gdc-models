@@ -1,5 +1,8 @@
 _all:
   enabled: false
+_source:
+  excludes:
+  - occurrence.*
 properties:
   case:
     properties:
@@ -241,8 +244,6 @@ properties:
         type: nested
       observation:
         properties:
-          acl:
-            type: keyword
           observation_id:
             type: keyword
           sample:
