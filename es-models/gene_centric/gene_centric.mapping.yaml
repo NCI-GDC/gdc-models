@@ -73,6 +73,10 @@ properties:
           start_position:
             type: long
         type: nested
+      created_datetime:
+        type: date
+      days_to_index:
+        type: long
       demographic:
         properties:
           created_datetime:
