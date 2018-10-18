@@ -1,5 +1,7 @@
 _all:
   enabled: false
+_size:
+  enabled: true
 _source:
   excludes:
   - gene.*
@@ -32,6 +34,10 @@ properties:
     properties:
       created_datetime:
         type: date
+      days_to_birth:
+        type: long
+      days_to_death:
+        type: long
       demographic_id:
         type: keyword
       ethnicity:
@@ -46,6 +52,12 @@ properties:
         type: keyword
       updated_datetime:
         type: date
+      vital_status:
+        fields:
+          keyword:
+            ignore_above: 256
+            type: keyword
+        type: text
       year_of_birth:
         type: long
       year_of_death:
@@ -158,6 +170,8 @@ properties:
         properties:
           created_datetime:
             type: date
+          days_to_treatment:
+            type: long
           days_to_treatment_end:
             type: long
           days_to_treatment_start:
