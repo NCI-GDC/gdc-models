@@ -154,8 +154,6 @@ properties:
             properties:
               created_datetime:
                 type: date
-              days_to_treatment:
-                type: long
               days_to_treatment_end:
                 type: long
               days_to_treatment_start:
