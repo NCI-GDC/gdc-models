@@ -265,8 +265,6 @@ properties:
         type: keyword
       data_format:
         type: keyword
-      data_release:
-        type: keyword
       data_type:
         type: keyword
       error_type:
@@ -286,8 +284,6 @@ properties:
       submitter_id:
         type: keyword
       updated_datetime:
-        type: keyword
-      version:
         type: keyword
   associated_entities:
     properties:
@@ -1226,8 +1222,6 @@ properties:
     type: keyword
   data_format:
     type: keyword
-  data_release:
-    type: keyword
   data_type:
     copy_to:
     - file_autocomplete
@@ -1342,8 +1336,6 @@ properties:
         type: keyword
       data_format:
         type: keyword
-      data_release:
-        type: keyword
       data_type:
         type: keyword
       error_type:
@@ -1376,8 +1368,6 @@ properties:
         type: keyword
       updated_datetime:
         type: keyword
-      version:
-        type: keyword
     type: nested
   magnification:
     type: long
@@ -1394,8 +1384,6 @@ properties:
       data_category:
         type: keyword
       data_format:
-        type: keyword
-      data_release:
         type: keyword
       data_type:
         type: keyword
@@ -1419,8 +1407,6 @@ properties:
         type: keyword
       updated_datetime:
         type: keyword
-      version:
-        type: keyword
     type: nested
   origin:
     type: keyword
@@ -1443,6 +1429,4 @@ properties:
   type:
     type: keyword
   updated_datetime:
-    type: keyword
-  version:
     type: keyword
