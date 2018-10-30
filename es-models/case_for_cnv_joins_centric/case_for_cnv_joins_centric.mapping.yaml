@@ -241,66 +241,22 @@ properties:
     type: nested
   observation:
     properties:
-      center:
-        type: keyword
-      input_bam_file:
-        properties:
-          normal_bam_uuid:
-            type: keyword
-          tumor_bam_uuid:
-            type: keyword
-      mutation_status:
-        type: keyword
-      normal_genotype:
-        properties:
-          match_norm_seq_allele1:
-            type: keyword
-          match_norm_seq_allele2:
-            type: keyword
       observation_id:
         type: keyword
-      read_depth:
-        properties:
-          n_depth:
-            type: long
-          t_alt_count:
-            type: long
-          t_depth:
-            type: long
-          t_ref_count:
-            type: long
       sample:
         properties:
-          matched_norm_sample_barcode:
-            type: keyword
-          matched_norm_sample_uuid:
-            type: keyword
           tumor_sample_barcode:
             type: keyword
           tumor_sample_uuid:
             type: keyword
-      src_vcf_id:
+      src_file_id:
         type: keyword
-      tumor_genotype:
-        properties:
-          tumor_seq_allele1:
-            type: keyword
-          tumor_seq_allele2:
-            type: keyword
-      validation:
-        properties:
-          tumor_validation_allele1:
-            type: keyword
-          tumor_validation_allele2:
-            type: keyword
-          validation_method:
-            type: keyword
       variant_calling:
         properties:
           variant_caller:
             type: keyword
-          variant_process:
-            type: keyword
+      variant_status:
+        type: keyword
     type: nested
   primary_site:
     type: keyword
