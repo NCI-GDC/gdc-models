@@ -276,6 +276,57 @@ properties:
     properties:
       biotype:
         type: keyword
+      cnv:
+        properties:
+          chromosome:
+            type: keyword
+          cnv_change:
+            type: keyword
+          cnv_id:
+            type: keyword
+          consequence:
+            properties:
+              consequence_id:
+                type: keyword
+              gene:
+                properties:
+                  biotype:
+                    type: keyword
+                  gene_id:
+                    type: keyword
+                  is_cancer_gene_census:
+                    type: boolean
+                  symbol:
+                    type: keyword
+            type: nested
+          end_position:
+            type: long
+          gene_level_cn:
+            type: boolean
+          ncbi_build:
+            type: keyword
+          observation:
+            properties:
+              observation_id:
+                type: keyword
+              sample:
+                properties:
+                  tumor_sample_barcode:
+                    type: keyword
+                  tumor_sample_uuid:
+                    type: keyword
+              src_file_id:
+                type: keyword
+              variant_calling:
+                properties:
+                  variant_caller:
+                    type: keyword
+              variant_status:
+                type: keyword
+            type: nested
+          start_position:
+            type: long
+        type: nested
       gene_id:
         type: keyword
       is_cancer_gene_census:
@@ -371,6 +422,8 @@ properties:
             type: keyword
           observation:
             properties:
+              acl:
+                type: keyword
               center:
                 type: keyword
               input_bam_file:
