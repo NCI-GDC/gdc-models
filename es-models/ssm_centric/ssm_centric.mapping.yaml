@@ -145,13 +145,8 @@ properties:
     type: keyword
   ncbi_build:
     type: keyword
-  occurrence:
-    properties:
-      case_id:
-        type: keyword
-      occurrence_id:
-        type: keyword
-    type: nested
+  case_id:
+    type: keyword
   reference_allele:
     type: keyword
   ssm_autocomplete:
