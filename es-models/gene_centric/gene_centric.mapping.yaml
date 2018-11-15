@@ -500,6 +500,8 @@ properties:
           tumor_allele:
             type: keyword
         type: nested
+      ssm_acl:
+        type: keyword
       state:
         type: keyword
       submitter_id:
