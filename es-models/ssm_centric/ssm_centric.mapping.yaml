@@ -482,6 +482,8 @@ properties:
                 type: boolean
               state:
                 type: keyword
+          ssm_acl:
+            type: keyword
           state:
             type: keyword
           submitter_id:
