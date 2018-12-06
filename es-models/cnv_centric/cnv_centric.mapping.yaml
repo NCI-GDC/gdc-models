@@ -27,16 +27,8 @@ properties:
     properties:
       consequence_id:
         type: keyword
-      gene:
-        properties:
-          biotype:
-            type: keyword
-          gene_id:
-            type: keyword
-          is_cancer_gene_census:
-            type: boolean
-          symbol:
-            type: keyword
+      gene_id:
+        type: keyword
     type: nested
   end_position:
     type: long
@@ -44,11 +36,11 @@ properties:
     type: boolean
   ncbi_build:
     type: keyword
-  occurrence:
+  observation:
     properties:
       case_id:
         type: keyword
-      occurrence_id:
+      observation_id:
         type: keyword
     type: nested
   start_position:
