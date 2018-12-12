@@ -655,6 +655,8 @@ properties:
             type: keyword
           updated_datetime:
             type: keyword
+      baseid:
+        type: keyword
       center:
         properties:
           center_id:

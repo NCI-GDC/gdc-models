@@ -296,6 +296,8 @@ properties:
       entity_type:
         type: keyword
     type: nested
+  baseid:
+    type: keyword
   cases:
     properties:
       aliquot_ids:
