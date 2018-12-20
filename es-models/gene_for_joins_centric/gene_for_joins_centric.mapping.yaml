@@ -1,0 +1,37 @@
+_all:
+  enabled: false
+_size:
+  enabled: true
+properties:
+    biotype:
+        type: keyword
+    canonical_transcript_id:
+        type: keyword
+    cytoband:
+        type: keyword
+    external_db_ids:
+        properties:
+            entrez_gene:
+                type: keyword
+            hgnc:
+                type: keyword
+            omim_gene:
+                type: keyword
+            uniprotkb_swissprot:
+                type: keyword
+    gene_chromosome:
+        type: keyword
+    gene_end:
+        type: long
+    gene_id:
+        type: keyword
+    gene_start:
+        type: long
+    gene_strand:
+        type: long
+    is_cancer_gene_census:
+        type: boolean
+    symbol:
+        type: keyword
+    synonyms:
+        type: keyword
