@@ -84,8 +84,10 @@ properties:
                 type: keyword
           consequence_type:
             type: keyword
-          gene_id:
-            type: keyword
+          gene:
+            properties:
+              gene_id:
+                type: keyword
           is_canonical:
             type: boolean
           ref_seq_accession:
