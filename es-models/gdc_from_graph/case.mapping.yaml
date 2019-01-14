@@ -418,49 +418,6 @@ properties:
             type: keyword
           created_datetime:
             type: keyword
-          input_files:
-            properties:
-              access:
-                type: keyword
-              created_datetime:
-                type: keyword
-              data_category:
-                type: keyword
-              data_format:
-                type: keyword
-              data_type:
-                type: keyword
-              error_type:
-                type: keyword
-              experimental_strategy:
-                type: keyword
-              file_id:
-                type: keyword
-              file_name:
-                type: keyword
-              file_size:
-                type: long
-              imaging_date:
-                type: keyword
-              magnification:
-                type: long
-              md5sum:
-                type: keyword
-              platform:
-                type: keyword
-              read_pair_number:
-                type: keyword
-              revision:
-                type: long
-              state:
-                type: keyword
-              state_comment:
-                type: keyword
-              submitter_id:
-                type: keyword
-              updated_datetime:
-                type: keyword
-            type: nested
           metadata:
             properties:
               read_groups:
