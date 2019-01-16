@@ -655,6 +655,8 @@ properties:
             type: keyword
           updated_datetime:
             type: keyword
+      baseid:
+        type: keyword
       center:
         properties:
           center_id:
@@ -843,6 +845,8 @@ properties:
         type: keyword
       read_pair_number:
         type: keyword
+      release_number:
+        type: keyword
       revision:
         type: long
       state:
@@ -856,6 +860,8 @@ properties:
       type:
         type: keyword
       updated_datetime:
+        type: keyword
+      version:
         type: keyword
     type: nested
   index_date:
