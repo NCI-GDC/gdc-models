@@ -46,8 +46,11 @@ properties:
     type: keyword
   occurrence:
     properties:
-      case_id:
-        type: keyword
+      case:
+        properties:
+          case_id:
+            type: keyword
+        type: nested
       occurrence_id:
         type: keyword
     type: nested
