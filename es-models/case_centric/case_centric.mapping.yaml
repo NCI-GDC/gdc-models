@@ -2,6 +2,9 @@ _all:
   enabled: false
 _size:
   enabled: true
+_source:
+  excludes:
+  - gene.*
 properties:
   available_variation_data:
     type: keyword
@@ -268,6 +271,231 @@ properties:
         type: keyword
       updated_datetime:
         type: date
+    type: nested
+  gene:
+    properties:
+      biotype:
+        type: keyword
+      cnv:
+        properties:
+          chromosome:
+            type: keyword
+          cnv_change:
+            type: keyword
+          cnv_id:
+            type: keyword
+          consequence:
+            properties:
+              consequence_id:
+                type: keyword
+              gene:
+                properties:
+                  biotype:
+                    type: keyword
+                  gene_id:
+                    type: keyword
+                  is_cancer_gene_census:
+                    type: boolean
+                  symbol:
+                    type: keyword
+            type: nested
+          end_position:
+            type: long
+          gene_level_cn:
+            type: boolean
+          ncbi_build:
+            type: keyword
+          observation:
+            properties:
+              observation_id:
+                type: keyword
+              sample:
+                properties:
+                  tumor_sample_barcode:
+                    type: keyword
+                  tumor_sample_uuid:
+                    type: keyword
+              src_file_id:
+                type: keyword
+              variant_calling:
+                properties:
+                  variant_caller:
+                    type: keyword
+              variant_status:
+                type: keyword
+            type: nested
+          start_position:
+            type: long
+        type: nested
+      gene_id:
+        type: keyword
+      is_cancer_gene_census:
+        type: boolean
+      ssm:
+        properties:
+          chromosome:
+            type: keyword
+          consequence:
+            properties:
+              consequence_id:
+                type: keyword
+              transcript:
+                properties:
+                  aa_change:
+                    type: keyword
+                  annotation:
+                    properties:
+                      amino_acids:
+                        type: keyword
+                      ccds:
+                        type: keyword
+                      cdna_position:
+                        type: keyword
+                      cds_end:
+                        type: long
+                      cds_length:
+                        type: long
+                      cds_position:
+                        type: keyword
+                      cds_start:
+                        type: long
+                      clin_sig:
+                        type: keyword
+                      codons:
+                        type: keyword
+                      dbsnp_rs:
+                        type: keyword
+                      dbsnp_val_status:
+                        type: keyword
+                      domains:
+                        type: keyword
+                      ensp:
+                        type: keyword
+                      existing_variation:
+                        type: keyword
+                      hgvsc:
+                        type: keyword
+                      hgvsp:
+                        type: keyword
+                      hgvsp_short:
+                        type: keyword
+                      polyphen_impact:
+                        type: keyword
+                      polyphen_score:
+                        type: float
+                      protein_position:
+                        type: keyword
+                      pubmed:
+                        type: keyword
+                      sift_impact:
+                        type: keyword
+                      sift_score:
+                        type: float
+                      swissprot:
+                        type: keyword
+                      transcript_id:
+                        type: keyword
+                      trembl:
+                        type: keyword
+                      uniparc:
+                        type: keyword
+                      vep_impact:
+                        type: keyword
+                  consequence_type:
+                    type: keyword
+                  ref_seq_accession:
+                    type: keyword
+                  transcript_id:
+                    type: keyword
+            type: nested
+          cosmic_id:
+            type: keyword
+          end_position:
+            type: long
+          genomic_dna_change:
+            type: keyword
+          mutation_subtype:
+            type: keyword
+          mutation_type:
+            type: keyword
+          ncbi_build:
+            type: keyword
+          observation:
+            properties:
+              acl:
+                type: keyword
+              center:
+                type: keyword
+              input_bam_file:
+                properties:
+                  normal_bam_uuid:
+                    type: keyword
+                  tumor_bam_uuid:
+                    type: keyword
+              mutation_status:
+                type: keyword
+              normal_genotype:
+                properties:
+                  match_norm_seq_allele1:
+                    type: keyword
+                  match_norm_seq_allele2:
+                    type: keyword
+              observation_id:
+                type: keyword
+              read_depth:
+                properties:
+                  n_depth:
+                    type: long
+                  t_alt_count:
+                    type: long
+                  t_depth:
+                    type: long
+                  t_ref_count:
+                    type: long
+              sample:
+                properties:
+                  matched_norm_sample_barcode:
+                    type: keyword
+                  matched_norm_sample_uuid:
+                    type: keyword
+                  tumor_sample_barcode:
+                    type: keyword
+                  tumor_sample_uuid:
+                    type: keyword
+              src_vcf_id:
+                type: keyword
+              tumor_genotype:
+                properties:
+                  tumor_seq_allele1:
+                    type: keyword
+                  tumor_seq_allele2:
+                    type: keyword
+              validation:
+                properties:
+                  tumor_validation_allele1:
+                    type: keyword
+                  tumor_validation_allele2:
+                    type: keyword
+                  validation_method:
+                    type: keyword
+              variant_calling:
+                properties:
+                  variant_caller:
+                    type: keyword
+                  variant_process:
+                    type: keyword
+            type: nested
+          reference_allele:
+            type: keyword
+          ssm_id:
+            type: keyword
+          start_position:
+            type: long
+          tumor_allele:
+            type: keyword
+        type: nested
+      symbol:
+        type: keyword
     type: nested
   primary_site:
     copy_to:
