@@ -4,8 +4,10 @@ _source:
   excludes:
   - occurrence.*
 properties:
-  case_id:
-    type: keyword
+  case:
+    properties:
+      case_id:
+        type: keyword
   cnv:
     properties:
       chromosome:
