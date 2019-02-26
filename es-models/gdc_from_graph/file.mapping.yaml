@@ -15,6 +15,12 @@ properties:
         properties:
           access:
             type: keyword
+          average_base_quality:
+            type: long
+          average_insert_size:
+            type: long
+          average_read_length:
+            type: long
           created_datetime:
             type: keyword
           data_category:
@@ -39,8 +45,24 @@ properties:
             type: long
           md5sum:
             type: keyword
+          mean_coverage:
+            type: long
+          pairs_on_diff_chr:
+            type: long
           platform:
             type: keyword
+          proportion_base_mismatch:
+            type: long
+          proportion_coverage_10X:
+            type: long
+          proportion_coverage_30X:
+            type: long
+          proportion_reads_duplicated:
+            type: long
+          proportion_reads_mapped:
+            type: long
+          proportion_targets_no_coverage:
+            type: long
           read_pair_number:
             type: keyword
           revision:
@@ -51,6 +73,8 @@ properties:
             type: keyword
           submitter_id:
             type: keyword
+          total_reads:
+            type: long
           updated_datetime:
             type: keyword
         type: nested
@@ -70,6 +94,8 @@ properties:
                 type: keyword
               created_datetime:
                 type: keyword
+              days_to_sequencing:
+                type: long
               experiment_name:
                 type: keyword
               flow_cell_barcode:
@@ -296,6 +322,12 @@ properties:
       entity_type:
         type: keyword
     type: nested
+  average_base_quality:
+    type: long
+  average_insert_size:
+    type: long
+  average_read_length:
+    type: long
   baseid:
     type: keyword
   cases:
@@ -513,8 +545,6 @@ properties:
             type: keyword
           laterality:
             type: keyword
-          ldh_level_at_diagnosis:
-            type: long
           ldh_normal_range_upper:
             type: long
           lymph_nodes_positive:
@@ -581,6 +611,8 @@ properties:
                 type: long
               days_to_treatment_start:
                 type: long
+              initial_disease_status:
+                type: keyword
               regimen_or_line_of_therapy:
                 type: keyword
               state:
@@ -1240,6 +1272,12 @@ properties:
         properties:
           access:
             type: keyword
+          average_base_quality:
+            type: long
+          average_insert_size:
+            type: long
+          average_read_length:
+            type: long
           created_datetime:
             type: keyword
           data_category:
@@ -1264,8 +1302,24 @@ properties:
             type: long
           md5sum:
             type: keyword
+          mean_coverage:
+            type: long
+          pairs_on_diff_chr:
+            type: long
           platform:
             type: keyword
+          proportion_base_mismatch:
+            type: long
+          proportion_coverage_10X:
+            type: long
+          proportion_coverage_30X:
+            type: long
+          proportion_reads_duplicated:
+            type: long
+          proportion_reads_mapped:
+            type: long
+          proportion_targets_no_coverage:
+            type: long
           read_pair_number:
             type: keyword
           revision:
@@ -1276,6 +1330,8 @@ properties:
             type: keyword
           submitter_id:
             type: keyword
+          total_reads:
+            type: long
           updated_datetime:
             type: keyword
         type: nested
@@ -1332,6 +1388,12 @@ properties:
     properties:
       access:
         type: keyword
+      average_base_quality:
+        type: long
+      average_insert_size:
+        type: long
+      average_read_length:
+        type: long
       created_datetime:
         type: keyword
       data_category:
@@ -1356,8 +1418,24 @@ properties:
         type: long
       md5sum:
         type: keyword
+      mean_coverage:
+        type: long
+      pairs_on_diff_chr:
+        type: long
       platform:
         type: keyword
+      proportion_base_mismatch:
+        type: long
+      proportion_coverage_10X:
+        type: long
+      proportion_coverage_30X:
+        type: long
+      proportion_reads_duplicated:
+        type: long
+      proportion_reads_mapped:
+        type: long
+      proportion_targets_no_coverage:
+        type: long
       read_pair_number:
         type: keyword
       revision:
@@ -1368,6 +1446,8 @@ properties:
         type: keyword
       submitter_id:
         type: keyword
+      total_reads:
+        type: long
       updated_datetime:
         type: keyword
     type: nested
@@ -1377,6 +1457,8 @@ properties:
     copy_to:
     - file_autocomplete
     type: keyword
+  mean_coverage:
+    type: long
   metadata_files:
     properties:
       access:
@@ -1412,8 +1494,22 @@ properties:
     type: nested
   origin:
     type: keyword
+  pairs_on_diff_chr:
+    type: long
   platform:
     type: keyword
+  proportion_base_mismatch:
+    type: long
+  proportion_coverage_10X:
+    type: long
+  proportion_coverage_30X:
+    type: long
+  proportion_reads_duplicated:
+    type: long
+  proportion_reads_mapped:
+    type: long
+  proportion_targets_no_coverage:
+    type: long
   read_pair_number:
     type: keyword
   release_number:
@@ -1430,6 +1526,8 @@ properties:
     type: keyword
   tags:
     type: keyword
+  total_reads:
+    type: long
   type:
     type: keyword
   updated_datetime:
