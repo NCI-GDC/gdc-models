@@ -328,6 +328,8 @@ properties:
     type: long
   average_read_length:
     type: long
+  baseid:
+    type: keyword
   cases:
     properties:
       aliquot_ids:
@@ -1510,6 +1512,8 @@ properties:
     type: long
   read_pair_number:
     type: keyword
+  release_number:
+    type: keyword
   revision:
     type: long
   state:
@@ -1527,4 +1531,6 @@ properties:
   type:
     type: keyword
   updated_datetime:
+    type: keyword
+  version:
     type: keyword
