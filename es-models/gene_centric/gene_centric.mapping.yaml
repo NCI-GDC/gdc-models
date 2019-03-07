@@ -337,6 +337,10 @@ properties:
             type: boolean
           state:
             type: keyword
+      samples:
+        properties:
+          sample_type:
+            type: keyword
       ssm:
         properties:
           chromosome:
