@@ -32,6 +32,8 @@ properties:
     type: long
   demographic:
     properties:
+      cause_of_death:
+        type: keyword
       created_datetime:
         type: date
       days_to_birth:
@@ -77,6 +79,8 @@ properties:
       ajcc_pathologic_stage:
         type: keyword
       ajcc_pathologic_t:
+        type: keyword
+      ajcc_staging_system_edition:
         type: keyword
       ann_arbor_b_symptoms:
         type: keyword
@@ -193,6 +197,8 @@ properties:
         type: nested
       tumor_grade:
         type: keyword
+      tumor_largest_dimension_diameter:
+        type: long
       tumor_stage:
         type: keyword
       updated_datetime:
