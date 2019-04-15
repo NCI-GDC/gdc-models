@@ -329,6 +329,15 @@ properties:
         properties:
           chromosome:
             type: keyword
+          clinical_annotations:
+            properties:
+              civic:
+                properties:
+                  gene_id:
+                    type: keyword
+                  variant_id:
+                    type: keyword
+            type: nested
           consequence:
             properties:
               consequence_id:
