@@ -477,10 +477,6 @@ properties:
             type: keyword
           days_to_best_overall_response:
             type: long
-          days_to_birth:
-            type: long
-          days_to_death:
-            type: long
           days_to_diagnosis:
             type: long
           days_to_hiv_diagnosis:
@@ -649,8 +645,6 @@ properties:
           vascular_invasion_present:
             type: keyword
           vascular_invasion_type:
-            type: keyword
-          vital_status:
             type: keyword
           wilms_tumor_histologic_subtype:
             type: keyword

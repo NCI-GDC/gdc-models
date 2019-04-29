@@ -102,10 +102,6 @@ properties:
         type: keyword
       created_datetime:
         type: date
-      days_to_birth:
-        type: long
-      days_to_death:
-        type: long
       days_to_hiv_diagnosis:
         type: long
       days_to_last_follow_up:
@@ -204,8 +200,6 @@ properties:
       updated_datetime:
         type: date
       vascular_invasion_present:
-        type: keyword
-      vital_status:
         type: keyword
       year_of_diagnosis:
         type: long
