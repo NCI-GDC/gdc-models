@@ -134,11 +134,46 @@ properties:
         type: keyword
       ann_arbor_pathologic_stage:
         type: keyword
+      annotations:
+        properties:
+          annotation_id:
+            type: keyword
+          case_id:
+            type: keyword
+          case_submitter_id:
+            type: keyword
+          category:
+            type: keyword
+          classification:
+            type: keyword
+          created_datetime:
+            type: keyword
+          creator:
+            type: keyword
+          entity_id:
+            type: keyword
+          entity_submitter_id:
+            type: keyword
+          entity_type:
+            type: keyword
+          legacy_created_datetime:
+            type: keyword
+          legacy_updated_datetime:
+            type: keyword
+          notes:
+            type: keyword
+          state:
+            type: keyword
+          status:
+            type: keyword
+          submitter_id:
+            type: keyword
+          updated_datetime:
+            type: keyword
+        type: nested
       best_overall_response:
         type: keyword
       burkitt_lymphoma_clinical_variant:
-        type: keyword
-      cause_of_death:
         type: keyword
       child_pugh_classification:
         type: keyword
@@ -154,21 +189,15 @@ properties:
         type: keyword
       cog_rhabdomyosarcoma_risk_group:
         type: keyword
-      colon_polyps_history:
-        type: keyword
       created_datetime:
         type: keyword
       days_to_best_overall_response:
         type: long
       days_to_diagnosis:
         type: long
-      days_to_hiv_diagnosis:
-        type: long
       days_to_last_follow_up:
         type: long
       days_to_last_known_disease_status:
-        type: long
-      days_to_new_event:
         type: long
       days_to_recurrence:
         type: long
@@ -192,17 +221,15 @@ properties:
         type: keyword
       gastric_esophageal_junction_involvement:
         type: keyword
+      gleason_grade_group:
+        type: keyword
       goblet_cells_columnar_mucosa_present:
         type: keyword
       gross_tumor_weight:
         type: long
-      hiv_positive:
-        type: keyword
-      hpv_positive_type:
-        type: keyword
-      hpv_status:
-        type: keyword
       icd_10_code:
+        type: keyword
+      igcccg_stage:
         type: keyword
       inpc_grade:
         type: keyword
@@ -224,11 +251,13 @@ properties:
         type: keyword
       laterality:
         type: keyword
-      ldh_normal_range_upper:
-        type: long
       lymph_nodes_positive:
         type: long
+      lymph_nodes_tested:
+        type: long
       lymphatic_invasion_present:
+        type: keyword
+      masaoka_stage:
         type: keyword
       medulloblastoma_molecular_classification:
         type: keyword
@@ -244,12 +273,6 @@ properties:
         type: keyword
       morphology:
         type: keyword
-      new_event_anatomic_site:
-        type: keyword
-      new_event_type:
-        type: keyword
-      overall_survival:
-        type: long
       perineural_invasion_present:
         type: keyword
       peripancreatic_lymph_nodes_positive:
@@ -258,17 +281,17 @@ properties:
         type: long
       primary_diagnosis:
         type: keyword
+      primary_gleason_grade:
+        type: keyword
       prior_malignancy:
         type: keyword
       prior_treatment:
         type: keyword
-      progression_free_survival:
-        type: long
-      progression_free_survival_event:
-        type: keyword
       progression_or_recurrence:
         type: keyword
       residual_disease:
+        type: keyword
+      secondary_gleason_grade:
         type: keyword
       site_of_resection_or_biopsy:
         type: keyword
@@ -302,6 +325,8 @@ properties:
             type: keyword
           treatment_anatomic_site:
             type: keyword
+          treatment_effect:
+            type: keyword
           treatment_id:
             type: keyword
           treatment_intent_type:
@@ -317,10 +342,14 @@ properties:
         type: nested
       tumor_confined_to_organ_of_origin:
         type: keyword
+      tumor_focality:
+        type: keyword
       tumor_grade:
         type: keyword
       tumor_largest_dimension_diameter:
         type: long
+      tumor_regression_grade:
+        type: keyword
       tumor_stage:
         type: keyword
       updated_datetime:
@@ -329,11 +358,15 @@ properties:
         type: keyword
       vascular_invasion_type:
         type: keyword
+      weiss_assessment_score:
+        type: keyword
       wilms_tumor_histologic_subtype:
         type: keyword
       year_of_diagnosis:
         type: long
     type: nested
+  diagnosis_ids:
+    type: keyword
   disease_type:
     type: keyword
   exposures:
@@ -346,11 +379,17 @@ properties:
         type: keyword
       alcohol_intensity:
         type: keyword
+      asbestos_exposure:
+        type: keyword
       bmi:
         type: long
       cigarettes_per_day:
         type: float
+      coal_dust_exposure:
+        type: keyword
       created_datetime:
+        type: keyword
+      environmental_tobacco_smoke_exposure:
         type: keyword
       exposure_id:
         type: keyword
@@ -358,15 +397,27 @@ properties:
         type: long
       pack_years_smoked:
         type: long
+      radon_exposure:
+        type: keyword
+      respirable_crystalline_silica_exposure:
+        type: keyword
+      smoking_frequency:
+        type: keyword
       state:
         type: keyword
       submitter_id:
+        type: keyword
+      time_between_waking_and_first_smoke:
         type: keyword
       tobacco_smoking_onset_year:
         type: long
       tobacco_smoking_quit_year:
         type: long
       tobacco_smoking_status:
+        type: keyword
+      type_of_smoke_exposure:
+        type: keyword
+      type_of_tobacco_used:
         type: keyword
       updated_datetime:
         type: keyword
@@ -422,6 +473,16 @@ properties:
                 type: long
               average_read_length:
                 type: long
+              channel:
+                type: keyword
+              chip_id:
+                type: keyword
+              chip_position:
+                type: keyword
+              contamination:
+                type: long
+              contamination_error:
+                type: long
               created_datetime:
                 type: keyword
               data_category:
@@ -450,6 +511,10 @@ properties:
                 type: long
               pairs_on_diff_chr:
                 type: long
+              plate_name:
+                type: keyword
+              plate_well:
+                type: keyword
               platform:
                 type: keyword
               proportion_base_mismatch:
@@ -681,8 +746,6 @@ properties:
         type: long
       average_read_length:
         type: long
-      baseid:
-        type: keyword
       center:
         properties:
           center_id:
@@ -697,6 +760,16 @@ properties:
             type: keyword
           short_name:
             type: keyword
+      channel:
+        type: keyword
+      chip_id:
+        type: keyword
+      chip_position:
+        type: keyword
+      contamination:
+        type: long
+      contamination_error:
+        type: long
       created_datetime:
         type: keyword
       data_category:
@@ -722,6 +795,16 @@ properties:
               average_insert_size:
                 type: long
               average_read_length:
+                type: long
+              channel:
+                type: keyword
+              chip_id:
+                type: keyword
+              chip_position:
+                type: keyword
+              contamination:
+                type: long
+              contamination_error:
                 type: long
               created_datetime:
                 type: keyword
@@ -751,6 +834,10 @@ properties:
                 type: long
               pairs_on_diff_chr:
                 type: long
+              plate_name:
+                type: keyword
+              plate_well:
+                type: keyword
               platform:
                 type: keyword
               proportion_base_mismatch:
@@ -819,6 +906,16 @@ properties:
             type: long
           average_read_length:
             type: long
+          channel:
+            type: keyword
+          chip_id:
+            type: keyword
+          chip_position:
+            type: keyword
+          contamination:
+            type: long
+          contamination_error:
+            type: long
           created_datetime:
             type: keyword
           data_category:
@@ -847,6 +944,10 @@ properties:
             type: long
           pairs_on_diff_chr:
             type: long
+          plate_name:
+            type: keyword
+          plate_well:
+            type: keyword
           platform:
             type: keyword
           proportion_base_mismatch:
@@ -919,6 +1020,10 @@ properties:
         type: keyword
       pairs_on_diff_chr:
         type: long
+      plate_name:
+        type: keyword
+      plate_well:
+        type: keyword
       platform:
         type: keyword
       proportion_base_mismatch:
@@ -934,8 +1039,6 @@ properties:
       proportion_targets_no_coverage:
         type: long
       read_pair_number:
-        type: keyword
-      release_number:
         type: keyword
       revision:
         type: long
@@ -953,8 +1056,166 @@ properties:
         type: keyword
       updated_datetime:
         type: keyword
-      version:
+    type: nested
+  follow_ups:
+    properties:
+      adverse_event:
         type: keyword
+      barretts_esophagus_goblet_cells_present:
+        type: keyword
+      bmi:
+        type: long
+      cause_of_response:
+        type: keyword
+      comorbidity:
+        type: keyword
+      comorbidity_method_of_diagnosis:
+        type: keyword
+      created_datetime:
+        type: keyword
+      days_to_adverse_event:
+        type: long
+      days_to_comorbidity:
+        type: long
+      days_to_follow_up:
+        type: long
+      days_to_progression:
+        type: long
+      days_to_progression_free:
+        type: long
+      days_to_recurrence:
+        type: long
+      diabetes_treatment_type:
+        type: keyword
+      disease_response:
+        type: keyword
+      dlco_ref_predictive_percent:
+        type: long
+      ecog_performance_status:
+        type: keyword
+      fev1_fvc_post_bronch_percent:
+        type: long
+      fev1_fvc_pre_bronch_percent:
+        type: long
+      fev1_ref_post_bronch_percent:
+        type: long
+      fev1_ref_pre_bronch_percent:
+        type: long
+      follow_up_id:
+        type: keyword
+      height:
+        type: long
+      hepatitis_sustained_virological_response:
+        type: keyword
+      hpv_positive_type:
+        type: keyword
+      karnofsky_performance_status:
+        type: keyword
+      menopause_status:
+        type: keyword
+      molecular_tests:
+        properties:
+          aa_change:
+            type: keyword
+          antigen:
+            type: keyword
+          biospecimen_type:
+            type: keyword
+          blood_test_normal_range_lower:
+            type: long
+          blood_test_normal_range_upper:
+            type: long
+          cell_count:
+            type: long
+          chromosome:
+            type: keyword
+          copy_number:
+            type: long
+          created_datetime:
+            type: keyword
+          cytoband:
+            type: keyword
+          exon:
+            type: keyword
+          gene_symbol:
+            type: keyword
+          histone_family:
+            type: keyword
+          histone_variant:
+            type: keyword
+          intron:
+            type: keyword
+          laboratory_test:
+            type: keyword
+          loci_abnormal_count:
+            type: long
+          loci_count:
+            type: long
+          locus:
+            type: keyword
+          mismatch_repair_mutation:
+            type: keyword
+          molecular_analysis_method:
+            type: keyword
+          molecular_consequence:
+            type: keyword
+          molecular_test_id:
+            type: keyword
+          ploidy:
+            type: keyword
+          second_exon:
+            type: keyword
+          second_gene_symbol:
+            type: keyword
+          specialized_molecular_test:
+            type: keyword
+          state:
+            type: keyword
+          submitter_id:
+            type: keyword
+          test_analyte_type:
+            type: keyword
+          test_result:
+            type: keyword
+          test_units:
+            type: keyword
+          test_value:
+            type: long
+          transcript:
+            type: keyword
+          updated_datetime:
+            type: keyword
+          variant_origin:
+            type: keyword
+          variant_type:
+            type: keyword
+          zygosity:
+            type: keyword
+        type: nested
+      pancreatitis_onset_year:
+        type: long
+      progression_or_recurrence:
+        type: keyword
+      progression_or_recurrence_anatomic_site:
+        type: keyword
+      progression_or_recurrence_type:
+        type: keyword
+      reflux_treatment_type:
+        type: keyword
+      risk_factor:
+        type: keyword
+      risk_factor_treatment:
+        type: keyword
+      state:
+        type: keyword
+      submitter_id:
+        type: keyword
+      updated_datetime:
+        type: keyword
+      viral_hepatitis_serologies:
+        type: keyword
+      weight:
+        type: long
     type: nested
   index_date:
     type: keyword
@@ -1062,11 +1323,11 @@ properties:
       initial_weight:
         type: long
       intermediate_dimension:
-        type: keyword
+        type: long
       is_ffpe:
         type: keyword
       longest_dimension:
-        type: keyword
+        type: long
       method_of_sample_procurement:
         type: keyword
       oct_embedded:
@@ -1416,7 +1677,7 @@ properties:
       sample_type_id:
         type: keyword
       shortest_dimension:
-        type: keyword
+        type: long
       state:
         type: keyword
       submitter_id:
@@ -1424,9 +1685,9 @@ properties:
         - case_autocomplete
         type: keyword
       time_between_clamping_and_freezing:
-        type: keyword
+        type: long
       time_between_excision_and_freezing:
-        type: keyword
+        type: long
       tissue_type:
         type: keyword
       tumor_code:
@@ -1445,6 +1706,8 @@ properties:
   submitter_aliquot_ids:
     type: keyword
   submitter_analyte_ids:
+    type: keyword
+  submitter_diagnosis_ids:
     type: keyword
   submitter_id:
     copy_to:
