@@ -337,6 +337,7 @@ properties:
                     type: keyword
                   variant_id:
                     type: keyword
+                type: nested
             type: nested
           consequence:
             properties:
