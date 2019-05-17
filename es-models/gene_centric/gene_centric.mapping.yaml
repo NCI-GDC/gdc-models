@@ -2,9 +2,6 @@ _all:
   enabled: false
 _size:
   enabled: true
-_source:
-  excludes:
-  - case.*
 properties:
   biotype:
     type: keyword
@@ -359,7 +356,6 @@ properties:
                     type: keyword
                   variant_id:
                     type: keyword
-                type: nested
             type: nested
           consequence:
             properties:
