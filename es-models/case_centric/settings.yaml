@@ -20,5 +20,13 @@ analysis:
       min_gram: '1'
       side: front
       type: edge_ngram
+  normalizer:
+    clinical_normalizer:
+      type:
+        custom
+      char_filter:
+        []
+      filter:
+        ["lowercase"]
 index.mapping.nested_fields.limit: 100
 index.max_result_window: 100000000

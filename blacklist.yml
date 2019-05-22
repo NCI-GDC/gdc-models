@@ -1,0 +1,7 @@
+case_blacklist:
+  submitter_id
+  project_id
+  project_name
+  case_id
+  project_code
+  program_name
