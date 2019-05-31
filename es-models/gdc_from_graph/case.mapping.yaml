@@ -15,8 +15,6 @@ properties:
         type: keyword
       classification:
         type: keyword
-      created_datetime:
-        type: keyword
       creator:
         type: keyword
       entity_id:
@@ -25,10 +23,6 @@ properties:
         type: keyword
       entity_type:
         type: keyword
-      legacy_created_datetime:
-        type: keyword
-      legacy_updated_datetime:
-        type: keyword
       notes:
         type: keyword
       state:
@@ -36,8 +30,6 @@ properties:
       status:
         type: keyword
       submitter_id:
-        type: keyword
-      updated_datetime:
         type: keyword
     type: nested
   case_autocomplete:
@@ -58,8 +50,6 @@ properties:
     copy_to:
     - case_autocomplete
     type: keyword
-  created_datetime:
-    type: keyword
   days_to_index:
     type: long
   days_to_lost_to_followup:
@@ -69,8 +59,6 @@ properties:
       age_at_index:
         type: long
       cause_of_death:
-        type: keyword
-      created_datetime:
         type: keyword
       days_to_birth:
         type: long
@@ -89,8 +77,6 @@ properties:
       state:
         type: keyword
       submitter_id:
-        type: keyword
-      updated_datetime:
         type: keyword
       vital_status:
         type: keyword
@@ -188,8 +174,6 @@ properties:
       cog_renal_stage:
         type: keyword
       cog_rhabdomyosarcoma_risk_group:
-        type: keyword
-      created_datetime:
         type: keyword
       days_to_best_overall_response:
         type: long
@@ -307,8 +291,6 @@ properties:
         type: keyword
       treatments:
         properties:
-          created_datetime:
-            type: keyword
           days_to_treatment_end:
             type: long
           days_to_treatment_start:
@@ -337,8 +319,6 @@ properties:
             type: keyword
           treatment_type:
             type: keyword
-          updated_datetime:
-            type: keyword
         type: nested
       tumor_confined_to_organ_of_origin:
         type: keyword
@@ -351,8 +331,6 @@ properties:
       tumor_regression_grade:
         type: keyword
       tumor_stage:
-        type: keyword
-      updated_datetime:
         type: keyword
       vascular_invasion_present:
         type: keyword
@@ -387,8 +365,6 @@ properties:
         type: float
       coal_dust_exposure:
         type: keyword
-      created_datetime:
-        type: keyword
       environmental_tobacco_smoke_exposure:
         type: keyword
       exposure_id:
@@ -419,8 +395,6 @@ properties:
         type: keyword
       type_of_tobacco_used:
         type: keyword
-      updated_datetime:
-        type: keyword
       weight:
         type: long
       years_smoked:
@@ -428,8 +402,6 @@ properties:
     type: nested
   family_histories:
     properties:
-      created_datetime:
-        type: keyword
       family_history_id:
         type: keyword
       relationship_age_at_diagnosis:
@@ -446,8 +418,6 @@ properties:
         type: keyword
       submitter_id:
         type: keyword
-      updated_datetime:
-        type: keyword
     type: nested
   files:
     properties:
@@ -460,8 +430,6 @@ properties:
           analysis_id:
             type: keyword
           analysis_type:
-            type: keyword
-          created_datetime:
             type: keyword
           input_files:
             properties:
@@ -483,8 +451,6 @@ properties:
                 type: long
               contamination_error:
                 type: long
-              created_datetime:
-                type: keyword
               data_category:
                 type: keyword
               data_format:
@@ -541,8 +507,6 @@ properties:
                 type: keyword
               total_reads:
                 type: long
-              updated_datetime:
-                type: keyword
             type: nested
           metadata:
             properties:
@@ -557,8 +521,6 @@ properties:
                   base_caller_name:
                     type: keyword
                   base_caller_version:
-                    type: keyword
-                  created_datetime:
                     type: keyword
                   days_to_sequencing:
                     type: long
@@ -612,8 +574,6 @@ properties:
                         type: keyword
                       basic_statistics:
                         type: keyword
-                      created_datetime:
-                        type: keyword
                       encoding:
                         type: keyword
                       fastq_name:
@@ -648,8 +608,6 @@ properties:
                         type: keyword
                       total_sequences:
                         type: long
-                      updated_datetime:
-                        type: keyword
                       workflow_end_datetime:
                         type: keyword
                       workflow_link:
@@ -691,14 +649,10 @@ properties:
                     type: keyword
                   to_trim_adapter_sequence:
                     type: keyword
-                  updated_datetime:
-                    type: keyword
                 type: nested
           state:
             type: keyword
           submitter_id:
-            type: keyword
-          updated_datetime:
             type: keyword
           workflow_end_datetime:
             type: keyword
@@ -713,8 +667,6 @@ properties:
       archive:
         properties:
           archive_id:
-            type: keyword
-          created_datetime:
             type: keyword
           data_category:
             type: keyword
@@ -737,8 +689,6 @@ properties:
           state_comment:
             type: keyword
           submitter_id:
-            type: keyword
-          updated_datetime:
             type: keyword
       average_base_quality:
         type: long
@@ -770,8 +720,6 @@ properties:
         type: long
       contamination_error:
         type: long
-      created_datetime:
-        type: keyword
       data_category:
         type: keyword
       data_format:
@@ -783,8 +731,6 @@ properties:
           analysis_id:
             type: keyword
           analysis_type:
-            type: keyword
-          created_datetime:
             type: keyword
           output_files:
             properties:
@@ -806,8 +752,6 @@ properties:
                 type: long
               contamination_error:
                 type: long
-              created_datetime:
-                type: keyword
               data_category:
                 type: keyword
               data_format:
@@ -864,14 +808,10 @@ properties:
                 type: keyword
               total_reads:
                 type: long
-              updated_datetime:
-                type: keyword
             type: nested
           state:
             type: keyword
           submitter_id:
-            type: keyword
-          updated_datetime:
             type: keyword
           workflow_end_datetime:
             type: keyword
@@ -916,8 +856,6 @@ properties:
             type: long
           contamination_error:
             type: long
-          created_datetime:
-            type: keyword
           data_category:
             type: keyword
           data_format:
@@ -974,8 +912,6 @@ properties:
             type: keyword
           total_reads:
             type: long
-          updated_datetime:
-            type: keyword
         type: nested
       magnification:
         type: long
@@ -986,8 +922,6 @@ properties:
       metadata_files:
         properties:
           access:
-            type: keyword
-          created_datetime:
             type: keyword
           data_category:
             type: keyword
@@ -1012,8 +946,6 @@ properties:
           submitter_id:
             type: keyword
           type:
-            type: keyword
-          updated_datetime:
             type: keyword
         type: nested
       origin:
@@ -1053,8 +985,6 @@ properties:
       total_reads:
         type: long
       type:
-        type: keyword
-      updated_datetime:
         type: keyword
     type: nested
   follow_ups:
@@ -1247,12 +1177,6 @@ properties:
             type: keyword
       project_id:
         type: keyword
-      releasable:
-        type: keyword
-      released:
-        type: keyword
-      state:
-        type: keyword
   sample_ids:
     type: keyword
   samples:
@@ -1269,8 +1193,6 @@ properties:
             type: keyword
           classification:
             type: keyword
-          created_datetime:
-            type: keyword
           creator:
             type: keyword
           entity_id:
@@ -1278,10 +1200,6 @@ properties:
           entity_submitter_id:
             type: keyword
           entity_type:
-            type: keyword
-          legacy_created_datetime:
-            type: keyword
-          legacy_updated_datetime:
             type: keyword
           notes:
             type: keyword
@@ -1291,8 +1209,6 @@ properties:
             type: keyword
           submitter_id:
             type: keyword
-          updated_datetime:
-            type: keyword
         type: nested
       biospecimen_anatomic_site:
         type: keyword
@@ -1301,8 +1217,6 @@ properties:
       catalog_reference:
         type: keyword
       composition:
-        type: keyword
-      created_datetime:
         type: keyword
       current_weight:
         type: long
@@ -1370,8 +1284,6 @@ properties:
                         type: keyword
                       classification:
                         type: keyword
-                      created_datetime:
-                        type: keyword
                       creator:
                         type: keyword
                       entity_id:
@@ -1380,10 +1292,6 @@ properties:
                         type: keyword
                       entity_type:
                         type: keyword
-                      legacy_created_datetime:
-                        type: keyword
-                      legacy_updated_datetime:
-                        type: keyword
                       notes:
                         type: keyword
                       state:
@@ -1391,8 +1299,6 @@ properties:
                       status:
                         type: keyword
                       submitter_id:
-                        type: keyword
-                      updated_datetime:
                         type: keyword
                     type: nested
                   center:
@@ -1411,8 +1317,6 @@ properties:
                         type: keyword
                   concentration:
                     type: long
-                  created_datetime:
-                    type: keyword
                   no_matched_normal_low_pass_wgs:
                     type: keyword
                   no_matched_normal_targeted_sequencing:
@@ -1436,8 +1340,6 @@ properties:
                   submitter_id:
                     copy_to:
                     - case_autocomplete
-                    type: keyword
-                  updated_datetime:
                     type: keyword
                 type: nested
               amount:
@@ -1466,8 +1368,6 @@ properties:
                     type: keyword
                   classification:
                     type: keyword
-                  created_datetime:
-                    type: keyword
                   creator:
                     type: keyword
                   entity_id:
@@ -1475,10 +1375,6 @@ properties:
                   entity_submitter_id:
                     type: keyword
                   entity_type:
-                    type: keyword
-                  legacy_created_datetime:
-                    type: keyword
-                  legacy_updated_datetime:
                     type: keyword
                   notes:
                     type: keyword
@@ -1488,13 +1384,9 @@ properties:
                     type: keyword
                   submitter_id:
                     type: keyword
-                  updated_datetime:
-                    type: keyword
                 type: nested
               concentration:
                 type: long
-              created_datetime:
-                type: keyword
               normal_tumor_genotype_snp_match:
                 type: keyword
               ribosomal_rna_28s_16s_ratio:
@@ -1506,8 +1398,6 @@ properties:
               submitter_id:
                 copy_to:
                 - case_autocomplete
-                type: keyword
-              updated_datetime:
                 type: keyword
               well_number:
                 type: keyword
@@ -1524,8 +1414,6 @@ properties:
                 type: keyword
               classification:
                 type: keyword
-              created_datetime:
-                type: keyword
               creator:
                 type: keyword
               entity_id:
@@ -1534,10 +1422,6 @@ properties:
                 type: keyword
               entity_type:
                 type: keyword
-              legacy_created_datetime:
-                type: keyword
-              legacy_updated_datetime:
-                type: keyword
               notes:
                 type: keyword
               state:
@@ -1545,8 +1429,6 @@ properties:
               status:
                 type: keyword
               submitter_id:
-                type: keyword
-              updated_datetime:
                 type: keyword
             type: nested
           center:
@@ -1563,8 +1445,6 @@ properties:
                 type: keyword
               short_name:
                 type: keyword
-          created_datetime:
-            type: keyword
           creation_datetime:
             type: long
           is_ffpe:
@@ -1589,8 +1469,6 @@ properties:
                     type: keyword
                   classification:
                     type: keyword
-                  created_datetime:
-                    type: keyword
                   creator:
                     type: keyword
                   entity_id:
@@ -1598,10 +1476,6 @@ properties:
                   entity_submitter_id:
                     type: keyword
                   entity_type:
-                    type: keyword
-                  legacy_created_datetime:
-                    type: keyword
-                  legacy_updated_datetime:
                     type: keyword
                   notes:
                     type: keyword
@@ -1611,11 +1485,7 @@ properties:
                     type: keyword
                   submitter_id:
                     type: keyword
-                  updated_datetime:
-                    type: keyword
                 type: nested
-              created_datetime:
-                type: keyword
               number_proliferating_cells:
                 type: long
               percent_eosinophil_infiltration:
@@ -1652,16 +1522,12 @@ properties:
                 copy_to:
                 - case_autocomplete
                 type: keyword
-              updated_datetime:
-                type: keyword
             type: nested
           state:
             type: keyword
           submitter_id:
             copy_to:
             - case_autocomplete
-            type: keyword
-          updated_datetime:
             type: keyword
           weight:
             type: long
@@ -1695,8 +1561,6 @@ properties:
       tumor_code_id:
         type: keyword
       tumor_descriptor:
-        type: keyword
-      updated_datetime:
         type: keyword
     type: nested
   slide_ids:
@@ -1751,5 +1615,3 @@ properties:
         type: keyword
       tissue_source_site_id:
         type: keyword
-  updated_datetime:
-    type: keyword

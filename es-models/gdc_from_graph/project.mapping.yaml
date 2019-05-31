@@ -41,12 +41,6 @@ properties:
     copy_to:
     - project_autocomplete
     type: keyword
-  releasable:
-    type: keyword
-  released:
-    type: keyword
-  state:
-    type: keyword
   summary:
     properties:
       case_count:

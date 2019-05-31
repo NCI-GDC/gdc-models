@@ -36,16 +36,6 @@ properties:
             properties:
               consequence_id:
                 type: keyword
-              gene:
-                properties:
-                  biotype:
-                    type: keyword
-                  gene_id:
-                    type: keyword
-                  is_cancer_gene_census:
-                    type: boolean
-                  symbol:
-                    type: keyword
             type: nested
           end_position:
             type: long
@@ -75,16 +65,12 @@ properties:
           start_position:
             type: long
         type: nested
-      created_datetime:
-        type: date
       days_to_index:
         type: long
       demographic:
         properties:
           cause_of_death:
             type: keyword
-          created_datetime:
-            type: date
           days_to_birth:
             type: long
           days_to_death:
@@ -101,8 +87,6 @@ properties:
             type: keyword
           submitter_id:
             type: keyword
-          updated_datetime:
-            type: date
           vital_status:
             type: keyword
           year_of_birth:
@@ -149,8 +133,6 @@ properties:
             type: keyword
           colon_polyps_history:
             type: keyword
-          created_datetime:
-            type: date
           days_to_hiv_diagnosis:
             type: long
           days_to_last_follow_up:
@@ -213,8 +195,6 @@ properties:
             type: keyword
           treatments:
             properties:
-              created_datetime:
-                type: date
               days_to_treatment_end:
                 type: long
               days_to_treatment_start:
@@ -237,8 +217,6 @@ properties:
                 type: keyword
               treatment_type:
                 type: keyword
-              updated_datetime:
-                type: date
             type: nested
           tumor_grade:
             type: keyword
@@ -246,8 +224,6 @@ properties:
             type: long
           tumor_stage:
             type: keyword
-          updated_datetime:
-            type: date
           vascular_invasion_present:
             type: keyword
           year_of_diagnosis:
@@ -265,8 +241,6 @@ properties:
             type: float
           cigarettes_per_day:
             type: float
-          created_datetime:
-            type: date
           exposure_id:
             type: keyword
           height:
@@ -283,8 +257,6 @@ properties:
             type: long
           tobacco_smoking_status:
             type: keyword
-          updated_datetime:
-            type: date
           weight:
             type: float
           years_smoked:
@@ -292,8 +264,6 @@ properties:
         type: nested
       family_histories:
         properties:
-          created_datetime:
-            type: date
           family_history_id:
             type: keyword
           relationship_age_at_diagnosis:
@@ -310,8 +280,6 @@ properties:
             type: keyword
           submitter_id:
             type: keyword
-          updated_datetime:
-            type: date
         type: nested
       primary_site:
         type: keyword
@@ -336,12 +304,6 @@ properties:
               program_id:
                 type: keyword
           project_id:
-            type: keyword
-          releasable:
-            type: keyword
-          released:
-            type: boolean
-          state:
             type: keyword
       samples:
         properties:
@@ -516,26 +478,6 @@ properties:
         type: keyword
       submitter_id:
         type: keyword
-      summary:
-        properties:
-          data_categories:
-            properties:
-              data_category:
-                type: keyword
-              file_count:
-                type: long
-            type: nested
-          experimental_strategies:
-            properties:
-              experimental_strategy:
-                type: keyword
-              file_count:
-                type: long
-            type: nested
-          file_count:
-            type: long
-          file_size:
-            type: long
       tissue_source_site:
         properties:
           bcr_id:
@@ -548,8 +490,6 @@ properties:
             type: keyword
           tissue_source_site_id:
             type: keyword
-      updated_datetime:
-        type: date
     type: nested
   cytoband:
     copy_to:
