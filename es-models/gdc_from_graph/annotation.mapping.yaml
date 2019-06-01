@@ -25,11 +25,17 @@ properties:
     type: keyword
   classification:
     type: keyword
+  created_datetime:
+    type: keyword
   entity_id:
     type: keyword
   entity_submitter_id:
     type: keyword
   entity_type:
+    type: keyword
+  legacy_created_datetime:
+    type: keyword
+  legacy_updated_datetime:
     type: keyword
   notes:
     type: keyword
@@ -57,9 +63,17 @@ properties:
             type: keyword
       project_id:
         type: keyword
+      releasable:
+        type: keyword
+      released:
+        type: keyword
+      state:
+        type: keyword
   state:
     type: keyword
   status:
     type: keyword
   submitter_id:
+    type: keyword
+  updated_datetime:
     type: keyword
