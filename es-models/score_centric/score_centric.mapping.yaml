@@ -5,6 +5,8 @@ _size:
 properties:
   case:
     properties:
+      available_variation_data:
+        type: keyword
       case_id:
         type: keyword
       created_datetime:
