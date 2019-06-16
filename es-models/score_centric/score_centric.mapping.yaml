@@ -380,6 +380,8 @@ properties:
         type: boolean
       symbol:
         type: keyword
+  score_centric_id:
+    type: keyword
   ssm:
     properties:
       chromosome:
