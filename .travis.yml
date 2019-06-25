@@ -1,7 +1,9 @@
+sudo: false
 language: python
 python:
   - "2.7"
-install: 
-  - "pip install PyYAML"
-script: 
-  - "./scripts/git-hooks/pre-commit"
+  - "3.5"
+  - "3.6"
+install:
+  - pip install tox-travis
+script: tox -vvv -e py27,py35
