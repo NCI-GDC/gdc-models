@@ -2,4 +2,4 @@ sudo: false
 language: python
 install:
   - pip install tox-travis
-script: tox --recreate -e py27,py35,py36 -p all
+script: tox --recreate -e py27,py35,py36
