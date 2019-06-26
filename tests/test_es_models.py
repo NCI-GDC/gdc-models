@@ -1,5 +1,3 @@
-import os
-
 import pytest
 
 from init_index import get_parser
@@ -42,7 +40,7 @@ def test_get_es_models_parametrized(mock_listdir):
 def test_get_es_models_from_directory(mock_mappings):
     root, expected = mock_mappings
 
-    mappings = get_es_models(root)
+    mappings = get_es_models(str(root))
 
     assert mappings.keys() == expected.keys()
     assert all(

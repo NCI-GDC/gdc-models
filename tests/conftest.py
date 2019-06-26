@@ -67,8 +67,13 @@ def mock_load_yaml(monkeypatch):
 
 
 def write_dict_to_yaml(sub_dir, filename, d):
+    try:
+        from builtins import str
+    except ImportError:
+        str = unicode
+
     f = sub_dir / filename
-    f.write_text(yaml.dump(d, default_flow_style=False))
+    f.write_text(str(yaml.dump(d, default_flow_style=False)))
 
 
 @pytest.fixture
