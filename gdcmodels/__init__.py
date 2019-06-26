@@ -11,13 +11,19 @@ def load_yaml(filename):
         return yaml.safe_load(f)
 
 
-def get_es_models():
+def get_es_models(es_model_dir=None):
     """
     Return ES settings and mappings as dict with contents from yaml file,
-    dict is structured similarly as Elasticsearch's '_settings', '_mapping' return
+    dict is structured similarly as Elasticsearch's '_settings', '_mapping'
+    return
+
+    :param es_model_dir: root directory for gdc ES mappings
+    :type es_model_dir: str
+    :return: loaded mappings
     """
 
-    es_model_dir = pkg_resources.resource_filename('gdcmodels', 'es-models')
+    if es_model_dir is None:
+        es_model_dir = pkg_resources.resource_filename('gdcmodels', 'es-models')
 
     es_models = {}
 
