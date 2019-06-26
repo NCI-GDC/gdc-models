@@ -71,7 +71,7 @@ def write_dict_to_yaml(sub_dir, filename, d):
     f.write_text(yaml.dump(d, default_flow_style=False))
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture
 def mock_mappings(tmp_path):
     root = tmp_path
 
