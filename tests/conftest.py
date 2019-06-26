@@ -2,6 +2,7 @@ import os
 import pkg_resources
 
 import pytest
+import yaml
 
 import gdcmodels
 
@@ -63,3 +64,53 @@ def mock_listdir(request, monkeypatch, mock_load_yaml):
 @pytest.fixture
 def mock_load_yaml(monkeypatch):
     monkeypatch.setattr(gdcmodels, 'load_yaml', lambda x: {})
+
+
+def write_dict_to_yaml(sub_dir, filename, d):
+    f = sub_dir / filename
+    f.write_text(yaml.dump(d, default_flow_style=False))
+
+
+@pytest.fixture
+def mock_mappings(tmp_path):
+    root = tmp_path
+
+    foo_mapping = {
+        'properties': {
+            'foo': {'type': 'keyword'},
+            'bar': {'type': 'long'},
+        }
+    }
+    foo_settings = {'foo': 1, 'bar': 2}
+
+    bar_mapping = {
+        'properties': {
+            'foo': {
+                'type': 'nested',
+                'properties': {
+                    'foofoo': {'type': 'keyword'},
+                    'foobar': {'type': 'keyword'},
+                }
+            },
+            'bar': {'type': 'long'},
+        }
+    }
+    bar_settings = {'foo': 2, 'bar': 4}
+
+    foo_dir = root / 'foo_centric'
+    foo_dir.mkdir()
+
+    write_dict_to_yaml(foo_dir, 'foo_centric.mapping.yaml', foo_mapping)
+    write_dict_to_yaml(foo_dir, 'settings.yaml', foo_settings)
+
+    bar_dir = root / 'bar_centric'
+    bar_dir.mkdir()
+
+    write_dict_to_yaml(bar_dir, 'bar_centric.mapping.yaml', bar_mapping)
+    write_dict_to_yaml(bar_dir, 'settings.yaml', bar_settings)
+
+    expected = {
+        'foo_centric': {'mapping': foo_mapping, 'settings': foo_settings},
+        'bar_centric': {'mapping': bar_mapping, 'settings': bar_settings}
+    }
+    return root, expected
