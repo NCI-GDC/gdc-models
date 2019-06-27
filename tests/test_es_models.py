@@ -42,9 +42,8 @@ def test_get_es_models_from_directory(mock_mappings):
 
     mappings = get_es_models(str(root))
 
-    assert mappings.keys() == expected.keys()
-    assert all(
-        expected[name]['settings'] == mappings[name]['_settings'] and
-        expected[name]['mapping'] == mappings[name][name]['_mapping']
-        for name in mappings
-    ), mappings
+    assert set(mappings.keys()) == set(expected.keys())
+
+    for name in mappings:
+        assert expected[name]['settings'] == mappings[name]['_settings']
+        assert expected[name]['mapping'] == mappings[name][name]['_mapping']

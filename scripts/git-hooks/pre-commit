@@ -6,8 +6,6 @@ from subprocess import check_output, CalledProcessError
 
 import yaml
 
-# os.environ['HOME']
-
 
 def get_git_root():
     try:
