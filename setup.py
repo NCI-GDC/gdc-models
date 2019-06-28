@@ -8,7 +8,7 @@ setup(
         "scripts", "*-models", "*.tests", "*.tests.*", "tests.*", "tests"]),
     install_requires=[
         'PyYAML',
-        'elasticsearch'
+        'elasticsearch>=5.0.0,<6.0.0'
     ],
     package_data={
         'gdcmodels': ['es-models/*/*.yaml'],
