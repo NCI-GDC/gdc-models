@@ -7,7 +7,7 @@ setup(
     packages=find_packages(exclude=[
         "scripts", "*-models", "*.tests", "*.tests.*", "tests.*", "tests"]),
     install_requires=[
-        'PyYAML',
+        'PyYAML>=3.11,<6',
         'elasticsearch>=5.0.0,<6.0.0'
     ],
     package_data={
