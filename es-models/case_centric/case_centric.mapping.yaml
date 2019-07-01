@@ -8,6 +8,7 @@ _source:
 properties:
   available_variation_data:
     type: keyword
+    eager_global_ordinals: true
   case_autocomplete:
     fields:
       analyzed:
@@ -26,6 +27,7 @@ properties:
     copy_to:
     - case_autocomplete
     type: keyword
+    eager_global_ordinals: true
   created_datetime:
     type: date
   days_to_index:
@@ -44,10 +46,13 @@ properties:
         type: keyword
       ethnicity:
         type: keyword
+        eager_global_ordinals: true
       gender:
         type: keyword
+        eager_global_ordinals: true
       race:
         type: keyword
+        eager_global_ordinals: true
       state:
         type: keyword
       submitter_id:
@@ -56,6 +61,7 @@ properties:
         type: date
       vital_status:
         type: keyword
+        eager_global_ordinals: true
       year_of_birth:
         type: long
       year_of_death:
@@ -208,6 +214,7 @@ properties:
     copy_to:
     - case_autocomplete
     type: keyword
+    eager_global_ordinals: true
   exposures:
     properties:
       alcohol_history:
@@ -288,6 +295,7 @@ properties:
                     type: keyword
                   gene_id:
                     type: keyword
+                    eager_global_ordinals: true
                   is_cancer_gene_census:
                     type: boolean
                   symbol:
@@ -495,6 +503,7 @@ properties:
     copy_to:
     - case_autocomplete
     type: keyword
+    eager_global_ordinals: true
   project:
     properties:
       dbgap_accession_number:
@@ -519,12 +528,14 @@ properties:
             type: keyword
           name:
             type: keyword
+            eager_global_ordinals: true
           program_id:
             type: keyword
       project_id:
         copy_to:
         - case_autocomplete
         type: keyword
+        eager_global_ordinals: true
       releasable:
         type: keyword
       released:
@@ -537,6 +548,7 @@ properties:
         type: keyword
   ssm_acl:
     type: keyword
+    eager_global_ordinals: true
   state:
     type: keyword
   submitter_id:

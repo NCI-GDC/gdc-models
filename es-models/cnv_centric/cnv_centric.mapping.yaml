@@ -33,6 +33,7 @@ properties:
             type: keyword
           gene_id:
             type: keyword
+            eager_global_ordinals: true
           is_cancer_gene_census:
             type: boolean
           symbol:
@@ -52,6 +53,7 @@ properties:
             type: keyword
           case_id:
             type: keyword
+            eager_global_ordinals: true
           created_datetime:
             type: date
           days_to_index:

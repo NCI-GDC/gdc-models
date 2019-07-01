@@ -8,6 +8,7 @@ _source:
 properties:
   biotype:
     type: keyword
+    eager_global_ordinals: true
   canonical_transcript_id:
     copy_to:
     - gene_autocomplete
@@ -24,6 +25,7 @@ properties:
         type: keyword
       case_id:
         type: keyword
+        eager_global_ordinals: true
       cnv:
         properties:
           chromosome:
@@ -440,6 +442,7 @@ properties:
             properties:
               acl:
                 type: keyword
+                eager_global_ordinals: true
               center:
                 type: keyword
               input_bam_file:
@@ -597,12 +600,14 @@ properties:
     copy_to:
     - gene_autocomplete
     type: keyword
+    eager_global_ordinals: true
   gene_start:
     type: long
   gene_strand:
     type: long
   is_cancer_gene_census:
     type: boolean
+    eager_global_ordinals: true
   name:
     copy_to:
     - gene_autocomplete
