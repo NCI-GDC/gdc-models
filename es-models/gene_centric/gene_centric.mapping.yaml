@@ -32,11 +32,6 @@ properties:
             type: keyword
           cnv_id:
             type: keyword
-          consequence:
-            properties:
-              consequence_id:
-                type: keyword
-            type: nested
           end_position:
             type: long
           gene_level_cn:

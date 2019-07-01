@@ -3,8 +3,9 @@
 import os
 import sys
 from subprocess import check_output, CalledProcessError
+
 import yaml
-os.environ['HOME']
+
 
 def get_git_root():
     try:
@@ -13,7 +14,8 @@ def get_git_root():
         raise IOError('Current working directory is not a git repository')
 
     git_root = base.decode('utf-8').strip()
-    if git_root == '': git_root = '.'  # git rev-parse fails, then current dir is git_root
+    if git_root == '':
+        git_root = '.'  # git rev-parse fails, then current dir is git_root
 
     return git_root
 
@@ -29,14 +31,14 @@ def process_yaml(yaml_file, format_yaml):
         if format_yaml:
             with open(yaml_file, 'w') as y:
                 y.write(yaml_dump)
-            print 'Formatted YAML file: ' + yaml_file
+            print('Formatted YAML file: ' + yaml_file)
 
             with open(yaml_file + '.bak', 'w') as y:
                 y.write(yaml_text)
-            print 'Original YAML file kept as: ' + yaml_file + '.bak'
+            print('Original YAML file kept as: ' + yaml_file + '.bak')
             return 0
         else:
-            print 'YAML needs to be formatted: ' + yaml_file
+            print('YAML needs to be formatted: ' + yaml_file)
             return 1
     else:
         return 0
@@ -63,6 +65,6 @@ def main(format_yaml):
 
 
 if __name__ == '__main__':
-    format_yaml = 1 if sys.argv[1:] and sys.argv[1] == 'format' else 0
+    fmt_yaml = bool(sys.argv[1:] and sys.argv[1] == 'format')
 
-    sys.exit(main(format_yaml))
+    sys.exit(main(fmt_yaml))
