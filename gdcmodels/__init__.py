@@ -10,7 +10,16 @@ def load_yaml(filename):
     with open(filename, 'r') as f:
         return yaml.safe_load(f)
 
+def process_ref(name, reference):
+    ref = reference['$ref']
+    filename, key = ref.split('#/')
+    filedata = load_yaml(filename)
+    return filedata[key] 
 
+def load_definitions(filename):
+    definitions = load_yaml(filename)
+    meta = process_ref('_meta', definitions['_meta'])
+    return {'_meta': meta}
 def get_es_models():
     """
     Return ES settings and mappings as dict with contents from yaml file,
@@ -35,7 +44,9 @@ def get_es_models():
                 es_models[es_index][es_type] = {
                         '_mapping': load_yaml(pj(es_model_dir, es_index, f))
                     }
-
+                if ".".join([es_type, 'definitions', 'yaml']) in listdir(es_modeldir):
+                    definitions = load_definitions("."join([es_type, 'definitions', 'yaml']))
+                    es_models[es_index][es_type]['_mapping'].update(definitions)
             elif f == 'settings.yaml':
                 es_models[es_index]['_settings'] = load_yaml(pj(es_model_dir, es_index, f))
 
