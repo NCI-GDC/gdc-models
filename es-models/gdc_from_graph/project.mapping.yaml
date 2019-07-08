@@ -1,3 +1,4 @@
+dynamic: strict
 properties:
   dbgap_accession_number:
     type: keyword

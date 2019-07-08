@@ -1,3 +1,4 @@
+dynamic: strict
 properties:
   access:
     type: keyword

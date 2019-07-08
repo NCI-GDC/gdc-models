@@ -1,3 +1,4 @@
+dynamic: strict
 properties:
   aliquot_ids:
     type: keyword
