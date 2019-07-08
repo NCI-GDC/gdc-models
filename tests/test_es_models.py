@@ -23,7 +23,7 @@ def test_missing_required_args(input_args):
 def test_get_es_models_standard_behavior():
     models = get_es_models()
 
-    assert len(models) == 11
+    assert len(models) == 12
 
 
 def test_get_es_models_parametrized(mock_listdir):

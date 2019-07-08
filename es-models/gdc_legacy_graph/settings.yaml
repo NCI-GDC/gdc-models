@@ -1,0 +1,14 @@
+analysis:
+  analyzer:
+    lowercase_keyword:
+      filter:
+      - lowercase
+      tokenizer: keyword
+  filter:
+    edge_ngram:
+      max_gram: 20
+      min_gram: 2
+      side: front
+      type: edge_ngram
+index.max_result_window: 100000000
+mapping.nested_fields.limit: 150
