@@ -2,7 +2,7 @@ import re
 import yaml
 from os import listdir
 import pkg_resources
-from os.path import isfile, join as pj
+from os.path import isfile,dirname, join as pj
 
 
 def load_yaml(filename):
@@ -11,16 +11,17 @@ def load_yaml(filename):
         return yaml.safe_load(f)
 
 
-def process_ref(name, reference):
+def process_ref(name, reference, path):
     ref = reference['$ref']
     filename, key = ref.split('#/')
-    filedata = load_yaml(filename)
+    filedata = load_yaml(pj(path,filename))
     return filedata[key] 
 
 
 def load_definitions(filename):
+    import pdb; pdb.set_trace()
     definitions = load_yaml(filename)
-    meta = process_ref('_meta', definitions['_meta'])
+    meta = process_ref('_meta', definitions['_meta'], dirname(filename))
     return {'_meta': meta}
 
 
@@ -48,8 +49,9 @@ def get_es_models():
                 es_models[es_index][es_type] = {
                         '_mapping': load_yaml(pj(es_model_dir, es_index, f))
                     }
-                if ".".join([es_type, 'definitions', 'yaml']) in listdir(es_modeldir):
-                    definitions = load_definitions(".".join([es_type, 'definitions', 'yaml']))
+                defs_name = pj(es_model_dir, es_index,es_type+".".join(['_definitions', 'yaml']))
+                if isfile(defs_name):
+                    definitions = load_definitions(defs_name)
                     es_models[es_index][es_type]['_mapping'].update(definitions)
             elif f == 'settings.yaml':
                 es_models[es_index]['_settings'] = load_yaml(pj(es_model_dir, es_index, f))
