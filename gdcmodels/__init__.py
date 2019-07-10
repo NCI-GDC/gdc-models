@@ -1,4 +1,7 @@
+import os
+import pkg_resources
 import re
+
 import yaml
 from os import listdir
 import pkg_resources
@@ -24,21 +27,28 @@ def load_definitions(filename):
     return {'_meta': meta}
 
 
-def get_es_models():
+def get_es_models(es_model_dir=None):
     """
     Return ES settings and mappings as dict with contents from yaml file,
-    dict is structured similarly as Elasticsearch's '_settings', '_mapping' return
+    dict is structured similarly as Elasticsearch's '_settings', '_mapping'
+    return
+
+    :param es_model_dir: root directory for gdc ES mappings
+    :type es_model_dir: str
+    :return: loaded mappings
     """
 
-    es_model_dir = pkg_resources.resource_filename('gdcmodels', 'es-models')
+    if es_model_dir is None:
+        es_model_dir = pkg_resources.resource_filename('gdcmodels', 'es-models')
 
     es_models = {}
 
-    for es_index in listdir(es_model_dir):
-        if isfile(pj(es_model_dir, es_index)): continue
+    for es_index in os.listdir(es_model_dir):
+        if os.path.isfile(os.path.join(es_model_dir, es_index)):
+            continue
 
-        for f in listdir(pj(es_model_dir, es_index)):
-            if not es_index in es_models:
+        for f in os.listdir(os.path.join(es_model_dir, es_index)):
+            if es_index not in es_models:
                 es_models[es_index] = {
                     '_settings': {}
                 }
@@ -53,6 +63,8 @@ def get_es_models():
                     definitions = load_definitions(defs_name)
                     es_models[es_index][es_type]['_mapping'].update(definitions)
             elif f == 'settings.yaml':
-                es_models[es_index]['_settings'] = load_yaml(pj(es_model_dir, es_index, f))
+                es_models[es_index]['_settings'] = load_yaml(
+                    os.path.join(es_model_dir, es_index, f)
+                )
 
     return es_models
