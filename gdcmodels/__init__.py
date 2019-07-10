@@ -2,7 +2,7 @@ import re
 import yaml
 from os import listdir
 import pkg_resources
-from os.path import isfile,dirname, join as pj
+from os.path import isfile, dirname, join as pj
 
 
 def load_yaml(filename):
@@ -14,12 +14,11 @@ def load_yaml(filename):
 def process_ref(name, reference, path):
     ref = reference['$ref']
     filename, key = ref.split('#/')
-    filedata = load_yaml(pj(path,filename))
+    filedata = load_yaml(pj(path, filename))
     return filedata[key] 
 
 
 def load_definitions(filename):
-    import pdb; pdb.set_trace()
     definitions = load_yaml(filename)
     meta = process_ref('_meta', definitions['_meta'], dirname(filename))
     return {'_meta': meta}
