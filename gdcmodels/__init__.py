@@ -14,7 +14,7 @@ def load_yaml(filename):
         return yaml.safe_load(f)
 
 
-def process_ref(name, reference, path):
+def process_ref(reference, path):
     ref = reference['$ref']
     filename, key = ref.split('#/')
     filedata = load_yaml(pj(path, filename))
@@ -23,7 +23,7 @@ def process_ref(name, reference, path):
 
 def load_definitions(filename):
     definitions = load_yaml(filename)
-    meta = process_ref('_meta', definitions['_meta'], dirname(filename))
+    meta = process_ref(definitions['_meta'], dirname(filename))
     return {'_meta': meta}
 
 

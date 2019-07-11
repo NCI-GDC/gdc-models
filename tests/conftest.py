@@ -136,7 +136,15 @@ def mock_load_yaml_for_defs(filename):
         return {'_meta': 'expected_result'} 
     elif name == 'case_definitions.yaml':
         return {'_meta': {'$ref': 'definitions.yaml#/_meta'}}
-    
+
+def mock_load_yaml_missing_definitions(filename):
+    name = os.path.basename(filename)
+    if name == 'case.mapping.yaml':
+        return {'properties': 'someproperty'}
+    elif name == 'definitions.yaml':
+        return {'_meta': 'expected_result'} 
+    elif name == 'case_definitions.yaml':
+        return yaml.load(open('this_file_doesnt_exist', 'r'))
 
 def mock_isfile_no_def(filename):
     if os.path.basename(filename) == 'gdc_from_graph':
@@ -166,3 +174,12 @@ def remove_def_file(monkeypatch):
     monkeypatch.setattr(gdcmodels, 'isfile', mock_isfile_no_def)
     monkeypatch.setattr(gdcmodels, 'load_yaml', mock_load_yaml_for_defs)
     
+@pytest.fixture
+def missing_def_file(monkeypatch):
+    monkeypatch.setattr(os, 'listdir', mock_listdir_nodefs)
+    monkeypatch.setattr(gdcmodels, 'isfile', mock_isfile_no_def)
+    monkeypatch.setattr(gdcmodels, 'load_yaml', mock_load_yaml_missing_definitions)
+ 
+@pytest.fixture
+def incorrect_ref_format(monkeypatch):
+    monkeypatch.setattr(gdcmodels, 'load_yaml', mock_load_yaml_missing_definitions)
