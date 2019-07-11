@@ -47,3 +47,12 @@ def test_get_es_models_from_directory(mock_mappings):
     for name in mappings:
         assert expected[name]['settings'] == mappings[name]['_settings']
         assert expected[name]['mapping'] == mappings[name][name]['_mapping']
+
+def test_get_models_with_definitions(add_def_file):
+    mappings = get_es_models()
+    assert mappings['gdc_from_graph']['case']['_mapping']['_meta'] == 'expected_result'
+
+
+def test_get_models_no_definitions(remove_def_file):
+    mappings = get_es_models()
+    assert '_meta' not in mappings['gdc_from_graph']['case']['_mapping'].keys()

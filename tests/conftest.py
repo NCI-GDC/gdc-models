@@ -119,3 +119,50 @@ def mock_mappings(tmp_path):
         'bar_centric': {'mapping': bar_mapping, 'settings': bar_settings}
     }
     return root, expected
+
+
+def mock_listdir_nodefs(models_dir):
+    if os.path.basename(models_dir) == 'es-models': 
+        return ['gdc_from_graph']
+    elif os.path.basename(models_dir) == 'gdc_from_graph':
+        return ['case.mapping.yaml']
+
+
+def mock_load_yaml_for_defs(filename):
+    name = os.path.basename(filename)
+    if name == 'case.mapping.yaml':
+        return {'properties': 'someproperty'}
+    elif name == 'definitions.yaml':
+        return {'_meta': 'expected_result'} 
+    elif name == 'case_definitions.yaml':
+        return {'_meta': {'$ref': 'definitions.yaml#/_meta'}}
+    
+
+def mock_isfile_no_def(filename):
+    if os.path.basename(filename) == 'gdc_from_graph':
+        return False
+    elif os.path.basename(filename) == 'case_definitions.yaml':
+        return False
+    return True
+
+
+def mock_isfile_def(filename):
+    if os.path.basename(filename) == 'gdc_from_graph':
+        return False
+    elif os.path.basename(filename) == 'case_definitions.yaml':
+        return True
+    return True
+
+
+@pytest.fixture
+def add_def_file(monkeypatch):
+    monkeypatch.setattr(os, 'listdir', mock_listdir_nodefs)
+    monkeypatch.setattr(gdcmodels, 'isfile', mock_isfile_def)
+    monkeypatch.setattr(gdcmodels, 'load_yaml', mock_load_yaml_for_defs)
+
+@pytest.fixture
+def remove_def_file(monkeypatch):
+    monkeypatch.setattr(os, 'listdir', mock_listdir_nodefs)
+    monkeypatch.setattr(gdcmodels, 'isfile', mock_isfile_no_def)
+    monkeypatch.setattr(gdcmodels, 'load_yaml', mock_load_yaml_for_defs)
+    
