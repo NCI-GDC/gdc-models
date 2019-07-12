@@ -14,17 +14,9 @@ def load_yaml(filename):
         return yaml.safe_load(f)
 
 
-def process_ref(reference, path):
-    ref = reference['$ref']
-    filename, key = ref.split('#/')
-    filedata = load_yaml(pj(path, filename))
-    return filedata[key] 
-
-
 def load_definitions(filename):
     definitions = load_yaml(filename)
-    meta = process_ref(definitions['_meta'], dirname(filename))
-    return {'_meta': meta}
+    return {'_meta': definitions.get('_meta',{})}
 
 
 def get_es_models(es_model_dir=None):
@@ -58,7 +50,7 @@ def get_es_models(es_model_dir=None):
                 es_models[es_index][es_type] = {
                         '_mapping': load_yaml(pj(es_model_dir, es_index, f))
                     }
-                defs_name = pj(es_model_dir, es_index, es_type + '_definitions.yaml')
+                defs_name = pj(es_model_dir, es_index,'definitions.yaml')
                 if isfile(defs_name):
                     definitions = load_definitions(defs_name)
                     es_models[es_index][es_type]['_mapping'].update(definitions)

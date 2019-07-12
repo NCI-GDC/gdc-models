@@ -1,7 +1,7 @@
 import pytest
 
 from init_index import get_parser
-from gdcmodels import get_es_models, load_definitions, process_ref
+from gdcmodels import get_es_models, load_definitions
 
 
 parser = get_parser()
@@ -59,14 +59,12 @@ def test_get_models_no_definitions(remove_def_file):
     assert '_meta' not in mappings['gdc_from_graph']['case']['_mapping'].keys()
 
 
+def test_get_models_empty_definitions(remove_def_file):
+    mappings = get_es_models()
+    assert '_meta' not in mappings['gdc_from_graph']['case']['_mapping'].keys()
+
+
 def test_get_models_missing_definitions_file(missing_def_file):
     with pytest.raises(IOError):
-        definitions = load_definitions('case_definitions.yaml')
+        definitions = load_definitions('definitions.yaml')
 
-
-@pytest.mark.parametrize('reference, excp', [({"ref": "$r#/ref"}, KeyError),
-                                             ({"$ref": "#/"}, TypeError),
-                                             ({"$ref": "ref/definitions.yaml"}, ValueError)])
-def test_process_reference(incorrect_ref_format, reference, excp):
-    with pytest.raises(excp):
-        result = process_ref(reference, "case_definitions.yaml")
