@@ -58,7 +58,7 @@ def get_es_models(es_model_dir=None):
                 es_models[es_index][es_type] = {
                         '_mapping': load_yaml(pj(es_model_dir, es_index, f))
                     }
-                defs_name = pj(es_model_dir, es_index,es_type+".".join(['_definitions', 'yaml']))
+                defs_name = pj(es_model_dir, es_index, es_type + '_definitions.yaml')
                 if isfile(defs_name):
                     definitions = load_definitions(defs_name)
                     es_models[es_index][es_type]['_mapping'].update(definitions)
