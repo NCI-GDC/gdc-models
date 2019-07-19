@@ -37,13 +37,12 @@ def test_get_es_models_parametrized(mock_listdir):
                for ind in models)
 
 
-def test_get_es_models_from_directory(mock_mappings):
-    root, expected = mock_mappings
+def test_get_es_models_from_directory(foo_bar_mappings):
+    root, expected = foo_bar_mappings
 
     mappings = get_es_models(str(root))
 
     assert set(mappings.keys()) == set(expected.keys())
-
     for name in mappings:
         assert expected[name]['settings'] == mappings[name]['_settings']
         assert expected[name]['mapping'] == mappings[name][name]['_mapping']
