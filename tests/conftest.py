@@ -119,78 +119,72 @@ def mock_mappings(tmp_path, mappings):
     for mapping_name, data in mappings.items():
         mapp_dir = root/data['dir']
         mapp_dir.mkdir()
-        write_dict_to_yaml(mapp_dir, data['dir']+'.mapping.yaml', data['mapping'])
-        write_dict_to_yaml(mapp_dir, 'settings.yaml', data['settings'])
-        expected[data['dir']] = {'mapping': data['mapping'], 'settings': data['settings']}
+        write_dict_to_yaml(mapp_dir, data['dir']+'.mapping.yaml', data.get('mapping', {}))
+        if data.get('settings'):
+            write_dict_to_yaml(mapp_dir, 'settings.yaml', data.get('settings',{}))
+        if data.get('definitions'):
+            write_dict_to_yaml(mapp_dir, 'definitions.yaml', data.get('definitions',{}))
+        expected[data['dir']] = {'mapping': data.get('mapping', {}), 'settings': data.get('settings',{})}
     return root, expected
 
-def mock_listdir_nodefs(models_dir):
-    if os.path.basename(models_dir) == 'es-models': 
-        return ['gdc_from_graph']
-    elif os.path.basename(models_dir) == 'gdc_from_graph':
-        return ['case.mapping.yaml']
 
-
-def mock_load_yaml_for_defs(filename):
-    name = os.path.basename(filename)
-    if name == 'case.mapping.yaml':
-        return {'properties': 'someproperty'}
-    elif name == 'definitions.yaml':
-        return {'_meta': 'expected_result'} 
-
-def mock_load_yaml_missing_definitions(filename):
-    name = os.path.basename(filename)
-    if name == 'case.mapping.yaml':
-        return {'properties': 'someproperty'}
-    elif name == 'definitions.yaml':
-        return yaml.load(open('this_file_doesnt_exist', 'r'))
-
-
-def mock_load_yaml_empty_definitions(filename):
-    name = os.path.basename(filename)
-    if name == 'case.mapping.yaml':
-        return {'properties': 'someproperty'}
-    elif name == 'definitions.yaml':
-        return {}
-
-
-def mock_isfile_no_def(filename):
-    if os.path.basename(filename) == 'gdc_from_graph':
-        return False
-    elif os.path.basename(filename) == 'definitions.yaml':
-        return False
-    return True
-
-
-def mock_isfile_def(filename):
-    if os.path.basename(filename) == 'gdc_from_graph':
-        return False
-    elif os.path.basename(filename) == 'definitions.yaml':
-        return True
-    return True
+def foo_mapp():
+    foo_mapping = {
+        'properties': {
+            'foo': {'type': 'keyword'},
+            'bar': {'type': 'long'},
+        }
+    }
+    foo_dir_name = 'foor_defs'
+    return  foo_mapping, foo_dir_name
 
 
 @pytest.fixture
-def add_def_file(monkeypatch):
-    monkeypatch.setattr(os, 'listdir', mock_listdir_nodefs)
-    monkeypatch.setattr(gdcmodels, 'isfile', mock_isfile_def)
-    monkeypatch.setattr(gdcmodels, 'load_yaml', mock_load_yaml_for_defs)
-
-@pytest.fixture
-def remove_def_file(monkeypatch):
-    monkeypatch.setattr(os, 'listdir', mock_listdir_nodefs)
-    monkeypatch.setattr(gdcmodels, 'isfile', mock_isfile_no_def)
-    monkeypatch.setattr(gdcmodels, 'load_yaml', mock_load_yaml_for_defs)
+def defs_mappings(tmp_path):
     
+    foo_mapping, foo_dir_name = foo_mapp()
+    foo_definitions = {'_meta': 'expected_result'} 
+    mapps = {'foo': {'mapping': foo_mapping,
+                     'dir': foo_dir_name,
+                     'definitions': foo_definitions,
+                     'expected': {'mapping': foo_mapping.update(foo_definitions)}}}
+    root = tmp_path
+    return mock_mappings(root, mapps)
+
+
 @pytest.fixture
-def missing_def_file(monkeypatch):
-    monkeypatch.setattr(os, 'listdir', mock_listdir_nodefs)
-    monkeypatch.setattr(gdcmodels, 'isfile', mock_isfile_no_def)
-    monkeypatch.setattr(gdcmodels, 'load_yaml', mock_load_yaml_missing_definitions)
- 
+def no_defs_mappings(tmp_path):
+    
+    foo_mapping, foo_dir_name = foo_mapp()
+    mapps = {'foo': {'mapping': foo_mapping,
+                     'dir': foo_dir_name,
+                     'expected': {'mapping': foo_mapping}}}
+    root = tmp_path
+    return mock_mappings(root, mapps)
+
 @pytest.fixture
-def empty_def_file(monkeypatch):
-    monkeypatch.setattr(os, 'listdir', mock_listdir_nodefs)
-    monkeypatch.setattr(gdcmodels, 'isfile', mock_isfile_no_def)
-    monkeypatch.setattr(gdcmodels, 'load_yaml', mock_load_yaml_for_empty_defs)
- 
+def empty_defs_mappings(tmp_path):
+    
+    foo_mapping, foo_dir_name = foo_mapp()
+    foo_definitions = {} 
+    mapps = {'foo': {'mapping': foo_mapping,
+                     'dir': foo_dir_name,
+                     'definitions': foo_definitions,
+                     'expected': {'mapping': foo_mapping}}}
+    root = tmp_path
+    return mock_mappings(root, mapps)
+
+
+@pytest.fixture
+def other_properties_defs_mappings(tmp_path):
+    
+    foo_mapping, foo_dir_name = foo_mapp()
+    foo_definitions = {'this_property': 'something'} 
+    mapps = {'foo': {'mapping': foo_mapping,
+                     'dir': foo_dir_name,
+                     'definitions': foo_definitions,
+                     'expected': {'mapping': foo_mapping}}}
+    root = tmp_path
+    return mock_mappings(root, mapps)
+
+
