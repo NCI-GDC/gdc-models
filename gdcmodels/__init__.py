@@ -16,8 +16,11 @@ def load_yaml(filename):
 
 def load_definitions(filename):
     definitions = load_yaml(filename)
-    return {'_meta': definitions.get('_meta',{})}
-
+    result = {}
+    # we can select what properties to add in the future
+    if '_meta' in definitions.keys():
+        result['_meta'] = definitions.get('_meta')
+    return result
 
 def get_es_models(es_model_dir=None):
     """

@@ -68,8 +68,8 @@ def test_get_models_empty_definitions(empty_defs_mappings):
         assert expected[name]['mapping'] == mapping[name]['_mapping']
 
 
-def test_get_models_definitions_with_other_data(empty_defs_mappings):
-    root, expected = empty_defs_mappings
+def test_get_models_definitions_with_other_data(other_properties_defs_mappings):
+    root, expected = other_properties_defs_mappings
     mappings = get_es_models(str(root))
     for name, mapping in mappings.items():
         assert expected[name]['mapping'] == mapping[name]['_mapping']
