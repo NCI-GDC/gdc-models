@@ -2,6 +2,9 @@ _all:
   enabled: false
 _size:
   enabled: true
+_source:
+  excludes:
+  - gene.*
 properties:
   available_variation_data:
     type: keyword
