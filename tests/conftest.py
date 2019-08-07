@@ -75,8 +75,11 @@ def write_dict_to_yaml(sub_dir, filename, d):
     f = sub_dir / filename
     f.write_text(str(yaml.dump(d, default_flow_style=False)))
 
+
 @pytest.fixture
-def foo_bar_mappings(tmp_path):
+def mock_mappings(tmp_path):
+    root = tmp_path
+
     foo_mapping = {
         'properties': {
             'foo': {'type': 'keyword'},
@@ -84,7 +87,7 @@ def foo_bar_mappings(tmp_path):
         }
     }
     foo_settings = {'foo': 1, 'bar': 2}
-    foo_dir_name = 'foo_centric'
+
     bar_mapping = {
         'properties': {
             'foo': {
@@ -98,93 +101,21 @@ def foo_bar_mappings(tmp_path):
         }
     }
     bar_settings = {'foo': 2, 'bar': 4}
-    bar_dir_name = 'bar_centric'
-    
 
-    mapps = {'foo': {'mapping': foo_mapping,
-                     'settings': foo_settings,
-                     'dir': foo_dir_name,
-                     'expected': {'mapping': foo_mapping, 'settings': foo_settings}},
-             'bar': {'mapping': bar_mapping,
-                     'settings': bar_settings,
-                     'dir': bar_dir_name,
-                     'expected': {'mapping': bar_mapping, 'settings': bar_settings}}
-            } 
-    root = tmp_path
-    return mock_mappings(root, mapps)
+    foo_dir = root / 'foo_centric'
+    foo_dir.mkdir()
 
-def mock_mappings(tmp_path, mappings):
-    root = tmp_path
-    expected = {}
-    for mapping_name, data in mappings.items():
-        mapp_dir = root/data['dir']
-        mapp_dir.mkdir()
-        write_dict_to_yaml(mapp_dir, data['dir']+'.mapping.yaml', data.get('mapping', {}))
-        if data.get('settings'):
-            write_dict_to_yaml(mapp_dir, 'settings.yaml', data.get('settings',{}))
-        if data.get('definitions'):
-            write_dict_to_yaml(mapp_dir, 'definitions.yaml', data.get('definitions',{}))
-        expected[data['dir']] = {'mapping': data.get('mapping', {}), 'settings': data.get('settings',{})}
-    return root, expected
+    write_dict_to_yaml(foo_dir, 'foo_centric.mapping.yaml', foo_mapping)
+    write_dict_to_yaml(foo_dir, 'settings.yaml', foo_settings)
 
+    bar_dir = root / 'bar_centric'
+    bar_dir.mkdir()
 
-def foo_mapp():
-    foo_mapping = {
-        'properties': {
-            'foo': {'type': 'keyword'},
-            'bar': {'type': 'long'},
-        }
+    write_dict_to_yaml(bar_dir, 'bar_centric.mapping.yaml', bar_mapping)
+    write_dict_to_yaml(bar_dir, 'settings.yaml', bar_settings)
+
+    expected = {
+        'foo_centric': {'mapping': foo_mapping, 'settings': foo_settings},
+        'bar_centric': {'mapping': bar_mapping, 'settings': bar_settings}
     }
-    foo_dir_name = 'foor_defs'
-    return  foo_mapping, foo_dir_name
-
-
-@pytest.fixture
-def defs_mappings(tmp_path):
-    
-    foo_mapping, foo_dir_name = foo_mapp()
-    foo_definitions = {'_meta': 'expected_result'} 
-    mapps = {'foo': {'mapping': foo_mapping,
-                     'dir': foo_dir_name,
-                     'definitions': foo_definitions,
-                     'expected': {'mapping': foo_mapping.update(foo_definitions)}}}
-    root = tmp_path
-    return mock_mappings(root, mapps)
-
-
-@pytest.fixture
-def no_defs_mappings(tmp_path):
-    
-    foo_mapping, foo_dir_name = foo_mapp()
-    mapps = {'foo': {'mapping': foo_mapping,
-                     'dir': foo_dir_name,
-                     'expected': {'mapping': foo_mapping}}}
-    root = tmp_path
-    return mock_mappings(root, mapps)
-
-@pytest.fixture
-def empty_defs_mappings(tmp_path):
-    
-    foo_mapping, foo_dir_name = foo_mapp()
-    foo_definitions = {} 
-    mapps = {'foo': {'mapping': foo_mapping,
-                     'dir': foo_dir_name,
-                     'definitions': foo_definitions,
-                     'expected': {'mapping': foo_mapping}}}
-    root = tmp_path
-    return mock_mappings(root, mapps)
-
-
-@pytest.fixture
-def other_properties_defs_mappings(tmp_path):
-    
-    foo_mapping, foo_dir_name = foo_mapp()
-    foo_definitions = {'this_property': 'something'} 
-    mapps = {'foo': {'mapping': foo_mapping,
-                     'dir': foo_dir_name,
-                     'definitions': foo_definitions,
-                     'expected': {'mapping': foo_mapping}}}
-    root = tmp_path
-    return mock_mappings(root, mapps)
-
-
+    return root, expected
