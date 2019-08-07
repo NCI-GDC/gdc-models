@@ -3,6 +3,9 @@ import pkg_resources
 import re
 
 import yaml
+from os import listdir
+import pkg_resources
+from os.path import isfile, dirname, join as pj
 
 
 def load_yaml(filename):
@@ -10,6 +13,14 @@ def load_yaml(filename):
     with open(filename, 'r') as f:
         return yaml.safe_load(f)
 
+
+def load_definitions(filename):
+    definitions = load_yaml(filename)
+    result = {}
+    # we can select what properties to add in the future
+    if '_meta' in definitions.keys():
+        result['_meta'] = definitions.get('_meta')
+    return result
 
 def get_es_models(es_model_dir=None):
     """
@@ -40,10 +51,12 @@ def get_es_models(es_model_dir=None):
             if f.endswith('.mapping.yaml'):
                 es_type = re.sub(r'\.mapping\.yaml$', '', f)
                 es_models[es_index][es_type] = {
-                    '_mapping': load_yaml(os.path.join(es_model_dir, es_index,
-                                                       f))
-                }
-
+                        '_mapping': load_yaml(pj(es_model_dir, es_index, f))
+                    }
+                defs_name = pj(es_model_dir, es_index,'definitions.yaml')
+                if isfile(defs_name):
+                    definitions = load_definitions(defs_name)
+                    es_models[es_index][es_type]['_mapping'].update(definitions)
             elif f == 'settings.yaml':
                 es_models[es_index]['_settings'] = load_yaml(
                     os.path.join(es_model_dir, es_index, f)
