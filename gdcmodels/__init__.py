@@ -1,11 +1,9 @@
 import os
 import pkg_resources
 import re
+from os.path import isfile, join as pj
 
 import yaml
-from os import listdir
-import pkg_resources
-from os.path import isfile, dirname, join as pj
 
 
 def load_yaml(filename):
@@ -14,13 +12,14 @@ def load_yaml(filename):
         return yaml.safe_load(f)
 
 
-def load_definitions(filename):
-    definitions = load_yaml(filename)
+def load_descriptions(filename):
+    descriptions = load_yaml(filename)
     result = {}
     # we can select what properties to add in the future
-    if '_meta' in definitions.keys():
-        result['_meta'] = definitions.get('_meta')
+    if '_meta' in descriptions:
+        result['_meta'] = descriptions.get('_meta')
     return result
+
 
 def get_es_models(es_model_dir=None):
     """
@@ -53,10 +52,10 @@ def get_es_models(es_model_dir=None):
                 es_models[es_index][es_type] = {
                         '_mapping': load_yaml(pj(es_model_dir, es_index, f))
                     }
-                defs_name = pj(es_model_dir, es_index,'definitions.yaml')
-                if isfile(defs_name):
-                    definitions = load_definitions(defs_name)
-                    es_models[es_index][es_type]['_mapping'].update(definitions)
+                desc_path = pj(es_model_dir, es_index, 'descriptions.yaml')
+                if isfile(desc_path):
+                    descriptions = load_descriptions(desc_path)
+                    es_models[es_index][es_type]['_mapping'].update(descriptions)
             elif f == 'settings.yaml':
                 es_models[es_index]['_settings'] = load_yaml(
                     os.path.join(es_model_dir, es_index, f)
