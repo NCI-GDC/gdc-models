@@ -31,9 +31,6 @@ def test_get_es_models_standard_behavior():
 
     assert len(models) == 12
 
-    assert all('_meta' in models['gdc_from_graph'][dtype]['_mapping']
-               for dtype in ['case', 'project', 'file', 'annotation'])
-
     for dtype in ['case', 'project', 'file', 'annotation']:
         dtype_mapping = models['gdc_from_graph'][dtype]['_mapping']
         assert '_meta' in dtype_mapping, dtype_mapping.keys()
