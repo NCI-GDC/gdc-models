@@ -16,6 +16,7 @@ properties:
             type: keyword
           variant_id:
             type: keyword
+    type: nested
   consequence:
     properties:
       consequence_id:
