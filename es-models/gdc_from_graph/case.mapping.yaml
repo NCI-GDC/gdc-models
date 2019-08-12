@@ -55,8 +55,7 @@ properties:
         type: text
     type: keyword
   case_id:
-    copy_to:
-    - case_autocomplete
+    copy_to: case_autocomplete
     type: keyword
   created_datetime:
     type: keyword
@@ -68,7 +67,11 @@ properties:
     properties:
       age_at_index:
         type: long
+      age_is_obfuscated:
+        type: keyword
       cause_of_death:
+        type: keyword
+      cause_of_death_source:
         type: keyword
       created_datetime:
         type: keyword
@@ -82,6 +85,8 @@ properties:
         type: keyword
       gender:
         type: keyword
+      occupation_duration_years:
+        type: long
       premature_at_birth:
         type: keyword
       race:
@@ -173,6 +178,8 @@ properties:
         type: nested
       best_overall_response:
         type: keyword
+      breslow_thickness:
+        type: long
       burkitt_lymphoma_clinical_variant:
         type: keyword
       child_pugh_classification:
@@ -239,6 +246,8 @@ properties:
         type: keyword
       inss_stage:
         type: keyword
+      international_prognostic_index:
+        type: keyword
       irs_group:
         type: keyword
       irs_stage:
@@ -246,6 +255,8 @@ properties:
       ishak_fibrosis_score:
         type: keyword
       iss_stage:
+        type: keyword
+      largest_extrapelvic_peritoneal_focus:
         type: keyword
       last_known_disease_status:
         type: keyword
@@ -271,14 +282,28 @@ properties:
         type: keyword
       mitosis_karyorrhexis_index:
         type: keyword
+      mitotic_count:
+        type: long
       morphology:
         type: keyword
+      non_nodal_regional_disease:
+        type: keyword
+      non_nodal_tumor_deposits:
+        type: keyword
+      ovarian_specimen_status:
+        type: keyword
+      ovarian_surface_involvement:
+        type: keyword
+      percent_tumor_invasion:
+        type: long
       perineural_invasion_present:
         type: keyword
       peripancreatic_lymph_nodes_positive:
         type: keyword
       peripancreatic_lymph_nodes_tested:
         type: long
+      peritoneal_fluid_cytological_status:
+        type: keyword
       primary_diagnosis:
         type: keyword
       primary_gleason_grade:
@@ -442,6 +467,8 @@ properties:
         type: keyword
       relative_with_cancer_history:
         type: keyword
+      relatives_with_cancer_history_count:
+        type: long
       state:
         type: keyword
       submitter_id:
@@ -509,6 +536,10 @@ properties:
                 type: keyword
               mean_coverage:
                 type: long
+              msi_score:
+                type: long
+              msi_status:
+                type: keyword
               pairs_on_diff_chr:
                 type: long
               plate_name:
@@ -832,6 +863,10 @@ properties:
                 type: keyword
               mean_coverage:
                 type: long
+              msi_score:
+                type: long
+              msi_status:
+                type: keyword
               pairs_on_diff_chr:
                 type: long
               plate_name:
@@ -942,6 +977,10 @@ properties:
             type: keyword
           mean_coverage:
             type: long
+          msi_score:
+            type: long
+          msi_status:
+            type: keyword
           pairs_on_diff_chr:
             type: long
           plate_name:
@@ -1016,6 +1055,10 @@ properties:
           updated_datetime:
             type: keyword
         type: nested
+      msi_score:
+        type: long
+      msi_status:
+        type: keyword
       origin:
         type: keyword
       pairs_on_diff_chr:
@@ -1160,6 +1203,8 @@ properties:
           molecular_consequence:
             type: keyword
           molecular_test_id:
+            type: keyword
+          pathogenicity:
             type: keyword
           ploidy:
             type: keyword
@@ -1345,8 +1390,7 @@ properties:
               aliquots:
                 properties:
                   aliquot_id:
-                    copy_to:
-                    - case_autocomplete
+                    copy_to: case_autocomplete
                     type: keyword
                   aliquot_quantity:
                     type: long
@@ -1434,8 +1478,7 @@ properties:
                   state:
                     type: keyword
                   submitter_id:
-                    copy_to:
-                    - case_autocomplete
+                    copy_to: case_autocomplete
                     type: keyword
                   updated_datetime:
                     type: keyword
@@ -1443,8 +1486,7 @@ properties:
               amount:
                 type: long
               analyte_id:
-                copy_to:
-                - case_autocomplete
+                copy_to: case_autocomplete
                 type: keyword
               analyte_quantity:
                 type: long
@@ -1504,8 +1546,7 @@ properties:
               state:
                 type: keyword
               submitter_id:
-                copy_to:
-                - case_autocomplete
+                copy_to: case_autocomplete
                 type: keyword
               updated_datetime:
                 type: keyword
@@ -1570,8 +1611,7 @@ properties:
           is_ffpe:
             type: keyword
           portion_id:
-            copy_to:
-            - case_autocomplete
+            copy_to: case_autocomplete
             type: keyword
           portion_number:
             type: keyword
@@ -1643,14 +1683,12 @@ properties:
               section_location:
                 type: keyword
               slide_id:
-                copy_to:
-                - case_autocomplete
+                copy_to: case_autocomplete
                 type: keyword
               state:
                 type: keyword
               submitter_id:
-                copy_to:
-                - case_autocomplete
+                copy_to: case_autocomplete
                 type: keyword
               updated_datetime:
                 type: keyword
@@ -1658,8 +1696,7 @@ properties:
           state:
             type: keyword
           submitter_id:
-            copy_to:
-            - case_autocomplete
+            copy_to: case_autocomplete
             type: keyword
           updated_datetime:
             type: keyword
@@ -1669,8 +1706,7 @@ properties:
       preservation_method:
         type: keyword
       sample_id:
-        copy_to:
-        - case_autocomplete
+        copy_to: case_autocomplete
         type: keyword
       sample_type:
         type: keyword
@@ -1681,8 +1717,7 @@ properties:
       state:
         type: keyword
       submitter_id:
-        copy_to:
-        - case_autocomplete
+        copy_to: case_autocomplete
         type: keyword
       time_between_clamping_and_freezing:
         type: long
@@ -1710,8 +1745,7 @@ properties:
   submitter_diagnosis_ids:
     type: keyword
   submitter_id:
-    copy_to:
-    - case_autocomplete
+    copy_to: case_autocomplete
     type: keyword
   submitter_portion_ids:
     type: keyword
