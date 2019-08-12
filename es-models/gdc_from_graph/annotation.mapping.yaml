@@ -22,6 +22,7 @@ properties:
     normalizer: clinical_normalizer
     type: keyword
   case_submitter_id:
+    normalizer: clinical_normalizer
     type: keyword
   category:
     normalizer: clinical_normalizer
@@ -36,6 +37,7 @@ properties:
     normalizer: clinical_normalizer
     type: keyword
   entity_submitter_id:
+    normalizer: clinical_normalizer
     type: keyword
   entity_type:
     normalizer: clinical_normalizer
