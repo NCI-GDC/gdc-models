@@ -1,19 +1,25 @@
 properties:
   access:
+    normalizer: clinical_normalizer
     type: keyword
   acl:
+    normalizer: clinical_normalizer
     type: keyword
   analysis:
     properties:
       analysis_id:
+        normalizer: clinical_normalizer
         type: keyword
       analysis_type:
+        normalizer: clinical_normalizer
         type: keyword
       created_datetime:
+        normalizer: clinical_normalizer
         type: keyword
       input_files:
         properties:
           access:
+            normalizer: clinical_normalizer
             type: keyword
           average_base_quality:
             type: long
@@ -22,52 +28,69 @@ properties:
           average_read_length:
             type: long
           channel:
+            normalizer: clinical_normalizer
             type: keyword
           chip_id:
+            normalizer: clinical_normalizer
             type: keyword
           chip_position:
+            normalizer: clinical_normalizer
             type: keyword
           contamination:
             type: long
           contamination_error:
             type: long
           created_datetime:
+            normalizer: clinical_normalizer
             type: keyword
           data_category:
+            normalizer: clinical_normalizer
             type: keyword
           data_format:
+            normalizer: clinical_normalizer
             type: keyword
           data_type:
+            normalizer: clinical_normalizer
             type: keyword
           error_type:
+            normalizer: clinical_normalizer
             type: keyword
           experimental_strategy:
+            normalizer: clinical_normalizer
             type: keyword
           file_id:
+            normalizer: clinical_normalizer
             type: keyword
           file_name:
+            normalizer: clinical_normalizer
             type: keyword
           file_size:
             type: long
           imaging_date:
+            normalizer: clinical_normalizer
             type: keyword
           magnification:
             type: long
           md5sum:
+            normalizer: clinical_normalizer
             type: keyword
           mean_coverage:
             type: long
           msi_score:
             type: long
           msi_status:
+            normalizer: clinical_normalizer
             type: keyword
           pairs_on_diff_chr:
             type: long
           plate_name:
+            normalizer: clinical_normalizer
             type: keyword
           plate_well:
+            normalizer: clinical_normalizer
             type: keyword
           platform:
+            normalizer: clinical_normalizer
             type: keyword
           proportion_base_mismatch:
             type: long
@@ -82,18 +105,22 @@ properties:
           proportion_targets_no_coverage:
             type: long
           read_pair_number:
+            normalizer: clinical_normalizer
             type: keyword
           revision:
             type: long
           state:
+            normalizer: clinical_normalizer
             type: keyword
           state_comment:
+            normalizer: clinical_normalizer
             type: keyword
           submitter_id:
             type: keyword
           total_reads:
             type: long
           updated_datetime:
+            normalizer: clinical_normalizer
             type: keyword
         type: nested
       metadata:
@@ -103,20 +130,27 @@ properties:
               RIN:
                 type: long
               adapter_name:
+                normalizer: clinical_normalizer
                 type: keyword
               adapter_sequence:
+                normalizer: clinical_normalizer
                 type: keyword
               base_caller_name:
+                normalizer: clinical_normalizer
                 type: keyword
               base_caller_version:
+                normalizer: clinical_normalizer
                 type: keyword
               created_datetime:
+                normalizer: clinical_normalizer
                 type: keyword
               days_to_sequencing:
                 type: long
               experiment_name:
+                normalizer: clinical_normalizer
                 type: keyword
               flow_cell_barcode:
+                normalizer: clinical_normalizer
                 type: keyword
               fragment_maximum_length:
                 type: long
@@ -127,217 +161,307 @@ properties:
               fragment_standard_deviation_length:
                 type: long
               includes_spike_ins:
+                normalizer: clinical_normalizer
                 type: keyword
               instrument_model:
+                normalizer: clinical_normalizer
                 type: keyword
               is_paired_end:
+                normalizer: clinical_normalizer
                 type: keyword
               lane_number:
                 type: long
               library_name:
+                normalizer: clinical_normalizer
                 type: keyword
               library_preparation_kit_catalog_number:
+                normalizer: clinical_normalizer
                 type: keyword
               library_preparation_kit_name:
+                normalizer: clinical_normalizer
                 type: keyword
               library_preparation_kit_vendor:
+                normalizer: clinical_normalizer
                 type: keyword
               library_preparation_kit_version:
+                normalizer: clinical_normalizer
                 type: keyword
               library_selection:
+                normalizer: clinical_normalizer
                 type: keyword
               library_strand:
+                normalizer: clinical_normalizer
                 type: keyword
               library_strategy:
+                normalizer: clinical_normalizer
                 type: keyword
               multiplex_barcode:
+                normalizer: clinical_normalizer
                 type: keyword
               platform:
+                normalizer: clinical_normalizer
                 type: keyword
               read_group_id:
+                normalizer: clinical_normalizer
                 type: keyword
               read_group_name:
+                normalizer: clinical_normalizer
                 type: keyword
               read_group_qcs:
                 properties:
                   adapter_content:
+                    normalizer: clinical_normalizer
                     type: keyword
                   basic_statistics:
+                    normalizer: clinical_normalizer
                     type: keyword
                   created_datetime:
+                    normalizer: clinical_normalizer
                     type: keyword
                   encoding:
+                    normalizer: clinical_normalizer
                     type: keyword
                   fastq_name:
+                    normalizer: clinical_normalizer
                     type: keyword
                   kmer_content:
+                    normalizer: clinical_normalizer
                     type: keyword
                   overrepresented_sequences:
+                    normalizer: clinical_normalizer
                     type: keyword
                   per_base_n_content:
+                    normalizer: clinical_normalizer
                     type: keyword
                   per_base_sequence_content:
+                    normalizer: clinical_normalizer
                     type: keyword
                   per_base_sequence_quality:
+                    normalizer: clinical_normalizer
                     type: keyword
                   per_sequence_gc_content:
+                    normalizer: clinical_normalizer
                     type: keyword
                   per_sequence_quality_score:
+                    normalizer: clinical_normalizer
                     type: keyword
                   per_tile_sequence_quality:
+                    normalizer: clinical_normalizer
                     type: keyword
                   percent_gc_content:
                     type: long
                   read_group_qc_id:
+                    normalizer: clinical_normalizer
                     type: keyword
                   sequence_duplication_levels:
+                    normalizer: clinical_normalizer
                     type: keyword
                   sequence_length_distribution:
+                    normalizer: clinical_normalizer
                     type: keyword
                   state:
+                    normalizer: clinical_normalizer
                     type: keyword
                   submitter_id:
                     type: keyword
                   total_sequences:
                     type: long
                   updated_datetime:
+                    normalizer: clinical_normalizer
                     type: keyword
                   workflow_end_datetime:
+                    normalizer: clinical_normalizer
                     type: keyword
                   workflow_link:
+                    normalizer: clinical_normalizer
                     type: keyword
                   workflow_start_datetime:
+                    normalizer: clinical_normalizer
                     type: keyword
                   workflow_type:
+                    normalizer: clinical_normalizer
                     type: keyword
                   workflow_version:
+                    normalizer: clinical_normalizer
                     type: keyword
                 type: nested
               read_length:
                 type: long
               sequencing_center:
+                normalizer: clinical_normalizer
                 type: keyword
               sequencing_date:
+                normalizer: clinical_normalizer
                 type: keyword
               size_selection_range:
+                normalizer: clinical_normalizer
                 type: keyword
               spike_ins_concentration:
+                normalizer: clinical_normalizer
                 type: keyword
               spike_ins_fasta:
+                normalizer: clinical_normalizer
                 type: keyword
               state:
+                normalizer: clinical_normalizer
                 type: keyword
               submitter_id:
                 type: keyword
               target_capture_kit:
+                normalizer: clinical_normalizer
                 type: keyword
               target_capture_kit_catalog_number:
+                normalizer: clinical_normalizer
                 type: keyword
               target_capture_kit_name:
+                normalizer: clinical_normalizer
                 type: keyword
               target_capture_kit_target_region:
+                normalizer: clinical_normalizer
                 type: keyword
               target_capture_kit_vendor:
+                normalizer: clinical_normalizer
                 type: keyword
               target_capture_kit_version:
+                normalizer: clinical_normalizer
                 type: keyword
               to_trim_adapter_sequence:
+                normalizer: clinical_normalizer
                 type: keyword
               updated_datetime:
+                normalizer: clinical_normalizer
                 type: keyword
             type: nested
       state:
+        normalizer: clinical_normalizer
         type: keyword
       submitter_id:
         type: keyword
       updated_datetime:
+        normalizer: clinical_normalizer
         type: keyword
       workflow_end_datetime:
+        normalizer: clinical_normalizer
         type: keyword
       workflow_link:
+        normalizer: clinical_normalizer
         type: keyword
       workflow_start_datetime:
+        normalizer: clinical_normalizer
         type: keyword
       workflow_type:
+        normalizer: clinical_normalizer
         type: keyword
       workflow_version:
+        normalizer: clinical_normalizer
         type: keyword
   annotations:
     properties:
       annotation_id:
+        normalizer: clinical_normalizer
         type: keyword
       case_id:
+        normalizer: clinical_normalizer
         type: keyword
       case_submitter_id:
+        normalizer: clinical_normalizer
         type: keyword
       category:
+        normalizer: clinical_normalizer
         type: keyword
       classification:
+        normalizer: clinical_normalizer
         type: keyword
       created_datetime:
+        normalizer: clinical_normalizer
         type: keyword
       creator:
+        normalizer: clinical_normalizer
         type: keyword
       entity_id:
+        normalizer: clinical_normalizer
         type: keyword
       entity_submitter_id:
+        normalizer: clinical_normalizer
         type: keyword
       entity_type:
+        normalizer: clinical_normalizer
         type: keyword
       legacy_created_datetime:
+        normalizer: clinical_normalizer
         type: keyword
       legacy_updated_datetime:
+        normalizer: clinical_normalizer
         type: keyword
       notes:
+        normalizer: clinical_normalizer
         type: keyword
       state:
+        normalizer: clinical_normalizer
         type: keyword
       status:
+        normalizer: clinical_normalizer
         type: keyword
       submitter_id:
         type: keyword
       updated_datetime:
+        normalizer: clinical_normalizer
         type: keyword
     type: nested
   archive:
     properties:
       archive_id:
+        normalizer: clinical_normalizer
         type: keyword
       created_datetime:
+        normalizer: clinical_normalizer
         type: keyword
       data_category:
+        normalizer: clinical_normalizer
         type: keyword
       data_format:
+        normalizer: clinical_normalizer
         type: keyword
       data_type:
+        normalizer: clinical_normalizer
         type: keyword
       error_type:
+        normalizer: clinical_normalizer
         type: keyword
       file_name:
+        normalizer: clinical_normalizer
         type: keyword
       file_size:
         type: long
       md5sum:
+        normalizer: clinical_normalizer
         type: keyword
       revision:
         type: long
       state:
+        normalizer: clinical_normalizer
         type: keyword
       state_comment:
+        normalizer: clinical_normalizer
         type: keyword
       submitter_id:
         type: keyword
       updated_datetime:
+        normalizer: clinical_normalizer
         type: keyword
   associated_entities:
     properties:
       case_id:
+        normalizer: clinical_normalizer
         type: keyword
       entity_id:
+        normalizer: clinical_normalizer
         type: keyword
       entity_submitter_id:
+        normalizer: clinical_normalizer
         type: keyword
       entity_type:
+        normalizer: clinical_normalizer
         type: keyword
     type: nested
   average_base_quality:
@@ -1901,48 +2025,65 @@ properties:
   center:
     properties:
       center_id:
+        normalizer: clinical_normalizer
         type: keyword
       center_type:
+        normalizer: clinical_normalizer
         type: keyword
       code:
+        normalizer: clinical_normalizer
         type: keyword
       name:
+        normalizer: clinical_normalizer
         type: keyword
       namespace:
+        normalizer: clinical_normalizer
         type: keyword
       short_name:
+        normalizer: clinical_normalizer
         type: keyword
   channel:
+    normalizer: clinical_normalizer
     type: keyword
   chip_id:
+    normalizer: clinical_normalizer
     type: keyword
   chip_position:
+    normalizer: clinical_normalizer
     type: keyword
   contamination:
     type: long
   contamination_error:
     type: long
   created_datetime:
+    normalizer: clinical_normalizer
     type: keyword
   data_category:
     copy_to: file_autocomplete
+    normalizer: clinical_normalizer
     type: keyword
   data_format:
+    normalizer: clinical_normalizer
     type: keyword
   data_type:
     copy_to: file_autocomplete
+    normalizer: clinical_normalizer
     type: keyword
   downstream_analyses:
     properties:
       analysis_id:
+        normalizer: clinical_normalizer
         type: keyword
       analysis_type:
+        normalizer: clinical_normalizer
         type: keyword
       created_datetime:
+        normalizer: clinical_normalizer
         type: keyword
       output_files:
         properties:
           access:
+            normalizer: clinical_normalizer
             type: keyword
           average_base_quality:
             type: long
@@ -1951,52 +2092,69 @@ properties:
           average_read_length:
             type: long
           channel:
+            normalizer: clinical_normalizer
             type: keyword
           chip_id:
+            normalizer: clinical_normalizer
             type: keyword
           chip_position:
+            normalizer: clinical_normalizer
             type: keyword
           contamination:
             type: long
           contamination_error:
             type: long
           created_datetime:
+            normalizer: clinical_normalizer
             type: keyword
           data_category:
+            normalizer: clinical_normalizer
             type: keyword
           data_format:
+            normalizer: clinical_normalizer
             type: keyword
           data_type:
+            normalizer: clinical_normalizer
             type: keyword
           error_type:
+            normalizer: clinical_normalizer
             type: keyword
           experimental_strategy:
+            normalizer: clinical_normalizer
             type: keyword
           file_id:
+            normalizer: clinical_normalizer
             type: keyword
           file_name:
+            normalizer: clinical_normalizer
             type: keyword
           file_size:
             type: long
           imaging_date:
+            normalizer: clinical_normalizer
             type: keyword
           magnification:
             type: long
           md5sum:
+            normalizer: clinical_normalizer
             type: keyword
           mean_coverage:
             type: long
           msi_score:
             type: long
           msi_status:
+            normalizer: clinical_normalizer
             type: keyword
           pairs_on_diff_chr:
             type: long
           plate_name:
+            normalizer: clinical_normalizer
             type: keyword
           plate_well:
+            normalizer: clinical_normalizer
             type: keyword
           platform:
+            normalizer: clinical_normalizer
             type: keyword
           proportion_base_mismatch:
             type: long
@@ -2011,41 +2169,54 @@ properties:
           proportion_targets_no_coverage:
             type: long
           read_pair_number:
+            normalizer: clinical_normalizer
             type: keyword
           revision:
             type: long
           state:
+            normalizer: clinical_normalizer
             type: keyword
           state_comment:
+            normalizer: clinical_normalizer
             type: keyword
           submitter_id:
             type: keyword
           total_reads:
             type: long
           updated_datetime:
+            normalizer: clinical_normalizer
             type: keyword
         type: nested
       state:
+        normalizer: clinical_normalizer
         type: keyword
       submitter_id:
         type: keyword
       updated_datetime:
+        normalizer: clinical_normalizer
         type: keyword
       workflow_end_datetime:
+        normalizer: clinical_normalizer
         type: keyword
       workflow_link:
+        normalizer: clinical_normalizer
         type: keyword
       workflow_start_datetime:
+        normalizer: clinical_normalizer
         type: keyword
       workflow_type:
+        normalizer: clinical_normalizer
         type: keyword
       workflow_version:
+        normalizer: clinical_normalizer
         type: keyword
     type: nested
   error_type:
+    normalizer: clinical_normalizer
     type: keyword
   experimental_strategy:
     copy_to: file_autocomplete
+    normalizer: clinical_normalizer
     type: keyword
   file_autocomplete:
     fields:
@@ -2060,20 +2231,25 @@ properties:
         analyzer: autocomplete_prefix
         search_analyzer: lowercase_keyword
         type: text
+    normalizer: clinical_normalizer
     type: keyword
   file_id:
     copy_to: file_autocomplete
+    normalizer: clinical_normalizer
     type: keyword
   file_name:
     copy_to: file_autocomplete
+    normalizer: clinical_normalizer
     type: keyword
   file_size:
     type: long
   imaging_date:
+    normalizer: clinical_normalizer
     type: keyword
   index_files:
     properties:
       access:
+        normalizer: clinical_normalizer
         type: keyword
       average_base_quality:
         type: long
@@ -2082,52 +2258,69 @@ properties:
       average_read_length:
         type: long
       channel:
+        normalizer: clinical_normalizer
         type: keyword
       chip_id:
+        normalizer: clinical_normalizer
         type: keyword
       chip_position:
+        normalizer: clinical_normalizer
         type: keyword
       contamination:
         type: long
       contamination_error:
         type: long
       created_datetime:
+        normalizer: clinical_normalizer
         type: keyword
       data_category:
+        normalizer: clinical_normalizer
         type: keyword
       data_format:
+        normalizer: clinical_normalizer
         type: keyword
       data_type:
+        normalizer: clinical_normalizer
         type: keyword
       error_type:
+        normalizer: clinical_normalizer
         type: keyword
       experimental_strategy:
+        normalizer: clinical_normalizer
         type: keyword
       file_id:
+        normalizer: clinical_normalizer
         type: keyword
       file_name:
+        normalizer: clinical_normalizer
         type: keyword
       file_size:
         type: long
       imaging_date:
+        normalizer: clinical_normalizer
         type: keyword
       magnification:
         type: long
       md5sum:
+        normalizer: clinical_normalizer
         type: keyword
       mean_coverage:
         type: long
       msi_score:
         type: long
       msi_status:
+        normalizer: clinical_normalizer
         type: keyword
       pairs_on_diff_chr:
         type: long
       plate_name:
+        normalizer: clinical_normalizer
         type: keyword
       plate_well:
+        normalizer: clinical_normalizer
         type: keyword
       platform:
+        normalizer: clinical_normalizer
         type: keyword
       proportion_base_mismatch:
         type: long
@@ -2142,73 +2335,96 @@ properties:
       proportion_targets_no_coverage:
         type: long
       read_pair_number:
+        normalizer: clinical_normalizer
         type: keyword
       revision:
         type: long
       state:
+        normalizer: clinical_normalizer
         type: keyword
       state_comment:
+        normalizer: clinical_normalizer
         type: keyword
       submitter_id:
         type: keyword
       total_reads:
         type: long
       updated_datetime:
+        normalizer: clinical_normalizer
         type: keyword
     type: nested
   magnification:
     type: long
   md5sum:
     copy_to: file_autocomplete
+    normalizer: clinical_normalizer
     type: keyword
   mean_coverage:
     type: long
   metadata_files:
     properties:
       access:
+        normalizer: clinical_normalizer
         type: keyword
       created_datetime:
+        normalizer: clinical_normalizer
         type: keyword
       data_category:
+        normalizer: clinical_normalizer
         type: keyword
       data_format:
+        normalizer: clinical_normalizer
         type: keyword
       data_type:
+        normalizer: clinical_normalizer
         type: keyword
       error_type:
+        normalizer: clinical_normalizer
         type: keyword
       file_id:
+        normalizer: clinical_normalizer
         type: keyword
       file_name:
+        normalizer: clinical_normalizer
         type: keyword
       file_size:
         type: long
       md5sum:
+        normalizer: clinical_normalizer
         type: keyword
       state:
+        normalizer: clinical_normalizer
         type: keyword
       state_comment:
+        normalizer: clinical_normalizer
         type: keyword
       submitter_id:
         type: keyword
       type:
+        normalizer: clinical_normalizer
         type: keyword
       updated_datetime:
+        normalizer: clinical_normalizer
         type: keyword
     type: nested
   msi_score:
     type: long
   msi_status:
+    normalizer: clinical_normalizer
     type: keyword
   origin:
+    normalizer: clinical_normalizer
     type: keyword
   pairs_on_diff_chr:
     type: long
   plate_name:
+    normalizer: clinical_normalizer
     type: keyword
   plate_well:
+    normalizer: clinical_normalizer
     type: keyword
   platform:
+    normalizer: clinical_normalizer
     type: keyword
   proportion_base_mismatch:
     type: long
@@ -2223,21 +2439,27 @@ properties:
   proportion_targets_no_coverage:
     type: long
   read_pair_number:
+    normalizer: clinical_normalizer
     type: keyword
   revision:
     type: long
   state:
+    normalizer: clinical_normalizer
     type: keyword
   state_comment:
+    normalizer: clinical_normalizer
     type: keyword
   submitter_id:
     copy_to: file_autocomplete
     type: keyword
   tags:
+    normalizer: clinical_normalizer
     type: keyword
   total_reads:
     type: long
   type:
+    normalizer: clinical_normalizer
     type: keyword
   updated_datetime:
+    normalizer: clinical_normalizer
     type: keyword
