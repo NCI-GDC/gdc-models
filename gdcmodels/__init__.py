@@ -1,3 +1,4 @@
+import copy
 import os
 import pkg_resources
 import re
@@ -62,3 +63,58 @@ def get_es_models(es_model_dir=None):
                 )
 
     return es_models
+
+
+def comparator(a, b):
+    """
+    Compare two objects. Override the logic of comparing numeric types, so that
+    float and long are treated the same.
+    """
+    if a == b:
+        return True
+
+    number_types = ['long', 'float']
+
+    if a in number_types and b in number_types:
+        return True
+
+    return False
+
+
+def models_diff(mappings_a, mappings_b, ignore_keys=('normalizer',), cmp=None):
+    """
+    Compare mappings and return their difference. Nested dictionaries that are
+    considered "the same" will be removed completely, i.e. if two mappings are
+    exactly the same, the result will be an empty dict.
+
+    A custom comparator can be passed in to determine what to treat as the same
+
+    :param mappings_a: input mappings A
+    :param mappings_b: input mappings B
+    :param ignore_keys: keys to ignore when doing comparison
+    :param cmp: callable or None to provide a custom comparator
+    :return: Dict - result mappings
+    """
+    cmp = cmp or comparator
+
+    result = copy.deepcopy(mappings_a)
+
+    for key in ignore_keys:
+        result.pop(key, None)
+
+    for key, value in mappings_b.items():
+        if key not in result:
+            continue
+
+        if cmp(value, result[key]):
+            result.pop(key)
+            continue
+
+        if isinstance(value, dict):
+            nested = models_diff(result[key], value, ignore_keys)
+            if not nested:
+                result.pop(key)
+            else:
+                result[key] = nested
+
+    return result
