@@ -52,7 +52,6 @@ properties:
   project:
     properties:
       code:
-        normalizer: clinical_normalizer
         type: keyword
       dbgap_accession_number:
         normalizer: clinical_normalizer
@@ -64,7 +63,6 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       name:
-        normalizer: clinical_normalizer
         type: keyword
       primary_site:
         normalizer: clinical_normalizer
@@ -75,7 +73,6 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           name:
-            normalizer: clinical_normalizer
             type: keyword
           program_id:
             normalizer: clinical_normalizer
