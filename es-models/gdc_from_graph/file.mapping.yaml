@@ -278,7 +278,6 @@ properties:
                     normalizer: clinical_normalizer
                     type: keyword
                   workflow_type:
-                    normalizer: clinical_normalizer
                     type: keyword
                   workflow_version:
                     normalizer: clinical_normalizer
@@ -349,7 +348,6 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       workflow_type:
-        normalizer: clinical_normalizer
         type: keyword
       workflow_version:
         normalizer: clinical_normalizer
@@ -2175,7 +2173,6 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       workflow_type:
-        normalizer: clinical_normalizer
         type: keyword
       workflow_version:
         normalizer: clinical_normalizer
