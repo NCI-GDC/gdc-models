@@ -56,7 +56,6 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           experimental_strategy:
-            normalizer: clinical_normalizer
             type: keyword
           file_id:
             normalizer: clinical_normalizer
@@ -279,7 +278,6 @@ properties:
                     normalizer: clinical_normalizer
                     type: keyword
                   workflow_type:
-                    normalizer: clinical_normalizer
                     type: keyword
                   workflow_version:
                     normalizer: clinical_normalizer
@@ -350,7 +348,6 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       workflow_type:
-        normalizer: clinical_normalizer
         type: keyword
       workflow_version:
         normalizer: clinical_normalizer
@@ -1342,7 +1339,6 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           name:
-            normalizer: clinical_normalizer
             type: keyword
           primary_site:
             normalizer: clinical_normalizer
@@ -1353,7 +1349,6 @@ properties:
                 normalizer: clinical_normalizer
                 type: keyword
               name:
-                normalizer: clinical_normalizer
                 type: keyword
               program_id:
                 normalizer: clinical_normalizer
@@ -1563,10 +1558,8 @@ properties:
                             normalizer: clinical_normalizer
                             type: keyword
                           code:
-                            normalizer: clinical_normalizer
                             type: keyword
                           name:
-                            normalizer: clinical_normalizer
                             type: keyword
                           namespace:
                             normalizer: clinical_normalizer
@@ -1766,10 +1759,8 @@ properties:
                     normalizer: clinical_normalizer
                     type: keyword
                   code:
-                    normalizer: clinical_normalizer
                     type: keyword
                   name:
-                    normalizer: clinical_normalizer
                     type: keyword
                   namespace:
                     normalizer: clinical_normalizer
@@ -1975,7 +1966,6 @@ properties:
           experimental_strategies:
             properties:
               experimental_strategy:
-                normalizer: clinical_normalizer
                 type: keyword
               file_count:
                 type: long
@@ -1990,10 +1980,8 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           code:
-            normalizer: clinical_normalizer
             type: keyword
           name:
-            normalizer: clinical_normalizer
             type: keyword
           project:
             normalizer: clinical_normalizer
@@ -2014,10 +2002,8 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       code:
-        normalizer: clinical_normalizer
         type: keyword
       name:
-        normalizer: clinical_normalizer
         type: keyword
       namespace:
         normalizer: clinical_normalizer
@@ -2103,7 +2089,6 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           experimental_strategy:
-            normalizer: clinical_normalizer
             type: keyword
           file_id:
             normalizer: clinical_normalizer
@@ -2188,7 +2173,6 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       workflow_type:
-        normalizer: clinical_normalizer
         type: keyword
       workflow_version:
         normalizer: clinical_normalizer
@@ -2199,7 +2183,6 @@ properties:
     type: keyword
   experimental_strategy:
     copy_to: file_autocomplete
-    normalizer: clinical_normalizer
     type: keyword
   file_autocomplete:
     fields:
@@ -2269,7 +2252,6 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       experimental_strategy:
-        normalizer: clinical_normalizer
         type: keyword
       file_id:
         normalizer: clinical_normalizer
