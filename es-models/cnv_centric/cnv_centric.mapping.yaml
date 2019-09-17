@@ -166,6 +166,8 @@ properties:
                 type: keyword
               masaoka_stage:
                 type: keyword
+              metastasis_at_diagnosis:
+                type: keyword
               method_of_diagnosis:
                 type: keyword
               morphology:
