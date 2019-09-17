@@ -78,6 +78,8 @@ properties:
             type: keyword
           colon_polyps_history:
             type: keyword
+          days_to_diagnosis:
+            type: long
           days_to_hiv_diagnosis:
             type: long
           days_to_last_follow_up:
@@ -98,6 +100,16 @@ properties:
             type: keyword
           hpv_status:
             type: keyword
+          icd_10_code:
+            type: keyword
+          igcccg_stage:
+            type: keyword
+          inss_stage:
+            type: keyword
+          international_prognostic_index:
+            type: keyword
+          iss_stage:
+            type: keyword
           last_known_disease_status:
             type: keyword
           laterality:
@@ -109,6 +121,8 @@ properties:
           lymph_nodes_positive:
             type: long
           lymphatic_invasion_present:
+            type: keyword
+          masaoka_stage:
             type: keyword
           method_of_diagnosis:
             type: keyword
@@ -122,6 +136,8 @@ properties:
             type: keyword
           primary_diagnosis:
             type: keyword
+          primary_gleason_grade:
+            type: keyword
           prior_malignancy:
             type: keyword
           prior_treatment:
@@ -130,11 +146,15 @@ properties:
             type: keyword
           residual_disease:
             type: keyword
+          secondary_gleason_grade:
+            type: keyword
           site_of_resection_or_biopsy:
             type: keyword
           state:
             type: keyword
           submitter_id:
+            type: keyword
+          synchronous_malignancy:
             type: keyword
           tissue_or_organ_of_origin:
             type: keyword
@@ -226,6 +246,10 @@ properties:
           submitter_id:
             type: keyword
         type: nested
+      index_date:
+        type: keyword
+      lost_to_followup:
+        type: keyword
       observation:
         properties:
           observation_id:
