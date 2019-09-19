@@ -30,6 +30,8 @@ properties:
     type: long
   demographic:
     properties:
+      age_at_index:
+        type: long
       cause_of_death:
         type: keyword
       days_to_birth:
@@ -184,6 +186,10 @@ properties:
             type: long
           days_to_treatment_start:
             type: long
+          initial_disease_status:
+            type: keyword
+          regimen_or_line_of_therapy:
+            type: keyword
           state:
             type: keyword
           submitter_id:
