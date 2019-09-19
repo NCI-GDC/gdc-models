@@ -92,6 +92,8 @@ properties:
         type: long
       classification_of_tumor:
         type: keyword
+      cog_renal_stage:
+        type: keyword
       colon_polyps_history:
         type: keyword
       days_to_diagnosis:
@@ -208,6 +210,8 @@ properties:
       tumor_stage:
         type: keyword
       vascular_invasion_present:
+        type: keyword
+      vascular_invasion_type:
         type: keyword
       year_of_diagnosis:
         type: long
