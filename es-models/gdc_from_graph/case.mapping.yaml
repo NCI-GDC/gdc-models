@@ -701,7 +701,6 @@ properties:
                 normalizer: clinical_normalizer
                 type: keyword
               data_type:
-                normalizer: clinical_normalizer
                 type: keyword
               error_type:
                 normalizer: clinical_normalizer
@@ -1018,7 +1017,6 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           data_type:
-            normalizer: clinical_normalizer
             type: keyword
           error_type:
             normalizer: clinical_normalizer
@@ -1091,7 +1089,6 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       data_type:
-        normalizer: clinical_normalizer
         type: keyword
       downstream_analyses:
         properties:
@@ -1138,7 +1135,6 @@ properties:
                 normalizer: clinical_normalizer
                 type: keyword
               data_type:
-                normalizer: clinical_normalizer
                 type: keyword
               error_type:
                 normalizer: clinical_normalizer
@@ -1283,7 +1279,6 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           data_type:
-            normalizer: clinical_normalizer
             type: keyword
           error_type:
             normalizer: clinical_normalizer
@@ -1377,7 +1372,6 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           data_type:
-            normalizer: clinical_normalizer
             type: keyword
           error_type:
             normalizer: clinical_normalizer
