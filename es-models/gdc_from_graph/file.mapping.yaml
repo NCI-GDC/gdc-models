@@ -1982,7 +1982,6 @@ properties:
           name:
             type: keyword
           project:
-            normalizer: clinical_normalizer
             type: keyword
           tissue_source_site_id:
             normalizer: clinical_normalizer
