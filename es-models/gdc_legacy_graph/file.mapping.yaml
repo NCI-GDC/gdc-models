@@ -388,6 +388,14 @@ properties:
           updated_datetime:
             type: keyword
         type: nested
+      follow_ups:
+        properties:
+          molecular_tests:
+            properties:
+              submitter_id:
+                type: keyword
+            type: nested
+        type: nested
       index_date:
         type: keyword
       lost_to_followup:
