@@ -1,27 +1,30 @@
 properties:
   dbgap_accession_number:
+    normalizer: clinical_normalizer
     type: keyword
   disease_type:
-    copy_to:
-    - project_autocomplete
+    copy_to: project_autocomplete
+    normalizer: clinical_normalizer
     type: keyword
   intended_release_date:
+    normalizer: clinical_normalizer
     type: keyword
   name:
-    copy_to:
-    - project_autocomplete
+    copy_to: project_autocomplete
     type: keyword
   primary_site:
-    copy_to:
-    - project_autocomplete
+    copy_to: project_autocomplete
+    normalizer: clinical_normalizer
     type: keyword
   program:
     properties:
       dbgap_accession_number:
+        normalizer: clinical_normalizer
         type: keyword
       name:
         type: keyword
       program_id:
+        normalizer: clinical_normalizer
         type: keyword
   project_autocomplete:
     fields:
@@ -36,16 +39,19 @@ properties:
         analyzer: autocomplete_prefix
         search_analyzer: lowercase_keyword
         type: text
+    normalizer: clinical_normalizer
     type: keyword
   project_id:
-    copy_to:
-    - project_autocomplete
+    copy_to: project_autocomplete
     type: keyword
   releasable:
+    normalizer: clinical_normalizer
     type: keyword
   released:
+    normalizer: clinical_normalizer
     type: keyword
   state:
+    normalizer: clinical_normalizer
     type: keyword
   summary:
     properties:
@@ -56,6 +62,7 @@ properties:
           case_count:
             type: long
           data_category:
+            normalizer: clinical_normalizer
             type: keyword
           file_count:
             type: long

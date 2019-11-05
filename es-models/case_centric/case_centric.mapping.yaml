@@ -26,16 +26,14 @@ properties:
     copy_to:
     - case_autocomplete
     type: keyword
-  created_datetime:
-    type: date
   days_to_index:
     type: long
   demographic:
     properties:
+      age_at_index:
+        type: long
       cause_of_death:
         type: keyword
-      created_datetime:
-        type: date
       days_to_birth:
         type: long
       days_to_death:
@@ -52,8 +50,6 @@ properties:
         type: keyword
       submitter_id:
         type: keyword
-      updated_datetime:
-        type: date
       vital_status:
         type: keyword
       year_of_birth:
@@ -98,10 +94,12 @@ properties:
         type: long
       classification_of_tumor:
         type: keyword
+      cog_renal_stage:
+        type: keyword
       colon_polyps_history:
         type: keyword
-      created_datetime:
-        type: date
+      days_to_diagnosis:
+        type: long
       days_to_hiv_diagnosis:
         type: long
       days_to_last_follow_up:
@@ -122,6 +120,16 @@ properties:
         type: keyword
       hpv_status:
         type: keyword
+      icd_10_code:
+        type: keyword
+      igcccg_stage:
+        type: keyword
+      inss_stage:
+        type: keyword
+      international_prognostic_index:
+        type: keyword
+      iss_stage:
+        type: keyword
       last_known_disease_status:
         type: keyword
       laterality:
@@ -133,6 +141,10 @@ properties:
       lymph_nodes_positive:
         type: long
       lymphatic_invasion_present:
+        type: keyword
+      masaoka_stage:
+        type: keyword
+      metastasis_at_diagnosis:
         type: keyword
       method_of_diagnosis:
         type: keyword
@@ -146,6 +158,8 @@ properties:
         type: keyword
       primary_diagnosis:
         type: keyword
+      primary_gleason_grade:
+        type: keyword
       prior_malignancy:
         type: keyword
       prior_treatment:
@@ -154,22 +168,28 @@ properties:
         type: keyword
       residual_disease:
         type: keyword
+      secondary_gleason_grade:
+        type: keyword
       site_of_resection_or_biopsy:
         type: keyword
       state:
         type: keyword
       submitter_id:
         type: keyword
+      synchronous_malignancy:
+        type: keyword
       tissue_or_organ_of_origin:
         type: keyword
       treatments:
         properties:
-          created_datetime:
-            type: date
           days_to_treatment_end:
             type: long
           days_to_treatment_start:
             type: long
+          initial_disease_status:
+            type: keyword
+          regimen_or_line_of_therapy:
+            type: keyword
           state:
             type: keyword
           submitter_id:
@@ -188,8 +208,6 @@ properties:
             type: keyword
           treatment_type:
             type: keyword
-          updated_datetime:
-            type: date
         type: nested
       tumor_grade:
         type: keyword
@@ -197,9 +215,9 @@ properties:
         type: long
       tumor_stage:
         type: keyword
-      updated_datetime:
-        type: date
       vascular_invasion_present:
+        type: keyword
+      vascular_invasion_type:
         type: keyword
       year_of_diagnosis:
         type: long
@@ -218,8 +236,6 @@ properties:
         type: float
       cigarettes_per_day:
         type: float
-      created_datetime:
-        type: date
       exposure_id:
         type: keyword
       height:
@@ -236,8 +252,6 @@ properties:
         type: long
       tobacco_smoking_status:
         type: keyword
-      updated_datetime:
-        type: date
       weight:
         type: float
       years_smoked:
@@ -245,8 +259,6 @@ properties:
     type: nested
   family_histories:
     properties:
-      created_datetime:
-        type: date
       family_history_id:
         type: keyword
       relationship_age_at_diagnosis:
@@ -263,8 +275,6 @@ properties:
         type: keyword
       submitter_id:
         type: keyword
-      updated_datetime:
-        type: date
     type: nested
   gene:
     properties:
@@ -278,21 +288,6 @@ properties:
             type: keyword
           cnv_id:
             type: keyword
-          consequence:
-            properties:
-              consequence_id:
-                type: keyword
-              gene:
-                properties:
-                  biotype:
-                    type: keyword
-                  gene_id:
-                    type: keyword
-                  is_cancer_gene_census:
-                    type: boolean
-                  symbol:
-                    type: keyword
-            type: nested
           end_position:
             type: long
           gene_level_cn:
@@ -329,6 +324,14 @@ properties:
         properties:
           chromosome:
             type: keyword
+          clinical_annotations:
+            properties:
+              civic:
+                properties:
+                  gene_id:
+                    type: keyword
+                  variant_id:
+                    type: keyword
           consequence:
             properties:
               consequence_id:
@@ -491,6 +494,10 @@ properties:
       symbol:
         type: keyword
     type: nested
+  index_date:
+    type: keyword
+  lost_to_followup:
+    type: keyword
   primary_site:
     copy_to:
     - case_autocomplete
@@ -524,12 +531,6 @@ properties:
       project_id:
         copy_to:
         - case_autocomplete
-        type: keyword
-      releasable:
-        type: keyword
-      released:
-        type: boolean
-      state:
         type: keyword
   samples:
     properties:
@@ -575,5 +576,3 @@ properties:
         type: keyword
       tissue_source_site_id:
         type: keyword
-  updated_datetime:
-    type: date

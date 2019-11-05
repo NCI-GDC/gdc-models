@@ -1,0 +1,1076 @@
+_meta:
+  descriptions:
+    annotations.aliquot.aliquot_quantity: The quantity in micrograms (ug) of the aliquot(s)
+      derived from the analyte(s) shipped for sequencing and characterization.
+    annotations.aliquot.aliquot_volume: The volume in microliters (ml) of the aliquot(s)
+      derived from the analyte(s) shipped for sequencing and characterization.
+    annotations.aliquot.amount: Weight in grams or volume in mL.
+    annotations.aliquot.analyte_type: Text term that represents the kind of molecular
+      specimen analyte.
+    annotations.aliquot.analyte_type_id: A single letter code used to identify a type
+      of molecular analyte.
+    annotations.aliquot.concentration: Numeric value that represents the concentration
+      of an analyte or aliquot extracted from the sample or sample portion, measured
+      in milligrams per milliliter.
+    annotations.aliquot.created_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.aliquot.project_id: Unique ID for any specific defined piece of work
+      that is undertaken or attempted to meet a single requirement.
+    annotations.aliquot.source_center: Name of the center that provided the item.
+    annotations.aliquot.state: The current state of the object.
+    annotations.aliquot.submitter_id: The legacy barcode used before prior to the
+      use UUIDs. For TCGA this is bcraliquotbarcode.
+    annotations.aliquot.updated_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.analyte.a260_a280_ratio: Numeric value that represents the sample
+      ratio of nucleic acid absorbance at 260 nm and 280 nm, used to determine a measure
+      of DNA purity.
+    annotations.analyte.amount: Weight in grams or volume in mL.
+    annotations.analyte.analyte_quantity: The quantity in micrograms (ug) of the analyte(s)
+      derived from the analyte(s) shipped for sequencing and characterization.
+    annotations.analyte.analyte_type: Text term that represents the kind of molecular
+      specimen analyte.
+    annotations.analyte.analyte_type_id: A single letter code used to identify a type
+      of molecular analyte.
+    annotations.analyte.analyte_volume: The volume in microliters (ml) of the analyte(s)
+      derived from the analyte(s) shipped for sequencing and characterization.
+    annotations.analyte.concentration: Numeric value that represents the concentration
+      of an analyte or aliquot extracted from the sample or sample portion, measured
+      in milligrams per milliliter.
+    annotations.analyte.created_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.analyte.normal_tumor_genotype_snp_match: Text term that represents
+      whether or not the genotype of the normal tumor matches or if the data is not
+      available.
+    annotations.analyte.project_id: Unique ID for any specific defined piece of work
+      that is undertaken or attempted to meet a single requirement.
+    annotations.analyte.ribosomal_rna_28s_16s_ratio: The 28S/18S ribosomal RNA band
+      ratio used to assess the quality of total RNA.
+    annotations.analyte.spectrophotometer_method: Name of the method used to determine
+      the concentration of purified nucleic acid within a solution.
+    annotations.analyte.state: The current state of the object.
+    annotations.analyte.submitter_id: The legacy barcode used before prior to the
+      use UUIDs, varies by project. For TCGA this is bcranalytebarcode.
+    annotations.analyte.updated_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.analyte.well_number: Numeric value that represents the the well location
+      within a plate for the analyte or aliquot from the sample.
+    annotations.annotation.created_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.annotation.error_type: null
+    annotations.annotation.file_name: null
+    annotations.annotation.file_size: null
+    annotations.annotation.file_state: null
+    annotations.annotation.md5sum: null
+    annotations.annotation.project_id: Unique ID for any specific defined piece of
+      work that is undertaken or attempted to meet a single requirement.
+    annotations.annotation.state: The current state of the object.
+    annotations.annotation.state_comment: null
+    annotations.annotation.submitter_id: null
+    annotations.annotation.updated_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.case.created_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.case.days_to_lost_to_followup: The number of days between the date
+      used for index and to the date the patient was lost to follow-up.
+    annotations.case.disease_type: Full name for the project.
+    annotations.case.index_date: The reference or anchor date used during date obfuscation,
+      where a single date is obscurred by creating one or more date ranges in relation
+      to this date.
+    annotations.case.lost_to_followup: A yes/no indicator related to whether a patient
+      was unable to be contacted for follow-up.
+    annotations.case.primary_site: Primary site for the project.
+    annotations.case.project_id: Unique ID for any specific defined piece of work
+      that is undertaken or attempted to meet a single requirement.
+    annotations.case.state: The current state of the object.
+    annotations.case.submitter_id: null
+    annotations.case.updated_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.file.created_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.file.error_type: Type of error for the data file object.
+    annotations.file.file_name: The file (object) name
+    annotations.file.file_size: The size file (object) in bytes
+    annotations.file.file_state: The current state of the data file object.
+    annotations.file.md5sum: The MD5 hash of this file
+    annotations.file.project_id: null
+    annotations.file.state: The current state of the object.
+    annotations.file.state_comment: Optional comment about why the file is in the
+      current state, mainly for invalid state.
+    annotations.file.submitter_id: The file id assigned by the submitter
+    annotations.file.updated_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.portion.created_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.portion.creation_datetime: The datetime of portion creation encoded
+      as seconds from epoch.
+    annotations.portion.is_ffpe: Indicator to signify whether or not the tissue sample
+      was fixed in formalin and embedded in paraffin (FFPE).
+    annotations.portion.portion_number: Numeric value that represents the sequential
+      number assigned to a portion of the sample.
+    annotations.portion.project_id: Unique ID for any specific defined piece of work
+      that is undertaken or attempted to meet a single requirement.
+    annotations.portion.state: The current state of the object.
+    annotations.portion.submitter_id: The legacy barcode used before prior to the
+      use UUIDs, varies by project. For TCGA this is bcrportionbarcode.
+    annotations.portion.updated_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.portion.weight: Numeric value that represents the sample portion weight,
+      measured in milligrams.
+    annotations.project.code: Project code
+    annotations.project.dbgap_accession_number: The dbgap accession number for the
+      project.
+    annotations.project.disease_type: Full name for the project
+    annotations.project.intended_release_date: Tracks a Project's intended release
+      date.
+    annotations.project.name: Display name for the project
+    annotations.project.primary_site: Primary site for the project
+    annotations.project.program.dbgap_accession_number: The dbgap accession number
+      provided for the program.
+    annotations.project.program.name: Full name/title of the program.
+    annotations.project.releasable: A project can only be released by the user when
+      `releasable` is true.
+    annotations.project.released: 'To release a project is to tell the GDC to include
+      all submitted
+
+      entities in the next GDC index.'
+    annotations.project.state: 'The possible states a project can be in.  All but
+      `open` are
+
+      equivalent to some type of locked state.'
+    annotations.sample.biospecimen_anatomic_site: Text term that represents the name
+      of the primary disease site of the submitted tumor sample.
+    annotations.sample.composition: Text term that represents the cellular composition
+      of the sample.
+    annotations.sample.created_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.sample.current_weight: Numeric value that represents the current weight
+      of the sample, measured  in milligrams.
+    annotations.sample.days_to_collection: Time interval from the date of biospecimen
+      collection to the date of initial pathologic diagnosis, represented as a calculated
+      number of days.
+    annotations.sample.days_to_sample_procurement: The number of days from the date
+      the patient was diagnosed to the date of the procedure that produced the sample.
+    annotations.sample.diagnosis_pathologically_confirmed: null
+    annotations.sample.freezing_method: Text term that represents the method used
+      for freezing the sample.
+    annotations.sample.initial_weight: Numeric value that represents the initial weight
+      of the sample, measured in milligrams.
+    annotations.sample.intermediate_dimension: null
+    annotations.sample.is_ffpe: Indicator to signify whether or not the tissue sample
+      was fixed in formalin and embedded in paraffin (FFPE).
+    annotations.sample.longest_dimension: null
+    annotations.sample.method_of_sample_procurement: The method used to procure the
+      sample used to extract analyte(s).
+    annotations.sample.oct_embedded: Indicator of whether or not the sample was embedded
+      in Optimal Cutting Temperature (OCT) compound.
+    annotations.sample.pathology_report_uuid: UUID of the related pathology report.
+    annotations.sample.preservation_method: Text term that represents the method used
+      to preserve the sample.
+    annotations.sample.project_id: null
+    annotations.sample.sample_type: Text term to describe the source of a biospecimen
+      used for a laboratory test.
+    annotations.sample.sample_type_id: The accompanying sample type id for the sample
+      type.
+    annotations.sample.shortest_dimension: Numeric value that represents the shortest
+      dimension of the sample, measured in millimeters.
+    annotations.sample.state: The current state of the object.
+    annotations.sample.submitter_id: The legacy barcode used before prior to the use
+      UUIDs, varies by project. For TCGA this is bcrsamplebarcode.
+    annotations.sample.time_between_clamping_and_freezing: Numeric representation
+      of the elapsed time between the surgical clamping of blood supply and freezing
+      of the sample, measured in minutes.
+    annotations.sample.time_between_excision_and_freezing: Numeric representation
+      of the elapsed time between the excision and freezing of the sample, measured
+      in minutes.
+    annotations.sample.tissue_type: Text term that represents a description of the
+      kind of tissue collected with respect to disease status or proximity to tumor
+      tissue.
+    annotations.sample.tumor_code: Diagnostic tumor code of the tissue sample source.
+    annotations.sample.tumor_code_id: BCR-defined id code for the tumor sample.
+    annotations.sample.tumor_descriptor: Text that describes the kind of disease present
+      in the tumor specimen as related to a specific timepoint.
+    annotations.sample.updated_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.slide.created_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.slide.number_proliferating_cells: Numeric value that represents the
+      count of proliferating cells determined during pathologic review of the sample
+      slide(s).
+    annotations.slide.percent_eosinophil_infiltration: Numeric value to represent
+      the percentage of infiltration by eosinophils in a tumor sample or specimen.
+    annotations.slide.percent_granulocyte_infiltration: Numeric value to represent
+      the percentage of infiltration by granulocytes in a tumor sample or specimen.
+    annotations.slide.percent_inflam_infiltration: Numeric value to represent local
+      response to cellular injury, marked by capillary dilatation, edema and leukocyte
+      infiltration; clinically, inflammation is manifest by reddness, heat, pain,
+      swelling and loss of function, with the need to heal damaged tissue.
+    annotations.slide.percent_lymphocyte_infiltration: Numeric value to represent
+      the percentage of infiltration by lymphocytes in a solid tissue normal sample
+      or specimen.
+    annotations.slide.percent_monocyte_infiltration: Numeric value to represent the
+      percentage of monocyte infiltration in a sample or specimen.
+    annotations.slide.percent_necrosis: Numeric value to represent the percentage
+      of cell death in a malignant tumor sample or specimen.
+    annotations.slide.percent_neutrophil_infiltration: Numeric value to represent
+      the percentage of infiltration by neutrophils in a tumor sample or specimen.
+    annotations.slide.percent_normal_cells: Numeric value to represent the percentage
+      of normal cell content in a malignant tumor sample or specimen.
+    annotations.slide.percent_stromal_cells: Numeric value to represent the percentage
+      of reactive cells that are present in a malignant tumor sample or specimen but
+      are not malignant such as fibroblasts, vascular structures, etc.
+    annotations.slide.percent_tumor_cells: Numeric value that represents the percentage
+      of infiltration by granulocytes in a sample.
+    annotations.slide.percent_tumor_nuclei: Numeric value to represent the percentage
+      of tumor nuclei in a malignant neoplasm sample or specimen.
+    annotations.slide.project_id: Unique ID for any specific defined piece of work
+      that is undertaken or attempted to meet a single requirement.
+    annotations.slide.section_location: Tissue source of the slide.
+    annotations.slide.state: The current state of the object.
+    annotations.slide.submitter_id: The legacy barcode used before prior to the use
+      UUIDs, varies by project. For TCGA, this is bcrslidebarcode.
+    annotations.slide.updated_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.annotations.category: Top level characterization of the annotation.
+    cases.annotations.classification: Top level classification of the annotation.
+    cases.annotations.created_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.annotations.creator: Name of the person or entity responsible for the creation
+      of the annotation.
+    cases.annotations.legacy_created_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.annotations.legacy_updated_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.annotations.notes: Open entry for any further description or characterization
+      of the data.
+    cases.annotations.project_id: Unique ID for any specific defined piece of work
+      that is undertaken or attempted to meet a single requirement.
+    cases.annotations.state: The current state of the object.
+    cases.annotations.status: Status of the annotation.
+    cases.annotations.submitter_id: null
+    cases.annotations.updated_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.case.created_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.case.days_to_lost_to_followup: The number of days between the date used
+      for index and to the date the patient was lost to follow-up.
+    cases.case.disease_type: Full name for the project.
+    cases.case.index_date: The reference or anchor date used during date obfuscation,
+      where a single date is obscurred by creating one or more date ranges in relation
+      to this date.
+    cases.case.lost_to_followup: A yes/no indicator related to whether a patient was
+      unable to be contacted for follow-up.
+    cases.case.primary_site: Primary site for the project.
+    cases.case.project_id: Unique ID for any specific defined piece of work that is
+      undertaken or attempted to meet a single requirement.
+    cases.case.state: The current state of the object.
+    cases.case.submitter_id: null
+    cases.case.updated_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.demographic.cause_of_death: Text term to identify the cause of death for
+      a patient.
+    cases.demographic.created_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.demographic.days_to_birth: Time interval from a person's date of birth to
+      the date of initial pathologic diagnosis, represented as a calculated negative
+      number of days.
+    cases.demographic.days_to_death: Time interval from a person's date of death to
+      the date of initial pathologic diagnosis, represented as a calculated number
+      of days.
+    cases.demographic.ethnicity: An individual's self-described social and cultural
+      grouping, specifically whether an individual describes themselves as Hispanic
+      or Latino. The provided values are based on the categories defined by the U.S.
+      Office of Management and Business and used by the U.S. Census Bureau.
+    cases.demographic.gender: 'Text designations that identify gender. Gender is described
+      as the assemblage of properties that distinguish people on the basis of their
+      societal roles. [Explanatory Comment 1: Identification of gender is based upon
+      self-report and may come from a form, questionnaire, interview, etc.]'
+    cases.demographic.project_id: Unique ID for any specific defined piece of work
+      that is undertaken or attempted to meet a single requirement.
+    cases.demographic.race: An arbitrary classification of a taxonomic group that
+      is a division of a species. It usually arises as a consequence of geographical
+      isolation within a species and is characterized by shared heredity, physical
+      attributes and behavior, and in the case of humans, by common history, nationality,
+      or geographic distribution. The provided values are based on the categories
+      defined by the U.S. Office of Management and Business and used by the U.S. Census
+      Bureau.
+    cases.demographic.state: The current state of the object.
+    cases.demographic.submitter_id: null
+    cases.demographic.updated_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.demographic.vital_status: The survival state of the person registered on
+      the protocol.
+    cases.demographic.year_of_birth: Numeric value to represent the calendar year
+      in which an individual was born.
+    cases.demographic.year_of_death: Numeric value to represent the year of the death
+      of an individual.
+    cases.diagnoses.age_at_diagnosis: Age at the time of diagnosis expressed in number
+      of days since birth.
+    cases.diagnoses.ajcc_clinical_m: Extent of the distant metastasis for the cancer
+      based on evidence obtained from clinical assessment parameters determined prior
+      to treatment.
+    cases.diagnoses.ajcc_clinical_n: Extent of the regional lymph node involvement
+      for the cancer based on evidence obtained from clinical assessment parameters
+      determined prior to treatment.
+    cases.diagnoses.ajcc_clinical_stage: Stage group determined from clinical information
+      on the tumor (T), regional node (N) and metastases (M) and by grouping cases
+      with similar prognosis for cancer.
+    cases.diagnoses.ajcc_clinical_t: Extent of the primary cancer based on evidence
+      obtained from clinical assessment parameters determined prior to treatment.
+    cases.diagnoses.ajcc_pathologic_m: Code to represent the defined absence or presence
+      of distant spread or metastases (M) to locations via vascular channels or lymphatics
+      beyond the regional lymph nodes, using criteria established by the American
+      Joint Committee on Cancer (AJCC).
+    cases.diagnoses.ajcc_pathologic_n: The codes that represent the stage of cancer
+      based on the nodes present (N stage) according to criteria based on multiple
+      editions of the AJCC's Cancer Staging Manual.
+    cases.diagnoses.ajcc_pathologic_stage: The extent of a cancer, especially whether
+      the disease has spread from the original site to other parts of the body based
+      on AJCC staging criteria.
+    cases.diagnoses.ajcc_pathologic_t: Code of pathological T (primary tumor) to define
+      the size or contiguous extension of the primary tumor (T), using staging criteria
+      from the American Joint Committee on Cancer (AJCC).
+    cases.diagnoses.ann_arbor_b_symptoms: Text term to signify whether lymphoma B-symptoms
+      are present as noted in the patient's medical record.
+    cases.diagnoses.ann_arbor_clinical_stage: The classification of the clinically
+      confirmed anatomic disease extent of lymphoma (Hodgkin's and Non-Hodgkins) based
+      on the Ann Arbor Staging System.
+    cases.diagnoses.ann_arbor_extranodal_involvement: Indicator that identifies whether
+      a patient with malignant lymphoma has lymphomatous involvement of an extranodal
+      site.
+    cases.diagnoses.ann_arbor_pathologic_stage: The classification of the pathologically
+      confirmed anatomic disease extent of lymphoma (Hodgkin's and Non-Hodgkins) based
+      on the Ann Arbor Staging System.
+    cases.diagnoses.best_overall_response: The best improvement achieved throughout
+      the entire course of protocol treatment.
+    cases.diagnoses.burkitt_lymphoma_clinical_variant: Burkitt's lymphoma categorization
+      based on clinical features that differ from other forms of the same disease.
+    cases.diagnoses.cause_of_death: Text term to identify the cause of death for a
+      patient.
+    cases.diagnoses.circumferential_resection_margin: A value in millimeters indicating
+      the measured length between a malignant lesion of the colon or rectum and the
+      nearest radial (or circumferential) border of tissue removed during cancer surgery.
+    cases.diagnoses.classification_of_tumor: Text that describes the kind of disease
+      present in the tumor specimen as related to a specific timepoint.
+    cases.diagnoses.colon_polyps_history: Yes/No indicator to describe if the subject
+      had a previous history of colon polyps as noted in the history/physical or previous
+      endoscopic report (s).
+    cases.diagnoses.created_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.diagnoses.days_to_best_overall_response: Number of days between the date
+      used for index and the date of the patient's best overall response.
+    cases.diagnoses.days_to_birth: Time interval from a person's date of birth to
+      the date of initial pathologic diagnosis, represented as a calculated negative
+      number of days.
+    cases.diagnoses.days_to_death: Time interval from a person's date of death to
+      the date of initial pathologic diagnosis, represented as a calculated number
+      of days.
+    cases.diagnoses.days_to_diagnosis: Number of days between the date used for index
+      and the date of diagnosis.
+    cases.diagnoses.days_to_hiv_diagnosis: Time interval from the date of the initial
+      pathologic diagnosis to the date of human immunodeficiency diagnosis, represented
+      as a calculated number of days.
+    cases.diagnoses.days_to_last_follow_up: Time interval from the date of last follow
+      up to the date of initial pathologic diagnosis, represented as a calculated
+      number of days.
+    cases.diagnoses.days_to_last_known_disease_status: Time interval from the date
+      of last follow up to the date of initial pathologic diagnosis, represented as
+      a calculated number of days.
+    cases.diagnoses.days_to_new_event: Time interval from the date of new tumor event
+      including progression, recurrence and new primary malignacies to the date of
+      initial pathologic diagnosis, represented as a calculated number of days.
+    cases.diagnoses.days_to_recurrence: Number of days between the date used for index
+      and the date the patient was diagnosed with a recurrent malignancy.
+    cases.diagnoses.figo_stage: The extent of a cervical or endometrial cancer within
+      the body, especially whether the disease has spread from the original site to
+      other parts of the body, as described by the International Federation of Gynecology
+      and Obstetrics (FIGO) stages.
+    cases.diagnoses.hiv_positive: Text term to signify whether a physician has diagnosed
+      HIV infection in a patient.
+    cases.diagnoses.hpv_positive_type: Text classification to represent the strain
+      or type of human papillomavirus identified in an individual.
+    cases.diagnoses.hpv_status: The findings of the oncogenic HPV.
+    cases.diagnoses.iss_stage: The multiple myeloma disease stage at diagnosis.
+    cases.diagnoses.last_known_disease_status: Text term that describes the last known
+      state or condition of an individual's neoplasm.
+    cases.diagnoses.laterality: For tumors in paired organs, designates the side on
+      which the cancer originates.
+    cases.diagnoses.ldh_level_at_diagnosis: The 2 decimal place numeric laboratory
+      value measured, assigned or computed related to the assessment of lactate dehydrogenase
+      in a specimen.
+    cases.diagnoses.ldh_normal_range_upper: The top value of the range of statistical
+      characteristics that are supposed to represent accepted standard, non-pathological
+      pattern for lactate dehydrogenase (units not specified).
+    cases.diagnoses.lymph_nodes_positive: The number of lymph nodes involved with
+      disease as determined by pathologic examination.
+    cases.diagnoses.lymphatic_invasion_present: A yes/no indicator to ask if small
+      or thin-walled vessel invasion is present, indicating lymphatic involvement
+    cases.diagnoses.method_of_diagnosis: The method used to initially the patient's
+      diagnosis.
+    cases.diagnoses.morphology: The third edition of the International Classification
+      of Diseases for Oncology, published in 2000 used principally in tumor and cancer
+      registries for coding the site (topography) and the histology (morphology) of
+      neoplasms. The study of the structure of the cells and their arrangement to
+      constitute tissues and, finally, the association among these to form organs.
+      In pathology, the microscopic process of identifying normal and abnormal morphologic
+      characteristics in tissues, by employing various cytochemical and immunocytochemical
+      stains. A system of numbered categories for representation of data.
+    cases.diagnoses.new_event_anatomic_site: Text term to specify the anatomic location
+      of the return of tumor after treatment.
+    cases.diagnoses.new_event_type: Text term to identify a new tumor event.
+    cases.diagnoses.overall_survival: Number of days between the date used for index
+      and the patient's date of death or the date the patient was last known to be
+      alive.
+    cases.diagnoses.perineural_invasion_present: a yes/no indicator to ask if perineural
+      invasion or infiltration of tumor or cancer is present.
+    cases.diagnoses.primary_diagnosis: Text term for the structural pattern of cancer
+      cells used to define a microscopic diagnosis.
+    cases.diagnoses.prior_malignancy: Text term to describe the patient's history
+      of prior cancer diagnosis and the spatial location of any previous cancer occurrence.
+    cases.diagnoses.prior_treatment: A yes/no/unknown/not applicable indicator related
+      to the administration of therapeutic agents received before the body specimen
+      was collected.
+    cases.diagnoses.progression_free_survival: Number of days between the date used
+      for index and the first date the patient is known to be free of disease progression.
+    cases.diagnoses.progression_free_survival_event: The event used to define the
+      patient's disease progression.
+    cases.diagnoses.progression_or_recurrence: Yes/No/Unknown indicator to identify
+      whether a patient has had a new tumor event after initial treatment.
+    cases.diagnoses.project_id: Unique ID for any specific defined piece of work that
+      is undertaken or attempted to meet a single requirement.
+    cases.diagnoses.residual_disease: Text terms to describe the status of a tissue
+      margin following surgical resection.
+    cases.diagnoses.site_of_resection_or_biopsy: The third edition of the International
+      Classification of Diseases for Oncology, published in 2000, used principally
+      in tumor and cancer registries for coding the site (topography) and the histology
+      (morphology) of neoplasms. The description of an anatomical region or of a body
+      part. Named locations of, or within, the body. A system of numbered categories
+      for representation of data.
+    cases.diagnoses.state: The current state of the object.
+    cases.diagnoses.submitter_id: null
+    cases.diagnoses.tissue_or_organ_of_origin: Text term that describes the anatomic
+      site of the tumor or disease.
+    cases.diagnoses.treatments.created_datetime: A combination of date and time of
+      day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.diagnoses.treatments.days_to_treatment: Number of days from date of initial
+      pathologic diagnosis that treatment began.
+    cases.diagnoses.treatments.days_to_treatment_end: Time interval from the date
+      of the initial pathologic diagnosis to the date of treatment end, represented
+      as a calculated number of days.
+    cases.diagnoses.treatments.days_to_treatment_start: Time interval from the date
+      of the initial pathologic diagnosis to the start of treatment, represented as
+      a calculated number of days.
+    cases.diagnoses.treatments.project_id: Unique ID for any specific defined piece
+      of work that is undertaken or attempted to meet a single requirement.
+    cases.diagnoses.treatments.regimen_or_line_of_therapy: The name of a regimen or
+      line of therapy assigned to the patient.
+    cases.diagnoses.treatments.state: The current state of the object.
+    cases.diagnoses.treatments.submitter_id: null
+    cases.diagnoses.treatments.therapeutic_agents: Text identification of the individual
+      agent(s) used as part of a prior treatment regimen.
+    cases.diagnoses.treatments.treatment_anatomic_site: The anatomic site or field
+      targeted by a treatment regimen or single agent therapy.
+    cases.diagnoses.treatments.treatment_intent_type: Text term to identify the reason
+      for the administration of a treatment regimen. [Manually-curated]
+    cases.diagnoses.treatments.treatment_or_therapy: A yes/no/unknown/not applicable
+      indicator related to the administration of therapeutic agents received before
+      the body specimen was collected.
+    cases.diagnoses.treatments.treatment_outcome: "Text term that describes the patient\xBF\
+      s final outcome after the treatment was administered."
+    cases.diagnoses.treatments.treatment_type: Text term that describes the kind of
+      treatment administered.
+    cases.diagnoses.treatments.updated_datetime: A combination of date and time of
+      day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.diagnoses.tumor_grade: Numeric value to express the degree of abnormality
+      of cancer cells, a measure of differentiation and aggressiveness.
+    cases.diagnoses.tumor_stage: The extent of a cancer in the body. Staging is usually
+      based on the size of the tumor, whether lymph nodes contain cancer, and whether
+      the cancer has spread from the original site to other parts of the body. The
+      accepted values for tumor_stage depend on the tumor site, type, and accepted
+      staging system. These items should accompany the tumor_stage value as associated
+      metadata.
+    cases.diagnoses.updated_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.diagnoses.vascular_invasion_present: The yes/no indicator to ask if large
+      vessel or venous invasion was detected by surgery or presence in a tumor specimen.
+    cases.diagnoses.vital_status: The survival state of the person registered on the
+      protocol.
+    cases.diagnoses.year_of_diagnosis: Numeric value to represent the year of an individual's
+      initial pathologic diagnosis of cancer.
+    cases.exposures.alcohol_history: A response to a question that asks whether the
+      participant has consumed at least 12 drinks of any kind of alcoholic beverage
+      in their lifetime.
+    cases.exposures.alcohol_intensity: Category to describe the patient's current
+      level of alcohol use as self-reported by the patient.
+    cases.exposures.bmi: The body mass divided by the square of the body height expressed
+      in units of kg/m^2.
+    cases.exposures.cigarettes_per_day: The average number of cigarettes smoked per
+      day.
+    cases.exposures.created_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.exposures.height: The height of the patient in centimeters.
+    cases.exposures.pack_years_smoked: Numeric computed value to represent lifetime
+      tobacco exposure defined as number of cigarettes smoked per day x number of
+      years smoked divided by 20.
+    cases.exposures.project_id: Unique ID for any specific defined piece of work that
+      is undertaken or attempted to meet a single requirement.
+    cases.exposures.state: The current state of the object.
+    cases.exposures.submitter_id: null
+    cases.exposures.tobacco_smoking_onset_year: The year in which the participant
+      began smoking.
+    cases.exposures.tobacco_smoking_quit_year: The year in which the participant quit
+      smoking.
+    cases.exposures.tobacco_smoking_status: Category describing current smoking status
+      and smoking history as self-reported by a patient.
+    cases.exposures.updated_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.exposures.weight: The weight of the patient measured in kilograms.
+    cases.exposures.years_smoked: Numeric value (or unknown) to represent the number
+      of years a person has been smoking.
+    cases.family_histories.created_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.family_histories.project_id: Unique ID for any specific defined piece of
+      work that is undertaken or attempted to meet a single requirement.
+    cases.family_histories.relationship_age_at_diagnosis: The age (in years) when
+      the patient's relative was first diagnosed.
+    cases.family_histories.relationship_gender: 'Text designations that identify gender.
+      Gender is described as the assemblage of properties that distinguish people
+      on the basis of their societal roles. [Explanatory Comment 1: Identification
+      of gender is based upon self-report and may come from a form, questionnaire,
+      interview, etc.]'
+    cases.family_histories.relationship_primary_diagnosis: Text term for the structural
+      pattern of cancer cells used to define a microscopic diagnosis.
+    cases.family_histories.relationship_type: The subgroup that describes the state
+      of connectedness between members of the unit of society organized around kinship
+      ties.
+    cases.family_histories.relative_with_cancer_history: Indicator to signify whether
+      or not an individual's biological relative has been diagnosed with another type
+      of cancer.
+    cases.family_histories.state: The current state of the object.
+    cases.family_histories.submitter_id: null
+    cases.family_histories.updated_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.files.created_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.files.error_type: Type of error for the data file object.
+    cases.files.file_name: The file (object) name
+    cases.files.file_size: The size file (object) in bytes
+    cases.files.file_state: The current state of the data file object.
+    cases.files.md5sum: The MD5 hash of this file
+    cases.files.project_id: null
+    cases.files.state: The current state of the object.
+    cases.files.state_comment: Optional comment about why the file is in the current
+      state, mainly for invalid state.
+    cases.files.submitter_id: The file id assigned by the submitter
+    cases.files.updated_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.project.code: Project code
+    cases.project.dbgap_accession_number: The dbgap accession number for the project.
+    cases.project.disease_type: Full name for the project
+    cases.project.intended_release_date: Tracks a Project's intended release date.
+    cases.project.name: Display name for the project
+    cases.project.primary_site: Primary site for the project
+    cases.project.program.dbgap_accession_number: The dbgap accession number provided
+      for the program.
+    cases.project.program.name: Full name/title of the program.
+    cases.project.releasable: A project can only be released by the user when `releasable`
+      is true.
+    cases.project.released: 'To release a project is to tell the GDC to include all
+      submitted
+
+      entities in the next GDC index.'
+    cases.project.state: 'The possible states a project can be in.  All but `open`
+      are
+
+      equivalent to some type of locked state.'
+    cases.samples.aliquots.aliquot_quantity: The quantity in micrograms (ug) of the
+      aliquot(s) derived from the analyte(s) shipped for sequencing and characterization.
+    cases.samples.aliquots.aliquot_volume: The volume in microliters (ml) of the aliquot(s)
+      derived from the analyte(s) shipped for sequencing and characterization.
+    cases.samples.aliquots.amount: Weight in grams or volume in mL.
+    cases.samples.aliquots.analyte_type: Text term that represents the kind of molecular
+      specimen analyte.
+    cases.samples.aliquots.analyte_type_id: A single letter code used to identify
+      a type of molecular analyte.
+    cases.samples.aliquots.concentration: Numeric value that represents the concentration
+      of an analyte or aliquot extracted from the sample or sample portion, measured
+      in milligrams per milliliter.
+    cases.samples.aliquots.created_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.aliquots.project_id: Unique ID for any specific defined piece of
+      work that is undertaken or attempted to meet a single requirement.
+    cases.samples.aliquots.source_center: Name of the center that provided the item.
+    cases.samples.aliquots.state: The current state of the object.
+    cases.samples.aliquots.submitter_id: The legacy barcode used before prior to the
+      use UUIDs. For TCGA this is bcraliquotbarcode.
+    cases.samples.aliquots.updated_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.annotations.category: Top level characterization of the annotation.
+    cases.samples.annotations.classification: Top level classification of the annotation.
+    cases.samples.annotations.created_datetime: A combination of date and time of
+      day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.annotations.creator: Name of the person or entity responsible for
+      the creation of the annotation.
+    cases.samples.annotations.legacy_created_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.annotations.legacy_updated_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.annotations.notes: Open entry for any further description or characterization
+      of the data.
+    cases.samples.annotations.project_id: Unique ID for any specific defined piece
+      of work that is undertaken or attempted to meet a single requirement.
+    cases.samples.annotations.state: The current state of the object.
+    cases.samples.annotations.status: Status of the annotation.
+    cases.samples.annotations.submitter_id: null
+    cases.samples.annotations.updated_datetime: A combination of date and time of
+      day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.biospecimen_anatomic_site: Text term that represents the name of
+      the primary disease site of the submitted tumor sample.
+    cases.samples.composition: Text term that represents the cellular composition
+      of the sample.
+    cases.samples.created_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.current_weight: Numeric value that represents the current weight
+      of the sample, measured  in milligrams.
+    cases.samples.days_to_collection: Time interval from the date of biospecimen collection
+      to the date of initial pathologic diagnosis, represented as a calculated number
+      of days.
+    cases.samples.days_to_sample_procurement: The number of days from the date the
+      patient was diagnosed to the date of the procedure that produced the sample.
+    cases.samples.diagnosis_pathologically_confirmed: null
+    cases.samples.freezing_method: Text term that represents the method used for freezing
+      the sample.
+    cases.samples.initial_weight: Numeric value that represents the initial weight
+      of the sample, measured in milligrams.
+    cases.samples.intermediate_dimension: null
+    cases.samples.is_ffpe: Indicator to signify whether or not the tissue sample was
+      fixed in formalin and embedded in paraffin (FFPE).
+    cases.samples.longest_dimension: null
+    cases.samples.method_of_sample_procurement: The method used to procure the sample
+      used to extract analyte(s).
+    cases.samples.oct_embedded: Indicator of whether or not the sample was embedded
+      in Optimal Cutting Temperature (OCT) compound.
+    cases.samples.pathology_report_uuid: UUID of the related pathology report.
+    cases.samples.portions.analytes.a260_a280_ratio: Numeric value that represents
+      the sample ratio of nucleic acid absorbance at 260 nm and 280 nm, used to determine
+      a measure of DNA purity.
+    cases.samples.portions.analytes.aliquots.aliquot_quantity: The quantity in micrograms
+      (ug) of the aliquot(s) derived from the analyte(s) shipped for sequencing and
+      characterization.
+    cases.samples.portions.analytes.aliquots.aliquot_volume: The volume in microliters
+      (ml) of the aliquot(s) derived from the analyte(s) shipped for sequencing and
+      characterization.
+    cases.samples.portions.analytes.aliquots.amount: Weight in grams or volume in
+      mL.
+    cases.samples.portions.analytes.aliquots.analyte_type: Text term that represents
+      the kind of molecular specimen analyte.
+    cases.samples.portions.analytes.aliquots.analyte_type_id: A single letter code
+      used to identify a type of molecular analyte.
+    cases.samples.portions.analytes.aliquots.annotations.category: Top level characterization
+      of the annotation.
+    cases.samples.portions.analytes.aliquots.annotations.classification: Top level
+      classification of the annotation.
+    cases.samples.portions.analytes.aliquots.annotations.created_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.analytes.aliquots.annotations.creator: Name of the person
+      or entity responsible for the creation of the annotation.
+    cases.samples.portions.analytes.aliquots.annotations.legacy_created_datetime: A
+      combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.analytes.aliquots.annotations.legacy_updated_datetime: A
+      combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.analytes.aliquots.annotations.notes: Open entry for any
+      further description or characterization of the data.
+    cases.samples.portions.analytes.aliquots.annotations.project_id: Unique ID for
+      any specific defined piece of work that is undertaken or attempted to meet a
+      single requirement.
+    cases.samples.portions.analytes.aliquots.annotations.state: The current state
+      of the object.
+    cases.samples.portions.analytes.aliquots.annotations.status: Status of the annotation.
+    cases.samples.portions.analytes.aliquots.annotations.submitter_id: null
+    cases.samples.portions.analytes.aliquots.annotations.updated_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.analytes.aliquots.center.center_type: Type classification
+      of the center (e.g. CGCC).
+    cases.samples.portions.analytes.aliquots.center.code: Numeric code for the center.
+    cases.samples.portions.analytes.aliquots.center.name: Name of the center (e.g.
+      Broad Institute of MIT and Harvard).
+    cases.samples.portions.analytes.aliquots.center.namespace: Domain name of the
+      center (e.g. borad.mit.edu).
+    cases.samples.portions.analytes.aliquots.center.short_name: Shortened name of
+      the center (e.g. BI).
+    cases.samples.portions.analytes.aliquots.concentration: Numeric value that represents
+      the concentration of an analyte or aliquot extracted from the sample or sample
+      portion, measured in milligrams per milliliter.
+    cases.samples.portions.analytes.aliquots.created_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.analytes.aliquots.project_id: Unique ID for any specific
+      defined piece of work that is undertaken or attempted to meet a single requirement.
+    cases.samples.portions.analytes.aliquots.source_center: Name of the center that
+      provided the item.
+    cases.samples.portions.analytes.aliquots.state: The current state of the object.
+    cases.samples.portions.analytes.aliquots.submitter_id: The legacy barcode used
+      before prior to the use UUIDs. For TCGA this is bcraliquotbarcode.
+    cases.samples.portions.analytes.aliquots.updated_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.analytes.amount: Weight in grams or volume in mL.
+    cases.samples.portions.analytes.analyte_quantity: The quantity in micrograms (ug)
+      of the analyte(s) derived from the analyte(s) shipped for sequencing and characterization.
+    cases.samples.portions.analytes.analyte_type: Text term that represents the kind
+      of molecular specimen analyte.
+    cases.samples.portions.analytes.analyte_type_id: A single letter code used to
+      identify a type of molecular analyte.
+    cases.samples.portions.analytes.analyte_volume: The volume in microliters (ml)
+      of the analyte(s) derived from the analyte(s) shipped for sequencing and characterization.
+    cases.samples.portions.analytes.annotations.category: Top level characterization
+      of the annotation.
+    cases.samples.portions.analytes.annotations.classification: Top level classification
+      of the annotation.
+    cases.samples.portions.analytes.annotations.created_datetime: A combination of
+      date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.analytes.annotations.creator: Name of the person or entity
+      responsible for the creation of the annotation.
+    cases.samples.portions.analytes.annotations.legacy_created_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.analytes.annotations.legacy_updated_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.analytes.annotations.notes: Open entry for any further
+      description or characterization of the data.
+    cases.samples.portions.analytes.annotations.project_id: Unique ID for any specific
+      defined piece of work that is undertaken or attempted to meet a single requirement.
+    cases.samples.portions.analytes.annotations.state: The current state of the object.
+    cases.samples.portions.analytes.annotations.status: Status of the annotation.
+    cases.samples.portions.analytes.annotations.submitter_id: null
+    cases.samples.portions.analytes.annotations.updated_datetime: A combination of
+      date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.analytes.concentration: Numeric value that represents the
+      concentration of an analyte or aliquot extracted from the sample or sample portion,
+      measured in milligrams per milliliter.
+    cases.samples.portions.analytes.created_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.analytes.normal_tumor_genotype_snp_match: Text term that
+      represents whether or not the genotype of the normal tumor matches or if the
+      data is not available.
+    cases.samples.portions.analytes.project_id: Unique ID for any specific defined
+      piece of work that is undertaken or attempted to meet a single requirement.
+    cases.samples.portions.analytes.ribosomal_rna_28s_16s_ratio: The 28S/18S ribosomal
+      RNA band ratio used to assess the quality of total RNA.
+    cases.samples.portions.analytes.spectrophotometer_method: Name of the method used
+      to determine the concentration of purified nucleic acid within a solution.
+    cases.samples.portions.analytes.state: The current state of the object.
+    cases.samples.portions.analytes.submitter_id: The legacy barcode used before prior
+      to the use UUIDs, varies by project. For TCGA this is bcranalytebarcode.
+    cases.samples.portions.analytes.updated_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.analytes.well_number: Numeric value that represents the
+      the well location within a plate for the analyte or aliquot from the sample.
+    cases.samples.portions.annotations.category: Top level characterization of the
+      annotation.
+    cases.samples.portions.annotations.classification: Top level classification of
+      the annotation.
+    cases.samples.portions.annotations.created_datetime: A combination of date and
+      time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.annotations.creator: Name of the person or entity responsible
+      for the creation of the annotation.
+    cases.samples.portions.annotations.legacy_created_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.annotations.legacy_updated_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.annotations.notes: Open entry for any further description
+      or characterization of the data.
+    cases.samples.portions.annotations.project_id: Unique ID for any specific defined
+      piece of work that is undertaken or attempted to meet a single requirement.
+    cases.samples.portions.annotations.state: The current state of the object.
+    cases.samples.portions.annotations.status: Status of the annotation.
+    cases.samples.portions.annotations.submitter_id: null
+    cases.samples.portions.annotations.updated_datetime: A combination of date and
+      time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.center.center_type: Type classification of the center (e.g.
+      CGCC).
+    cases.samples.portions.center.code: Numeric code for the center.
+    cases.samples.portions.center.name: Name of the center (e.g. Broad Institute of
+      MIT and Harvard).
+    cases.samples.portions.center.namespace: Domain name of the center (e.g. borad.mit.edu).
+    cases.samples.portions.center.short_name: Shortened name of the center (e.g. BI).
+    cases.samples.portions.created_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.creation_datetime: The datetime of portion creation encoded
+      as seconds from epoch.
+    cases.samples.portions.is_ffpe: Indicator to signify whether or not the tissue
+      sample was fixed in formalin and embedded in paraffin (FFPE).
+    cases.samples.portions.portion_number: Numeric value that represents the sequential
+      number assigned to a portion of the sample.
+    cases.samples.portions.project_id: Unique ID for any specific defined piece of
+      work that is undertaken or attempted to meet a single requirement.
+    cases.samples.portions.slides.annotations.category: Top level characterization
+      of the annotation.
+    cases.samples.portions.slides.annotations.classification: Top level classification
+      of the annotation.
+    cases.samples.portions.slides.annotations.created_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.slides.annotations.creator: Name of the person or entity
+      responsible for the creation of the annotation.
+    cases.samples.portions.slides.annotations.legacy_created_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.slides.annotations.legacy_updated_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.slides.annotations.notes: Open entry for any further description
+      or characterization of the data.
+    cases.samples.portions.slides.annotations.project_id: Unique ID for any specific
+      defined piece of work that is undertaken or attempted to meet a single requirement.
+    cases.samples.portions.slides.annotations.state: The current state of the object.
+    cases.samples.portions.slides.annotations.status: Status of the annotation.
+    cases.samples.portions.slides.annotations.submitter_id: null
+    cases.samples.portions.slides.annotations.updated_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.slides.created_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.slides.number_proliferating_cells: Numeric value that represents
+      the count of proliferating cells determined during pathologic review of the
+      sample slide(s).
+    cases.samples.portions.slides.percent_eosinophil_infiltration: Numeric value to
+      represent the percentage of infiltration by eosinophils in a tumor sample or
+      specimen.
+    cases.samples.portions.slides.percent_granulocyte_infiltration: Numeric value
+      to represent the percentage of infiltration by granulocytes in a tumor sample
+      or specimen.
+    cases.samples.portions.slides.percent_inflam_infiltration: Numeric value to represent
+      local response to cellular injury, marked by capillary dilatation, edema and
+      leukocyte infiltration; clinically, inflammation is manifest by reddness, heat,
+      pain, swelling and loss of function, with the need to heal damaged tissue.
+    cases.samples.portions.slides.percent_lymphocyte_infiltration: Numeric value to
+      represent the percentage of infiltration by lymphocytes in a solid tissue normal
+      sample or specimen.
+    cases.samples.portions.slides.percent_monocyte_infiltration: Numeric value to
+      represent the percentage of monocyte infiltration in a sample or specimen.
+    cases.samples.portions.slides.percent_necrosis: Numeric value to represent the
+      percentage of cell death in a malignant tumor sample or specimen.
+    cases.samples.portions.slides.percent_neutrophil_infiltration: Numeric value to
+      represent the percentage of infiltration by neutrophils in a tumor sample or
+      specimen.
+    cases.samples.portions.slides.percent_normal_cells: Numeric value to represent
+      the percentage of normal cell content in a malignant tumor sample or specimen.
+    cases.samples.portions.slides.percent_stromal_cells: Numeric value to represent
+      the percentage of reactive cells that are present in a malignant tumor sample
+      or specimen but are not malignant such as fibroblasts, vascular structures,
+      etc.
+    cases.samples.portions.slides.percent_tumor_cells: Numeric value that represents
+      the percentage of infiltration by granulocytes in a sample.
+    cases.samples.portions.slides.percent_tumor_nuclei: Numeric value to represent
+      the percentage of tumor nuclei in a malignant neoplasm sample or specimen.
+    cases.samples.portions.slides.project_id: Unique ID for any specific defined piece
+      of work that is undertaken or attempted to meet a single requirement.
+    cases.samples.portions.slides.section_location: Tissue source of the slide.
+    cases.samples.portions.slides.state: The current state of the object.
+    cases.samples.portions.slides.submitter_id: The legacy barcode used before prior
+      to the use UUIDs, varies by project. For TCGA, this is bcrslidebarcode.
+    cases.samples.portions.slides.updated_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.state: The current state of the object.
+    cases.samples.portions.submitter_id: The legacy barcode used before prior to the
+      use UUIDs, varies by project. For TCGA this is bcrportionbarcode.
+    cases.samples.portions.updated_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.portions.weight: Numeric value that represents the sample portion
+      weight, measured in milligrams.
+    cases.samples.preservation_method: Text term that represents the method used to
+      preserve the sample.
+    cases.samples.project_id: null
+    cases.samples.sample_type: Text term to describe the source of a biospecimen used
+      for a laboratory test.
+    cases.samples.sample_type_id: The accompanying sample type id for the sample type.
+    cases.samples.shortest_dimension: Numeric value that represents the shortest dimension
+      of the sample, measured in millimeters.
+    cases.samples.slides.annotations.category: Top level characterization of the annotation.
+    cases.samples.slides.annotations.classification: Top level classification of the
+      annotation.
+    cases.samples.slides.annotations.created_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.slides.annotations.creator: Name of the person or entity responsible
+      for the creation of the annotation.
+    cases.samples.slides.annotations.legacy_created_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.slides.annotations.legacy_updated_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.slides.annotations.notes: Open entry for any further description
+      or characterization of the data.
+    cases.samples.slides.annotations.project_id: Unique ID for any specific defined
+      piece of work that is undertaken or attempted to meet a single requirement.
+    cases.samples.slides.annotations.state: The current state of the object.
+    cases.samples.slides.annotations.status: Status of the annotation.
+    cases.samples.slides.annotations.submitter_id: null
+    cases.samples.slides.annotations.updated_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.slides.created_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.slides.number_proliferating_cells: Numeric value that represents
+      the count of proliferating cells determined during pathologic review of the
+      sample slide(s).
+    cases.samples.slides.percent_eosinophil_infiltration: Numeric value to represent
+      the percentage of infiltration by eosinophils in a tumor sample or specimen.
+    cases.samples.slides.percent_granulocyte_infiltration: Numeric value to represent
+      the percentage of infiltration by granulocytes in a tumor sample or specimen.
+    cases.samples.slides.percent_inflam_infiltration: Numeric value to represent local
+      response to cellular injury, marked by capillary dilatation, edema and leukocyte
+      infiltration; clinically, inflammation is manifest by reddness, heat, pain,
+      swelling and loss of function, with the need to heal damaged tissue.
+    cases.samples.slides.percent_lymphocyte_infiltration: Numeric value to represent
+      the percentage of infiltration by lymphocytes in a solid tissue normal sample
+      or specimen.
+    cases.samples.slides.percent_monocyte_infiltration: Numeric value to represent
+      the percentage of monocyte infiltration in a sample or specimen.
+    cases.samples.slides.percent_necrosis: Numeric value to represent the percentage
+      of cell death in a malignant tumor sample or specimen.
+    cases.samples.slides.percent_neutrophil_infiltration: Numeric value to represent
+      the percentage of infiltration by neutrophils in a tumor sample or specimen.
+    cases.samples.slides.percent_normal_cells: Numeric value to represent the percentage
+      of normal cell content in a malignant tumor sample or specimen.
+    cases.samples.slides.percent_stromal_cells: Numeric value to represent the percentage
+      of reactive cells that are present in a malignant tumor sample or specimen but
+      are not malignant such as fibroblasts, vascular structures, etc.
+    cases.samples.slides.percent_tumor_cells: Numeric value that represents the percentage
+      of infiltration by granulocytes in a sample.
+    cases.samples.slides.percent_tumor_nuclei: Numeric value to represent the percentage
+      of tumor nuclei in a malignant neoplasm sample or specimen.
+    cases.samples.slides.project_id: Unique ID for any specific defined piece of work
+      that is undertaken or attempted to meet a single requirement.
+    cases.samples.slides.section_location: Tissue source of the slide.
+    cases.samples.slides.state: The current state of the object.
+    cases.samples.slides.submitter_id: The legacy barcode used before prior to the
+      use UUIDs, varies by project. For TCGA, this is bcrslidebarcode.
+    cases.samples.slides.updated_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.state: The current state of the object.
+    cases.samples.submitter_id: The legacy barcode used before prior to the use UUIDs,
+      varies by project. For TCGA this is bcrsamplebarcode.
+    cases.samples.time_between_clamping_and_freezing: Numeric representation of the
+      elapsed time between the surgical clamping of blood supply and freezing of the
+      sample, measured in minutes.
+    cases.samples.time_between_excision_and_freezing: Numeric representation of the
+      elapsed time between the excision and freezing of the sample, measured in minutes.
+    cases.samples.tissue_type: Text term that represents a description of the kind
+      of tissue collected with respect to disease status or proximity to tumor tissue.
+    cases.samples.tumor_code: Diagnostic tumor code of the tissue sample source.
+    cases.samples.tumor_code_id: BCR-defined id code for the tumor sample.
+    cases.samples.tumor_descriptor: Text that describes the kind of disease present
+      in the tumor specimen as related to a specific timepoint.
+    cases.samples.updated_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.tissue_source_site.bcr_id: TCGA-provided BCR id.
+    cases.tissue_source_site.code: TCGA-provided TSS code.
+    cases.tissue_source_site.name: Name of the source site.
+    cases.tissue_source_site.project: Study name of the project.
+    files.annotations.category: Top level characterization of the annotation.
+    files.annotations.classification: Top level classification of the annotation.
+    files.annotations.created_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.annotations.creator: Name of the person or entity responsible for the creation
+      of the annotation.
+    files.annotations.legacy_created_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.annotations.legacy_updated_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.annotations.notes: Open entry for any further description or characterization
+      of the data.
+    files.annotations.project_id: Unique ID for any specific defined piece of work
+      that is undertaken or attempted to meet a single requirement.
+    files.annotations.state: The current state of the object.
+    files.annotations.status: Status of the annotation.
+    files.annotations.submitter_id: null
+    files.annotations.updated_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.archive.created_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.archive.data_category: Broad categorization of the contents of the data
+      file.
+    files.archive.data_format: Format of the data files.
+    files.archive.data_type: Specific content type of the data file.
+    files.archive.error_type: Type of error for the data file object.
+    files.archive.file_name: The name (or part of a name) of a file (of any type).
+    files.archive.file_size: The size of the data file (object) in bytes.
+    files.archive.file_state: The current state of the data file object.
+    files.archive.md5sum: The 128-bit hash value expressed as a 32 digit hexadecimal
+      number used as a file's digital fingerprint.
+    files.archive.project_id: Unique ID for any specific defined piece of work that
+      is undertaken or attempted to meet a single requirement.
+    files.archive.revision: The revision of this archive in the DCC.
+    files.archive.state: The current state of the object.
+    files.archive.state_comment: Optional comment about why the file is in the current
+      state, mainly for invalid state.
+    files.archive.submitter_id: The file ID assigned by the submitter.
+    files.archive.updated_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.created_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.days_to_lost_to_followup: The number of days between the date used
+      for index and to the date the patient was lost to follow-up.
+    files.cases.disease_type: Full name for the project.
+    files.cases.index_date: The reference or anchor date used during date obfuscation,
+      where a single date is obscurred by creating one or more date ranges in relation
+      to this date.
+    files.cases.lost_to_followup: A yes/no indicator related to whether a patient
+      was unable to be contacted for follow-up.
+    files.cases.primary_site: Primary site for the project.
+    files.cases.project_id: Unique ID for any specific defined piece of work that
+      is undertaken or attempted to meet a single requirement.
+    files.cases.state: The current state of the object.
+    files.cases.submitter_id: null
+    files.cases.updated_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.center.center_type: Type classification of the center (e.g. CGCC).
+    files.center.code: Numeric code for the center.
+    files.center.name: Name of the center (e.g. Broad Institute of MIT and Harvard).
+    files.center.namespace: Domain name of the center (e.g. borad.mit.edu).
+    files.center.short_name: Shortened name of the center (e.g. BI).
+    files.data_format.name: name of this data format
+    files.data_type.data_category.name: name of this data type
+    files.data_type.name: name of this data subtype
+    files.experimental_strategy.name: name of this record
+    files.file.created_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.file.error_type: Type of error for the data file object.
+    files.file.file_name: The file (object) name
+    files.file.file_size: The size file (object) in bytes
+    files.file.file_state: The current state of the data file object.
+    files.file.md5sum: The MD5 hash of this file
+    files.file.project_id: null
+    files.file.state: The current state of the object.
+    files.file.state_comment: Optional comment about why the file is in the current
+      state, mainly for invalid state.
+    files.file.submitter_id: The file id assigned by the submitter
+    files.file.updated_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.metadata_files.created_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.metadata_files.error_type: Type of error for the data file object.
+    files.metadata_files.file_name: The file (object) name
+    files.metadata_files.file_size: The size file (object) in bytes
+    files.metadata_files.file_state: The current state of the data file object.
+    files.metadata_files.md5sum: The MD5 hash of this file
+    files.metadata_files.project_id: null
+    files.metadata_files.state: The current state of the object.
+    files.metadata_files.state_comment: Optional comment about why the file is in
+      the current state, mainly for invalid state.
+    files.metadata_files.submitter_id: The file id assigned by the submitter
+    files.metadata_files.updated_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.platform.name: name of this platform
+    files.tags.name: name of this tag
+    projects.program.dbgap_accession_number: The dbgap accession number provided for
+      the program.
+    projects.program.name: Full name/title of the program.
+    projects.project.code: Project code
+    projects.project.dbgap_accession_number: The dbgap accession number for the project.
+    projects.project.disease_type: Full name for the project
+    projects.project.intended_release_date: Tracks a Project's intended release date.
+    projects.project.name: Display name for the project
+    projects.project.primary_site: Primary site for the project
+    projects.project.releasable: A project can only be released by the user when `releasable`
+      is true.
+    projects.project.released: 'To release a project is to tell the GDC to include
+      all submitted
+
+      entities in the next GDC index.'
+    projects.project.state: 'The possible states a project can be in.  All but `open`
+      are
+
+      equivalent to some type of locked state.'

@@ -1,3 +1,4 @@
+import copy
 import os
 import pkg_resources
 
@@ -77,9 +78,7 @@ def write_dict_to_yaml(sub_dir, filename, d):
 
 
 @pytest.fixture
-def mock_mappings(tmp_path):
-    root = tmp_path
-
+def foo_bar_mappings(tmp_path):
     foo_mapping = {
         'properties': {
             'foo': {'type': 'keyword'},
@@ -87,7 +86,7 @@ def mock_mappings(tmp_path):
         }
     }
     foo_settings = {'foo': 1, 'bar': 2}
-
+    foo_dir_name = 'foo_centric'
     bar_mapping = {
         'properties': {
             'foo': {
@@ -101,21 +100,119 @@ def mock_mappings(tmp_path):
         }
     }
     bar_settings = {'foo': 2, 'bar': 4}
+    bar_dir_name = 'bar_centric'
 
-    foo_dir = root / 'foo_centric'
-    foo_dir.mkdir()
-
-    write_dict_to_yaml(foo_dir, 'foo_centric.mapping.yaml', foo_mapping)
-    write_dict_to_yaml(foo_dir, 'settings.yaml', foo_settings)
-
-    bar_dir = root / 'bar_centric'
-    bar_dir.mkdir()
-
-    write_dict_to_yaml(bar_dir, 'bar_centric.mapping.yaml', bar_mapping)
-    write_dict_to_yaml(bar_dir, 'settings.yaml', bar_settings)
-
-    expected = {
-        'foo_centric': {'mapping': foo_mapping, 'settings': foo_settings},
-        'bar_centric': {'mapping': bar_mapping, 'settings': bar_settings}
+    mapps = {
+        'foo': {'mapping': foo_mapping,
+                'settings': foo_settings,
+                'dir': foo_dir_name},
+        'bar': {'mapping': bar_mapping,
+                'settings': bar_settings,
+                'dir': bar_dir_name},
     }
+    root = tmp_path
+    return mock_mappings(root, mapps)
+
+
+def mock_mappings(tmp_path, mappings):
+    root = tmp_path
+    expected = {}
+    for mapping_name, data in mappings.items():
+        mapp_dir = root/data['dir']
+        mapp_dir.mkdir()
+        write_dict_to_yaml(mapp_dir, data['dir']+'.mapping.yaml',
+                           data.get('mapping', {}))
+
+        if data.get('settings'):
+            write_dict_to_yaml(mapp_dir, 'settings.yaml',
+                               data.get('settings', {}))
+
+        expected_mapping = copy.deepcopy(data.get('mapping', {}))
+        # descriptions has to be present in payload and descriptions need to
+        # have '_meta' key in them, otherwise they won't be picked up
+        if 'descriptions' in data and data['descriptions'].get('_meta'):
+            desc = data['descriptions']
+            write_dict_to_yaml(mapp_dir, 'descriptions.yaml', desc)
+            expected_mapping.update({'_meta': desc.get('_meta')})
+
+        expected[data['dir']] = {
+            'mapping': expected_mapping,
+            'settings': data.get('settings', {}),
+        }
+
     return root, expected
+
+
+def get_generic_mapping():
+    foo_mapping = {
+        'properties': {
+            'foo': {'type': 'keyword'},
+            'bar': {'type': 'long'},
+        }
+    }
+    foo_dir_name = 'foo_descriptions'
+    return foo_mapping, foo_dir_name
+
+
+@pytest.fixture
+def descriptions_mappings(tmp_path):
+    
+    foo_mapping, foo_dir_name = get_generic_mapping()
+    descriptions = {'_meta': 'expected_result'}
+    mapps = {
+        'foo': {
+            'mapping': foo_mapping,
+            'dir': foo_dir_name,
+            'descriptions': descriptions,
+        }
+    }
+    root = tmp_path
+    return mock_mappings(root, mapps)
+
+
+@pytest.fixture
+def no_descriptions_mappings(tmp_path):
+    
+    foo_mapping, foo_dir_name = get_generic_mapping()
+    mapps = {
+        'foo': {
+            'mapping': foo_mapping,
+            'dir': foo_dir_name,
+        }
+    }
+    root = tmp_path
+    return mock_mappings(root, mapps)
+
+
+@pytest.fixture
+def empty_descriptions_mappings(tmp_path):
+    
+    foo_mapping, foo_dir_name = get_generic_mapping()
+    descriptions = {}
+    mapps = {
+        'foo': {
+            'mapping': foo_mapping,
+            'dir': foo_dir_name,
+            'descriptions': descriptions,
+        }
+    }
+    root = tmp_path
+    return mock_mappings(root, mapps)
+
+
+@pytest.fixture
+def non_meta_descriptions_mappings(tmp_path):
+    
+    foo_mapping, foo_dir_name = get_generic_mapping()
+    foo_definitions = {'this_property': 'something'} 
+    mapps = {
+        'foo': {
+            'mapping': foo_mapping,
+            'dir': foo_dir_name,
+            'descriptions': foo_definitions,
+        }
+    }
+    root = tmp_path
+    return mock_mappings(root, mapps)
+
+
