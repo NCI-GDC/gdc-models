@@ -112,7 +112,15 @@ properties:
         type: long
       diagnosis_id:
         type: keyword
+      esophageal_columnar_dysplasia_degree:
+        type: keyword
+      esophageal_columnar_metaplasia_present:
+        type: keyword
       figo_stage:
+        type: keyword
+      gastric_esophageal_junction_involvement:
+        type: keyword
+      goblet_cells_columnar_mucosa_present:
         type: keyword
       hiv_positive:
         type: keyword
@@ -140,6 +148,8 @@ properties:
         type: long
       lymph_nodes_positive:
         type: long
+      lymph_nodes_tested:
+        type: long
       lymphatic_invasion_present:
         type: keyword
       masaoka_stage:
@@ -147,6 +157,8 @@ properties:
       metastasis_at_diagnosis:
         type: keyword
       method_of_diagnosis:
+        type: keyword
+      micropapillary_features:
         type: keyword
       morphology:
         type: keyword
@@ -232,6 +244,8 @@ properties:
         type: keyword
       alcohol_intensity:
         type: keyword
+      asbestos_exposure:
+        type: keyword
       bmi:
         type: float
       cigarettes_per_day:
@@ -242,6 +256,8 @@ properties:
         type: float
       pack_years_smoked:
         type: long
+      radon_exposure:
+        type: keyword
       state:
         type: keyword
       submitter_id:
