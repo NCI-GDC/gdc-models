@@ -106,8 +106,12 @@ _meta:
       in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     annotations.case.batch_id: GDC submission batch indicator. It is unique within
       the context of a project.
+    annotations.case.consent_type: The text term used to describe the type of consent
+      obtain from the subject for participation in the study.
     annotations.case.created_datetime: A combination of date and time of day in the
       form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.case.days_to_consent: Number of days between the date used for index
+      and the date the subject consent was obtained for participation in the study.
     annotations.case.days_to_lost_to_followup: The number of days between the date
       used for index and to the date the patient was lost to follow-up.
     annotations.case.disease_type: The text term used to describe the type of malignant
@@ -233,10 +237,12 @@ _meta:
       to time to split.
     annotations.sample.initial_weight: Numeric value that represents the initial weight
       of the sample, measured in milligrams.
-    annotations.sample.intermediate_dimension: null
+    annotations.sample.intermediate_dimension: Intermediate dimension of the sample,
+      in millimeters.
     annotations.sample.is_ffpe: Indicator to signify whether or not the tissue sample
       was fixed in formalin and embedded in paraffin (FFPE).
-    annotations.sample.longest_dimension: null
+    annotations.sample.longest_dimension: Numeric value that represents the longest
+      dimension of the sample, measured in millimeters.
     annotations.sample.method_of_sample_procurement: The method used to procure the
       sample used to extract analyte(s).
     annotations.sample.oct_embedded: Indicator of whether or not the sample was embedded
@@ -264,6 +270,8 @@ _meta:
     annotations.sample.time_between_excision_and_freezing: Numeric representation
       of the elapsed time between the excision and freezing of the sample, measured
       in minutes.
+    annotations.sample.tissue_collection_type: The text term used to describe the
+      tyoe of collection used to obtain tissue.
     annotations.sample.tissue_type: Text term that represents a description of the
       kind of tissue collected with respect to disease status or proximity to tumor
       tissue.
@@ -275,6 +283,8 @@ _meta:
       the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     annotations.slide.batch_id: GDC submission batch indicator. It is unique within
       the context of a project.
+    annotations.slide.bone_marrow_malignant_cells: The text term used to indicate
+      whether there are malignant cells in the bone marrow.
     annotations.slide.created_datetime: A combination of date and time of day in the
       form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     annotations.slide.number_proliferating_cells: Numeric value that represents the
@@ -282,6 +292,8 @@ _meta:
       slide(s).
     annotations.slide.percent_eosinophil_infiltration: Numeric value to represent
       the percentage of infiltration by eosinophils in a tumor sample or specimen.
+    annotations.slide.percent_follicular_component: Numeric value that represents
+      the percentage of follicular features found in a specific tissue sample.
     annotations.slide.percent_granulocyte_infiltration: Numeric value to represent
       the percentage of infiltration by granulocytes in a tumor sample or specimen.
     annotations.slide.percent_inflam_infiltration: Numeric value to represent local
@@ -299,6 +311,10 @@ _meta:
       the percentage of infiltration by neutrophils in a tumor sample or specimen.
     annotations.slide.percent_normal_cells: Numeric value to represent the percentage
       of normal cell content in a malignant tumor sample or specimen.
+    annotations.slide.percent_rhabdoid_features: Numeric value that represents the
+      percentage of rhabdoid features found in a specific tissue sample.
+    annotations.slide.percent_sarcomatoid_features: Numeric value that represents
+      the percentage of sarcomatoid features found in a specific tissue sample.
     annotations.slide.percent_stromal_cells: Numeric value to represent the percentage
       of reactive cells that are present in a malignant tumor sample or specimen but
       are not malignant such as fibroblasts, vascular structures, etc.
@@ -308,11 +324,26 @@ _meta:
       of tumor nuclei in a malignant neoplasm sample or specimen.
     annotations.slide.project_id: Unique ID for any specific defined piece of work
       that is undertaken or attempted to meet a single requirement.
+    annotations.slide.prostatic_chips_positive_count: The text term used to describe
+      the number of positive prostatic chips, which are generated from transurethral
+      resection of the prostate (TURP) procedures and are generally used for relieving
+      urinary obstruction due to nodular hyperplasia of the prostate (benign prostatic
+      hyperplasia).
+    annotations.slide.prostatic_chips_total_count: The text term used to describe
+      the total number of prostatic chips, which are generated from transurethral
+      resection of the prostate (TURP) procedures and are generally used for relieving
+      urinary obstruction due to nodular hyperplasia of the prostate (benign prostatic
+      hyperplasia).
+    annotations.slide.prostatic_involvement_percent: Numeric value that represents
+      the percentage of prostatic involvement found in a specific tissue sample.
     annotations.slide.section_location: Tissue source of the slide.
     annotations.slide.state: The current state of the object.
     annotations.slide.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
       be used in place of the UUID for identifying or recalling a node.
+    annotations.slide.tissue_microarray_coordinates: The alphanumeric term used to
+      describe the coordinates of a specific tissue located on a tissue microarray
+      slide.
     annotations.slide.updated_datetime: A combination of date and time of day in the
       form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.annotations.batch_id: GDC submission batch indicator. It is unique within
@@ -340,8 +371,12 @@ _meta:
       form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.case.batch_id: GDC submission batch indicator. It is unique within the context
       of a project.
+    cases.case.consent_type: The text term used to describe the type of consent obtain
+      from the subject for participation in the study.
     cases.case.created_datetime: A combination of date and time of day in the form
       [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.case.days_to_consent: Number of days between the date used for index and
+      the date the subject consent was obtained for participation in the study.
     cases.case.days_to_lost_to_followup: The number of days between the date used
       for index and to the date the patient was lost to follow-up.
     cases.case.disease_type: The text term used to describe the type of malignant
@@ -367,15 +402,18 @@ _meta:
       [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.demographic.age_at_index: The patient's age (in years) on the reference
       or anchor date date used during date obfuscation.
-    cases.demographic.age_is_obfuscated: The age of the patient has been modified
-      for compliance reasons. The actual age differs from what is reported. Other
-      date intervals for this patient may also be modified.
+    cases.demographic.age_is_obfuscated: The age or other properties related to the
+      patient's age have been modified for compliance reasons. The actual age may
+      differ from what was reported in order to comply with the Health Insurance Portability
+      and Accountability Act (HIPAA).
     cases.demographic.batch_id: GDC submission batch indicator. It is unique within
       the context of a project.
     cases.demographic.cause_of_death: Text term to identify the cause of death for
       a patient.
     cases.demographic.cause_of_death_source: The text term used to describe the source
       used to determine the patient's cause of death.
+    cases.demographic.country_of_residence_at_enrollment: The text term used to describe
+      the patient's country of residence at the time they were enrolled in the study.
     cases.demographic.created_datetime: A combination of date and time of day in the
       form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.demographic.days_to_birth: Number of days between the date used for index
@@ -554,6 +592,9 @@ _meta:
       the body, especially whether the disease has spread from the original site to
       other parts of the body, as described by the International Federation of Gynecology
       and Obstetrics (FIGO) stages.
+    cases.diagnoses.figo_staging_edition_year: The text term used to describe the
+      edition year of the FIGO staging system used to stage the patient's gynecologic
+      tumor.
     cases.diagnoses.first_symptom_prior_to_diagnosis: Text term used to describe the
       patient's first symptom experienced prior to diagnosis and thought to be related
       to the disease.
@@ -565,9 +606,16 @@ _meta:
       to determine the aggressiveness of prostate cancer. Note that this grade describes
       the entire prostatectomy specimen and is not specific to the sample used for
       sequencing.
+    cases.diagnoses.gleason_grade_tertiary: The text term used to describe the tertiary
+      pattern as described by the Gleason Grading System.
+    cases.diagnoses.gleason_patterns_percent: Numeric value that represents the percentage
+      of Patterns 4 and 5, which is used when the Gleason score is greater than 7
+      to predict prognosis.
     cases.diagnoses.goblet_cells_columnar_mucosa_present: The yes/no/unknown indicator
       used to describe whether goblet cells were determined to be present in the esophageal
       columnar mucosa.
+    cases.diagnoses.greatest_tumor_dimension: Numeric value that represents the measurement
+      of the widest portion of the tumor in centimeters.
     cases.diagnoses.gross_tumor_weight: Numeric value used to describe the gross pathologic
       tumor weight, measured in grams.
     cases.diagnoses.icd_10_code: Alphanumeric value used to describe the  disease
@@ -607,6 +655,8 @@ _meta:
       state or condition of an individual's neoplasm.
     cases.diagnoses.laterality: For tumors in paired organs, designates the side on
       which the cancer originates.
+    cases.diagnoses.lymph_node_involved_site: The text term used to describe the anatomic
+      site of lymph node involvement.
     cases.diagnoses.lymph_nodes_positive: The number of lymph nodes involved with
       disease as determined by pathologic examination.
     cases.diagnoses.lymph_nodes_tested: The number of lymph nodes tested to determine
@@ -614,6 +664,10 @@ _meta:
       examination.
     cases.diagnoses.lymphatic_invasion_present: A yes/no indicator to ask if small
       or thin-walled vessel invasion is present, indicating lymphatic involvement
+    cases.diagnoses.margin_distance: Numeric value that represents the distance between
+      the tumor and the surgical margin
+    cases.diagnoses.margins_involved_site: The text term used to describe the anatomic
+      sites that were involved in the survival margins.
     cases.diagnoses.masaoka_stage: The text term used to describe the Masaoka staging
       system, a classification that defines prognostic indicators for thymic malignancies
       and predicts tumor recurrence.
@@ -652,6 +706,9 @@ _meta:
     cases.diagnoses.ovarian_surface_involvement: The text term that describes whether
       the surface tissue (outer boundary) of the ovary shows evidence of involvement
       or presence of cancer.
+    cases.diagnoses.papillary_renal_cell_type: The text term used to describe the
+      type of papillary renal cell carcinoma characterized by the presence of papillae
+      covered by small cells with scant amount of cytoplasm.
     cases.diagnoses.percent_tumor_invasion: The percentage of tumor cells spread locally
       in a malignant neoplasm through infiltration or destruction of adjacent tissue.
     cases.diagnoses.perineural_invasion_present: a yes/no indicator to ask if perineural
@@ -663,6 +720,8 @@ _meta:
       lymph nodes tested for the presence of pancreatic cancer cells.
     cases.diagnoses.peritoneal_fluid_cytological_status: The text term used to describe
       the malignant status of the peritoneal fluid determined by cytologic testing.
+    cases.diagnoses.pregnant_at_diagnosis: The text term used to indicate whether
+      the patient was pregnant at the time they were diagnosed.
     cases.diagnoses.primary_diagnosis: Text term used to describe the patient's histologic
       diagnosis, as described by the World Health Organization's (WHO) International
       Classification of Diseases for Oncology (ICD-O).
@@ -707,8 +766,12 @@ _meta:
       anatomic site of origin, of the patient's malignant disease, as described by
       the World Health Organization's (WHO) International Classification of Diseases
       for Oncology (ICD-O).
+    cases.diagnoses.transglottic_extension: The text term used to describe an extension
+      of the tumor beyond the opening into the ventricles and vocal cords.
     cases.diagnoses.treatments.batch_id: GDC submission batch indicator. It is unique
       within the context of a project.
+    cases.diagnoses.treatments.chemo_concurrent_to_radiation: The text term used to
+      describe whether the patient was receiving chemotherapy concurrent to radiation.
     cases.diagnoses.treatments.created_datetime: A combination of date and time of
       day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.diagnoses.treatments.days_to_treatment_end: Number of days between the date
@@ -717,8 +780,12 @@ _meta:
       date used for index and the date the treatment started.
     cases.diagnoses.treatments.initial_disease_status: The text term used to describe
       the status of the patient's malignancy when the treatment began.
+    cases.diagnoses.treatments.number_of_cycles: The numeric value used to describe
+      the number of cycles of a specific treatment or regimen the patient received.
     cases.diagnoses.treatments.project_id: Unique ID for any specific defined piece
       of work that is undertaken or attempted to meet a single requirement.
+    cases.diagnoses.treatments.reason_treatment_ended: The text term used to describe
+      the reason a specific treatment or regimen ended.
     cases.diagnoses.treatments.regimen_or_line_of_therapy: The text term used to describe
       the regimen or line of therapy.
     cases.diagnoses.treatments.state: The current state of the object.
@@ -729,8 +796,18 @@ _meta:
       agent(s) used as part of a treatment regimen.
     cases.diagnoses.treatments.treatment_anatomic_site: The anatomic site or field
       targeted by a treatment regimen or single agent therapy.
+    cases.diagnoses.treatments.treatment_arm: Text term used to describe the treatment
+      arm assigned to a patient at the time eligibility is determined.
+    cases.diagnoses.treatments.treatment_dose: The numeric value used to describe
+      the dose of an agent the patient received.
+    cases.diagnoses.treatments.treatment_dose_units: The text term used to describe
+      the dose units of an agent the patient received.
     cases.diagnoses.treatments.treatment_effect: The text term used to describe the
       pathologic effect a treatment(s) had on the tumor.
+    cases.diagnoses.treatments.treatment_effect_indicator: The text term used to indicate
+      whether the treatment had an effect on the patient.
+    cases.diagnoses.treatments.treatment_frequency: The text term used to describe
+      the frequency the patient received an agent or regimen.
     cases.diagnoses.treatments.treatment_intent_type: Text term to identify the reason
       for the administration of a treatment regimen. [Manually-curated]
     cases.diagnoses.treatments.treatment_or_therapy: A yes/no/unknown/not applicable
@@ -744,6 +821,8 @@ _meta:
     cases.diagnoses.tumor_confined_to_organ_of_origin: The yes/no/unknown indicator
       used to describe whether the tumor is confined to the organ where it originated
       and did not spread to a proximal or distant location within the body.
+    cases.diagnoses.tumor_depth: Numeric value that represents the depth of  tumor
+      invasion, measured in millimeters (mm).
     cases.diagnoses.tumor_focality: The text term used to describe whether the patient's
       disease originated in a single location or multiple locations.
     cases.diagnoses.tumor_grade: Numeric value to express the degree of abnormality
@@ -778,6 +857,8 @@ _meta:
       histologic groups.
     cases.diagnoses.year_of_diagnosis: Numeric value to represent the year of an individual's
       initial pathologic diagnosis of cancer.
+    cases.exposures.age_at_onset: Numeric value used to represent the age of the patient
+      when exposure to a specific environmental factor began.
     cases.exposures.alcohol_days_per_week: Numeric value used to describe the average
       number of days each week that a person consumes an alcoholic beverage.
     cases.exposures.alcohol_drinks_per_day: Numeric value used to describe the average
@@ -803,7 +884,13 @@ _meta:
       used to describe whether a patient was exposed to smoke that is emitted from
       burning tobacco, including cigarettes, pipes, and cigars. This includes tobacco
       smoke exhaled by smokers.
+    cases.exposures.exposure_duration: Text term used to describe the length of time
+      the patient was exposed to an environmental factor.
+    cases.exposures.exposure_type: The text term used to describe the type of environmental
+      exposure.
     cases.exposures.height: The height of the patient in centimeters.
+    cases.exposures.marijuana_use_per_week: Numeric value that represents the number
+      of times the patient uses marijuana each day.
     cases.exposures.pack_years_smoked: Numeric computed value to represent lifetime
       tobacco exposure defined as number of cigarettes smoked per day x number of
       years smoked divided by 20.
@@ -816,6 +903,8 @@ _meta:
       a widespread, naturally occurring, crystalline metal oxide that consists of
       different forms including quartz, cristobalite, tridymite, tripoli, ganister,
       chert and novaculite.
+    cases.exposures.secondhand_smoke_as_child: The text term used to indicate whether
+      the patient was exposed to secondhand smoke as a child.
     cases.exposures.smoking_frequency: The text term used to generally decribe how
       often the patient smokes.
     cases.exposures.state: The current state of the object.
@@ -831,6 +920,8 @@ _meta:
       smoking.
     cases.exposures.tobacco_smoking_status: Category describing current smoking status
       and smoking history as self-reported by a patient.
+    cases.exposures.tobacco_use_per_day: Numeric value that represents the number
+      of times the patient uses tobacco each day.
     cases.exposures.type_of_smoke_exposure: The text term used to describe the patient's
       specific type of smoke exposure.
     cases.exposures.type_of_tobacco_used: The text term used to describe the specific
@@ -887,6 +978,12 @@ _meta:
       [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.follow_ups.adverse_event: Text that represents the Common Terminology Criteria
       for Adverse Events low level term name for an adverse event.
+    cases.follow_ups.adverse_event_grade: The text term used to describe a specific
+      histone variants, which are proteins that substitute for the core canonical
+      histones.
+    cases.follow_ups.aids_risk_factors: The text term used to describe a risk factor
+      of  the acquired immunodeficiency syndrome (AIDS) that the patient either had
+      at time time of the study or experienced in the past.
     cases.follow_ups.barretts_esophagus_goblet_cells_present: The yes/no/unknown indicator
       used to describe whether goblet cells were determined to be present in a patient
       diagnosed with Barrett's esophagus.
@@ -894,8 +991,14 @@ _meta:
       the context of a project.
     cases.follow_ups.bmi: A calculated numerical quantity that represents an individual's
       weight to height ratio.
+    cases.follow_ups.body_surface_area: Numeric value used to represent the 2-dimensional
+      extent of the body surface relating height to weight.
     cases.follow_ups.cause_of_response: The text term used to describe the suspected
       cause or reason for the patient disease response.
+    cases.follow_ups.cd4_count: The text term used to describe the outcome of the
+      procedure to determine the amount of the CD4 expressing cells in a sample.
+    cases.follow_ups.cdc_hiv_risk_factors: The text term used to describe a risk factor
+      for human immunodeficiency virus, as described by the Center for Disease Control.
     cases.follow_ups.comorbidity: The text term used to describe a comorbidity disease,
       which coexists with the patient's malignant disease.
     cases.follow_ups.comorbidity_method_of_diagnosis: The text term used to describe
@@ -908,6 +1011,8 @@ _meta:
       index and the date the patient was diagnosed with a comorbidity.
     cases.follow_ups.days_to_follow_up: Number of days between the date used for index
       and the date of the patient's last follow-up appointment or contact.
+    cases.follow_ups.days_to_imaging: Number of days between the date used for index
+      and the date the imaging or scan was performed on the patient.
     cases.follow_ups.days_to_progression: Number of days between the date used for
       index and the date the patient's disease progressed.
     cases.follow_ups.days_to_progression_free: Number of days between the date used
@@ -923,6 +1028,8 @@ _meta:
       lungs.
     cases.follow_ups.ecog_performance_status: The ECOG functional performance status
       of the patient/participant.
+    cases.follow_ups.evidence_of_recurrence_type: The text term used to describe the
+      type of evidence used to determine whether the patient's disease recurred.
     cases.follow_ups.fev1_fvc_post_bronch_percent: Percentage value to represent result
       of Forced Expiratory Volume in 1 second (FEV1) divided by the Forced Vital Capacity
       (FVC) post-bronchodilator.
@@ -935,12 +1042,30 @@ _meta:
     cases.follow_ups.fev1_ref_pre_bronch_percent: The percentage comparison to a normal
       value reference range of the volume of air that a patient can forcibly exhale
       from the lungs in one second pre-bronchodilator.
+    cases.follow_ups.haart_treatment_indicator: The text term used to indicate whether
+      the patient received Highly Active Antiretroviral Therapy (HARRT).
     cases.follow_ups.height: The height of the patient in centimeters.
     cases.follow_ups.hepatitis_sustained_virological_response: The yes/no/unknown
       indicator used to describe whether the patient received treatment for a risk
       factor the patient had at the time of or prior to their diagnosis.
+    cases.follow_ups.hiv_viral_load: Numeric value that represents the concentration
+      of an analyte or aliquot extracted from the sample or sample portion, measured
+      in milligrams per milliliter.
+    cases.follow_ups.hormonal_contraceptive_use: The text term used to indicate whether
+      the patient used hormonal contraceptives.
     cases.follow_ups.hpv_positive_type: Text classification to represent the strain
       or type of human papillomavirus identified in an individual.
+    cases.follow_ups.hysterectomy_margins_involved: The text term used to indicate
+      whether the patient's disease was determined to be involved based on the surgical
+      margins of the hysterectomy.
+    cases.follow_ups.hysterectomy_type: The text term used to describe the type of
+      hysterectomy the patient had.
+    cases.follow_ups.imaging_result: The text term used to describe the result of
+      the imaging or scan performed on the patient.
+    cases.follow_ups.imaging_type: The text term used to describe the type of imaging
+      or scan performed on the patient.
+    cases.follow_ups.immunosuppressive_treatment_type: The text term used to describe
+      the type of immunosuppresive treatment the patient received.
     cases.follow_ups.karnofsky_performance_status: Text term used to describe the
       classification used of the functional capabilities of a person.
     cases.follow_ups.menopause_status: Text term used to describe the patient's menopause
@@ -966,6 +1091,8 @@ _meta:
       chromosome targeted or included in molecular testing. If a specific genetic
       variant is being reported, this property can be used to capture the chromosome
       where that variant is located.
+    cases.follow_ups.molecular_tests.clonality: The text term used to describe whether
+      a genomic variant is related by descent from a single progenitor cell.
     cases.follow_ups.molecular_tests.copy_number: Numeric value used to describe the
       number of times a section of the genome is repeated or copied within an insertion,
       duplication or deletion variant.
@@ -1049,8 +1176,12 @@ _meta:
       the type of genetic variation.
     cases.follow_ups.molecular_tests.zygosity: The text term used to describe the
       zygosity of a specific genetic variant.
+    cases.follow_ups.nadir_cd4_count: Numeric value that represents the lowest point
+      to which the CD4 count has dropped (nadir).
     cases.follow_ups.pancreatitis_onset_year: Numeric value to represent the year
       that the patient was diagnosed with clinical chronic pancreatitis.
+    cases.follow_ups.pregnancy_outcome: The text term used to describe the type of
+      pregnancy the patient had.
     cases.follow_ups.progression_or_recurrence: Yes/No/Unknown indicator to identify
       whether a patient has had a new tumor event after initial treatment.
     cases.follow_ups.progression_or_recurrence_anatomic_site: The text term used to
@@ -1059,6 +1190,12 @@ _meta:
       the type of progressive or recurrent disease or relapsed disease.
     cases.follow_ups.project_id: Unique ID for any specific defined piece of work
       that is undertaken or attempted to meet a single requirement.
+    cases.follow_ups.recist_targeted_regions_number: Numeric value that represents
+      the number of baseline target lesions, as described by the Response Evaluation
+      Criteria in Solid Tumours (RECIST) criteria.
+    cases.follow_ups.recist_targeted_regions_sum: Numeric value that represents the
+      sum of baseline target lesions, as described by the Response Evaluation Criteria
+      in Solid Tumours (RECIST) criteria.
     cases.follow_ups.reflux_treatment_type: Text term used to describe the types of
       treatment used to manage gastroesophageal reflux disease (GERD).
     cases.follow_ups.risk_factor: The text term used to describe a risk factor the
@@ -1066,6 +1203,8 @@ _meta:
     cases.follow_ups.risk_factor_treatment: The yes/no/unknown indicator used to describe
       whether the patient received treatment for a risk factor the patient had at
       the time of or prior to their diagnosis.
+    cases.follow_ups.scan_tracer_used: The text term used to describe the type of
+      tracer used during the imaging or scan of the patient.
     cases.follow_ups.state: The current state of the object.
     cases.follow_ups.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
@@ -1154,6 +1293,55 @@ _meta:
     cases.samples.analytes.a260_a280_ratio: Numeric value that represents the sample
       ratio of nucleic acid absorbance at 260 nm and 280 nm, used to determine a measure
       of DNA purity.
+    cases.samples.analytes.aliquots.aliquot_quantity: The quantity in micrograms (ug)
+      of the aliquot(s) derived from the analyte(s) shipped for sequencing and characterization.
+    cases.samples.analytes.aliquots.aliquot_volume: The volume in microliters (ml)
+      of the aliquot(s) derived from the analyte(s) shipped for sequencing and characterization.
+    cases.samples.analytes.aliquots.amount: Weight in grams or volume in mL.
+    cases.samples.analytes.aliquots.analyte_type: Text term that represents the kind
+      of molecular specimen analyte.
+    cases.samples.analytes.aliquots.analyte_type_id: A single letter code used to
+      identify a type of molecular analyte.
+    cases.samples.analytes.aliquots.batch_id: GDC submission batch indicator. It is
+      unique within the context of a project.
+    cases.samples.analytes.aliquots.concentration: Numeric value that represents the
+      concentration of an analyte or aliquot extracted from the sample or sample portion,
+      measured in milligrams per milliliter.
+    cases.samples.analytes.aliquots.created_datetime: null
+    cases.samples.analytes.aliquots.no_matched_normal_low_pass_wgs: There will be
+      no matched normal low pass WGS aliquots for this case that can be used for variant
+      calling purposes. The GDC may elect to use a single tumor calling pipeline to
+      process this data.
+    cases.samples.analytes.aliquots.no_matched_normal_targeted_sequencing: There will
+      be no matched normal Targeted Sequencing aliquots for this case that can be
+      used for variant calling purposes. The GDC may elect to use a single tumor calling
+      pipeline to process this data.
+    cases.samples.analytes.aliquots.no_matched_normal_wgs: There will be no matched
+      normal WGS aliquots for this case that can be used for variant calling purposes.
+      The GDC may elect to use a single tumor calling pipeline to process this data.
+    cases.samples.analytes.aliquots.no_matched_normal_wxs: There will be no matched
+      normal WXS aliquots for this case that can be used for variant calling purposes.
+      The GDC may elect to use a single tumor calling pipeline to process this data.
+    cases.samples.analytes.aliquots.project_id: null
+    cases.samples.analytes.aliquots.selected_normal_low_pass_wgs: Denotes which low-pass
+      WGS normal aliquot the submitter prefers to use for variant calling. Only one
+      normal per experimental strategy per case can be selected.
+    cases.samples.analytes.aliquots.selected_normal_targeted_sequencing: Denotes which
+      targeted_sequencing normal aliquot the submitter prefers to use for variant
+      calling. Only one normal per experimental strategy per case can be selected.
+    cases.samples.analytes.aliquots.selected_normal_wgs: Denotes which WGS normal
+      aliquot the submitter prefers to use for variant calling. Only one normal per
+      experimental strategy per case can be selected.
+    cases.samples.analytes.aliquots.selected_normal_wxs: Denotes which WXS normal
+      aliquot the submitter prefers to use for variant calling. Only one normal per
+      experimental strategy per case can be selected.
+    cases.samples.analytes.aliquots.source_center: Name of the center that provided
+      the item.
+    cases.samples.analytes.aliquots.state: null
+    cases.samples.analytes.aliquots.submitter_id: A project-specific identifier for
+      a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    cases.samples.analytes.aliquots.updated_datetime: null
     cases.samples.analytes.amount: Weight in grams or volume in mL.
     cases.samples.analytes.analyte_quantity: The quantity in micrograms (ug) of the
       analyte(s) derived from the analyte(s) shipped for sequencing and characterization.
@@ -1242,10 +1430,12 @@ _meta:
       time to split.
     cases.samples.initial_weight: Numeric value that represents the initial weight
       of the sample, measured in milligrams.
-    cases.samples.intermediate_dimension: null
+    cases.samples.intermediate_dimension: Intermediate dimension of the sample, in
+      millimeters.
     cases.samples.is_ffpe: Indicator to signify whether or not the tissue sample was
       fixed in formalin and embedded in paraffin (FFPE).
-    cases.samples.longest_dimension: null
+    cases.samples.longest_dimension: Numeric value that represents the longest dimension
+      of the sample, measured in millimeters.
     cases.samples.method_of_sample_procurement: The method used to procure the sample
       used to extract analyte(s).
     cases.samples.oct_embedded: Indicator of whether or not the sample was embedded
@@ -1479,6 +1669,8 @@ _meta:
       and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.portions.slides.batch_id: GDC submission batch indicator. It is
       unique within the context of a project.
+    cases.samples.portions.slides.bone_marrow_malignant_cells: The text term used
+      to indicate whether there are malignant cells in the bone marrow.
     cases.samples.portions.slides.created_datetime: A combination of date and time
       of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.portions.slides.number_proliferating_cells: Numeric value that represents
@@ -1487,6 +1679,9 @@ _meta:
     cases.samples.portions.slides.percent_eosinophil_infiltration: Numeric value to
       represent the percentage of infiltration by eosinophils in a tumor sample or
       specimen.
+    cases.samples.portions.slides.percent_follicular_component: Numeric value that
+      represents the percentage of follicular features found in a specific tissue
+      sample.
     cases.samples.portions.slides.percent_granulocyte_infiltration: Numeric value
       to represent the percentage of infiltration by granulocytes in a tumor sample
       or specimen.
@@ -1506,6 +1701,11 @@ _meta:
       specimen.
     cases.samples.portions.slides.percent_normal_cells: Numeric value to represent
       the percentage of normal cell content in a malignant tumor sample or specimen.
+    cases.samples.portions.slides.percent_rhabdoid_features: Numeric value that represents
+      the percentage of rhabdoid features found in a specific tissue sample.
+    cases.samples.portions.slides.percent_sarcomatoid_features: Numeric value that
+      represents the percentage of sarcomatoid features found in a specific tissue
+      sample.
     cases.samples.portions.slides.percent_stromal_cells: Numeric value to represent
       the percentage of reactive cells that are present in a malignant tumor sample
       or specimen but are not malignant such as fibroblasts, vascular structures,
@@ -1516,11 +1716,27 @@ _meta:
       the percentage of tumor nuclei in a malignant neoplasm sample or specimen.
     cases.samples.portions.slides.project_id: Unique ID for any specific defined piece
       of work that is undertaken or attempted to meet a single requirement.
+    cases.samples.portions.slides.prostatic_chips_positive_count: The text term used
+      to describe the number of positive prostatic chips, which are generated from
+      transurethral resection of the prostate (TURP) procedures and are generally
+      used for relieving urinary obstruction due to nodular hyperplasia of the prostate
+      (benign prostatic hyperplasia).
+    cases.samples.portions.slides.prostatic_chips_total_count: The text term used
+      to describe the total number of prostatic chips, which are generated from transurethral
+      resection of the prostate (TURP) procedures and are generally used for relieving
+      urinary obstruction due to nodular hyperplasia of the prostate (benign prostatic
+      hyperplasia).
+    cases.samples.portions.slides.prostatic_involvement_percent: Numeric value that
+      represents the percentage of prostatic involvement found in a specific tissue
+      sample.
     cases.samples.portions.slides.section_location: Tissue source of the slide.
     cases.samples.portions.slides.state: The current state of the object.
     cases.samples.portions.slides.submitter_id: A project-specific identifier for
       a node. This property is the calling card/nickname/alias for a unit of submission.
       It can be used in place of the UUID for identifying or recalling a node.
+    cases.samples.portions.slides.tissue_microarray_coordinates: The alphanumeric
+      term used to describe the coordinates of a specific tissue located on a tissue
+      microarray slide.
     cases.samples.portions.slides.updated_datetime: A combination of date and time
       of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.portions.state: The current state of the object.
@@ -1566,6 +1782,8 @@ _meta:
       of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.slides.batch_id: GDC submission batch indicator. It is unique within
       the context of a project.
+    cases.samples.slides.bone_marrow_malignant_cells: The text term used to indicate
+      whether there are malignant cells in the bone marrow.
     cases.samples.slides.created_datetime: A combination of date and time of day in
       the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.slides.number_proliferating_cells: Numeric value that represents
@@ -1573,6 +1791,8 @@ _meta:
       sample slide(s).
     cases.samples.slides.percent_eosinophil_infiltration: Numeric value to represent
       the percentage of infiltration by eosinophils in a tumor sample or specimen.
+    cases.samples.slides.percent_follicular_component: Numeric value that represents
+      the percentage of follicular features found in a specific tissue sample.
     cases.samples.slides.percent_granulocyte_infiltration: Numeric value to represent
       the percentage of infiltration by granulocytes in a tumor sample or specimen.
     cases.samples.slides.percent_inflam_infiltration: Numeric value to represent local
@@ -1590,6 +1810,10 @@ _meta:
       the percentage of infiltration by neutrophils in a tumor sample or specimen.
     cases.samples.slides.percent_normal_cells: Numeric value to represent the percentage
       of normal cell content in a malignant tumor sample or specimen.
+    cases.samples.slides.percent_rhabdoid_features: Numeric value that represents
+      the percentage of rhabdoid features found in a specific tissue sample.
+    cases.samples.slides.percent_sarcomatoid_features: Numeric value that represents
+      the percentage of sarcomatoid features found in a specific tissue sample.
     cases.samples.slides.percent_stromal_cells: Numeric value to represent the percentage
       of reactive cells that are present in a malignant tumor sample or specimen but
       are not malignant such as fibroblasts, vascular structures, etc.
@@ -1599,11 +1823,26 @@ _meta:
       of tumor nuclei in a malignant neoplasm sample or specimen.
     cases.samples.slides.project_id: Unique ID for any specific defined piece of work
       that is undertaken or attempted to meet a single requirement.
+    cases.samples.slides.prostatic_chips_positive_count: The text term used to describe
+      the number of positive prostatic chips, which are generated from transurethral
+      resection of the prostate (TURP) procedures and are generally used for relieving
+      urinary obstruction due to nodular hyperplasia of the prostate (benign prostatic
+      hyperplasia).
+    cases.samples.slides.prostatic_chips_total_count: The text term used to describe
+      the total number of prostatic chips, which are generated from transurethral
+      resection of the prostate (TURP) procedures and are generally used for relieving
+      urinary obstruction due to nodular hyperplasia of the prostate (benign prostatic
+      hyperplasia).
+    cases.samples.slides.prostatic_involvement_percent: Numeric value that represents
+      the percentage of prostatic involvement found in a specific tissue sample.
     cases.samples.slides.section_location: Tissue source of the slide.
     cases.samples.slides.state: The current state of the object.
     cases.samples.slides.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
       be used in place of the UUID for identifying or recalling a node.
+    cases.samples.slides.tissue_microarray_coordinates: The alphanumeric term used
+      to describe the coordinates of a specific tissue located on a tissue microarray
+      slide.
     cases.samples.slides.updated_datetime: A combination of date and time of day in
       the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.state: The current state of the object.
@@ -1615,6 +1854,8 @@ _meta:
       sample, measured in minutes.
     cases.samples.time_between_excision_and_freezing: Numeric representation of the
       elapsed time between the excision and freezing of the sample, measured in minutes.
+    cases.samples.tissue_collection_type: The text term used to describe the tyoe
+      of collection used to obtain tissue.
     cases.samples.tissue_type: Text term that represents a description of the kind
       of tissue collected with respect to disease status or proximity to tumor tissue.
     cases.samples.tumor_code: Diagnostic tumor code of the tissue sample source.
@@ -1677,8 +1918,12 @@ _meta:
       [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     files.cases.batch_id: GDC submission batch indicator. It is unique within the
       context of a project.
+    files.cases.consent_type: The text term used to describe the type of consent obtain
+      from the subject for participation in the study.
     files.cases.created_datetime: A combination of date and time of day in the form
       [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.days_to_consent: Number of days between the date used for index and
+      the date the subject consent was obtained for participation in the study.
     files.cases.days_to_lost_to_followup: The number of days between the date used
       for index and to the date the patient was lost to follow-up.
     files.cases.disease_type: The text term used to describe the type of malignant
