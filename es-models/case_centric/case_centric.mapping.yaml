@@ -473,8 +473,6 @@ properties:
                     type: keyword
                   tumor_sample_uuid:
                     type: keyword
-              src_vcf_id:
-                type: keyword
               tumor_genotype:
                 properties:
                   tumor_seq_allele1:
