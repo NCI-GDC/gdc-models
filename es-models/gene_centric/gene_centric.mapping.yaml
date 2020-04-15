@@ -455,8 +455,6 @@ properties:
             type: keyword
           observation:
             properties:
-              acl:
-                type: keyword
               center:
                 type: keyword
               input_bam_file:
@@ -527,8 +525,6 @@ properties:
           tumor_allele:
             type: keyword
         type: nested
-      ssm_acl:
-        type: keyword
       state:
         type: keyword
       submitter_id:

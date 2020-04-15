@@ -325,8 +325,6 @@ properties:
         properties:
           sample_type:
             type: keyword
-      ssm_acl:
-        type: keyword
       state:
         type: keyword
       submitter_id:
