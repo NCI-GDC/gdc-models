@@ -282,8 +282,6 @@ properties:
         type: keyword
       observation:
         properties:
-          acl:
-            type: keyword
           center:
             type: keyword
           input_bam_file:
@@ -322,8 +320,6 @@ properties:
                 type: keyword
               tumor_sample_uuid:
                 type: keyword
-          src_vcf_id:
-            type: keyword
           tumor_genotype:
             properties:
               tumor_seq_allele1:
@@ -373,8 +369,6 @@ properties:
         properties:
           sample_type:
             type: keyword
-      ssm_acl:
-        type: keyword
       state:
         type: keyword
       submitter_id:
