@@ -57,6 +57,9 @@ output/*/index.html
 # Sphinx
 docs/_build
 
+# pyenv
+.python-version
+
 .DS_Store
 *~
 .*.sw[po]
