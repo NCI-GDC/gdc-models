@@ -161,12 +161,18 @@ properties:
             type: keyword
           case_id:
             type: keyword
+          consent_type:
+            type: keyword
+          days_to_consent:
+            type: long
           days_to_index:
             type: long
           demographic:
             properties:
               age_at_index:
                 type: long
+              age_is_obfuscated:
+                type: keyword
               cause_of_death:
                 type: keyword
               days_to_birth:
@@ -281,6 +287,8 @@ properties:
                 type: long
               ldh_normal_range_upper:
                 type: long
+              lymph_node_involved_site:
+                type: keyword
               lymph_nodes_positive:
                 type: long
               lymph_nodes_tested:
@@ -290,6 +298,8 @@ properties:
               masaoka_stage:
                 type: keyword
               metastasis_at_diagnosis:
+                type: keyword
+              metastasis_at_diagnosis_site:
                 type: keyword
               method_of_diagnosis:
                 type: keyword
@@ -303,6 +313,10 @@ properties:
                 type: keyword
               perineural_invasion_present:
                 type: keyword
+              peripancreatic_lymph_nodes_positive:
+                type: keyword
+              peripancreatic_lymph_nodes_tested:
+                type: long
               primary_diagnosis:
                 type: keyword
               primary_gleason_grade:
@@ -335,6 +349,8 @@ properties:
                     type: long
                   initial_disease_status:
                     type: keyword
+                  number_of_cycles:
+                    type: long
                   regimen_or_line_of_therapy:
                     type: keyword
                   state:
@@ -345,6 +361,8 @@ properties:
                     type: keyword
                   treatment_anatomic_site:
                     type: keyword
+                  treatment_dose:
+                    type: long
                   treatment_id:
                     type: keyword
                   treatment_intent_type:
@@ -373,6 +391,8 @@ properties:
             type: keyword
           exposures:
             properties:
+              alcohol_days_per_week:
+                type: long
               alcohol_history:
                 type: keyword
               alcohol_intensity:
