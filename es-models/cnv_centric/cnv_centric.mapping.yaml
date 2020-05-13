@@ -1,5 +1,3 @@
-_all:
-  enabled: false
 properties:
   chromosome:
     type: keyword
