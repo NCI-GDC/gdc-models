@@ -1,5 +1,3 @@
-_all:
-  enabled: false
 _source:
   excludes:
   - occurrence.*
