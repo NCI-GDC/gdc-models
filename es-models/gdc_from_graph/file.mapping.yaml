@@ -2194,14 +2194,16 @@ properties:
     normalizer: clinical_normalizer
     type: keyword
   data_category:
-    copy_to: file_autocomplete
+    copy_to:
+    - file_autocomplete
     normalizer: clinical_normalizer
     type: keyword
   data_format:
     normalizer: clinical_normalizer
     type: keyword
   data_type:
-    copy_to: file_autocomplete
+    copy_to:
+    - file_autocomplete
     type: keyword
   downstream_analyses:
     properties:
@@ -2357,7 +2359,8 @@ properties:
     normalizer: clinical_normalizer
     type: keyword
   experimental_strategy:
-    copy_to: file_autocomplete
+    copy_to:
+    - file_autocomplete
     type: keyword
   file_autocomplete:
     fields:
@@ -2375,11 +2378,13 @@ properties:
     normalizer: clinical_normalizer
     type: keyword
   file_id:
-    copy_to: file_autocomplete
+    copy_to:
+    - file_autocomplete
     normalizer: clinical_normalizer
     type: keyword
   file_name:
-    copy_to: file_autocomplete
+    copy_to:
+    - file_autocomplete
     normalizer: clinical_normalizer
     type: keyword
   file_size:
@@ -2506,7 +2511,8 @@ properties:
   magnification:
     type: long
   md5sum:
-    copy_to: file_autocomplete
+    copy_to:
+    - file_autocomplete
     normalizer: clinical_normalizer
     type: keyword
   mean_coverage:
@@ -2606,7 +2612,8 @@ properties:
     normalizer: clinical_normalizer
     type: keyword
   submitter_id:
-    copy_to: file_autocomplete
+    copy_to:
+    - file_autocomplete
     type: keyword
   tags:
     normalizer: clinical_normalizer
