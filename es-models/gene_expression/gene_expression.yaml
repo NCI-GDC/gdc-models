@@ -1,0 +1,24 @@
+properties:
+  case_id:
+    type: keyword
+  submitter_id:
+    type: keyword
+  race:
+    type: keyword
+  age_at_diagnosis:
+    type: long
+  vital_status:
+    type: keyword
+  days_to_death:
+    type: long
+  gender:
+    type: keyword
+  ethnicity:
+    type: keyword
+  genes:
+    properties:
+      gene_id:
+        type: keyword
+      expression_value:
+        type: float
+    type: nested
