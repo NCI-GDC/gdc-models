@@ -7,7 +7,7 @@ def test_get_es_models_standard_behavior():
     """
     models = get_es_models()
 
-    assert len(models) == 12
+    assert len(models) == 13
 
     for dtype in ['case', 'project', 'file', 'annotation']:
         dtype_mapping = models['gdc_from_graph'][dtype]['_mapping']
