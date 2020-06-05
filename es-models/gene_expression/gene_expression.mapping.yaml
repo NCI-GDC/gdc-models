@@ -22,3 +22,5 @@ properties:
       expression_value:
         type: float
     type: nested
+  project_id:
+    type: keyword
