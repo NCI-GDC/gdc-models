@@ -10,5 +10,6 @@ analysis:
       min_gram: 2
       side: front
       type: edge_ngram
+index.mapping.nested_objects.limit: 100000000
 index.max_result_window: 100000000
 mapping.nested_fields.limit: 150
