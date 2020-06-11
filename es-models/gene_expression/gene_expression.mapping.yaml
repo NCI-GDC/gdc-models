@@ -1,3 +1,6 @@
+_source:
+  excludes:
+  - genes.*
 properties:
   case_id:
     type: keyword
