@@ -1130,6 +1130,10 @@ _meta:
     cases.follow_ups.molecular_tests.mismatch_repair_mutation: The yes/no/unknown
       indicator used to describe whether the mutation included in molecular testing
       was known to have an affect on the mismatch repair process.
+    cases.follow_ups.molecular_tests.mitotic_count: The number of mitoses identified
+      under the microscope in tumors. The method of counting varies, according to
+      the specific tumor examined. Usually, the mitotic count is determined based
+      on the number of mitoses per high power field (40X) or 10 high power fields.
     cases.follow_ups.molecular_tests.molecular_analysis_method: The text term used
       to describe the method used for molecular analysis.
     cases.follow_ups.molecular_tests.molecular_consequence: The text term used to
