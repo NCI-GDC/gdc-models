@@ -15,7 +15,8 @@ properties:
     normalizer: clinical_normalizer
     type: keyword
   annotation_id:
-    copy_to: annotation_autocomplete
+    copy_to:
+    - annotation_autocomplete
     normalizer: clinical_normalizer
     type: keyword
   case_id:
