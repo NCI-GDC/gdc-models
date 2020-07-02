@@ -32,6 +32,13 @@ nosetests.xml
 coverage.xml
 htmlcov
 
+# Jenkins 
+.local/
+.eggs/
+.ssh/
+*/_version.py
+wait-for-it.sh
+
 # Translations
 *.mo
 
@@ -49,6 +56,9 @@ output/*/index.html
 
 # Sphinx
 docs/_build
+
+# pyenv
+.python-version
 
 .DS_Store
 *~

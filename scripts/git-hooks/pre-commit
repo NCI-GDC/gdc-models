@@ -24,7 +24,7 @@ def process_yaml(yaml_file, format_yaml):
     with open(yaml_file, 'r') as y:
         yaml_text = y.read()
 
-    yaml_data = yaml.load(yaml_text)
+    yaml_data = yaml.safe_load(yaml_text)
     yaml_dump = yaml.dump(yaml_data, default_flow_style=False)
 
     if yaml_text != yaml_dump and yaml_dump != 'null\n...\n':  # only format it when not empty
@@ -45,12 +45,11 @@ def process_yaml(yaml_file, format_yaml):
 
 
 def main(format_yaml):
-    os.chdir(get_git_root())
+    mappings_path = os.path.join(get_git_root(), 'es-models')
+    os.chdir(mappings_path)
+
     ret_value = 0
     for path, _, files in os.walk("."):
-        if path.startswith('./.git') or path.startswith('./git-hooks'):
-            continue
-
         for f in files:
             if f.startswith('.') or not f.endswith('.yaml'):
                 continue
