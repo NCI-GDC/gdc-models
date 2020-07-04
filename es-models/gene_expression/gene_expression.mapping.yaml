@@ -1,6 +1,3 @@
-_source:
-  excludes:
-  - genes.*
 properties:
   case_id:
     type: keyword
@@ -18,12 +15,11 @@ properties:
     type: keyword
   ethnicity:
     type: keyword
-  genes:
+  gene:
     properties:
       gene_id:
         type: keyword
       expression_value:
         type: float
-    type: nested
   project_id:
     type: keyword
