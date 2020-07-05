@@ -1,4 +1,6 @@
 properties:
+  gene_expression_id:
+    type: keyword
   case_id:
     type: keyword
   submitter_id:
