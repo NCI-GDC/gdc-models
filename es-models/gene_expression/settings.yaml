@@ -24,8 +24,8 @@ index.mapping.nested_fields.limit: 100
 index.mapping.nested_objects.limit: 100000000
 index.max_result_window: 100000000
 index.sort.field:
-- case_id
 - gene.gene_id
+- case_id
 index.sort.order:
 - asc
 - asc
