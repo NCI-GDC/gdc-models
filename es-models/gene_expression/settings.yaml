@@ -26,3 +26,6 @@ index.max_result_window: 100000000
 index.sort.field:
 - case_id
 - gene.gene_id
+index.sort.order:
+- asc
+- asc
