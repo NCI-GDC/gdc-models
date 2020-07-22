@@ -1,2 +1,7 @@
 pytest~=4.6
 pytest-cov~=2.7
+pre-commit==1.21.0
+cfgv==2.0.1
+
+# Make it easier to pin deps that work across Python 2 & 3
+more-itertools~=5.0

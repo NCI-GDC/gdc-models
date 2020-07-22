@@ -289,6 +289,9 @@ properties:
       diagnosis_id:
         normalizer: clinical_normalizer
         type: keyword
+      eln_risk_classification:
+        normalizer: clinical_normalizer
+        type: keyword
       enneking_msts_grade:
         normalizer: clinical_normalizer
         type: keyword
@@ -466,10 +469,16 @@ properties:
       residual_disease:
         normalizer: clinical_normalizer
         type: keyword
+      satellite_nodule_present:
+        normalizer: clinical_normalizer
+        type: keyword
       secondary_gleason_grade:
         normalizer: clinical_normalizer
         type: keyword
       site_of_resection_or_biopsy:
+        normalizer: clinical_normalizer
+        type: keyword
+      sites_of_involvement:
         normalizer: clinical_normalizer
         type: keyword
       state:
@@ -590,6 +599,12 @@ properties:
       weiss_assessment_score:
         normalizer: clinical_normalizer
         type: keyword
+      who_cns_grade:
+        normalizer: clinical_normalizer
+        type: keyword
+      who_nte_grade:
+        normalizer: clinical_normalizer
+        type: keyword
       wilms_tumor_histologic_subtype:
         normalizer: clinical_normalizer
         type: keyword
@@ -614,6 +629,9 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       alcohol_intensity:
+        normalizer: clinical_normalizer
+        type: keyword
+      alcohol_type:
         normalizer: clinical_normalizer
         type: keyword
       asbestos_exposure:
@@ -656,6 +674,8 @@ properties:
       secondhand_smoke_as_child:
         normalizer: clinical_normalizer
         type: keyword
+      smokeless_tobacco_quit_age:
+        type: long
       smoking_frequency:
         normalizer: clinical_normalizer
         type: keyword
@@ -874,6 +894,9 @@ properties:
                     normalizer: clinical_normalizer
                     type: keyword
                   base_caller_version:
+                    normalizer: clinical_normalizer
+                    type: keyword
+                  chipseq_target:
                     normalizer: clinical_normalizer
                     type: keyword
                   created_datetime:
@@ -1668,7 +1691,13 @@ properties:
         type: keyword
       hiv_viral_load:
         type: long
+      hormonal_contraceptive_type:
+        normalizer: clinical_normalizer
+        type: keyword
       hormonal_contraceptive_use:
+        normalizer: clinical_normalizer
+        type: keyword
+      hormone_replacement_therapy_type:
         normalizer: clinical_normalizer
         type: keyword
       hpv_positive_type:
@@ -1706,6 +1735,8 @@ properties:
           biospecimen_type:
             normalizer: clinical_normalizer
             type: keyword
+          biospecimen_volume:
+            type: long
           blood_test_normal_range_lower:
             type: long
           blood_test_normal_range_upper:
@@ -1754,6 +1785,10 @@ properties:
           mismatch_repair_mutation:
             normalizer: clinical_normalizer
             type: keyword
+          mitotic_count:
+            type: long
+          mitotic_total_area:
+            type: long
           molecular_analysis_method:
             normalizer: clinical_normalizer
             type: keyword
@@ -1815,6 +1850,9 @@ properties:
       pancreatitis_onset_year:
         type: long
       pregnancy_outcome:
+        normalizer: clinical_normalizer
+        type: keyword
+      procedures_performed:
         normalizer: clinical_normalizer
         type: keyword
       progression_or_recurrence:
