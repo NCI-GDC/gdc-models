@@ -36,6 +36,12 @@ def get_parser():
         help="Elasticsearch server port (default: 9200)",
     )
     parser.add_argument(
+        "--ssl",
+        action="store_true",
+        help="Connect to Elasticsearch over SSL",
+    )
+    parser.add_argument("--ssl-ca", help="Path to CA certificate bundle for SSL")
+    parser.add_argument(
         "--user", dest="user", default="", help="Elasticsearch client user"
     )
     parser.add_argument(
@@ -81,6 +87,8 @@ def get_elasticsearch(args):
     """Create an Elasticsearch client according to the given CLI args."""
     return Elasticsearch(
         hosts=[{"host": args.host, "port": args.port}],
+        use_ssl=args.ssl,
+        ca_certs=args.ssl_ca,
         http_auth=(args.user, args.password),
         timeout=60,
     )
