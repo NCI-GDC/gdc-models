@@ -553,8 +553,6 @@ properties:
         type: keyword
       days_to_consent:
         type: long
-      days_to_index:
-        type: long
       days_to_lost_to_followup:
         type: long
       demographic:
@@ -2603,9 +2601,6 @@ properties:
   msi_score:
     type: long
   msi_status:
-    normalizer: clinical_normalizer
-    type: keyword
-  origin:
     normalizer: clinical_normalizer
     type: keyword
   pairs_on_diff_chr:
