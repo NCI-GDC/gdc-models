@@ -2,28 +2,28 @@ _source:
   excludes:
   - genes.*
 properties:
-  case_id:
-    type: keyword
-  submitter_id:
-    type: keyword
-  race:
-    type: keyword
   age_at_diagnosis:
     type: long
-  vital_status:
+  case_id:
     type: keyword
   days_to_death:
     type: long
-  gender:
-    type: keyword
   ethnicity:
+    type: keyword
+  gender:
     type: keyword
   genes:
     properties:
-      gene_id:
-        type: keyword
       expression_value:
         type: float
+      gene_id:
+        type: keyword
     type: nested
   project_id:
+    type: keyword
+  race:
+    type: keyword
+  submitter_id:
+    type: keyword
+  vital_status:
     type: keyword
