@@ -19,6 +19,8 @@ properties:
       gene_id:
         type: keyword
     type: nested
+  hgnc_symbol:
+    type: keyword
   project_id:
     type: keyword
   race:
