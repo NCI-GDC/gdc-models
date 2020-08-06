@@ -18,9 +18,9 @@ properties:
         type: float
       gene_id:
         type: keyword
+      hgnc_symbol:
+        type: keyword
     type: nested
-  hgnc_symbol:
-    type: keyword
   project_id:
     type: keyword
   race:
