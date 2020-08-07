@@ -77,11 +77,13 @@ def confirm_delete(index_name):
     return ans == index_name
 
 
-def get_elasticsearch(args):
+def get_elasticsearch(args, use_ssl=False, verify_certs=True):
     """Create an Elasticsearch client according to the given CLI args."""
     return Elasticsearch(
         hosts=[{"host": args.host, "port": args.port}],
         http_auth=(args.user, args.password),
+        use_ssl=use_ssl,
+        verify_certs=verify_certs,
         timeout=60,
     )
 
