@@ -6,7 +6,7 @@ import logging
 from gdcmodels.init_index import get_elasticsearch
 from services.force_merge_service import force_merge_elasticsearch_indices
 
-FORMAT = '[%(asctime)s][%(name)14s][%(levelname)7s] %(message)s'
+FORMAT = "[%(asctime)s][%(name)14s][%(levelname)7s] %(message)s"
 
 
 def get_parser():
@@ -43,7 +43,7 @@ def main():
     parser = get_parser()
     args = parser.parse_args()
     es = get_elasticsearch(args, True, args.verify_certs)
-    force_merge_elasticsearch_indices(es, args.index.split(','))
+    force_merge_elasticsearch_indices(es, args.index.split(","))
 
 
 if __name__ == "__main__":
