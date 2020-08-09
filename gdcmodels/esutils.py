@@ -3,14 +3,28 @@ import urllib3
 
 from time import sleep
 
+from elasticsearch import Elasticsearch
 from elasticsearch.exceptions import ConnectionTimeout
+
+UPDATE_INTERVAL = 10
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
+def get_elasticsearch(args, use_ssl=False, verify_certs=True):
+    """Create an Elasticsearch client according to the given CLI args."""
+    return Elasticsearch(
+        hosts=[{"host": args.host, "port": args.port}],
+        http_auth=(args.user, args.password),
+        use_ssl=use_ssl,
+        verify_certs=verify_certs,
+        timeout=60,
+    )
+
+
 def force_merge_elasticsearch_indices(es, index, max_num_segments=1):
     if not index or not isinstance(index, list):
-        raise ValueError("Index has to be a list of strings and can not be empty")
+        raise ValueError("index has to be a non empty list of strings.")
 
     try:
         logging.info("Start merging")
@@ -24,5 +38,5 @@ def force_merge_elasticsearch_indices(es, index, max_num_segments=1):
                 for stat in res["nodes"].values()
             )
             logging.info("Still merging. Active thread count: {}".format(active_count))
-            sleep(3)
+            sleep(UPDATE_INTERVAL)
     logging.info("Finished merging.")

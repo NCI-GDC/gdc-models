@@ -3,7 +3,7 @@ import sys
 import pytest
 from elasticsearch.exceptions import ConnectionTimeout
 
-from gdcmodels.services.force_merge_service import force_merge_elasticsearch_indices
+from gdcmodels.esutils import force_merge_elasticsearch_indices
 
 if sys.version_info > (3, 2):
     from unittest.mock import Mock
