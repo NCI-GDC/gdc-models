@@ -38,14 +38,14 @@ def force_merge_elasticsearch_indices(es, index, max_num_segments=1):
 
     Args:
         es: Elasticsearch object, Elasticsearch low-level client
-        index: list of index names to merge
+        index: A comma-separated list of index names
         max_num_segments: The number of segments the index should be merged into
 
     Returns:
 
     """
-    if not index or not isinstance(index, list):
-        raise ValueError("index must be a non empty list of strings.")
+    if not index or not isinstance(index, str):
+        raise ValueError("index must be a comma-separated list of index names.")
 
     try:
         logging.info("Start merging")

@@ -40,7 +40,7 @@ def main():
     parser = get_parser()
     args = parser.parse_args()
     es = esutils.get_elasticsearch(args.host, args.port, args.user, args.password, True)
-    esutils.force_merge_elasticsearch_indices(es, args.index)
+    esutils.force_merge_elasticsearch_indices(es, ','.join(args.index))
 
 
 if __name__ == "__main__":
