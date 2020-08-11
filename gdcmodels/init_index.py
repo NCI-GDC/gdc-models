@@ -5,8 +5,7 @@ import sys
 
 from six.moves import input
 
-from gdcmodels import get_es_models
-from gdcmodels.esutils import get_elasticsearch
+from gdcmodels import get_es_models, esutils
 
 
 def get_parser():
@@ -79,7 +78,9 @@ def confirm_delete(index_name):
 
 def init_index(args):
     es_models = get_es_models()
-    es = get_elasticsearch(args)
+    es = esutils.get_elasticsearch(
+        args.host, args.port, args.user, args.password, False
+    )
 
     for index in args.index:
         if not es_models.get(index):
