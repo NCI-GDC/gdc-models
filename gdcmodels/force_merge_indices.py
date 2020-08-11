@@ -4,6 +4,8 @@ import argparse
 import logging
 
 from gdcmodels import esutils
+from gdcmodels.init_index import get_elasticsearch
+
 
 FORMAT = "[%(asctime)s][%(name)14s][%(levelname)7s] %(message)s"
 
@@ -11,12 +13,6 @@ FORMAT = "[%(asctime)s][%(name)14s][%(levelname)7s] %(message)s"
 def get_parser():
     parser = argparse.ArgumentParser(
         description="Force a merge on the shards of one or more ES indices"
-    )
-    parser.add_argument(
-        "--verify-certs",
-        default=False,
-        action="store_true",
-        help="Verify the ca certs for Elasticsearch",
     )
     parser.add_argument(
         "index", nargs="+", help="Indices to do the merge.",
@@ -39,8 +35,8 @@ def main():
     logging.basicConfig(format=FORMAT, level=logging.INFO)
     parser = get_parser()
     args = parser.parse_args()
-    es = esutils.get_elasticsearch(args.host, args.port, args.user, args.password, True)
-    esutils.force_merge_elasticsearch_indices(es, ','.join(args.index))
+    es = get_elasticsearch(args, True)
+    esutils.force_merge_elasticsearch_indices(es, args.index)
 
 
 if __name__ == "__main__":
