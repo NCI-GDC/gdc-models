@@ -27,6 +27,12 @@ def get_parser():
     parser.add_argument(
         "--password", dest="password", default="", help="Elasticsearch client password"
     )
+    parser.add_argument(
+        "--ssl",
+        action="store_true",
+        help="Connect to Elasticsearch over SSL",
+    )
+    parser.add_argument("--ssl-ca", help="Path to CA certificate bundle for SSL")
 
     return parser
 
@@ -35,7 +41,7 @@ def main():
     logging.basicConfig(format=FORMAT, level=logging.INFO)
     parser = get_parser()
     args = parser.parse_args()
-    es = get_elasticsearch(args, True)
+    es = get_elasticsearch(args)
     esutils.force_merge_elasticsearch_indices(es, args.index)
 
 
