@@ -3,10 +3,10 @@
 import argparse
 import sys
 
-from elasticsearch import Elasticsearch
 from six.moves import input
 
-from gdcmodels import get_es_models
+from elasticsearch import Elasticsearch
+from gdcmodels import get_es_models, esutils
 
 
 def get_parser():
@@ -59,6 +59,25 @@ def format_index_name(prefix, index, index_type=None):
         return "_".join([prefix, index, index_type])
 
 
+def get_elasticsearch(args, use_ssl=True):
+    """Create an Elasticsearch client according to the given CLI args.
+
+    Args:
+        args: arguments. must have host, port, user, password attributes
+        use_ssl: Turn on/off SSL
+
+    Returns:
+
+    """
+    return Elasticsearch(
+        hosts=[{"host": args.host, "port": args.port}],
+        http_auth=(args.user, args.password),
+        use_ssl=use_ssl,
+        verify_certs=False,
+        timeout=60,
+    )
+
+
 def confirm_delete(index_name):
     """Prompt the user to confirm that the given index should be deleted.
 
@@ -77,18 +96,9 @@ def confirm_delete(index_name):
     return ans == index_name
 
 
-def get_elasticsearch(args):
-    """Create an Elasticsearch client according to the given CLI args."""
-    return Elasticsearch(
-        hosts=[{"host": args.host, "port": args.port}],
-        http_auth=(args.user, args.password),
-        timeout=60,
-    )
-
-
 def init_index(args):
     es_models = get_es_models()
-    es = get_elasticsearch(args)
+    es = get_elasticsearch(args, False)
 
     for index in args.index:
         if not es_models.get(index):

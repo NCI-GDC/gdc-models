@@ -8,7 +8,7 @@ import yaml
 
 def load_yaml(filename):
     """Return contents of yaml file as dict"""
-    with open(filename, 'r') as f:
+    with open(filename, "r") as f:
         return yaml.safe_load(f)
 
 
@@ -16,8 +16,8 @@ def load_descriptions(filename):
     descriptions = load_yaml(filename)
     result = {}
     # we can select what properties to add in the future
-    if '_meta' in descriptions:
-        result['_meta'] = descriptions.get('_meta')
+    if "_meta" in descriptions:
+        result["_meta"] = descriptions.get("_meta")
     return result
 
 
@@ -33,7 +33,7 @@ def get_es_models(es_model_dir=None):
     """
 
     if es_model_dir is None:
-        es_model_dir = pkg_resources.resource_filename('gdcmodels', 'es-models')
+        es_model_dir = pkg_resources.resource_filename("gdcmodels", "es-models")
 
     es_models = {}
 
@@ -43,21 +43,19 @@ def get_es_models(es_model_dir=None):
 
         for f in os.listdir(os.path.join(es_model_dir, es_index)):
             if es_index not in es_models:
-                es_models[es_index] = {
-                    '_settings': {}
-                }
+                es_models[es_index] = {"_settings": {}}
 
-            if f.endswith('.mapping.yaml'):
-                es_type = re.sub(r'\.mapping\.yaml$', '', f)
+            if f.endswith(".mapping.yaml"):
+                es_type = re.sub(r"\.mapping\.yaml$", "", f)
                 es_models[es_index][es_type] = {
-                        '_mapping': load_yaml(pj(es_model_dir, es_index, f))
-                    }
-                desc_path = pj(es_model_dir, es_index, 'descriptions.yaml')
+                    "_mapping": load_yaml(pj(es_model_dir, es_index, f))
+                }
+                desc_path = pj(es_model_dir, es_index, "descriptions.yaml")
                 if isfile(desc_path):
                     descriptions = load_descriptions(desc_path)
-                    es_models[es_index][es_type]['_mapping'].update(descriptions)
-            elif f == 'settings.yaml':
-                es_models[es_index]['_settings'] = load_yaml(
+                    es_models[es_index][es_type]["_mapping"].update(descriptions)
+            elif f == "settings.yaml":
+                es_models[es_index]["_settings"] = load_yaml(
                     os.path.join(es_model_dir, es_index, f)
                 )
 
