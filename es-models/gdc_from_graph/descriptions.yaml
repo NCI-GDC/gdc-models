@@ -47,7 +47,7 @@ _meta:
     annotations.aliquot.state: The current state of the object.
     annotations.aliquot.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
-      be used in place of the UUID for identifying or recalling a node.
+      be used in place of the uuid for identifying or recalling a node.
     annotations.aliquot.updated_datetime: A combination of date and time of day in
       the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     annotations.analyte.a260_a280_ratio: Numeric value that represents the sample
@@ -81,7 +81,7 @@ _meta:
     annotations.analyte.state: The current state of the object.
     annotations.analyte.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
-      be used in place of the UUID for identifying or recalling a node.
+      be used in place of the uuid for identifying or recalling a node.
     annotations.analyte.updated_datetime: A combination of date and time of day in
       the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     annotations.analyte.well_number: Numeric value that represents the the well location
@@ -101,7 +101,7 @@ _meta:
     annotations.annotation.state_comment: null
     annotations.annotation.submitter_id: A project-specific identifier for a node.
       This property is the calling card/nickname/alias for a unit of submission. It
-      can be used in place of the UUID for identifying or recalling a node.
+      can be used in place of the uuid for identifying or recalling a node.
     annotations.annotation.updated_datetime: A combination of date and time of day
       in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     annotations.case.batch_id: GDC submission batch indicator. It is unique within
@@ -132,7 +132,7 @@ _meta:
     annotations.case.state: The current state of the object.
     annotations.case.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
-      be used in place of the UUID for identifying or recalling a node.
+      be used in place of the uuid for identifying or recalling a node.
     annotations.case.updated_datetime: A combination of date and time of day in the
       form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     annotations.file.batch_id: GDC submission batch indicator. It is unique within
@@ -152,7 +152,7 @@ _meta:
       current state, mainly for invalid state.
     annotations.file.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
-      be used in place of the UUID for identifying or recalling a node.
+      be used in place of the uuid for identifying or recalling a node.
     annotations.file.updated_datetime: A combination of date and time of day in the
       form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     annotations.portion.batch_id: GDC submission batch indicator. It is unique within
@@ -170,7 +170,7 @@ _meta:
     annotations.portion.state: The current state of the object.
     annotations.portion.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
-      be used in place of the UUID for identifying or recalling a node.
+      be used in place of the uuid for identifying or recalling a node.
     annotations.portion.updated_datetime: A combination of date and time of day in
       the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     annotations.portion.weight: Numeric value that represents the sample portion weight,
@@ -217,11 +217,11 @@ _meta:
       the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     annotations.sample.current_weight: Numeric value that represents the current weight
       of the sample, measured  in milligrams.
-    annotations.sample.days_to_collection: Time interval from the date of biospecimen
-      collection to the date of initial pathologic diagnosis, represented as a calculated
-      number of days.
-    annotations.sample.days_to_sample_procurement: The number of days from the date
-      the patient was diagnosed to the date of the procedure that produced the sample.
+    annotations.sample.days_to_collection: The number of days from the index date
+      to the date a sample was collected for a specific study or project.
+    annotations.sample.days_to_sample_procurement: The number of days from the index
+      date to the date a patient underwent a procedure (e.g. surgical resection) yielding
+      a sample that was eventually used for research.
     annotations.sample.diagnosis_pathologically_confirmed: The histologic description
       of tissue or cells confirmed by a pathology review of frozen or formalin fixed
       slide(s) completed after the diagnostic pathology review of the tumor sample
@@ -263,7 +263,7 @@ _meta:
     annotations.sample.state: The current state of the object.
     annotations.sample.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
-      be used in place of the UUID for identifying or recalling a node.
+      be used in place of the uuid for identifying or recalling a node.
     annotations.sample.time_between_clamping_and_freezing: Numeric representation
       of the elapsed time between the surgical clamping of blood supply and freezing
       of the sample, measured in minutes.
@@ -340,7 +340,7 @@ _meta:
     annotations.slide.state: The current state of the object.
     annotations.slide.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
-      be used in place of the UUID for identifying or recalling a node.
+      be used in place of the uuid for identifying or recalling a node.
     annotations.slide.tissue_microarray_coordinates: The alphanumeric term used to
       describe the coordinates of a specific tissue located on a tissue microarray
       slide.
@@ -366,7 +366,7 @@ _meta:
     cases.annotations.status: Status of the annotation.
     cases.annotations.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
-      be used in place of the UUID for identifying or recalling a node.
+      be used in place of the uuid for identifying or recalling a node.
     cases.annotations.updated_datetime: A combination of date and time of day in the
       form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.case.batch_id: GDC submission batch indicator. It is unique within the context
@@ -397,7 +397,7 @@ _meta:
     cases.case.state: The current state of the object.
     cases.case.submitter_id: A project-specific identifier for a node. This property
       is the calling card/nickname/alias for a unit of submission. It can be used
-      in place of the UUID for identifying or recalling a node.
+      in place of the uuid for identifying or recalling a node.
     cases.case.updated_datetime: A combination of date and time of day in the form
       [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.demographic.age_at_index: The patient's age (in years) on the reference
@@ -446,7 +446,7 @@ _meta:
     cases.demographic.state: The current state of the object.
     cases.demographic.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
-      be used in place of the UUID for identifying or recalling a node.
+      be used in place of the uuid for identifying or recalling a node.
     cases.demographic.updated_datetime: A combination of date and time of day in the
       form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.demographic.vital_status: The survival state of the person registered on
@@ -525,7 +525,7 @@ _meta:
     cases.diagnoses.annotations.status: Status of the annotation.
     cases.diagnoses.annotations.submitter_id: A project-specific identifier for a
       node. This property is the calling card/nickname/alias for a unit of submission.
-      It can be used in place of the UUID for identifying or recalling a node.
+      It can be used in place of the uuid for identifying or recalling a node.
     cases.diagnoses.annotations.updated_datetime: A combination of date and time of
       day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.diagnoses.batch_id: GDC submission batch indicator. It is unique within
@@ -571,6 +571,7 @@ _meta:
       a calculated number of days.
     cases.diagnoses.days_to_recurrence: Number of days between the date used for index
       and the date the patient's disease recurred.
+    cases.diagnoses.eln_risk_classification: null
     cases.diagnoses.enneking_msts_grade: The text term used to describe the surgical
       grade of the musculoskeletal sarcoma, using the Enneking staging system approved
       by the Musculoskeletal Tumor Society (MSTS).
@@ -742,6 +743,7 @@ _meta:
       is undertaken or attempted to meet a single requirement.
     cases.diagnoses.residual_disease: Text terms to describe the status of a tissue
       margin following surgical resection.
+    cases.diagnoses.satellite_nodule_present: null
     cases.diagnoses.secondary_gleason_grade: The text term used to describe the secondary
       Gleason score, which describes the pattern of cells making up the second largest
       area of the tumor. The primary and secondary Gleason pattern grades are combined
@@ -752,10 +754,11 @@ _meta:
       anatomic site of origin, of the patient's malignant disease, as described by
       the World Health Organization's (WHO) International Classification of Diseases
       for Oncology (ICD-O).
+    cases.diagnoses.sites_of_involvement: null
     cases.diagnoses.state: The current state of the object.
     cases.diagnoses.submitter_id: A project-specific identifier for a node. This property
       is the calling card/nickname/alias for a unit of submission. It can be used
-      in place of the UUID for identifying or recalling a node.
+      in place of the uuid for identifying or recalling a node.
     cases.diagnoses.supratentorial_localization: Text term to specify the location
       of the supratentorial tumor.
     cases.diagnoses.synchronous_malignancy: A yes/no/unknown indicator used to describe
@@ -791,7 +794,7 @@ _meta:
     cases.diagnoses.treatments.state: The current state of the object.
     cases.diagnoses.treatments.submitter_id: A project-specific identifier for a node.
       This property is the calling card/nickname/alias for a unit of submission. It
-      can be used in place of the UUID for identifying or recalling a node.
+      can be used in place of the uuid for identifying or recalling a node.
     cases.diagnoses.treatments.therapeutic_agents: Text identification of the individual
       agent(s) used as part of a treatment regimen.
     cases.diagnoses.treatments.treatment_anatomic_site: The anatomic site or field
@@ -852,6 +855,8 @@ _meta:
       tumor cell cytoplasm (greater than 75% tumor cells), diffuse architecture (greater
       than 33% of tumor), necrosis, venous invasion, sinusoidal invasion, and capsular
       invasion.'
+    cases.diagnoses.who_cns_grade: null
+    cases.diagnoses.who_nte_grade: null
     cases.diagnoses.wilms_tumor_histologic_subtype: The text term used to describe
       the classification of Wilms tumors distinguishing between favorable and unfavorable
       histologic groups.
@@ -868,6 +873,7 @@ _meta:
       in their lifetime.
     cases.exposures.alcohol_intensity: Category to describe the patient's current
       level of alcohol use as self-reported by the patient.
+    cases.exposures.alcohol_type: null
     cases.exposures.asbestos_exposure: The yes/no/unknown indicator used to describe
       whether the patient was exposed to asbestos.
     cases.exposures.batch_id: GDC submission batch indicator. It is unique within
@@ -905,12 +911,13 @@ _meta:
       chert and novaculite.
     cases.exposures.secondhand_smoke_as_child: The text term used to indicate whether
       the patient was exposed to secondhand smoke as a child.
+    cases.exposures.smokeless_tobacco_quit_age: null
     cases.exposures.smoking_frequency: The text term used to generally decribe how
       often the patient smokes.
     cases.exposures.state: The current state of the object.
     cases.exposures.submitter_id: A project-specific identifier for a node. This property
       is the calling card/nickname/alias for a unit of submission. It can be used
-      in place of the UUID for identifying or recalling a node.
+      in place of the uuid for identifying or recalling a node.
     cases.exposures.time_between_waking_and_first_smoke: The text term used to describe
       the approximate amount of time elapsed between the time the patient wakes up
       in the morning to the time they smoke their first cigarette.
@@ -953,7 +960,7 @@ _meta:
     cases.family_histories.state: The current state of the object.
     cases.family_histories.submitter_id: A project-specific identifier for a node.
       This property is the calling card/nickname/alias for a unit of submission. It
-      can be used in place of the UUID for identifying or recalling a node.
+      can be used in place of the uuid for identifying or recalling a node.
     cases.family_histories.updated_datetime: A combination of date and time of day
       in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.files.batch_id: GDC submission batch indicator. It is unique within the
@@ -973,7 +980,7 @@ _meta:
       state, mainly for invalid state.
     cases.files.submitter_id: A project-specific identifier for a node. This property
       is the calling card/nickname/alias for a unit of submission. It can be used
-      in place of the UUID for identifying or recalling a node.
+      in place of the uuid for identifying or recalling a node.
     cases.files.updated_datetime: A combination of date and time of day in the form
       [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.follow_ups.adverse_event: Text that represents the Common Terminology Criteria
@@ -1051,8 +1058,10 @@ _meta:
     cases.follow_ups.hiv_viral_load: Numeric value that represents the concentration
       of an analyte or aliquot extracted from the sample or sample portion, measured
       in milligrams per milliliter.
+    cases.follow_ups.hormonal_contraceptive_type: null
     cases.follow_ups.hormonal_contraceptive_use: The text term used to indicate whether
       the patient used hormonal contraceptives.
+    cases.follow_ups.hormone_replacement_therapy_type: null
     cases.follow_ups.hpv_positive_type: Text classification to represent the strain
       or type of human papillomavirus identified in an individual.
     cases.follow_ups.hysterectomy_margins_involved: The text term used to indicate
@@ -1079,6 +1088,7 @@ _meta:
     cases.follow_ups.molecular_tests.biospecimen_type: The text term used to describe
       the biological material used for testing, diagnostic, treatment or research
       purposes.
+    cases.follow_ups.molecular_tests.biospecimen_volume: null
     cases.follow_ups.molecular_tests.blood_test_normal_range_lower: Numeric value
       used to describe the lower limit of the normal range used to describe a healthy
       individual at the institution where the test was completed.
@@ -1134,6 +1144,7 @@ _meta:
       under the microscope in tumors. The method of counting varies, according to
       the specific tumor examined. Usually, the mitotic count is determined based
       on the number of mitoses per high power field (40X) or 10 high power fields.
+    cases.follow_ups.molecular_tests.mitotic_total_area: null
     cases.follow_ups.molecular_tests.molecular_analysis_method: The text term used
       to describe the method used for molecular analysis.
     cases.follow_ups.molecular_tests.molecular_consequence: The text term used to
@@ -1160,7 +1171,7 @@ _meta:
     cases.follow_ups.molecular_tests.state: The current state of the object.
     cases.follow_ups.molecular_tests.submitter_id: A project-specific identifier for
       a node. This property is the calling card/nickname/alias for a unit of submission.
-      It can be used in place of the UUID for identifying or recalling a node.
+      It can be used in place of the uuid for identifying or recalling a node.
     cases.follow_ups.molecular_tests.test_analyte_type: The text term used to describe
       the type of analyte used for molecular testing.
     cases.follow_ups.molecular_tests.test_result: The text term used to describe the
@@ -1186,6 +1197,7 @@ _meta:
       that the patient was diagnosed with clinical chronic pancreatitis.
     cases.follow_ups.pregnancy_outcome: The text term used to describe the type of
       pregnancy the patient had.
+    cases.follow_ups.procedures_performed: null
     cases.follow_ups.progression_or_recurrence: Yes/No/Unknown indicator to identify
       whether a patient has had a new tumor event after initial treatment.
     cases.follow_ups.progression_or_recurrence_anatomic_site: The text term used to
@@ -1212,7 +1224,7 @@ _meta:
     cases.follow_ups.state: The current state of the object.
     cases.follow_ups.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
-      be used in place of the UUID for identifying or recalling a node.
+      be used in place of the uuid for identifying or recalling a node.
     cases.follow_ups.updated_datetime: A combination of date and time of day in the
       form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.follow_ups.viral_hepatitis_serologies: Text term that describes the kind
@@ -1291,7 +1303,7 @@ _meta:
     cases.samples.aliquots.state: The current state of the object.
     cases.samples.aliquots.submitter_id: A project-specific identifier for a node.
       This property is the calling card/nickname/alias for a unit of submission. It
-      can be used in place of the UUID for identifying or recalling a node.
+      can be used in place of the uuid for identifying or recalling a node.
     cases.samples.aliquots.updated_datetime: A combination of date and time of day
       in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.analytes.a260_a280_ratio: Numeric value that represents the sample
@@ -1311,7 +1323,8 @@ _meta:
     cases.samples.analytes.aliquots.concentration: Numeric value that represents the
       concentration of an analyte or aliquot extracted from the sample or sample portion,
       measured in milligrams per milliliter.
-    cases.samples.analytes.aliquots.created_datetime: null
+    cases.samples.analytes.aliquots.created_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.analytes.aliquots.no_matched_normal_low_pass_wgs: There will be
       no matched normal low pass WGS aliquots for this case that can be used for variant
       calling purposes. The GDC may elect to use a single tumor calling pipeline to
@@ -1326,7 +1339,8 @@ _meta:
     cases.samples.analytes.aliquots.no_matched_normal_wxs: There will be no matched
       normal WXS aliquots for this case that can be used for variant calling purposes.
       The GDC may elect to use a single tumor calling pipeline to process this data.
-    cases.samples.analytes.aliquots.project_id: null
+    cases.samples.analytes.aliquots.project_id: Unique ID for any specific defined
+      piece of work that is undertaken or attempted to meet a single requirement.
     cases.samples.analytes.aliquots.selected_normal_low_pass_wgs: Denotes which low-pass
       WGS normal aliquot the submitter prefers to use for variant calling. Only one
       normal per experimental strategy per case can be selected.
@@ -1341,11 +1355,12 @@ _meta:
       experimental strategy per case can be selected.
     cases.samples.analytes.aliquots.source_center: Name of the center that provided
       the item.
-    cases.samples.analytes.aliquots.state: null
+    cases.samples.analytes.aliquots.state: The current state of the object.
     cases.samples.analytes.aliquots.submitter_id: A project-specific identifier for
       a node. This property is the calling card/nickname/alias for a unit of submission.
       It can be used in place of the uuid for identifying or recalling a node.
-    cases.samples.analytes.aliquots.updated_datetime: null
+    cases.samples.analytes.aliquots.updated_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.analytes.amount: Weight in grams or volume in mL.
     cases.samples.analytes.analyte_quantity: The quantity in micrograms (ug) of the
       analyte(s) derived from the analyte(s) shipped for sequencing and characterization.
@@ -1374,7 +1389,7 @@ _meta:
     cases.samples.analytes.state: The current state of the object.
     cases.samples.analytes.submitter_id: A project-specific identifier for a node.
       This property is the calling card/nickname/alias for a unit of submission. It
-      can be used in place of the UUID for identifying or recalling a node.
+      can be used in place of the uuid for identifying or recalling a node.
     cases.samples.analytes.updated_datetime: A combination of date and time of day
       in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.analytes.well_number: Numeric value that represents the the well
@@ -1399,7 +1414,7 @@ _meta:
     cases.samples.annotations.status: Status of the annotation.
     cases.samples.annotations.submitter_id: A project-specific identifier for a node.
       This property is the calling card/nickname/alias for a unit of submission. It
-      can be used in place of the UUID for identifying or recalling a node.
+      can be used in place of the uuid for identifying or recalling a node.
     cases.samples.annotations.updated_datetime: A combination of date and time of
       day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.batch_id: GDC submission batch indicator. It is unique within the
@@ -1415,11 +1430,11 @@ _meta:
       [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.current_weight: Numeric value that represents the current weight
       of the sample, measured  in milligrams.
-    cases.samples.days_to_collection: Time interval from the date of biospecimen collection
-      to the date of initial pathologic diagnosis, represented as a calculated number
-      of days.
-    cases.samples.days_to_sample_procurement: The number of days from the date the
-      patient was diagnosed to the date of the procedure that produced the sample.
+    cases.samples.days_to_collection: The number of days from the index date to the
+      date a sample was collected for a specific study or project.
+    cases.samples.days_to_sample_procurement: The number of days from the index date
+      to the date a patient underwent a procedure (e.g. surgical resection) yielding
+      a sample that was eventually used for research.
     cases.samples.diagnosis_pathologically_confirmed: The histologic description of
       tissue or cells confirmed by a pathology review of frozen or formalin fixed
       slide(s) completed after the diagnostic pathology review of the tumor sample
@@ -1486,7 +1501,7 @@ _meta:
     cases.samples.portions.analytes.aliquots.annotations.status: Status of the annotation.
     cases.samples.portions.analytes.aliquots.annotations.submitter_id: A project-specific
       identifier for a node. This property is the calling card/nickname/alias for
-      a unit of submission. It can be used in place of the UUID for identifying or
+      a unit of submission. It can be used in place of the uuid for identifying or
       recalling a node.
     cases.samples.portions.analytes.aliquots.annotations.updated_datetime: A combination
       of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
@@ -1541,7 +1556,7 @@ _meta:
     cases.samples.portions.analytes.aliquots.state: The current state of the object.
     cases.samples.portions.analytes.aliquots.submitter_id: A project-specific identifier
       for a node. This property is the calling card/nickname/alias for a unit of submission.
-      It can be used in place of the UUID for identifying or recalling a node.
+      It can be used in place of the uuid for identifying or recalling a node.
     cases.samples.portions.analytes.aliquots.updated_datetime: A combination of date
       and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.portions.analytes.amount: Weight in grams or volume in mL.
@@ -1575,7 +1590,7 @@ _meta:
     cases.samples.portions.analytes.annotations.status: Status of the annotation.
     cases.samples.portions.analytes.annotations.submitter_id: A project-specific identifier
       for a node. This property is the calling card/nickname/alias for a unit of submission.
-      It can be used in place of the UUID for identifying or recalling a node.
+      It can be used in place of the uuid for identifying or recalling a node.
     cases.samples.portions.analytes.annotations.updated_datetime: A combination of
       date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.portions.analytes.batch_id: GDC submission batch indicator. It is
@@ -1597,7 +1612,7 @@ _meta:
     cases.samples.portions.analytes.state: The current state of the object.
     cases.samples.portions.analytes.submitter_id: A project-specific identifier for
       a node. This property is the calling card/nickname/alias for a unit of submission.
-      It can be used in place of the UUID for identifying or recalling a node.
+      It can be used in place of the uuid for identifying or recalling a node.
     cases.samples.portions.analytes.updated_datetime: A combination of date and time
       of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.portions.analytes.well_number: Numeric value that represents the
@@ -1624,7 +1639,7 @@ _meta:
     cases.samples.portions.annotations.status: Status of the annotation.
     cases.samples.portions.annotations.submitter_id: A project-specific identifier
       for a node. This property is the calling card/nickname/alias for a unit of submission.
-      It can be used in place of the UUID for identifying or recalling a node.
+      It can be used in place of the uuid for identifying or recalling a node.
     cases.samples.portions.annotations.updated_datetime: A combination of date and
       time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.portions.batch_id: GDC submission batch indicator. It is unique
@@ -1668,7 +1683,7 @@ _meta:
     cases.samples.portions.slides.annotations.status: Status of the annotation.
     cases.samples.portions.slides.annotations.submitter_id: A project-specific identifier
       for a node. This property is the calling card/nickname/alias for a unit of submission.
-      It can be used in place of the UUID for identifying or recalling a node.
+      It can be used in place of the uuid for identifying or recalling a node.
     cases.samples.portions.slides.annotations.updated_datetime: A combination of date
       and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.portions.slides.batch_id: GDC submission batch indicator. It is
@@ -1737,7 +1752,7 @@ _meta:
     cases.samples.portions.slides.state: The current state of the object.
     cases.samples.portions.slides.submitter_id: A project-specific identifier for
       a node. This property is the calling card/nickname/alias for a unit of submission.
-      It can be used in place of the UUID for identifying or recalling a node.
+      It can be used in place of the uuid for identifying or recalling a node.
     cases.samples.portions.slides.tissue_microarray_coordinates: The alphanumeric
       term used to describe the coordinates of a specific tissue located on a tissue
       microarray slide.
@@ -1746,7 +1761,7 @@ _meta:
     cases.samples.portions.state: The current state of the object.
     cases.samples.portions.submitter_id: A project-specific identifier for a node.
       This property is the calling card/nickname/alias for a unit of submission. It
-      can be used in place of the UUID for identifying or recalling a node.
+      can be used in place of the uuid for identifying or recalling a node.
     cases.samples.portions.updated_datetime: A combination of date and time of day
       in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.portions.weight: Numeric value that represents the sample portion
@@ -1781,7 +1796,7 @@ _meta:
     cases.samples.slides.annotations.status: Status of the annotation.
     cases.samples.slides.annotations.submitter_id: A project-specific identifier for
       a node. This property is the calling card/nickname/alias for a unit of submission.
-      It can be used in place of the UUID for identifying or recalling a node.
+      It can be used in place of the uuid for identifying or recalling a node.
     cases.samples.slides.annotations.updated_datetime: A combination of date and time
       of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.slides.batch_id: GDC submission batch indicator. It is unique within
@@ -1843,7 +1858,7 @@ _meta:
     cases.samples.slides.state: The current state of the object.
     cases.samples.slides.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
-      be used in place of the UUID for identifying or recalling a node.
+      be used in place of the uuid for identifying or recalling a node.
     cases.samples.slides.tissue_microarray_coordinates: The alphanumeric term used
       to describe the coordinates of a specific tissue located on a tissue microarray
       slide.
@@ -1852,7 +1867,7 @@ _meta:
     cases.samples.state: The current state of the object.
     cases.samples.submitter_id: A project-specific identifier for a node. This property
       is the calling card/nickname/alias for a unit of submission. It can be used
-      in place of the UUID for identifying or recalling a node.
+      in place of the uuid for identifying or recalling a node.
     cases.samples.time_between_clamping_and_freezing: Numeric representation of the
       elapsed time between the surgical clamping of blood supply and freezing of the
       sample, measured in minutes.
@@ -1892,7 +1907,7 @@ _meta:
     files.annotations.status: Status of the annotation.
     files.annotations.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
-      be used in place of the UUID for identifying or recalling a node.
+      be used in place of the uuid for identifying or recalling a node.
     files.annotations.updated_datetime: A combination of date and time of day in the
       form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     files.archive.batch_id: GDC submission batch indicator. It is unique within the
@@ -1917,7 +1932,7 @@ _meta:
       state, mainly for invalid state.
     files.archive.submitter_id: A project-specific identifier for a node. This property
       is the calling card/nickname/alias for a unit of submission. It can be used
-      in place of the UUID for identifying or recalling a node.
+      in place of the uuid for identifying or recalling a node.
     files.archive.updated_datetime: A combination of date and time of day in the form
       [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     files.cases.batch_id: GDC submission batch indicator. It is unique within the
@@ -1948,7 +1963,7 @@ _meta:
     files.cases.state: The current state of the object.
     files.cases.submitter_id: A project-specific identifier for a node. This property
       is the calling card/nickname/alias for a unit of submission. It can be used
-      in place of the UUID for identifying or recalling a node.
+      in place of the uuid for identifying or recalling a node.
     files.cases.updated_datetime: A combination of date and time of day in the form
       [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     files.center.center_type: Type classification of the center (e.g. CGCC).
@@ -1977,7 +1992,7 @@ _meta:
       state, mainly for invalid state.
     files.file.submitter_id: A project-specific identifier for a node. This property
       is the calling card/nickname/alias for a unit of submission. It can be used
-      in place of the UUID for identifying or recalling a node.
+      in place of the uuid for identifying or recalling a node.
     files.file.updated_datetime: A combination of date and time of day in the form
       [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     files.metadata_files.batch_id: GDC submission batch indicator. It is unique within
@@ -1998,7 +2013,7 @@ _meta:
       the current state, mainly for invalid state.
     files.metadata_files.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
-      be used in place of the UUID for identifying or recalling a node.
+      be used in place of the uuid for identifying or recalling a node.
     files.metadata_files.updated_datetime: A combination of date and time of day in
       the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     files.platform.name: name of this platform
