@@ -65,21 +65,20 @@ def format_index_name(prefix, index, index_type=None):
         return "_".join([prefix, index, index_type])
 
 
-def get_elasticsearch(args, use_ssl=True):
+def get_elasticsearch(args):
     """Create an Elasticsearch client according to the given CLI args.
 
     Args:
         args: arguments. must have host, port, user, password attributes
-        use_ssl: Turn on/off SSL
 
     Returns:
-
+        Elasticsearch: ES client instance
     """
     return Elasticsearch(
         hosts=[{"host": args.host, "port": args.port}],
+        use_ssl=args.ssl,
+        ca_certs=args.ssl_ca,
         http_auth=(args.user, args.password),
-        use_ssl=use_ssl,
-        verify_certs=False,
         timeout=60,
     )
 
@@ -104,7 +103,7 @@ def confirm_delete(index_name):
 
 def init_index(args):
     es_models = get_es_models()
-    es = get_elasticsearch(args, False)
+    es = get_elasticsearch(args)
 
     for index in args.index:
         if not es_models.get(index):
