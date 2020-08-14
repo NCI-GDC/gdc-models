@@ -21,4 +21,5 @@ analysis:
       side: front
       type: edge_ngram
 index.mapping.nested_fields.limit: 100
+index.mapping.nested_objects.limit: 100000000
 index.max_result_window: 100000000

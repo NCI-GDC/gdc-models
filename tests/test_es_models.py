@@ -1,26 +1,4 @@
-import pytest
-
-from init_index import get_parser
 from gdcmodels import get_es_models
-
-
-parser = get_parser()
-
-
-@pytest.mark.parametrize('input_args', [
-    ('--prefix', 'foo-bar'),
-    ('--prefix', 'foo-bar', '--host', 'localhost'),
-    ('--prefix', 'foo-bar', '--index', 'case_centric'),
-    ('--index', 'case_centric gene_centric'),
-    ('--index', 'case_centric', '--host', 'localhost'),
-    ('--host', 'localhost'),
-])
-def test_missing_required_args(input_args):
-    """
-    Test that arguments are parsed correctly
-    """
-    with pytest.raises(SystemExit):
-        parser.parse_args(input_args)
 
 
 def test_get_es_models_standard_behavior():
