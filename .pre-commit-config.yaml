@@ -1,6 +1,20 @@
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.5.0
+    hooks:
+    -   id: end-of-file-fixer
+    -   id: no-commit-to-branch
+        args: [--branch, develop, --branch, master, --pattern, release/.*]
 -   repo: git@github.com:Yelp/detect-secrets
     rev: v0.13.0
     hooks:
     -   id: detect-secrets
         args: ['--baseline', '.secrets.baseline']
-
+-   repo: local
+    hooks:
+    -   id: format-yaml
+        name: format-yaml
+        description: This hook formats yaml files.
+        entry: ./scripts/format_yaml.sh
+        language: python
+        types: [yaml]
+        additional_dependencies: ['PyYAML<6']
