@@ -1,9 +1,9 @@
 import logging
-import urllib3
-
 from time import sleep
 
 from elasticsearch.exceptions import ConnectionTimeout
+import urllib3
+from urllib3.exceptions import ReadTimeoutError
 
 UPDATE_INTERVAL = 10
 
@@ -27,7 +27,7 @@ def force_merge_elasticsearch_indices(es, index, max_num_segments=1):
     try:
         logging.info("Start merging")
         es.indices.forcemerge(index, max_num_segments=max_num_segments)
-    except ConnectionTimeout:
+    except (ConnectionTimeout, ReadTimeoutError):
         while True:
             res = es.nodes.stats(metric="thread_pool")
             active_count = sum(
