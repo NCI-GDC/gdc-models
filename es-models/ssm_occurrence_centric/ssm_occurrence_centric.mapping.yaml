@@ -108,6 +108,8 @@ properties:
             type: keyword
           figo_stage:
             type: keyword
+          figo_staging_edition_year:
+            type: keyword
           gastric_esophageal_junction_involvement:
             type: keyword
           goblet_cells_columnar_mucosa_present:
@@ -166,6 +168,8 @@ properties:
             type: keyword
           peripancreatic_lymph_nodes_tested:
             type: long
+          pregnant_at_diagnosis:
+            type: keyword
           primary_diagnosis:
             type: keyword
           primary_gleason_grade:
@@ -192,6 +196,8 @@ properties:
             type: keyword
           treatments:
             properties:
+              chemo_concurrent_to_radiation:
+                type: keyword
               days_to_treatment_end:
                 type: long
               days_to_treatment_start:
@@ -212,6 +218,8 @@ properties:
                 type: keyword
               treatment_dose:
                 type: long
+              treatment_frequency:
+                type: keyword
               treatment_id:
                 type: keyword
               treatment_intent_type:
