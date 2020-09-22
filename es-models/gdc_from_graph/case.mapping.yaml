@@ -613,6 +613,8 @@ properties:
     normalizer: clinical_normalizer
     type: keyword
   disease_type:
+    copy_to:
+    - case_autocomplete
     normalizer: clinical_normalizer
     type: keyword
   exposures:
@@ -1899,6 +1901,8 @@ properties:
     normalizer: clinical_normalizer
     type: keyword
   primary_site:
+    copy_to:
+    - case_autocomplete
     normalizer: clinical_normalizer
     type: keyword
   project:
@@ -1907,14 +1911,20 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       disease_type:
+        copy_to:
+        - case_autocomplete
         normalizer: clinical_normalizer
         type: keyword
       intended_release_date:
+        copy_to:
+        - case_autocomplete
         normalizer: clinical_normalizer
         type: keyword
       name:
         type: keyword
       primary_site:
+        copy_to:
+        - case_autocomplete
         normalizer: clinical_normalizer
         type: keyword
       program:
@@ -1928,6 +1938,8 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
       project_id:
+        copy_to:
+        - case_autocomplete
         type: keyword
       releasable:
         normalizer: clinical_normalizer
