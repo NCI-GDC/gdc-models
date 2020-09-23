@@ -640,7 +640,7 @@ properties:
       bmi:
         type: double
       cigarettes_per_day:
-        type: float
+        type: double
       coal_dust_exposure:
         normalizer: clinical_normalizer
         type: keyword
