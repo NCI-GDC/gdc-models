@@ -121,7 +121,7 @@ properties:
               cause_of_death:
                 type: keyword
               circumferential_resection_margin:
-                type: long
+                type: double
               classification_of_tumor:
                 type: keyword
               cog_renal_stage:
@@ -133,13 +133,13 @@ properties:
               days_to_hiv_diagnosis:
                 type: long
               days_to_last_follow_up:
-                type: long
+                type: double
               days_to_last_known_disease_status:
-                type: long
+                type: double
               days_to_new_event:
                 type: long
               days_to_recurrence:
-                type: long
+                type: double
               diagnosis_id:
                 type: keyword
               esophageal_columnar_dysplasia_degree:
@@ -207,7 +207,7 @@ properties:
               peripancreatic_lymph_nodes_positive:
                 type: keyword
               peripancreatic_lymph_nodes_tested:
-                type: long
+                type: double
               pregnant_at_diagnosis:
                 type: keyword
               primary_diagnosis:
@@ -274,7 +274,7 @@ properties:
               tumor_grade:
                 type: keyword
               tumor_largest_dimension_diameter:
-                type: long
+                type: double
               tumor_stage:
                 type: keyword
               vascular_invasion_present:
@@ -289,7 +289,7 @@ properties:
           exposures:
             properties:
               alcohol_days_per_week:
-                type: long
+                type: double
               alcohol_history:
                 type: keyword
               alcohol_intensity:
@@ -297,15 +297,15 @@ properties:
               asbestos_exposure:
                 type: keyword
               bmi:
-                type: float
+                type: double
               cigarettes_per_day:
-                type: float
+                type: double
               exposure_id:
                 type: keyword
               height:
-                type: float
+                type: double
               pack_years_smoked:
-                type: long
+                type: double
               radon_exposure:
                 type: keyword
               state:
@@ -319,16 +319,16 @@ properties:
               tobacco_smoking_status:
                 type: keyword
               weight:
-                type: float
+                type: double
               years_smoked:
-                type: float
+                type: double
             type: nested
           family_histories:
             properties:
               family_history_id:
                 type: keyword
               relationship_age_at_diagnosis:
-                type: long
+                type: double
               relationship_gender:
                 type: keyword
               relationship_primary_diagnosis:
