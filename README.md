@@ -8,7 +8,6 @@
 Git repository centrally stores and serves GDC data models defined in static YAML files.
 
 - [GDC Models](#gdc-models)
-  - [Setup 'pre-commit' git hook](#setup-pre-commit-git-hook)
   - [Update the data models](#update-the-data-models)
   - [Use the data models](#use-the-data-models)
     - [Import ES models into Python code](#import-es-models-into-python-code)
@@ -16,35 +15,18 @@ Git repository centrally stores and serves GDC data models defined in static YAM
   - [Setup pre-commit hook to check for secrets](#setup-pre-commit-hook-to-check-for-secrets)
 
 
-## Setup 'pre-commit' git hook
-
-After 'git clone' this repository, you will need to run 'setup.sh' to install necessary
-git 'pre-commit' hook to ensure YAML files are valid and well formatted.
-
-```
-> ./setup.sh
-```
-
 ## Update the data models
 
-Edit the YAML files as usual, then commit changes to git. Git 'pre-commit' hook will
-validate YAML and ensure it's well formatted. It is important to keep YAML file formated
-consistently(such as using 2 whitespaces for indentation) across all revisions, this
+Edit the YAML files as usual, then commit changes to git. A pre-commit hook will
+validate YAML and ensure it's well formatted. It is important to keep YAML file formatted
+consistently, such as using 2 whitespaces for indentation, across all revisions. This
 will make change tracking much easier.
 
-If YAML validation issue is reported, you will need to resovle them before retrying commit again.
+If a YAML validation issue is reported, you will need to commit again.
 
-When prompted to format the YAML, you can just run:
-```
-> ./scripts/format_yaml.sh
-```
-
-This will automatically format all new or changed YAML files. A copy of unchanged original YAML file
+The pre-commit hook will automatically format all new or changed YAML files. A copy of unchanged original YAML file
 is kept with `.bak` suffix. Before proceed with retrying `git commit`, please `diff` your original YAML
-and automatically formated one to ensure YAML formatting did not create any error.
-
-Note that comment is allowed in YAML files, so please use them as needed to add clarity to the data
-model definitions.
+and the automatically formatted one to ensure YAML formatting did not create any error.
 
 ## Use the data models
 
@@ -64,7 +46,7 @@ es_models = get_es_models()
 python init_index.py --index case_set file_set --host localhost --prefix gdc_r52
 ```
 
-## Setup pre-commit hook to check for secrets
+## Setup pre-commit hook to check for secrets and format YAML
 
 We use [pre-commit](https://pre-commit.com/) to setup pre-commit hooks for this repo.
 We use [detect-secrets](https://github.com/Yelp/detect-secrets) to search for secrets being committed into the repo. 
