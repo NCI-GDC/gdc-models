@@ -505,108 +505,29 @@ _meta:
     cases.diagnoses.ann_arbor_pathologic_stage: The text term used to describe the
       pathologic classification of lymphoma, as defined by the Ann Arbor Lymphoma
       Staging System.
-    cases.diagnoses.annotations.anaplasia_present: Yes/no/unknown/not reported indicator
-      used to describe whether anaplasia was present at the time of diagnosis.
-    cases.diagnoses.annotations.anaplasia_present_type: The text term used to describe
-      the morphologic findings indicating the presence of a malignant cellular infiltrate
-      characterized by the presence of large pleomorphic cells, necrosis, and high
-      mitotic activity in a tissue sample.
     cases.diagnoses.annotations.batch_id: GDC submission batch indicator. It is unique
       within the context of a project.
-    cases.diagnoses.annotations.bone_marrow_malignant_cells: The text term used to
-      indicate whether there are malignant cells in the bone marrow.
-    cases.diagnoses.annotations.breslow_thickness: The number that describes the distance,
-      in millimeters, between the upper layer of the epidermis and the deepest point
-      of tumor penetration.
     cases.diagnoses.annotations.category: Top level characterization of the annotation.
-    cases.diagnoses.annotations.circumferential_resection_margin: Numeric value used
-      to describe the non-peritonealised bare area of rectum, comprising anterior
-      and posterior segments, when submitted as a surgical specimen resulting from
-      excision of cancer of the rectum.
     cases.diagnoses.annotations.classification: Top level classification of the annotation.
-    cases.diagnoses.annotations.columnar_mucosa_present: null
     cases.diagnoses.annotations.created_datetime: A combination of date and time of
       day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.diagnoses.annotations.creator: Name of the person or entity responsible
       for the creation of the annotation.
-    cases.diagnoses.annotations.dysplasia_degree: null
-    cases.diagnoses.annotations.dysplasia_type: null
-    cases.diagnoses.annotations.greatest_tumor_dimension: Numeric value that represents
-      the measurement of the widest portion of the tumor in centimeters.
-    cases.diagnoses.annotations.gross_tumor_weight: Numeric value used to describe
-      the gross pathologic tumor weight, measured in grams.
-    cases.diagnoses.annotations.largest_extrapelvic_peritoneal_focus: The text term
-      used to describe the diameter of the largest focus originating outside of the
-      pelvic peritoneal region.
     cases.diagnoses.annotations.legacy_created_datetime: A combination of date and
       time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.diagnoses.annotations.legacy_updated_datetime: A combination of date and
       time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
-    cases.diagnoses.annotations.lymph_node_involved_site: The text term used to describe
-      the anatomic site of lymph node involvement.
-    cases.diagnoses.annotations.lymph_node_involvement: null
-    cases.diagnoses.annotations.lymph_nodes_positive: null
-    cases.diagnoses.annotations.lymph_nodes_tested: The number of lymph nodes tested
-      to determine whether lymph nodes were  involved with disease as determined by
-      a pathologic examination.
-    cases.diagnoses.annotations.lymphatic_invasion_present: A yes/no indicator to
-      ask if small or thin-walled vessel invasion is present, indicating lymphatic
-      involvement
-    cases.diagnoses.annotations.margin_status: null
-    cases.diagnoses.annotations.metaplasia_present: null
-    cases.diagnoses.annotations.morphologic_architectural_pattern: null
-    cases.diagnoses.annotations.non_nodal_regional_disease: The text term used to
-      describe whether the patient had non-nodal regional disease.
-    cases.diagnoses.annotations.non_nodal_tumor_deposits: The yes/no/unknown indicator
-      used to describe the presence of tumor deposits in the pericolic or perirectal
-      fat or in adjacent mesentery away from the leading edge of the tumor.
     cases.diagnoses.annotations.notes: Open entry for any further description or characterization
       of the data.
-    cases.diagnoses.annotations.number_proliferating_cells: Numeric value that represents
-      the count of proliferating cells determined during pathologic review of the
-      sample slide(s).
-    cases.diagnoses.annotations.percent_tumor_invasion: The percentage of tumor cells
-      spread locally in a malignant neoplasm through infiltration or destruction of
-      adjacent tissue.
-    cases.diagnoses.annotations.perineural_invasion_present: a yes/no indicator to
-      ask if perineural invasion or infiltration of tumor or cancer is present.
-    cases.diagnoses.annotations.peripancreatic_lymph_nodes_positive: Enumerated numeric
-      value or range of values used to describe the number of peripancreatic lymph
-      nodes determined to be positive.
-    cases.diagnoses.annotations.peripancreatic_lymph_nodes_tested: The total number
-      of peripancreatic lymph nodes tested for the presence of pancreatic cancer cells.
     cases.diagnoses.annotations.project_id: Unique ID for any specific defined piece
       of work that is undertaken or attempted to meet a single requirement.
-    cases.diagnoses.annotations.prostatic_chips_positive_count: The text term used
-      to describe the number of positive prostatic chips, which are generated from
-      transurethral resection of the prostate (TURP) procedures and are generally
-      used for relieving urinary obstruction due to nodular hyperplasia of the prostate
-      (benign prostatic hyperplasia).
-    cases.diagnoses.annotations.prostatic_chips_total_count: The text term used to
-      describe the total number of prostatic chips, which are generated from transurethral
-      resection of the prostate (TURP) procedures and are generally used for relieving
-      urinary obstruction due to nodular hyperplasia of the prostate (benign prostatic
-      hyperplasia).
-    cases.diagnoses.annotations.prostatic_involvement_percent: Numeric value that
-      represents the percentage of prostatic involvement found in a specific tissue
-      sample.
     cases.diagnoses.annotations.state: The current state of the object.
     cases.diagnoses.annotations.status: Status of the annotation.
     cases.diagnoses.annotations.submitter_id: A project-specific identifier for a
       node. This property is the calling card/nickname/alias for a unit of submission.
       It can be used in place of the uuid for identifying or recalling a node.
-    cases.diagnoses.annotations.transglottic_extension: The text term used to describe
-      an extension of the tumor beyond the opening into the ventricles and vocal cords.
-    cases.diagnoses.annotations.tumor_largest_dimension_diameter: Numeric value used
-      to describe the maximum diameter or dimension of the primary tumor, measured
-      in centimeters.
     cases.diagnoses.annotations.updated_datetime: A combination of date and time of
       day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
-    cases.diagnoses.annotations.vascular_invasion_present: The yes/no indicator to
-      ask if large vessel or venous invasion was detected by surgery or presence in
-      a tumor specimen.
-    cases.diagnoses.annotations.vascular_invasion_type: Text term that represents
-      the type of vascular tumor invasion.
     cases.diagnoses.batch_id: GDC submission batch indicator. It is unique within
       the context of a project.
     cases.diagnoses.best_overall_response: The best improvement achieved throughout
@@ -789,6 +710,99 @@ _meta:
     cases.diagnoses.papillary_renal_cell_type: The text term used to describe the
       type of papillary renal cell carcinoma characterized by the presence of papillae
       covered by small cells with scant amount of cytoplasm.
+    cases.diagnoses.pathology_details.anaplasia_present: Yes/no/unknown/not reported
+      indicator used to describe whether anaplasia was present at the time of diagnosis.
+    cases.diagnoses.pathology_details.anaplasia_present_type: The text term used to
+      describe the morphologic findings indicating the presence of a malignant cellular
+      infiltrate characterized by the presence of large pleomorphic cells, necrosis,
+      and high mitotic activity in a tissue sample.
+    cases.diagnoses.pathology_details.batch_id: GDC submission batch indicator. It
+      is unique within the context of a project.
+    cases.diagnoses.pathology_details.bone_marrow_malignant_cells: The text term used
+      to indicate whether there are malignant cells in the bone marrow.
+    cases.diagnoses.pathology_details.breslow_thickness: The number that describes
+      the distance, in millimeters, between the upper layer of the epidermis and the
+      deepest point of tumor penetration.
+    cases.diagnoses.pathology_details.circumferential_resection_margin: Numeric value
+      used to describe the non-peritonealised bare area of rectum, comprising anterior
+      and posterior segments, when submitted as a surgical specimen resulting from
+      excision of cancer of the rectum.
+    cases.diagnoses.pathology_details.columnar_mucosa_present: null
+    cases.diagnoses.pathology_details.created_datetime: A combination of date and
+      time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.diagnoses.pathology_details.dysplasia_degree: null
+    cases.diagnoses.pathology_details.dysplasia_type: null
+    cases.diagnoses.pathology_details.greatest_tumor_dimension: Numeric value that
+      represents the measurement of the widest portion of the tumor in centimeters.
+    cases.diagnoses.pathology_details.gross_tumor_weight: Numeric value used to describe
+      the gross pathologic tumor weight, measured in grams.
+    cases.diagnoses.pathology_details.largest_extrapelvic_peritoneal_focus: The text
+      term used to describe the diameter of the largest focus originating outside
+      of the pelvic peritoneal region.
+    cases.diagnoses.pathology_details.lymph_node_involved_site: The text term used
+      to describe the anatomic site of lymph node involvement.
+    cases.diagnoses.pathology_details.lymph_node_involvement: null
+    cases.diagnoses.pathology_details.lymph_nodes_positive: null
+    cases.diagnoses.pathology_details.lymph_nodes_tested: The number of lymph nodes
+      tested to determine whether lymph nodes were  involved with disease as determined
+      by a pathologic examination.
+    cases.diagnoses.pathology_details.lymphatic_invasion_present: A yes/no indicator
+      to ask if small or thin-walled vessel invasion is present, indicating lymphatic
+      involvement
+    cases.diagnoses.pathology_details.margin_status: null
+    cases.diagnoses.pathology_details.metaplasia_present: null
+    cases.diagnoses.pathology_details.morphologic_architectural_pattern: null
+    cases.diagnoses.pathology_details.non_nodal_regional_disease: The text term used
+      to describe whether the patient had non-nodal regional disease.
+    cases.diagnoses.pathology_details.non_nodal_tumor_deposits: The yes/no/unknown
+      indicator used to describe the presence of tumor deposits in the pericolic or
+      perirectal fat or in adjacent mesentery away from the leading edge of the tumor.
+    cases.diagnoses.pathology_details.number_proliferating_cells: Numeric value that
+      represents the count of proliferating cells determined during pathologic review
+      of the sample slide(s).
+    cases.diagnoses.pathology_details.percent_tumor_invasion: The percentage of tumor
+      cells spread locally in a malignant neoplasm through infiltration or destruction
+      of adjacent tissue.
+    cases.diagnoses.pathology_details.perineural_invasion_present: a yes/no indicator
+      to ask if perineural invasion or infiltration of tumor or cancer is present.
+    cases.diagnoses.pathology_details.peripancreatic_lymph_nodes_positive: Enumerated
+      numeric value or range of values used to describe the number of peripancreatic
+      lymph nodes determined to be positive.
+    cases.diagnoses.pathology_details.peripancreatic_lymph_nodes_tested: The total
+      number of peripancreatic lymph nodes tested for the presence of pancreatic cancer
+      cells.
+    cases.diagnoses.pathology_details.project_id: Unique ID for any specific defined
+      piece of work that is undertaken or attempted to meet a single requirement.
+    cases.diagnoses.pathology_details.prostatic_chips_positive_count: The text term
+      used to describe the number of positive prostatic chips, which are generated
+      from transurethral resection of the prostate (TURP) procedures and are generally
+      used for relieving urinary obstruction due to nodular hyperplasia of the prostate
+      (benign prostatic hyperplasia).
+    cases.diagnoses.pathology_details.prostatic_chips_total_count: The text term used
+      to describe the total number of prostatic chips, which are generated from transurethral
+      resection of the prostate (TURP) procedures and are generally used for relieving
+      urinary obstruction due to nodular hyperplasia of the prostate (benign prostatic
+      hyperplasia).
+    cases.diagnoses.pathology_details.prostatic_involvement_percent: Numeric value
+      that represents the percentage of prostatic involvement found in a specific
+      tissue sample.
+    cases.diagnoses.pathology_details.state: The current state of the object.
+    cases.diagnoses.pathology_details.submitter_id: A project-specific identifier
+      for a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    cases.diagnoses.pathology_details.transglottic_extension: The text term used to
+      describe an extension of the tumor beyond the opening into the ventricles and
+      vocal cords.
+    cases.diagnoses.pathology_details.tumor_largest_dimension_diameter: Numeric value
+      used to describe the maximum diameter or dimension of the primary tumor, measured
+      in centimeters.
+    cases.diagnoses.pathology_details.updated_datetime: A combination of date and
+      time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.diagnoses.pathology_details.vascular_invasion_present: The yes/no indicator
+      to ask if large vessel or venous invasion was detected by surgery or presence
+      in a tumor specimen.
+    cases.diagnoses.pathology_details.vascular_invasion_type: Text term that represents
+      the type of vascular tumor invasion.
     cases.diagnoses.percent_tumor_invasion: The percentage of tumor cells spread locally
       in a malignant neoplasm through infiltration or destruction of adjacent tissue.
     cases.diagnoses.perineural_invasion_present: a yes/no indicator to ask if perineural

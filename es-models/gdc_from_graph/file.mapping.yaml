@@ -663,20 +663,9 @@ properties:
             type: keyword
           annotations:
             properties:
-              anaplasia_present:
-                normalizer: clinical_normalizer
-                type: keyword
-              anaplasia_present_type:
-                normalizer: clinical_normalizer
-                type: keyword
               annotation_id:
                 normalizer: clinical_normalizer
                 type: keyword
-              bone_marrow_malignant_cells:
-                normalizer: clinical_normalizer
-                type: keyword
-              breslow_thickness:
-                type: double
               case_id:
                 normalizer: clinical_normalizer
                 type: keyword
@@ -685,24 +674,13 @@ properties:
               category:
                 normalizer: clinical_normalizer
                 type: keyword
-              circumferential_resection_margin:
-                type: double
               classification:
-                normalizer: clinical_normalizer
-                type: keyword
-              columnar_mucosa_present:
                 normalizer: clinical_normalizer
                 type: keyword
               created_datetime:
                 normalizer: clinical_normalizer
                 type: keyword
               creator:
-                normalizer: clinical_normalizer
-                type: keyword
-              dysplasia_degree:
-                normalizer: clinical_normalizer
-                type: keyword
-              dysplasia_type:
                 normalizer: clinical_normalizer
                 type: keyword
               entity_id:
@@ -713,71 +691,15 @@ properties:
               entity_type:
                 normalizer: clinical_normalizer
                 type: keyword
-              greatest_tumor_dimension:
-                type: double
-              gross_tumor_weight:
-                type: double
-              largest_extrapelvic_peritoneal_focus:
-                normalizer: clinical_normalizer
-                type: keyword
               legacy_created_datetime:
                 normalizer: clinical_normalizer
                 type: keyword
               legacy_updated_datetime:
                 normalizer: clinical_normalizer
                 type: keyword
-              lymph_node_involved_site:
-                normalizer: clinical_normalizer
-                type: keyword
-              lymph_node_involvement:
-                normalizer: clinical_normalizer
-                type: keyword
-              lymph_nodes_positive:
-                type: long
-              lymph_nodes_tested:
-                type: long
-              lymphatic_invasion_present:
-                normalizer: clinical_normalizer
-                type: keyword
-              margin_status:
-                normalizer: clinical_normalizer
-                type: keyword
-              metaplasia_present:
-                normalizer: clinical_normalizer
-                type: keyword
-              morphologic_architectural_pattern:
-                normalizer: clinical_normalizer
-                type: keyword
-              non_nodal_regional_disease:
-                normalizer: clinical_normalizer
-                type: keyword
-              non_nodal_tumor_deposits:
-                normalizer: clinical_normalizer
-                type: keyword
               notes:
                 normalizer: clinical_normalizer
                 type: keyword
-              number_proliferating_cells:
-                type: long
-              pathology_detail_id:
-                normalizer: clinical_normalizer
-                type: keyword
-              percent_tumor_invasion:
-                type: double
-              perineural_invasion_present:
-                normalizer: clinical_normalizer
-                type: keyword
-              peripancreatic_lymph_nodes_positive:
-                normalizer: clinical_normalizer
-                type: keyword
-              peripancreatic_lymph_nodes_tested:
-                type: long
-              prostatic_chips_positive_count:
-                type: double
-              prostatic_chips_total_count:
-                type: double
-              prostatic_involvement_percent:
-                type: double
               state:
                 normalizer: clinical_normalizer
                 type: keyword
@@ -786,18 +708,7 @@ properties:
                 type: keyword
               submitter_id:
                 type: keyword
-              transglottic_extension:
-                normalizer: clinical_normalizer
-                type: keyword
-              tumor_largest_dimension_diameter:
-                type: double
               updated_datetime:
-                normalizer: clinical_normalizer
-                type: keyword
-              vascular_invasion_present:
-                normalizer: clinical_normalizer
-                type: keyword
-              vascular_invasion_type:
                 normalizer: clinical_normalizer
                 type: keyword
             type: nested
@@ -991,6 +902,109 @@ properties:
           papillary_renal_cell_type:
             normalizer: clinical_normalizer
             type: keyword
+          pathology_details:
+            properties:
+              anaplasia_present:
+                normalizer: clinical_normalizer
+                type: keyword
+              anaplasia_present_type:
+                normalizer: clinical_normalizer
+                type: keyword
+              bone_marrow_malignant_cells:
+                normalizer: clinical_normalizer
+                type: keyword
+              breslow_thickness:
+                type: double
+              circumferential_resection_margin:
+                type: double
+              columnar_mucosa_present:
+                normalizer: clinical_normalizer
+                type: keyword
+              created_datetime:
+                normalizer: clinical_normalizer
+                type: keyword
+              dysplasia_degree:
+                normalizer: clinical_normalizer
+                type: keyword
+              dysplasia_type:
+                normalizer: clinical_normalizer
+                type: keyword
+              greatest_tumor_dimension:
+                type: double
+              gross_tumor_weight:
+                type: double
+              largest_extrapelvic_peritoneal_focus:
+                normalizer: clinical_normalizer
+                type: keyword
+              lymph_node_involved_site:
+                normalizer: clinical_normalizer
+                type: keyword
+              lymph_node_involvement:
+                normalizer: clinical_normalizer
+                type: keyword
+              lymph_nodes_positive:
+                type: long
+              lymph_nodes_tested:
+                type: long
+              lymphatic_invasion_present:
+                normalizer: clinical_normalizer
+                type: keyword
+              margin_status:
+                normalizer: clinical_normalizer
+                type: keyword
+              metaplasia_present:
+                normalizer: clinical_normalizer
+                type: keyword
+              morphologic_architectural_pattern:
+                normalizer: clinical_normalizer
+                type: keyword
+              non_nodal_regional_disease:
+                normalizer: clinical_normalizer
+                type: keyword
+              non_nodal_tumor_deposits:
+                normalizer: clinical_normalizer
+                type: keyword
+              number_proliferating_cells:
+                type: long
+              pathology_detail_id:
+                normalizer: clinical_normalizer
+                type: keyword
+              percent_tumor_invasion:
+                type: double
+              perineural_invasion_present:
+                normalizer: clinical_normalizer
+                type: keyword
+              peripancreatic_lymph_nodes_positive:
+                normalizer: clinical_normalizer
+                type: keyword
+              peripancreatic_lymph_nodes_tested:
+                type: long
+              prostatic_chips_positive_count:
+                type: double
+              prostatic_chips_total_count:
+                type: double
+              prostatic_involvement_percent:
+                type: double
+              state:
+                normalizer: clinical_normalizer
+                type: keyword
+              submitter_id:
+                type: keyword
+              transglottic_extension:
+                normalizer: clinical_normalizer
+                type: keyword
+              tumor_largest_dimension_diameter:
+                type: double
+              updated_datetime:
+                normalizer: clinical_normalizer
+                type: keyword
+              vascular_invasion_present:
+                normalizer: clinical_normalizer
+                type: keyword
+              vascular_invasion_type:
+                normalizer: clinical_normalizer
+                type: keyword
+            type: nested
           percent_tumor_invasion:
             type: double
           perineural_invasion_present:
