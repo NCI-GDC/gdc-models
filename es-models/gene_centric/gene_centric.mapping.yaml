@@ -224,8 +224,6 @@ properties:
                 type: double
               columnar_mucosa_present:
                 type: keyword
-              created_datetime:
-                type: keyword
               dysplasia_degree:
                 type: keyword
               dysplasia_type:
@@ -282,8 +280,6 @@ properties:
                 type: keyword
               tumor_largest_dimension_diameter:
                 type: double
-              updated_datetime:
-                type: keyword
               vascular_invasion_present:
                 type: keyword
               vascular_invasion_type:
