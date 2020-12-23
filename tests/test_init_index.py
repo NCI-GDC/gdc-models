@@ -72,6 +72,10 @@ def validate_index(es):
             == expected_settings["index.max_result_window"]
         )
 
+        max_terms_count = actual_settings.get("max_terms_count")
+        if max_terms_count:
+            assert int(max_terms_count) == expected_settings["index.max_terms_count"]
+
         if "analysis" in expected_settings:
             assert actual_settings["analysis"] == expected_settings["analysis"]
         else:

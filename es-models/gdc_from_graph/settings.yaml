@@ -30,3 +30,4 @@ index.mapping.nested_fields.limit: 100
 index.mapping.nested_objects.limit: 100000000
 index.mapping.total_fields.limit: 1500
 index.max_result_window: 100000000
+index.max_terms_count: 100000
