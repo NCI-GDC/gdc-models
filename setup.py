@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="gdcmodels",
-    setup_requires=["setuptools_scm<6"],
+    setup_requires=["setuptools_scm"],
     use_scm_version={"local_scheme": "dirty-tag", "fallback_version": "local"},
     packages=find_packages(
         exclude=["scripts", "*-models", "*.tests", "*.tests.*", "tests.*", "tests"]
