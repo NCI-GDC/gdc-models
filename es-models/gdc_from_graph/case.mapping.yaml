@@ -174,13 +174,10 @@ properties:
       ajcc_staging_system_edition:
         normalizer: clinical_normalizer
         type: keyword
-      anaplasia_present:
-        normalizer: clinical_normalizer
-        type: keyword
-      anaplasia_present_type:
-        normalizer: clinical_normalizer
-        type: keyword
       ann_arbor_b_symptoms:
+        normalizer: clinical_normalizer
+        type: keyword
+      ann_arbor_b_symptoms_described:
         normalizer: clinical_normalizer
         type: keyword
       ann_arbor_clinical_stage:
@@ -246,16 +243,12 @@ properties:
       best_overall_response:
         normalizer: clinical_normalizer
         type: keyword
-      breslow_thickness:
-        type: double
       burkitt_lymphoma_clinical_variant:
         normalizer: clinical_normalizer
         type: keyword
       child_pugh_classification:
         normalizer: clinical_normalizer
         type: keyword
-      circumferential_resection_margin:
-        type: double
       classification_of_tumor:
         normalizer: clinical_normalizer
         type: keyword
@@ -331,10 +324,6 @@ properties:
       goblet_cells_columnar_mucosa_present:
         normalizer: clinical_normalizer
         type: keyword
-      greatest_tumor_dimension:
-        type: long
-      gross_tumor_weight:
-        type: double
       icd_10_code:
         normalizer: clinical_normalizer
         type: keyword
@@ -368,23 +357,10 @@ properties:
       iss_stage:
         normalizer: clinical_normalizer
         type: keyword
-      largest_extrapelvic_peritoneal_focus:
-        normalizer: clinical_normalizer
-        type: keyword
       last_known_disease_status:
         normalizer: clinical_normalizer
         type: keyword
       laterality:
-        normalizer: clinical_normalizer
-        type: keyword
-      lymph_node_involved_site:
-        normalizer: clinical_normalizer
-        type: keyword
-      lymph_nodes_positive:
-        type: long
-      lymph_nodes_tested:
-        type: long
-      lymphatic_invasion_present:
         normalizer: clinical_normalizer
         type: keyword
       margin_distance:
@@ -418,12 +394,6 @@ properties:
       morphology:
         normalizer: clinical_normalizer
         type: keyword
-      non_nodal_regional_disease:
-        normalizer: clinical_normalizer
-        type: keyword
-      non_nodal_tumor_deposits:
-        normalizer: clinical_normalizer
-        type: keyword
       ovarian_specimen_status:
         normalizer: clinical_normalizer
         type: keyword
@@ -435,6 +405,9 @@ properties:
         type: keyword
       pathology_details:
         properties:
+          additional_pathology_findings:
+            normalizer: clinical_normalizer
+            type: keyword
           anaplasia_present:
             normalizer: clinical_normalizer
             type: keyword
@@ -489,6 +462,11 @@ properties:
           morphologic_architectural_pattern:
             normalizer: clinical_normalizer
             type: keyword
+          necrosis_percent:
+            type: double
+          necrosis_present:
+            normalizer: clinical_normalizer
+            type: keyword
           non_nodal_regional_disease:
             normalizer: clinical_normalizer
             type: keyword
@@ -516,6 +494,16 @@ properties:
             type: double
           prostatic_involvement_percent:
             type: double
+          rhabdoid_percent:
+            type: double
+          rhabdoid_present:
+            normalizer: clinical_normalizer
+            type: keyword
+          sarcomatoid_percent:
+            type: double
+          sarcomatoid_present:
+            normalizer: clinical_normalizer
+            type: keyword
           state:
             normalizer: clinical_normalizer
             type: keyword
@@ -536,16 +524,6 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
         type: nested
-      percent_tumor_invasion:
-        type: double
-      perineural_invasion_present:
-        normalizer: clinical_normalizer
-        type: keyword
-      peripancreatic_lymph_nodes_positive:
-        normalizer: clinical_normalizer
-        type: keyword
-      peripancreatic_lymph_nodes_tested:
-        type: double
       peritoneal_fluid_cytological_status:
         normalizer: clinical_normalizer
         type: keyword
@@ -594,9 +572,6 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       tissue_or_organ_of_origin:
-        normalizer: clinical_normalizer
-        type: keyword
-      transglottic_extension:
         normalizer: clinical_normalizer
         type: keyword
       treatments:
@@ -680,21 +655,10 @@ properties:
       tumor_grade:
         normalizer: clinical_normalizer
         type: keyword
-      tumor_largest_dimension_diameter:
-        type: double
       tumor_regression_grade:
         normalizer: clinical_normalizer
         type: keyword
-      tumor_stage:
-        normalizer: clinical_normalizer
-        type: keyword
       updated_datetime:
-        normalizer: clinical_normalizer
-        type: keyword
-      vascular_invasion_present:
-        normalizer: clinical_normalizer
-        type: keyword
-      vascular_invasion_type:
         normalizer: clinical_normalizer
         type: keyword
       weiss_assessment_score:
@@ -740,8 +704,6 @@ properties:
       asbestos_exposure:
         normalizer: clinical_normalizer
         type: keyword
-      bmi:
-        type: double
       cigarettes_per_day:
         type: double
       coal_dust_exposure:
@@ -762,8 +724,6 @@ properties:
       exposure_type:
         normalizer: clinical_normalizer
         type: keyword
-      height:
-        type: double
       marijuana_use_per_week:
         type: double
       pack_years_smoked:
@@ -808,8 +768,6 @@ properties:
       updated_datetime:
         normalizer: clinical_normalizer
         type: keyword
-      weight:
-        type: double
       years_smoked:
         type: double
     type: nested
@@ -941,11 +899,7 @@ properties:
                 type: keyword
               proportion_base_mismatch:
                 type: double
-              proportion_coverage_10X:
-                type: double
               proportion_coverage_10x:
-                type: double
-              proportion_coverage_30X:
                 type: double
               proportion_coverage_30x:
                 type: double
@@ -985,8 +939,6 @@ properties:
             properties:
               read_groups:
                 properties:
-                  RIN:
-                    type: double
                   adapter_name:
                     normalizer: clinical_normalizer
                     type: keyword
@@ -997,6 +949,9 @@ properties:
                     normalizer: clinical_normalizer
                     type: keyword
                   base_caller_version:
+                    normalizer: clinical_normalizer
+                    type: keyword
+                  chipseq_antibody:
                     normalizer: clinical_normalizer
                     type: keyword
                   chipseq_target:
@@ -1021,6 +976,9 @@ properties:
                     type: long
                   fragment_standard_deviation_length:
                     type: double
+                  fragmentation_enzyme:
+                    normalizer: clinical_normalizer
+                    type: keyword
                   includes_spike_ins:
                     normalizer: clinical_normalizer
                     type: keyword
@@ -1396,11 +1354,7 @@ properties:
                 type: keyword
               proportion_base_mismatch:
                 type: double
-              proportion_coverage_10X:
-                type: double
               proportion_coverage_10x:
-                type: double
-              proportion_coverage_30X:
                 type: double
               proportion_coverage_30x:
                 type: double
@@ -1551,11 +1505,7 @@ properties:
             type: keyword
           proportion_base_mismatch:
             type: double
-          proportion_coverage_10X:
-            type: double
           proportion_coverage_10x:
-            type: double
-          proportion_coverage_30X:
             type: double
           proportion_coverage_30x:
             type: double
@@ -1661,11 +1611,7 @@ properties:
         type: keyword
       proportion_base_mismatch:
         type: double
-      proportion_coverage_10X:
-        type: double
       proportion_coverage_10x:
-        type: double
-      proportion_coverage_30X:
         type: double
       proportion_coverage_30x:
         type: double
@@ -2374,10 +2320,15 @@ properties:
               created_datetime:
                 normalizer: clinical_normalizer
                 type: keyword
+              experimental_protocol_type:
+                normalizer: clinical_normalizer
+                type: keyword
               normal_tumor_genotype_snp_match:
                 normalizer: clinical_normalizer
                 type: keyword
               ribosomal_rna_28s_16s_ratio:
+                type: double
+              rna_integrity_number:
                 type: double
               spectrophotometer_method:
                 normalizer: clinical_normalizer
@@ -2619,6 +2570,8 @@ properties:
         - case_autocomplete
         normalizer: clinical_normalizer
         type: keyword
+      sample_ordinal:
+        type: long
       sample_type:
         normalizer: clinical_normalizer
         type: keyword
