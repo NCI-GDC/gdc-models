@@ -145,6 +145,9 @@ properties:
         type: long
   diagnoses:
     properties:
+      adrenal_hormone:
+        normalizer: clinical_normalizer
+        type: keyword
       age_at_diagnosis:
         type: long
       ajcc_clinical_m:
@@ -181,6 +184,9 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       ann_arbor_b_symptoms:
+        normalizer: clinical_normalizer
+        type: keyword
+      ann_arbor_b_symptoms_described:
         normalizer: clinical_normalizer
         type: keyword
       ann_arbor_clinical_stage:
@@ -435,6 +441,9 @@ properties:
         type: keyword
       pathology_details:
         properties:
+          additional_pathology_findings:
+            normalizer: clinical_normalizer
+            type: keyword
           anaplasia_present:
             normalizer: clinical_normalizer
             type: keyword
@@ -449,6 +458,9 @@ properties:
           circumferential_resection_margin:
             type: double
           columnar_mucosa_present:
+            normalizer: clinical_normalizer
+            type: keyword
+          consistent_pathology_review:
             normalizer: clinical_normalizer
             type: keyword
           created_datetime:
@@ -489,6 +501,11 @@ properties:
           morphologic_architectural_pattern:
             normalizer: clinical_normalizer
             type: keyword
+          necrosis_percent:
+            type: double
+          necrosis_present:
+            normalizer: clinical_normalizer
+            type: keyword
           non_nodal_regional_disease:
             normalizer: clinical_normalizer
             type: keyword
@@ -516,6 +533,21 @@ properties:
             type: double
           prostatic_involvement_percent:
             type: double
+          residual_tumor:
+            normalizer: clinical_normalizer
+            type: keyword
+          rhabdoid_percent:
+            type: double
+          rhabdoid_present:
+            normalizer: clinical_normalizer
+            type: keyword
+          sarcomatoid_percent:
+            type: double
+          sarcomatoid_present:
+            normalizer: clinical_normalizer
+            type: keyword
+          size_extraocular_nodule:
+            type: double
           state:
             normalizer: clinical_normalizer
             type: keyword
@@ -525,6 +557,8 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           tumor_largest_dimension_diameter:
+            type: double
+          tumor_thickness:
             type: double
           updated_datetime:
             normalizer: clinical_normalizer
@@ -553,6 +587,9 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       primary_diagnosis:
+        normalizer: clinical_normalizer
+        type: keyword
+      primary_disease:
         normalizer: clinical_normalizer
         type: keyword
       primary_gleason_grade:
@@ -620,6 +657,9 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           regimen_or_line_of_therapy:
+            normalizer: clinical_normalizer
+            type: keyword
+          route_of_administration:
             normalizer: clinical_normalizer
             type: keyword
           state:
@@ -756,6 +796,8 @@ properties:
       exposure_duration:
         normalizer: clinical_normalizer
         type: keyword
+      exposure_duration_years:
+        type: long
       exposure_id:
         normalizer: clinical_normalizer
         type: keyword
@@ -768,6 +810,9 @@ properties:
         type: double
       pack_years_smoked:
         type: double
+      parent_with_radiation_exposure:
+        normalizer: clinical_normalizer
+        type: keyword
       radon_exposure:
         normalizer: clinical_normalizer
         type: keyword
@@ -939,6 +984,9 @@ properties:
               platform:
                 normalizer: clinical_normalizer
                 type: keyword
+              proc_internal:
+                normalizer: clinical_normalizer
+                type: keyword
               proportion_base_mismatch:
                 type: double
               proportion_coverage_10X:
@@ -999,6 +1047,9 @@ properties:
                   base_caller_version:
                     normalizer: clinical_normalizer
                     type: keyword
+                  chipseq_antibody:
+                    normalizer: clinical_normalizer
+                    type: keyword
                   chipseq_target:
                     normalizer: clinical_normalizer
                     type: keyword
@@ -1021,6 +1072,9 @@ properties:
                     type: long
                   fragment_standard_deviation_length:
                     type: double
+                  fragmentation_enzyme:
+                    normalizer: clinical_normalizer
+                    type: keyword
                   includes_spike_ins:
                     normalizer: clinical_normalizer
                     type: keyword
@@ -1394,6 +1448,9 @@ properties:
               platform:
                 normalizer: clinical_normalizer
                 type: keyword
+              proc_internal:
+                normalizer: clinical_normalizer
+                type: keyword
               proportion_base_mismatch:
                 type: double
               proportion_coverage_10X:
@@ -1549,6 +1606,9 @@ properties:
           platform:
             normalizer: clinical_normalizer
             type: keyword
+          proc_internal:
+            normalizer: clinical_normalizer
+            type: keyword
           proportion_base_mismatch:
             type: double
           proportion_coverage_10X:
@@ -1657,6 +1717,9 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       platform:
+        normalizer: clinical_normalizer
+        type: keyword
+      proc_internal:
         normalizer: clinical_normalizer
         type: keyword
       proportion_base_mismatch:
@@ -1770,6 +1833,9 @@ properties:
       evidence_of_recurrence_type:
         normalizer: clinical_normalizer
         type: keyword
+      eye_color:
+        normalizer: clinical_normalizer
+        type: keyword
       fev1_fvc_post_bronch_percent:
         type: double
       fev1_fvc_pre_bronch_percent:
@@ -1787,6 +1853,12 @@ properties:
       height:
         type: double
       hepatitis_sustained_virological_response:
+        normalizer: clinical_normalizer
+        type: keyword
+      history_of_tumor:
+        normalizer: clinical_normalizer
+        type: keyword
+      history_of_tumor_type:
         normalizer: clinical_normalizer
         type: keyword
       hiv_viral_load:
@@ -1857,6 +1929,8 @@ properties:
           cytoband:
             normalizer: clinical_normalizer
             type: keyword
+          days_to_test:
+            type: long
           exon:
             normalizer: clinical_normalizer
             type: keyword
@@ -1984,6 +2058,23 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       submitter_id:
+        type: keyword
+      undescended_testis_corrected:
+        normalizer: clinical_normalizer
+        type: keyword
+      undescended_testis_corrected_age:
+        type: long
+      undescended_testis_corrected_laterality:
+        normalizer: clinical_normalizer
+        type: keyword
+      undescended_testis_corrected_method:
+        normalizer: clinical_normalizer
+        type: keyword
+      undescended_testis_history:
+        normalizer: clinical_normalizer
+        type: keyword
+      undescended_testis_history_laterality:
+        normalizer: clinical_normalizer
         type: keyword
       updated_datetime:
         normalizer: clinical_normalizer
@@ -2374,10 +2465,15 @@ properties:
               created_datetime:
                 normalizer: clinical_normalizer
                 type: keyword
+              experimental_protocol_type:
+                normalizer: clinical_normalizer
+                type: keyword
               normal_tumor_genotype_snp_match:
                 normalizer: clinical_normalizer
                 type: keyword
               ribosomal_rna_28s_16s_ratio:
+                type: double
+              rna_integrity_number:
                 type: double
               spectrophotometer_method:
                 normalizer: clinical_normalizer
@@ -2619,6 +2715,8 @@ properties:
         - case_autocomplete
         normalizer: clinical_normalizer
         type: keyword
+      sample_ordinal:
+        type: long
       sample_type:
         normalizer: clinical_normalizer
         type: keyword
