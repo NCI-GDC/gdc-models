@@ -13,9 +13,9 @@ setup(
         "elasticsearch>=7.0.0,<8.0.0",
         "six~=1.15",
     ],
-    package_data={
-        "gdcmodels": ["es-models/*/*.yaml"]
-    },
+    # package_data={
+    #     "gdcmodels": ["es-models/*/*.yaml"]
+    # },
     entry_points={
         "console_scripts": ["init_index=gdcmodels.init_index:main"]
     },
