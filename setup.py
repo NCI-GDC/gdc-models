@@ -19,4 +19,5 @@ setup(
     entry_points={
         "console_scripts": ["init_index=gdcmodels.init_index:main"]
     },
+    zip_safe=True,
 )
