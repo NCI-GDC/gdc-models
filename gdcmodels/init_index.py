@@ -3,8 +3,6 @@
 import argparse
 import sys
 
-from six.moves import input
-
 from elasticsearch import Elasticsearch
 from gdcmodels import get_es_models, esutils
 
@@ -146,7 +144,7 @@ def init_index(args):
                 "settings": es_models[index]["_settings"],
                 "mappings": es_models[index][index_type]["_mapping"],
             }
-            es.indices.create(index=full_index_name, body=body)
+            es.indices.create(index=full_index_name, **body)
 
 
 def main():

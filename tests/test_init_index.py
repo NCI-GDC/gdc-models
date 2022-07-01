@@ -51,7 +51,7 @@ def validate_index(es):
             descriptions_resource (optional(str)): Resource name with expected
                 descriptions YAML, or None to expect no descriptions.
         """
-        index_info = es.indices.get(index_name)
+        index_info = es.indices.get(index=index_name)
         assert index_info is not None, "Index {} does not exist".format(index_name)
         assert index_name in index_info
 
@@ -92,7 +92,7 @@ def preexisting_case_set(es, clear_test_indices):
     """
     mapping = load_yaml("gdcmodels", "es-models/gdc_from_graph/case.mapping.yaml")
     settings = load_yaml("gdcmodels", "es-models/gdc_from_graph/settings.yaml")
-    es.indices.create("test_case_set", body={"mappings": mapping, "settings": settings})
+    es.indices.create(index="test_case_set", mappings=mapping, settings=settings)
 
 
 @pytest.fixture
@@ -103,7 +103,7 @@ def patch_input(monkeypatch):
         def return_input(*args, **kwargs):
             return user_input
 
-        monkeypatch.setattr("gdcmodels.init_index.input", return_input)
+        monkeypatch.setattr("builtins.input", return_input)
 
     return apply_patch
 

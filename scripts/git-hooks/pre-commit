@@ -45,7 +45,7 @@ def process_yaml(yaml_file, format_yaml):
 
 
 def main(format_yaml):
-    mappings_path = os.path.join(get_git_root(), 'es-models')
+    mappings_path = os.path.join(get_git_root(), 'gdcmodels/es-models')
     os.chdir(mappings_path)
 
     ret_value = 0
