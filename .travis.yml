@@ -12,6 +12,12 @@ python:
 env:
   - ES_VERSION="7.7.1"
 
+addons:
+  apt:
+    packages:
+      - "python3-pip"
+      - "python3-venv"
+
 before_install:
   - sudo rm -rf /var/lib/elasticsearch
 
@@ -24,7 +30,10 @@ before_script:
   - sudo service elasticsearch restart
 
 install:
-  - pip install tox-travis
+  - /usr/bin/python3 -m pip install pipx --user
+  - pipx install poetry
+  - pipx inject poetry poetry-dynamic-versioning
+  - pip install tox-travis tox-poetry
 
 script:
   - tox
