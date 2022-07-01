@@ -20,8 +20,6 @@ addons:
 
 before_install:
   - sudo rm -rf /var/lib/elasticsearch
-
-before_script:
   - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ES_VERSION}-amd64.deb
   - sudo dpkg -i --force-confnew elasticsearch-${ES_VERSION}-amd64.deb
   - sudo chown elasticsearch /etc/default/elasticsearch
