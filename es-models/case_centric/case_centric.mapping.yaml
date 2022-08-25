@@ -365,6 +365,8 @@ properties:
     properties:
       alcohol_days_per_week:
         type: double
+      alcohol_drinks_per_day:
+        type: double
       alcohol_history:
         type: keyword
       alcohol_intensity:
@@ -1137,6 +1139,7 @@ properties:
         type: keyword
       tumor_descriptor:
         type: keyword
+    type: nested
   state:
     type: keyword
   submitter_id:
