@@ -30,6 +30,8 @@ properties:
     type: long
   days_to_index:
     type: long
+  days_to_lost_to_followup:
+    type: long
   demographic:
     properties:
       age_at_index:
@@ -90,6 +92,8 @@ properties:
         type: keyword
       ann_arbor_pathologic_stage:
         type: keyword
+      best_overall_response:
+        type: keyword
       burkitt_lymphoma_clinical_variant:
         type: keyword
       cause_of_death:
@@ -100,8 +104,12 @@ properties:
         type: keyword
       cog_renal_stage:
         type: keyword
+      cog_rhabdomyosarcoma_risk_group:
+        type: keyword
       colon_polyps_history:
         type: keyword
+      days_to_best_overall_response:
+        type: long
       days_to_diagnosis:
         type: long
       days_to_hiv_diagnosis:
@@ -115,6 +123,8 @@ properties:
       days_to_recurrence:
         type: double
       diagnosis_id:
+        type: keyword
+      eln_risk_classification:
         type: keyword
       esophageal_columnar_dysplasia_degree:
         type: keyword
@@ -141,6 +151,8 @@ properties:
       inss_stage:
         type: keyword
       international_prognostic_index:
+        type: keyword
+      irs_group:
         type: keyword
       iss_stage:
         type: keyword
@@ -216,6 +228,8 @@ properties:
             type: keyword
           morphologic_architectural_pattern:
             type: keyword
+          necrosis_present:
+            type: keyword
           non_nodal_regional_disease:
             type: keyword
           non_nodal_tumor_deposits:
@@ -271,6 +285,8 @@ properties:
         type: keyword
       residual_disease:
         type: keyword
+      satellite_nodule_present:
+        type: keyword
       secondary_gleason_grade:
         type: keyword
       site_of_resection_or_biopsy:
@@ -295,6 +311,8 @@ properties:
             type: keyword
           number_of_cycles:
             type: long
+          reason_treatment_ended:
+            type: keyword
           regimen_or_line_of_therapy:
             type: keyword
           state:
@@ -320,6 +338,10 @@ properties:
           treatment_type:
             type: keyword
         type: nested
+      tumor_confined_to_organ_of_origin:
+        type: keyword
+      tumor_focality:
+        type: keyword
       tumor_grade:
         type: keyword
       tumor_largest_dimension_diameter:
@@ -329,6 +351,8 @@ properties:
       vascular_invasion_present:
         type: keyword
       vascular_invasion_type:
+        type: keyword
+      wilms_tumor_histologic_subtype:
         type: keyword
       year_of_diagnosis:
         type: long
@@ -340,6 +364,8 @@ properties:
   exposures:
     properties:
       alcohol_days_per_week:
+        type: double
+      alcohol_drinks_per_day:
         type: double
       alcohol_history:
         type: keyword
@@ -353,11 +379,17 @@ properties:
         type: double
       exposure_id:
         type: keyword
+      exposure_type:
+        type: keyword
       height:
         type: double
       pack_years_smoked:
         type: double
+      parent_with_radiation_exposure:
+        type: keyword
       radon_exposure:
+        type: keyword
+      secondhand_smoke_as_child:
         type: keyword
       state:
         type: keyword
@@ -368,6 +400,10 @@ properties:
       tobacco_smoking_quit_year:
         type: long
       tobacco_smoking_status:
+        type: keyword
+      type_of_smoke_exposure:
+        type: keyword
+      type_of_tobacco_used:
         type: keyword
       weight:
         type: double
@@ -388,10 +424,236 @@ properties:
         type: keyword
       relative_with_cancer_history:
         type: keyword
+      relatives_with_cancer_history_count:
+        type: long
+      submitter_id:
+        type: keyword
+    type: nested
+  follow_ups:
+    properties:
+      adverse_event:
+        type: keyword
+      adverse_event_grade:
+        type: keyword
+      aids_risk_factors:
+        type: keyword
+      barretts_esophagus_goblet_cells_present:
+        type: keyword
+      bmi:
+        type: double
+      body_surface_area:
+        type: double
+      cause_of_response:
+        type: keyword
+      cd4_count:
+        type: double
+      cdc_hiv_risk_factors:
+        type: keyword
+      comorbidity:
+        type: keyword
+      comorbidity_method_of_diagnosis:
+        type: keyword
+      days_to_adverse_event:
+        type: long
+      days_to_comorbidity:
+        type: long
+      days_to_follow_up:
+        type: long
+      days_to_imaging:
+        type: long
+      days_to_progression:
+        type: long
+      days_to_progression_free:
+        type: long
+      days_to_recurrence:
+        type: long
+      diabetes_treatment_type:
+        type: keyword
+      disease_response:
+        type: keyword
+      dlco_ref_predictive_percent:
+        type: double
+      ecog_performance_status:
+        type: keyword
+      evidence_of_recurrence_type:
+        type: keyword
+      eye_color:
+        type: keyword
+      fev1_fvc_post_bronch_percent:
+        type: double
+      fev1_fvc_pre_bronch_percent:
+        type: double
+      fev1_ref_post_bronch_percent:
+        type: double
+      fev1_ref_pre_bronch_percent:
+        type: double
+      follow_up_id:
+        type: keyword
+      haart_treatment_indicator:
+        type: keyword
+      height:
+        type: double
+      hepatitis_sustained_virological_response:
+        type: keyword
+      history_of_tumor:
+        type: keyword
+      history_of_tumor_type:
+        type: keyword
+      hiv_viral_load:
+        type: double
+      hormonal_contraceptive_type:
+        type: keyword
+      hormonal_contraceptive_use:
+        type: keyword
+      hormone_replacement_therapy_type:
+        type: keyword
+      hpv_positive_type:
+        type: keyword
+      hysterectomy_margins_involved:
+        type: keyword
+      hysterectomy_type:
+        type: keyword
+      imaging_result:
+        type: keyword
+      imaging_type:
+        type: keyword
+      immunosuppressive_treatment_type:
+        type: keyword
+      karnofsky_performance_status:
+        type: keyword
+      menopause_status:
+        type: keyword
+      molecular_tests:
+        properties:
+          aa_change:
+            type: keyword
+          antigen:
+            type: keyword
+          biospecimen_type:
+            type: keyword
+          biospecimen_volume:
+            type: double
+          blood_test_normal_range_lower:
+            type: double
+          blood_test_normal_range_upper:
+            type: double
+          cell_count:
+            type: long
+          chromosome:
+            type: keyword
+          clonality:
+            type: keyword
+          copy_number:
+            type: double
+          cytoband:
+            type: keyword
+          days_to_test:
+            type: long
+          exon:
+            type: keyword
+          gene_symbol:
+            type: keyword
+          histone_family:
+            type: keyword
+          histone_variant:
+            type: keyword
+          intron:
+            type: keyword
+          laboratory_test:
+            type: keyword
+          loci_abnormal_count:
+            type: long
+          loci_count:
+            type: long
+          locus:
+            type: keyword
+          mismatch_repair_mutation:
+            type: keyword
+          mitotic_count:
+            type: double
+          mitotic_total_area:
+            type: double
+          molecular_analysis_method:
+            type: keyword
+          molecular_consequence:
+            type: keyword
+          molecular_test_id:
+            type: keyword
+          pathogenicity:
+            type: keyword
+          ploidy:
+            type: keyword
+          second_exon:
+            type: keyword
+          second_gene_symbol:
+            type: keyword
+          specialized_molecular_test:
+            type: keyword
+          submitter_id:
+            type: keyword
+          test_analyte_type:
+            type: keyword
+          test_result:
+            type: keyword
+          test_units:
+            type: keyword
+          test_value:
+            type: double
+          transcript:
+            type: keyword
+          variant_origin:
+            type: keyword
+          variant_type:
+            type: keyword
+          zygosity:
+            type: keyword
+        type: nested
+      nadir_cd4_count:
+        type: double
+      pancreatitis_onset_year:
+        type: long
+      pregnancy_outcome:
+        type: keyword
+      procedures_performed:
+        type: keyword
+      progression_or_recurrence:
+        type: keyword
+      progression_or_recurrence_anatomic_site:
+        type: keyword
+      progression_or_recurrence_type:
+        type: keyword
+      recist_targeted_regions_number:
+        type: long
+      recist_targeted_regions_sum:
+        type: double
+      reflux_treatment_type:
+        type: keyword
+      risk_factor:
+        type: keyword
+      risk_factor_treatment:
+        type: keyword
+      scan_tracer_used:
+        type: keyword
       state:
         type: keyword
       submitter_id:
         type: keyword
+      undescended_testis_corrected:
+        type: keyword
+      undescended_testis_corrected_age:
+        type: long
+      undescended_testis_corrected_laterality:
+        type: keyword
+      undescended_testis_corrected_method:
+        type: keyword
+      undescended_testis_history:
+        type: keyword
+      undescended_testis_history_laterality:
+        type: keyword
+      viral_hepatitis_serologies:
+        type: keyword
+      weight:
+        type: double
     type: nested
   gene:
     properties:
@@ -647,8 +909,237 @@ properties:
         type: keyword
   samples:
     properties:
+      biospecimen_anatomic_site:
+        type: keyword
+      biospecimen_laterality:
+        type: keyword
+      catalog_reference:
+        type: keyword
+      composition:
+        type: keyword
+      current_weight:
+        type: double
+      days_to_collection:
+        type: long
+      days_to_sample_procurement:
+        type: long
+      diagnosis_pathologically_confirmed:
+        type: keyword
+      distance_normal_to_tumor:
+        type: keyword
+      distributor_reference:
+        type: keyword
+      freezing_method:
+        type: keyword
+      growth_rate:
+        type: long
+      initial_weight:
+        type: double
+      intermediate_dimension:
+        type: double
+      is_ffpe:
+        type: keyword
+      longest_dimension:
+        type: double
+      method_of_sample_procurement:
+        type: keyword
+      oct_embedded:
+        type: keyword
+      passage_count:
+        type: long
+      pathology_report_uuid:
+        type: keyword
+      portions:
+        properties:
+          analytes:
+            properties:
+              a260_a280_ratio:
+                type: double
+              aliquots:
+                properties:
+                  aliquot_id:
+                    type: keyword
+                  aliquot_quantity:
+                    type: double
+                  aliquot_volume:
+                    type: double
+                  amount:
+                    type: double
+                  analyte_type:
+                    type: keyword
+                  analyte_type_id:
+                    type: keyword
+                  center:
+                    properties:
+                      center_id:
+                        type: keyword
+                      center_type:
+                        type: keyword
+                      code:
+                        type: keyword
+                      name:
+                        type: keyword
+                      namespace:
+                        type: keyword
+                      short_name:
+                        type: keyword
+                  concentration:
+                    type: double
+                  no_matched_normal_low_pass_wgs:
+                    type: keyword
+                  no_matched_normal_targeted_sequencing:
+                    type: keyword
+                  no_matched_normal_wgs:
+                    type: keyword
+                  no_matched_normal_wxs:
+                    type: keyword
+                  selected_normal_low_pass_wgs:
+                    type: keyword
+                  selected_normal_targeted_sequencing:
+                    type: keyword
+                  selected_normal_wgs:
+                    type: keyword
+                  selected_normal_wxs:
+                    type: keyword
+                  source_center:
+                    type: keyword
+                  submitter_id:
+                    type: keyword
+                type: nested
+              amount:
+                type: double
+              analyte_id:
+                type: keyword
+              analyte_quantity:
+                type: double
+              analyte_type:
+                type: keyword
+              analyte_type_id:
+                type: keyword
+              analyte_volume:
+                type: double
+              concentration:
+                type: double
+              experimental_protocol_type:
+                type: keyword
+              normal_tumor_genotype_snp_match:
+                type: keyword
+              ribosomal_rna_28s_16s_ratio:
+                type: double
+              rna_integrity_number:
+                type: double
+              spectrophotometer_method:
+                type: keyword
+              submitter_id:
+                type: keyword
+              well_number:
+                type: keyword
+            type: nested
+          center:
+            properties:
+              center_id:
+                type: keyword
+              center_type:
+                type: keyword
+              code:
+                type: keyword
+              name:
+                type: keyword
+              namespace:
+                type: keyword
+              short_name:
+                type: keyword
+          creation_datetime:
+            type: double
+          is_ffpe:
+            type: keyword
+          portion_id:
+            type: keyword
+          portion_number:
+            type: keyword
+          slides:
+            properties:
+              bone_marrow_malignant_cells:
+                type: keyword
+              number_proliferating_cells:
+                type: long
+              percent_eosinophil_infiltration:
+                type: double
+              percent_follicular_component:
+                type: double
+              percent_granulocyte_infiltration:
+                type: double
+              percent_inflam_infiltration:
+                type: double
+              percent_lymphocyte_infiltration:
+                type: double
+              percent_monocyte_infiltration:
+                type: double
+              percent_necrosis:
+                type: double
+              percent_neutrophil_infiltration:
+                type: double
+              percent_normal_cells:
+                type: double
+              percent_rhabdoid_features:
+                type: double
+              percent_sarcomatoid_features:
+                type: double
+              percent_stromal_cells:
+                type: double
+              percent_tumor_cells:
+                type: double
+              percent_tumor_nuclei:
+                type: double
+              prostatic_chips_positive_count:
+                type: double
+              prostatic_chips_total_count:
+                type: double
+              prostatic_involvement_percent:
+                type: double
+              section_location:
+                type: keyword
+              slide_id:
+                type: keyword
+              submitter_id:
+                type: keyword
+              tissue_microarray_coordinates:
+                type: keyword
+            type: nested
+          submitter_id:
+            type: keyword
+          weight:
+            type: double
+        type: nested
+      preservation_method:
+        type: keyword
+      sample_id:
+        type: keyword
+      sample_ordinal:
+        type: long
       sample_type:
         type: keyword
+      sample_type_id:
+        type: keyword
+      shortest_dimension:
+        type: double
+      submitter_id:
+        type: keyword
+      time_between_clamping_and_freezing:
+        type: double
+      time_between_excision_and_freezing:
+        type: double
+      tissue_collection_type:
+        type: keyword
+      tissue_type:
+        type: keyword
+      tumor_code:
+        type: keyword
+      tumor_code_id:
+        type: keyword
+      tumor_descriptor:
+        type: keyword
+    type: nested
   state:
     type: keyword
   submitter_id:
