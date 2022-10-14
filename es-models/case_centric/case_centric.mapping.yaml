@@ -2,7 +2,10 @@ _size:
   enabled: true
 _source:
   excludes:
-  - gene.*
+    - gene.*
+  includes:
+    - gene.gene_id
+    - gene.symbol
 properties:
   available_variation_data:
     type: keyword
