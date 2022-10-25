@@ -2,7 +2,7 @@ _size:
   enabled: true
 _source:
   excludes:
-    - case.*.*
+  - case.*.*
 properties:
   biotype:
     type: keyword
