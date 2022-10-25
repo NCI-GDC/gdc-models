@@ -7,3 +7,4 @@ cfgv~=2.0.1
 
 # Make it easier to pin deps that work across Python 2 & 3
 more-itertools~=5.0
+elasticsearch-dsl~=7.4
