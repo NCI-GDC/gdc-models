@@ -3,6 +3,8 @@ _size:
 _source:
   excludes:
   - gene.*.*
+  - gene.biotype
+  - gene.is_cancer_gene_census
 properties:
   available_variation_data:
     type: keyword

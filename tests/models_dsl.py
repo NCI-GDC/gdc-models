@@ -79,3 +79,16 @@ class CaseCentricWithoutDeepNesting(CaseCentricWithGeneExcluded):
 
     class Index:
         name = "case_centric__without_deep_nesting"
+
+
+class CaseCentricWithWildcard(CaseCentricWithGeneExcluded):
+
+    class Meta:
+        dynamic = MetaField("strict")
+        source = MetaField({
+            "excludes": ["gene.*.*", "gene.b*", "gene.*_*_*"],
+            "enabled": True
+        })
+
+    class Index:
+        name = "case_centric__with_wildcard"
