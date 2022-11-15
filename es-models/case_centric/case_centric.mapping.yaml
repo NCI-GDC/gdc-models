@@ -1,8 +1,9 @@
 _size:
   enabled: true
 _source:
+  # The objective is to exclude all but gene.gene_id and gene.symbol
   excludes:
-  - gene.*.*
+  - gene.*.*  # excludes all deeply nested fields i.e cnv & ssm
   - gene.biotype
   - gene.is_cancer_gene_census
 properties:

@@ -1,14 +1,15 @@
 _size:
   enabled: true
 _source:
+  # The goal is to exclude all case fields except case.case_id
   excludes:
-  - case.*.*
+  - case.*.*  # exclude all deeply nested fields, i.e. cnv, demographic, ssm etc
   - case.consent_type
-  - case.d*
-  - case.i*
+  - case.d*  # exclude all fields that starts with a d, e.g days_to_consent, days_to_index etc
+  - case.i*  # exclude all fields that starts with i
   - case.p*
   - case.s*
-  - case.*_*_*
+  - case.*_*_*  # excludes all field in this format, e.g available_variation_data, lost_to_followup
 properties:
   biotype:
     type: keyword
