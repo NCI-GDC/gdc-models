@@ -2,7 +2,9 @@ _size:
   enabled: true
 _source:
   excludes:
-  - gene.*
+  - gene.*.*
+  - gene.biotype
+  - gene.is_cancer_gene_census
 properties:
   available_variation_data:
     type: keyword
