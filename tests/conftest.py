@@ -5,7 +5,6 @@ import pkg_resources
 
 import elasticsearch
 import pytest
-import six
 import yaml
 
 import gdcmodels
@@ -213,9 +212,6 @@ def non_meta_descriptions_mappings(tmp_path):
 
 def maybe_fix_str(value):
     """Convert a string-like value to ``str``; do nothing to non-string-like values."""
-    if isinstance(value, six.string_types):
-        return six.ensure_str(value)
-
     return value
 
 
