@@ -12,12 +12,22 @@ atomicwrites==1.4.0
     # via pytest
 attrs==19.3.0
     # via pytest
+certifi==2020.12.5
+    # via
+    #   -c requirements.txt
+    #   elasticsearch
 cfgv==2.0.1
     # via pre-commit
 coverage==5.2
     # via pytest-cov
 distlib==0.3.1
     # via virtualenv
+elasticsearch-dsl==7.4.0
+    # via -r dev-requirements.in
+elasticsearch==7.12.0
+    # via
+    #   -c requirements.txt
+    #   elasticsearch-dsl
 filelock==3.0.12
     # via virtualenv
 identify==1.4.24
@@ -54,6 +64,8 @@ pytest==4.6.11
     # via
     #   -r dev-requirements.in
     #   pytest-cov
+python-dateutil==2.8.2
+    # via elasticsearch-dsl
 pyyaml==5.3.1
     # via
     #   -c requirements.txt
@@ -63,14 +75,20 @@ six==1.15.0
     # via
     #   -c requirements.txt
     #   cfgv
+    #   elasticsearch-dsl
     #   more-itertools
     #   packaging
     #   pathlib2
     #   pre-commit
     #   pytest
+    #   python-dateutil
     #   virtualenv
 toml==0.10.1
     # via pre-commit
+urllib3==1.26.4
+    # via
+    #   -c requirements.txt
+    #   elasticsearch
 virtualenv==20.0.27
     # via pre-commit
 wcwidth==0.2.5
