@@ -221,7 +221,7 @@ _meta:
     annotations.sample.created_datetime: A combination of date and time of day in
       the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     annotations.sample.current_weight: Numeric value that represents the current weight
-      of the sample, measured  in milligrams.
+      of the sample, measured in milligrams.
     annotations.sample.days_to_collection: The number of days from the index date
       to the date a sample was collected for a specific study or project.
     annotations.sample.days_to_sample_procurement: The number of days from the index
@@ -267,6 +267,10 @@ _meta:
       type.
     annotations.sample.shortest_dimension: Numeric value that represents the shortest
       dimension of the sample, measured in millimeters.
+    annotations.sample.specimen_type: The type of a material sample taken from a biological
+      entity for testing, diagnostic, propagation, treatment or research purposes.
+      This includes particular types of cellular molecules, cells, tissues, organs,
+      body fluids, embryos, and body excretory substances.
     annotations.sample.state: The current state of the object.
     annotations.sample.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
@@ -407,7 +411,7 @@ _meta:
     cases.case.updated_datetime: A combination of date and time of day in the form
       [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.demographic.age_at_index: The patient's age (in years) on the reference
-      or anchor date date used during date obfuscation.
+      or anchor date used during date obfuscation.
     cases.demographic.age_is_obfuscated: The age or other properties related to the
       patient's age have been modified for compliance reasons. The actual age may
       differ from what was reported in order to comply with the Health Insurance Portability
@@ -458,7 +462,7 @@ _meta:
     cases.demographic.vital_status: The survival state of the person registered on
       the protocol.
     cases.demographic.weeks_gestation_at_birth: Numeric value used to describe the
-      number of weeks starting  from the approximate date of the biological mother's
+      number of weeks starting from the approximate date of the biological mother's
       last menstrual period and ending with the birth of the patient.
     cases.demographic.year_of_birth: Numeric value to represent the calendar year
       in which an individual was born.
@@ -499,12 +503,6 @@ _meta:
       a publication by the group formed for the purpose of developing a system of
       staging for cancer that is acceptable to the American medical profession and
       is compatible with other accepted classifications.
-    cases.diagnoses.anaplasia_present: Yes/no/unknown/not reported indicator used
-      to describe whether anaplasia was present at the time of diagnosis.
-    cases.diagnoses.anaplasia_present_type: The text term used to describe the morphologic
-      findings indicating the presence of a malignant cellular infiltrate characterized
-      by the presence of large pleomorphic cells, necrosis, and high mitotic activity
-      in a tissue sample.
     cases.diagnoses.ann_arbor_b_symptoms: Text term to signify whether lymphoma B-symptoms
       are present as noted in the patient's medical record.
     cases.diagnoses.ann_arbor_b_symptoms_described: Text descibing the specific lymphoma
@@ -544,17 +542,11 @@ _meta:
       the context of a project.
     cases.diagnoses.best_overall_response: The best improvement achieved throughout
       the entire course of protocol treatment.
-    cases.diagnoses.breslow_thickness: The number that describes the distance, in
-      millimeters, between the upper layer of the epidermis and the deepest point
-      of tumor penetration.
     cases.diagnoses.burkitt_lymphoma_clinical_variant: Burkitt's lymphoma categorization
       based on clinical features that differ from other forms of the same disease.
+    cases.diagnoses.cancer_detection_method: The method used to detect disease.
     cases.diagnoses.child_pugh_classification: The text term used to describe the
       classification used in the prognosis of chronic liver disease, mainly cirrhosis.
-    cases.diagnoses.circumferential_resection_margin: Numeric value used to describe
-      the non-peritonealised bare area of rectum, comprising anterior and posterior
-      segments, when submitted as a surgical specimen resulting from excision of cancer
-      of the rectum.
     cases.diagnoses.classification_of_tumor: Text that describes the kind of disease
       present in the tumor specimen as related to a specific timepoint.
     cases.diagnoses.cog_liver_stage: The text term used to describe the staging classification
@@ -578,11 +570,21 @@ _meta:
     cases.diagnoses.days_to_last_follow_up: Time interval from the date of last follow
       up to the date of initial pathologic diagnosis, represented as a calculated
       number of days.
-    cases.diagnoses.days_to_last_known_disease_status: Time interval from the date
-      of last follow up to the date of initial pathologic diagnosis, represented as
-      a calculated number of days.
+    cases.diagnoses.days_to_last_known_disease_status: Number of days between the
+      date used for index and the date the patient's disease status was known.
     cases.diagnoses.days_to_recurrence: Number of days between the date used for index
       and the date the patient's disease recurred.
+    cases.diagnoses.diagnosis_is_primary_disease: Indicates whether this specific
+      diagnosis represents the disease that was the primary focus of the study. Additionally,
+      this diagnosis is reflected at the case level, which is captured using the case.disease_type
+      property.
+    cases.diagnoses.double_expressor_lymphoma: An immunohistochemical finding indicating
+      the presence of double expression of MYC and BCL2 proteins in the neoplastic
+      cells of a tumor sample.
+    cases.diagnoses.double_hit_lymphoma: A rare B-cell non-Hodgkin lymphoma that is
+      characterized by the abnormal rearrangement of two genes, MYC gene and either
+      BCL2 or BCL6 genes. Patients with this type of lymphoma usually respond poorly
+      to standard treatments and have a poor prognosis.
     cases.diagnoses.eln_risk_classification: A recommended risk stratification system
       used to provide prognostic information in AML patients undergoing chemotherapy
       as well as allogeneic hematopoietic stem cell transplantation.
@@ -603,6 +605,10 @@ _meta:
     cases.diagnoses.esophageal_columnar_metaplasia_present: The yes/no/unknown indicator
       used to describe whether esophageal columnar metaplasia was determined to be
       present.
+    cases.diagnoses.fab_morphology_code: A classification system for acute myeloid
+      leukemias, acute lymphoblastic leukemias, and myelodysplastic syndromes. It
+      is based on the morphologic and cytochemical evaluation of bone marrow and peripheral
+      blood smears.
     cases.diagnoses.figo_stage: The extent of a cervical or endometrial cancer within
       the body, especially whether the disease has spread from the original site to
       other parts of the body, as described by the International Federation of Gynecology
@@ -626,15 +632,16 @@ _meta:
     cases.diagnoses.gleason_patterns_percent: Numeric value that represents the percentage
       of Patterns 4 and 5, which is used when the Gleason score is greater than 7
       to predict prognosis.
+    cases.diagnoses.gleason_score: The score derived from universally embraced prostate
+      cancer grading system developed by Dr. Donald F. Gleason in 1977. The system
+      provides a reproducible description of the glandular architecture of prostate
+      tissue to which a pathologist assigns a score depending primarily on the microscopic
+      patterns of cancerous glands and cell morphology
     cases.diagnoses.goblet_cells_columnar_mucosa_present: The yes/no/unknown indicator
       used to describe whether goblet cells were determined to be present in the esophageal
       columnar mucosa.
-    cases.diagnoses.greatest_tumor_dimension: Numeric value that represents the measurement
-      of the widest portion of the tumor in centimeters.
-    cases.diagnoses.gross_tumor_weight: Numeric value used to describe the gross pathologic
-      tumor weight, measured in grams.
-    cases.diagnoses.icd_10_code: Alphanumeric value used to describe the  disease
-      code from the tenth version of the International Classification of Disease (ICD-10).
+    cases.diagnoses.icd_10_code: Alphanumeric value used to describe the disease code
+      from the tenth version of the International Classification of Disease (ICD-10).
     cases.diagnoses.igcccg_stage: The text term used to describe the International
       Germ Cell Cancer Collaborative Group (IGCCCG), a grouping used to further classify
       metastatic testicular tumors.
@@ -663,22 +670,10 @@ _meta:
     cases.diagnoses.ishak_fibrosis_score: The text term used to describe the classification
       of the histopathologic degree of liver damage.
     cases.diagnoses.iss_stage: The multiple myeloma disease stage at diagnosis.
-    cases.diagnoses.largest_extrapelvic_peritoneal_focus: The text term used to describe
-      the diameter of the largest focus originating outside of the pelvic peritoneal
-      region.
     cases.diagnoses.last_known_disease_status: Text term that describes the last known
       state or condition of an individual's neoplasm.
     cases.diagnoses.laterality: For tumors in paired organs, designates the side on
       which the cancer originates.
-    cases.diagnoses.lymph_node_involved_site: The text term used to describe the anatomic
-      site of lymph node involvement.
-    cases.diagnoses.lymph_nodes_positive: The number of lymph nodes involved with
-      disease as determined by pathologic examination.
-    cases.diagnoses.lymph_nodes_tested: The number of lymph nodes tested to determine
-      whether lymph nodes were  involved with disease as determined by a pathologic
-      examination.
-    cases.diagnoses.lymphatic_invasion_present: A yes/no indicator to ask if small
-      or thin-walled vessel invasion is present, indicating lymphatic involvement
     cases.diagnoses.margin_distance: Numeric value that represents the distance between
       the tumor and the surgical margin
     cases.diagnoses.margins_involved_site: The text term used to describe the anatomic
@@ -686,6 +681,8 @@ _meta:
     cases.diagnoses.masaoka_stage: The text term used to describe the Masaoka staging
       system, a classification that defines prognostic indicators for thymic malignancies
       and predicts tumor recurrence.
+    cases.diagnoses.max_tumor_bulk_site: The site of the tumor where the dimension
+      or diameter is larger than any other part of the tumor.
     cases.diagnoses.medulloblastoma_molecular_classification: The text term used to
       describe the classification of medulloblastoma tumors based on molecular features.
     cases.diagnoses.metastasis_at_diagnosis: The text term used to describe the extent
@@ -703,6 +700,139 @@ _meta:
       in tumors. The method of counting varies, according to the specific tumor examined.
       Usually, the mitotic count is determined based on the number of mitoses per
       high power field (40X) or 10 high power fields.
+    cases.diagnoses.molecular_tests.aa_change: 'Alphanumeric value used to describe
+      the amino acid change for a specific genetic variant. Example: R116Q.'
+    cases.diagnoses.molecular_tests.aneuploidy: A chromosomal abnormality in which
+      there is an addition or loss of chromosomes within a set (e.g., 23 + 22 or 23
+      + 24).
+    cases.diagnoses.molecular_tests.antigen: The text term used to describe an antigen
+      included in molecular testing.
+    cases.diagnoses.molecular_tests.batch_id: GDC submission batch indicator. It is
+      unique within the context of a project.
+    cases.diagnoses.molecular_tests.biospecimen_type: The text term used to describe
+      the biological material used for testing, diagnostic, treatment or research
+      purposes.
+    cases.diagnoses.molecular_tests.biospecimen_volume: The volume of the biospecimen.
+    cases.diagnoses.molecular_tests.blood_test_normal_range_lower: Numeric value used
+      to describe the lower limit of the normal range used to describe a healthy individual
+      at the institution where the test was completed.
+    cases.diagnoses.molecular_tests.blood_test_normal_range_upper: Numeric value used
+      to describe the upper limit of the normal range used to describe a healthy individual
+      at the institution where the test was completed.
+    cases.diagnoses.molecular_tests.cell_count: Numeric value used to describe the
+      number of cells used for molecular testing.
+    cases.diagnoses.molecular_tests.chromosomal_translocation: A genetic exchange
+      where a piece of one chromosome is transferred to another chromosome.
+    cases.diagnoses.molecular_tests.chromosome: The text term used to describe a chromosome
+      targeted or included in molecular testing. If a specific genetic variant is
+      being reported, this property can be used to capture the chromosome where that
+      variant is located.
+    cases.diagnoses.molecular_tests.chromosome_arm: Under the microscope chromosomes
+      appear as thin, thread-like structures. They all have a short arm and long arm
+      separated by a primary constriction called the centromere. The short arm is
+      designated as p and the long arm as q.
+    cases.diagnoses.molecular_tests.clonality: The text term used to describe whether
+      a genomic variant is related by descent from a single progenitor cell.
+    cases.diagnoses.molecular_tests.copy_number: Numeric value used to describe the
+      number of times a section of the genome is repeated or copied within an insertion,
+      duplication or deletion variant.
+    cases.diagnoses.molecular_tests.created_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.diagnoses.molecular_tests.cytoband: 'Alphanumeric value used to describe
+      the cytoband or chromosomal location targeted or included in molecular analysis.
+      If a specific genetic variant is being reported, this property can be used to
+      capture the cytoband where the variant is located. Format: [chromosome][chromosome
+      arm].[band+sub-bands]. Example: 17p13.1.'
+    cases.diagnoses.molecular_tests.days_to_test: Number of days between the date
+      used for index and the date of the laboratory test.
+    cases.diagnoses.molecular_tests.exon: Exon number targeted or included in a molecular
+      analysis. If a specific genetic variant is being reported, this property can
+      be used to capture the exon where that variant is located.
+    cases.diagnoses.molecular_tests.gene_symbol: The text term used to describe a
+      gene targeted or included in molecular analysis. For rearrangements, this is
+      shold be used to represent the reference gene.
+    cases.diagnoses.molecular_tests.histone_family: The text term used to describe
+      the family, or classification of a group of basic proteins found in chromatin,
+      called histones.
+    cases.diagnoses.molecular_tests.histone_variant: The text term used to describe
+      a specific histone variants, which are proteins that substitute for the core
+      canonical histones.
+    cases.diagnoses.molecular_tests.hpv_strain: The specific hpv strain being tested.
+    cases.diagnoses.molecular_tests.intron: Intron number targeted or included in
+      molecular analysis. If a specific genetic variant is being reported, this property
+      can be used to capture the intron where that variant is located.
+    cases.diagnoses.molecular_tests.laboratory_test: The text term used to describe
+      the medical testing used to diagnose, treat or further understand a patient's
+      disease.
+    cases.diagnoses.molecular_tests.loci_abnormal_count: Numeric value used to describe
+      the number of loci determined to be abnormal.
+    cases.diagnoses.molecular_tests.loci_count: Numeric value used to describe the
+      number of loci tested.
+    cases.diagnoses.molecular_tests.locus: The position of a gene or a chromosomal
+      marker on a chromosome; also, a stretch of DNA at a particular place on a particular
+      chromosome. The use of locus is sometimes restricted to mean regions of DNA
+      that are expressed.
+    cases.diagnoses.molecular_tests.mismatch_repair_mutation: The yes/no/unknown indicator
+      used to describe whether the mutation included in molecular testing was known
+      to have an affect on the mismatch repair process.
+    cases.diagnoses.molecular_tests.mitotic_count: The number of mitoses identified
+      under the microscope in tumors. The method of counting varies, according to
+      the specific tumor examined. Usually, the mitotic count is determined based
+      on the number of mitoses per high power field (40X) or 10 high power fields.
+    cases.diagnoses.molecular_tests.mitotic_total_area: The total area reviewed when
+      calculating the mitotic index ratio.
+    cases.diagnoses.molecular_tests.molecular_analysis_method: The text term used
+      to describe the method used for molecular analysis.
+    cases.diagnoses.molecular_tests.molecular_consequence: The text term used to describe
+      the molecular consequence of genetic variation.
+    cases.diagnoses.molecular_tests.mutation_codon: The codon where a change in the
+      nucleotide sequence is occurring and causing an error.
+    cases.diagnoses.molecular_tests.pathogenicity: The text used to describe a variant's
+      level of involvement in the cause of the patient's disease according to the
+      standards outlined by the American College of Medical Genetics and Genomics
+      (ACMG).
+    cases.diagnoses.molecular_tests.ploidy: Text term used to describe the number
+      of sets of homologous chromosomes.
+    cases.diagnoses.molecular_tests.project_id: Unique ID for any specific defined
+      piece of work that is undertaken or attempted to meet a single requirement.
+    cases.diagnoses.molecular_tests.second_exon: The second exon number involved in
+      molecular variation. If a specific genetic variant is being reported, this property
+      can be used to capture the second exon where that variant is located. This property
+      is typically used for a translocation where two different locations are involved
+      in the variation.
+    cases.diagnoses.molecular_tests.second_gene_symbol: The text term used to describe
+      a secondary gene targeted or included in molecular analysis. For rearrangements,
+      this is should represent the location of the variant.
+    cases.diagnoses.molecular_tests.specialized_molecular_test: Text term used to
+      describe a specific test that is not covered in the list of molecular analysis
+      methods.
+    cases.diagnoses.molecular_tests.state: The current state of the object.
+    cases.diagnoses.molecular_tests.submitter_id: A project-specific identifier for
+      a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    cases.diagnoses.molecular_tests.test_analyte_type: The text term used to describe
+      the type of analyte used for molecular testing.
+    cases.diagnoses.molecular_tests.test_result: The text term used to describe the
+      result of the molecular test. If the test result was a numeric value see test_value.
+    cases.diagnoses.molecular_tests.test_units: The text term used to describe the
+      units of the test value for a molecular test. This property is used in conjunction
+      with test_value.
+    cases.diagnoses.molecular_tests.test_value: The text term or numeric value used
+      to describe a specific result of a molecular test.
+    cases.diagnoses.molecular_tests.test_value_range: The range of values within which
+      the subject's results fall.
+    cases.diagnoses.molecular_tests.timepoint_category: Category describing a specific
+      point in the time continuum, including those established relative to an event.
+    cases.diagnoses.molecular_tests.transcript: Alphanumeric value used to describe
+      the transcript of a specific genetic variant.
+    cases.diagnoses.molecular_tests.updated_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.diagnoses.molecular_tests.variant_origin: The text term used to describe
+      the biological origin of a specific genetic variant.
+    cases.diagnoses.molecular_tests.variant_type: The text term used to describe the
+      type of genetic variation.
+    cases.diagnoses.molecular_tests.zygosity: The text term used to describe the zygosity
+      of a specific genetic variant.
     cases.diagnoses.morphology: The third edition of the International Classification
       of Diseases for Oncology, published in 2000 used principally in tumor and cancer
       registries for coding the site (topography) and the histology (morphology) of
@@ -711,11 +841,6 @@ _meta:
       In pathology, the microscopic process of identifying normal and abnormal morphologic
       characteristics in tissues, by employing various cytochemical and immunocytochemical
       stains. A system of numbered categories for representation of data.
-    cases.diagnoses.non_nodal_regional_disease: The text term used to describe whether
-      the patient had non-nodal regional disease.
-    cases.diagnoses.non_nodal_tumor_deposits: The yes/no/unknown indicator used to
-      describe the presence of tumor deposits in the pericolic or perirectal fat or
-      in adjacent mesentery away from the leading edge of the tumor.
     cases.diagnoses.ovarian_specimen_status: The text term used to describe the physical
       condition of the involved ovary.
     cases.diagnoses.ovarian_surface_involvement: The text term that describes whether
@@ -752,6 +877,12 @@ _meta:
     cases.diagnoses.pathology_details.dysplasia_degree: The degree to which dysplasia
       was involved.
     cases.diagnoses.pathology_details.dysplasia_type: The type of dysplasia involved.
+    cases.diagnoses.pathology_details.extracapsular_extension: The extension of malignant
+      tissue situated outside of a specific capsule.
+    cases.diagnoses.pathology_details.extranodal_extension: Extension of a malignant
+      neoplasm beyond the lymph node capsule.
+    cases.diagnoses.pathology_details.extrascleral_extension: Spread of uveal melanoma
+      beyond the sclera.
     cases.diagnoses.pathology_details.greatest_tumor_dimension: Numeric value that
       represents the measurement of the widest portion of the tumor in centimeters.
     cases.diagnoses.pathology_details.gross_tumor_weight: Numeric value used to describe
@@ -759,14 +890,20 @@ _meta:
     cases.diagnoses.pathology_details.largest_extrapelvic_peritoneal_focus: The text
       term used to describe the diameter of the largest focus originating outside
       of the pelvic peritoneal region.
+    cases.diagnoses.pathology_details.lymph_node_dissection_method: The method employed
+      to remove a lymph nodes(s)
+    cases.diagnoses.pathology_details.lymph_node_dissection_site: The named location(s)
+      within the body where a lymph node(s) were removed.
     cases.diagnoses.pathology_details.lymph_node_involved_site: The text term used
       to describe the anatomic site of lymph node involvement.
     cases.diagnoses.pathology_details.lymph_node_involvement: Indicator noting whether
       lymph nodes were involved.
     cases.diagnoses.pathology_details.lymph_nodes_positive: The number of lymph nodes
       involved with disease as determined by pathologic examination.
+    cases.diagnoses.pathology_details.lymph_nodes_removed: The number of lymph nodes
+      removed during a biopsy or surgical procedure.
     cases.diagnoses.pathology_details.lymph_nodes_tested: The number of lymph nodes
-      tested to determine whether lymph nodes were  involved with disease as determined
+      tested to determine whether lymph nodes were involved with disease as determined
       by a pathologic examination.
     cases.diagnoses.pathology_details.lymphatic_invasion_present: A yes/no indicator
       to ask if small or thin-walled vessel invasion is present, indicating lymphatic
@@ -795,6 +932,8 @@ _meta:
     cases.diagnoses.pathology_details.percent_tumor_invasion: The percentage of tumor
       cells spread locally in a malignant neoplasm through infiltration or destruction
       of adjacent tissue.
+    cases.diagnoses.pathology_details.percent_tumor_nuclei: Numeric value to represent
+      the percentage of tumor nuclei in a malignant neoplasm sample or specimen.
     cases.diagnoses.pathology_details.perineural_invasion_present: a yes/no indicator
       to ask if perineural invasion or infiltration of tumor or cancer is present.
     cases.diagnoses.pathology_details.peripancreatic_lymph_nodes_positive: Enumerated
@@ -820,6 +959,8 @@ _meta:
       tissue sample.
     cases.diagnoses.pathology_details.residual_tumor: Tumor cells that remain in the
       body following cancer treatment.
+    cases.diagnoses.pathology_details.residual_tumor_measurement: A measurement of
+      the tumor cells that remain in the body following cancer treatment.
     cases.diagnoses.pathology_details.rhabdoid_percent: Numeric value that represents
       the percentage of rhabdoid features found in a specific tissue sample.
     cases.diagnoses.pathology_details.rhabdoid_present: Indicator describing whether
@@ -840,8 +981,11 @@ _meta:
     cases.diagnoses.pathology_details.tumor_largest_dimension_diameter: Numeric value
       used to describe the maximum diameter or dimension of the primary tumor, measured
       in centimeters.
+    cases.diagnoses.pathology_details.tumor_level_prostate: The level(s) of the prostate
+      from which the tumor originated.
     cases.diagnoses.pathology_details.tumor_thickness: A measurement of the thickness
-      of a sectioned slice (of tissue or mineral or other substance).
+      of a sectioned slice (of tissue or mineral or other substance) in millimeters
+      (mm).
     cases.diagnoses.pathology_details.updated_datetime: A combination of date and
       time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.diagnoses.pathology_details.vascular_invasion_present: The yes/no indicator
@@ -849,15 +993,10 @@ _meta:
       in a tumor specimen.
     cases.diagnoses.pathology_details.vascular_invasion_type: Text term that represents
       the type of vascular tumor invasion.
-    cases.diagnoses.percent_tumor_invasion: The percentage of tumor cells spread locally
-      in a malignant neoplasm through infiltration or destruction of adjacent tissue.
-    cases.diagnoses.perineural_invasion_present: a yes/no indicator to ask if perineural
-      invasion or infiltration of tumor or cancer is present.
-    cases.diagnoses.peripancreatic_lymph_nodes_positive: Enumerated numeric value
-      or range of values used to describe the number of peripancreatic lymph nodes
-      determined to be positive.
-    cases.diagnoses.peripancreatic_lymph_nodes_tested: The total number of peripancreatic
-      lymph nodes tested for the presence of pancreatic cancer cells.
+    cases.diagnoses.pathology_details.zone_of_origin_prostate: The location or position
+      of the tumor by zone of the prostate.
+    cases.diagnoses.pediatric_kidney_staging: A modified version of the Children's
+      Oncology Group (COG) National Wilms Tumor Study Group (NWTS) staging system.
     cases.diagnoses.peritoneal_fluid_cytological_status: The text term used to describe
       the malignant status of the peritoneal fluid determined by cytologic testing.
     cases.diagnoses.pregnant_at_diagnosis: The text term used to indicate whether
@@ -878,12 +1017,13 @@ _meta:
     cases.diagnoses.prior_treatment: A yes/no/unknown/not applicable indicator related
       to the administration of therapeutic agents received before the body specimen
       was collected.
-    cases.diagnoses.progression_or_recurrence: Yes/No/Unknown indicator to identify
-      whether a patient has had a new tumor event after initial treatment.
+    cases.diagnoses.progression_or_recurrence: Indicates whether a patient has a progression
+      or recurrence after initial treatment. This can include local, regional, or
+      metastatic disease.
     cases.diagnoses.project_id: Unique ID for any specific defined piece of work that
       is undertaken or attempted to meet a single requirement.
-    cases.diagnoses.residual_disease: Text terms to describe the status of a tissue
-      margin following surgical resection.
+    cases.diagnoses.residual_disease: Tumor cells that remain in the body following
+      cancer treatment.
     cases.diagnoses.satellite_nodule_present: Indicator noting whether a nodule or
       tumor is located within a small distance (e.g. 2cm) of the primary tumor.
     cases.diagnoses.secondary_gleason_grade: The text term used to describe the secondary
@@ -898,6 +1038,7 @@ _meta:
       for Oncology (ICD-O).
     cases.diagnoses.sites_of_involvement: The anatomic sites of disease involvement
       in addition to the primary anatomic site.
+    cases.diagnoses.sites_of_involvement_count: The number of anatomic sites of disease.
     cases.diagnoses.state: The current state of the object.
     cases.diagnoses.submitter_id: A project-specific identifier for a node. This property
       is the calling card/nickname/alias for a unit of submission. It can be used
@@ -912,28 +1053,46 @@ _meta:
       anatomic site of origin, of the patient's malignant disease, as described by
       the World Health Organization's (WHO) International Classification of Diseases
       for Oncology (ICD-O).
-    cases.diagnoses.transglottic_extension: The text term used to describe an extension
-      of the tumor beyond the opening into the ventricles and vocal cords.
     cases.diagnoses.treatments.batch_id: GDC submission batch indicator. It is unique
       within the context of a project.
     cases.diagnoses.treatments.chemo_concurrent_to_radiation: The text term used to
       describe whether the patient was receiving chemotherapy concurrent to radiation.
+    cases.diagnoses.treatments.clinical_trial_indicator: Indicator used to describe
+      whether the treatment was part of a clinical trial.
+    cases.diagnoses.treatments.course_number: The number assigned to a course of therapeutic
+      agent administration, indicating where a particular course of treatment falls
+      within a sequence of treatments.
     cases.diagnoses.treatments.created_datetime: A combination of date and time of
       day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.diagnoses.treatments.days_to_treatment_end: Number of days between the date
       used for index and the date the treatment ended.
     cases.diagnoses.treatments.days_to_treatment_start: Number of days between the
       date used for index and the date the treatment started.
+    cases.diagnoses.treatments.drug_category: A broad categorization of the type of
+      drug administered.
+    cases.diagnoses.treatments.embolic_agent: A substance used to block an artery,
+      thereby eliminating the blood flow to a specific part of an organ. An embolic
+      agent may cause permanent or temporary blockage depending on the nature of the
+      material used.
     cases.diagnoses.treatments.initial_disease_status: The text term used to describe
       the status of the patient's malignancy when the treatment began.
+    cases.diagnoses.treatments.lesions_treated_number: The number of lesions treated.
     cases.diagnoses.treatments.number_of_cycles: The numeric value used to describe
       the number of cycles of a specific treatment or regimen the patient received.
+    cases.diagnoses.treatments.number_of_fractions: The total number of divided radiation
+      doses received.
+    cases.diagnoses.treatments.prescribed_dose: A quantity of an agent prescribed
+      to the study participant.
     cases.diagnoses.treatments.project_id: Unique ID for any specific defined piece
       of work that is undertaken or attempted to meet a single requirement.
+    cases.diagnoses.treatments.protocol_identifier: A sequence of letters, numbers,
+      or other characters that uniquely identifies a study protocol.
     cases.diagnoses.treatments.reason_treatment_ended: The text term used to describe
       the reason a specific treatment or regimen ended.
     cases.diagnoses.treatments.regimen_or_line_of_therapy: The text term used to describe
       the regimen or line of therapy.
+    cases.diagnoses.treatments.residual_disease: Tumor cells that remain in the body
+      following cancer treatment.
     cases.diagnoses.treatments.route_of_administration: The pathway by which a substance
       is administered in order to reach the site of action in the body.
     cases.diagnoses.treatments.state: The current state of the object.
@@ -942,14 +1101,24 @@ _meta:
       can be used in place of the uuid for identifying or recalling a node.
     cases.diagnoses.treatments.therapeutic_agents: Text identification of the individual
       agent(s) used as part of a treatment regimen.
+    cases.diagnoses.treatments.therapeutic_level_achieved: Indicates a target level
+      of treatment was reached, according to the patient's treatment plan.
+    cases.diagnoses.treatments.therapeutic_target_level: Describes a specific target
+      for an administered treatment.
+    cases.diagnoses.treatments.timepoint_category: Category describing a specific
+      point in the time continuum, including those established relative to an event.
     cases.diagnoses.treatments.treatment_anatomic_site: The anatomic site or field
       targeted by a treatment regimen or single agent therapy.
     cases.diagnoses.treatments.treatment_arm: Text term used to describe the treatment
       arm assigned to a patient at the time eligibility is determined.
     cases.diagnoses.treatments.treatment_dose: The numeric value used to describe
-      the dose of an agent the patient received.
+      the total dose of an agent the patient received.
+    cases.diagnoses.treatments.treatment_dose_max: A maximum quantity of an agent
+      administered to the study participant.
     cases.diagnoses.treatments.treatment_dose_units: The text term used to describe
       the dose units of an agent the patient received.
+    cases.diagnoses.treatments.treatment_duration: The number of days during which
+      the treatment was given.
     cases.diagnoses.treatments.treatment_effect: The text term used to describe the
       pathologic effect a treatment(s) had on the tumor.
     cases.diagnoses.treatments.treatment_effect_indicator: The text term used to indicate
@@ -962,6 +1131,8 @@ _meta:
       indicator related to the administration of therapeutic agents received.
     cases.diagnoses.treatments.treatment_outcome: Text term that describes the patient's
       final outcome after the treatment was administered.
+    cases.diagnoses.treatments.treatment_outcome_duration: The number of days a patient
+      reached a specific result or effect after treatment.
     cases.diagnoses.treatments.treatment_type: Text term that describes the kind of
       treatment administered.
     cases.diagnoses.treatments.updated_datetime: A combination of date and time of
@@ -969,29 +1140,59 @@ _meta:
     cases.diagnoses.tumor_confined_to_organ_of_origin: The yes/no/unknown indicator
       used to describe whether the tumor is confined to the organ where it originated
       and did not spread to a proximal or distant location within the body.
-    cases.diagnoses.tumor_depth: Numeric value that represents the depth of  tumor
+    cases.diagnoses.tumor_depth: Numeric value that represents the depth of tumor
       invasion, measured in millimeters (mm).
     cases.diagnoses.tumor_focality: The text term used to describe whether the patient's
       disease originated in a single location or multiple locations.
     cases.diagnoses.tumor_grade: Numeric value to express the degree of abnormality
       of cancer cells, a measure of differentiation and aggressiveness.
-    cases.diagnoses.tumor_largest_dimension_diameter: Numeric value used to describe
-      the maximum diameter or dimension of the primary tumor, measured in centimeters.
+    cases.diagnoses.tumor_grade_category: Describes the number of levels or 'tiers'
+      in the system used to determine the degree of tumor differentiation.
     cases.diagnoses.tumor_regression_grade: A numeric value used to measure therapeutic
       response of the primary tumor and predict patient outcomes based on a three-point
       tumor regression grading system.
-    cases.diagnoses.tumor_stage: The extent of a cancer in the body. Staging is usually
-      based on the size of the tumor, whether lymph nodes contain cancer, and whether
-      the cancer has spread from the original site to other parts of the body. The
-      accepted values for tumor_stage depend on the tumor site, type, and accepted
-      staging system. These items should accompany the tumor_stage value as associated
-      metadata.
+    cases.diagnoses.uicc_clinical_m: The UICC TNM Classification is an anatomically
+      based system that records the primary and regional nodal extent of the tumor
+      and the absence or presence of metastases. The clinical M category describes
+      the presence or otherwise of distant metastatic spread as determined during
+      a clinical exam.
+    cases.diagnoses.uicc_clinical_n: The UICC TNM Classification is an anatomically
+      based system that records the primary and regional nodal extent of the tumor
+      and the absence or presence of metastases. The clinical N category describes
+      the regional lymph node involvement as determined during a clinical exam.
+    cases.diagnoses.uicc_clinical_stage: The UICC TNM Classification is an anatomically
+      based system that records the primary and regional nodal extent of the tumor
+      and the absence or presence of metastases. The clinical stage is based on the
+      T, N, and M categories which are determined during a clinical exam.
+    cases.diagnoses.uicc_clinical_t: The UICC TNM Classification is an anatomically
+      based system that records the primary and regional nodal extent of the tumor
+      and the absence or presence of metastases. The clinical T category describes
+      the primary tumor site and size as determined during a clinical exam.
+    cases.diagnoses.uicc_pathologic_m: The UICC TNM Classification is an anatomically
+      based system that records the primary and regional nodal extent of the tumor
+      and the absence or presence of metastases. The pathological M category describes
+      the presence or otherwise of distant metastatic spread as determined during
+      a pathology review.
+    cases.diagnoses.uicc_pathologic_n: The UICC TNM Classification is an anatomically
+      based system that records the primary and regional nodal extent of the tumor
+      and the absence or presence of metastases. The pathological N category describes
+      the regional lymph node involvement as determined during a pathology review.
+    cases.diagnoses.uicc_pathologic_stage: The UICC TNM Classification is an anatomically
+      based system that records the primary and regional nodal extent of the tumor
+      and the absence or presence of metastases. The pathological stage is based on
+      the T, N, and M categories which are determined during a pathological review.
+    cases.diagnoses.uicc_pathologic_t: The UICC TNM Classification is an anatomically
+      based system that records the primary and regional nodal extent of the tumor
+      and the absence or presence of metastases. The pathological T category describes
+      the primary tumor site and size as determined during a pathology review.
+    cases.diagnoses.uicc_staging_system_edition: The UICC TNM Classification is an
+      anatomically based system that records the primary and regional nodal extent
+      of the tumor and the absence or presence of metastases. The staging edition
+      describes the specific UICC edition used when a patient's stage was determined.
     cases.diagnoses.updated_datetime: A combination of date and time of day in the
       form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
-    cases.diagnoses.vascular_invasion_present: The yes/no indicator to ask if large
-      vessel or venous invasion was detected by surgery or presence in a tumor specimen.
-    cases.diagnoses.vascular_invasion_type: Text term that represents the type of
-      vascular tumor invasion.
+    cases.diagnoses.weiss_assessment_findings: Histopathologic criteria to evaluate
+      adrenocortical tumors.
     cases.diagnoses.weiss_assessment_score: 'The text term used to describe the overall
       Weiss assessment score, a commonly used assessment describing the malignancy
       of adrenocortical tumors. The Weiss score is determined based on nine histological
@@ -1010,12 +1211,15 @@ _meta:
       histologic groups.
     cases.diagnoses.year_of_diagnosis: Numeric value to represent the year of an individual's
       initial pathologic diagnosis of cancer.
+    cases.exposures.age_at_last_exposure: The study participant's age at the time
+      they were last exposed.
     cases.exposures.age_at_onset: Numeric value used to represent the age of the patient
       when exposure to a specific environmental factor began.
     cases.exposures.alcohol_days_per_week: Numeric value used to describe the average
       number of days each week that a person consumes an alcoholic beverage.
     cases.exposures.alcohol_drinks_per_day: Numeric value used to describe the average
-      number of alcoholic beverages  a person consumes per day.
+      number of alcoholic beverages a person consumes per day.
+    cases.exposures.alcohol_frequency: Describes how often the subject drinks alcohol.
     cases.exposures.alcohol_history: A response to a question that asks whether the
       participant has consumed at least 12 drinks of any kind of alcoholic beverage
       in their lifetime.
@@ -1024,10 +1228,12 @@ _meta:
     cases.exposures.alcohol_type: A specific type of alcohol.
     cases.exposures.asbestos_exposure: The yes/no/unknown indicator used to describe
       whether the patient was exposed to asbestos.
+    cases.exposures.asbestos_exposure_type: The type of asbestos exposure the study
+      participant experienced.
     cases.exposures.batch_id: GDC submission batch indicator. It is unique within
       the context of a project.
-    cases.exposures.bmi: A calculated numerical quantity that represents an individual's
-      weight to height ratio.
+    cases.exposures.chemical_exposure_type: The specific type of contact with a chemical
+      substance through touch, inhalation, or ingestion.
     cases.exposures.cigarettes_per_day: The average number of cigarettes smoked per
       day.
     cases.exposures.coal_dust_exposure: The yes/no/unknown indicator used to describe
@@ -1042,11 +1248,15 @@ _meta:
       the patient was exposed to an environmental factor.
     cases.exposures.exposure_duration_years: The period of time from start to finish
       of exposure, in years.
+    cases.exposures.exposure_source: The source or location where the patient was
+      exposed.
     cases.exposures.exposure_type: The text term used to describe the type of environmental
       exposure.
-    cases.exposures.height: The height of the patient in centimeters.
-    cases.exposures.marijuana_use_per_week: Numeric value that represents the number
-      of times the patient uses marijuana each day.
+    cases.exposures.occupation_duration_years: The number of years a patient worked
+      in a specific occupation.
+    cases.exposures.occupation_type: A categorization of the principal activity that
+      a person does to earn money, as defined by the International Classification
+      of Occupation (ISCO).
     cases.exposures.pack_years_smoked: Numeric computed value to represent lifetime
       tobacco exposure defined as number of cigarettes smoked per day x number of
       years smoked divided by 20.
@@ -1057,14 +1267,13 @@ _meta:
     cases.exposures.radon_exposure: The yes/no/unknown indicator used to describe
       whether the patient was exposed to radon.
     cases.exposures.respirable_crystalline_silica_exposure: The yes/no/unknown indicator
-      used to describe whether a patient was exposured to respirable crystalline silica,
+      used to describe whether a patient was exposed to respirable crystalline silica,
       a widespread, naturally occurring, crystalline metal oxide that consists of
       different forms including quartz, cristobalite, tridymite, tripoli, ganister,
-      chert and novaculite.
+      chert, and novaculite.
     cases.exposures.secondhand_smoke_as_child: The text term used to indicate whether
       the patient was exposed to secondhand smoke as a child.
-    cases.exposures.smokeless_tobacco_quit_age: The age the subject quit smoking tobacco.
-    cases.exposures.smoking_frequency: The text term used to generally decribe how
+    cases.exposures.smoking_frequency: The text term used to generally describe how
       often the patient smokes.
     cases.exposures.state: The current state of the object.
     cases.exposures.submitter_id: A project-specific identifier for a node. This property
@@ -1079,15 +1288,14 @@ _meta:
       smoking.
     cases.exposures.tobacco_smoking_status: Category describing current smoking status
       and smoking history as self-reported by a patient.
-    cases.exposures.tobacco_use_per_day: Numeric value that represents the number
-      of times the patient uses tobacco each day.
     cases.exposures.type_of_smoke_exposure: The text term used to describe the patient's
       specific type of smoke exposure.
     cases.exposures.type_of_tobacco_used: The text term used to describe the specific
       type of tobacco used by the patient.
     cases.exposures.updated_datetime: A combination of date and time of day in the
       form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
-    cases.exposures.weight: The weight of the patient measured in kilograms.
+    cases.exposures.use_per_day: The average number of times the patient used per
+      day.
     cases.exposures.years_smoked: Numeric value (or unknown) to represent the number
       of years a person has been smoking.
     cases.family_histories.batch_id: GDC submission batch indicator. It is unique
@@ -1141,7 +1349,7 @@ _meta:
       histone variants, which are proteins that substitute for the core canonical
       histones.
     cases.follow_ups.aids_risk_factors: The text term used to describe a risk factor
-      of  the acquired immunodeficiency syndrome (AIDS) that the patient either had
+      of the acquired immunodeficiency syndrome (AIDS) that the patient either had
       at time time of the study or experienced in the past.
     cases.follow_ups.barretts_esophagus_goblet_cells_present: The yes/no/unknown indicator
       used to describe whether goblet cells were determined to be present in a patient
@@ -1158,6 +1366,8 @@ _meta:
       procedure to determine the amount of the CD4 expressing cells in a sample.
     cases.follow_ups.cdc_hiv_risk_factors: The text term used to describe a risk factor
       for human immunodeficiency virus, as described by the Center for Disease Control.
+    cases.follow_ups.comorbidities: The text term used to describe a comorbidity disease,
+      which coexists with the patient's malignant disease.
     cases.follow_ups.comorbidity: The text term used to describe a comorbidity disease,
       which coexists with the patient's malignant disease.
     cases.follow_ups.comorbidity_method_of_diagnosis: The text term used to describe
@@ -1168,6 +1378,8 @@ _meta:
       index and the date of the patient's adverse event.
     cases.follow_ups.days_to_comorbidity: Number of days between the date used for
       index and the date the patient was diagnosed with a comorbidity.
+    cases.follow_ups.days_to_first_event: The number of days from the index date to
+      the date of the first event.
     cases.follow_ups.days_to_follow_up: Number of days between the date used for index
       and the date of the patient's last follow-up appointment or contact.
     cases.follow_ups.days_to_imaging: Number of days between the date used for index
@@ -1178,6 +1390,8 @@ _meta:
       for index and the date the patient's disease was formally confirmed as progression-free.
     cases.follow_ups.days_to_recurrence: Number of days between the date used for
       index and the date the patient's disease recurred.
+    cases.follow_ups.days_to_risk_factor: The number of days from the index date to
+      the date the patient was diagnosed with a specific risk factor.
     cases.follow_ups.diabetes_treatment_type: Text term used to describe the types
       of treatment used to manage diabetes.
     cases.follow_ups.disease_response: Code assigned to describe the patient's response
@@ -1187,6 +1401,8 @@ _meta:
       lungs.
     cases.follow_ups.ecog_performance_status: The ECOG functional performance status
       of the patient/participant.
+    cases.follow_ups.evidence_of_progression_type: The text term used to describe
+      the type of evidence used to determine whether the patient's disease progressed.
     cases.follow_ups.evidence_of_recurrence_type: The text term used to describe the
       type of evidence used to determine whether the patient's disease recurred.
     cases.follow_ups.eye_color: The color of the iris of the eye
@@ -1202,8 +1418,10 @@ _meta:
     cases.follow_ups.fev1_ref_pre_bronch_percent: The percentage comparison to a normal
       value reference range of the volume of air that a patient can forcibly exhale
       from the lungs in one second pre-bronchodilator.
+    cases.follow_ups.first_event: Describes the patient's first event after initial
+      treatment.
     cases.follow_ups.haart_treatment_indicator: The text term used to indicate whether
-      the patient received Highly Active Antiretroviral Therapy (HARRT).
+      the patient received Highly Active Antiretroviral Therapy (HAART).
     cases.follow_ups.height: The height of the patient in centimeters.
     cases.follow_ups.hepatitis_sustained_virological_response: The yes/no/unknown
       indicator used to describe whether the patient received treatment for a risk
@@ -1228,8 +1446,21 @@ _meta:
       margins of the hysterectomy.
     cases.follow_ups.hysterectomy_type: The text term used to describe the type of
       hysterectomy the patient had.
+    cases.follow_ups.imaging_anatomic_site: The named location(s) within the body
+      where an image was taken.
+    cases.follow_ups.imaging_findings: Recorded findings noted during the review of
+      a specific medical image.
     cases.follow_ups.imaging_result: The text term used to describe the result of
       the imaging or scan performed on the patient.
+    cases.follow_ups.imaging_suv: The standardized update value (SUV) is the effectively
+      dimensionless measure of regional tracer uptake calculated as the activity concentration
+      within a 2D region of interest (ROI) or 3D volume of interest (VOI) measured
+      on a PET image (nCi1mL) / [injected dose (nCi) / body weight (g)].
+    cases.follow_ups.imaging_suv_max: The standardized update value (SUV) is the effectively
+      dimensionless measure of regional tracer uptake calculated as the activity concentration
+      within a 2D region of interest (ROI) or 3D volume of interest (VOI) measured
+      on a PET image (nCi1mL) / [injected dose (nCi) / body weight (g)]. Specifically,
+      the maximum SUV recorded for a patient.
     cases.follow_ups.imaging_type: The text term used to describe the type of imaging
       or scan performed on the patient.
     cases.follow_ups.immunosuppressive_treatment_type: The text term used to describe
@@ -1240,6 +1471,9 @@ _meta:
       status.
     cases.follow_ups.molecular_tests.aa_change: 'Alphanumeric value used to describe
       the amino acid change for a specific genetic variant. Example: R116Q.'
+    cases.follow_ups.molecular_tests.aneuploidy: A chromosomal abnormality in which
+      there is an addition or loss of chromosomes within a set (e.g., 23 + 22 or 23
+      + 24).
     cases.follow_ups.molecular_tests.antigen: The text term used to describe an antigen
       included in molecular testing.
     cases.follow_ups.molecular_tests.batch_id: GDC submission batch indicator. It
@@ -1256,10 +1490,16 @@ _meta:
       individual at the institution where the test was completed.
     cases.follow_ups.molecular_tests.cell_count: Numeric value used to describe the
       number of cells used for molecular testing.
+    cases.follow_ups.molecular_tests.chromosomal_translocation: A genetic exchange
+      where a piece of one chromosome is transferred to another chromosome.
     cases.follow_ups.molecular_tests.chromosome: The text term used to describe a
       chromosome targeted or included in molecular testing. If a specific genetic
       variant is being reported, this property can be used to capture the chromosome
       where that variant is located.
+    cases.follow_ups.molecular_tests.chromosome_arm: Under the microscope chromosomes
+      appear as thin, thread-like structures. They all have a short arm and long arm
+      separated by a primary constriction called the centromere. The short arm is
+      designated as p and the long arm as q.
     cases.follow_ups.molecular_tests.clonality: The text term used to describe whether
       a genomic variant is related by descent from a single progenitor cell.
     cases.follow_ups.molecular_tests.copy_number: Numeric value used to describe the
@@ -1286,6 +1526,7 @@ _meta:
     cases.follow_ups.molecular_tests.histone_variant: The text term used to describe
       a specific histone variants, which are proteins that substitute for the core
       canonical histones.
+    cases.follow_ups.molecular_tests.hpv_strain: The specific hpv strain being tested.
     cases.follow_ups.molecular_tests.intron: Intron number targeted or included in
       molecular analysis. If a specific genetic variant is being reported, this property
       can be used to capture the intron where that variant is located.
@@ -1296,8 +1537,10 @@ _meta:
       the number of loci determined to be abnormal.
     cases.follow_ups.molecular_tests.loci_count: Numeric value used to describe the
       number of loci tested.
-    cases.follow_ups.molecular_tests.locus: 'Alphanumeric value used to describe the
-      locus of a specific genetic variant. Example: NM_001126114.'
+    cases.follow_ups.molecular_tests.locus: The position of a gene or a chromosomal
+      marker on a chromosome; also, a stretch of DNA at a particular place on a particular
+      chromosome. The use of locus is sometimes restricted to mean regions of DNA
+      that are expressed.
     cases.follow_ups.molecular_tests.mismatch_repair_mutation: The yes/no/unknown
       indicator used to describe whether the mutation included in molecular testing
       was known to have an affect on the mismatch repair process.
@@ -1311,6 +1554,8 @@ _meta:
       to describe the method used for molecular analysis.
     cases.follow_ups.molecular_tests.molecular_consequence: The text term used to
       describe the molecular consequence of genetic variation.
+    cases.follow_ups.molecular_tests.mutation_codon: The codon where a change in the
+      nucleotide sequence is occurring and causing an error.
     cases.follow_ups.molecular_tests.pathogenicity: The text used to describe a variant's
       level of involvement in the cause of the patient's disease according to the
       standards outlined by the American College of Medical Genetics and Genomics
@@ -1342,7 +1587,11 @@ _meta:
       units of the test value for a molecular test. This property is used in conjunction
       with test_value.
     cases.follow_ups.molecular_tests.test_value: The text term or numeric value used
-      to describe a sepcific result of a molecular test.
+      to describe a specific result of a molecular test.
+    cases.follow_ups.molecular_tests.test_value_range: The range of values within
+      which the subject's results fall.
+    cases.follow_ups.molecular_tests.timepoint_category: Category describing a specific
+      point in the time continuum, including those established relative to an event.
     cases.follow_ups.molecular_tests.transcript: Alphanumeric value used to describe
       the transcript of a specific genetic variant.
     cases.follow_ups.molecular_tests.updated_datetime: A combination of date and time
@@ -1357,12 +1606,17 @@ _meta:
       to which the CD4 count has dropped (nadir).
     cases.follow_ups.pancreatitis_onset_year: Numeric value to represent the year
       that the patient was diagnosed with clinical chronic pancreatitis.
+    cases.follow_ups.peritoneal_washing_results: The results from this minimally invasive
+      procedure that permits sampling of peritoneal fluid for cytopathologic analysis.
+    cases.follow_ups.pregnancy_count: The number of times an individual has become
+      pregnant.
     cases.follow_ups.pregnancy_outcome: The text term used to describe the type of
       pregnancy the patient had.
     cases.follow_ups.procedures_performed: The type of procedures performed on the
       patient.
-    cases.follow_ups.progression_or_recurrence: Yes/No/Unknown indicator to identify
-      whether a patient has had a new tumor event after initial treatment.
+    cases.follow_ups.progression_or_recurrence: Indicates whether a patient has a
+      progression or recurrence after initial treatment. This can include local, regional,
+      or metastatic disease.
     cases.follow_ups.progression_or_recurrence_anatomic_site: The text term used to
       describe the anatomic site of the progressive or recurrent disease.
     cases.follow_ups.progression_or_recurrence_type: The text term used to describe
@@ -1379,20 +1633,27 @@ _meta:
       treatment used to manage gastroesophageal reflux disease (GERD).
     cases.follow_ups.risk_factor: The text term used to describe a risk factor the
       patient had at the time of or prior to their diagnosis.
+    cases.follow_ups.risk_factor_method_of_diagnosis: The clinical or laboratory procedure(s)
+      used in the determination of a diagnosis described in this context as a risk
+      factor.
     cases.follow_ups.risk_factor_treatment: The yes/no/unknown indicator used to describe
       whether the patient received treatment for a risk factor the patient had at
       the time of or prior to their diagnosis.
+    cases.follow_ups.risk_factors: The text term used to describe a risk factor the
+      patient had at the time of or prior to their diagnosis.
     cases.follow_ups.scan_tracer_used: The text term used to describe the type of
       tracer used during the imaging or scan of the patient.
     cases.follow_ups.state: The current state of the object.
     cases.follow_ups.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
       be used in place of the uuid for identifying or recalling a node.
+    cases.follow_ups.timepoint_category: Category describing a specific point in the
+      time continuum, including those established relative to an event.
     cases.follow_ups.undescended_testis_corrected: Indicates whether the patient's
       undescended testis was corrected.
     cases.follow_ups.undescended_testis_corrected_age: The patient's age when their
       undescended testis was corrected.
-    cases.follow_ups.undescended_testis_corrected_laterality: Descrives the lateral
+    cases.follow_ups.undescended_testis_corrected_laterality: Describes the lateral
       location of the patient's undescended testis correction.
     cases.follow_ups.undescended_testis_corrected_method: Describes the method used
       to correct the patient's undescended testis.
@@ -1405,6 +1666,8 @@ _meta:
     cases.follow_ups.viral_hepatitis_serologies: Text term that describes the kind
       of serological laboratory test used to determine the patient's hepatitus status.
     cases.follow_ups.weight: The weight of the patient measured in kilograms.
+    cases.follow_ups.year_of_follow_up: The year of the patient's last follow-up appointment
+      or contact.
     cases.project.awg_review: Indicates that the project is an AWG project.
     cases.project.code: Project code
     cases.project.dbgap_accession_number: The dbgap accession number for the project.
@@ -1609,7 +1872,7 @@ _meta:
     cases.samples.created_datetime: A combination of date and time of day in the form
       [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.samples.current_weight: Numeric value that represents the current weight
-      of the sample, measured  in milligrams.
+      of the sample, measured in milligrams.
     cases.samples.days_to_collection: The number of days from the index date to the
       date a sample was collected for a specific study or project.
     cases.samples.days_to_sample_procurement: The number of days from the index date
@@ -2050,6 +2313,10 @@ _meta:
       slide.
     cases.samples.slides.updated_datetime: A combination of date and time of day in
       the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    cases.samples.specimen_type: The type of a material sample taken from a biological
+      entity for testing, diagnostic, propagation, treatment or research purposes.
+      This includes particular types of cellular molecules, cells, tissues, organs,
+      body fluids, embryos, and body excretory substances.
     cases.samples.state: The current state of the object.
     cases.samples.submitter_id: A project-specific identifier for a node. This property
       is the calling card/nickname/alias for a unit of submission. It can be used

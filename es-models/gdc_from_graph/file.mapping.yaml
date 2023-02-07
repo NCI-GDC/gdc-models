@@ -95,11 +95,7 @@ properties:
             type: keyword
           proportion_base_mismatch:
             type: double
-          proportion_coverage_10X:
-            type: double
           proportion_coverage_10x:
-            type: double
-          proportion_coverage_30X:
             type: double
           proportion_coverage_30x:
             type: double
@@ -139,8 +135,6 @@ properties:
         properties:
           read_groups:
             properties:
-              RIN:
-                type: double
               adapter_name:
                 normalizer: clinical_normalizer
                 type: keyword
@@ -655,12 +649,6 @@ properties:
           ajcc_staging_system_edition:
             normalizer: clinical_normalizer
             type: keyword
-          anaplasia_present:
-            normalizer: clinical_normalizer
-            type: keyword
-          anaplasia_present_type:
-            normalizer: clinical_normalizer
-            type: keyword
           ann_arbor_b_symptoms:
             normalizer: clinical_normalizer
             type: keyword
@@ -730,16 +718,15 @@ properties:
           best_overall_response:
             normalizer: clinical_normalizer
             type: keyword
-          breslow_thickness:
-            type: double
           burkitt_lymphoma_clinical_variant:
+            normalizer: clinical_normalizer
+            type: keyword
+          cancer_detection_method:
             normalizer: clinical_normalizer
             type: keyword
           child_pugh_classification:
             normalizer: clinical_normalizer
             type: keyword
-          circumferential_resection_margin:
-            type: double
           classification_of_tumor:
             normalizer: clinical_normalizer
             type: keyword
@@ -771,6 +758,15 @@ properties:
           diagnosis_id:
             normalizer: clinical_normalizer
             type: keyword
+          diagnosis_is_primary_disease:
+            normalizer: clinical_normalizer
+            type: keyword
+          double_expressor_lymphoma:
+            normalizer: clinical_normalizer
+            type: keyword
+          double_hit_lymphoma:
+            normalizer: clinical_normalizer
+            type: keyword
           eln_risk_classification:
             normalizer: clinical_normalizer
             type: keyword
@@ -790,6 +786,9 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           esophageal_columnar_metaplasia_present:
+            normalizer: clinical_normalizer
+            type: keyword
+          fab_morphology_code:
             normalizer: clinical_normalizer
             type: keyword
           figo_stage:
@@ -812,13 +811,11 @@ properties:
             type: keyword
           gleason_patterns_percent:
             type: long
+          gleason_score:
+            type: long
           goblet_cells_columnar_mucosa_present:
             normalizer: clinical_normalizer
             type: keyword
-          greatest_tumor_dimension:
-            type: long
-          gross_tumor_weight:
-            type: double
           icd_10_code:
             normalizer: clinical_normalizer
             type: keyword
@@ -852,23 +849,10 @@ properties:
           iss_stage:
             normalizer: clinical_normalizer
             type: keyword
-          largest_extrapelvic_peritoneal_focus:
-            normalizer: clinical_normalizer
-            type: keyword
           last_known_disease_status:
             normalizer: clinical_normalizer
             type: keyword
           laterality:
-            normalizer: clinical_normalizer
-            type: keyword
-          lymph_node_involved_site:
-            normalizer: clinical_normalizer
-            type: keyword
-          lymph_nodes_positive:
-            type: long
-          lymph_nodes_tested:
-            type: long
-          lymphatic_invasion_present:
             normalizer: clinical_normalizer
             type: keyword
           margin_distance:
@@ -877,6 +861,9 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           masaoka_stage:
+            normalizer: clinical_normalizer
+            type: keyword
+          max_tumor_bulk_site:
             normalizer: clinical_normalizer
             type: keyword
           medulloblastoma_molecular_classification:
@@ -900,12 +887,6 @@ properties:
           mitotic_count:
             type: long
           morphology:
-            normalizer: clinical_normalizer
-            type: keyword
-          non_nodal_regional_disease:
-            normalizer: clinical_normalizer
-            type: keyword
-          non_nodal_tumor_deposits:
             normalizer: clinical_normalizer
             type: keyword
           ovarian_specimen_status:
@@ -950,11 +931,26 @@ properties:
               dysplasia_type:
                 normalizer: clinical_normalizer
                 type: keyword
+              extracapsular_extension:
+                normalizer: clinical_normalizer
+                type: keyword
+              extranodal_extension:
+                normalizer: clinical_normalizer
+                type: keyword
+              extrascleral_extension:
+                normalizer: clinical_normalizer
+                type: keyword
               greatest_tumor_dimension:
                 type: double
               gross_tumor_weight:
                 type: double
               largest_extrapelvic_peritoneal_focus:
+                normalizer: clinical_normalizer
+                type: keyword
+              lymph_node_dissection_method:
+                normalizer: clinical_normalizer
+                type: keyword
+              lymph_node_dissection_site:
                 normalizer: clinical_normalizer
                 type: keyword
               lymph_node_involved_site:
@@ -965,6 +961,9 @@ properties:
                 type: keyword
               lymph_nodes_positive:
                 type: long
+              lymph_nodes_removed:
+                normalizer: clinical_normalizer
+                type: keyword
               lymph_nodes_tested:
                 type: long
               lymphatic_invasion_present:
@@ -997,6 +996,8 @@ properties:
                 type: keyword
               percent_tumor_invasion:
                 type: double
+              percent_tumor_nuclei:
+                type: double
               perineural_invasion_present:
                 normalizer: clinical_normalizer
                 type: keyword
@@ -1012,6 +1013,9 @@ properties:
               prostatic_involvement_percent:
                 type: double
               residual_tumor:
+                normalizer: clinical_normalizer
+                type: keyword
+              residual_tumor_measurement:
                 normalizer: clinical_normalizer
                 type: keyword
               rhabdoid_percent:
@@ -1036,6 +1040,9 @@ properties:
                 type: keyword
               tumor_largest_dimension_diameter:
                 type: double
+              tumor_level_prostate:
+                normalizer: clinical_normalizer
+                type: keyword
               tumor_thickness:
                 type: double
               updated_datetime:
@@ -1047,17 +1054,13 @@ properties:
               vascular_invasion_type:
                 normalizer: clinical_normalizer
                 type: keyword
+              zone_of_origin_prostate:
+                normalizer: clinical_normalizer
+                type: keyword
             type: nested
-          percent_tumor_invasion:
-            type: double
-          perineural_invasion_present:
+          pediatric_kidney_staging:
             normalizer: clinical_normalizer
             type: keyword
-          peripancreatic_lymph_nodes_positive:
-            normalizer: clinical_normalizer
-            type: keyword
-          peripancreatic_lymph_nodes_tested:
-            type: double
           peritoneal_fluid_cytological_status:
             normalizer: clinical_normalizer
             type: keyword
@@ -1097,6 +1100,8 @@ properties:
           sites_of_involvement:
             normalizer: clinical_normalizer
             type: keyword
+          sites_of_involvement_count:
+            type: long
           state:
             normalizer: clinical_normalizer
             type: keyword
@@ -1111,14 +1116,16 @@ properties:
           tissue_or_organ_of_origin:
             normalizer: clinical_normalizer
             type: keyword
-          transglottic_extension:
-            normalizer: clinical_normalizer
-            type: keyword
           treatments:
             properties:
               chemo_concurrent_to_radiation:
                 normalizer: clinical_normalizer
                 type: keyword
+              clinical_trial_indicator:
+                normalizer: clinical_normalizer
+                type: keyword
+              course_number:
+                type: double
               created_datetime:
                 normalizer: clinical_normalizer
                 type: keyword
@@ -1126,15 +1133,33 @@ properties:
                 type: long
               days_to_treatment_start:
                 type: long
+              drug_category:
+                normalizer: clinical_normalizer
+                type: keyword
+              embolic_agent:
+                normalizer: clinical_normalizer
+                type: keyword
               initial_disease_status:
                 normalizer: clinical_normalizer
                 type: keyword
+              lesions_treated_number:
+                type: double
               number_of_cycles:
                 type: long
+              number_of_fractions:
+                type: double
+              prescribed_dose:
+                type: double
+              protocol_identifier:
+                normalizer: clinical_normalizer
+                type: keyword
               reason_treatment_ended:
                 normalizer: clinical_normalizer
                 type: keyword
               regimen_or_line_of_therapy:
+                normalizer: clinical_normalizer
+                type: keyword
+              residual_disease:
                 normalizer: clinical_normalizer
                 type: keyword
               route_of_administration:
@@ -1148,6 +1173,15 @@ properties:
               therapeutic_agents:
                 normalizer: clinical_normalizer
                 type: keyword
+              therapeutic_level_achieved:
+                normalizer: clinical_normalizer
+                type: keyword
+              therapeutic_target_level:
+                normalizer: clinical_normalizer
+                type: keyword
+              timepoint_category:
+                normalizer: clinical_normalizer
+                type: keyword
               treatment_anatomic_site:
                 normalizer: clinical_normalizer
                 type: keyword
@@ -1156,9 +1190,13 @@ properties:
                 type: keyword
               treatment_dose:
                 type: long
+              treatment_dose_max:
+                type: double
               treatment_dose_units:
                 normalizer: clinical_normalizer
                 type: keyword
+              treatment_duration:
+                type: long
               treatment_effect:
                 normalizer: clinical_normalizer
                 type: keyword
@@ -1180,6 +1218,8 @@ properties:
               treatment_outcome:
                 normalizer: clinical_normalizer
                 type: keyword
+              treatment_outcome_duration:
+                type: long
               treatment_type:
                 normalizer: clinical_normalizer
                 type: keyword
@@ -1198,21 +1238,43 @@ properties:
           tumor_grade:
             normalizer: clinical_normalizer
             type: keyword
-          tumor_largest_dimension_diameter:
-            type: double
+          tumor_grade_category:
+            normalizer: clinical_normalizer
+            type: keyword
           tumor_regression_grade:
             normalizer: clinical_normalizer
             type: keyword
-          tumor_stage:
+          uicc_clinical_m:
+            normalizer: clinical_normalizer
+            type: keyword
+          uicc_clinical_n:
+            normalizer: clinical_normalizer
+            type: keyword
+          uicc_clinical_stage:
+            normalizer: clinical_normalizer
+            type: keyword
+          uicc_clinical_t:
+            normalizer: clinical_normalizer
+            type: keyword
+          uicc_pathologic_m:
+            normalizer: clinical_normalizer
+            type: keyword
+          uicc_pathologic_n:
+            normalizer: clinical_normalizer
+            type: keyword
+          uicc_pathologic_stage:
+            normalizer: clinical_normalizer
+            type: keyword
+          uicc_pathologic_t:
+            normalizer: clinical_normalizer
+            type: keyword
+          uicc_staging_system_edition:
             normalizer: clinical_normalizer
             type: keyword
           updated_datetime:
             normalizer: clinical_normalizer
             type: keyword
-          vascular_invasion_present:
-            normalizer: clinical_normalizer
-            type: keyword
-          vascular_invasion_type:
+          weiss_assessment_findings:
             normalizer: clinical_normalizer
             type: keyword
           weiss_assessment_score:
@@ -1238,12 +1300,17 @@ properties:
         type: keyword
       exposures:
         properties:
+          age_at_last_exposure:
+            type: long
           age_at_onset:
             type: long
           alcohol_days_per_week:
             type: double
           alcohol_drinks_per_day:
             type: double
+          alcohol_frequency:
+            normalizer: clinical_normalizer
+            type: keyword
           alcohol_history:
             normalizer: clinical_normalizer
             type: keyword
@@ -1256,8 +1323,12 @@ properties:
           asbestos_exposure:
             normalizer: clinical_normalizer
             type: keyword
-          bmi:
-            type: double
+          asbestos_exposure_type:
+            normalizer: clinical_normalizer
+            type: keyword
+          chemical_exposure_type:
+            normalizer: clinical_normalizer
+            type: keyword
           cigarettes_per_day:
             type: double
           coal_dust_exposure:
@@ -1277,13 +1348,17 @@ properties:
           exposure_id:
             normalizer: clinical_normalizer
             type: keyword
+          exposure_source:
+            normalizer: clinical_normalizer
+            type: keyword
           exposure_type:
             normalizer: clinical_normalizer
             type: keyword
-          height:
-            type: double
-          marijuana_use_per_week:
-            type: double
+          occupation_duration_years:
+            type: long
+          occupation_type:
+            normalizer: clinical_normalizer
+            type: keyword
           pack_years_smoked:
             type: double
           parent_with_radiation_exposure:
@@ -1298,8 +1373,6 @@ properties:
           secondhand_smoke_as_child:
             normalizer: clinical_normalizer
             type: keyword
-          smokeless_tobacco_quit_age:
-            type: long
           smoking_frequency:
             normalizer: clinical_normalizer
             type: keyword
@@ -1318,8 +1391,6 @@ properties:
           tobacco_smoking_status:
             normalizer: clinical_normalizer
             type: keyword
-          tobacco_use_per_day:
-            type: double
           type_of_smoke_exposure:
             normalizer: clinical_normalizer
             type: keyword
@@ -1329,7 +1400,7 @@ properties:
           updated_datetime:
             normalizer: clinical_normalizer
             type: keyword
-          weight:
+          use_per_day:
             type: double
           years_smoked:
             type: double
@@ -1393,6 +1464,9 @@ properties:
           cdc_hiv_risk_factors:
             normalizer: clinical_normalizer
             type: keyword
+          comorbidities:
+            normalizer: clinical_normalizer
+            type: keyword
           comorbidity:
             normalizer: clinical_normalizer
             type: keyword
@@ -1406,6 +1480,8 @@ properties:
             type: long
           days_to_comorbidity:
             type: long
+          days_to_first_event:
+            type: long
           days_to_follow_up:
             type: long
           days_to_imaging:
@@ -1416,6 +1492,8 @@ properties:
             type: long
           days_to_recurrence:
             type: long
+          days_to_risk_factor:
+            type: long
           diabetes_treatment_type:
             normalizer: clinical_normalizer
             type: keyword
@@ -1425,6 +1503,9 @@ properties:
           dlco_ref_predictive_percent:
             type: double
           ecog_performance_status:
+            normalizer: clinical_normalizer
+            type: keyword
+          evidence_of_progression_type:
             normalizer: clinical_normalizer
             type: keyword
           evidence_of_recurrence_type:
@@ -1441,6 +1522,9 @@ properties:
             type: double
           fev1_ref_pre_bronch_percent:
             type: double
+          first_event:
+            normalizer: clinical_normalizer
+            type: keyword
           follow_up_id:
             normalizer: clinical_normalizer
             type: keyword
@@ -1478,9 +1562,19 @@ properties:
           hysterectomy_type:
             normalizer: clinical_normalizer
             type: keyword
+          imaging_anatomic_site:
+            normalizer: clinical_normalizer
+            type: keyword
+          imaging_findings:
+            normalizer: clinical_normalizer
+            type: keyword
           imaging_result:
             normalizer: clinical_normalizer
             type: keyword
+          imaging_suv:
+            type: double
+          imaging_suv_max:
+            type: double
           imaging_type:
             normalizer: clinical_normalizer
             type: keyword
@@ -1498,6 +1592,9 @@ properties:
               aa_change:
                 normalizer: clinical_normalizer
                 type: keyword
+              aneuploidy:
+                normalizer: clinical_normalizer
+                type: keyword
               antigen:
                 normalizer: clinical_normalizer
                 type: keyword
@@ -1512,7 +1609,13 @@ properties:
                 type: double
               cell_count:
                 type: long
+              chromosomal_translocation:
+                normalizer: clinical_normalizer
+                type: keyword
               chromosome:
+                normalizer: clinical_normalizer
+                type: keyword
+              chromosome_arm:
                 normalizer: clinical_normalizer
                 type: keyword
               clonality:
@@ -1538,6 +1641,9 @@ properties:
                 normalizer: clinical_normalizer
                 type: keyword
               histone_variant:
+                normalizer: clinical_normalizer
+                type: keyword
+              hpv_strain:
                 normalizer: clinical_normalizer
                 type: keyword
               intron:
@@ -1567,6 +1673,9 @@ properties:
                 normalizer: clinical_normalizer
                 type: keyword
               molecular_test_id:
+                normalizer: clinical_normalizer
+                type: keyword
+              mutation_codon:
                 normalizer: clinical_normalizer
                 type: keyword
               pathogenicity:
@@ -1600,6 +1709,12 @@ properties:
                 type: keyword
               test_value:
                 type: double
+              test_value_range:
+                normalizer: clinical_normalizer
+                type: keyword
+              timepoint_category:
+                normalizer: clinical_normalizer
+                type: keyword
               transcript:
                 normalizer: clinical_normalizer
                 type: keyword
@@ -1619,6 +1734,11 @@ properties:
           nadir_cd4_count:
             type: double
           pancreatitis_onset_year:
+            type: long
+          peritoneal_washing_results:
+            normalizer: clinical_normalizer
+            type: keyword
+          pregnancy_count:
             type: long
           pregnancy_outcome:
             normalizer: clinical_normalizer
@@ -1645,7 +1765,13 @@ properties:
           risk_factor:
             normalizer: clinical_normalizer
             type: keyword
+          risk_factor_method_of_diagnosis:
+            normalizer: clinical_normalizer
+            type: keyword
           risk_factor_treatment:
+            normalizer: clinical_normalizer
+            type: keyword
+          risk_factors:
             normalizer: clinical_normalizer
             type: keyword
           scan_tracer_used:
@@ -1655,6 +1781,9 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           submitter_id:
+            type: keyword
+          timepoint_category:
+            normalizer: clinical_normalizer
             type: keyword
           undescended_testis_corrected:
             normalizer: clinical_normalizer
@@ -1681,6 +1810,8 @@ properties:
             type: keyword
           weight:
             type: double
+          year_of_follow_up:
+            type: long
         type: nested
       index_date:
         normalizer: clinical_normalizer
@@ -2294,6 +2425,9 @@ properties:
             type: keyword
           shortest_dimension:
             type: double
+          specimen_type:
+            normalizer: clinical_normalizer
+            type: keyword
           state:
             normalizer: clinical_normalizer
             type: keyword
@@ -2523,11 +2657,7 @@ properties:
             type: keyword
           proportion_base_mismatch:
             type: double
-          proportion_coverage_10X:
-            type: double
           proportion_coverage_10x:
-            type: double
-          proportion_coverage_30X:
             type: double
           proportion_coverage_30x:
             type: double
@@ -2702,11 +2832,7 @@ properties:
         type: keyword
       proportion_base_mismatch:
         type: double
-      proportion_coverage_10X:
-        type: double
       proportion_coverage_10x:
-        type: double
-      proportion_coverage_30X:
         type: double
       proportion_coverage_30x:
         type: double
@@ -2817,11 +2943,7 @@ properties:
     type: keyword
   proportion_base_mismatch:
     type: double
-  proportion_coverage_10X:
-    type: double
   proportion_coverage_10x:
-    type: double
-  proportion_coverage_30X:
     type: double
   proportion_coverage_30x:
     type: double
