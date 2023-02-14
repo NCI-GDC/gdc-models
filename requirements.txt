@@ -4,7 +4,7 @@
 #
 #    pip-compile
 #
-certifi==2020.12.5
+certifi==2022.12.7
     # via elasticsearch
 elasticsearch==7.12.0
     # via gdcmodels (setup.py)
