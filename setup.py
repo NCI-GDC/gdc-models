@@ -11,7 +11,6 @@ setup(
     install_requires=[
         "PyYAML>=3.11,<6",
         "elasticsearch>=7.0.0,<8.0.0",
-        "six~=1.15",
     ],
     package_data={
         "gdcmodels": ["es-models/*/*.yaml"]

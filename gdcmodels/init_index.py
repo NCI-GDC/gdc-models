@@ -3,8 +3,6 @@
 import argparse
 import sys
 
-from six.moves import input
-
 from elasticsearch import Elasticsearch
 from gdcmodels import get_es_models, esutils
 

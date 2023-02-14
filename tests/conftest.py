@@ -5,7 +5,6 @@ import pkg_resources
 
 import elasticsearch
 import pytest
-import six
 import yaml
 
 import gdcmodels
@@ -211,49 +210,11 @@ def non_meta_descriptions_mappings(tmp_path):
     return mock_mappings(root, mapps)
 
 
-def maybe_fix_str(value):
-    """Convert a string-like value to ``str``; do nothing to non-string-like values."""
-    if isinstance(value, six.string_types):
-        return six.ensure_str(value)
-
-    return value
-
-
-def ensure_str_object_pairs_hooks(pairs):
-    """Object pairs hook that converts strings to the ``str`` type on Python 2.
-
-    Doesn't do anything special other than slow things down on Python 3.
-    """
-    accumulator = {}
-    for key, value in pairs:
-        new_key = maybe_fix_str(key)
-
-        if isinstance(value, list):
-            new_value = [maybe_fix_str(item) for item in value]
-        else:
-            new_value = maybe_fix_str(value)
-
-        accumulator[new_key] = new_value
-
-    return accumulator
-
-
-class StrJSONSerializer(elasticsearch.JSONSerializer):
-    """Elasticsearch JSON serializer that decodes strings as ``str`` on Python 2.
-
-    Makes it possible to compare the results of ES queries against object trees where
-    all of the keys and values are regular strings. Without this, on Python 2, anything
-    returned by the Elasticsearch client will be full of ``unicode``s.
-    """
-    def loads(self, s):
-        return json.loads(s, object_pairs_hook=ensure_str_object_pairs_hooks)
-
-
 @pytest.fixture(scope="session")
 def es():
     """Create an Elasticsearch client for the test cluster."""
     return elasticsearch.Elasticsearch(
-        hosts=["localhost:9200"], timeout=30, serializer=StrJSONSerializer()
+        hosts=["localhost:9200"], timeout=30
     )
 
 
