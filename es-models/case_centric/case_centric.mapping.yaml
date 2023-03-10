@@ -6,6 +6,47 @@ _source:
   - gene.biotype
   - gene.is_cancer_gene_census
 properties:
+  aliquot_ids:
+    type: keyword
+  analyte_ids:
+    type: keyword
+  annotations:
+    properties:
+      annotation_id:
+        type: keyword
+      case_id:
+        type: keyword
+      case_submitter_id:
+        type: keyword
+      category:
+        type: keyword
+      classification:
+        type: keyword
+      created_datetime:
+        type: keyword
+      creator:
+        type: keyword
+      entity_id:
+        type: keyword
+      entity_submitter_id:
+        type: keyword
+      entity_type:
+        type: keyword
+      legacy_created_datetime:
+        type: keyword
+      legacy_updated_datetime:
+        type: keyword
+      notes:
+        type: keyword
+      state:
+        type: keyword
+      status:
+        type: keyword
+      submitter_id:
+        type: keyword
+      updated_datetime:
+        type: keyword
+    type: nested
   available_variation_data:
     type: keyword
   case_autocomplete:
@@ -28,6 +69,8 @@ properties:
     type: keyword
   consent_type:
     type: keyword
+  created_datetime:
+    type: keyword
   days_to_consent:
     type: long
   days_to_index:
@@ -42,6 +85,12 @@ properties:
         type: keyword
       cause_of_death:
         type: keyword
+      cause_of_death_source:
+        type: keyword
+      country_of_residence_at_enrollment:
+        type: keyword
+      created_datetime:
+        type: keyword
       days_to_birth:
         type: long
       days_to_death:
@@ -52,20 +101,30 @@ properties:
         type: keyword
       gender:
         type: keyword
+      occupation_duration_years:
+        type: long
+      premature_at_birth:
+        type: keyword
       race:
         type: keyword
       state:
         type: keyword
       submitter_id:
         type: keyword
+      updated_datetime:
+        type: keyword
       vital_status:
         type: keyword
+      weeks_gestation_at_birth:
+        type: double
       year_of_birth:
         type: long
       year_of_death:
         type: long
   diagnoses:
     properties:
+      adrenal_hormone:
+        type: keyword
       age_at_diagnosis:
         type: long
       ajcc_clinical_m:
@@ -86,7 +145,13 @@ properties:
         type: keyword
       ajcc_staging_system_edition:
         type: keyword
+      anaplasia_present:
+        type: keyword
+      anaplasia_present_type:
+        type: keyword
       ann_arbor_b_symptoms:
+        type: keyword
+      ann_arbor_b_symptoms_described:
         type: keyword
       ann_arbor_clinical_stage:
         type: keyword
@@ -94,21 +159,68 @@ properties:
         type: keyword
       ann_arbor_pathologic_stage:
         type: keyword
+      annotations:
+        properties:
+          annotation_id:
+            type: keyword
+          case_id:
+            type: keyword
+          case_submitter_id:
+            type: keyword
+          category:
+            type: keyword
+          classification:
+            type: keyword
+          created_datetime:
+            type: keyword
+          creator:
+            type: keyword
+          entity_id:
+            type: keyword
+          entity_submitter_id:
+            type: keyword
+          entity_type:
+            type: keyword
+          legacy_created_datetime:
+            type: keyword
+          legacy_updated_datetime:
+            type: keyword
+          notes:
+            type: keyword
+          state:
+            type: keyword
+          status:
+            type: keyword
+          submitter_id:
+            type: keyword
+          updated_datetime:
+            type: keyword
+        type: nested
       best_overall_response:
         type: keyword
+      breslow_thickness:
+        type: double
       burkitt_lymphoma_clinical_variant:
         type: keyword
       cause_of_death:
         type: keyword
+      child_pugh_classification:
+        type: keyword
       circumferential_resection_margin:
         type: double
       classification_of_tumor:
+        type: keyword
+      cog_liver_stage:
+        type: keyword
+      cog_neuroblastoma_risk_group:
         type: keyword
       cog_renal_stage:
         type: keyword
       cog_rhabdomyosarcoma_risk_group:
         type: keyword
       colon_polyps_history:
+        type: keyword
+      created_datetime:
         type: keyword
       days_to_best_overall_response:
         type: long
@@ -128,6 +240,14 @@ properties:
         type: keyword
       eln_risk_classification:
         type: keyword
+      enneking_msts_grade:
+        type: keyword
+      enneking_msts_metastasis:
+        type: keyword
+      enneking_msts_stage:
+        type: keyword
+      enneking_msts_tumor_site:
+        type: keyword
       esophageal_columnar_dysplasia_degree:
         type: keyword
       esophageal_columnar_metaplasia_present:
@@ -136,10 +256,22 @@ properties:
         type: keyword
       figo_staging_edition_year:
         type: keyword
+      first_symptom_prior_to_diagnosis:
+        type: keyword
       gastric_esophageal_junction_involvement:
         type: keyword
+      gleason_grade_group:
+        type: keyword
+      gleason_grade_tertiary:
+        type: keyword
+      gleason_patterns_percent:
+        type: long
       goblet_cells_columnar_mucosa_present:
         type: keyword
+      greatest_tumor_dimension:
+        type: long
+      gross_tumor_weight:
+        type: double
       hiv_positive:
         type: keyword
       hpv_positive_type:
@@ -150,13 +282,25 @@ properties:
         type: keyword
       igcccg_stage:
         type: keyword
+      inpc_grade:
+        type: keyword
+      inpc_histologic_group:
+        type: keyword
+      inrg_stage:
+        type: keyword
       inss_stage:
         type: keyword
       international_prognostic_index:
         type: keyword
       irs_group:
         type: keyword
+      irs_stage:
+        type: keyword
+      ishak_fibrosis_score:
+        type: keyword
       iss_stage:
+        type: keyword
+      largest_extrapelvic_peritoneal_focus:
         type: keyword
       last_known_disease_status:
         type: keyword
@@ -174,7 +318,13 @@ properties:
         type: long
       lymphatic_invasion_present:
         type: keyword
+      margin_distance:
+        type: double
+      margins_involved_site:
+        type: keyword
       masaoka_stage:
+        type: keyword
+      medulloblastoma_molecular_classification:
         type: keyword
       metastasis_at_diagnosis:
         type: keyword
@@ -184,14 +334,30 @@ properties:
         type: keyword
       micropapillary_features:
         type: keyword
+      mitosis_karyorrhexis_index:
+        type: keyword
+      mitotic_count:
+        type: long
       morphology:
         type: keyword
       new_event_anatomic_site:
         type: keyword
       new_event_type:
         type: keyword
+      non_nodal_regional_disease:
+        type: keyword
+      non_nodal_tumor_deposits:
+        type: keyword
+      ovarian_specimen_status:
+        type: keyword
+      ovarian_surface_involvement:
+        type: keyword
+      papillary_renal_cell_type:
+        type: keyword
       pathology_details:
         properties:
+          additional_pathology_findings:
+            type: keyword
           anaplasia_present:
             type: keyword
           anaplasia_present_type:
@@ -203,6 +369,10 @@ properties:
           circumferential_resection_margin:
             type: double
           columnar_mucosa_present:
+            type: keyword
+          consistent_pathology_review:
+            type: keyword
+          created_datetime:
             type: keyword
           dysplasia_degree:
             type: keyword
@@ -230,6 +400,8 @@ properties:
             type: keyword
           morphologic_architectural_pattern:
             type: keyword
+          necrosis_percent:
+            type: double
           necrosis_present:
             type: keyword
           non_nodal_regional_disease:
@@ -254,6 +426,18 @@ properties:
             type: double
           prostatic_involvement_percent:
             type: double
+          residual_tumor:
+            type: keyword
+          rhabdoid_percent:
+            type: double
+          rhabdoid_present:
+            type: keyword
+          sarcomatoid_percent:
+            type: double
+          sarcomatoid_present:
+            type: keyword
+          size_extraocular_nodule:
+            type: double
           state:
             type: keyword
           submitter_id:
@@ -262,20 +446,30 @@ properties:
             type: keyword
           tumor_largest_dimension_diameter:
             type: double
+          tumor_thickness:
+            type: double
+          updated_datetime:
+            type: keyword
           vascular_invasion_present:
             type: keyword
           vascular_invasion_type:
             type: keyword
         type: nested
+      percent_tumor_invasion:
+        type: double
       perineural_invasion_present:
         type: keyword
       peripancreatic_lymph_nodes_positive:
         type: keyword
       peripancreatic_lymph_nodes_tested:
         type: double
+      peritoneal_fluid_cytological_status:
+        type: keyword
       pregnant_at_diagnosis:
         type: keyword
       primary_diagnosis:
+        type: keyword
+      primary_disease:
         type: keyword
       primary_gleason_grade:
         type: keyword
@@ -293,17 +487,25 @@ properties:
         type: keyword
       site_of_resection_or_biopsy:
         type: keyword
+      sites_of_involvement:
+        type: keyword
       state:
         type: keyword
       submitter_id:
+        type: keyword
+      supratentorial_localization:
         type: keyword
       synchronous_malignancy:
         type: keyword
       tissue_or_organ_of_origin:
         type: keyword
+      transglottic_extension:
+        type: keyword
       treatments:
         properties:
           chemo_concurrent_to_radiation:
+            type: keyword
+          created_datetime:
             type: keyword
           days_to_treatment_end:
             type: long
@@ -317,6 +519,8 @@ properties:
             type: keyword
           regimen_or_line_of_therapy:
             type: keyword
+          route_of_administration:
+            type: keyword
           state:
             type: keyword
           submitter_id:
@@ -325,8 +529,16 @@ properties:
             type: keyword
           treatment_anatomic_site:
             type: keyword
+          treatment_arm:
+            type: keyword
           treatment_dose:
             type: long
+          treatment_dose_units:
+            type: keyword
+          treatment_effect:
+            type: keyword
+          treatment_effect_indicator:
+            type: keyword
           treatment_frequency:
             type: keyword
           treatment_id:
@@ -339,32 +551,50 @@ properties:
             type: keyword
           treatment_type:
             type: keyword
+          updated_datetime:
+            type: keyword
         type: nested
       tumor_confined_to_organ_of_origin:
         type: keyword
+      tumor_depth:
+        type: double
       tumor_focality:
         type: keyword
       tumor_grade:
         type: keyword
       tumor_largest_dimension_diameter:
         type: double
+      tumor_regression_grade:
+        type: keyword
       tumor_stage:
+        type: keyword
+      updated_datetime:
         type: keyword
       vascular_invasion_present:
         type: keyword
       vascular_invasion_type:
+        type: keyword
+      weiss_assessment_score:
+        type: keyword
+      who_cns_grade:
+        type: keyword
+      who_nte_grade:
         type: keyword
       wilms_tumor_histologic_subtype:
         type: keyword
       year_of_diagnosis:
         type: long
     type: nested
+  diagnosis_ids:
+    type: keyword
   disease_type:
     copy_to:
     - case_autocomplete
     type: keyword
   exposures:
     properties:
+      age_at_onset:
+        type: long
       alcohol_days_per_week:
         type: double
       alcohol_drinks_per_day:
@@ -373,17 +603,31 @@ properties:
         type: keyword
       alcohol_intensity:
         type: keyword
+      alcohol_type:
+        type: keyword
       asbestos_exposure:
         type: keyword
       bmi:
         type: double
       cigarettes_per_day:
         type: double
+      coal_dust_exposure:
+        type: keyword
+      created_datetime:
+        type: keyword
+      environmental_tobacco_smoke_exposure:
+        type: keyword
+      exposure_duration:
+        type: keyword
+      exposure_duration_years:
+        type: long
       exposure_id:
         type: keyword
       exposure_type:
         type: keyword
       height:
+        type: double
+      marijuana_use_per_week:
         type: double
       pack_years_smoked:
         type: double
@@ -391,11 +635,19 @@ properties:
         type: keyword
       radon_exposure:
         type: keyword
+      respirable_crystalline_silica_exposure:
+        type: keyword
       secondhand_smoke_as_child:
+        type: keyword
+      smokeless_tobacco_quit_age:
+        type: long
+      smoking_frequency:
         type: keyword
       state:
         type: keyword
       submitter_id:
+        type: keyword
+      time_between_waking_and_first_smoke:
         type: keyword
       tobacco_smoking_onset_year:
         type: long
@@ -403,9 +655,13 @@ properties:
         type: long
       tobacco_smoking_status:
         type: keyword
+      tobacco_use_per_day:
+        type: double
       type_of_smoke_exposure:
         type: keyword
       type_of_tobacco_used:
+        type: keyword
+      updated_datetime:
         type: keyword
       weight:
         type: double
@@ -414,6 +670,8 @@ properties:
     type: nested
   family_histories:
     properties:
+      created_datetime:
+        type: keyword
       family_history_id:
         type: keyword
       relationship_age_at_diagnosis:
@@ -428,7 +686,11 @@ properties:
         type: keyword
       relatives_with_cancer_history_count:
         type: long
+      state:
+        type: keyword
       submitter_id:
+        type: keyword
+      updated_datetime:
         type: keyword
     type: nested
   follow_ups:
@@ -454,6 +716,8 @@ properties:
       comorbidity:
         type: keyword
       comorbidity_method_of_diagnosis:
+        type: keyword
+      created_datetime:
         type: keyword
       days_to_adverse_event:
         type: long
@@ -547,6 +811,8 @@ properties:
             type: keyword
           copy_number:
             type: double
+          created_datetime:
+            type: keyword
           cytoband:
             type: keyword
           days_to_test:
@@ -591,6 +857,8 @@ properties:
             type: keyword
           specialized_molecular_test:
             type: keyword
+          state:
+            type: keyword
           submitter_id:
             type: keyword
           test_analyte_type:
@@ -602,6 +870,8 @@ properties:
           test_value:
             type: double
           transcript:
+            type: keyword
+          updated_datetime:
             type: keyword
           variant_origin:
             type: keyword
@@ -651,6 +921,8 @@ properties:
       undescended_testis_history:
         type: keyword
       undescended_testis_history_laterality:
+        type: keyword
+      updated_datetime:
         type: keyword
       viral_hepatitis_serologies:
         type: keyword
@@ -875,6 +1147,8 @@ properties:
     type: keyword
   lost_to_followup:
     type: keyword
+  portion_ids:
+    type: keyword
   primary_site:
     copy_to:
     - case_autocomplete
@@ -909,8 +1183,53 @@ properties:
         copy_to:
         - case_autocomplete
         type: keyword
+      releasable:
+        type: keyword
+      released:
+        type: keyword
+      state:
+        type: keyword
+  sample_ids:
+    type: keyword
   samples:
     properties:
+      annotations:
+        properties:
+          annotation_id:
+            type: keyword
+          case_id:
+            type: keyword
+          case_submitter_id:
+            type: keyword
+          category:
+            type: keyword
+          classification:
+            type: keyword
+          created_datetime:
+            type: keyword
+          creator:
+            type: keyword
+          entity_id:
+            type: keyword
+          entity_submitter_id:
+            type: keyword
+          entity_type:
+            type: keyword
+          legacy_created_datetime:
+            type: keyword
+          legacy_updated_datetime:
+            type: keyword
+          notes:
+            type: keyword
+          state:
+            type: keyword
+          status:
+            type: keyword
+          submitter_id:
+            type: keyword
+          updated_datetime:
+            type: keyword
+        type: nested
       biospecimen_anatomic_site:
         type: keyword
       biospecimen_laterality:
@@ -918,6 +1237,8 @@ properties:
       catalog_reference:
         type: keyword
       composition:
+        type: keyword
+      created_datetime:
         type: keyword
       current_weight:
         type: double
@@ -971,6 +1292,43 @@ properties:
                     type: keyword
                   analyte_type_id:
                     type: keyword
+                  annotations:
+                    properties:
+                      annotation_id:
+                        type: keyword
+                      case_id:
+                        type: keyword
+                      case_submitter_id:
+                        type: keyword
+                      category:
+                        type: keyword
+                      classification:
+                        type: keyword
+                      created_datetime:
+                        type: keyword
+                      creator:
+                        type: keyword
+                      entity_id:
+                        type: keyword
+                      entity_submitter_id:
+                        type: keyword
+                      entity_type:
+                        type: keyword
+                      legacy_created_datetime:
+                        type: keyword
+                      legacy_updated_datetime:
+                        type: keyword
+                      notes:
+                        type: keyword
+                      state:
+                        type: keyword
+                      status:
+                        type: keyword
+                      submitter_id:
+                        type: keyword
+                      updated_datetime:
+                        type: keyword
+                    type: nested
                   center:
                     properties:
                       center_id:
@@ -987,6 +1345,8 @@ properties:
                         type: keyword
                   concentration:
                     type: double
+                  created_datetime:
+                    type: keyword
                   no_matched_normal_low_pass_wgs:
                     type: keyword
                   no_matched_normal_targeted_sequencing:
@@ -1005,7 +1365,11 @@ properties:
                     type: keyword
                   source_center:
                     type: keyword
+                  state:
+                    type: keyword
                   submitter_id:
+                    type: keyword
+                  updated_datetime:
                     type: keyword
                 type: nested
               amount:
@@ -1020,8 +1384,47 @@ properties:
                 type: keyword
               analyte_volume:
                 type: double
+              annotations:
+                properties:
+                  annotation_id:
+                    type: keyword
+                  case_id:
+                    type: keyword
+                  case_submitter_id:
+                    type: keyword
+                  category:
+                    type: keyword
+                  classification:
+                    type: keyword
+                  created_datetime:
+                    type: keyword
+                  creator:
+                    type: keyword
+                  entity_id:
+                    type: keyword
+                  entity_submitter_id:
+                    type: keyword
+                  entity_type:
+                    type: keyword
+                  legacy_created_datetime:
+                    type: keyword
+                  legacy_updated_datetime:
+                    type: keyword
+                  notes:
+                    type: keyword
+                  state:
+                    type: keyword
+                  status:
+                    type: keyword
+                  submitter_id:
+                    type: keyword
+                  updated_datetime:
+                    type: keyword
+                type: nested
               concentration:
                 type: double
+              created_datetime:
+                type: keyword
               experimental_protocol_type:
                 type: keyword
               normal_tumor_genotype_snp_match:
@@ -1032,9 +1435,50 @@ properties:
                 type: double
               spectrophotometer_method:
                 type: keyword
+              state:
+                type: keyword
               submitter_id:
                 type: keyword
+              updated_datetime:
+                type: keyword
               well_number:
+                type: keyword
+            type: nested
+          annotations:
+            properties:
+              annotation_id:
+                type: keyword
+              case_id:
+                type: keyword
+              case_submitter_id:
+                type: keyword
+              category:
+                type: keyword
+              classification:
+                type: keyword
+              created_datetime:
+                type: keyword
+              creator:
+                type: keyword
+              entity_id:
+                type: keyword
+              entity_submitter_id:
+                type: keyword
+              entity_type:
+                type: keyword
+              legacy_created_datetime:
+                type: keyword
+              legacy_updated_datetime:
+                type: keyword
+              notes:
+                type: keyword
+              state:
+                type: keyword
+              status:
+                type: keyword
+              submitter_id:
+                type: keyword
+              updated_datetime:
                 type: keyword
             type: nested
           center:
@@ -1051,6 +1495,8 @@ properties:
                 type: keyword
               short_name:
                 type: keyword
+          created_datetime:
+            type: keyword
           creation_datetime:
             type: double
           is_ffpe:
@@ -1061,7 +1507,46 @@ properties:
             type: keyword
           slides:
             properties:
+              annotations:
+                properties:
+                  annotation_id:
+                    type: keyword
+                  case_id:
+                    type: keyword
+                  case_submitter_id:
+                    type: keyword
+                  category:
+                    type: keyword
+                  classification:
+                    type: keyword
+                  created_datetime:
+                    type: keyword
+                  creator:
+                    type: keyword
+                  entity_id:
+                    type: keyword
+                  entity_submitter_id:
+                    type: keyword
+                  entity_type:
+                    type: keyword
+                  legacy_created_datetime:
+                    type: keyword
+                  legacy_updated_datetime:
+                    type: keyword
+                  notes:
+                    type: keyword
+                  state:
+                    type: keyword
+                  status:
+                    type: keyword
+                  submitter_id:
+                    type: keyword
+                  updated_datetime:
+                    type: keyword
+                type: nested
               bone_marrow_malignant_cells:
+                type: keyword
+              created_datetime:
                 type: keyword
               number_proliferating_cells:
                 type: long
@@ -1103,12 +1588,20 @@ properties:
                 type: keyword
               slide_id:
                 type: keyword
+              state:
+                type: keyword
               submitter_id:
                 type: keyword
               tissue_microarray_coordinates:
                 type: keyword
+              updated_datetime:
+                type: keyword
             type: nested
+          state:
+            type: keyword
           submitter_id:
+            type: keyword
+          updated_datetime:
             type: keyword
           weight:
             type: double
@@ -1125,6 +1618,8 @@ properties:
         type: keyword
       shortest_dimension:
         type: double
+      state:
+        type: keyword
       submitter_id:
         type: keyword
       time_between_clamping_and_freezing:
@@ -1141,12 +1636,28 @@ properties:
         type: keyword
       tumor_descriptor:
         type: keyword
+      updated_datetime:
+        type: keyword
     type: nested
+  slide_ids:
+    type: keyword
   state:
+    type: keyword
+  submitter_aliquot_ids:
+    type: keyword
+  submitter_analyte_ids:
+    type: keyword
+  submitter_diagnosis_ids:
     type: keyword
   submitter_id:
     copy_to:
     - case_autocomplete
+    type: keyword
+  submitter_portion_ids:
+    type: keyword
+  submitter_sample_ids:
+    type: keyword
+  submitter_slide_ids:
     type: keyword
   summary:
     properties:
@@ -1180,3 +1691,5 @@ properties:
         type: keyword
       tissue_source_site_id:
         type: keyword
+  updated_datetime:
+    type: keyword
