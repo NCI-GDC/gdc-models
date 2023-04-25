@@ -693,6 +693,688 @@ properties:
       updated_datetime:
         type: keyword
     type: nested
+  files:
+    properties:
+      access:
+        type: keyword
+      acl:
+        type: keyword
+      analysis:
+        properties:
+          analysis_id:
+            type: keyword
+          analysis_type:
+            type: keyword
+          created_datetime:
+            type: keyword
+          input_files:
+            properties:
+              access:
+                type: keyword
+              average_base_quality:
+                type: double
+              average_insert_size:
+                type: long
+              average_read_length:
+                type: long
+              channel:
+                type: keyword
+              chip_id:
+                type: keyword
+              chip_position:
+                type: keyword
+              contamination:
+                type: double
+              contamination_error:
+                type: double
+              created_datetime:
+                type: keyword
+              data_category:
+                type: keyword
+              data_format:
+                type: keyword
+              data_type:
+                type: keyword
+              error_type:
+                type: keyword
+              experimental_strategy:
+                type: keyword
+              file_id:
+                type: keyword
+              file_name:
+                type: keyword
+              file_size:
+                type: long
+              imaging_date:
+                type: keyword
+              magnification:
+                type: double
+              md5sum:
+                type: keyword
+              mean_coverage:
+                type: double
+              msi_score:
+                type: double
+              msi_status:
+                type: keyword
+              pairs_on_diff_chr:
+                type: long
+              plate_name:
+                type: keyword
+              plate_well:
+                type: keyword
+              platform:
+                type: keyword
+              proc_internal:
+                type: keyword
+              proportion_base_mismatch:
+                type: double
+              proportion_coverage_10X:
+                type: double
+              proportion_coverage_10x:
+                type: double
+              proportion_coverage_30X:
+                type: double
+              proportion_coverage_30x:
+                type: double
+              proportion_reads_duplicated:
+                type: double
+              proportion_reads_mapped:
+                type: double
+              proportion_targets_no_coverage:
+                type: double
+              read_pair_number:
+                type: keyword
+              revision:
+                type: double
+              stain_type:
+                type: keyword
+              state:
+                type: keyword
+              state_comment:
+                type: keyword
+              submitter_id:
+                type: keyword
+              total_reads:
+                type: long
+              tumor_ploidy:
+                type: double
+              tumor_purity:
+                type: double
+              updated_datetime:
+                type: keyword
+            type: nested
+          metadata:
+            properties:
+              read_groups:
+                properties:
+                  RIN:
+                    type: double
+                  adapter_name:
+                    type: keyword
+                  adapter_sequence:
+                    type: keyword
+                  base_caller_name:
+                    type: keyword
+                  base_caller_version:
+                    type: keyword
+                  chipseq_antibody:
+                    type: keyword
+                  chipseq_target:
+                    type: keyword
+                  created_datetime:
+                    type: keyword
+                  days_to_sequencing:
+                    type: long
+                  experiment_name:
+                    type: keyword
+                  flow_cell_barcode:
+                    type: keyword
+                  fragment_maximum_length:
+                    type: long
+                  fragment_mean_length:
+                    type: double
+                  fragment_minimum_length:
+                    type: long
+                  fragment_standard_deviation_length:
+                    type: double
+                  fragmentation_enzyme:
+                    type: keyword
+                  includes_spike_ins:
+                    type: keyword
+                  instrument_model:
+                    type: keyword
+                  is_paired_end:
+                    type: keyword
+                  lane_number:
+                    type: long
+                  library_name:
+                    type: keyword
+                  library_preparation_kit_catalog_number:
+                    type: keyword
+                  library_preparation_kit_name:
+                    type: keyword
+                  library_preparation_kit_vendor:
+                    type: keyword
+                  library_preparation_kit_version:
+                    type: keyword
+                  library_selection:
+                    type: keyword
+                  library_strand:
+                    type: keyword
+                  library_strategy:
+                    type: keyword
+                  multiplex_barcode:
+                    type: keyword
+                  number_expect_cells:
+                    type: long
+                  platform:
+                    type: keyword
+                  read_group_id:
+                    type: keyword
+                  read_group_name:
+                    type: keyword
+                  read_group_qcs:
+                    properties:
+                      adapter_content:
+                        type: keyword
+                      basic_statistics:
+                        type: keyword
+                      created_datetime:
+                        type: keyword
+                      encoding:
+                        type: keyword
+                      fastq_name:
+                        type: keyword
+                      kmer_content:
+                        type: keyword
+                      overrepresented_sequences:
+                        type: keyword
+                      per_base_n_content:
+                        type: keyword
+                      per_base_sequence_content:
+                        type: keyword
+                      per_base_sequence_quality:
+                        type: keyword
+                      per_sequence_gc_content:
+                        type: keyword
+                      per_sequence_quality_score:
+                        type: keyword
+                      per_tile_sequence_quality:
+                        type: keyword
+                      percent_gc_content:
+                        type: long
+                      read_group_qc_id:
+                        type: keyword
+                      sequence_duplication_levels:
+                        type: keyword
+                      sequence_length_distribution:
+                        type: keyword
+                      state:
+                        type: keyword
+                      submitter_id:
+                        type: keyword
+                      total_sequences:
+                        type: long
+                      updated_datetime:
+                        type: keyword
+                      workflow_end_datetime:
+                        type: keyword
+                      workflow_link:
+                        type: keyword
+                      workflow_start_datetime:
+                        type: keyword
+                      workflow_type:
+                        type: keyword
+                      workflow_version:
+                        type: keyword
+                    type: nested
+                  read_length:
+                    type: long
+                  rin:
+                    type: double
+                  sequencing_center:
+                    type: keyword
+                  sequencing_date:
+                    type: keyword
+                  single_cell_library:
+                    type: keyword
+                  size_selection_range:
+                    type: keyword
+                  spike_ins_concentration:
+                    type: keyword
+                  spike_ins_fasta:
+                    type: keyword
+                  state:
+                    type: keyword
+                  submitter_id:
+                    type: keyword
+                  target_capture_kit:
+                    type: keyword
+                  target_capture_kit_catalog_number:
+                    type: keyword
+                  target_capture_kit_name:
+                    type: keyword
+                  target_capture_kit_target_region:
+                    type: keyword
+                  target_capture_kit_vendor:
+                    type: keyword
+                  target_capture_kit_version:
+                    type: keyword
+                  to_trim_adapter_sequence:
+                    type: keyword
+                  updated_datetime:
+                    type: keyword
+                type: nested
+          state:
+            type: keyword
+          submitter_id:
+            type: keyword
+          updated_datetime:
+            type: keyword
+          workflow_end_datetime:
+            type: keyword
+          workflow_link:
+            type: keyword
+          workflow_start_datetime:
+            type: keyword
+          workflow_type:
+            type: keyword
+          workflow_version:
+            type: keyword
+      archive:
+        properties:
+          archive_id:
+            type: keyword
+          created_datetime:
+            type: keyword
+          data_category:
+            type: keyword
+          data_format:
+            type: keyword
+          data_type:
+            type: keyword
+          error_type:
+            type: keyword
+          file_name:
+            type: keyword
+          file_size:
+            type: long
+          md5sum:
+            type: keyword
+          revision:
+            type: double
+          state:
+            type: keyword
+          state_comment:
+            type: keyword
+          submitter_id:
+            type: keyword
+          updated_datetime:
+            type: keyword
+      average_base_quality:
+        type: double
+      average_insert_size:
+        type: long
+      average_read_length:
+        type: long
+      center:
+        properties:
+          center_id:
+            type: keyword
+          center_type:
+            type: keyword
+          code:
+            type: keyword
+          name:
+            type: keyword
+          namespace:
+            type: keyword
+          short_name:
+            type: keyword
+      channel:
+        type: keyword
+      chip_id:
+        type: keyword
+      chip_position:
+        type: keyword
+      contamination:
+        type: double
+      contamination_error:
+        type: double
+      created_datetime:
+        type: keyword
+      data_category:
+        type: keyword
+      data_format:
+        type: keyword
+      data_type:
+        type: keyword
+      downstream_analyses:
+        properties:
+          analysis_id:
+            type: keyword
+          analysis_type:
+            type: keyword
+          created_datetime:
+            type: keyword
+          output_files:
+            properties:
+              access:
+                type: keyword
+              average_base_quality:
+                type: double
+              average_insert_size:
+                type: long
+              average_read_length:
+                type: long
+              channel:
+                type: keyword
+              chip_id:
+                type: keyword
+              chip_position:
+                type: keyword
+              contamination:
+                type: double
+              contamination_error:
+                type: double
+              created_datetime:
+                type: keyword
+              data_category:
+                type: keyword
+              data_format:
+                type: keyword
+              data_type:
+                type: keyword
+              error_type:
+                type: keyword
+              experimental_strategy:
+                type: keyword
+              file_id:
+                type: keyword
+              file_name:
+                type: keyword
+              file_size:
+                type: long
+              imaging_date:
+                type: keyword
+              magnification:
+                type: double
+              md5sum:
+                type: keyword
+              mean_coverage:
+                type: double
+              msi_score:
+                type: double
+              msi_status:
+                type: keyword
+              pairs_on_diff_chr:
+                type: long
+              plate_name:
+                type: keyword
+              plate_well:
+                type: keyword
+              platform:
+                type: keyword
+              proc_internal:
+                type: keyword
+              proportion_base_mismatch:
+                type: double
+              proportion_coverage_10X:
+                type: double
+              proportion_coverage_10x:
+                type: double
+              proportion_coverage_30X:
+                type: double
+              proportion_coverage_30x:
+                type: double
+              proportion_reads_duplicated:
+                type: double
+              proportion_reads_mapped:
+                type: double
+              proportion_targets_no_coverage:
+                type: double
+              read_pair_number:
+                type: keyword
+              revision:
+                type: double
+              stain_type:
+                type: keyword
+              state:
+                type: keyword
+              state_comment:
+                type: keyword
+              submitter_id:
+                type: keyword
+              total_reads:
+                type: long
+              tumor_ploidy:
+                type: double
+              tumor_purity:
+                type: double
+              updated_datetime:
+                type: keyword
+            type: nested
+          state:
+            type: keyword
+          submitter_id:
+            type: keyword
+          updated_datetime:
+            type: keyword
+          workflow_end_datetime:
+            type: keyword
+          workflow_link:
+            type: keyword
+          workflow_start_datetime:
+            type: keyword
+          workflow_type:
+            type: keyword
+          workflow_version:
+            type: keyword
+        type: nested
+      error_type:
+        type: keyword
+      experimental_strategy:
+        type: keyword
+      file_id:
+        type: keyword
+      file_name:
+        type: keyword
+      file_size:
+        type: long
+      imaging_date:
+        type: keyword
+      index_files:
+        properties:
+          access:
+            type: keyword
+          average_base_quality:
+            type: double
+          average_insert_size:
+            type: long
+          average_read_length:
+            type: long
+          channel:
+            type: keyword
+          chip_id:
+            type: keyword
+          chip_position:
+            type: keyword
+          contamination:
+            type: double
+          contamination_error:
+            type: double
+          created_datetime:
+            type: keyword
+          data_category:
+            type: keyword
+          data_format:
+            type: keyword
+          data_type:
+            type: keyword
+          error_type:
+            type: keyword
+          experimental_strategy:
+            type: keyword
+          file_id:
+            type: keyword
+          file_name:
+            type: keyword
+          file_size:
+            type: long
+          imaging_date:
+            type: keyword
+          magnification:
+            type: double
+          md5sum:
+            type: keyword
+          mean_coverage:
+            type: double
+          msi_score:
+            type: double
+          msi_status:
+            type: keyword
+          pairs_on_diff_chr:
+            type: long
+          plate_name:
+            type: keyword
+          plate_well:
+            type: keyword
+          platform:
+            type: keyword
+          proc_internal:
+            type: keyword
+          proportion_base_mismatch:
+            type: double
+          proportion_coverage_10X:
+            type: double
+          proportion_coverage_10x:
+            type: double
+          proportion_coverage_30X:
+            type: double
+          proportion_coverage_30x:
+            type: double
+          proportion_reads_duplicated:
+            type: double
+          proportion_reads_mapped:
+            type: double
+          proportion_targets_no_coverage:
+            type: double
+          read_pair_number:
+            type: keyword
+          revision:
+            type: double
+          stain_type:
+            type: keyword
+          state:
+            type: keyword
+          state_comment:
+            type: keyword
+          submitter_id:
+            type: keyword
+          total_reads:
+            type: long
+          tumor_ploidy:
+            type: double
+          tumor_purity:
+            type: double
+          updated_datetime:
+            type: keyword
+        type: nested
+      magnification:
+        type: double
+      md5sum:
+        type: keyword
+      mean_coverage:
+        type: double
+      metadata_files:
+        properties:
+          access:
+            type: keyword
+          created_datetime:
+            type: keyword
+          data_category:
+            type: keyword
+          data_format:
+            type: keyword
+          data_type:
+            type: keyword
+          error_type:
+            type: keyword
+          file_id:
+            type: keyword
+          file_name:
+            type: keyword
+          file_size:
+            type: long
+          md5sum:
+            type: keyword
+          state:
+            type: keyword
+          state_comment:
+            type: keyword
+          submitter_id:
+            type: keyword
+          type:
+            type: keyword
+          updated_datetime:
+            type: keyword
+        type: nested
+      msi_score:
+        type: double
+      msi_status:
+        type: keyword
+      pairs_on_diff_chr:
+        type: long
+      plate_name:
+        type: keyword
+      plate_well:
+        type: keyword
+      platform:
+        type: keyword
+      proc_internal:
+        type: keyword
+      proportion_base_mismatch:
+        type: double
+      proportion_coverage_10X:
+        type: double
+      proportion_coverage_10x:
+        type: double
+      proportion_coverage_30X:
+        type: double
+      proportion_coverage_30x:
+        type: double
+      proportion_reads_duplicated:
+        type: double
+      proportion_reads_mapped:
+        type: double
+      proportion_targets_no_coverage:
+        type: double
+      read_pair_number:
+        type: keyword
+      revision:
+        type: double
+      stain_type:
+        type: keyword
+      state:
+        type: keyword
+      state_comment:
+        type: keyword
+      submitter_id:
+        type: keyword
+      tags:
+        type: keyword
+      total_reads:
+        type: long
+      tumor_ploidy:
+        type: double
+      tumor_purity:
+        type: double
+      type:
+        type: keyword
+      updated_datetime:
+        type: keyword
+    type: nested
   follow_ups:
     properties:
       adverse_event:
