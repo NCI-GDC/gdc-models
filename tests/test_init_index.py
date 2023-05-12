@@ -103,7 +103,7 @@ def patch_input(monkeypatch):
         def return_input(*args, **kwargs):
             return user_input
 
-        monkeypatch.setattr("gdcmodels.init_index.input", return_input)
+        monkeypatch.setattr("builtins.input", return_input)
 
     return apply_patch
 
