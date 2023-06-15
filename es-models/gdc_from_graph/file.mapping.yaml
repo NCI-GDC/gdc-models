@@ -134,6 +134,9 @@ properties:
           updated_datetime:
             normalizer: clinical_normalizer
             type: keyword
+          wgs_coverage:
+            normalizer: clinical_normalizer
+            type: keyword
         type: nested
       metadata:
         properties:
@@ -2562,6 +2565,9 @@ properties:
           updated_datetime:
             normalizer: clinical_normalizer
             type: keyword
+          wgs_coverage:
+            normalizer: clinical_normalizer
+            type: keyword
         type: nested
       state:
         normalizer: clinical_normalizer
@@ -2862,5 +2868,8 @@ properties:
     normalizer: clinical_normalizer
     type: keyword
   updated_datetime:
+    normalizer: clinical_normalizer
+    type: keyword
+  wgs_coverage:
     normalizer: clinical_normalizer
     type: keyword
