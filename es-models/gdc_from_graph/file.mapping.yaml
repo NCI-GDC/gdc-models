@@ -2747,6 +2747,9 @@ properties:
       updated_datetime:
         normalizer: clinical_normalizer
         type: keyword
+      wgs_coverage:
+        normalizer: clinical_normalizer
+        type: keyword
     type: nested
   magnification:
     type: double
