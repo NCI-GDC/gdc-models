@@ -803,6 +803,8 @@ properties:
                 type: double
               updated_datetime:
                 type: keyword
+              wgs_coverage:
+                type: keyword
             type: nested
           metadata:
             properties:
@@ -1154,6 +1156,8 @@ properties:
                 type: double
               updated_datetime:
                 type: keyword
+              wgs_coverage:
+                type: keyword
             type: nested
           state:
             type: keyword
@@ -1280,6 +1284,8 @@ properties:
             type: double
           updated_datetime:
             type: keyword
+          wgs_coverage:
+            type: keyword
         type: nested
       magnification:
         type: double
@@ -1373,6 +1379,8 @@ properties:
       type:
         type: keyword
       updated_datetime:
+        type: keyword
+      wgs_coverage:
         type: keyword
     type: nested
   follow_ups:
