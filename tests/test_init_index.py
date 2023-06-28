@@ -67,14 +67,17 @@ def validate_index(es):
         expected_settings = load_yaml("gdcmodels", settings_resource)
         actual_settings = index_info[index_name]["settings"]["index"]
 
-        assert (
-            int(actual_settings["max_result_window"])
-            == expected_settings["index.max_result_window"]
+        assert int(actual_settings["max_result_window"]) == (
+            expected_settings.get("index.max_result_window")
+            or expected_settings["index"]["max_result_window"]
         )
 
         max_terms_count = actual_settings.get("max_terms_count")
         if max_terms_count:
-            assert int(max_terms_count) == expected_settings["index.max_terms_count"]
+            assert int(max_terms_count) == (
+                expected_settings.get("index.max_terms_count")
+                or expected_settings["index"]["max_terms_count"]
+            )
 
         if "analysis" in expected_settings:
             assert actual_settings["analysis"] == expected_settings["analysis"]
@@ -108,14 +111,17 @@ def patch_input(monkeypatch):
     return apply_patch
 
 
-@pytest.mark.parametrize('args', [
-    ['--prefix', 'foo-bar'],
-    ['--prefix', 'foo-bar', '--host', 'localhost'],
-    ['--prefix', 'foo-bar', '--index', 'case_centric'],
-    ['--index', 'case_centric', 'gene_centric'],
-    ['--index', 'case_centric', '--host', 'localhost'],
-    ['--host', 'localhost'],
-])
+@pytest.mark.parametrize(
+    "args",
+    [
+        ["--prefix", "foo-bar"],
+        ["--prefix", "foo-bar", "--host", "localhost"],
+        ["--prefix", "foo-bar", "--index", "case_centric"],
+        ["--index", "case_centric", "gene_centric"],
+        ["--index", "case_centric", "--host", "localhost"],
+        ["--host", "localhost"],
+    ],
+)
 def test_get_parser__requires_args(args):
     """Test that `get_parser` aborts if certain arguments are missing."""
     with pytest.raises(SystemExit):
