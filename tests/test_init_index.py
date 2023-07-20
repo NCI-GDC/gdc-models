@@ -52,7 +52,7 @@ def validate_index(es):
                 descriptions YAML, or None to expect no descriptions.
         """
         index_info = es.indices.get(index_name)
-        assert index_info is not None, "Index {} does not exist".format(index_name)
+        assert index_info is not None, f"Index {index_name} does not exist"
         assert index_name in index_info
 
         expected_mapping = load_yaml("gdcmodels", mapping_resource)
