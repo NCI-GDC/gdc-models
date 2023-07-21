@@ -132,13 +132,13 @@ def init_index(args):
                         "'--delete' specified".format(full_index_name)
                     )
                     if confirm_delete(full_index_name):
-                        print("Deleting existing index '{}'".format(full_index_name))
+                        print(f"Deleting existing index '{full_index_name}'")
                         es.indices.delete(index=full_index_name)
                     else:
                         print("Index name mismatch, skipping deleting")
                         continue
 
-            print("Creating index '{}'".format(full_index_name))
+            print(f"Creating index '{full_index_name}'")
 
             body = {
                 "settings": es_models[index]["_settings"],

@@ -8,7 +8,7 @@ import yaml
 
 def load_yaml(filename):
     """Return contents of yaml file as dict"""
-    with open(filename, "r") as f:
+    with open(filename) as f:
         return yaml.safe_load(f)
 
 
