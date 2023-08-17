@@ -36,6 +36,6 @@ def force_merge_elasticsearch_indices(es, index, max_num_segments=1):
             )
             if active_count == 0:
                 break
-            logging.info("Still merging. Active thread count: {}".format(active_count))
+            logging.info(f"Still merging. Active thread count: {active_count}")
             sleep(UPDATE_INTERVAL)
     logging.info("Finished merging.")
