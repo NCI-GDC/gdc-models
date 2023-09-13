@@ -1,5 +1,4 @@
-from setuptools import setup, find_packages
-
+from setuptools import find_packages, setup
 
 setup(
     name="gdcmodels",
@@ -11,11 +10,9 @@ setup(
     install_requires=[
         "PyYAML>=3.11,<6",
         "elasticsearch>=7.0.0,<8.0.0",
+        "deepdiff~=6.5.0",
+        "mergedeep~=1.3.4",
     ],
-    package_data={
-        "gdcmodels": ["es-models/*/*.yaml"]
-    },
-    entry_points={
-        "console_scripts": ["init_index=gdcmodels.init_index:main"]
-    },
+    package_data={"gdcmodels": ["es-models/*/*.yaml"]},
+    entry_points={"console_scripts": ["init_index=gdcmodels.init_index:main"]},
 )
