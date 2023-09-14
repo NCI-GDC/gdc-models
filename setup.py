@@ -13,6 +13,7 @@ setup(
         "deepdiff~=6.5.0",
         "mergedeep~=1.3.4",
     ],
+    python_requires=">=3.7",
     package_data={"gdcmodels": ["es-models/*/*.yaml"]},
     entry_points={"console_scripts": ["init_index=gdcmodels.init_index:main"]},
 )
