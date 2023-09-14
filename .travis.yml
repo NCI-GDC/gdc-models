@@ -3,7 +3,6 @@ language: python
 env:
   - ES_VERSION="7.7.1"
 python:
-  - "3.6"
   - "3.7"
 
 before_install:
