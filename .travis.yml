@@ -19,6 +19,9 @@ before_script:
 install:
   - pip install tox-travis
 
+env:
+  - ES_HOST=localhost
+
 script:
   - tox
 

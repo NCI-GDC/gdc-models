@@ -11,6 +11,8 @@ tox:
   services:
     - name: docker.osdc.io/ncigdc/ci-elasticsearch-7:${BASE_CONTAINER_VERSION}
       alias: elasticsearch
+  variables:
+    ES_HOST: elasticsearch
   script:
     - pip install tox
     - tox -r -e py
