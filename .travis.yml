@@ -1,7 +1,9 @@
 sudo: true
 language: python
 env:
-  - ES_VERSION="7.7.1"
+  global:
+    - ES_VERSION="7.7.1"
+    - ES_HOST=localhost
 python:
   - "3.7"
 
@@ -19,8 +21,6 @@ before_script:
 install:
   - pip install tox-travis
 
-env:
-  - ES_HOST=localhost
 
 script:
   - tox
