@@ -2308,6 +2308,8 @@ properties:
         type: keyword
       shortest_dimension:
         type: double
+      specimen_type:
+        type: keyword
       state:
         type: keyword
       submitter_id:

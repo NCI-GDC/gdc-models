@@ -2297,6 +2297,9 @@ properties:
             type: keyword
           shortest_dimension:
             type: double
+          specimen_type:
+            normalizer: clinical_normalizer
+            type: keyword
           state:
             normalizer: clinical_normalizer
             type: keyword
