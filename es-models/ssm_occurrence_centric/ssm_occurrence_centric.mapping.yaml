@@ -468,7 +468,15 @@ properties:
             type: keyword
       samples:
         properties:
+          preservation_method:
+            type: keyword
           sample_type:
+            type: keyword
+          specimen_type:
+            type: keyword
+          tissue_type:
+            type: keyword
+          tumor_descriptor:
             type: keyword
       state:
         type: keyword
