@@ -214,7 +214,7 @@ def non_meta_descriptions_mappings(tmp_path):
 def es():
     """Create an Elasticsearch client for the test cluster."""
     return elasticsearch.Elasticsearch(
-        hosts=["localhost:9200"], timeout=30
+        hosts=[f"{os.getenv('ES_HOST', 'localhost')}:9200"], timeout=30
     )
 
 

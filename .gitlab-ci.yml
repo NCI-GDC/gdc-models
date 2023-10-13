@@ -1,0 +1,18 @@
+---
+include:
+  - project: nci-gdc/gitlab-templates
+    ref: 0.3.1
+    file:
+      - templates/global/full.yaml
+      - templates/python/full.yaml
+      - templates/common/python.yaml
+
+tox:
+  services:
+    - name: docker.osdc.io/ncigdc/ci-elasticsearch-7:${BASE_CONTAINER_VERSION}
+      alias: elasticsearch
+  variables:
+    ES_HOST: elasticsearch
+  script:
+    - pip install tox
+    - tox -r -e py
