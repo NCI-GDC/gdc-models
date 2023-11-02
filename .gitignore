@@ -40,7 +40,7 @@ coverage.xml
 .pytest_cache/
 pytestdebug.log
 
-# Jenkins 
+# Jenkins
 .local/
 .eggs/
 .ssh/
@@ -81,3 +81,4 @@ docs/_build
 .appveyor.token
 *.bak
 *.log
+test-reports/*
