@@ -19,7 +19,10 @@ setup(
         "Intended Audience :: Developers",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
     ],
     license="Apache",
     setup_requires=["setuptools_scm<6"],
@@ -28,11 +31,18 @@ setup(
         exclude=["scripts", "*-models", "*.tests", "*.tests.*", "tests.*", "tests"]
     ),
     install_requires=[
-        "PyYAML>=3.11,<6",
+        "PyYAML~=6.0",
         "elasticsearch>=7.0.0,<8.0.0",
-        "deepdiff~=6.5.0",
-        "mergedeep~=1.3.4",
+        "deepdiff~=6.5",
+        "mergedeep~=1.3",
     ],
+    extras_require = {
+        "dev": (
+            "elasticsearch-dsl~=7.4",
+            "pytest~=7.0",
+            "pytest-cov~=4.0"
+        )
+    },
     python_requires=">=3.7",
     package_data={"gdcmodels": ["es-models/*/*.yaml"]},
     entry_points={"console_scripts": ["init_index=gdcmodels.init_index:main"]},

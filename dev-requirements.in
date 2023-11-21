@@ -1,6 +1,0 @@
--c requirements.txt
-
-pytest~=4.6
-pytest-cov~=2.7
-pre-commit~=1.21.0
-elasticsearch-dsl~=7.4
