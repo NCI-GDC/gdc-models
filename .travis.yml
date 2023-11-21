@@ -1,3 +1,4 @@
+dist: focal
 sudo: true
 language: python
 env:
@@ -5,7 +6,10 @@ env:
     - ES_VERSION="7.7.1"
     - ES_HOST=localhost
 python:
-  - "3.7"
+  - "3.8"
+  - "3.9"
+  - "3.10"
+  - "3.11"
 
 before_install:
   - sudo rm -rf /var/lib/elasticsearch
@@ -20,7 +24,6 @@ before_script:
 
 install:
   - pip install tox-travis
-
 
 script:
   - tox
