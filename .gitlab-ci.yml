@@ -18,3 +18,11 @@ tox:
     ES_HOST: elasticsearch
   script:
     - tox -r -e py --colored yes
+
+
+release:
+  variables:
+    RELEASE_PY_VERSION: python3.8
+  before_script:
+    - git fetch --unshallow || true
+    - echo "CI_COMMIT_REF_NAME=$CI_COMMIT_REF_NAME"
