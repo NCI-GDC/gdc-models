@@ -1,11 +1,12 @@
 ---
 include:
   - project: nci-gdc/gitlab-templates
-    ref: 0.5.1
+    ref: 0.6.0
     file:
       - templates/global/full.yaml
       - templates/python/full.yaml
       - templates/common/python.yaml
+      - templates/common/trigger.yaml
 
 tox:
   parallel:
