@@ -17,5 +17,4 @@ tox:
   variables:
     ES_HOST: elasticsearch
   script:
-    - pip install tox
-    - tox -r -e py
+    - tox -r -e py --colored yes
