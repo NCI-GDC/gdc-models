@@ -33,3 +33,11 @@ release:
   before_script:
     - git fetch --unshallow || true
     - echo "CI_COMMIT_REF_NAME=$CI_COMMIT_REF_NAME"
+
+.downstream_repos:
+  parallel:
+    matrix:
+      - TRIGGERED_REPO: 7
+        NAME: gdcapi
+      - TRIGGERED_REPO: 79
+        NAME: esbuild
