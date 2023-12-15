@@ -1,7 +1,7 @@
 ---
 include:
   - project: nci-gdc/gitlab-templates
-    ref: 0.3.1
+    ref: 0.5.1
     file:
       - templates/global/full.yaml
       - templates/python/full.yaml
@@ -17,5 +17,12 @@ tox:
   variables:
     ES_HOST: elasticsearch
   script:
-    - pip install tox
-    - tox -r -e py
+    - tox -r -e py --colored yes
+
+
+release:
+  variables:
+    RELEASE_PY_VERSION: python3.8
+  before_script:
+    - git fetch --unshallow || true
+    - echo "CI_COMMIT_REF_NAME=$CI_COMMIT_REF_NAME"

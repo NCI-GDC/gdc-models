@@ -1,49 +1,44 @@
-from os import path
+import os
+import re
 
-from setuptools import find_packages, setup
+from setuptools import setup
+from setuptools_scm import Configuration
+from setuptools_scm._get_version_impl import parse_version
 
-here = path.abspath(path.dirname(__file__))
 
-with open(path.join(here, "README.md"), encoding="utf-8") as f:
-    long_description = f.read()
+def get_version() -> str:
+    """Create version string based on branch name.
+
+    release branch -> 1.2.3rc4
+    develop branch -> 1.2.3a4
+    other branch -> 1.2.3.dev4+<branch_name>
+
+    Returns:
+        version
+    """
+    config = Configuration()
+    version = parse_version(config)
+    # Handle version.distance None or any other unexpected falsy value that cannot be coerced to int
+    if not version.distance:
+        return str(version.tag)
+
+    from setuptools_scm.version import guess_next_version
+
+    branch = os.getenv("CI_COMMIT_REF_NAME", version.branch)
+    if branch.startswith("release"):
+        fmt = "{guessed}rc{distance}"
+    elif branch.startswith("develop"):
+        fmt = "{guessed}a{distance}"
+    else:
+        local = re.sub("[^0-9a-zA-Z]+", ".", branch)
+        fmt = f"{{guessed}}.dev{{distance}}+{local}"
+
+    return version.format_next_version(guess_next_version, fmt)
+
 
 setup(
-    name="gdcmodels",
-    description="Stores and serves GDC data models defined in static YAML files.",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    author="NCI GDC",
-    author_email="gdc_dev_questions-aaaaae2lhsbell56tlvh3upgoq@cdis.slack.com",
-    url="https://github.com/NCI-GDC/gdcdatamodel",
-    classifiers=[
-        "Intended Audience :: Developers",
-        "Programming Language :: Python",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3.10",
-        "Programming Language :: Python :: 3.11",
-    ],
-    license="Apache",
-    setup_requires=["setuptools_scm<6"],
-    use_scm_version={"local_scheme": "dirty-tag", "fallback_version": "local"},
-    packages=find_packages(
-        exclude=["scripts", "*-models", "*.tests", "*.tests.*", "tests.*", "tests"]
-    ),
-    install_requires=[
-        "PyYAML~=6.0",
-        "elasticsearch>=7.0.0,<8.0.0",
-        "deepdiff~=6.5",
-        "mergedeep~=1.3",
-    ],
-    extras_require = {
-        "dev": (
-            "elasticsearch-dsl~=7.4",
-            "pytest~=7.0",
-            "pytest-cov~=4.0"
-        )
+    setuptools_git_versioning={
+        "enabled": True,
+        "version_callback": get_version,
     },
-    python_requires=">=3.7",
-    package_data={"gdcmodels": ["es-models/*/*.yaml"]},
-    entry_points={"console_scripts": ["init_index=gdcmodels.init_index:main"]},
 )
