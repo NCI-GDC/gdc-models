@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=45", "wheel", "setuptools_scm", "setuptools_git_versioning<2"]
+requires = ["setuptools>=60", "wheel", "setuptools_scm==8.0.4", "setuptools_git_versioning<2"]
 build-backend = "setuptools.build_meta"
 
 [tool.black]
@@ -22,5 +22,5 @@ line_length = 98              # match black config
 known_first_party = ["gdcmodels"]
 
 [tool.setuptools_scm]
-local_scheme = "dirty-tag"
+local_scheme = "no-local-version"
 fallback_version = "local"
