@@ -18,4 +18,4 @@ repos:
         entry: ./scripts/format_yaml.sh
         language: python
         types: [ yaml ]
-        additional_dependencies: [ 'PyYAML<6' ]
+        additional_dependencies: [ 'PyYAML' ]
