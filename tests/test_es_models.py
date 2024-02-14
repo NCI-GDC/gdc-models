@@ -95,6 +95,27 @@ def test__get_es_models__no_descriptions(es_models: pathlib.Path) -> None:
     assert mapping == models["foo"]["foo"]["_mapping"]
 
 
+def test__get_es_models__no_settings(es_models: pathlib.Path) -> None:
+    """
+    Test that default behavior without descriptions is preserved
+    """
+    mapping = {
+        "properties": {
+            "foo": {"type": "keyword"},
+            "bar": {"type": "long"},
+        }
+    }
+
+    utils.load_model(es_models, "foo", mapping)
+
+    models = gdcmodels.get_es_models()
+
+    assert "foo" in models
+    assert {} == models["foo"]["_settings"]
+    assert "foo" in models["foo"]
+    assert mapping == models["foo"]["foo"]["_mapping"]
+
+
 def test__get_es_models__empty_descriptions(es_models: pathlib.Path) -> None:
     """
     Test that empty _meta descriptions are picked up as expected
@@ -135,3 +156,87 @@ def test__get_es_models__with_descriptions(es_models: pathlib.Path) -> None:
     assert {"_meta": {"descriptions": descriptions}, **mapping} == models["foo"]["foo"][
         "_mapping"
     ]
+
+
+def test__get_es_models__with_vestigial_properties(es_models: pathlib.Path) -> None:
+    mapping = {
+        "properties": {
+            "foo": {"type": "keyword"},
+            "bar": {"type": "long"},
+        }
+    }
+    settings: dict = {}
+    vestigial = {
+        "dictionary_item_added": {
+            "root['properties']['vestigial']": {
+                "properties": {
+                    "obj": {
+                        "properties": {
+                            "vestigial_id": {
+                                "type": "keyword",
+                                "normalizer": "clinical_normalizer",
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    utils.load_model(es_models, "foo", mapping, settings, vestigial=vestigial)
+
+    models = gdcmodels.get_es_models()
+
+    assert "foo" in models
+    assert "foo" in models["foo"]
+    assert {
+        "properties": {
+            "vestigial": {
+                "properties": {
+                    "obj": {
+                        "properties": {
+                            "vestigial_id": {
+                                "type": "keyword",
+                                "normalizer": "clinical_normalizer",
+                            }
+                        }
+                    }
+                }
+            },
+            **mapping["properties"],
+        }
+    } == models["foo"]["foo"]["_mapping"]
+
+
+def test__get_es_models__exclude_vestigial_properties(es_models: pathlib.Path) -> None:
+    mapping = {
+        "properties": {
+            "foo": {"type": "keyword"},
+            "bar": {"type": "long"},
+        }
+    }
+    settings: dict = {}
+    vestigial = {
+        "dictionary_item_added": {
+            "root['properties']['vestigial']": {
+                "properties": {
+                    "obj": {
+                        "properties": {
+                            "vestigial_id": {
+                                "type": "keyword",
+                                "normalizer": "clinical_normalizer",
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    utils.load_model(es_models, "foo", mapping, settings, vestigial=vestigial)
+
+    models = gdcmodels.get_es_models(vestigial_included=False)
+
+    assert "foo" in models
+    assert "foo" in models["foo"]
+    assert mapping == models["foo"]["foo"]["_mapping"]

@@ -1,29 +1,30 @@
 import collections
-import pathlib
+import functools
 from typing import (
     Any,
     DefaultDict,
     Dict,
-    Iterable,
     Iterator,
     Literal,
+    Mapping,
     NamedTuple,
     Protocol,
     Sequence,
-    Tuple,
     Union,
     cast,
     overload,
-    Mapping,
 )
-from typing_extensions import TypedDict, NotRequired
-import importlib_resources as resources
-from importlib_resources import abc
-import yaml
+
 import deepdiff
+import importlib_resources as resources
+import yaml
+from importlib_resources import abc
+from typing_extensions import NotRequired, TypedDict
 
 
 class Meta(TypedDict):
+    """The metadata associated with a mapping."""
+
     descriptions: Dict[str, str]
 
 
@@ -31,65 +32,94 @@ Properties = Dict[str, Union["Property", "Autocomplete"]]
 
 
 class Property(TypedDict):
+    """A property in an es mapping."""
+
     normalizer: NotRequired[str]
     type: NotRequired[Literal["boolean", "double", "keyword", "long"]]
     copy_to: NotRequired[Sequence[str]]
     properties: NotRequired[Properties]
 
 
-class InnerAutocomplete(TypedDict):
+class AutocompleteField(TypedDict):
+    """An autocomplete field's details in an es mapping."""
+
     analyzer: str
     search_analyzer: str
     type: str
 
 
 class Autocomplete(Property):
-    fields: Dict[str, InnerAutocomplete]
+    """An autocomplete object in an es mapping."""
+
+    fields: Dict[str, AutocompleteField]
 
 
-class InnerMapping(TypedDict):
+class ESMapping(TypedDict):
+    """An elasticsearch mapping."""
+
     _meta: NotRequired[Meta]
     properties: Properties
 
 
-class ESMapping(TypedDict):
-    _mapping: InnerMapping
+class DocType(TypedDict):
+    """A document type and its details."""
+
+    _mapping: ESMapping
 
 
 class Index(Protocol):
-    @overload
-    def __getitem__(self, key: Literal["_settings"]) -> dict: ...  # type: ignore
+    """An index and its associated details.
+
+    NOTE: This is a bit of a workaround because a TypeDict w/ a _settings field cannot
+    also be a Dict[str, DocType]. MyPy doesn't love this as the first overload can be
+    confused with the second but this should allow most type hinters to hint property
+    when accessing these keys in the associated dict.
+    """
 
     @overload
-    def __getitem__(self, key: str) -> ESMapping: ...
+    def __getitem__(self, key: Literal["_settings"]) -> dict:  # type: ignore
+        pass  # pragma: no cover
 
-    def __getitem__(self, key: str) -> Any: ...
+    @overload
+    def __getitem__(self, key: str) -> DocType:
+        pass  # pragma: no cover
 
-    def get(self, key: str, default: ESMapping) -> ESMapping: ...
+    def __getitem__(self, key: str) -> Any:
+        pass  # pragma: no cover
 
-    def __contains__(self, key: str) -> bool: ...
+    def get(self, key: str, default: DocType) -> DocType:  # type: ignore
+        pass  # pragma: no cover
+
+    def __contains__(self, key: str) -> bool:  # type: ignore
+        pass  # pragma: no cover
 
 
 class MutableIndex(Index, Protocol):
 
-    def __setitem__(self, key: str, value: Any) -> None: ...
+    def __setitem__(self, key: str, value: Any) -> None:
+        pass  # pragma: no cover
 
 
 Models = Mapping[str, Index]
 
 
 class _MappingDetail(NamedTuple):
+    """The various details needed to load a given mapping."""
+
     index_name: str
     doc_type: str
-    mapping: pathlib.Path
-    settings: pathlib.Path
-    descriptions: pathlib.Path
-    vestigial: pathlib.Path
+    mapping: abc.Traversable
+    settings: abc.Traversable
+    descriptions: abc.Traversable
+    vestigial: abc.Traversable
 
 
-def _extract_details(models_dir: pathlib.Path) -> Iterator[_MappingDetail]:
-    """
-    Index File Struct:
+def _extract_details(models: abc.Traversable) -> Iterator[_MappingDetail]:
+    """Extracts the mapping details from the models resource.
+
+    This works with the following model/index file structures within the given models
+    directory:
+
     1.
         index/
             mapping.yaml
@@ -103,69 +133,106 @@ def _extract_details(models_dir: pathlib.Path) -> Iterator[_MappingDetail]:
                 vestigial.yaml
             settings.yaml?
             descriptions.yaml?
+
+    Args:
+        models: The gdcmodes es-models resource from which to extract the mapping
+            details.
+
+    Yields:
+        The details associated with each model/mapping found within the models resource.
     """
 
-    def extract_dirs(index: pathlib.Path) -> Tuple[pathlib.Path, Iterable[pathlib.Path]]:
-        mappings: Iterable[pathlib.Path] = index.glob("**/mapping.yaml")
-        mappings = map(lambda m: m.relative_to(models_dir), mappings)
+    def _extract_detail(
+        index_name: str,
+        settings: abc.Traversable,
+        descriptions: abc.Traversable,
+        doc_type: abc.Traversable,
+    ) -> _MappingDetail:
+        mapping = doc_type / "mapping.yaml"
+        vestigial = doc_type / "vestigial.yaml"
 
-        return index.relative_to(models_dir), mappings
+        return _MappingDetail(
+            index_name, doc_type.name, mapping, settings, descriptions, vestigial
+        )
 
-    indices = (extract_dirs(index) for index in models_dir.iterdir() if index.is_dir())
-
-    for index, mappings in indices:
+    for index in models.iterdir():
         index_name = index.name
         settings = index / "settings.yaml"
         descriptions = index / "descriptions.yaml"
+        extract_detail = functools.partial(_extract_detail, index_name, settings, descriptions)
 
-        for mapping in mappings:
-            # in structure 1 this is the index name.
-            doc_type = mapping.parent.name
-            vestigial = mapping.parent / "vestigial.yaml"
+        # If mapping.yaml is a file then we have struct 1 and the index file can be
+        # considered the doc_type
+        if index.joinpath("mapping.yaml").is_file():
+            yield extract_detail(index)
 
-            yield _MappingDetail(index_name, doc_type, mapping, settings, descriptions, vestigial)
+        # Otherwise, we have struct 2 and each sub dir is a doc_type
+        else:
+            doc_types = (p for p in index.iterdir() if p.is_dir())
+
+            yield from map(extract_detail, doc_types)
 
 
-def _extract_inner_mapping(
-    models: abc.Traversable, detail: _MappingDetail, vestigial_included: bool
-) -> InnerMapping:
-    mapping_file = models / detail.mapping
-    vestigial_file = models / detail.vestigial
-    descriptions_file = models / detail.descriptions
-    mapping = yaml.safe_load(mapping_file.read_bytes())
+def _extract_es_mapping(detail: _MappingDetail, vestigial_included: bool) -> ESMapping:
+    """Extract the elasticsearch mapping described in the given detail.
 
-    if vestigial_included and vestigial_file.is_file():
-        vestigial_delta = deepdiff.Delta(vestigial_file.read_text(), deserializer=yaml.safe_load)
+    Args:
+        detail: The detail with the relavant paths from which to load the mapping.
+        vestigial_included: A flag which determins if the vestial properties should be
+            included when loading the mapping.
+
+    Returns:
+        The ESMapping loaded from the paths within the given detail.
+    """
+    mapping = yaml.safe_load(detail.mapping.read_bytes())
+
+    if vestigial_included and detail.vestigial.is_file():
+        vestigial_delta = deepdiff.Delta(
+            detail.vestigial.read_text(), deserializer=yaml.safe_load
+        )
         mapping += vestigial_delta
 
-    if descriptions_file.is_file():
-        mapping["_meta"] = {"descriptions": yaml.safe_load(descriptions_file.read_bytes())}
+    if detail.descriptions.is_file():
+        descriptions = yaml.safe_load(detail.descriptions.read_bytes())
+
+        if descriptions:
+            mapping["_meta"] = {"descriptions": descriptions}
 
     return mapping
 
 
-def _extract_settings(models: abc.Traversable, detail: _MappingDetail) -> dict:
-    settings_file = models / detail.settings
+def _extract_settings(detail: _MappingDetail) -> dict:
+    """Extract the settings from the given detail.
 
-    if settings_file.is_file():
-        return yaml.safe_load(settings_file.read_bytes())
+    Args:
+        detail: The detail which describes the settings to be loaded.
 
-    return {}
+    Returns:
+        The settings associated with the mapping if none are found the default are
+        provided.
+    """
+    return yaml.safe_load(detail.settings.read_bytes()) if detail.settings.is_file() else {}
 
 
 def get_es_models(vestigial_included: bool = True) -> Models:
+    """Loads all models/mappings provided by this library.
+
+    Args:
+        vestigial_included: If true the vestigial properties will be added to the
+            models. Otherwise, they are omitted.
+
+    Return:
+        The models/mappings associated with the indices configured within gdc-models.
+    """
     models = resources.files("gdcmodels") / "es-models"
-
-    with resources.as_file(models) as models_dir:
-        details = _extract_details(models_dir)
-
+    details = _extract_details(models)
     result = cast(DefaultDict[str, MutableIndex], collections.defaultdict(dict))
 
     for detail in details:
         result[detail.index_name][detail.doc_type] = {
-            "_mapping": _extract_inner_mapping(models, detail, vestigial_included)
+            "_mapping": _extract_es_mapping(detail, vestigial_included)
         }
-        result[detail.index_name]["_settings"] = _extract_settings(models, detail)
+        result[detail.index_name]["_settings"] = _extract_settings(detail)
 
     result.default_factory = None
 

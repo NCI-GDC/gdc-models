@@ -8,7 +8,7 @@ def load_model(
     models: pathlib.Path,
     index_name: str,
     mapping: dict,
-    settings: dict,
+    settings: Optional[dict] = None,
     doc_type: Optional[str] = None,
     descriptions: Optional[dict] = None,
     vestigial: Optional[dict] = None,
@@ -36,8 +36,9 @@ def load_model(
     with open(doc_type_dir / "vestigial.yaml", "w+") as f:
         yaml.safe_dump(vestigial or {}, f)
 
-    with open(index_dir / "settings.yaml", "w+") as f:
-        yaml.safe_dump(settings, f)
+    if settings:
+        with open(index_dir / "settings.yaml", "w+") as f:
+            yaml.safe_dump(settings, f)
 
     if descriptions is not None:
         with open(index_dir / "descriptions.yaml", "w+") as f:
