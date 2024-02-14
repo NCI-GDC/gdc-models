@@ -39,9 +39,7 @@ def get_parser():
         help="Connect to Elasticsearch over SSL",
     )
     parser.add_argument("--ssl-ca", help="Path to CA certificate bundle for SSL")
-    parser.add_argument(
-        "--user", dest="user", default="", help="Elasticsearch client user"
-    )
+    parser.add_argument("--user", dest="user", default="", help="Elasticsearch client user")
     parser.add_argument(
         "--password", dest="password", default="", help="Elasticsearch client password"
     )
@@ -92,8 +90,7 @@ def confirm_delete(index_name):
         bool: Whether the user confirmed deletion.
     """
     ans = input(
-        "Confirm deleting existing {} index by typing the "
-        "index name: ".format(index_name)
+        "Confirm deleting existing {} index by typing the " "index name: ".format(index_name)
     )
 
     return ans == index_name
@@ -106,8 +103,7 @@ def init_index(args):
     for index in args.index:
         if not es_models.get(index):
             print(
-                "Specified index '{}' is not defined in es-models,"
-                " skipping it!".format(index)
+                "Specified index '{}' is not defined in es-models," " skipping it!".format(index)
             )
             continue
 
@@ -116,7 +112,9 @@ def init_index(args):
                 continue  # settings, not index type
 
             full_index_name = format_index_name(
-                prefix=args.prefix, index=index, index_type=index_type,
+                prefix=args.prefix,
+                index=index,
+                index_type=index_type,
             )
 
             if es.indices.exists(index=full_index_name):
@@ -144,7 +142,7 @@ def init_index(args):
                 "settings": es_models[index]["_settings"],
                 "mappings": es_models[index][index_type]["_mapping"],
             }
-            es.indices.create(index=full_index_name, body=body)
+            es.indices.create(index=full_index_name, **body)
 
 
 def main():

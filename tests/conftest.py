@@ -1,21 +1,18 @@
 import os
 import pathlib
 from typing import Callable, Iterator
-import pkg_resources
 
 import elasticsearch
+import importlib_resources
 import pytest
 
 
 @pytest.fixture
 def es_models(tmp_path: pathlib.Path, monkeypatch: pytest.MonkeyPatch) -> pathlib.Path:
-    """Creates a temporary es-models directory and ensures via patching that it is
-    loaded by the resources library.
-    """
     models = tmp_path / "es-models"
 
     models.mkdir()
-    monkeypatch.setattr(pkg_resources, "resource_filename", lambda *_: models)
+    monkeypatch.setattr(importlib_resources, "files", lambda _: tmp_path)
 
     return models
 

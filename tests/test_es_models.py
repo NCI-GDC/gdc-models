@@ -123,14 +123,7 @@ def test__get_es_models__with_descriptions(es_models: pathlib.Path) -> None:
             "bar": {"type": "long"},
         }
     }
-    descriptions = {
-        "_meta": {
-            "descriptions": {
-                "foo": "A footacular prop.",
-                "bar": "Should be 'bar'ed from exsistance.",
-            }
-        }
-    }
+    descriptions = {"this_property": "something"}
     settings: dict = {}
 
     utils.load_model(es_models, "foo", mapping, settings, descriptions=descriptions)
@@ -139,4 +132,6 @@ def test__get_es_models__with_descriptions(es_models: pathlib.Path) -> None:
 
     assert "foo" in models
     assert "foo" in models["foo"]
-    assert {**mapping, **descriptions} == models["foo"]["foo"]["_mapping"]
+    assert {"_meta": {"descriptions": descriptions}, **mapping} == models["foo"]["foo"][
+        "_mapping"
+    ]

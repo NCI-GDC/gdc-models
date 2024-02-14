@@ -11,6 +11,7 @@ def load_model(
     settings: dict,
     doc_type: Optional[str] = None,
     descriptions: Optional[dict] = None,
+    vestigial: Optional[dict] = None,
 ) -> None:
     """A util for loading an index/doc_type into the given models directory.
 
@@ -25,12 +26,15 @@ def load_model(
         vestigial: The vestigial properties associated with the doc_type mapping.
     """
     index_dir = models / index_name
-    doc_type = doc_type or index_name
+    doc_type_dir = index_dir / doc_type if doc_type else index_dir
 
-    index_dir.mkdir(parents=True, exist_ok=True)
+    doc_type_dir.mkdir(parents=True, exist_ok=True)
 
-    with open(index_dir / f"{doc_type}.mapping.yaml", "w+") as f:
+    with open(doc_type_dir / "mapping.yaml", "w+") as f:
         yaml.safe_dump(mapping, f)
+
+    with open(doc_type_dir / "vestigial.yaml", "w+") as f:
+        yaml.safe_dump(vestigial or {}, f)
 
     with open(index_dir / "settings.yaml", "w+") as f:
         yaml.safe_dump(settings, f)
