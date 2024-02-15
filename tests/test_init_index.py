@@ -11,10 +11,10 @@ from typing_extensions import Protocol
 import gdcmodels
 from gdcmodels import init_index
 
-if sys.version_info >= (3, 9):
-    from importlib import resources
-else:
+if sys.version_info < (3, 9):
     import importlib_resources as resources
+else:
+    from importlib import resources
 
 
 class Files(NamedTuple):
