@@ -2,12 +2,32 @@
 
 import argparse
 import sys
+from typing import cast
+from typing_extensions import Protocol, Optional, Iterable
 
-from elasticsearch import Elasticsearch
-from gdcmodels import get_es_models, esutils
+import elasticsearch
+
+import gdcmodels
 
 
-def get_parser():
+class Arguments(Protocol):
+    index: str
+    prefix: str
+    host: str
+    port: int
+    ssl: bool
+    ssl_ca: str
+    user: str
+    password: str
+    delete: bool
+
+
+class ArgumentParser(Protocol):
+    def parse_args(self, args: Optional[Iterable] = None) -> Arguments:  # type: ignore
+        pass  # pragma: no cover
+
+
+def get_parser() -> ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Initialize ES index(es) with settings and mappings."
     )
@@ -31,6 +51,7 @@ def get_parser():
         "--port",
         dest="port",
         default=9200,
+        type=int,
         help="Elasticsearch server port (default: 9200)",
     )
     parser.add_argument(
@@ -39,9 +60,7 @@ def get_parser():
         help="Connect to Elasticsearch over SSL",
     )
     parser.add_argument("--ssl-ca", help="Path to CA certificate bundle for SSL")
-    parser.add_argument(
-        "--user", dest="user", default="", help="Elasticsearch client user"
-    )
+    parser.add_argument("--user", dest="user", default="", help="Elasticsearch client user")
     parser.add_argument(
         "--password", dest="password", default="", help="Elasticsearch client password"
     )
@@ -52,18 +71,18 @@ def get_parser():
         help="Delete existing index with the same name",
     )
 
-    return parser
+    return cast(ArgumentParser, parser)
 
 
-def format_index_name(prefix, index, index_type=None):
+def format_index_name(prefix: str, index: str, index_type=None):
     """Format the actual index name to create."""
     if index_type is None or index_type == index:
-        return "_".join([prefix, index])
+        return f"{prefix}_{index}"
     else:
-        return "_".join([prefix, index, index_type])
+        return f"{prefix}_{index}_{index_type}"
 
 
-def get_elasticsearch(args):
+def get_elasticsearch(args: Arguments) -> elasticsearch.Elasticsearch:
     """Create an Elasticsearch client according to the given CLI args.
 
     Args:
@@ -72,7 +91,7 @@ def get_elasticsearch(args):
     Returns:
         Elasticsearch: ES client instance
     """
-    return Elasticsearch(
+    return elasticsearch.Elasticsearch(
         hosts=[{"host": args.host, "port": args.port}],
         use_ssl=args.ssl,
         ca_certs=args.ssl_ca,
@@ -81,7 +100,7 @@ def get_elasticsearch(args):
     )
 
 
-def confirm_delete(index_name):
+def confirm_delete(index_name: str) -> bool:
     """Prompt the user to confirm that the given index should be deleted.
 
     Args:
@@ -91,46 +110,39 @@ def confirm_delete(index_name):
     Returns:
         bool: Whether the user confirmed deletion.
     """
-    ans = input(
-        "Confirm deleting existing {} index by typing the "
-        "index name: ".format(index_name)
-    )
+    ans = input(f"Confirm deleting existing {index_name} index by typing the " "index name: ")
 
     return ans == index_name
 
 
-def init_index(args):
-    es_models = get_es_models()
+def init_index(args: Arguments):
+    es_models = gdcmodels.get_es_models(vestigial_included=False)
     es = get_elasticsearch(args)
 
     for index in args.index:
         if not es_models.get(index):
-            print(
-                "Specified index '{}' is not defined in es-models,"
-                " skipping it!".format(index)
-            )
+            print(f"Specified index '{index}' is not defined in es-models," " skipping it!")
             continue
 
-        for index_type in es_models[index]:
+        for index_type in es_models[index].keys():
             if index_type == "_settings":
                 continue  # settings, not index type
 
             full_index_name = format_index_name(
-                prefix=args.prefix, index=index, index_type=index_type,
+                prefix=args.prefix,
+                index=index,
+                index_type=index_type,
             )
 
             if es.indices.exists(index=full_index_name):
                 if not args.delete:
                     print(
-                        "Elasticsearch index '{}' exists, "
-                        "'--delete' not specified, skipping".format(full_index_name)
+                        f"Elasticsearch index '{full_index_name}' exists, "
+                        "'--delete' not specified, skipping"
                     )
                     continue
                 else:
-                    print(
-                        "Elasticsearch index '{}' exists, "
-                        "'--delete' specified".format(full_index_name)
-                    )
+                    print(f"Elasticsearch index '{full_index_name}' exists, '--delete' specified")
                     if confirm_delete(full_index_name):
                         print(f"Deleting existing index '{full_index_name}'")
                         es.indices.delete(index=full_index_name)
@@ -140,11 +152,11 @@ def init_index(args):
 
             print(f"Creating index '{full_index_name}'")
 
-            body = {
-                "settings": es_models[index]["_settings"],
-                "mappings": es_models[index][index_type]["_mapping"],
-            }
-            es.indices.create(index=full_index_name, body=body)
+            es.indices.create(
+                index=full_index_name,
+                settings=es_models[index]["_settings"],
+                mappings=es_models[index][index_type]["_mapping"],
+            )
 
 
 def main():

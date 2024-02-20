@@ -1,4 +1,3 @@
-import argparse
 import contextlib
 import sys
 from typing import Any, Callable, Iterator, NamedTuple, Optional, Sequence
@@ -87,7 +86,7 @@ def load_yaml(resource_name: str) -> dict:
 class GetArgs(Protocol):
     """A function for parsing the given arges into a Namespace."""
 
-    def __call__(self, *args: str) -> argparse.Namespace: ...
+    def __call__(self, *args: str) -> init_index.Arguments: ...
 
 
 @pytest.fixture(scope="class")
@@ -105,7 +104,7 @@ def get_args(es: elasticsearch.Elasticsearch) -> GetArgs:
     host_info = es.transport.hosts[0]
     es_args = ("--host", host_info["host"], "--port", str(host_info["port"]))
 
-    def parse(*args: str) -> argparse.Namespace:
+    def parse(*args: str) -> init_index.Arguments:
         actual_args = (*es_args, *args)
         return init_index.get_parser().parse_args(actual_args)
 
