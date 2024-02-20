@@ -28,63 +28,53 @@ class Models:
 
     class Graph:
         ANNOTATION = Files(
-            "es-models/gdc_from_graph/annotation.mapping.yaml",
+            "es-models/gdc_from_graph/annotation/mapping.yaml",
             "es-models/gdc_from_graph/settings.yaml",
             "es-models/gdc_from_graph/descriptions.yaml",
         )
         CASE = Files(
-            "es-models/gdc_from_graph/case.mapping.yaml",
+            "es-models/gdc_from_graph/case/mapping.yaml",
             "es-models/gdc_from_graph/settings.yaml",
             "es-models/gdc_from_graph/descriptions.yaml",
         )
         FILE = Files(
-            "es-models/gdc_from_graph/file.mapping.yaml",
+            "es-models/gdc_from_graph/file/mapping.yaml",
             "es-models/gdc_from_graph/settings.yaml",
             "es-models/gdc_from_graph/descriptions.yaml",
         )
         PROJECT = Files(
-            "es-models/gdc_from_graph/project.mapping.yaml",
+            "es-models/gdc_from_graph/project/mapping.yaml",
             "es-models/gdc_from_graph/settings.yaml",
             "es-models/gdc_from_graph/descriptions.yaml",
         )
 
     class Viz:
         CASE_CENTRIC = Files(
-            "es-models/case_centric/case_centric.mapping.yaml",
-            "es-models/case_centric/settings.yaml",
+            "es-models/case_centric/mapping.yaml", "es-models/case_centric/settings.yaml"
         )
         CNV_CENTRIC = Files(
-            "es-models/cnv_centric/cnv_centric.mapping.yaml",
-            "es-models/cnv_centric/settings.yaml",
+            "es-models/cnv_centric/mapping.yaml", "es-models/cnv_centric/settings.yaml"
         )
         CNV_OCCURRENCE_CENTRIC = Files(
-            "es-models/cnv_occurrence_centric/cnv_occurrence_centric.mapping.yaml",
+            "es-models/cnv_occurrence_centric/mapping.yaml",
             "es-models/cnv_occurrence_centric/settings.yaml",
         )
         GENE_CENTRIC = Files(
-            "es-models/gene_centric/gene_centric.mapping.yaml",
-            "es-models/gene_centric/settings.yaml",
+            "es-models/gene_centric/mapping.yaml", "es-models/gene_centric/settings.yaml"
         )
         SSM_CENTRIC = Files(
-            "es-models/ssm_centric/ssm_centric.mapping.yaml",
-            "es-models/ssm_centric/settings.yaml",
+            "es-models/ssm_centric/mapping.yaml", "es-models/ssm_centric/settings.yaml"
         )
         SSM_OCCURRENCE_CENTRIC = Files(
-            "es-models/ssm_occurrence_centric/ssm_occurrence_centric.mapping.yaml",
+            "es-models/ssm_occurrence_centric/mapping.yaml",
             "es-models/ssm_occurrence_centric/settings.yaml",
         )
 
     class Sets:
-        CASE = Files(
-            "es-models/case_set/case_set.mapping.yaml", "es-models/case_set/settings.yaml"
-        )
-        FILE = Files(
-            "es-models/file_set/file_set.mapping.yaml", "es-models/file_set/settings.yaml"
-        )
-        GENE = Files(
-            "es-models/gene_set/gene_set.mapping.yaml", "es-models/gene_set/settings.yaml"
-        )
-        SSM = Files("es-models/ssm_set/ssm_set.mapping.yaml", "es-models/ssm_set/settings.yaml")
+        CASE = Files("es-models/case_set/mapping.yaml", "es-models/case_set/settings.yaml")
+        FILE = Files("es-models/file_set/mapping.yaml", "es-models/file_set/settings.yaml")
+        GENE = Files("es-models/gene_set/mapping.yaml", "es-models/gene_set/settings.yaml")
+        SSM = Files("es-models/ssm_set/mapping.yaml", "es-models/ssm_set/settings.yaml")
 
 
 def load_yaml(resource_name: str) -> dict:
@@ -142,7 +132,7 @@ def validate_index(es: elasticsearch.Elasticsearch) -> Validate:
 
         expected_mapping = load_yaml(files.mapping)
         if files.descriptions:
-            expected_mapping.update(load_yaml(files.descriptions))
+            expected_mapping["_meta"] = {"descriptions": load_yaml(files.descriptions)}
 
         assert index_info[index_name]["mappings"] == expected_mapping
 

@@ -1,11 +1,16 @@
 import os
 import pathlib
+import sys
 import tempfile
 from typing import Callable, Iterator
 
 import elasticsearch
-import pkg_resources
 import pytest
+
+if sys.version_info < (3, 9):
+    import importlib_resources as resources
+else:
+    from importlib import resources
 
 
 @pytest.fixture
@@ -15,9 +20,11 @@ def es_models(monkeypatch: pytest.MonkeyPatch) -> Iterator[pathlib.Path]:
     """
 
     with tempfile.TemporaryDirectory() as tmp_dir:
-        models = pathlib.Path(tmp_dir)
+        root = pathlib.Path(tmp_dir)
+        models = root / "es-models"
 
-        monkeypatch.setattr(pkg_resources, "resource_filename", lambda *_: models)
+        models.mkdir()
+        monkeypatch.setattr(resources, "files", lambda *_: root)
 
         yield models
 
