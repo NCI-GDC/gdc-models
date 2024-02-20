@@ -5,7 +5,6 @@ import tempfile
 from typing import Callable, Iterator
 
 import elasticsearch
-import importlib_resources
 import pytest
 
 if sys.version_info < (3, 9):
