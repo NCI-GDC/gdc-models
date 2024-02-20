@@ -1,15 +1,20 @@
 import argparse
 import contextlib
+import sys
 from typing import Any, Callable, Iterator, NamedTuple, Optional, Sequence
 
 import elasticsearch
-import importlib_resources as resources
 import pytest
 import yaml
 from typing_extensions import Protocol
 
 import gdcmodels
 from gdcmodels import init_index
+
+if sys.version_info < (3, 9):
+    import importlib_resources as resources
+else:
+    from importlib import resources
 
 
 class Files(NamedTuple):

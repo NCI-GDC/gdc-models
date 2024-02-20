@@ -1,5 +1,6 @@
 import collections
 import functools
+import sys
 from typing import (
     Any,
     DefaultDict,
@@ -16,10 +17,17 @@ from typing import (
 )
 
 import deepdiff
-import importlib_resources as resources
 import yaml
-from importlib_resources import abc
 from typing_extensions import NotRequired, TypedDict
+
+if sys.version_info < (3, 9):
+    import importlib_resources as resources
+    from importlib_resources import abc
+else:
+    from importlib import abc, resources
+
+
+load_yaml = functools.partial(yaml.load, Loader=yaml.CSafeLoader)
 
 
 class Meta(TypedDict):
@@ -184,16 +192,14 @@ def _extract_es_mapping(detail: _MappingDetail, vestigial_included: bool) -> ESM
     Returns:
         The ESMapping loaded from the paths within the given detail.
     """
-    mapping = yaml.safe_load(detail.mapping.read_bytes())
+    mapping = load_yaml(detail.mapping.read_bytes())
 
     if vestigial_included and detail.vestigial.is_file():
-        vestigial_delta = deepdiff.Delta(
-            detail.vestigial.read_text(), deserializer=yaml.safe_load
-        )
+        vestigial_delta = deepdiff.Delta(detail.vestigial.read_text(), deserializer=load_yaml)
         mapping += vestigial_delta
 
     if detail.descriptions.is_file():
-        descriptions = yaml.safe_load(detail.descriptions.read_bytes())
+        descriptions = load_yaml(detail.descriptions.read_bytes())
 
         if descriptions:
             mapping["_meta"] = {"descriptions": descriptions}
@@ -211,7 +217,7 @@ def _extract_settings(detail: _MappingDetail) -> dict:
         The settings associated with the mapping if none are found the default are
         provided.
     """
-    return yaml.safe_load(detail.settings.read_bytes()) if detail.settings.is_file() else {}
+    return load_yaml(detail.settings.read_bytes()) if detail.settings.is_file() else {}
 
 
 def get_es_models(vestigial_included: bool = True) -> Models:
