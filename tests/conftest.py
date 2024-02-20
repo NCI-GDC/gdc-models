@@ -20,10 +20,11 @@ def es_models(monkeypatch: pytest.MonkeyPatch) -> Iterator[pathlib.Path]:
     """
 
     with tempfile.TemporaryDirectory() as tmp_dir:
-        models = pathlib.Path(tmp_dir) / "es-models"
+        root = pathlib.Path(tmp_dir)
+        models = root / "es-models"
 
         models.mkdir()
-        monkeypatch.setattr(resources, "files", lambda *_: models)
+        monkeypatch.setattr(resources, "files", lambda *_: root)
 
         yield models
 
