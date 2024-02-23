@@ -6,6 +6,7 @@ from typing import (
     DefaultDict,
     Dict,
     Iterator,
+    KeysView,
     Literal,
     Mapping,
     NamedTuple,
@@ -99,6 +100,9 @@ class Index(Protocol):
         pass  # pragma: no cover
 
     def __contains__(self, key: str) -> bool:  # type: ignore
+        pass  # pragma: no cover
+
+    def keys(self) -> KeysView[str]:  # type: ignore
         pass  # pragma: no cover
 
 
