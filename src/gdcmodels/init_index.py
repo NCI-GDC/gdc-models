@@ -110,7 +110,7 @@ def confirm_delete(index_name: str) -> bool:
     Returns:
         bool: Whether the user confirmed deletion.
     """
-    ans = input(f"Confirm deleting existing {index_name} index by typing the " "index name: ")
+    ans = input(f"Confirm deleting existing {index_name} index by typing the index name: ")
 
     return ans == index_name
 
@@ -121,7 +121,7 @@ def init_index(args: Arguments):
 
     for index in args.index:
         if not es_models.get(index):
-            print(f"Specified index '{index}' is not defined in es-models," " skipping it!")
+            print(f"Specified index '{index}' is not defined in es-models, skipping it!")
             continue
 
         for index_type in es_models[index].keys():
