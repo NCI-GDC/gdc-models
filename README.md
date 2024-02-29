@@ -17,6 +17,30 @@ Git repository centrally stores and serves GDC data models defined in static YAM
 
 ## Update the data models
 
+### Export
+
+Exporting is the process of updating the models with any properties which may be derived from external sources, normalizing keywords, as well as insuring all default mapping values are set. This process should be run after the gdcdictionary is updated and when any new property is added to the viz indices.
+
+The process can be run for any index (-i) and any of its doc-types (-d). Multiple can be spcified in the command line and if none are provided for either all of the respective type are run.
+
+#### Examples
+Run all indices/doc-types:
+```bash
+python -m gdcmodels.export
+```
+
+Run all associated doc-types:
+```bash
+python -m gdcmodels.export -i gdc_from_graph -i case_centric
+```
+
+Run a singular doc-type:
+```bash
+python -m gdcmodels.export -i gdc_from_graph -d file
+```
+
+### WARNING: YAML & Pre-Commit Hook
+
 Edit the YAML files as usual, then commit changes to git. A pre-commit hook will
 validate YAML and ensure it's well formatted. It is important to keep YAML file formatted
 consistently, such as using 2 whitespaces for indentation, across all revisions. This

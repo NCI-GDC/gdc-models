@@ -18,8 +18,9 @@ from typing import (
 )
 
 import deepdiff
-import yaml
 from typing_extensions import NotRequired, TypedDict
+
+from gdcmodels import utils
 
 if sys.version_info < (3, 9):
     import importlib_resources as resources
@@ -28,13 +29,32 @@ else:
     from importlib import abc, resources
 
 
-load_yaml = functools.partial(yaml.load, Loader=yaml.CSafeLoader)
+GRAPH_INDICES = tuple(("gdc_from_graph", d) for d in ("annotation", "case", "file", "project"))
+VIZ_INDICES = tuple(
+    (i,) * 2
+    for i in (
+        "case_centric",
+        "cnv_centric",
+        "cnv_occurrence_centric",
+        "gene_centric",
+        "ssm_centric",
+        "ssm_occurrence_centric",
+    )
+)
 
 
 class Meta(TypedDict):
     """The metadata associated with a mapping."""
 
     descriptions: Dict[str, str]
+
+
+class Size(TypedDict):
+    enabled: bool
+
+
+class Source(TypedDict):
+    excludes: Sequence[str]
 
 
 Properties = Dict[str, Union["Property", "Autocomplete"]]
@@ -44,7 +64,7 @@ class Property(TypedDict):
     """A property in an es mapping."""
 
     normalizer: NotRequired[str]
-    type: NotRequired[Literal["boolean", "double", "keyword", "long"]]
+    type: NotRequired[Literal["boolean", "double", "keyword", "long", "nested"]]
     copy_to: NotRequired[Sequence[str]]
     properties: NotRequired[Properties]
 
@@ -66,6 +86,9 @@ class Autocomplete(Property):
 class ESMapping(TypedDict):
     """An elasticsearch mapping."""
 
+    dynamic: NotRequired[str]
+    _size: NotRequired[Size]
+    _source: NotRequired[Source]
     _meta: NotRequired[Meta]
     properties: Properties
 
@@ -107,7 +130,6 @@ class Index(Protocol):
 
 
 class MutableIndex(Index, Protocol):
-
     def __setitem__(self, key: str, value: Any) -> None:
         pass  # pragma: no cover
 
@@ -127,7 +149,7 @@ class _MappingDetail(NamedTuple):
 
 
 def _extract_details(models: abc.Traversable) -> Iterator[_MappingDetail]:
-    """Extracts the mapping details from the models resource.
+    """Extract the mapping details from the models resource.
 
     This works with the following model/index file structures within the given models
     directory:
@@ -196,14 +218,16 @@ def _extract_es_mapping(detail: _MappingDetail, vestigial_included: bool) -> ESM
     Returns:
         The ESMapping loaded from the paths within the given detail.
     """
-    mapping = load_yaml(detail.mapping.read_bytes())
+    mapping = utils.load_yaml(detail.mapping.read_bytes())
 
     if vestigial_included and detail.vestigial.is_file():
-        vestigial_delta = deepdiff.Delta(detail.vestigial.read_text(), deserializer=load_yaml)
+        vestigial_delta = deepdiff.Delta(
+            detail.vestigial.read_text(), deserializer=utils.load_yaml
+        )
         mapping += vestigial_delta
 
     if detail.descriptions.is_file():
-        descriptions = load_yaml(detail.descriptions.read_bytes())
+        descriptions = utils.load_yaml(detail.descriptions.read_bytes())
 
         if descriptions:
             mapping["_meta"] = {"descriptions": descriptions}
@@ -221,11 +245,11 @@ def _extract_settings(detail: _MappingDetail) -> dict:
         The settings associated with the mapping if none are found the default are
         provided.
     """
-    return load_yaml(detail.settings.read_bytes()) if detail.settings.is_file() else {}
+    return utils.load_yaml(detail.settings.read_bytes()) if detail.settings.is_file() else {}
 
 
 def get_es_models(vestigial_included: bool = True) -> Models:
-    """Loads all models/mappings provided by this library.
+    """Load all models/mappings provided by this library.
 
     Args:
         vestigial_included: If true the vestigial properties will be added to the
