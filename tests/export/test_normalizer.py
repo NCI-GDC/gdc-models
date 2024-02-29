@@ -5,7 +5,7 @@ from typing import Iterable
 import pytest
 
 import gdcmodels
-from gdcmodels.export import cli, normalization
+from gdcmodels.export import normalization
 
 
 def get_index_params() -> Iterable:
@@ -22,9 +22,7 @@ def get_index_params() -> Iterable:
 def test__normalize__index_is_normalized(
     index: str, doc_type: str, normalizer: normalization.Normalizer
 ) -> None:
-    mapping = cli.load_models()[index][doc_type]["_mapping"]
-    normalized_mapping = copy.deepcopy(mapping)
-
-    normalizer.normalize(normalized_mapping)
+    mapping = gdcmodels.get_es_models()[index][doc_type]["_mapping"]
+    normalized_mapping = normalizer.normalize(mapping)
 
     assert mapping == normalized_mapping
