@@ -9,7 +9,7 @@ from gdcmodels.export import common
 
 class Exporter(common.Exporter):
     def export_mapping(self) -> gdcmodels.ESMapping:
-        raise NotImplementedError()  # Temporary will be implemented in next PR.
+        raise NotImplementedError()  # TODO: DEV-2420: Temporary will be implemented in next PR.
 
 
 EXPORTERS: Mapping[str, Mapping[str, common.Exporter]] = types.MappingProxyType(

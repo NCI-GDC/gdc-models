@@ -3,7 +3,7 @@ import types
 
 import gdcmodels
 from gdcmodels import utils
-from gdcmodels.export import common, normalizer
+from gdcmodels.export import common, normalization
 
 if sys.version_info < (3, 9):
     import importlib_resources as resources
@@ -23,7 +23,7 @@ class Exporter(common.Exporter):
     def export_mapping(self) -> gdcmodels.ESMapping:
         mapping: gdcmodels.ESMapping = utils.load_yaml(self._mapping_path.read_bytes())
 
-        return normalizer.normalize(mapping)
+        return normalization.normalize(mapping)
 
 
 MAPPING_PATH = "{index}/mapping.yaml"
