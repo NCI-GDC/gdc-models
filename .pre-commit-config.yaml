@@ -19,21 +19,3 @@ repos:
         language: python
         types: [ yaml ]
         additional_dependencies: [ 'PyYAML' ]
-  - repo: https://github.com/pycqa/isort
-    rev: 5.12.0
-    hooks:
-      - id: isort
-        name: isort (python)
-        args: [--profile, black]
-      - id: isort
-        name: isort (cython)
-        types: [cython]
-        args: [--profile, black]
-      - id: isort
-        name: isort (pyi)
-        types: [pyi]
-        args: [--profile, black]
-  - repo: https://github.com/psf/black
-    rev: 24.1.1
-    hooks:
-      - id: black
