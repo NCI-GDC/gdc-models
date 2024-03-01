@@ -33,17 +33,6 @@ repos:
         name: isort (pyi)
         types: [pyi]
         args: [--profile, black]
-  - repo: https://github.com/pycqa/pydocstyle
-    rev: 6.3.0
-    hooks:
-      - id: pydocstyle
-        args:
-          [
-            convention=google,
-            --add-ignore,
-            "D100,D101,D102,D103,D104,D105,D106,D107",
-          ]
-        exclude: ^(tests|unit_tests)/
   - repo: https://github.com/psf/black
     rev: 24.1.1
     hooks:
