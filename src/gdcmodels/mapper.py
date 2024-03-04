@@ -1,3 +1,5 @@
+"""This module maintains the abstraction of the structures contained in the models."""
+
 import re
 from typing import Any, Callable, Iterable, Iterator, Mapping, Optional, Tuple, Union
 
@@ -29,7 +31,7 @@ def _walk_mapping(
 class ModelMapper:
     """This translates the model into elasticsearch mappings/settings.
 
-    NOTE: Instances of this class should be instantiated via this module's `load_mapper`
+    NOTE: Instances of this class should be instantiated via `get_es_models`
     """
 
     __slots__ = ("_index_name", "_doc_type", "_settings", "_mapping")
