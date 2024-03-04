@@ -107,7 +107,6 @@ class Index(Protocol):
 
 
 class MutableIndex(Index, Protocol):
-
     def __setitem__(self, key: str, value: Any) -> None:
         pass  # pragma: no cover
 
@@ -127,7 +126,7 @@ class _MappingDetail(NamedTuple):
 
 
 def _extract_details(models: abc.Traversable) -> Iterator[_MappingDetail]:
-    """Extracts the mapping details from the models resource.
+    """Extract the mapping details from the models resource.
 
     This works with the following model/index file structures within the given models
     directory:
@@ -225,7 +224,7 @@ def _extract_settings(detail: _MappingDetail) -> dict:
 
 
 def get_es_models(vestigial_included: bool = True) -> Models:
-    """Loads all models/mappings provided by this library.
+    """Load all models/mappings provided by this library.
 
     Args:
         vestigial_included: If true the vestigial properties will be added to the

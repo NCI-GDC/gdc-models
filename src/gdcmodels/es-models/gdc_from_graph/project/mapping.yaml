@@ -1,10 +1,11 @@
+---
 properties:
   dbgap_accession_number:
     normalizer: clinical_normalizer
     type: keyword
   disease_type:
     copy_to:
-    - project_autocomplete
+      - project_autocomplete
     normalizer: clinical_normalizer
     type: keyword
   intended_release_date:
@@ -12,11 +13,11 @@ properties:
     type: keyword
   name:
     copy_to:
-    - project_autocomplete
+      - project_autocomplete
     type: keyword
   primary_site:
     copy_to:
-    - project_autocomplete
+      - project_autocomplete
     normalizer: clinical_normalizer
     type: keyword
   program:
@@ -46,7 +47,7 @@ properties:
     type: keyword
   project_id:
     copy_to:
-    - project_autocomplete
+      - project_autocomplete
     type: keyword
   releasable:
     normalizer: clinical_normalizer

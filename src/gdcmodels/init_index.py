@@ -3,9 +3,9 @@
 import argparse
 import sys
 from typing import cast
-from typing_extensions import Protocol, Optional, Iterable
 
 import elasticsearch
+from typing_extensions import Iterable, Optional, Protocol
 
 import gdcmodels
 

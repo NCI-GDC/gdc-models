@@ -1,3 +1,4 @@
+---
 properties:
   annotation_autocomplete:
     fields:
@@ -16,7 +17,7 @@ properties:
     type: keyword
   annotation_id:
     copy_to:
-    - annotation_autocomplete
+      - annotation_autocomplete
     normalizer: clinical_normalizer
     type: keyword
   case_id:

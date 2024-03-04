@@ -86,7 +86,8 @@ def load_yaml(resource_name: str) -> dict:
 class GetArgs(Protocol):
     """A function for parsing the given arges into a Namespace."""
 
-    def __call__(self, *args: str) -> init_index.Arguments: ...
+    def __call__(self, *args: str) -> init_index.Arguments:
+        ...
 
 
 @pytest.fixture(scope="class")
@@ -200,7 +201,6 @@ def create_graph_indices(get_args: GetArgs, clear_test_indices: Any) -> None:
 
 @pytest.mark.usefixtures("create_graph_indices")
 class TestGraphIndices:
-
     @pytest.mark.parametrize(
         ("index", "files"),
         (
@@ -343,7 +343,6 @@ def create_viz_indices(get_args: GetArgs, clear_test_indices: Any) -> None:
 
 @pytest.mark.usefixtures("create_viz_indices")
 class TestVizIndices:
-
     @pytest.mark.parametrize(
         ("index", "files"),
         (

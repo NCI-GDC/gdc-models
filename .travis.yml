@@ -1,3 +1,4 @@
+---
 dist: focal
 sudo: true
 language: python
@@ -6,10 +7,10 @@ env:
     - ES_VERSION="7.7.1"
     - ES_HOST=localhost
 python:
-  - "3.8"
-  - "3.9"
-  - "3.10"
-  - "3.11"
+  - '3.8'
+  - '3.9'
+  - '3.10'
+  - '3.11'
 
 before_install:
   - sudo rm -rf /var/lib/elasticsearch
@@ -30,4 +31,6 @@ script:
 
 after_script:
   - tox -e coverage
-  - bash <(curl -s -L https://detect.synopsys.com/detect.sh) --blackduck.url="https://cdis.blackducksoftware.com" --blackduck.api.token=$(echo $BLACKDUCK_TOKEN) --blackduck.trust.cert=true --detect.policy.check=true  --snippet-matching=true --full-snippet-scan=true
+  - bash <(curl -s -L https://detect.synopsys.com/detect.sh) --blackduck.url="https://cdis.blackducksoftware.com"
+    --blackduck.api.token=$(echo $BLACKDUCK_TOKEN) --blackduck.trust.cert=true --detect.policy.check=true  --snippet-matching=true
+    --full-snippet-scan=true

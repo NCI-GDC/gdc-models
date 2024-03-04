@@ -1,8 +1,9 @@
+---
 _size:
   enabled: true
 _source:
   excludes:
-  - __comment__
+    - __comment__
 properties:
   chromosome:
     type: keyword
@@ -22,7 +23,7 @@ properties:
         properties:
           aa_change:
             copy_to:
-            - ssm_autocomplete
+              - ssm_autocomplete
             type: keyword
           aa_end:
             type: long
@@ -50,7 +51,7 @@ properties:
                 type: keyword
               dbsnp_rs:
                 copy_to:
-                - ssm_autocomplete
+                  - ssm_autocomplete
                 type: keyword
               dbsnp_val_status:
                 type: keyword
@@ -133,17 +134,17 @@ properties:
     type: nested
   cosmic_id:
     copy_to:
-    - ssm_autocomplete
+      - ssm_autocomplete
     type: keyword
   end_position:
     type: long
   gene_aa_change:
     copy_to:
-    - ssm_autocomplete
+      - ssm_autocomplete
     type: keyword
   genomic_dna_change:
     copy_to:
-    - ssm_autocomplete
+      - ssm_autocomplete
     type: keyword
   mutation_subtype:
     type: keyword
@@ -664,7 +665,7 @@ properties:
     type: keyword
   ssm_id:
     copy_to:
-    - ssm_autocomplete
+      - ssm_autocomplete
     type: keyword
   start_position:
     type: long

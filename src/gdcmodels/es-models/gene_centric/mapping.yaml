@@ -1,20 +1,21 @@
+---
 _size:
   enabled: true
 _source:
   excludes:
-  - case.*.*
-  - case.consent_type
-  - case.d*
-  - case.i*
-  - case.p*
-  - case.s*
-  - case.*_*_*
+    - case.*.*
+    - case.consent_type
+    - case.d*
+    - case.i*
+    - case.p*
+    - case.s*
+    - case.*_*_*
 properties:
   biotype:
     type: keyword
   canonical_transcript_id:
     copy_to:
-    - gene_autocomplete
+      - gene_autocomplete
     type: keyword
   canonical_transcript_length:
     type: long
@@ -657,7 +658,7 @@ properties:
     type: nested
   cytoband:
     copy_to:
-    - gene_autocomplete
+      - gene_autocomplete
     type: keyword
   description:
     type: text
@@ -665,19 +666,19 @@ properties:
     properties:
       entrez_gene:
         copy_to:
-        - gene_autocomplete
+          - gene_autocomplete
         type: keyword
       hgnc:
         copy_to:
-        - gene_autocomplete
+          - gene_autocomplete
         type: keyword
       omim_gene:
         copy_to:
-        - gene_autocomplete
+          - gene_autocomplete
         type: keyword
       uniprotkb_swissprot:
         copy_to:
-        - gene_autocomplete
+          - gene_autocomplete
         type: keyword
   gene_autocomplete:
     fields:
@@ -699,7 +700,7 @@ properties:
     type: long
   gene_id:
     copy_to:
-    - gene_autocomplete
+      - gene_autocomplete
     type: keyword
   gene_start:
     type: long
@@ -709,15 +710,15 @@ properties:
     type: boolean
   name:
     copy_to:
-    - gene_autocomplete
+      - gene_autocomplete
     type: keyword
   symbol:
     copy_to:
-    - gene_autocomplete
+      - gene_autocomplete
     type: keyword
   synonyms:
     copy_to:
-    - gene_autocomplete
+      - gene_autocomplete
     type: keyword
   transcripts:
     properties:
@@ -795,10 +796,10 @@ properties:
         type: long
       transcript_id:
         copy_to:
-        - gene_autocomplete
+          - gene_autocomplete
         type: keyword
       translation_id:
         copy_to:
-        - gene_autocomplete
+          - gene_autocomplete
         type: keyword
     type: nested

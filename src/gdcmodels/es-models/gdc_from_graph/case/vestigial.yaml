@@ -1,3 +1,4 @@
+---
 dictionary_item_added:
   root['properties']['diagnoses']['properties']['anaplasia_present']:
     normalizer: clinical_normalizer
