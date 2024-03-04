@@ -11,16 +11,19 @@ def inner_gene_doc(es):
         chromosome="chr-1",
         cnv_id="cnv-1",
         observation=[
-            m.Observation(
-                observation_id="obs-1", src_file_id="file-id-1", variant_status="ok"
-            )
+            m.Observation(observation_id="obs-1", src_file_id="file-id-1", variant_status="ok")
         ],
     )
     ca_1 = m.ClinicalAnnotation(civic=[m.Civic(gene_id="g1", variant_id="v1")])
     ssm_1 = m.SSM(chromosome="chr-1", clinical_annotation=[ca_1])
 
     return m.Gene(
-        biotype="XY", gene_id="gene-id-1", symbol="AX", is_cancer_gene_census=True, ssm=[ssm_1], cnv=[cnv_1]
+        biotype="XY",
+        gene_id="gene-id-1",
+        symbol="AX",
+        is_cancer_gene_census=True,
+        ssm=[ssm_1],
+        cnv=[cnv_1],
     )
 
 
@@ -70,7 +73,11 @@ def case_centric_with_wildcard(es, inner_gene_doc):
 def test_index__with_excluded_genes(es):
     """Test excluding a nested property behaves as expected"""
 
-    response = m.CaseCentricWithGeneExcluded.search(using=es).filter("term", _id="case-centric-1").execute()
+    response = (
+        m.CaseCentricWithGeneExcluded.search(using=es)
+        .filter("term", _id="case-centric-1")
+        .execute()
+    )
 
     assert len(response.hits) == 1
     entry = response.hits[0]
@@ -84,7 +91,11 @@ def test_index__with_excluded_genes(es):
 def test_index__without_deep_nesting(es):
     """Test excluding a nested property behaves as expected"""
 
-    response = m.CaseCentricWithoutDeepNesting.search(using=es).filter("term", _id="case-centric-2").execute()
+    response = (
+        m.CaseCentricWithoutDeepNesting.search(using=es)
+        .filter("term", _id="case-centric-2")
+        .execute()
+    )
 
     assert len(response.hits) == 1
     entry = response.hits[0]
@@ -107,7 +118,9 @@ def test_index__without_deep_nesting(es):
 def test_index__with_wildcard(es):
     """Test excluding a nested property behaves as expected"""
 
-    response = m.CaseCentricWithWildcard.search(using=es).filter("term", _id="case-centric-3").execute()
+    response = (
+        m.CaseCentricWithWildcard.search(using=es).filter("term", _id="case-centric-3").execute()
+    )
 
     assert len(response.hits) == 1
     entry = response.hits[0]

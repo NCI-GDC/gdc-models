@@ -1,8 +1,9 @@
+---
 _size:
   enabled: true
 _source:
   excludes:
-  - __comment__
+    - __comment__
 properties:
   case:
     properties:

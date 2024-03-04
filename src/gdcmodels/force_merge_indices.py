@@ -6,7 +6,6 @@ import logging
 from gdcmodels import esutils
 from gdcmodels.init_index import get_elasticsearch
 
-
 FORMAT = "[%(asctime)s][%(name)14s][%(levelname)7s] %(message)s"
 
 
@@ -15,13 +14,19 @@ def get_parser():
         description="Force a merge on the shards of one or more ES indices"
     )
     parser.add_argument(
-        "index", nargs="+", help="Indices to do the merge.",
+        "index",
+        nargs="+",
+        help="Indices to do the merge.",
     )
     parser.add_argument(
-        "--host", required=True, help="Elasticsearch server host name or IP",
+        "--host",
+        required=True,
+        help="Elasticsearch server host name or IP",
     )
     parser.add_argument(
-        "--port", default=9200, help="Elasticsearch server port (default: 9200)",
+        "--port",
+        default=9200,
+        help="Elasticsearch server port (default: 9200)",
     )
     parser.add_argument("--user", default="", help="Elasticsearch client user")
     parser.add_argument(

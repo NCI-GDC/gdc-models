@@ -1,8 +1,8 @@
 import logging
 from time import sleep
 
-from elasticsearch.exceptions import ConnectionTimeout
 import urllib3
+from elasticsearch.exceptions import ConnectionTimeout
 from urllib3.exceptions import ReadTimeoutError
 
 UPDATE_INTERVAL = 10
@@ -11,15 +11,12 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 def force_merge_elasticsearch_indices(es, index, max_num_segments=1):
-    """force merge segments in elasticsearch indices
+    """Force merge segments in elasticsearch indices.
 
     Args:
         es: Elasticsearch object, Elasticsearch low-level client
         index: A list of index names
         max_num_segments: The number of segments the index should be merged into
-
-    Returns:
-
     """
     if not index or not isinstance(index, list):
         raise ValueError("index must be a list of index names.")
@@ -31,8 +28,7 @@ def force_merge_elasticsearch_indices(es, index, max_num_segments=1):
         while True:
             res = es.nodes.stats(metric="thread_pool")
             active_count = sum(
-                stat["thread_pool"]["force_merge"]["active"]
-                for stat in res["nodes"].values()
+                stat["thread_pool"]["force_merge"]["active"] for stat in res["nodes"].values()
             )
             if active_count == 0:
                 break

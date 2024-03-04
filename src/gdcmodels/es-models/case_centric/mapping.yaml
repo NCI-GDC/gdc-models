@@ -1,10 +1,11 @@
+---
 _size:
   enabled: true
 _source:
   excludes:
-  - gene.*.*
-  - gene.biotype
-  - gene.is_cancer_gene_census
+    - gene.*.*
+    - gene.biotype
+    - gene.is_cancer_gene_census
 properties:
   aliquot_ids:
     type: keyword
@@ -65,7 +66,7 @@ properties:
     type: keyword
   case_id:
     copy_to:
-    - case_autocomplete
+      - case_autocomplete
     type: keyword
   consent_type:
     type: keyword
@@ -589,7 +590,7 @@ properties:
     type: keyword
   disease_type:
     copy_to:
-    - case_autocomplete
+      - case_autocomplete
     type: keyword
   exposures:
     properties:
@@ -1841,7 +1842,7 @@ properties:
     type: keyword
   primary_site:
     copy_to:
-    - case_autocomplete
+      - case_autocomplete
     type: keyword
   project:
     properties:
@@ -1849,17 +1850,17 @@ properties:
         type: keyword
       disease_type:
         copy_to:
-        - case_autocomplete
+          - case_autocomplete
         type: keyword
       intended_release_date:
         type: keyword
       name:
         copy_to:
-        - case_autocomplete
+          - case_autocomplete
         type: keyword
       primary_site:
         copy_to:
-        - case_autocomplete
+          - case_autocomplete
         type: keyword
       program:
         properties:
@@ -1871,7 +1872,7 @@ properties:
             type: keyword
       project_id:
         copy_to:
-        - case_autocomplete
+          - case_autocomplete
         type: keyword
       releasable:
         type: keyword
@@ -2343,7 +2344,7 @@ properties:
     type: keyword
   submitter_id:
     copy_to:
-    - case_autocomplete
+      - case_autocomplete
     type: keyword
   submitter_portion_ids:
     type: keyword

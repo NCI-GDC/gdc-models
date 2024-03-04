@@ -1,6 +1,7 @@
+---
 _source:
   excludes:
-  - occurrence.*
+    - occurrence.*
 properties:
   case:
     properties:
@@ -458,7 +459,7 @@ properties:
         type: keyword
       cnv_id:
         copy_to:
-        - cnv_occurrence_autocomplete
+          - cnv_occurrence_autocomplete
         type: keyword
       consequence:
         properties:

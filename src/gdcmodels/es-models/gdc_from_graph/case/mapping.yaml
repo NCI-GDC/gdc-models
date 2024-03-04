@@ -1,3 +1,4 @@
+---
 properties:
   aliquot_ids:
     normalizer: clinical_normalizer
@@ -73,7 +74,7 @@ properties:
     type: keyword
   case_id:
     copy_to:
-    - case_autocomplete
+      - case_autocomplete
     normalizer: clinical_normalizer
     type: keyword
   consent_type:
@@ -700,7 +701,7 @@ properties:
     type: keyword
   disease_type:
     copy_to:
-    - case_autocomplete
+      - case_autocomplete
     normalizer: clinical_normalizer
     type: keyword
   exposures:
@@ -2027,7 +2028,7 @@ properties:
     type: keyword
   primary_site:
     copy_to:
-    - case_autocomplete
+      - case_autocomplete
     normalizer: clinical_normalizer
     type: keyword
   project:
@@ -2037,19 +2038,19 @@ properties:
         type: keyword
       disease_type:
         copy_to:
-        - case_autocomplete
+          - case_autocomplete
         normalizer: clinical_normalizer
         type: keyword
       intended_release_date:
         copy_to:
-        - case_autocomplete
+          - case_autocomplete
         normalizer: clinical_normalizer
         type: keyword
       name:
         type: keyword
       primary_site:
         copy_to:
-        - case_autocomplete
+          - case_autocomplete
         normalizer: clinical_normalizer
         type: keyword
       program:
@@ -2064,7 +2065,7 @@ properties:
             type: keyword
       project_id:
         copy_to:
-        - case_autocomplete
+          - case_autocomplete
         type: keyword
       releasable:
         normalizer: clinical_normalizer
@@ -2196,7 +2197,7 @@ properties:
                 properties:
                   aliquot_id:
                     copy_to:
-                    - case_autocomplete
+                      - case_autocomplete
                     normalizer: clinical_normalizer
                     type: keyword
                   aliquot_quantity:
@@ -2317,7 +2318,7 @@ properties:
                     type: keyword
                   submitter_id:
                     copy_to:
-                    - case_autocomplete
+                      - case_autocomplete
                     type: keyword
                   updated_datetime:
                     normalizer: clinical_normalizer
@@ -2327,7 +2328,7 @@ properties:
                 type: double
               analyte_id:
                 copy_to:
-                - case_autocomplete
+                  - case_autocomplete
                 normalizer: clinical_normalizer
                 type: keyword
               analyte_quantity:
@@ -2414,7 +2415,7 @@ properties:
                 type: keyword
               submitter_id:
                 copy_to:
-                - case_autocomplete
+                  - case_autocomplete
                 type: keyword
               updated_datetime:
                 normalizer: clinical_normalizer
@@ -2502,7 +2503,7 @@ properties:
             type: keyword
           portion_id:
             copy_to:
-            - case_autocomplete
+              - case_autocomplete
             normalizer: clinical_normalizer
             type: keyword
           portion_number:
@@ -2608,7 +2609,7 @@ properties:
                 type: keyword
               slide_id:
                 copy_to:
-                - case_autocomplete
+                  - case_autocomplete
                 normalizer: clinical_normalizer
                 type: keyword
               state:
@@ -2616,7 +2617,7 @@ properties:
                 type: keyword
               submitter_id:
                 copy_to:
-                - case_autocomplete
+                  - case_autocomplete
                 type: keyword
               tissue_microarray_coordinates:
                 normalizer: clinical_normalizer
@@ -2630,7 +2631,7 @@ properties:
             type: keyword
           submitter_id:
             copy_to:
-            - case_autocomplete
+              - case_autocomplete
             type: keyword
           updated_datetime:
             normalizer: clinical_normalizer
@@ -2643,7 +2644,7 @@ properties:
         type: keyword
       sample_id:
         copy_to:
-        - case_autocomplete
+          - case_autocomplete
         normalizer: clinical_normalizer
         type: keyword
       sample_ordinal:
@@ -2664,7 +2665,7 @@ properties:
         type: keyword
       submitter_id:
         copy_to:
-        - case_autocomplete
+          - case_autocomplete
         type: keyword
       time_between_clamping_and_freezing:
         type: double
@@ -2706,7 +2707,7 @@ properties:
     type: keyword
   submitter_id:
     copy_to:
-    - case_autocomplete
+      - case_autocomplete
     type: keyword
   submitter_portion_ids:
     normalizer: clinical_normalizer

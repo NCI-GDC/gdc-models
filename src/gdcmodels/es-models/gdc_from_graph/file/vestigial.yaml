@@ -1,3 +1,4 @@
+---
 dictionary_item_added:
   root['properties']['analysis']['properties']['input_files']['properties']['proportion_coverage_10X']:
     type: double

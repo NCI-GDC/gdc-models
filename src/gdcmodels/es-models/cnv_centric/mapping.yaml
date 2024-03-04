@@ -1,3 +1,4 @@
+---
 properties:
   chromosome:
     type: keyword
@@ -19,7 +20,7 @@ properties:
     type: keyword
   cnv_id:
     copy_to:
-    - cnv_autocomplete
+      - cnv_autocomplete
     type: keyword
   consequence:
     properties:

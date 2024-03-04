@@ -1,3 +1,4 @@
+---
 annotations.aliquot.aliquot_quantity: The quantity in micrograms (ug) of the aliquot(s)
   derived from the analyte(s) shipped for sequencing and characterization.
 annotations.aliquot.aliquot_volume: The volume in microliters (ul) of the aliquot(s)
@@ -92,15 +93,15 @@ annotations.annotation.batch_id: GDC submission batch indicator. It is unique wi
   the context of a project.
 annotations.annotation.created_datetime: A combination of date and time of day in
   the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
-annotations.annotation.error_type: null
-annotations.annotation.file_name: null
-annotations.annotation.file_size: null
-annotations.annotation.file_state: null
-annotations.annotation.md5sum: null
+annotations.annotation.error_type:
+annotations.annotation.file_name:
+annotations.annotation.file_size:
+annotations.annotation.file_state:
+annotations.annotation.md5sum:
 annotations.annotation.project_id: Unique ID for any specific defined piece of work
   that is undertaken or attempted to meet a single requirement.
 annotations.annotation.state: The current state of the object.
-annotations.annotation.state_comment: null
+annotations.annotation.state_comment:
 annotations.annotation.submitter_id: A project-specific identifier for a node. This
   property is the calling card/nickname/alias for a unit of submission. It can be
   used in place of the uuid for identifying or recalling a node.
