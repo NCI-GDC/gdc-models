@@ -15,16 +15,14 @@ else:
 
 @pytest.fixture
 def es_models(monkeypatch: pytest.MonkeyPatch) -> Iterator[pathlib.Path]:
-    """Creates a temporary es-models directory and ensures via patching that it is
+    """Creates a temporary esmodels directory and ensures via patching that it is
     loaded by the resources library.
     """
 
     with tempfile.TemporaryDirectory() as tmp_dir:
-        root = pathlib.Path(tmp_dir)
-        models = root / "es-models"
+        models = pathlib.Path(tmp_dir)
 
-        models.mkdir()
-        monkeypatch.setattr(resources, "files", lambda *_: root)
+        monkeypatch.setattr(resources, "files", lambda *_: models)
 
         yield models
 
