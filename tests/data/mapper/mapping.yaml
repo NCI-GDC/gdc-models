@@ -1,0 +1,34 @@
+---
+properties:
+  foo:
+    properties:
+      multiple:
+        properties:
+          multi_prop1:
+            normalizer: custom_normalizer
+            type: keyword
+          multi_prop2:
+            type: long
+      foo_single:
+        properties:
+          single_prop1:
+            normalizer: custom_normalizer
+            type: keyword
+          single_prop2:
+            type: long
+  bar:
+    properties:
+      multiple:
+        properties:
+          multi_prop1:
+            normalizer: custom_normalizer
+            type: keyword
+          multi_prop3:
+            type: text
+      bar_single:
+        properties:
+          single_prop1:
+            normalizer: custom_normalizer
+            type: keyword
+          single_prop3:
+            type: text
