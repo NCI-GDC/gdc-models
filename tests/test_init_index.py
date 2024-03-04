@@ -7,8 +7,7 @@ import pytest
 import yaml
 from typing_extensions import Protocol
 
-import gdcmodels
-from gdcmodels import init_index
+from gdcmodels import esmodels, init_index
 
 if sys.version_info < (3, 9):
     import importlib_resources as resources
@@ -27,58 +26,48 @@ class Models:
 
     class Graph:
         ANNOTATION = Files(
-            "es-models/gdc_from_graph/annotation/mapping.yaml",
-            "es-models/gdc_from_graph/settings.yaml",
-            "es-models/gdc_from_graph/descriptions.yaml",
+            "gdc_from_graph/annotation/mapping.yaml",
+            "gdc_from_graph/settings.yaml",
+            "gdc_from_graph/descriptions.yaml",
         )
         CASE = Files(
-            "es-models/gdc_from_graph/case/mapping.yaml",
-            "es-models/gdc_from_graph/settings.yaml",
-            "es-models/gdc_from_graph/descriptions.yaml",
+            "gdc_from_graph/case/mapping.yaml",
+            "gdc_from_graph/settings.yaml",
+            "gdc_from_graph/descriptions.yaml",
         )
         FILE = Files(
-            "es-models/gdc_from_graph/file/mapping.yaml",
-            "es-models/gdc_from_graph/settings.yaml",
-            "es-models/gdc_from_graph/descriptions.yaml",
+            "gdc_from_graph/file/mapping.yaml",
+            "gdc_from_graph/settings.yaml",
+            "gdc_from_graph/descriptions.yaml",
         )
         PROJECT = Files(
-            "es-models/gdc_from_graph/project/mapping.yaml",
-            "es-models/gdc_from_graph/settings.yaml",
-            "es-models/gdc_from_graph/descriptions.yaml",
+            "gdc_from_graph/project/mapping.yaml",
+            "gdc_from_graph/settings.yaml",
+            "gdc_from_graph/descriptions.yaml",
         )
 
     class Viz:
-        CASE_CENTRIC = Files(
-            "es-models/case_centric/mapping.yaml", "es-models/case_centric/settings.yaml"
-        )
-        CNV_CENTRIC = Files(
-            "es-models/cnv_centric/mapping.yaml", "es-models/cnv_centric/settings.yaml"
-        )
+        CASE_CENTRIC = Files("case_centric/mapping.yaml", "case_centric/settings.yaml")
+        CNV_CENTRIC = Files("cnv_centric/mapping.yaml", "cnv_centric/settings.yaml")
         CNV_OCCURRENCE_CENTRIC = Files(
-            "es-models/cnv_occurrence_centric/mapping.yaml",
-            "es-models/cnv_occurrence_centric/settings.yaml",
+            "cnv_occurrence_centric/mapping.yaml", "cnv_occurrence_centric/settings.yaml"
         )
-        GENE_CENTRIC = Files(
-            "es-models/gene_centric/mapping.yaml", "es-models/gene_centric/settings.yaml"
-        )
-        SSM_CENTRIC = Files(
-            "es-models/ssm_centric/mapping.yaml", "es-models/ssm_centric/settings.yaml"
-        )
+        GENE_CENTRIC = Files("gene_centric/mapping.yaml", "gene_centric/settings.yaml")
+        SSM_CENTRIC = Files("ssm_centric/mapping.yaml", "ssm_centric/settings.yaml")
         SSM_OCCURRENCE_CENTRIC = Files(
-            "es-models/ssm_occurrence_centric/mapping.yaml",
-            "es-models/ssm_occurrence_centric/settings.yaml",
+            "ssm_occurrence_centric/mapping.yaml", "ssm_occurrence_centric/settings.yaml"
         )
 
     class Sets:
-        CASE = Files("es-models/case_set/mapping.yaml", "es-models/case_set/settings.yaml")
-        FILE = Files("es-models/file_set/mapping.yaml", "es-models/file_set/settings.yaml")
-        GENE = Files("es-models/gene_set/mapping.yaml", "es-models/gene_set/settings.yaml")
-        SSM = Files("es-models/ssm_set/mapping.yaml", "es-models/ssm_set/settings.yaml")
+        CASE = Files("case_set/mapping.yaml", "case_set/settings.yaml")
+        FILE = Files("file_set/mapping.yaml", "file_set/settings.yaml")
+        GENE = Files("gene_set/mapping.yaml", "gene_set/settings.yaml")
+        SSM = Files("ssm_set/mapping.yaml", "ssm_set/settings.yaml")
 
 
 def load_yaml(resource_name: str) -> dict:
     """Load the YAML data from the given resource."""
-    resource = resources.files(gdcmodels) / resource_name
+    resource = resources.files(esmodels) / resource_name
 
     return yaml.safe_load(resource.read_bytes())
 
