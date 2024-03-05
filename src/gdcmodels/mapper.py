@@ -7,6 +7,9 @@ import more_itertools
 
 from gdcmodels import esmodels
 
+# A type alias for the selector parameter of the select_mapping method of the
+# ModelMapper. For more information on its use, please see the documentation for the
+# method.
 Selector = Union[Callable[[Iterable[str]], Iterable[str]], str]
 
 
@@ -79,16 +82,20 @@ class ModelMapper:
 
         Example:
             # Just return the very first path:
-            mapper.select_mapping("annotation", selector=more_itertools.first)
+            mapper.select_mapping(
+                "annotation",
+                selector=functools.partial(more_itertools.take, 1)
+            )
             # Only select root.(...).cnv.(...).observation:
             mapper.select_mapping("observation", selector="cnv")
 
         Args:
             doc_type: name of the property (or the index itself) which should be
                 selected.
-            selector: The selector can either be a callable which filters the possible
-                paths to the desired property definition or the name of a parent
-                property that must be within the desired properties path.
+            selector: The selector can either be a callable which takes in all possible
+                paths to the given doc type which it filters to the desired path or the
+                name of a parent property that must be within the desired properties
+                path.
 
         Returns:
             The entire mapping definition or the property details associated with the
