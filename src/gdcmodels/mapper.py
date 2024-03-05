@@ -1,4 +1,4 @@
-"""This module maintains the abstraction of the structures contained in the models."""
+"""This module maintains the abstraction between the models and the es mappings."""
 
 import re
 from typing import Any, Callable, Iterable, Iterator, Mapping, Optional, Tuple, Union
