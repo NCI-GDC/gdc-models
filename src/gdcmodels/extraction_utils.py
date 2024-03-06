@@ -4,7 +4,7 @@ from typing import IO, Any, Dict, Iterable, Mapping, Union
 import yaml
 
 load_yaml = functools.partial(yaml.load, Loader=yaml.CSafeLoader)
-dump_yaml = functools.partial(yaml.dump, Dumper=yaml.CBaseDumper)
+dump_yaml = functools.partial(yaml.dump, Dumper=yaml.CSafeDumper)
 
 
 def _expand_settings(settings: Dict[str, Any]) -> Dict[str, Any]:
