@@ -77,7 +77,7 @@ class ModelMapper:
         """Select a sub-mapping or the entire mapping based on the doc_type.
 
         Using the given doc_type any property within this mapping with that name will
-        have it's property definition returned. If multiple exist a selector should be
+        have it's property definition returned. If multiple exist a selector should
         insure that the selection is deterministic.
 
         Example:

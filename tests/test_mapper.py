@@ -3,7 +3,7 @@ from typing import Optional, Type
 
 import pytest
 
-from gdcmodels import mapper, utils
+from gdcmodels import extraction_utils, mapper
 
 if sys.version_info < (3, 9):
     import importlib_resources as resources
@@ -14,7 +14,7 @@ else:
 @pytest.fixture
 def mock_mapper():
     mapping_file = resources.files("tests") / "data/mapper/mapping.yaml"
-    mapping = utils.load_yaml(mapping_file.read_bytes())
+    mapping = extraction_utils.load_yaml(mapping_file.read_bytes())
     gene = mapper.ModelMapper("gene_centric", "gene_centric", {}, mapping)
 
     return gene

@@ -1,11 +1,11 @@
 import collections
 import functools
 import sys
-from typing import DefaultDict, Iterator, NamedTuple, cast
+from typing import Any, DefaultDict, Iterator, Mapping, NamedTuple, cast
 
 import deepdiff
 
-from gdcmodels import esmodels, utils
+from gdcmodels import esmodels, extraction_utils
 
 if sys.version_info < (3, 9):
     import importlib_resources as resources
@@ -97,16 +97,16 @@ def _extract_es_mapping(detail: _MappingDetail, vestigial_included: bool) -> esm
     Returns:
         The ESMapping loaded from the paths within the given detail.
     """
-    mapping = utils.load_yaml(detail.mapping.read_bytes())
+    mapping = extraction_utils.load_yaml(detail.mapping.read_bytes())
 
     if vestigial_included and detail.vestigial.is_file():
         vestigial_delta = deepdiff.Delta(
-            detail.vestigial.read_text(), deserializer=utils.load_yaml
+            detail.vestigial.read_text(), deserializer=extraction_utils.load_yaml
         )
         mapping += vestigial_delta
 
     if detail.descriptions.is_file():
-        descriptions = utils.load_yaml(detail.descriptions.read_bytes())
+        descriptions = extraction_utils.load_yaml(detail.descriptions.read_bytes())
 
         if descriptions:
             mapping["_meta"] = {"descriptions": descriptions}
@@ -114,7 +114,7 @@ def _extract_es_mapping(detail: _MappingDetail, vestigial_included: bool) -> esm
     return mapping
 
 
-def _extract_settings(detail: _MappingDetail) -> dict:
+def _extract_settings(detail: _MappingDetail) -> Mapping[str, Any]:
     """Extract the settings from the given detail.
 
     Args:
@@ -124,7 +124,11 @@ def _extract_settings(detail: _MappingDetail) -> dict:
         The settings associated with the mapping if none are found the default are
         provided.
     """
-    return utils.load_yaml(detail.settings.read_bytes()) if detail.settings.is_file() else {}
+    return (
+        extraction_utils.load_settings(detail.settings.read_bytes())
+        if detail.settings.is_file()
+        else {}
+    )
 
 
 def get_es_models(vestigial_included: bool = True) -> esmodels.Models:
