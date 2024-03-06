@@ -7,7 +7,20 @@ load_yaml = functools.partial(yaml.load, Loader=yaml.CSafeLoader)
 dump_yaml = functools.partial(yaml.dump, Dumper=yaml.CBaseDumper)
 
 
-def expand_settings(settings: Dict[str, Any]) -> Dict[str, Any]:
+def _expand_settings(settings: Dict[str, Any]) -> Dict[str, Any]:
+    """Expand any dot notations in the given settings.
+
+    EXAMPLE:
+        {"index.mapping.nested_fields.limit": 100}
+        # becomes
+        {"index": {"mapping": {"nested_fields": {"limit": 100}}}}
+
+    Args:
+        settings: The settings that need to have their keys expanded.
+
+    Returns:
+        The expanded settings.
+    """
     keys: Iterable[str] = tuple(settings.keys())
     keys = filter(lambda k: "." in k, keys)
 
@@ -17,12 +30,27 @@ def expand_settings(settings: Dict[str, Any]) -> Dict[str, Any]:
         parent[child] = settings.pop(key)
 
     for key, value in ((k, v) for k, v in settings.items() if isinstance(v, dict)):
-        settings[key] = expand_settings(value)
+        settings[key] = _expand_settings(value)
 
     return settings
 
 
-def load_settings(data: Union[str, bytes, IO[str], IO[bytes]]) -> Mapping[str, Any]:
-    settings = load_yaml(data)
+def load_settings(stream: Union[str, bytes, IO[str], IO[bytes]]) -> Mapping[str, Any]:
+    """Load the settings contained in the stream.
 
-    return expand_settings(settings)
+    NOTE: This will expand any settings which use dot notation in their key values.
+
+    EXAMPLE:
+        {"index.mapping.nested_fields.limit": 100}
+        # becomes
+        {"index": {"mapping": {"nested_fields": {"limit": 100}}}}
+
+    Args:
+        stream: The stream containing the yaml formatted settings.
+
+    Returns:
+        The expanded settings.
+    """
+    settings = load_yaml(stream)
+
+    return _expand_settings(settings)
