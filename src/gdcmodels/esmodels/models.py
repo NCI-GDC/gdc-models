@@ -29,7 +29,7 @@ class Property(TypedDict):
     """A property in an es mapping."""
 
     normalizer: NotRequired[str]
-    type: NotRequired[Literal["boolean", "double", "keyword", "long"]]
+    type: NotRequired[Literal["boolean", "double", "keyword", "long", "nested"]]
     copy_to: NotRequired[Sequence[str]]
     properties: NotRequired[Properties]
 

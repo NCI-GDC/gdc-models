@@ -1,4 +1,10 @@
 ---
+_size:
+  enabled: true
+_source:
+  excludes:
+    - __comment__
+dynamic: strict
 properties:
   dbgap_accession_number:
     normalizer: clinical_normalizer

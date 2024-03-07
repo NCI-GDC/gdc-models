@@ -8,6 +8,7 @@ from typing import AbstractSet, Any, Mapping, Optional, Sequence
 
 import click
 import deepdiff
+from deepdiff.serialization import pickle_dump, pickle_load
 
 import gdcmodels
 from gdcmodels import esmodels, extraction_utils
@@ -38,6 +39,12 @@ def load_models() -> esmodels.Models:
 
 class VestigialDelta(deepdiff.Delta):
     """A custom Delta object which only writes the items added to the dictionary."""
+
+    def __init__(self, diff) -> None:
+        super().__init__(
+            diff,
+            serializer=lambda *args: extraction_utils.dump_yaml(*args),
+        )
 
     def dumps(self):
         # NOTE: The vestigial data is only data which must be added to the current
@@ -104,7 +111,7 @@ def run_export(index_name: str, doc_type: str) -> None:
     descriptions = new_mapping.pop("_meta", {}).get("descriptions")
 
     diff = deepdiff.DeepDiff(new_mapping, old_mapping)
-    delta = VestigialDelta(diff, serializer=extraction_utils.dump_yaml)
+    delta = VestigialDelta(diff)
 
     assert (new_mapping + delta) == old_mapping
 
