@@ -1,0 +1,12 @@
+---
+index:
+  refresh_interval: 1m
+  number_of_shards: 12
+  number_of_replicas: 0
+  mapping.total_fields.limit: 2000
+analysis:
+  normalizer:
+    clinical_normalizer:
+      type: custom
+      char_filter: []
+      filter: [lowercase]
