@@ -8,7 +8,6 @@ from typing_extensions import Protocol, TypedDict
 
 from gdcmodels import esmodels
 from gdcmodels.export import common
-from gdcmodels.export.common import CompositeExporter
 
 TMapping = TypeVar("TMapping", bound=Mapping[str, Any])
 
@@ -24,13 +23,6 @@ class NormalizerExporter(common.DefaultNormalizerExporter):
                 )
             )
         )
-
-
-COMMON_EXPORTERS = (
-    common.DefaultSettingsExporter(),
-    common.DefaultMappingsExporter(),
-    NormalizerExporter(),
-)
 
 
 class NestedDict(DefaultDict[str, Any]):
@@ -108,14 +100,6 @@ class ESProperty:
             return cls.string()
 
 
-def apply_clinical_normalizer(mapping: NestedDict, paths: Iterable[str]) -> NestedDict:
-    for path in paths:
-        property = functools.reduce(lambda m, p: m["properties"][p], path.split("."), mapping)
-        property["normalizer"] = "clinical_normalizer"
-
-    return mapping
-
-
 class GDCDictionary(Protocol):
     class Properties(TypedDict):
         properties: Mapping[str, dict]
@@ -123,9 +107,7 @@ class GDCDictionary(Protocol):
     schema: Mapping[str, Properties]
 
 
-class GraphExporter(common.Exporter, abc.ABC):
-    __slots__ = ("_gdc_dictionary",)
-
+class DescriptionsExporter(common.Exporter):
     def __init__(
         self,
         gdc_dictionary: Optional[GDCDictionary] = None,
@@ -149,31 +131,7 @@ class GraphExporter(common.Exporter, abc.ABC):
 
         return descriptions
 
-    def _add_autocomplete(
-        self, mapping: esmodels.ESMapping, name: str, copied_paths: Iterable[str]
-    ) -> None:
-        autocomplete = ESProperty.string()
-        autocomplete["fields"]["analyzed"]["analyzer"] = "autocomplete_analyzed"
-        autocomplete["fields"]["analyzed"]["search_analyzer"] = "lowercase_keyword"
-        autocomplete["fields"]["analyzed"]["type"] = "text"
-        autocomplete["fields"]["lowercase"]["analyzer"] = "lowercase_keyword"
-        autocomplete["fields"]["lowercase"]["type"] = "text"
-        autocomplete["fields"]["prefix"]["analyzer"] = "autocomplete_prefix"
-        autocomplete["fields"]["prefix"]["search_analyzer"] = "lowercase_keyword"
-        autocomplete["fields"]["prefix"]["type"] = "text"
-
-        for path in copied_paths:
-            property = cast(
-                esmodels.Property,
-                functools.reduce(
-                    lambda m, p: m.get("properties", {}).get(p, {}), path.split("."), mapping
-                ),
-            )
-            property["copy_to"] = [name]
-
-        mapping["properties"][name] = cast(esmodels.Autocomplete, autocomplete)
-
-    def _get_descriptions(self) -> NestedDict:
+    def _get_descriptions(self) -> dict:
         nodes = {
             models.Aliquot: (
                 "annotations.aliquot",
@@ -252,7 +210,62 @@ class GraphExporter(common.Exporter, abc.ABC):
             self._load_descriptions_from(models.File, "annotations.annotation", "annotation")
         )
 
-        return descriptions
+        return NestedDict.as_dict(descriptions)
+
+    def export(self, mappings: esmodels.ESMapping, settings: Mapping[str, Any]) -> common.Export:
+        mappings["_meta"] = {"descriptions": self._get_descriptions()}
+
+        return mappings, settings
+
+
+COMMON_EXPORTERS = (
+    DescriptionsExporter(),
+    common.DefaultSettingsExporter(),
+    common.DefaultMappingsExporter(),
+    NormalizerExporter(),
+)
+
+
+def apply_clinical_normalizer(mapping: NestedDict, paths: Iterable[str]) -> NestedDict:
+    for path in paths:
+        property = functools.reduce(lambda m, p: m["properties"][p], path.split("."), mapping)
+        property["normalizer"] = "clinical_normalizer"
+
+    return mapping
+
+
+class GraphExporter(common.Exporter, abc.ABC):
+    __slots__ = ("_gdc_dictionary",)
+
+    def __init__(
+        self,
+        gdc_dictionary: Optional[GDCDictionary] = None,
+    ) -> None:
+        self._gdc_dictionary = gdc_dictionary or gdcdictionary.gdcdictionary
+
+    def _add_autocomplete(
+        self, mapping: esmodels.ESMapping, name: str, copied_paths: Iterable[str]
+    ) -> None:
+        autocomplete = ESProperty.string()
+        autocomplete["fields"]["analyzed"]["analyzer"] = "autocomplete_analyzed"
+        autocomplete["fields"]["analyzed"]["search_analyzer"] = "lowercase_keyword"
+        autocomplete["fields"]["analyzed"]["type"] = "text"
+        autocomplete["fields"]["lowercase"]["analyzer"] = "lowercase_keyword"
+        autocomplete["fields"]["lowercase"]["type"] = "text"
+        autocomplete["fields"]["prefix"]["analyzer"] = "autocomplete_prefix"
+        autocomplete["fields"]["prefix"]["search_analyzer"] = "lowercase_keyword"
+        autocomplete["fields"]["prefix"]["type"] = "text"
+
+        for path in copied_paths:
+            property = cast(
+                esmodels.Property,
+                functools.reduce(
+                    lambda m, p: m.get("properties", {}).get(p, {}), path.split("."), mapping
+                ),
+            )
+            property["copy_to"] = [name]
+
+        mapping["properties"][name] = cast(esmodels.Autocomplete, autocomplete)
 
     @abc.abstractmethod
     def _export_mapping(self) -> esmodels.ESMapping:
@@ -260,7 +273,6 @@ class GraphExporter(common.Exporter, abc.ABC):
 
     def export(self, mappings: esmodels.ESMapping, settings: Mapping[str, Any]) -> common.Export:
         mappings = self._export_mapping()
-        mappings["_meta"] = {"descriptions": self._get_descriptions()}
         mappings = NestedDict.as_dict(mappings)
 
         return mappings, settings
