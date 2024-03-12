@@ -21,7 +21,7 @@ Git repository centrally stores and serves GDC data models defined in static YAM
 
 Exporting is the process of updating the models with any properties which may be derived from external sources, normalizing keywords, as well as insuring all default mapping values are set. This process should be run after the gdcdictionary is updated and when any new property is added to the viz indices.
 
-The process can be run for any index (-i) and any of its doc-types (-d). Multiple can be spcified in the command line and if none are provided for either all of the respective type are run.
+The process can be run for any index (-i) and any of its doc-types (-d). Multiple can be specified on the command line and if none are provided for either all of the respective type are run.
 
 #### Examples
 Run all indices/doc-types:
@@ -38,6 +38,11 @@ Run a singular doc-type:
 ```bash
 python -m gdcmodels.export -i gdc_from_graph -d file
 ```
+
+#### After Export
+Once the export has been run, review and commit the generated models. These should
+contain all new properties from the graph (graph indices) and all keywords should have
+the clinical normalizer applied if appropriate.
 
 ### WARNING: YAML & Pre-Commit Hook
 
