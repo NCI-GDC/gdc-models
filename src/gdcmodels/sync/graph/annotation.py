@@ -33,4 +33,4 @@ class Synchronizer(common.GraphSynchronizer):
         return mapping
 
 
-SYNCHRONIZER = common.CompositeSynchronizer((Synchronizer(), *common.COMMON_SYNCHRONIZERS))
+SYNCHRONIZER = common.get_final_synchronizer(Synchronizer())
