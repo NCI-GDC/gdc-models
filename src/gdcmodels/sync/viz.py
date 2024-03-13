@@ -1,4 +1,4 @@
-"""Manage the export of the viz indices."""
+"""Manage the sync of the viz indices."""
 
 import sys
 import types
@@ -6,23 +6,15 @@ import types
 from gdcmodels import esmodels
 from gdcmodels.sync import common
 
-if sys.version_info < (3, 9):
-    import importlib_resources as resources
-    from importlib_resources import abc
-else:
-    from importlib import abc, resources
-
-
-VIZ_EXPORTERS = (
-    common.DefaultMappingsExporter(),
-    common.DefaultSettingsExporter(),
-    common.DefaultNormalizerExporter(),
+_SYNCHRONIZER = common.CompositeSynchronizer(
+    (
+        common.DefaultMappingsSynchronizer(),
+        common.DefaultSettingsSynchronizer(),
+        common.DefaultNormalizerSynchronizer(),
+    )
 )
 
 
-EXPORTERS = types.MappingProxyType(
-    {
-        i: types.MappingProxyType({d: common.CompositeExporter(VIZ_EXPORTERS)})
-        for i, d in esmodels.VIZ_INDICES
-    }
+SYNCHRONIZERS = types.MappingProxyType(
+    {i: types.MappingProxyType({d: _SYNCHRONIZER}) for i, d in esmodels.VIZ_INDICES}
 )

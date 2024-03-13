@@ -12,14 +12,14 @@ from gdcmodels.sync import common
 TMapping = TypeVar("TMapping", bound=Mapping[str, Any])
 
 
-class NormalizerExporter(common.DefaultNormalizerExporter):
+class NormalizerSynchronizer(common.DefaultNormalizerSynchronizer):
     def __init__(self) -> None:
         super().__init__(
             excluded_properties=frozenset(
                 (
                     "case_submitter_id",
                     "entity_submitter_id",
-                    *common.DefaultNormalizerExporter.DEFAULT_EXCLUDED_PROPERTIES,
+                    *common.DefaultNormalizerSynchronizer.DEFAULT_EXCLUDED_PROPERTIES,
                 )
             )
         )
@@ -107,7 +107,7 @@ class GDCDictionary(Protocol):
     schema: Mapping[str, Properties]
 
 
-class DescriptionsExporter(common.Exporter):
+class DescriptionsSynchronizer(common.Synchronizer):
     def __init__(
         self,
         gdc_dictionary: Optional[GDCDictionary] = None,
@@ -212,18 +212,22 @@ class DescriptionsExporter(common.Exporter):
 
         return NestedDict.as_dict(descriptions)
 
-    def export(self, mappings: esmodels.ESMapping, settings: Mapping[str, Any]) -> common.Export:
+    def sync(self, mappings: esmodels.ESMapping, settings: Mapping[str, Any]) -> common.Export:
         mappings["_meta"] = {"descriptions": self._get_descriptions()}
 
         return mappings, settings
 
 
-COMMON_EXPORTERS = (
-    DescriptionsExporter(),
-    common.DefaultSettingsExporter(),
-    common.DefaultMappingsExporter(),
-    NormalizerExporter(),
+COMMON_SYNCHRONIZERS = (
+    DescriptionsSynchronizer(),
+    common.DefaultSettingsSynchronizer(),
+    common.DefaultMappingsSynchronizer(),
+    NormalizerSynchronizer(),
 )
+
+
+def get_final_synchronizer(synchronizer: common.Synchronizer) -> common.Synchronizer:
+    return common.CompositeSynchronizer((synchronizer, *COMMON_SYNCHRONIZERS))
 
 
 def apply_clinical_normalizer(mapping: NestedDict, paths: Iterable[str]) -> NestedDict:
@@ -234,7 +238,7 @@ def apply_clinical_normalizer(mapping: NestedDict, paths: Iterable[str]) -> Nest
     return mapping
 
 
-class GraphExporter(common.Exporter, abc.ABC):
+class GraphSynchronizer(common.Synchronizer, abc.ABC):
     __slots__ = ("_gdc_dictionary",)
 
     def __init__(
@@ -268,11 +272,11 @@ class GraphExporter(common.Exporter, abc.ABC):
         mapping["properties"][name] = cast(esmodels.Autocomplete, autocomplete)
 
     @abc.abstractmethod
-    def _export_mapping(self) -> esmodels.ESMapping:
+    def _load_mapping(self) -> esmodels.ESMapping:
         raise NotImplementedError()
 
-    def export(self, mappings: esmodels.ESMapping, settings: Mapping[str, Any]) -> common.Export:
-        mappings = self._export_mapping()
+    def sync(self, mappings: esmodels.ESMapping, settings: Mapping[str, Any]) -> common.Export:
+        mappings = self._load_mapping()
         mappings = NestedDict.as_dict(mappings)
 
         return mappings, settings
@@ -313,7 +317,7 @@ def _load_properties_from(node: models.Node, include_id: bool = True) -> NestedD
 
 
 class ProjectProperties:
-    def export_properties(self) -> esmodels.Properties:
+    def load_properties(self) -> esmodels.Properties:
         properties = _load_properties_from(models.Project)
         properties["program"] = NestedDict(properties=_load_properties_from(models.Program))
 
@@ -321,7 +325,7 @@ class ProjectProperties:
 
 
 class AnnotationProperties:
-    def export_properties(self) -> esmodels.Properties:
+    def load_properties(self) -> esmodels.Properties:
         properties = NestedDict(
             **{
                 f: ESProperty.string()
@@ -341,7 +345,7 @@ class AnnotationProperties:
 
 
 class SummaryProperties:
-    def export_properties(self) -> NestedDict:
+    def load_properties(self) -> NestedDict:
         properties = NestedDict()
         properties["file_count"] = ESProperty.long()
         properties["file_size"] = ESProperty.long()
@@ -377,7 +381,7 @@ class CaseProperties:
         self._summaries = summaries or SummaryProperties()
 
     def _get_project(self) -> NestedDict:
-        mapping = NestedDict(properties=self._projects.export_properties())
+        mapping = NestedDict(properties=self._projects.load_properties())
 
         del mapping["properties"]["code"]
 
@@ -389,7 +393,7 @@ class CaseProperties:
             type="nested",
         )
         properties = mapping["properties"]
-        properties["annotations"]["properties"] = self._annotations.export_properties()
+        properties["annotations"]["properties"] = self._annotations.load_properties()
         properties["annotations"]["type"] = "nested"
         properties["center"] = NestedDict(properties=_load_properties_from(models.Center))
 
@@ -401,7 +405,7 @@ class CaseProperties:
             type="nested",
         )
         properties = mapping["properties"]
-        properties["annotations"]["properties"] = self._annotations.export_properties()
+        properties["annotations"]["properties"] = self._annotations.load_properties()
         properties["annotations"]["type"] = "nested"
         properties["aliquots"] = self._get_aliquots()
 
@@ -413,7 +417,7 @@ class CaseProperties:
             type="nested",
         )
         properties = mapping["properties"]
-        properties["annotations"]["properties"] = self._annotations.export_properties()
+        properties["annotations"]["properties"] = self._annotations.load_properties()
         properties["annotations"]["type"] = "nested"
 
         return mapping
@@ -425,7 +429,7 @@ class CaseProperties:
         )
         properties = mapping["properties"]
         properties["analytes"] = self._get_analytes()
-        properties["annotations"]["properties"] = self._annotations.export_properties()
+        properties["annotations"]["properties"] = self._annotations.load_properties()
         properties["annotations"]["type"] = "nested"
         properties["center"] = NestedDict(properties=_load_properties_from(models.Center))
         properties["slides"] = self._get_slides()
@@ -438,7 +442,7 @@ class CaseProperties:
             type="nested",
         )
         properties = mapping["properties"]
-        properties["annotations"]["properties"] = self._annotations.export_properties()
+        properties["annotations"]["properties"] = self._annotations.load_properties()
         properties["annotations"]["type"] = "nested"
         properties["portions"] = self._get_portions()
 
@@ -453,7 +457,7 @@ class CaseProperties:
             type="nested",
         )
         properties = mapping["properties"]
-        properties["annotations"]["properties"] = self._annotations.export_properties()
+        properties["annotations"]["properties"] = self._annotations.load_properties()
         properties["annotations"]["type"] = "nested"
         properties["pathology_details"] = NestedDict(
             properties=_load_properties_from(models.PathologyDetail),
@@ -479,9 +483,9 @@ class CaseProperties:
 
         return mapping
 
-    def export_properties(self) -> NestedDict:
+    def load_properties(self) -> NestedDict:
         properties = _load_properties_from(models.Case)
-        properties["annotations"]["properties"] = self._annotations.export_properties()
+        properties["annotations"]["properties"] = self._annotations.load_properties()
         properties["annotations"]["type"] = "nested"
         properties["project"] = self._get_project()
         properties["tissue_source_site"] = NestedDict(
@@ -501,7 +505,7 @@ class CaseProperties:
             properties=_load_properties_from(models.FamilyHistory),
             type="nested",
         )
-        properties["summary"]["properties"] = self._summaries.export_properties()
+        properties["summary"]["properties"] = self._summaries.load_properties()
 
         # id summaries
         properties["sample_ids"] = ESProperty.string()
@@ -646,7 +650,7 @@ class FileProperties:
 
         return mapping
 
-    def export_properties(self) -> NestedDict:
+    def load_properties(self) -> NestedDict:
         properties = self._load_file_properties()
 
         # Additional
@@ -661,7 +665,7 @@ class FileProperties:
         properties["center"]["properties"] = _load_properties_from(models.Center)
 
         properties["analysis"] = self._get_analysis()
-        properties["annotations"]["properties"] = self._annotations.export_properties()
+        properties["annotations"]["properties"] = self._annotations.load_properties()
         properties["annotations"]["type"] = "nested"
         properties["associated_entities"] = self._get_associated_entities()
         properties["downstream_analyses"] = self._get_downstream_analyses()

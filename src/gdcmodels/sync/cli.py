@@ -1,4 +1,4 @@
-"""The basic cli functionality for the export."""
+"""The basic cli functionality for the sync."""
 
 import functools
 import itertools
@@ -8,7 +8,6 @@ from typing import AbstractSet, Any, Mapping, Optional, Sequence
 
 import click
 import deepdiff
-from deepdiff.serialization import pickle_dump, pickle_load
 
 import gdcmodels
 from gdcmodels import esmodels, extraction_utils
@@ -20,11 +19,11 @@ else:
     from importlib import resources
 
 
-EXPORTERS: Mapping[str, Mapping[str, common.Exporter]] = types.MappingProxyType(
-    {**viz.EXPORTERS, **graph.EXPORTERS}
+SYNCHRONIZERS: Mapping[str, Mapping[str, common.Synchronizer]] = types.MappingProxyType(
+    {**viz.SYNCHRONIZERS, **graph.SYNCHRONIZERS}
 )
-INDICES = tuple(EXPORTERS.keys())
-DOC_TYPES = tuple(itertools.chain.from_iterable(v.keys() for v in EXPORTERS.values()))
+INDICES = tuple(SYNCHRONIZERS.keys())
+DOC_TYPES = tuple(itertools.chain.from_iterable(v.keys() for v in SYNCHRONIZERS.values()))
 
 
 @functools.lru_cache(None)
@@ -95,19 +94,19 @@ def _write_files(
             extraction_utils.dump_yaml(descriptions, f)
 
 
-def run_export(index_name: str, doc_type: str) -> None:
-    """Run the export of the index/doc-type.
+def run_synchronization(index_name: str, doc_type: str) -> None:
+    """Run the synchronization of the index/doc-type.
 
     Args:
-        index_name: The name of the index to export.
+        index_name: The name of the index to sync.
         doc_type: The doc type associated with the index.
     """
     index = load_models()[index_name]
     old_mapping, old_settings = index[doc_type]["_mapping"], index["_settings"]
     _ = old_mapping.pop("_meta", None)
 
-    exporter = EXPORTERS[index_name][doc_type]
-    new_mapping, new_settings = exporter.export(old_mapping, old_settings)
+    synchronizer = SYNCHRONIZERS[index_name][doc_type]
+    new_mapping, new_settings = synchronizer.sync(old_mapping, old_settings)
     descriptions = new_mapping.pop("_meta", {}).get("descriptions")
 
     diff = deepdiff.DeepDiff(new_mapping, old_mapping)
@@ -133,7 +132,7 @@ def _doc_type_validation(
     """
     indices = ctx.params["index"]
     valid_doc_types = frozenset(
-        itertools.chain.from_iterable(EXPORTERS[i].keys() for i in indices)
+        itertools.chain.from_iterable(SYNCHRONIZERS[i].keys() for i in indices)
     )
     doc_types = frozenset(value)
 
@@ -145,7 +144,7 @@ def _doc_type_validation(
     return doc_types
 
 
-@click.command("export")
+@click.command("sync")
 @click.option("--index", "-i", type=click.Choice(INDICES), default=INDICES, multiple=True)
 @click.option(
     "--doc-type",
@@ -156,16 +155,16 @@ def _doc_type_validation(
     callback=_doc_type_validation,
 )
 def cli(index: Sequence[str], doc_type: AbstractSet[str]) -> None:
-    """Export a mapping from a different system and/or standardizes said mapping.
+    """Sync a mapping with a different system and/or standardizes said mapping.
 
     Args:
         index:
-            index: The indices to be exported.
+            index: The indices to be synced.
             doc_type: The doc-types associated with the indices which are to be
-                exported.
+                synced.
     """
     indices = index
 
     for _index in indices:
-        for _doc_type in EXPORTERS[_index].keys() & doc_type:
-            run_export(_index, _doc_type)
+        for _doc_type in SYNCHRONIZERS[_index].keys() & doc_type:
+            run_synchronization(_index, _doc_type)

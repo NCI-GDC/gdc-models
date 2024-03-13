@@ -4,7 +4,7 @@ from gdcmodels import esmodels
 from gdcmodels.sync.graph import common
 
 
-class Exporter(common.GraphExporter):
+class Synchronizer(common.GraphSynchronizer):
     __slots__ = ("_annotations", "_projects")
 
     def __init__(
@@ -18,11 +18,11 @@ class Exporter(common.GraphExporter):
         self._annotations = annotations or common.AnnotationProperties()
         self._projects = projects or common.ProjectProperties()
 
-    def _export_mapping(self) -> esmodels.ESMapping:
+    def _load_mapping(self) -> esmodels.ESMapping:
         mapping = esmodels.ESMapping(
             properties={
-                **self._annotations.export_properties(),
-                "project": esmodels.Property(properties=self._projects.export_properties()),
+                **self._annotations.load_properties(),
+                "project": esmodels.Property(properties=self._projects.load_properties()),
             }
         )
 
@@ -33,4 +33,4 @@ class Exporter(common.GraphExporter):
         return mapping
 
 
-EXPORTER = common.CompositeExporter((Exporter(), *common.COMMON_EXPORTERS))
+SYNCHRONIZER = common.CompositeSynchronizer((Synchronizer(), *common.COMMON_SYNCHRONIZERS))

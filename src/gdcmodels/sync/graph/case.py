@@ -4,7 +4,7 @@ from gdcmodels import esmodels
 from gdcmodels.sync.graph import common
 
 
-class Exporter(common.GraphExporter):
+class Synchronizer(common.GraphSynchronizer):
     __slots__ = ("_cases", "_files")
 
     def __init__(
@@ -19,17 +19,17 @@ class Exporter(common.GraphExporter):
         self._files = files or common.FileProperties()
 
     def _get_file_properties(self) -> common.NestedDict:
-        properties = self._files.export_properties()
+        properties = self._files.load_properties()
 
         del properties["annotations"]
         del properties["associated_entities"]
 
         return properties
 
-    def _export_mapping(self) -> esmodels.ESMapping:
+    def _load_mapping(self) -> esmodels.ESMapping:
         mapping: esmodels.ESMapping = {
             "properties": {
-                **self._cases.export_properties(),
+                **self._cases.load_properties(),
                 "files": esmodels.Property(properties=self._get_file_properties(), type="nested"),
             }
         }
@@ -62,4 +62,4 @@ class Exporter(common.GraphExporter):
         return mapping
 
 
-EXPORTER = common.CompositeExporter((Exporter(), *common.COMMON_EXPORTERS))
+SYNCHRONIZER = common.get_final_synchronizer(Synchronizer())

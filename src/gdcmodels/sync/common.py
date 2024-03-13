@@ -1,4 +1,4 @@
-"""The common functionality for exporting indices."""
+"""The common functionality for syncing indices."""
 
 import functools
 import sys
@@ -38,22 +38,35 @@ def apply_defaults(mapping: TMapping, *defaults: Mapping[str, object]) -> TMappi
     return cast(TMapping, mergedeep.merge({}, *defaults, mapping))
 
 
-class Exporter(Protocol):
-    def export(self, mappings: esmodels.ESMapping, settings: Mapping[str, Any]) -> Export:
+class Synchronizer(Protocol):
+    def sync(self, mappings: esmodels.ESMapping, settings: Mapping[str, Any]) -> Export:
+        """Synchronize the data in the models w/ external and default values.
+
+        Args:
+            mappings: The mappings associated with the model.
+            settings: The settings associated with the model.
+
+        Returns:
+            An updated mappings/settings to update the existing data with.
+        """
         ...
 
 
-class CompositeExporter(Exporter):
-    def __init__(self, exporters: Iterable[Exporter]) -> None:
-        self._exporters = exporters
+class CompositeSynchronizer(Synchronizer):
+    """A synchronizer which chains several sub-sync commands together."""
 
-    def export(self, mappings: esmodels.ESMapping, settings: Mapping[str, Any]) -> Export:
+    def __init__(self, synchronizers: Iterable[Synchronizer]) -> None:
+        self._synchronizers = synchronizers
+
+    def sync(self, mappings: esmodels.ESMapping, settings: Mapping[str, Any]) -> Export:
         return functools.reduce(
-            lambda args, e: e.export(*args), self._exporters, (mappings, settings)
+            lambda args, e: e.sync(*args), self._synchronizers, (mappings, settings)
         )
 
 
-class DefaultSettingsExporter(Exporter):
+class DefaultSettingsSynchronizer(Synchronizer):
+    """A synchronizer which sets the default settings values for the graph/viz indices."""
+
     def __init__(self) -> None:
         self._default_settings: Optional[Mapping[str, Any]] = None
 
@@ -68,11 +81,13 @@ class DefaultSettingsExporter(Exporter):
 
         return self._default_settings
 
-    def export(self, mappings: esmodels.ESMapping, settings: Mapping[str, Any]) -> Export:
+    def sync(self, mappings: esmodels.ESMapping, settings: Mapping[str, Any]) -> Export:
         return mappings, apply_defaults(settings, self.default_settings)
 
 
-class DefaultMappingsExporter(Exporter):
+class DefaultMappingsSynchronizer(Synchronizer):
+    """A synchronizer which sets the default mapping values for the viz/graph indices."""
+
     def __init__(self) -> None:
         self._default_mappings: Optional[Mapping[str, Any]] = None
 
@@ -87,11 +102,13 @@ class DefaultMappingsExporter(Exporter):
 
         return self._default_mappings
 
-    def export(self, mappings: esmodels.ESMapping, settings: Mapping[str, Any]) -> Export:
+    def sync(self, mappings: esmodels.ESMapping, settings: Mapping[str, Any]) -> Export:
         return apply_defaults(mappings, self.default_mappings), settings
 
 
-class DefaultNormalizerExporter(Exporter):
+class DefaultNormalizerSynchronizer(Synchronizer):
+    """A synchronizer which adds the clinical normalizer to keyword properties."""
+
     DEFAULT_EXCLUDED_PROPERTIES = frozenset(
         (
             "biotype",
@@ -145,7 +162,7 @@ class DefaultNormalizerExporter(Exporter):
 
         return tree
 
-    def export(self, mapping: esmodels.ESMapping, settings: Mapping[str, Any]) -> Export:
+    def sync(self, mapping: esmodels.ESMapping, settings: Mapping[str, Any]) -> Export:
         normalized_tree = self._build_normalized_tree(mapping)
 
         return apply_defaults(mapping, normalized_tree), settings
