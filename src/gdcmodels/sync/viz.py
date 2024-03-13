@@ -4,7 +4,7 @@ import sys
 import types
 
 from gdcmodels import esmodels
-from gdcmodels.export import common
+from gdcmodels.sync import common
 
 if sys.version_info < (3, 9):
     import importlib_resources as resources

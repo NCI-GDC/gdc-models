@@ -4,8 +4,8 @@ import pytest
 
 import gdcmodels
 from gdcmodels import esmodels
-from gdcmodels.export import cli, common
-from gdcmodels.export.graph import common as graph
+from gdcmodels.sync import cli, common
+from gdcmodels.sync.graph import common as graph
 
 
 def get_index_params() -> Iterable:

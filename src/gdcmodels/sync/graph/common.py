@@ -7,7 +7,7 @@ from gdcdatamodel2 import models
 from typing_extensions import Protocol, TypedDict
 
 from gdcmodels import esmodels
-from gdcmodels.export import common
+from gdcmodels.sync import common
 
 TMapping = TypeVar("TMapping", bound=Mapping[str, Any])
 

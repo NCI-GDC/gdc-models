@@ -1,6 +1,6 @@
 import types
 
-from gdcmodels.export.graph import annotation, case, file, project
+from gdcmodels.sync.graph import annotation, case, file, project
 
 EXPORTERS = types.MappingProxyType(
     {

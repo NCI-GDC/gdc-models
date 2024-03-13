@@ -1,7 +1,7 @@
 from typing import Optional
 
 from gdcmodels import esmodels
-from gdcmodels.export.graph import common
+from gdcmodels.sync.graph import common
 
 
 class Exporter(common.GraphExporter):

@@ -12,7 +12,7 @@ from deepdiff.serialization import pickle_dump, pickle_load
 
 import gdcmodels
 from gdcmodels import esmodels, extraction_utils
-from gdcmodels.export import common, graph, viz
+from gdcmodels.sync import common, graph, viz
 
 if sys.version_info < (3, 9):
     import importlib_resources as resources

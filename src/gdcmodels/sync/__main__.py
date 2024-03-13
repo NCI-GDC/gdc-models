@@ -1,4 +1,4 @@
-from gdcmodels.export import cli
+from gdcmodels.sync import cli
 
 if __name__ == "__main__":
     cli.cli()
