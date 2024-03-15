@@ -27,8 +27,13 @@ analysis:
       filter:
         - lowercase
       type: custom
-index.mapping.nested_fields.limit: 100
-index.mapping.nested_objects.limit: 100000000
-index.mapping.total_fields.limit: 1500
-index.max_result_window: 100000000
-index.max_terms_count: 100000
+index:
+  mapping:
+    nested_fields:
+      limit: 100
+    nested_objects:
+      limit: 100000000
+    total_fields:
+      limit: 1500
+  max_result_window: 100000000
+  max_terms_count: 100000

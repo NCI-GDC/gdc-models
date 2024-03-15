@@ -2,6 +2,19 @@ from typing import Any, Dict, KeysView, Literal, Mapping, Sequence, Union, overl
 
 from typing_extensions import NotRequired, Protocol, TypedDict
 
+GRAPH_INDICES = tuple(("gdc_from_graph", d) for d in ("annotation", "case", "file", "project"))
+VIZ_INDICES = tuple(
+    (i, i)
+    for i in (
+        "case_centric",
+        "cnv_centric",
+        "cnv_occurrence_centric",
+        "gene_centric",
+        "ssm_centric",
+        "ssm_occurrence_centric",
+    )
+)
+
 
 class Meta(TypedDict):
     """The metadata associated with a mapping."""
