@@ -18,8 +18,6 @@ tox:
       alias: elasticsearch
   variables:
     ES_HOST: elasticsearch
-  script:
-    - tox -r -e py --colored yes
 
 publish:
   after_script:
