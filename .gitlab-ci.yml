@@ -13,6 +13,9 @@ include:
       - templates/artifacts/python-library.yaml
       - templates/common/trigger.yml
 
+variables:
+  LANGUAGE_VERSION: python3.8
+
 tox:
   parallel:
     matrix:
@@ -25,13 +28,12 @@ tox:
   script:
     - tox -r -e py --colored yes
 
-
-release:
-  variables:
-    RELEASE_PY_VERSION: python3.8
-  before_script:
-    - git fetch --unshallow || true
-    - echo "CI_COMMIT_REF_NAME=$CI_COMMIT_REF_NAME"
+publish:
+  after_script:
+    - python -m setuptools_git_versioning > VERSION.txt
+  artifacts:
+    paths:
+      - VERSION.txt
 
 .downstream_repos:
   parallel:
