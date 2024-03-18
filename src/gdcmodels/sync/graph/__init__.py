@@ -1,15 +1,16 @@
-"""Manage the sync of the graph indices."""
-
 import types
 
-from gdcmodels import esmodels
-from gdcmodels.sync import common
+from gdcmodels.sync.graph import annotation, case, file, project
 
 SYNCHRONIZERS = types.MappingProxyType(
     {
-        # TODO: sync graph data from data models next PR.
         "gdc_from_graph": types.MappingProxyType(
-            {d: common.CompositeSynchronizer(synchronizers=()) for _, d in esmodels.GRAPH_INDICES}
+            {
+                "annotation": annotation.SYNCHRONIZER,
+                "case": case.SYNCHRONIZER,
+                "file": file.SYNCHRONIZER,
+                "project": project.SYNCHRONIZER,
+            }
         )
     }
 )

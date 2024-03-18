@@ -1,4 +1,10 @@
 ---
+_size:
+  enabled: true
+_source:
+  excludes:
+    - __comment__
+dynamic: strict
 properties:
   annotation_autocomplete:
     fields:

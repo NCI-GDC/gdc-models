@@ -37,3 +37,6 @@ index:
       limit: 1500
   max_result_window: 100000000
   max_terms_count: 100000
+  number_of_replicas: 0
+  number_of_shards: 1
+  refresh_interval: 1m

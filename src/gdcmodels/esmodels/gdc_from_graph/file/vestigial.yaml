@@ -67,6 +67,12 @@ dictionary_item_added:
     type: double
   root['properties']['cases']['properties']['exposures']['properties']['height']:
     type: double
+  root['properties']['cases']['properties']['exposures']['properties']['marijuana_use_per_week']:
+    type: double
+  root['properties']['cases']['properties']['exposures']['properties']['smokeless_tobacco_quit_age']:
+    type: long
+  root['properties']['cases']['properties']['exposures']['properties']['tobacco_use_per_day']:
+    type: double
   root['properties']['cases']['properties']['exposures']['properties']['weight']:
     type: double
   root['properties']['downstream_analyses']['properties']['output_files']['properties']['proportion_coverage_10X']:
