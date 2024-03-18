@@ -1,14 +1,7 @@
 ---
-stages:
-  - checks
-  - test
-  - tests
-  - build-and-publish
-  - stage_trigger
-
 include:
   - project: nci-gdc/gitlab-templates
-    ref: 0.7.5
+    ref: chore/update-triggers-for-new-template
     file:
       - templates/artifacts/python-library.yaml
       - templates/common/trigger.yml
