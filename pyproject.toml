@@ -18,7 +18,7 @@ source = ["gdcmodels"]
 
 [tool.isort]
 profile = "black"
-line_length = 98              # match black config
+line_length = 98 # match black config
 known_first_party = ["gdcmodels"]
 
 [tool.setuptools_scm]

@@ -1,0 +1,6 @@
+---
+properties:
+  digest:
+    type: keyword
+  ids:
+    type: keyword

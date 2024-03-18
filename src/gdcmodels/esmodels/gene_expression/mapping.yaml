@@ -1,0 +1,16 @@
+---
+properties:
+  case_id:
+    type: keyword
+  gene_expression_id:
+    type: keyword
+  gene_id:
+    type: keyword
+  log2_uqfpkm:
+    type: double
+  submitter_id:
+    type: keyword
+  symbol:
+    type: keyword
+  uqfpkm:
+    type: double

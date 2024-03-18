@@ -1,0 +1,103 @@
+---
+properties:
+  annotation_autocomplete:
+    fields:
+      analyzed:
+        analyzer: autocomplete_analyzed
+        search_analyzer: lowercase_keyword
+        type: text
+      lowercase:
+        analyzer: lowercase_keyword
+        type: text
+      prefix:
+        analyzer: autocomplete_prefix
+        search_analyzer: lowercase_keyword
+        type: text
+    normalizer: clinical_normalizer
+    type: keyword
+  annotation_id:
+    copy_to:
+      - annotation_autocomplete
+    normalizer: clinical_normalizer
+    type: keyword
+  case_id:
+    normalizer: clinical_normalizer
+    type: keyword
+  case_submitter_id:
+    type: keyword
+  category:
+    normalizer: clinical_normalizer
+    type: keyword
+  classification:
+    normalizer: clinical_normalizer
+    type: keyword
+  created_datetime:
+    normalizer: clinical_normalizer
+    type: keyword
+  entity_id:
+    normalizer: clinical_normalizer
+    type: keyword
+  entity_submitter_id:
+    type: keyword
+  entity_type:
+    normalizer: clinical_normalizer
+    type: keyword
+  legacy_created_datetime:
+    normalizer: clinical_normalizer
+    type: keyword
+  legacy_updated_datetime:
+    normalizer: clinical_normalizer
+    type: keyword
+  notes:
+    normalizer: clinical_normalizer
+    type: keyword
+  project:
+    properties:
+      code:
+        type: keyword
+      dbgap_accession_number:
+        normalizer: clinical_normalizer
+        type: keyword
+      disease_type:
+        normalizer: clinical_normalizer
+        type: keyword
+      intended_release_date:
+        normalizer: clinical_normalizer
+        type: keyword
+      name:
+        type: keyword
+      primary_site:
+        normalizer: clinical_normalizer
+        type: keyword
+      program:
+        properties:
+          dbgap_accession_number:
+            normalizer: clinical_normalizer
+            type: keyword
+          name:
+            type: keyword
+          program_id:
+            normalizer: clinical_normalizer
+            type: keyword
+      project_id:
+        type: keyword
+      releasable:
+        normalizer: clinical_normalizer
+        type: keyword
+      released:
+        normalizer: clinical_normalizer
+        type: keyword
+      state:
+        normalizer: clinical_normalizer
+        type: keyword
+  state:
+    normalizer: clinical_normalizer
+    type: keyword
+  status:
+    normalizer: clinical_normalizer
+    type: keyword
+  submitter_id:
+    type: keyword
+  updated_datetime:
+    normalizer: clinical_normalizer
+    type: keyword

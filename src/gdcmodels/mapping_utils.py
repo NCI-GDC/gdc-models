@@ -9,6 +9,6 @@ def deep_merge_mapping_files(one: Dict, two: Dict) -> Dict:
 
 
 def deep_diff_mapping_files(new: Dict, old: Dict) -> Dict:
-    """Return the dictionary of things that are in the old dict and not in the new"""
+    """Return the dictionary of things that are in the old dict and not in the new."""
     diff = deepdiff.DeepDiff(new, old)
     return {} + deepdiff.Delta(diff, force=True)

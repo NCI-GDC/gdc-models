@@ -1,0 +1,41 @@
+---
+analysis:
+  analyzer:
+    autocomplete_analyzed:
+      filter:
+        - lowercase
+        - edge_ngram
+      tokenizer: standard
+    autocomplete_prefix:
+      filter:
+        - lowercase
+        - edge_ngram
+      tokenizer: keyword
+    lowercase_keyword:
+      filter:
+        - lowercase
+      tokenizer: keyword
+  filter:
+    edge_ngram:
+      max_gram: '20'
+      min_gram: '1'
+      side: front
+      type: edge_ngram
+  normalizer:
+    clinical_normalizer:
+      char_filter: []
+      filter:
+        - lowercase
+      type: custom
+index:
+  mapping:
+    nested_fields:
+      limit: 100
+    nested_objects:
+      limit: 100000000
+    total_fields:
+      limit: 2000
+  max_result_window: 100000000
+  number_of_replicas: 0
+  number_of_shards: 12
+  refresh_interval: 1m
