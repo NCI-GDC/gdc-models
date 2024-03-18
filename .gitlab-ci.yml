@@ -1,17 +1,16 @@
 ---
 stages:
-  - .pre
+  - checks
   - test
-  - build
+  - tests
+  - build-and-publish
   - stage_trigger
 
 include:
   - project: nci-gdc/gitlab-templates
-    ref: 0.6.0
+    ref: 0.7.5
     file:
-      - templates/global/full.yaml
-      - templates/python/full.yaml
-      - templates/common/python.yaml
+      - templates/artifacts/python-library.yaml
       - templates/common/trigger.yml
 
 tox:
