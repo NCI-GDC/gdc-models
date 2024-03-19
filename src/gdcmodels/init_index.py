@@ -154,8 +154,8 @@ def init_index(args: Arguments):
 
             es.indices.create(
                 index=full_index_name,
-                settings=es_models[index]["_settings"],
-                mappings=es_models[index][index_type]["_mapping"],
+                settings=es_models[index][index_type].settings,
+                mappings=es_models[index][index_type].mappings,
             )
 
 
