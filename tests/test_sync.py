@@ -1,9 +1,9 @@
-from typing import Iterable
+from typing import Iterable, Mapping
 
 import pytest
 
 import gdcmodels
-from gdcmodels import esmodels
+from gdcmodels import esmodels, mapper
 from gdcmodels.sync import cli, common
 from gdcmodels.sync.graph import common as graph
 
@@ -16,20 +16,20 @@ def get_index_params() -> Iterable:
 
 
 @pytest.fixture(scope="session")
-def models() -> esmodels.Models:
+def models() -> Mapping[str, Mapping[str, mapper.ModelMapper]]:
     return gdcmodels.get_es_models(vestigial_included=False)
 
 
 @pytest.mark.parametrize(("index_name", "doc_type", "synchronizer"), get_index_params())
 def test__sync__index_is_synced(
-    models: esmodels.Models,
+    models: Mapping[str, Mapping[str, mapper.ModelMapper]],
     index_name: str,
     doc_type: str,
     synchronizer: common.Synchronizer,
 ) -> None:
     index = models[index_name]
-    mapping = index[doc_type]["_mapping"]
-    settings = index["_settings"]
+    mapping = index[doc_type].mappings
+    settings = index[doc_type].settings
 
     synced = synchronizer.sync(mapping, settings)
 
