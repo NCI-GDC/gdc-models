@@ -1,6 +1,5 @@
 """Manage the sync of the viz indices."""
 
-import sys
 import types
 
 from gdcmodels import esmodels

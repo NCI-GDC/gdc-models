@@ -14,7 +14,7 @@ def test__get_es_models__standard_behavior() -> None:
     assert len(models) == 12
 
     for dtype in ["case", "project", "file", "annotation"]:
-        dtype_mapping = models["gdc_from_graph"][dtype]["_mapping"]
+        dtype_mapping = models["gdc_from_graph"][dtype].mappings
         assert "_meta" in dtype_mapping, dtype_mapping.keys()
         assert "descriptions" in dtype_mapping["_meta"]
         # The description field below is somewhat random, but something that
@@ -65,13 +65,13 @@ def test__get_es_models__multiple_indices(es_models: pathlib.Path) -> None:
 
     assert "foo" in models
     assert "foo" in models["foo"]
-    assert mappings["foo"]["mapping"] == models["foo"]["foo"]["_mapping"]
-    assert mappings["foo"]["settings"] == models["foo"]["_settings"]
+    assert mappings["foo"]["mapping"] == models["foo"]["foo"].mappings
+    assert mappings["foo"]["settings"] == models["foo"]["foo"].settings
 
     assert "bar" in models
     assert "foo_bar" in models["bar"]
-    assert mappings["bar"]["mapping"] == models["bar"]["foo_bar"]["_mapping"]
-    assert mappings["bar"]["settings"] == models["bar"]["_settings"]
+    assert mappings["bar"]["mapping"] == models["bar"]["foo_bar"].mappings
+    assert mappings["bar"]["settings"] == models["bar"]["foo_bar"].settings
 
 
 def test__get_es_models__no_descriptions(es_models: pathlib.Path) -> None:
@@ -92,7 +92,7 @@ def test__get_es_models__no_descriptions(es_models: pathlib.Path) -> None:
 
     assert "foo" in models
     assert "foo" in models["foo"]
-    assert mapping == models["foo"]["foo"]["_mapping"]
+    assert mapping == models["foo"]["foo"].mappings
 
 
 def test__get_es_models__no_settings(es_models: pathlib.Path) -> None:
@@ -111,9 +111,9 @@ def test__get_es_models__no_settings(es_models: pathlib.Path) -> None:
     models = gdcmodels.get_es_models()
 
     assert "foo" in models
-    assert {} == models["foo"]["_settings"]
     assert "foo" in models["foo"]
-    assert mapping == models["foo"]["foo"]["_mapping"]
+    assert {} == models["foo"]["foo"].settings
+    assert mapping == models["foo"]["foo"].mappings
 
 
 def test__get_es_models__empty_descriptions(es_models: pathlib.Path) -> None:
@@ -134,7 +134,7 @@ def test__get_es_models__empty_descriptions(es_models: pathlib.Path) -> None:
 
     assert "foo" in models
     assert "foo" in models["foo"]
-    assert mapping == models["foo"]["foo"]["_mapping"]
+    assert mapping == models["foo"]["foo"].mappings
 
 
 def test__get_es_models__with_descriptions(es_models: pathlib.Path) -> None:
@@ -153,9 +153,7 @@ def test__get_es_models__with_descriptions(es_models: pathlib.Path) -> None:
 
     assert "foo" in models
     assert "foo" in models["foo"]
-    assert {"_meta": {"descriptions": descriptions}, **mapping} == models["foo"]["foo"][
-        "_mapping"
-    ]
+    assert {"_meta": {"descriptions": descriptions}, **mapping} == models["foo"]["foo"].mappings
 
 
 def test__get_es_models__with_vestigial_properties(es_models: pathlib.Path) -> None:
@@ -205,7 +203,7 @@ def test__get_es_models__with_vestigial_properties(es_models: pathlib.Path) -> N
             },
             **mapping["properties"],
         }
-    } == models["foo"]["foo"]["_mapping"]
+    } == models["foo"]["foo"].mappings
 
 
 def test__get_es_models__exclude_vestigial_properties(es_models: pathlib.Path) -> None:
@@ -239,4 +237,4 @@ def test__get_es_models__exclude_vestigial_properties(es_models: pathlib.Path) -
 
     assert "foo" in models
     assert "foo" in models["foo"]
-    assert mapping == models["foo"]["foo"]["_mapping"]
+    assert mapping == models["foo"]["foo"].mappings

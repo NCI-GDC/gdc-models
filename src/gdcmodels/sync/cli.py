@@ -10,7 +10,7 @@ import click
 import deepdiff
 
 import gdcmodels
-from gdcmodels import esmodels, extraction_utils
+from gdcmodels import esmodels, extraction_utils, mapper
 from gdcmodels.sync import common, graph, viz
 
 if sys.version_info < (3, 9):
@@ -27,7 +27,7 @@ DOC_TYPES = tuple(itertools.chain.from_iterable(v.keys() for v in SYNCHRONIZERS.
 
 
 @functools.lru_cache(None)
-def load_models() -> esmodels.Models:
+def load_models() -> Mapping[str, Mapping[str, mapper.ModelMapper]]:
     """Call get_es_models and manage cache of the results.
 
     Returns:
@@ -101,8 +101,8 @@ def run_synchronization(index_name: str, doc_type: str) -> None:
         index_name: The name of the index to sync.
         doc_type: The doc type associated with the index.
     """
-    index = load_models()[index_name]
-    old_mapping, old_settings = index[doc_type]["_mapping"], index["_settings"]
+    mapper = load_models()[index_name][doc_type]
+    old_mapping, old_settings = mapper.mappings, mapper.settings
     _ = old_mapping.pop("_meta", None)
 
     synchronizer = SYNCHRONIZERS[index_name][doc_type]

@@ -1,11 +1,12 @@
-import collections
 import functools
+import itertools
 import sys
-from typing import Any, DefaultDict, Iterator, Mapping, NamedTuple, cast
+import types
+from typing import Any, Iterable, Iterator, Mapping, NamedTuple, Tuple
 
 import deepdiff
 
-from gdcmodels import esmodels, extraction_utils
+from gdcmodels import esmodels, extraction_utils, mapper
 
 if sys.version_info < (3, 9):
     import importlib_resources as resources
@@ -131,7 +132,23 @@ def _extract_settings(detail: _MappingDetail) -> Mapping[str, Any]:
     )
 
 
-def get_es_models(vestigial_included: bool = True) -> esmodels.Models:
+def _extract_index(
+    details: Iterable[_MappingDetail], vestigial_included: bool
+) -> Iterator[Tuple[str, mapper.ModelMapper]]:
+    settings = None
+
+    for detail in details:
+        settings = settings or _extract_settings(detail)
+        mapping = _extract_es_mapping(detail, vestigial_included)
+
+        yield detail.doc_type, mapper.ModelMapper(
+            detail.index_name, detail.doc_type, settings, mapping
+        )
+
+
+def get_es_models(
+    vestigial_included: bool = True,
+) -> Mapping[str, Mapping[str, mapper.ModelMapper]]:
     """Load all models/mappings provided by this library.
 
     Args:
@@ -143,14 +160,11 @@ def get_es_models(vestigial_included: bool = True) -> esmodels.Models:
     """
     models = resources.files(esmodels)
     details = _extract_details(models)
-    result = cast(DefaultDict[str, esmodels.MutableIndex], collections.defaultdict(dict))
+    indices = itertools.groupby(details, key=lambda d: d.index_name)
 
-    for detail in details:
-        result[detail.index_name][detail.doc_type] = {
-            "_mapping": _extract_es_mapping(detail, vestigial_included)
+    return types.MappingProxyType(
+        {
+            index_name: types.MappingProxyType(dict(_extract_index(details, vestigial_included)))
+            for index_name, details in indices
         }
-        result[detail.index_name]["_settings"] = _extract_settings(detail)
-
-    result.default_factory = None
-
-    return result
+    )
