@@ -1,7 +1,7 @@
 ---
 include:
   - project: nci-gdc/gitlab-templates
-    ref: chore/update-triggers-for-new-template
+    ref: 0.7.6
     file:
       - templates/artifacts/python-library.yaml
       - templates/common/trigger.yml
