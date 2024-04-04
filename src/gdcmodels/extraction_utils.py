@@ -1,10 +1,18 @@
 import functools
-from typing import IO, Any, Dict, Iterable, Mapping, Union
+from typing import IO, Any, Callable, Dict, Iterable, Mapping, Union
 
 import yaml
 
-load_yaml = functools.partial(yaml.load, Loader=yaml.CSafeLoader)
-dump_yaml = functools.partial(yaml.dump, Dumper=yaml.CSafeDumper)
+if yaml.__with_libyaml__:
+    load_yaml: Callable[[Union[str, bytes, IO[str], IO[bytes]]], Any] = functools.partial(
+        yaml.load, Loader=yaml.CSafeLoader
+    )
+    dump_yaml: Callable[[Any, Union[IO[str], IO[bytes]]], None] = functools.partial(
+        yaml.dump, Dumper=yaml.CSafeDumper
+    )
+else:
+    load_yaml = yaml.safe_load
+    dump_yaml = yaml.safe_dump
 
 
 def _expand_settings(settings: Dict[str, Any]) -> Dict[str, Any]:
