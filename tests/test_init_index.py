@@ -223,6 +223,12 @@ def create_set_indices(get_args: GetArgs, clear_test_indices: Any) -> None:
         "gene_set",
         "ssm_set",
         "awg_centric",  # unknown index
+        "--alias",
+        "case_set",
+        "file_set",
+        "gene_set",
+        "ssm_set",
+        "awg_centric",  # unknown alias
         "--prefix",
         "test_set",
     )
@@ -263,26 +269,33 @@ class TestSetsIndices:
         self._es.delete(index=index, id=id, ignore=404)
 
     @pytest.mark.parametrize(
-        ("index", "files"),
+        ("index", "alias", "files"),
         (
-            pytest.param("test_set_case_set", Models.Sets.CASE, id="case_set"),
-            pytest.param("test_set_file_set", Models.Sets.FILE, id="file_set"),
-            pytest.param("test_set_gene_set", Models.Sets.GENE, id="gene_set"),
-            pytest.param("test_set_ssm_set", Models.Sets.SSM, id="ssm_set"),
+            pytest.param("test_set_case_set", "case_set", Models.Sets.CASE, id="case_set"),
+            pytest.param("test_set_file_set", "file_set", Models.Sets.FILE, id="file_set"),
+            pytest.param("test_set_gene_set", "gene_set", Models.Sets.GENE, id="gene_set"),
+            pytest.param("test_set_ssm_set", "ssm_set", Models.Sets.SSM, id="ssm_set"),
         ),
     )
     def test_init_index__creates_set_indices(
-        self, validate_index: Validate, index: str, files: Files
+        self,
+        validate_index: Validate,
+        alias_exists: Callable[[str], bool],
+        index: str,
+        alias: str,
+        files: Files,
     ) -> None:
         """Verify `init_index` can create the saved set indices correctly."""
 
         validate_index(index, files)
+        assert alias_exists(alias)
 
     def test_init_index__ignores_unknown_indices(
-        self, index_exists: Callable[[str], bool]
+        self, index_exists: Callable[[str], bool], alias_exists: Callable[[str], bool]
     ) -> None:
         """Confirm unknown indices are ignored, and do not block creating known indices."""
         assert not index_exists("awg_centric")
+        assert not alias_exists("awg_centric")
 
     def test_init_index__skips_existing_indices(self, recreate_index: RecreateIndex) -> None:
         """Confirm existing indices are not recreated when ``--delete`` is not passed."""

@@ -2,7 +2,7 @@
 
 import argparse
 import sys
-from typing import cast
+from typing import List, cast
 
 import elasticsearch
 from typing_extensions import Iterable, Optional, Protocol
@@ -11,7 +11,8 @@ import gdcmodels
 
 
 class Arguments(Protocol):
-    index: str
+    index: List[str]
+    alias: List[str]
     prefix: str
     host: str
     port: int
@@ -37,6 +38,12 @@ def get_parser() -> ArgumentParser:
         required=True,
         nargs="+",
         help="index to be initialized",
+    )
+    parser.add_argument(
+        "--alias",
+        dest="alias",
+        nargs="+",
+        help="aliases to be initialized",
     )
     parser.add_argument(
         "--prefix", dest="prefix", required=True, help="prefix for the index name"
@@ -119,11 +126,20 @@ def init_index(args: Arguments):
     es_models = gdcmodels.get_es_models(vestigial_included=False)
     es = get_elasticsearch(args)
 
-    for index in args.index:
+    aliases = ["" for _ in args.index]
+    if args.alias:
+        aliases = args.alias[:]
+
+    # You cannot create a list of indices and provide a partial list of aliases.
+    if len(args.index) != len(aliases):
+        print(f"Mismatching arguments for index: {args.index} and alias: {args.alias}")
+
+    for index, alias in zip(args.index, aliases):
         if not es_models.get(index):
             print(f"Specified index '{index}' is not defined in es-models, skipping it!")
             continue
 
+        indices_created = 0
         for index_type in es_models[index].keys():
             if index_type == "_settings":
                 continue  # settings, not index type
@@ -157,6 +173,33 @@ def init_index(args: Arguments):
                 settings=es_models[index][index_type].settings,
                 mappings=es_models[index][index_type].mappings,
             )
+            indices_created += 1
+
+        # Skip this step if no alias provided.
+        if not alias:
+            continue
+
+        # Skip this step if no index was created in the above steps.
+        if not es.indices.exists(index=full_index_name):
+            print(f"Index '{index}' not created so alias '{alias}' will not be created.")
+            continue
+
+        # This script uses the index names as defined by es_models and creates
+        # indices from those instead of naively creating elements from the
+        # --index flag directly. That means 'gdc_from_graph' can create
+        # multiple indices despite only being one of the elements in the
+        # --index flag. This breaks the alias logic but we don't use this
+        # script to create those indices so this conditional should never
+        # happen in practice.
+        if indices_created > 1:
+            print(f"Cannot create alias '{alias}' because too many indices created for '{index}'")
+            continue
+
+        if es.indices.exists_alias(name=alias):
+            print(f"Alias '{alias}' exists already, skipping creating.")
+            continue
+
+        es.indices.put_alias(name=alias, index=full_index_name)
 
 
 def main():
