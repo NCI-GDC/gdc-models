@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 import argparse
+import dataclasses
+import logging
 import sys
 from typing import List, cast
 
@@ -8,6 +10,28 @@ import elasticsearch
 from typing_extensions import Iterable, Optional, Protocol
 
 import gdcmodels
+
+logger = logging.getLogger("init_index")
+
+
+@dataclasses.dataclass
+class ESIndexBuilder:
+    index_name: str
+    index_prefix: str
+    index_type: str = dataclasses.field(default="")
+    alias_name: str = dataclasses.field(default="")
+
+    @property
+    def full_index_name(self) -> str:
+        """Format the actual index name to create."""
+        if not self.index_type or self.index_type == self.index_name:
+            return f"{self.index_prefix}_{self.index_name}"
+
+        return f"{self.index_prefix}_{self.index_name}_{self.index_type}"
+
+    @property
+    def should_create_alias(self) -> bool:
+        return self.alias_name != ""
 
 
 class Arguments(Protocol):
@@ -81,14 +105,6 @@ def get_parser() -> ArgumentParser:
     return cast(ArgumentParser, parser)
 
 
-def format_index_name(prefix: str, index: str, index_type=None):
-    """Format the actual index name to create."""
-    if index_type is None or index_type == index:
-        return f"{prefix}_{index}"
-    else:
-        return f"{prefix}_{index}_{index_type}"
-
-
 def get_elasticsearch(args: Arguments) -> elasticsearch.Elasticsearch:
     """Create an Elasticsearch client according to the given CLI args.
 
@@ -126,62 +142,65 @@ def init_index(args: Arguments):
     es_models = gdcmodels.get_es_models(vestigial_included=False)
     es = get_elasticsearch(args)
 
-    aliases = ["" for _ in args.index]
+    indices = [ESIndexBuilder(index_name, args.prefix) for index_name in args.index]
     if args.alias:
-        aliases = args.alias[:]
+        if len(args.index) != len(args.alias):
+            logger.error(f"Mismatching arguments for index: {args.index} and alias: {args.alias}")
+            return
 
-    # You cannot create a list of indices and provide a partial list of aliases.
-    if len(args.index) != len(aliases):
-        print(f"Mismatching arguments for index: {args.index} and alias: {args.alias}")
+        for index, alias_name in zip(indices, args.alias):
+            index.alias_name = alias_name
 
-    for index, alias in zip(args.index, aliases):
-        if not es_models.get(index):
-            print(f"Specified index '{index}' is not defined in es-models, skipping it!")
+    for index_builder in indices:
+        if not es_models.get(index_builder.index_name):
+            logger.info(
+                f"Specified index '{index_builder.index_name}' is not defined in es-models, skipping it!"
+            )
             continue
 
         indices_created = 0
-        for index_type in es_models[index].keys():
+        for index_type in es_models[index_builder.index_name].keys():
             if index_type == "_settings":
                 continue  # settings, not index type
 
-            full_index_name = format_index_name(
-                prefix=args.prefix,
-                index=index,
-                index_type=index_type,
-            )
+            index_builder.index_type = index_type
 
-            if es.indices.exists(index=full_index_name):
+            if es.indices.exists(index=index_builder.full_index_name):
                 if not args.delete:
-                    print(
-                        f"Elasticsearch index '{full_index_name}' exists, "
+                    logger.info(
+                        f"Elasticsearch index '{index_builder.full_index_name}' exists, "
                         "'--delete' not specified, skipping"
                     )
                     continue
                 else:
-                    print(f"Elasticsearch index '{full_index_name}' exists, '--delete' specified")
-                    if confirm_delete(full_index_name):
-                        print(f"Deleting existing index '{full_index_name}'")
-                        es.indices.delete(index=full_index_name)
+                    logger.info(
+                        f"Elasticsearch index '{index_builder.full_index_name}' exists, '--delete' specified"
+                    )
+                    if confirm_delete(index_builder.full_index_name):
+                        logger.info(f"Deleting existing index '{index_builder.full_index_name}'")
+                        es.indices.delete(index=index_builder.full_index_name)
                     else:
-                        print("Index name mismatch, skipping deleting")
+                        logger.info("Index name mismatch, skipping deleting")
                         continue
 
-            print(f"Creating index '{full_index_name}'")
+            logger.info(f"Creating index '{index_builder.full_index_name}'")
 
             es.indices.create(
-                index=full_index_name,
-                settings=es_models[index][index_type].settings,
-                mappings=es_models[index][index_type].mappings,
+                index=index_builder.full_index_name,
+                settings=es_models[index_builder.index_name][index_type].settings,
+                mappings=es_models[index_builder.index_name][index_type].mappings,
             )
             indices_created += 1
 
         # Skip this step if no alias provided.
-        if not alias:
+        if not index_builder.should_create_alias:
             continue
 
         # Skip this step if no index was created in the above steps.
-        if not es.indices.exists(index=full_index_name):
-            print(f"Index '{index}' not created so alias '{alias}' will not be created.")
+        if not es.indices.exists(index=index_builder.full_index_name):
+            logger.warning(
+                f"Index '{index_builder.index_name}' not created so alias '{index_builder.alias_name}' will not be created."
+            )
             continue
 
         # This script uses the index names as defined by es_models and creates
@@ -192,14 +211,18 @@ def init_index(args: Arguments):
         # script to create those indices so this conditional should never
         # happen in practice.
         if indices_created > 1:
-            print(f"Cannot create alias '{alias}' because too many indices created for '{index}'")
+            logger.warning(
+                f"Cannot create alias '{index_builder.alias_name}' because too many indices created for '{index_builder.index_name}'"
+            )
             continue
 
-        if es.indices.exists_alias(name=alias):
-            print(f"Alias '{alias}' exists already, skipping creating.")
+        if es.indices.exists_alias(name=index_builder.alias_name):
+            logger.warning(
+                f"Alias '{index_builder.alias_name}' exists already, skipping creating."
+            )
             continue
 
-        es.indices.put_alias(name=alias, index=full_index_name)
+        es.indices.put_alias(name=index_builder.alias_name, index=index_builder.full_index_name)
 
 
 def main():
