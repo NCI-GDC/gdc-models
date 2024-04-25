@@ -222,6 +222,7 @@ def init_index(args: Arguments):
             )
             continue
 
+        logger.info(f"Creating alias '{index_builder.alias_name}'")
         es.indices.put_alias(name=index_builder.alias_name, index=index_builder.full_index_name)
 
 
