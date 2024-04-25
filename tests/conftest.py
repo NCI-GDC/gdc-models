@@ -45,6 +45,16 @@ def index_exists(es: elasticsearch.Elasticsearch) -> Callable[[str], bool]:
     return inner
 
 
+@pytest.fixture
+def alias_exists(es: elasticsearch.Elasticsearch) -> Callable[[str], bool]:
+    """Returns true if an alias exists in elasticsearch."""
+
+    def inner(name: str) -> bool:
+        return es.indices.exists_alias(name=name)
+
+    return inner
+
+
 @pytest.fixture(scope="class")
 def clear_test_indices(es: elasticsearch.Elasticsearch) -> Iterator[None]:
     """Remove any ES indices starting with ``test_`` from the test cluster."""
