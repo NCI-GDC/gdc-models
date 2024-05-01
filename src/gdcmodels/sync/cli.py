@@ -20,7 +20,7 @@ else:
 
 SYNCHRONIZERS: Mapping[str, Mapping[str, common.Synchronizer]] = types.MappingProxyType(
     collections.OrderedDict(graph.SYNCHRONIZERS, **viz.SYNCHRONIZERS)
-)  # Ordered to insure graph indices run be for viz for case_centric.
+)  # Ordered to ensure graph indices run be for viz for case_centric.
 INDICES = tuple(SYNCHRONIZERS.keys())
 DOC_TYPES = tuple(itertools.chain.from_iterable(v.keys() for v in SYNCHRONIZERS.values()))
 
