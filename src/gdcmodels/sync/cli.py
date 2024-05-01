@@ -1,16 +1,15 @@
 """The basic cli functionality for the sync."""
 
-import functools
+import collections
 import itertools
 import sys
 import types
-from typing import AbstractSet, Any, Mapping, Optional, Sequence
+from typing import AbstractSet, Any, Mapping, Optional, Sequence, Union
 
 import click
 import deepdiff
 
-import gdcmodels
-from gdcmodels import esmodels, extraction_utils, mapper
+from gdcmodels import esmodels, extraction_utils
 from gdcmodels.sync import common, graph, viz
 
 if sys.version_info < (3, 9):
@@ -20,20 +19,10 @@ else:
 
 
 SYNCHRONIZERS: Mapping[str, Mapping[str, common.Synchronizer]] = types.MappingProxyType(
-    {**viz.SYNCHRONIZERS, **graph.SYNCHRONIZERS}
-)
+    collections.OrderedDict(graph.SYNCHRONIZERS, **viz.SYNCHRONIZERS)
+)  # Ordered to insure graph indices run be for viz for case_centric.
 INDICES = tuple(SYNCHRONIZERS.keys())
 DOC_TYPES = tuple(itertools.chain.from_iterable(v.keys() for v in SYNCHRONIZERS.values()))
-
-
-@functools.lru_cache(None)
-def load_models() -> Mapping[str, Mapping[str, mapper.ModelMapper]]:
-    """Call get_es_models and manage cache of the results.
-
-    Returns:
-        The loaded models.
-    """
-    return gdcmodels.get_es_models(vestigial_included=True)
 
 
 class VestigialDelta(deepdiff.Delta):
@@ -101,13 +90,13 @@ def run_synchronization(index_name: str, doc_type: str) -> None:
         index_name: The name of the index to sync.
         doc_type: The doc type associated with the index.
     """
-    mapper = load_models()[index_name][doc_type]
+    mapper = common.load_models()[index_name][doc_type]
     old_mapping, old_settings = mapper.mappings, mapper.settings
     _ = old_mapping.pop("_meta", None)
 
     synchronizer = SYNCHRONIZERS[index_name][doc_type]
     new_mapping, new_settings = synchronizer.sync(old_mapping, old_settings)
-    descriptions = new_mapping.pop("_meta", {}).get("descriptions")
+    descriptions = new_mapping.pop("_meta", {"descriptions": {}}).get("descriptions")
 
     diff = deepdiff.DeepDiff(new_mapping, old_mapping)
     delta = VestigialDelta(diff)
@@ -115,33 +104,6 @@ def run_synchronization(index_name: str, doc_type: str) -> None:
     assert (new_mapping + delta) == old_mapping
 
     _write_files(index_name, doc_type, new_mapping, delta, new_settings, descriptions)
-
-
-def _doc_type_validation(
-    ctx: click.Context, param: str, value: Sequence[str]
-) -> AbstractSet[str]:
-    """Validate the doc types provided in input and convert to set.
-
-    Args:
-        ctx: The click context.
-        param: The name of the param being validated.
-        value: The value of the param being validated.
-
-    Returns:
-        The validated input converted from a sequence to a set.
-    """
-    indices = ctx.params["index"]
-    valid_doc_types = frozenset(
-        itertools.chain.from_iterable(SYNCHRONIZERS[i].keys() for i in indices)
-    )
-    doc_types = frozenset(value)
-
-    if not (doc_types <= valid_doc_types):
-        invalid_doc_types = ",".join(doc_types - valid_doc_types)
-
-        raise click.BadParameter(f"Invalid doc-type(s) for given indices: {invalid_doc_types}.")
-
-    return doc_types
 
 
 @click.command("sync")
@@ -152,7 +114,6 @@ def _doc_type_validation(
     type=click.Choice(DOC_TYPES),
     default=DOC_TYPES,
     multiple=True,
-    callback=_doc_type_validation,
 )
 def cli(index: Sequence[str], doc_type: AbstractSet[str]) -> None:
     """Sync a mapping with a different system and/or standardizes said mapping.
@@ -163,8 +124,10 @@ def cli(index: Sequence[str], doc_type: AbstractSet[str]) -> None:
             doc_type: The doc-types associated with the indices which are to be
                 synced.
     """
-    indices = index
+    indices = (i for i in SYNCHRONIZERS.keys() if i in frozenset(index))
+    doc_type = frozenset(doc_type)
 
     for _index in indices:
         for _doc_type in SYNCHRONIZERS[_index].keys() & doc_type:
+            print(f"Syncing: {_index}/{_doc_type}")
             run_synchronization(_index, _doc_type)

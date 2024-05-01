@@ -12,19 +12,6 @@ from gdcmodels.sync import common
 TMapping = TypeVar("TMapping", bound=Mapping[str, Any])
 
 
-class NormalizerSynchronizer(common.DefaultNormalizerSynchronizer):
-    def __init__(self) -> None:
-        super().__init__(
-            excluded_properties=frozenset(
-                (
-                    "case_submitter_id",
-                    "entity_submitter_id",
-                    *common.DefaultNormalizerSynchronizer.DEFAULT_EXCLUDED_PROPERTIES,
-                )
-            )
-        )
-
-
 class NestedDict(DefaultDict[str, Any]):
     """A default dictionary whose values default to a nested instance of itself."""
 
@@ -222,7 +209,7 @@ COMMON_SYNCHRONIZERS = (
     DescriptionsSynchronizer(),
     common.DefaultSettingsSynchronizer(),
     common.DefaultMappingsSynchronizer(),
-    NormalizerSynchronizer(),
+    common.DefaultNormalizerSynchronizer(),
 )
 
 
