@@ -17,10 +17,13 @@ if sys.version_info < (3, 9):
 else:
     from importlib import resources
 
-
+# The order of these synchronizers will dive the order in which the mappings are synced.
+# Thus, the graph must be synced first in order to insure case_centric can sync w/ the
+# latest graph/case mapping. Hence, we use this ordered dict to ensure this order and
+# functionality.
 SYNCHRONIZERS: Mapping[str, Mapping[str, common.Synchronizer]] = types.MappingProxyType(
     collections.OrderedDict(graph.SYNCHRONIZERS, **viz.SYNCHRONIZERS)
-)  # Ordered to ensure graph indices run be for viz for case_centric.
+)
 INDICES = tuple(SYNCHRONIZERS.keys())
 DOC_TYPES = tuple(itertools.chain.from_iterable(v.keys() for v in SYNCHRONIZERS.values()))
 
