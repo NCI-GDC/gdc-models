@@ -7,7 +7,8 @@ from typing import Any, Container, Dict, Iterable, Mapping, Optional, Tuple, Typ
 import mergedeep
 from typing_extensions import Protocol
 
-from gdcmodels import common, esmodels, extraction_utils
+import gdcmodels
+from gdcmodels import common, esmodels, extraction_utils, mapper
 
 if sys.version_info < (3, 9):
     import importlib_resources as resources
@@ -17,6 +18,16 @@ else:
 
 Export = Tuple[esmodels.ESMapping, Mapping[str, Any]]
 TMapping = TypeVar("TMapping", bound=Mapping[str, Any])
+
+
+@functools.lru_cache(None)
+def load_models() -> Mapping[str, Mapping[str, mapper.ModelMapper]]:
+    """Call get_es_models and manage cache of the results.
+
+    Returns:
+        The loaded models.
+    """
+    return gdcmodels.get_es_models(vestigial_included=True)
 
 
 def apply_defaults(mapping: TMapping, *defaults: Mapping[str, object]) -> TMapping:
@@ -112,9 +123,11 @@ class DefaultNormalizerSynchronizer(Synchronizer):
     DEFAULT_EXCLUDED_PROPERTIES = frozenset(
         (
             "biotype",
+            "case_submitter_id",
             "code",
             "consequence_type",
             "data_type",
+            "entity_submitter_id",
             "experimental_strategy",
             "gene_id",
             "name",
