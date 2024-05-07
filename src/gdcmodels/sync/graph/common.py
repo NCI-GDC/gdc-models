@@ -1,6 +1,6 @@
 import abc
 import functools
-from typing import Any, Container, DefaultDict, Iterable, Mapping, Optional, TypeVar, cast
+from typing import Any, Container, DefaultDict, Iterable, Mapping, Optional, Tuple, TypeVar, cast
 
 import gdcdictionary
 from gdcdatamodel2 import models
@@ -273,39 +273,45 @@ def _get_nodes_by_category(category: str) -> Iterable[models.Node]:
     return filter(lambda n: n._dictionary["category"] == category, models.Node.get_subclasses())
 
 
-def _load_properties_from(node: models.Node, include_id: bool = True) -> NestedDict:
+def _load_properties_from(
+    node: models.Node,
+    include_id: bool = True,
+    excluded_fields: Container[str] = frozenset(
+        ("project_id", "batch_id", "file_state", "curated_model_index")
+    ),
+) -> NestedDict:
+    def is_included(property: Tuple[str, Container[type]]) -> bool:
+        return property[0] not in excluded_fields
+
     properties = NestedDict()
 
     if include_id:
         properties[f"{node.get_label()}_id"] = ESProperty.string()
 
-    for field, types in node.get_pg_properties().items():
+    for field, types in filter(is_included, node.get_pg_properties().items()):
         properties[field] = ESProperty.translate_python(types)
 
     if "submitter_id" in properties:
         properties["submitter_id"] = ESProperty.string()
-
-    if node.get_label() == "project":
-        fields_to_remove: Iterable[str] = (
-            "release_requested",
-            "awg_review",
-            "is_legacy",
-            "in_review",
-            "submission_enabled",
-            "request_submission",
-        )
-    else:
-        fields_to_remove = ("project_id", "batch_id", "file_state")
-
-    for field in fields_to_remove:
-        properties.pop(field, None)
 
     return properties
 
 
 class ProjectProperties:
     def load_properties(self) -> esmodels.Properties:
-        properties = _load_properties_from(models.Project)
+        properties = _load_properties_from(
+            models.Project,
+            excluded_fields=frozenset(
+                (
+                    "release_requested",
+                    "awg_review",
+                    "is_legacy",
+                    "in_review",
+                    "submission_enabled",
+                    "request_submission",
+                )
+            ),
+        )
         properties["program"] = NestedDict(properties=_load_properties_from(models.Program))
 
         return properties
