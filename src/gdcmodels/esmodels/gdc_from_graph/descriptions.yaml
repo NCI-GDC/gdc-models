@@ -206,7 +206,7 @@ annotations.project.submission_enabled: Indicates if submission to a project is 
 annotations.sample.batch_id: GDC submission batch indicator. It is unique within the
   context of a project.
 annotations.sample.biospecimen_anatomic_site: Text term that represents the name of
-  the primary disease site of the submitted tumor sample.
+  the organ or tissue site of the submitted sample.
 annotations.sample.biospecimen_laterality: For tumors in paired organs, designates
   the side on which the specimen was obtained.
 annotations.sample.catalog_reference: HCMI catalog reference number for cancer model.
@@ -217,10 +217,11 @@ annotations.sample.created_datetime: A combination of date and time of day in th
 annotations.sample.current_weight: Numeric value that represents the current weight
   of the sample, measured in milligrams.
 annotations.sample.days_to_collection: The number of days from the index date to the
-  date a sample was collected for a specific study or project.
+  date a sample was received by the Biospecimen Core Resource (BCR) or other center
+  for processing.
 annotations.sample.days_to_sample_procurement: The number of days from the index date
-  to the date a patient underwent a procedure (e.g. surgical resection) yielding a
-  sample that was eventually used for research.
+  to the date a patient underwent a procedure (e.g. surgical resection) to yield or
+  remove from the patient a sample that was eventually used for research.
 annotations.sample.diagnosis_pathologically_confirmed: The histologic description
   of tissue or cells confirmed by a pathology review of frozen or formalin fixed slide(s)
   completed after the diagnostic pathology review of the tumor sample used to extract
@@ -493,7 +494,7 @@ cases.diagnoses.ajcc_staging_system_edition: The text term used to describe the 
   accepted classifications.
 cases.diagnoses.ann_arbor_b_symptoms: Text term to signify whether lymphoma B-symptoms
   are present as noted in the patient's medical record.
-cases.diagnoses.ann_arbor_b_symptoms_described: Text descibing the specific lymphoma
+cases.diagnoses.ann_arbor_b_symptoms_described: Text describing the specific lymphoma
   B-symptoms present.
 cases.diagnoses.ann_arbor_clinical_stage: The text term used to describe the clinical
   classification of lymphoma, as defined by the Ann Arbor Lymphoma Staging System.
@@ -531,6 +532,10 @@ cases.diagnoses.best_overall_response: The best improvement achieved throughout 
   entire course of protocol treatment.
 cases.diagnoses.burkitt_lymphoma_clinical_variant: Burkitt's lymphoma categorization
   based on clinical features that differ from other forms of the same disease.
+cases.diagnoses.calgb_risk_group: A classification strategy for Acute Myeloid Leukemia
+  (AML) developed by the cancer research cooperative group Cancer And Leukemia Group
+  B that assigns a rating based on the cytogenetic and molecular features of a particular
+  disease.
 cases.diagnoses.cancer_detection_method: The method used to detect disease.
 cases.diagnoses.child_pugh_classification: The text term used to describe the classification
   used in the prognosis of chronic liver disease, mainly cirrhosis.
@@ -746,8 +751,8 @@ cases.diagnoses.molecular_tests.exon: Exon number targeted or included in a mole
   analysis. If a specific genetic variant is being reported, this property can be
   used to capture the exon where that variant is located.
 cases.diagnoses.molecular_tests.gene_symbol: The text term used to describe a gene
-  targeted or included in molecular analysis. For rearrangements, this is shold be
-  used to represent the reference gene.
+  targeted or included in molecular analysis. For rearrangements, this should be used
+  to represent the reference gene.
 cases.diagnoses.molecular_tests.histone_family: The text term used to describe the
   family, or classification of a group of basic proteins found in chromatin, called
   histones.
@@ -796,7 +801,7 @@ cases.diagnoses.molecular_tests.second_exon: The second exon number involved in 
   the variation.
 cases.diagnoses.molecular_tests.second_gene_symbol: The text term used to describe
   a secondary gene targeted or included in molecular analysis. For rearrangements,
-  this is should represent the location of the variant.
+  this should represent the location of the variant.
 cases.diagnoses.molecular_tests.specialized_molecular_test: Text term used to describe
   a specific test that is not covered in the list of molecular analysis methods.
 cases.diagnoses.molecular_tests.staining_intensity_scale: The scale used by the immunohistochemistry
@@ -953,6 +958,9 @@ cases.diagnoses.pathology_details.peripancreatic_lymph_nodes_positive: Enumerate
   nodes determined to be positive.
 cases.diagnoses.pathology_details.peripancreatic_lymph_nodes_tested: The total number
   of peripancreatic lymph nodes tested for the presence of pancreatic cancer cells.
+cases.diagnoses.pathology_details.prcc_type: The type of papillary renal cell carcinoma.
+  It is classified as type 1 or 2, based on the cytoplasmic volume and the thickness
+  of the lining neoplastic cells.
 cases.diagnoses.pathology_details.project_id: Unique ID for any specific defined piece
   of work that is undertaken or attempted to meet a single requirement.
 cases.diagnoses.pathology_details.prostatic_chips_positive_count: The text term used
@@ -990,6 +998,8 @@ cases.diagnoses.pathology_details.submitter_id: A project-specific identifier fo
   It can be used in place of the uuid for identifying or recalling a node.
 cases.diagnoses.pathology_details.transglottic_extension: The text term used to describe
   an extension of the tumor beyond the opening into the ventricles and vocal cords.
+cases.diagnoses.pathology_details.tumor_burden: Refers to the number of cancer cells,
+  the size of a tumor, or the amount of cancer in the body.
 cases.diagnoses.pathology_details.tumor_depth_descriptor: Text term for the degree
   to which a tumor has penetrated into organ or tissue.
 cases.diagnoses.pathology_details.tumor_depth_measurement: The numerical measurement
@@ -1105,6 +1115,8 @@ cases.diagnoses.treatments.number_of_fractions: The total number of divided radi
   doses received.
 cases.diagnoses.treatments.prescribed_dose: A quantity of an agent prescribed to the
   study participant.
+cases.diagnoses.treatments.prescribed_dose_units: The units of the amount of agent
+  or medication formally prescribed to an individual.
 cases.diagnoses.treatments.project_id: Unique ID for any specific defined piece of
   work that is undertaken or attempted to meet a single requirement.
 cases.diagnoses.treatments.protocol_identifier: A sequence of letters, numbers, or
@@ -1180,6 +1192,8 @@ cases.diagnoses.tumor_grade: Numeric value to express the degree of abnormality 
   cancer cells, a measure of differentiation and aggressiveness.
 cases.diagnoses.tumor_grade_category: Describes the number of levels or 'tiers' in
   the system used to determine the degree of tumor differentiation.
+cases.diagnoses.tumor_of_origin: The submitter_id string of the primary diagnosis
+  node.
 cases.diagnoses.tumor_regression_grade: A numeric value used to measure therapeutic
   response of the primary tumor and predict patient outcomes based on a three-point
   tumor regression grading system.
@@ -1545,8 +1559,8 @@ cases.follow_ups.molecular_tests.exon: Exon number targeted or included in a mol
   analysis. If a specific genetic variant is being reported, this property can be
   used to capture the exon where that variant is located.
 cases.follow_ups.molecular_tests.gene_symbol: The text term used to describe a gene
-  targeted or included in molecular analysis. For rearrangements, this is shold be
-  used to represent the reference gene.
+  targeted or included in molecular analysis. For rearrangements, this should be used
+  to represent the reference gene.
 cases.follow_ups.molecular_tests.histone_family: The text term used to describe the
   family, or classification of a group of basic proteins found in chromatin, called
   histones.
@@ -1595,7 +1609,7 @@ cases.follow_ups.molecular_tests.second_exon: The second exon number involved in
   the variation.
 cases.follow_ups.molecular_tests.second_gene_symbol: The text term used to describe
   a secondary gene targeted or included in molecular analysis. For rearrangements,
-  this is should represent the location of the variant.
+  this should represent the location of the variant.
 cases.follow_ups.molecular_tests.specialized_molecular_test: Text term used to describe
   a specific test that is not covered in the list of molecular analysis methods.
 cases.follow_ups.molecular_tests.staining_intensity_scale: The scale used by the immunohistochemistry
@@ -1673,6 +1687,9 @@ cases.follow_ups.submitter_id: A project-specific identifier for a node. This pr
   of the uuid for identifying or recalling a node.
 cases.follow_ups.timepoint_category: Category describing a specific point in the time
   continuum, including those established relative to an event.
+cases.follow_ups.treatment_emergent_adverse_event: A situation that emerges during
+  treatment, having been absent pretreatment, or worsens relative to the pretreatment
+  state.
 cases.follow_ups.undescended_testis_corrected: Indicates whether the patient's undescended
   testis was corrected.
 cases.follow_ups.undescended_testis_corrected_age: The patient's age when their undescended
@@ -1884,7 +1901,7 @@ cases.samples.annotations.updated_datetime: A combination of date and time of da
 cases.samples.batch_id: GDC submission batch indicator. It is unique within the context
   of a project.
 cases.samples.biospecimen_anatomic_site: Text term that represents the name of the
-  primary disease site of the submitted tumor sample.
+  organ or tissue site of the submitted sample.
 cases.samples.biospecimen_laterality: For tumors in paired organs, designates the
   side on which the specimen was obtained.
 cases.samples.catalog_reference: HCMI catalog reference number for cancer model.
@@ -1895,10 +1912,11 @@ cases.samples.created_datetime: A combination of date and time of day in the for
 cases.samples.current_weight: Numeric value that represents the current weight of
   the sample, measured in milligrams.
 cases.samples.days_to_collection: The number of days from the index date to the date
-  a sample was collected for a specific study or project.
+  a sample was received by the Biospecimen Core Resource (BCR) or other center for
+  processing.
 cases.samples.days_to_sample_procurement: The number of days from the index date to
-  the date a patient underwent a procedure (e.g. surgical resection) yielding a sample
-  that was eventually used for research.
+  the date a patient underwent a procedure (e.g. surgical resection) to yield or remove
+  from the patient a sample that was eventually used for research.
 cases.samples.diagnosis_pathologically_confirmed: The histologic description of tissue
   or cells confirmed by a pathology review of frozen or formalin fixed slide(s) completed
   after the diagnostic pathology review of the tumor sample used to extract analyte(s).

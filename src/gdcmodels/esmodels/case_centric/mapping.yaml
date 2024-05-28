@@ -284,6 +284,9 @@ properties:
       burkitt_lymphoma_clinical_variant:
         normalizer: clinical_normalizer
         type: keyword
+      calgb_risk_group:
+        normalizer: clinical_normalizer
+        type: keyword
       cancer_detection_method:
         normalizer: clinical_normalizer
         type: keyword
@@ -669,6 +672,9 @@ properties:
             type: keyword
           peripancreatic_lymph_nodes_tested:
             type: long
+          prcc_type:
+            normalizer: clinical_normalizer
+            type: keyword
           prostatic_chips_positive_count:
             type: double
           prostatic_chips_total_count:
@@ -703,6 +709,8 @@ properties:
           transglottic_extension:
             normalizer: clinical_normalizer
             type: keyword
+          tumor_burden:
+            type: double
           tumor_depth_descriptor:
             normalizer: clinical_normalizer
             type: keyword
@@ -846,6 +854,9 @@ properties:
             type: double
           prescribed_dose:
             type: double
+          prescribed_dose_units:
+            normalizer: clinical_normalizer
+            type: keyword
           protocol_identifier:
             normalizer: clinical_normalizer
             type: keyword
@@ -953,6 +964,9 @@ properties:
         type: keyword
       tumor_largest_dimension_diameter:
         type: double
+      tumor_of_origin:
+        normalizer: clinical_normalizer
+        type: keyword
       tumor_regression_grade:
         normalizer: clinical_normalizer
         type: keyword
@@ -1214,6 +1228,8 @@ properties:
                 type: long
               average_read_length:
                 type: long
+              cancer_dna_fraction:
+                type: double
               channel:
                 normalizer: clinical_normalizer
                 type: keyword
@@ -1250,6 +1266,8 @@ properties:
                 normalizer: clinical_normalizer
                 type: keyword
               file_size:
+                type: long
+              genome_doubling:
                 type: long
               imaging_date:
                 normalizer: clinical_normalizer
@@ -1310,6 +1328,8 @@ properties:
               state_comment:
                 normalizer: clinical_normalizer
                 type: keyword
+              subclonal_genome_fraction:
+                type: double
               submitter_id:
                 type: keyword
               total_reads:
@@ -1617,6 +1637,8 @@ properties:
         type: long
       average_read_length:
         type: long
+      cancer_dna_fraction:
+        type: double
       center:
         properties:
           center_id:
@@ -1681,6 +1703,8 @@ properties:
                 type: long
               average_read_length:
                 type: long
+              cancer_dna_fraction:
+                type: double
               channel:
                 normalizer: clinical_normalizer
                 type: keyword
@@ -1717,6 +1741,8 @@ properties:
                 normalizer: clinical_normalizer
                 type: keyword
               file_size:
+                type: long
+              genome_doubling:
                 type: long
               imaging_date:
                 normalizer: clinical_normalizer
@@ -1777,6 +1803,8 @@ properties:
               state_comment:
                 normalizer: clinical_normalizer
                 type: keyword
+              subclonal_genome_fraction:
+                type: double
               submitter_id:
                 type: keyword
               total_reads:
@@ -1828,6 +1856,8 @@ properties:
         type: keyword
       file_size:
         type: long
+      genome_doubling:
+        type: long
       imaging_date:
         normalizer: clinical_normalizer
         type: keyword
@@ -1842,6 +1872,8 @@ properties:
             type: long
           average_read_length:
             type: long
+          cancer_dna_fraction:
+            type: double
           channel:
             normalizer: clinical_normalizer
             type: keyword
@@ -1878,6 +1910,8 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           file_size:
+            type: long
+          genome_doubling:
             type: long
           imaging_date:
             normalizer: clinical_normalizer
@@ -1938,6 +1972,8 @@ properties:
           state_comment:
             normalizer: clinical_normalizer
             type: keyword
+          subclonal_genome_fraction:
+            type: double
           submitter_id:
             type: keyword
           total_reads:
@@ -2054,6 +2090,8 @@ properties:
       state_comment:
         normalizer: clinical_normalizer
         type: keyword
+      subclonal_genome_fraction:
+        type: double
       submitter_id:
         type: keyword
       tags:
@@ -2428,6 +2466,9 @@ properties:
       submitter_id:
         type: keyword
       timepoint_category:
+        normalizer: clinical_normalizer
+        type: keyword
+      treatment_emergent_adverse_event:
         normalizer: clinical_normalizer
         type: keyword
       undescended_testis_corrected:
