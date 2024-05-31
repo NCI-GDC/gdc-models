@@ -10,7 +10,7 @@ import click
 import deepdiff
 
 from gdcmodels import esmodels, extraction_utils
-from gdcmodels.sync import common, graph, viz
+from gdcmodels.sync import common, gene_expression, graph, viz
 
 if sys.version_info < (3, 9):
     import importlib_resources as resources
@@ -22,7 +22,9 @@ else:
 # latest graph/case mapping. Hence, we use this ordered dict to ensure this order and
 # functionality.
 SYNCHRONIZERS: Mapping[str, Mapping[str, common.Synchronizer]] = types.MappingProxyType(
-    collections.OrderedDict(graph.SYNCHRONIZERS, **viz.SYNCHRONIZERS)
+    collections.OrderedDict(
+        graph.SYNCHRONIZERS, **viz.SYNCHRONIZERS, **gene_expression.SYNCHRONIZERS
+    )
 )
 INDICES = tuple(SYNCHRONIZERS.keys())
 DOC_TYPES = tuple(itertools.chain.from_iterable(v.keys() for v in SYNCHRONIZERS.values()))
