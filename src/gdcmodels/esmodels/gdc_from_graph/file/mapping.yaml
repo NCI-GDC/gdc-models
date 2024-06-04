@@ -1873,6 +1873,173 @@ properties:
             type: nested
           nadir_cd4_count:
             type: double
+          other_clinical_attributes:
+            properties:
+              aids_risk_factors:
+                normalizer: clinical_normalizer
+                type: keyword
+              bmi:
+                type: double
+              body_surface_area:
+                type: double
+              cd4_count:
+                type: double
+              cdc_hiv_risk_factors:
+                normalizer: clinical_normalizer
+                type: keyword
+              comorbidities:
+                normalizer: clinical_normalizer
+                type: keyword
+              comorbidity_method_of_diagnosis:
+                normalizer: clinical_normalizer
+                type: keyword
+              created_datetime:
+                normalizer: clinical_normalizer
+                type: keyword
+              days_to_comorbidity:
+                type: long
+              days_to_risk_factor:
+                type: long
+              diabetes_treatment_type:
+                normalizer: clinical_normalizer
+                type: keyword
+              dlco_ref_predictive_percent:
+                type: double
+              exercise_frequency_weekly:
+                normalizer: clinical_normalizer
+                type: keyword
+              eye_color:
+                normalizer: clinical_normalizer
+                type: keyword
+              fev1_fvc_post_bronch_percent:
+                type: double
+              fev1_fvc_pre_bronch_percent:
+                type: double
+              fev1_ref_post_bronch_percent:
+                type: double
+              fev1_ref_pre_bronch_percent:
+                type: double
+              haart_treatment_indicator:
+                normalizer: clinical_normalizer
+                type: keyword
+              height:
+                type: double
+              hepatitis_sustained_virological_response:
+                normalizer: clinical_normalizer
+                type: keyword
+              hiv_viral_load:
+                type: double
+              hormonal_contraceptive_type:
+                normalizer: clinical_normalizer
+                type: keyword
+              hormonal_contraceptive_use:
+                normalizer: clinical_normalizer
+                type: keyword
+              hormonal_replacement_therapy_status:
+                normalizer: clinical_normalizer
+                type: keyword
+              hormone_replacement_therapy_type:
+                normalizer: clinical_normalizer
+                type: keyword
+              hysterectomy_margins_involved:
+                normalizer: clinical_normalizer
+                type: keyword
+              hysterectomy_type:
+                normalizer: clinical_normalizer
+                type: keyword
+              immunosuppressive_treatment_type:
+                normalizer: clinical_normalizer
+                type: keyword
+              menopause_status:
+                normalizer: clinical_normalizer
+                type: keyword
+              myasthenia_gravis_classification:
+                normalizer: clinical_normalizer
+                type: keyword
+              nadir_cd4_count:
+                type: double
+              nononcologic_therapeutic_agents:
+                normalizer: clinical_normalizer
+                type: keyword
+              number_of_pregnancies:
+                normalizer: clinical_normalizer
+                type: keyword
+              other_clinical_attribute_id:
+                normalizer: clinical_normalizer
+                type: keyword
+              oxygen_use_indicator:
+                normalizer: clinical_normalizer
+                type: keyword
+              oxygen_use_type:
+                normalizer: clinical_normalizer
+                type: keyword
+              pancreatitis_onset_year:
+                type: long
+              pregnancy_count:
+                type: long
+              pregnancy_outcome:
+                normalizer: clinical_normalizer
+                type: keyword
+              pregnant_at_diagnosis:
+                normalizer: clinical_normalizer
+                type: keyword
+              premature_at_birth:
+                normalizer: clinical_normalizer
+                type: keyword
+              reflux_treatment_type:
+                normalizer: clinical_normalizer
+                type: keyword
+              risk_factor_method_of_diagnosis:
+                normalizer: clinical_normalizer
+                type: keyword
+              risk_factor_treatment:
+                normalizer: clinical_normalizer
+                type: keyword
+              risk_factors:
+                normalizer: clinical_normalizer
+                type: keyword
+              state:
+                normalizer: clinical_normalizer
+                type: keyword
+              submitter_id:
+                type: keyword
+              timepoint_category:
+                normalizer: clinical_normalizer
+                type: keyword
+              treatment_frequency:
+                normalizer: clinical_normalizer
+                type: keyword
+              undescended_testis_corrected:
+                normalizer: clinical_normalizer
+                type: keyword
+              undescended_testis_corrected_age:
+                type: long
+              undescended_testis_corrected_laterality:
+                normalizer: clinical_normalizer
+                type: keyword
+              undescended_testis_corrected_method:
+                normalizer: clinical_normalizer
+                type: keyword
+              undescended_testis_history:
+                normalizer: clinical_normalizer
+                type: keyword
+              undescended_testis_history_laterality:
+                normalizer: clinical_normalizer
+                type: keyword
+              updated_datetime:
+                normalizer: clinical_normalizer
+                type: keyword
+              viral_hepatitis_serologies:
+                normalizer: clinical_normalizer
+                type: keyword
+              viral_hepatitis_serology_tests:
+                normalizer: clinical_normalizer
+                type: keyword
+              weeks_gestation_at_birth:
+                type: double
+              weight:
+                type: double
+            type: nested
           pancreatitis_onset_year:
             type: long
           peritoneal_washing_results:

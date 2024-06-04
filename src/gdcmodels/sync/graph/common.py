@@ -473,6 +473,9 @@ class CaseProperties:
             properties=_load_properties_from(models.MolecularTest),
             type="nested",
         )
+        properties["other_clinical_attributes"] = NestedDict(
+            properties=_load_properties_from(models.OtherClinicalAttribute), type="nested"
+        )
 
         return mapping
 
