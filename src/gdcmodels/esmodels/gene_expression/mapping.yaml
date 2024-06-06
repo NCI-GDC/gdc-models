@@ -1,8 +1,16 @@
 ---
+_size:
+  enabled: true
+_source:
+  excludes:
+    - __comment__
+dynamic: strict
 properties:
   case_id:
+    normalizer: clinical_normalizer
     type: keyword
   gene_expression_id:
+    normalizer: clinical_normalizer
     type: keyword
   gene_id:
     type: keyword
@@ -11,6 +19,7 @@ properties:
   submitter_id:
     type: keyword
   symbol:
+    normalizer: clinical_normalizer
     type: keyword
   uqfpkm:
     type: double
