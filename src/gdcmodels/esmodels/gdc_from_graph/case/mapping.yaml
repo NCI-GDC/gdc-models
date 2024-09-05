@@ -136,6 +136,9 @@ properties:
         type: keyword
       occupation_duration_years:
         type: long
+      population_group:
+        normalizer: clinical_normalizer
+        type: keyword
       premature_at_birth:
         normalizer: clinical_normalizer
         type: keyword
@@ -188,6 +191,9 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       ajcc_pathologic_t:
+        normalizer: clinical_normalizer
+        type: keyword
+      ajcc_serum_tumor_markers:
         normalizer: clinical_normalizer
         type: keyword
       ajcc_staging_system_edition:
@@ -506,6 +512,9 @@ properties:
             type: keyword
           epithelioid_cell_percent:
             type: double
+          epithelioid_cell_percent_range:
+            normalizer: clinical_normalizer
+            type: keyword
           extracapsular_extension:
             normalizer: clinical_normalizer
             type: keyword
@@ -515,7 +524,13 @@ properties:
           extranodal_extension:
             normalizer: clinical_normalizer
             type: keyword
+          extraocular_nodule_size:
+            normalizer: clinical_normalizer
+            type: keyword
           extrascleral_extension:
+            normalizer: clinical_normalizer
+            type: keyword
+          extrascleral_extension_present:
             normalizer: clinical_normalizer
             type: keyword
           extrathyroid_extension:
@@ -526,6 +541,9 @@ properties:
           gross_tumor_weight:
             type: double
           histologic_progression_type:
+            normalizer: clinical_normalizer
+            type: keyword
+          intratubular_germ_cell_neoplasia_present:
             normalizer: clinical_normalizer
             type: keyword
           largest_extrapelvic_peritoneal_focus:
@@ -628,14 +646,22 @@ properties:
             type: double
           spindle_cell_percent:
             type: double
+          spindle_cell_percent_range:
+            normalizer: clinical_normalizer
+            type: keyword
           state:
             normalizer: clinical_normalizer
             type: keyword
           submitter_id:
             type: keyword
+          timepoint_category:
+            normalizer: clinical_normalizer
+            type: keyword
           transglottic_extension:
             normalizer: clinical_normalizer
             type: keyword
+          tumor_basal_diameter:
+            type: double
           tumor_burden:
             type: double
           tumor_depth_descriptor:
@@ -762,6 +788,14 @@ properties:
             type: keyword
           lesions_treated_number:
             type: double
+          margin_distance:
+            type: double
+          margin_status:
+            normalizer: clinical_normalizer
+            type: keyword
+          margins_involved_site:
+            normalizer: clinical_normalizer
+            type: keyword
           number_of_cycles:
             type: long
           number_of_fractions:
@@ -769,6 +803,9 @@ properties:
           prescribed_dose:
             type: double
           prescribed_dose_units:
+            normalizer: clinical_normalizer
+            type: keyword
+          pretreatment:
             normalizer: clinical_normalizer
             type: keyword
           protocol_identifier:
@@ -2086,6 +2123,9 @@ properties:
       hepatitis_sustained_virological_response:
         normalizer: clinical_normalizer
         type: keyword
+      histologic_progression:
+        normalizer: clinical_normalizer
+        type: keyword
       history_of_tumor:
         normalizer: clinical_normalizer
         type: keyword
@@ -2430,6 +2470,9 @@ properties:
             type: keyword
           undescended_testis_corrected_age:
             type: long
+          undescended_testis_corrected_age_range:
+            normalizer: clinical_normalizer
+            type: keyword
           undescended_testis_corrected_laterality:
             normalizer: clinical_normalizer
             type: keyword
