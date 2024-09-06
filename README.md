@@ -24,7 +24,12 @@ Syncing is the process of updating the models with any properties which may be d
 The process can be run for any index (-i) and any of its doc-types (-d). Multiple can be specified on the command line and if none are provided for either all of the respective type are run.
 
 #### Install
-pip install '.[sync]'
+pip-compile --extra=sync \
+            --index-url=https://nexus.osdc.io/repository/pypi-gdc-releases/simple \
+            --output-file=requirements-sync.txt \
+            --strip-extras \
+            --upgrade
+pip install -r requirements-sync.txt
 
 #### Examples
 Run all indices/doc-types:
