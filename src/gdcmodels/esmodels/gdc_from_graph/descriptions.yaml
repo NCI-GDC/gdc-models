@@ -275,7 +275,7 @@ annotations.sample.time_between_clamping_and_freezing: Numeric representation of
   measured in minutes.
 annotations.sample.time_between_excision_and_freezing: Numeric representation of the
   elapsed time between the excision and freezing of the sample, measured in minutes.
-annotations.sample.tissue_collection_type: The text term used to describe the tyoe
+annotations.sample.tissue_collection_type: The text term used to describe the type
   of collection used to obtain tissue.
 annotations.sample.tissue_type: Text term that represents a description of the kind
   of tissue collected with respect to disease status or proximity to tumor tissue.
@@ -433,6 +433,8 @@ cases.demographic.marital_status: A demographic parameter indicating a person's 
   conjugal status.
 cases.demographic.occupation_duration_years: The number of years a patient worked
   in a specific occupation.
+cases.demographic.population_group: A group of individuals united by a common factor
+  (e.g., geographic location, ethnicity, disease, age, gender).
 cases.demographic.premature_at_birth: The yes/no/unknown indicator used to describe
   whether the patient was premature (less than 37 weeks gestation) at birth.
 cases.demographic.project_id: Unique ID for any specific defined piece of work that
@@ -487,6 +489,8 @@ cases.diagnoses.ajcc_pathologic_stage: The extent of a cancer, especially whethe
 cases.diagnoses.ajcc_pathologic_t: Code of pathological T (primary tumor) to define
   the size or contiguous extension of the primary tumor (T), using staging criteria
   from the American Joint Committee on Cancer (AJCC).
+cases.diagnoses.ajcc_serum_tumor_markers: A laboratory test result in which markers
+  for testicular cancer are tested in a blood sample for staging purposes.
 cases.diagnoses.ajcc_staging_system_edition: The text term used to describe the version
   or edition of the American Joint Committee on Cancer Staging Handbooks, a publication
   by the group formed for the purpose of developing a system of staging for cancer
@@ -882,15 +886,23 @@ cases.diagnoses.pathology_details.days_to_pathology_detail: Number of days betwe
 cases.diagnoses.pathology_details.dysplasia_degree: The degree to which dysplasia
   was involved.
 cases.diagnoses.pathology_details.dysplasia_type: The type of dysplasia involved.
-cases.diagnoses.pathology_details.epithelioid_cell_percent: The percent of uveal melanoma
-  characterized by the presence of malignant large epithelioid melanocytes.
+cases.diagnoses.pathology_details.epithelioid_cell_percent: A quantitative measurement
+  of the percent of epithelioid melanocytes compared to the number of total cells
+  present in a sample.
+cases.diagnoses.pathology_details.epithelioid_cell_percent_range: A quantitative measurement
+  of the percent of epithelioid melanocytes compared to the number of total cells
+  present in a sample.
 cases.diagnoses.pathology_details.extracapsular_extension: The extension of malignant
   tissue situated outside of a specific capsule.
 cases.diagnoses.pathology_details.extracapsular_extension_present:
 cases.diagnoses.pathology_details.extranodal_extension: Extension of a malignant neoplasm
   beyond the lymph node capsule.
+cases.diagnoses.pathology_details.extraocular_nodule_size: The size of the nodule
+  that is outside the eye.
 cases.diagnoses.pathology_details.extrascleral_extension: Spread of uveal melanoma
   beyond the sclera.
+cases.diagnoses.pathology_details.extrascleral_extension_present: Spread of uveal
+  melanoma beyond the sclera.
 cases.diagnoses.pathology_details.extrathyroid_extension: Text term to describe the
   degree to which the primary tumor has extra thyroid extension.
 cases.diagnoses.pathology_details.greatest_tumor_dimension: Numeric value that represents
@@ -900,6 +912,8 @@ cases.diagnoses.pathology_details.gross_tumor_weight: Numeric value used to desc
 cases.diagnoses.pathology_details.histologic_progression_type: Text term to describe
   the disease progression as determined by microscopic review of cells and their surrounding
   extracellular environment in tissues.
+cases.diagnoses.pathology_details.intratubular_germ_cell_neoplasia_present: Text term
+  to indicate whether the intratubular germ cell neoplasm is present or absent.
 cases.diagnoses.pathology_details.largest_extrapelvic_peritoneal_focus: The text term
   used to describe the diameter of the largest focus originating outside of the pelvic
   peritoneal region.
@@ -989,15 +1003,22 @@ cases.diagnoses.pathology_details.sarcomatoid_present: Indicator describing whet
   sarcomatoid features were present.
 cases.diagnoses.pathology_details.size_extraocular_nodule: The size of the nodule
   that is outside the eye.
-cases.diagnoses.pathology_details.spindle_cell_percent: The percent of uveal melanoma
-  arising from the choroid, ciliary body, or the iris and characterized by the presence
-  of spindle-shaped melanocytes.
+cases.diagnoses.pathology_details.spindle_cell_percent: A quantitative measurement
+  of the percent of spindle-shaped melanocytes compared to the number of total cells
+  present in a sample.
+cases.diagnoses.pathology_details.spindle_cell_percent_range: A quantitative measurement
+  of the percent of spindle-shaped melanocytes compared to the number of total cells
+  present in a sample.
 cases.diagnoses.pathology_details.state: The current state of the object.
 cases.diagnoses.pathology_details.submitter_id: A project-specific identifier for
   a node. This property is the calling card/nickname/alias for a unit of submission.
   It can be used in place of the uuid for identifying or recalling a node.
+cases.diagnoses.pathology_details.timepoint_category: Category describing a specific
+  point in the time continuum, including those established relative to an event.
 cases.diagnoses.pathology_details.transglottic_extension: The text term used to describe
   an extension of the tumor beyond the opening into the ventricles and vocal cords.
+cases.diagnoses.pathology_details.tumor_basal_diameter: Numeric value in millimeters
+  for the lowest layer of a tumor.
 cases.diagnoses.pathology_details.tumor_burden: Refers to the number of cancer cells,
   the size of a tumor, or the amount of cancer in the body.
 cases.diagnoses.pathology_details.tumor_depth_descriptor: Text term for the degree
@@ -1109,6 +1130,13 @@ cases.diagnoses.treatments.embolic_agent: A substance used to block an artery, t
 cases.diagnoses.treatments.initial_disease_status: The text term used to describe
   the status of the patient's malignancy when the treatment began.
 cases.diagnoses.treatments.lesions_treated_number: The number of lesions treated.
+cases.diagnoses.treatments.margin_distance: Numeric value that represents the distance
+  between the tumor and the surgical margin
+cases.diagnoses.treatments.margin_status: The determination of the presence of actual
+  or potential neoplastic tissue which has been left outside the boundary of a resected
+  specimen within the patient.
+cases.diagnoses.treatments.margins_involved_site: The text term used to describe the
+  anatomic sites that were involved in the survival margins.
 cases.diagnoses.treatments.number_of_cycles: The numeric value used to describe the
   number of cycles of a specific treatment or regimen the patient received.
 cases.diagnoses.treatments.number_of_fractions: The total number of divided radiation
@@ -1117,6 +1145,8 @@ cases.diagnoses.treatments.prescribed_dose: A quantity of an agent prescribed to
   study participant.
 cases.diagnoses.treatments.prescribed_dose_units: The units of the amount of agent
   or medication formally prescribed to an individual.
+cases.diagnoses.treatments.pretreatment: Any relevant actions that were performed
+  or occurred prior to a specific treatment.
 cases.diagnoses.treatments.project_id: Unique ID for any specific defined piece of
   work that is undertaken or attempted to meet a single requirement.
 cases.diagnoses.treatments.protocol_identifier: A sequence of letters, numbers, or
@@ -1394,7 +1424,7 @@ cases.follow_ups.adverse_event_grade: Numeric representation of the intensity/se
   or procedure, regardless of whether or not it is considered related to the product
   or procedure (attribution of unrelated, unlikely, possible, probable, or definite).
 cases.follow_ups.aids_risk_factors: The text term used to describe a risk factor of
-  the acquired immunodeficiency syndrome (AIDS) that the patient either had at time
+  the acquired immunodeficiency syndrome (AIDS) that the patient either had at the
   time of the study or experienced in the past.
 cases.follow_ups.barretts_esophagus_goblet_cells_present: The yes/no/unknown indicator
   used to describe whether goblet cells were determined to be present in a patient
@@ -1403,20 +1433,21 @@ cases.follow_ups.batch_id: GDC submission batch indicator. It is unique within t
   context of a project.
 cases.follow_ups.bmi: A calculated numerical quantity that represents an individual's
   weight to height ratio.
-cases.follow_ups.body_surface_area: Numeric value used to represent the 2-dimensional
+cases.follow_ups.body_surface_area: Numeric value used to represent the two-dimensional
   extent of the body surface relating height to weight.
 cases.follow_ups.cause_of_response: The text term used to describe the suspected cause
   or reason for the patient disease response.
 cases.follow_ups.cd4_count: The text term used to describe the outcome of the procedure
   to determine the amount of the CD4 expressing cells in a sample.
 cases.follow_ups.cdc_hiv_risk_factors: The text term used to describe a risk factor
-  for human immunodeficiency virus, as described by the Center for Disease Control.
-cases.follow_ups.comorbidities: The text term used to describe a comorbidity disease,
-  which coexists with the patient's malignant disease.
+  for human immunodeficiency virus, as described by the Centers for Disease Control.
+cases.follow_ups.comorbidities: The text term used to describe a patient with one
+  or more diseases or conditions, which coexist with the patient's malignant disease
+  at the same time.
 cases.follow_ups.comorbidity: The text term used to describe a comorbidity disease,
   which coexists with the patient's malignant disease.
 cases.follow_ups.comorbidity_method_of_diagnosis: The text term used to describe the
-  method used to diagnose the patient's comorbidity disease.
+  method used to diagnose the patient's comorbid disease.
 cases.follow_ups.created_datetime: A combination of date and time of day in the form
   [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
 cases.follow_ups.days_to_adverse_event: Number of days between the date used for index
@@ -1470,6 +1501,8 @@ cases.follow_ups.haart_treatment_indicator: The text term used to indicate wheth
 cases.follow_ups.height: The height of the patient in centimeters.
 cases.follow_ups.hepatitis_sustained_virological_response: An indication as to whether
   sustained virological response was obtained in responses to viral hepatitis treatment.
+cases.follow_ups.histologic_progression: The evolution of a low-grade neoplastic pathologic
+  process to a high grade malignancy.
 cases.follow_ups.history_of_tumor: Indicates whether patient has a history of tumors.
 cases.follow_ups.history_of_tumor_type: Describes the type of the patient's prior
   diagnosed tumor.
@@ -1507,7 +1540,7 @@ cases.follow_ups.imaging_suv_max: The standardized update value (SUV) is the eff
 cases.follow_ups.imaging_type: The text term used to describe the type of imaging
   or scan performed on the patient.
 cases.follow_ups.immunosuppressive_treatment_type: The text term used to describe
-  the type of immunosuppresive treatment the patient received.
+  the type of immunosuppressive treatment the patient received.
 cases.follow_ups.karnofsky_performance_status: Text term used to describe the classification
   used of the functional capabilities of a person.
 cases.follow_ups.menopause_status: Text term used to describe the patient's menopause
@@ -2342,7 +2375,7 @@ cases.samples.time_between_clamping_and_freezing: Numeric representation of the 
   in minutes.
 cases.samples.time_between_excision_and_freezing: Numeric representation of the elapsed
   time between the excision and freezing of the sample, measured in minutes.
-cases.samples.tissue_collection_type: The text term used to describe the tyoe of collection
+cases.samples.tissue_collection_type: The text term used to describe the type of collection
   used to obtain tissue.
 cases.samples.tissue_type: Text term that represents a description of the kind of
   tissue collected with respect to disease status or proximity to tumor tissue.
