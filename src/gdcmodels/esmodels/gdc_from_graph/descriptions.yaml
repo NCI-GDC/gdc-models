@@ -1678,6 +1678,154 @@ cases.follow_ups.molecular_tests.zygosity: The text term used to describe the zy
   of a specific genetic variant.
 cases.follow_ups.nadir_cd4_count: Numeric value that represents the lowest point to
   which the CD4 count has dropped (nadir).
+cases.follow_ups.other_clinical_attributes.aids_risk_factors: The text term used to
+  describe a risk factor of the acquired immunodeficiency syndrome (AIDS) that the
+  patient either had at the time of the study or experienced in the past.
+cases.follow_ups.other_clinical_attributes.batch_id: GDC submission batch indicator.
+  It is unique within the context of a project.
+cases.follow_ups.other_clinical_attributes.bmi: A calculated numerical quantity that
+  represents an individual's weight to height ratio.
+cases.follow_ups.other_clinical_attributes.body_surface_area: Numeric value used to
+  represent the two-dimensional extent of the body surface relating height to weight.
+cases.follow_ups.other_clinical_attributes.cd4_count: The text term used to describe
+  the outcome of the procedure to determine the amount of the CD4 expressing cells
+  in a sample.
+cases.follow_ups.other_clinical_attributes.cdc_hiv_risk_factors: The text term used
+  to describe a risk factor for human immunodeficiency virus, as described by the
+  Centers for Disease Control.
+cases.follow_ups.other_clinical_attributes.comorbidities: The text term used to describe
+  a patient with one or more diseases or conditions, which coexist with the patient's
+  malignant disease at the same time.
+cases.follow_ups.other_clinical_attributes.comorbidity_method_of_diagnosis: The text
+  term used to describe the method used to diagnose the patient's comorbid disease.
+cases.follow_ups.other_clinical_attributes.created_datetime: A combination of date
+  and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+cases.follow_ups.other_clinical_attributes.days_to_comorbidity: Number of days between
+  the date used for index and the date the patient was diagnosed with a comorbidity.
+cases.follow_ups.other_clinical_attributes.days_to_risk_factor: The number of days
+  from the index date to the date the patient was diagnosed with a specific risk factor.
+cases.follow_ups.other_clinical_attributes.diabetes_treatment_type: Text term used
+  to describe the types of treatment used to manage diabetes.
+cases.follow_ups.other_clinical_attributes.dlco_ref_predictive_percent: The value,
+  as a percentage of predicted lung volume, measuring the amount of carbon monoxide
+  detected in a patient's lungs.
+cases.follow_ups.other_clinical_attributes.exercise_frequency_weekly: Text term that
+  indicates the number of days that exercise occurred in the past seven days.
+cases.follow_ups.other_clinical_attributes.eye_color: The color of the iris of the
+  eye
+cases.follow_ups.other_clinical_attributes.fev1_fvc_post_bronch_percent: Percentage
+  value to represent result of Forced Expiratory Volume in 1 second (FEV1) divided
+  by the Forced Vital Capacity (FVC) post-bronchodilator.
+cases.follow_ups.other_clinical_attributes.fev1_fvc_pre_bronch_percent: Percentage
+  value to represent result of Forced Expiratory Volume in 1 second (FEV1) divided
+  by the Forced Vital Capacity (FVC) pre-bronchodilator.
+cases.follow_ups.other_clinical_attributes.fev1_ref_post_bronch_percent: The percentage
+  comparison to a normal value reference range of the volume of air that a patient
+  can forcibly exhale from the lungs in one second post-bronchodilator.
+cases.follow_ups.other_clinical_attributes.fev1_ref_pre_bronch_percent: The percentage
+  comparison to a normal value reference range of the volume of air that a patient
+  can forcibly exhale from the lungs in one second pre-bronchodilator.
+cases.follow_ups.other_clinical_attributes.haart_treatment_indicator: The text term
+  used to indicate whether the patient received Highly Active Antiretroviral Therapy
+  (HAART).
+cases.follow_ups.other_clinical_attributes.height: The height of the patient in centimeters.
+cases.follow_ups.other_clinical_attributes.hepatitis_sustained_virological_response: An
+  indication as to whether sustained virological response was obtained in responses
+  to viral hepatitis treatment.
+cases.follow_ups.other_clinical_attributes.hiv_viral_load: Numeric value that represents
+  the concentration of an analyte or aliquot extracted from the sample or sample portion,
+  measured in milligrams per milliliter.
+cases.follow_ups.other_clinical_attributes.hormonal_contraceptive_type: The specific
+  type of hormonal contraceptives used by the subject.
+cases.follow_ups.other_clinical_attributes.hormonal_contraceptive_use: The text term
+  used to indicate whether the patient used hormonal contraceptives.
+cases.follow_ups.other_clinical_attributes.hormonal_replacement_therapy_status: Indicates
+  whether the patient has ever received hormone replacement therapy.
+cases.follow_ups.other_clinical_attributes.hormone_replacement_therapy_type: The specific
+  type of hormone replacement therapy received by the patient.
+cases.follow_ups.other_clinical_attributes.hysterectomy_margins_involved: The text
+  term used to indicate whether the patient's disease was determined to be involved
+  based on the surgical margins of the hysterectomy.
+cases.follow_ups.other_clinical_attributes.hysterectomy_type: The text term used to
+  describe the type of hysterectomy the patient had.
+cases.follow_ups.other_clinical_attributes.immunosuppressive_treatment_type: The text
+  term used to describe the type of immunosuppressive treatment the patient received.
+cases.follow_ups.other_clinical_attributes.menopause_status: Text term used to describe
+  the patient's menopause status.
+cases.follow_ups.other_clinical_attributes.myasthenia_gravis_classification: A finding
+  associated with a patient with myasthenia gravis that is based on the classification
+  system developed by the Myasthenia Gravis Foundation of America (MGFA) for grading
+  myasthenia gravis that divides the disease into five main classes and several subclasses.
+cases.follow_ups.other_clinical_attributes.nadir_cd4_count: Numeric value that represents
+  the lowest point to which the CD4 count has dropped (nadir).
+cases.follow_ups.other_clinical_attributes.nononcologic_therapeutic_agents: Text identification
+  of the individual agent(s) used as part of a treatment regimen not related to an
+  oncologic disease.
+cases.follow_ups.other_clinical_attributes.number_of_pregnancies: A measurement of
+  the total number of pregnancy events experienced by the female subject.
+cases.follow_ups.other_clinical_attributes.oxygen_use_indicator: An indication whether
+  administration of oxygen to an individual occurred.
+cases.follow_ups.other_clinical_attributes.oxygen_use_type: Text term to describe
+  the type of oxygen the patient uses at home.
+cases.follow_ups.other_clinical_attributes.pancreatitis_onset_year: Numeric value
+  to represent the year that the patient was diagnosed with clinical chronic pancreatitis.
+cases.follow_ups.other_clinical_attributes.pregnancy_count: The number of times an
+  individual has become pregnant.
+cases.follow_ups.other_clinical_attributes.pregnancy_outcome: The text term used to
+  describe the type of pregnancy the patient had.
+cases.follow_ups.other_clinical_attributes.pregnant_at_diagnosis: The text term used
+  to indicate whether the patient was pregnant at the time they were diagnosed.
+cases.follow_ups.other_clinical_attributes.premature_at_birth: The yes/no/unknown
+  indicator used to describe whether the patient was premature (less than 37 weeks
+  gestation) at birth.
+cases.follow_ups.other_clinical_attributes.project_id: Unique ID for any specific
+  defined piece of work that is undertaken or attempted to meet a single requirement.
+cases.follow_ups.other_clinical_attributes.reflux_treatment_type: Text term used to
+  describe the types of treatment used to manage gastroesophageal reflux disease (GERD).
+cases.follow_ups.other_clinical_attributes.risk_factor_method_of_diagnosis: The clinical
+  or laboratory procedure(s) used in the determination of a diagnosis described in
+  this context as a risk factor.
+cases.follow_ups.other_clinical_attributes.risk_factor_treatment: The yes/no/unknown
+  indicator used to describe whether the patient received treatment for a risk factor
+  the patient had at the time of or prior to their diagnosis.
+cases.follow_ups.other_clinical_attributes.risk_factors: The text term used to describe
+  a risk factor the patient had at the time of or prior to their diagnosis.
+cases.follow_ups.other_clinical_attributes.state: The current state of the object.
+cases.follow_ups.other_clinical_attributes.submitter_id: A project-specific identifier
+  for a node. This property is the calling card/nickname/alias for a unit of submission.
+  It can be used in place of the uuid for identifying or recalling a node.
+cases.follow_ups.other_clinical_attributes.timepoint_category: Category describing
+  a specific point in the time continuum, including those established relative to
+  an event.
+cases.follow_ups.other_clinical_attributes.treatment_frequency: The text term used
+  to describe the frequency the patient received an agent or regimen.
+cases.follow_ups.other_clinical_attributes.undescended_testis_corrected: Indicates
+  whether the patient's undescended testis was corrected.
+cases.follow_ups.other_clinical_attributes.undescended_testis_corrected_age: The patient's
+  age when their undescended testis was corrected.
+cases.follow_ups.other_clinical_attributes.undescended_testis_corrected_age_range: The
+  patient's age when their undescended testis was corrected.
+cases.follow_ups.other_clinical_attributes.undescended_testis_corrected_laterality: Describes
+  the lateral location of the patient's undescended testis correction.
+cases.follow_ups.other_clinical_attributes.undescended_testis_corrected_method: Describes
+  the method used to correct the patient's undescended testis.
+cases.follow_ups.other_clinical_attributes.undescended_testis_history: The persistent
+  failure of one or both testes to descend into the scrotum.
+cases.follow_ups.other_clinical_attributes.undescended_testis_history_laterality: Describes
+  the lateral location of the patient's undescended testis.
+cases.follow_ups.other_clinical_attributes.updated_datetime: A combination of date
+  and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+cases.follow_ups.other_clinical_attributes.viral_hepatitis_serologies: Text term that
+  describes the kind of serological laboratory test used to determine the patient's
+  hepatitis status.
+cases.follow_ups.other_clinical_attributes.viral_hepatitis_serology_tests: A set of
+  tests that is used to determine if a subject has been or is currently infected with
+  a Hepatitis virus, is shedding Hepatitis virus or has immunity to Hepatitis viruses.
+cases.follow_ups.other_clinical_attributes.weeks_gestation_at_birth: Numeric value
+  used to describe the number of weeks starting from the approximate date of the biological
+  mother's last menstrual period and ending with the birth of the patient.
+cases.follow_ups.other_clinical_attributes.weight: The weight of the patient measured
+  in kilograms.
 cases.follow_ups.pancreatitis_onset_year: Numeric value to represent the year that
   the patient was diagnosed with clinical chronic pancreatitis.
 cases.follow_ups.peritoneal_washing_results: The results from this minimally invasive
