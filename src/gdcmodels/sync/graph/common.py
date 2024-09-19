@@ -168,6 +168,7 @@ class DescriptionsSynchronizer(common.Synchronizer):
                 "cases.diagnoses.molecular_tests",
                 "cases.follow_ups.molecular_tests",
             ),
+            models.OtherClinicalAttribute: ("cases.follow_ups.other_clinical_attributes",),
             models.PathologyDetail: ("cases.diagnoses.pathology_details",),
             models.Platform: ("files.platform",),
             models.Portion: ("annotations.portion", "cases.samples.portions"),
