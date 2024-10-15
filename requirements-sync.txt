@@ -17,7 +17,7 @@ click==8.1.7
     # via gdcmodels (setup.py)
 deepdiff==6.7.1
     # via gdcmodels (setup.py)
-elasticsearch==7.17.9
+elasticsearch==7.17.12
     # via gdcmodels (setup.py)
 gdcdatamodel2==3.3.0
     # via gdcmodels (setup.py)
