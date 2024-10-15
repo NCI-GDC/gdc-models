@@ -27,6 +27,9 @@ properties:
   cnv_change:
     normalizer: clinical_normalizer
     type: keyword
+  cnv_change_5:
+    normalizer: clinical_normalizer
+    type: keyword
   cnv_id:
     copy_to:
       - cnv_autocomplete
