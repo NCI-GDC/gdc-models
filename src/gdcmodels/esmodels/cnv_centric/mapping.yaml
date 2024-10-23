@@ -163,8 +163,6 @@ properties:
               cause_of_death:
                 normalizer: clinical_normalizer
                 type: keyword
-              circumferential_resection_margin:
-                type: double
               classification_of_tumor:
                 normalizer: clinical_normalizer
                 type: keyword

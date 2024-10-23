@@ -31,6 +31,9 @@ pip-compile --extra=sync \
             --upgrade
 pip install -r requirements-sync.txt
 
+#### Before syncing
+NOTE: Certain esmodels like `case_centric` are augmented from the mappings in `gdcmodels/esmodels/gdc_from_graph/case`. The mappings from `case` are overlayed on the `case_centric` mappings. This implies that previous sync operations may have added entries into the `case_centric` mapping file. In the situation where vestigial mappings are being removed from `gdc_from_graph/case`, then `case_centric` mappings will have to be hand edited to fully remove the vestigial mappings. Similar scenarios exist for the other `gdc_from_graph` folders.
+
 #### Examples
 Run all indices/doc-types:
 ```bash

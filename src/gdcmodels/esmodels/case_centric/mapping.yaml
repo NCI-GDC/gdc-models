@@ -208,12 +208,6 @@ properties:
       ajcc_staging_system_edition:
         normalizer: clinical_normalizer
         type: keyword
-      anaplasia_present:
-        normalizer: clinical_normalizer
-        type: keyword
-      anaplasia_present_type:
-        normalizer: clinical_normalizer
-        type: keyword
       ann_arbor_b_symptoms:
         normalizer: clinical_normalizer
         type: keyword
@@ -285,8 +279,6 @@ properties:
       best_overall_response:
         normalizer: clinical_normalizer
         type: keyword
-      breslow_thickness:
-        type: double
       burkitt_lymphoma_clinical_variant:
         normalizer: clinical_normalizer
         type: keyword
@@ -302,8 +294,6 @@ properties:
       child_pugh_classification:
         normalizer: clinical_normalizer
         type: keyword
-      circumferential_resection_margin:
-        type: double
       clark_level:
         normalizer: clinical_normalizer
         type: keyword
