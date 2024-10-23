@@ -82,24 +82,3 @@ es_models = get_es_models()
 # initialize Elasticsearch indexes: case_set and file_set, add prefix 'gdc_r52' to index name
 python init_index.py --index case_set file_set --host localhost --prefix gdc_r52
 ```
-
-## Setup pre-commit hook to check for secrets and format YAML
-
-We use [pre-commit](https://pre-commit.com/) to setup pre-commit hooks for this repo.
-We use [detect-secrets](https://github.com/Yelp/detect-secrets) to search for secrets being committed into the repo.
-
-To install the pre-commit hook, run
-```
-pre-commit install
-```
-
-To update the .secrets.baseline file run
-```
-detect-secrets scan --update .secrets.baseline
-```
-
-`.secrets.baseline` contains all the string that were caught by detect-secrets but are not stored in plain text. Audit the baseline to view the secrets .
-
-```
-detect-secrets audit .secrets.baseline
-```
