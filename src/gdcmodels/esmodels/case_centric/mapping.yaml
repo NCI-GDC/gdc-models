@@ -463,9 +463,6 @@ properties:
         type: long
       ldh_normal_range_upper:
         type: long
-      lymphatic_invasion_present:
-        normalizer: clinical_normalizer
-        type: keyword
       margin_distance:
         type: double
       margins_involved_site:
@@ -507,12 +504,6 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       new_event_type:
-        normalizer: clinical_normalizer
-        type: keyword
-      non_nodal_regional_disease:
-        normalizer: clinical_normalizer
-        type: keyword
-      non_nodal_tumor_deposits:
         normalizer: clinical_normalizer
         type: keyword
       ovarian_specimen_status:

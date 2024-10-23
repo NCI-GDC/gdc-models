@@ -377,9 +377,6 @@ properties:
                 type: long
               ldh_normal_range_upper:
                 type: long
-              lymphatic_invasion_present:
-                normalizer: clinical_normalizer
-                type: keyword
               masaoka_stage:
                 normalizer: clinical_normalizer
                 type: keyword
