@@ -373,9 +373,6 @@ properties:
                 normalizer: clinical_normalizer
                 type: keyword
             type: nested
-          perineural_invasion_present:
-            normalizer: clinical_normalizer
-            type: keyword
           peripancreatic_lymph_nodes_positive:
             normalizer: clinical_normalizer
             type: keyword

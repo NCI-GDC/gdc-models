@@ -745,11 +745,6 @@ properties:
       pediatric_kidney_staging:
         normalizer: clinical_normalizer
         type: keyword
-      percent_tumor_invasion:
-        type: double
-      perineural_invasion_present:
-        normalizer: clinical_normalizer
-        type: keyword
       peripancreatic_lymph_nodes_positive:
         normalizer: clinical_normalizer
         type: keyword
