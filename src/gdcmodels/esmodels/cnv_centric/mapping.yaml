@@ -239,11 +239,6 @@ properties:
                 type: long
               ldh_normal_range_upper:
                 type: long
-              lymph_node_involved_site:
-                normalizer: clinical_normalizer
-                type: keyword
-              lymph_nodes_positive:
-                type: long
               lymph_nodes_tested:
                 type: long
               lymphatic_invasion_present:

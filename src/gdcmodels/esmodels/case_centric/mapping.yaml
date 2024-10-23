@@ -411,10 +411,6 @@ properties:
       goblet_cells_columnar_mucosa_present:
         normalizer: clinical_normalizer
         type: keyword
-      greatest_tumor_dimension:
-        type: long
-      gross_tumor_weight:
-        type: double
       hiv_positive:
         normalizer: clinical_normalizer
         type: keyword
@@ -457,9 +453,6 @@ properties:
       iss_stage:
         normalizer: clinical_normalizer
         type: keyword
-      largest_extrapelvic_peritoneal_focus:
-        normalizer: clinical_normalizer
-        type: keyword
       last_known_disease_status:
         normalizer: clinical_normalizer
         type: keyword
@@ -469,11 +462,6 @@ properties:
       ldh_level_at_diagnosis:
         type: long
       ldh_normal_range_upper:
-        type: long
-      lymph_node_involved_site:
-        normalizer: clinical_normalizer
-        type: keyword
-      lymph_nodes_positive:
         type: long
       lymph_nodes_tested:
         type: long
