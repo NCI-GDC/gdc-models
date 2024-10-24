@@ -498,8 +498,6 @@ properties:
                     normalizer: clinical_normalizer
                     type: keyword
                 type: nested
-              peripancreatic_lymph_nodes_tested:
-                type: double
               pregnant_at_diagnosis:
                 normalizer: clinical_normalizer
                 type: keyword
