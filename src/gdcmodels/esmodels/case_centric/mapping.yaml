@@ -992,9 +992,6 @@ properties:
       updated_datetime:
         normalizer: clinical_normalizer
         type: keyword
-      vascular_invasion_present:
-        normalizer: clinical_normalizer
-        type: keyword
       vascular_invasion_type:
         normalizer: clinical_normalizer
         type: keyword
