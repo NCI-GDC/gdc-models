@@ -1270,8 +1270,6 @@ properties:
                 type: double
               proportion_coverage_10x:
                 type: double
-              proportion_coverage_30X:
-                type: double
               proportion_coverage_30x:
                 type: double
               proportion_reads_duplicated:
@@ -1743,8 +1741,6 @@ properties:
                 type: double
               proportion_coverage_10x:
                 type: double
-              proportion_coverage_30X:
-                type: double
               proportion_coverage_30x:
                 type: double
               proportion_reads_duplicated:
@@ -1910,8 +1906,6 @@ properties:
             type: double
           proportion_coverage_10x:
             type: double
-          proportion_coverage_30X:
-            type: double
           proportion_coverage_30x:
             type: double
           proportion_reads_duplicated:
@@ -2025,8 +2019,6 @@ properties:
       proportion_base_mismatch:
         type: double
       proportion_coverage_10x:
-        type: double
-      proportion_coverage_30X:
         type: double
       proportion_coverage_30x:
         type: double
