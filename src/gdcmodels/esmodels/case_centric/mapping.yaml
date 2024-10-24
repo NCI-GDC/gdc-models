@@ -1268,8 +1268,6 @@ properties:
                 type: keyword
               proportion_base_mismatch:
                 type: double
-              proportion_coverage_10X:
-                type: double
               proportion_coverage_10x:
                 type: double
               proportion_coverage_30X:
@@ -1743,8 +1741,6 @@ properties:
                 type: keyword
               proportion_base_mismatch:
                 type: double
-              proportion_coverage_10X:
-                type: double
               proportion_coverage_10x:
                 type: double
               proportion_coverage_30X:
@@ -1912,8 +1908,6 @@ properties:
             type: keyword
           proportion_base_mismatch:
             type: double
-          proportion_coverage_10X:
-            type: double
           proportion_coverage_10x:
             type: double
           proportion_coverage_30X:
@@ -2029,8 +2023,6 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       proportion_base_mismatch:
-        type: double
-      proportion_coverage_10X:
         type: double
       proportion_coverage_10x:
         type: double
