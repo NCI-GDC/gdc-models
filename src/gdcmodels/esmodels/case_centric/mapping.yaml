@@ -800,9 +800,6 @@ properties:
       tissue_or_organ_of_origin:
         normalizer: clinical_normalizer
         type: keyword
-      transglottic_extension:
-        normalizer: clinical_normalizer
-        type: keyword
       treatments:
         properties:
           chemo_concurrent_to_radiation:
