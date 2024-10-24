@@ -491,8 +491,6 @@ properties:
               tobacco_smoking_status:
                 normalizer: clinical_normalizer
                 type: keyword
-              weight:
-                type: double
               years_smoked:
                 type: double
             type: nested
