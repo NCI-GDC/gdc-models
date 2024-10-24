@@ -1046,8 +1046,6 @@ properties:
       asbestos_exposure_type:
         normalizer: clinical_normalizer
         type: keyword
-      bmi:
-        type: double
       chemical_exposure_type:
         normalizer: clinical_normalizer
         type: keyword

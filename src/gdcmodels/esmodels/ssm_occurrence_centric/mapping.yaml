@@ -414,8 +414,6 @@ properties:
           asbestos_exposure:
             normalizer: clinical_normalizer
             type: keyword
-          bmi:
-            type: double
           cigarettes_per_day:
             type: double
           exposure_id:
