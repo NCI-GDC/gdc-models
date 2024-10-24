@@ -612,8 +612,6 @@ properties:
               exposure_id:
                 normalizer: clinical_normalizer
                 type: keyword
-              height:
-                type: double
               pack_years_smoked:
                 type: double
               radon_exposure:

@@ -1076,8 +1076,6 @@ properties:
       exposure_type:
         normalizer: clinical_normalizer
         type: keyword
-      height:
-        type: double
       marijuana_use_per_week:
         type: double
       occupation_duration_years:
