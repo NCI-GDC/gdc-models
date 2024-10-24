@@ -1095,8 +1095,6 @@ properties:
       secondhand_smoke_as_child:
         normalizer: clinical_normalizer
         type: keyword
-      smokeless_tobacco_quit_age:
-        type: long
       smoking_frequency:
         normalizer: clinical_normalizer
         type: keyword
