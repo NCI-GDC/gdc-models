@@ -1313,8 +1313,6 @@ properties:
             properties:
               read_groups:
                 properties:
-                  RIN:
-                    type: double
                   adapter_name:
                     normalizer: clinical_normalizer
                     type: keyword
