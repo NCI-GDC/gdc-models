@@ -1113,8 +1113,6 @@ properties:
       tobacco_smoking_status:
         normalizer: clinical_normalizer
         type: keyword
-      tobacco_use_per_day:
-        type: double
       type_of_smoke_exposure:
         normalizer: clinical_normalizer
         type: keyword
