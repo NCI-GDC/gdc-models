@@ -959,9 +959,6 @@ properties:
       tumor_regression_grade:
         normalizer: clinical_normalizer
         type: keyword
-      tumor_stage:
-        normalizer: clinical_normalizer
-        type: keyword
       uicc_clinical_m:
         normalizer: clinical_normalizer
         type: keyword
