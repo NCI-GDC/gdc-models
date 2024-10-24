@@ -31,6 +31,9 @@ pip-compile --extra=sync \
             --upgrade
 pip install -r requirements-sync.txt
 
+#### Before syncing
+NOTE: Certain esmodels like `case_centric` are augmented from the mappings in `gdcmodels/esmodels/gdc_from_graph/case`. The mappings from `case` are overlayed on the `case_centric` mappings. This implies that previous sync operations may have added entries into the `case_centric` mapping file. In the situation where vestigial mappings are being removed from `gdc_from_graph/case`, then `case_centric` mappings will have to be hand edited to fully remove the vestigial mappings. Similar scenarios exist for the other `gdc_from_graph` folders.
+
 #### Examples
 Run all indices/doc-types:
 ```bash
@@ -81,25 +84,4 @@ es_models = get_es_models()
 # get usage information by: python init_index.py -h
 # initialize Elasticsearch indexes: case_set and file_set, add prefix 'gdc_r52' to index name
 python init_index.py --index case_set file_set --host localhost --prefix gdc_r52
-```
-
-## Setup pre-commit hook to check for secrets and format YAML
-
-We use [pre-commit](https://pre-commit.com/) to setup pre-commit hooks for this repo.
-We use [detect-secrets](https://github.com/Yelp/detect-secrets) to search for secrets being committed into the repo.
-
-To install the pre-commit hook, run
-```
-pre-commit install
-```
-
-To update the .secrets.baseline file run
-```
-detect-secrets scan --update .secrets.baseline
-```
-
-`.secrets.baseline` contains all the string that were caught by detect-secrets but are not stored in plain text. Audit the baseline to view the secrets .
-
-```
-detect-secrets audit .secrets.baseline
 ```

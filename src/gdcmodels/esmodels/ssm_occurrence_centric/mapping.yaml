@@ -108,8 +108,6 @@ properties:
           cause_of_death:
             normalizer: clinical_normalizer
             type: keyword
-          circumferential_resection_margin:
-            type: double
           classification_of_tumor:
             normalizer: clinical_normalizer
             type: keyword
@@ -186,16 +184,6 @@ properties:
             type: long
           ldh_normal_range_upper:
             type: long
-          lymph_node_involved_site:
-            normalizer: clinical_normalizer
-            type: keyword
-          lymph_nodes_positive:
-            type: long
-          lymph_nodes_tested:
-            type: long
-          lymphatic_invasion_present:
-            normalizer: clinical_normalizer
-            type: keyword
           masaoka_stage:
             normalizer: clinical_normalizer
             type: keyword
@@ -317,14 +305,6 @@ properties:
                 normalizer: clinical_normalizer
                 type: keyword
             type: nested
-          perineural_invasion_present:
-            normalizer: clinical_normalizer
-            type: keyword
-          peripancreatic_lymph_nodes_positive:
-            normalizer: clinical_normalizer
-            type: keyword
-          peripancreatic_lymph_nodes_tested:
-            type: double
           pregnant_at_diagnosis:
             normalizer: clinical_normalizer
             type: keyword
@@ -415,17 +395,6 @@ properties:
           tumor_grade:
             normalizer: clinical_normalizer
             type: keyword
-          tumor_largest_dimension_diameter:
-            type: double
-          tumor_stage:
-            normalizer: clinical_normalizer
-            type: keyword
-          vascular_invasion_present:
-            normalizer: clinical_normalizer
-            type: keyword
-          vascular_invasion_type:
-            normalizer: clinical_normalizer
-            type: keyword
           year_of_diagnosis:
             type: long
         type: nested
@@ -445,15 +414,11 @@ properties:
           asbestos_exposure:
             normalizer: clinical_normalizer
             type: keyword
-          bmi:
-            type: double
           cigarettes_per_day:
             type: double
           exposure_id:
             normalizer: clinical_normalizer
             type: keyword
-          height:
-            type: double
           pack_years_smoked:
             type: double
           radon_exposure:
@@ -471,8 +436,6 @@ properties:
           tobacco_smoking_status:
             normalizer: clinical_normalizer
             type: keyword
-          weight:
-            type: double
           years_smoked:
             type: double
         type: nested
