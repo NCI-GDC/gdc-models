@@ -463,8 +463,6 @@ properties:
           tumor_grade:
             normalizer: clinical_normalizer
             type: keyword
-          tumor_largest_dimension_diameter:
-            type: double
           tumor_stage:
             normalizer: clinical_normalizer
             type: keyword
