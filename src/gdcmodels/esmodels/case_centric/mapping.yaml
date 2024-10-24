@@ -745,9 +745,6 @@ properties:
       pediatric_kidney_staging:
         normalizer: clinical_normalizer
         type: keyword
-      peripancreatic_lymph_nodes_positive:
-        normalizer: clinical_normalizer
-        type: keyword
       peripancreatic_lymph_nodes_tested:
         type: double
       peritoneal_fluid_cytological_status:
