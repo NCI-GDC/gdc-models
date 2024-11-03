@@ -3,8 +3,9 @@ _size:
   enabled: true
 _source:
   excludes:
-    - gene.cnv.observation.*
-    - gene.ssm.*
+    - gene.*.*
+    - gene.biotype
+    - gene.is_cancer_gene_census
 dynamic: strict
 properties:
   aliquot_ids:
