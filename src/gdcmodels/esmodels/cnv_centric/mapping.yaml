@@ -6,6 +6,9 @@ _source:
     - __comment__
 dynamic: strict
 properties:
+  aliquot_id:
+    normalizer: clinical_normalizer
+    type: keyword
   chromosome:
     normalizer: clinical_normalizer
     type: keyword
