@@ -4,6 +4,7 @@ index:
   number_of_shards: 12
   number_of_replicas: 0
   mapping.total_fields.limit: 2000
+  max_terms_count: 100000
 analysis:
   normalizer:
     clinical_normalizer:
