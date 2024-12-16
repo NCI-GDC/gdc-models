@@ -527,6 +527,8 @@ properties:
             type: keyword
           observation:
             properties:
+              copy_number:
+                type: integer
               observation_id:
                 normalizer: clinical_normalizer
                 type: keyword
@@ -538,6 +540,8 @@ properties:
                   tumor_sample_uuid:
                     normalizer: clinical_normalizer
                     type: keyword
+              sample_ploidy_integer:
+                type: integer
               src_file_id:
                 normalizer: clinical_normalizer
                 type: keyword
