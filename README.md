@@ -8,12 +8,28 @@
 Git repository centrally stores and serves GDC data models defined in static YAML files.
 
 - [GDC Models](#gdc-models)
+  - [Structure of esmodels directory](#structure-of-esmodels-directory)
   - [Update the data models](#update-the-data-models)
+    - [Sync](#sync)
+      - [Install](#install)
+      - [Before syncing](#before-syncing)
+      - [Examples](#examples)
+      - [After Syncing](#after-syncing)
+    - [WARNING: YAML \& Pre-Commit Hook](#warning-yaml--pre-commit-hook)
   - [Use the data models](#use-the-data-models)
     - [Import ES models into Python code](#import-es-models-into-python-code)
     - [Initialize Elasticsearch index settings and mappings using command line script](#initialize-elasticsearch-index-settings-and-mappings-using-command-line-script)
-  - [Setup pre-commit hook to check for secrets](#setup-pre-commit-hook-to-check-for-secrets)
 
+## Structure of esmodels directory
+For each index, there are three files that are created and stored under the esmodels/<index_name> directory:
+- mapping.yaml
+  - The elasticsearch properties are declared here
+- settings.yaml
+  - The elasticserach index-specific settings are declared here
+- vestigial.yaml
+  - For properties that are removed from the graph, we do not want to break gdcapi/portal functionality if they issue an elasticsearch query with a property that is no longer in the graph. This file
+contains all properties that have been removed from mappings.yaml but are still needed to maintain backwards compatibility. It is expected for elasticsearch queries to return no data for
+the vestigial properties.
 
 ## Update the data models
 
