@@ -489,14 +489,6 @@ properties:
               observation_id:
                 normalizer: clinical_normalizer
                 type: keyword
-              sample:
-                properties:
-                  tumor_sample_barcode:
-                    normalizer: clinical_normalizer
-                    type: keyword
-                  tumor_sample_uuid:
-                    normalizer: clinical_normalizer
-                    type: keyword
               sample_ploidy_integer:
                 type: integer
               src_file_id:
