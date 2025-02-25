@@ -11,7 +11,7 @@ def test__get_es_models__standard_behavior() -> None:
     """
     models = gdcmodels.get_es_models()
 
-    assert len(models) == 13
+    assert len(models) == 14
 
     for dtype in ["case", "project", "file", "annotation"]:
         dtype_mapping = models["gdc_from_graph"][dtype].mappings
