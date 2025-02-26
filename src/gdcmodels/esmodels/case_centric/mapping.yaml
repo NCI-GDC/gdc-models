@@ -3572,6 +3572,27 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
     type: nested
+  segment_cnv:
+    properties:
+      chromosome:
+        normalizer: clinical_normalizer
+        type: keyword
+      cnv_change:
+        normalizer: clinical_normalizer
+        type: keyword
+      cnv_change_5_category:
+        normalizer: clinical_normalizer
+        type: keyword
+      end_position:
+        type: long
+      length:
+        type: long
+      segment_cnv_id:
+        normalizer: clinical_normalizer
+        type: keyword
+      start_position:
+        type: long
+    type: nested
   slide_ids:
     normalizer: clinical_normalizer
     type: keyword
