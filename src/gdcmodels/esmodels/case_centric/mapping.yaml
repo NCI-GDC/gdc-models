@@ -3587,6 +3587,35 @@ properties:
         type: long
       length:
         type: long
+      observation:
+        properties:
+          copy_number:
+            type: integer
+          observation_id:
+            normalizer: clinical_normalizer
+            type: keyword
+          sample:
+            properties:
+              tumor_sample_barcode:
+                normalizer: clinical_normalizer
+                type: keyword
+              tumor_sample_uuid:
+                normalizer: clinical_normalizer
+                type: keyword
+          sample_ploidy_integer:
+            type: integer
+          src_file_id:
+            normalizer: clinical_normalizer
+            type: keyword
+          variant_calling:
+            properties:
+              variant_caller:
+                normalizer: clinical_normalizer
+                type: keyword
+          variant_status:
+            normalizer: clinical_normalizer
+            type: keyword
+        type: nested
       segment_cnv_id:
         normalizer: clinical_normalizer
         type: keyword
