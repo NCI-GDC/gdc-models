@@ -41,9 +41,6 @@ properties:
           cnv_change:
             normalizer: clinical_normalizer
             type: keyword
-          cnv_change_5_category:
-            normalizer: clinical_normalizer
-            type: keyword
           cnv_id:
             normalizer: clinical_normalizer
             type: keyword
