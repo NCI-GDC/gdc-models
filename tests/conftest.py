@@ -31,7 +31,7 @@ def es_models(monkeypatch: pytest.MonkeyPatch) -> Iterator[pathlib.Path]:
 def es():
     """Create an Elasticsearch client for the test cluster."""
     return elasticsearch.Elasticsearch(
-        hosts=[f"{os.getenv('ES_HOST', 'localhost')}:9200"], timeout=30
+        hosts=[f"https://{os.getenv('ES_HOST', 'localhost')}:9200"], timeout=30
     )
 
 
