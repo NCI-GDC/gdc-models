@@ -31,7 +31,10 @@ def es_models(monkeypatch: pytest.MonkeyPatch) -> Iterator[pathlib.Path]:
 def es():
     """Create an Elasticsearch client for the test cluster."""
     return elasticsearch.Elasticsearch(
-        hosts=[f"https://{os.getenv('ES_HOST', 'localhost')}:9200"], timeout=30
+        hosts=[
+            {"scheme": "http", "host": os.getenv("ES_HOST", "localhost"), "port": 9200},
+        ],
+        timeout=30,
     )
 
 
@@ -60,4 +63,5 @@ def clear_test_indices(es: elasticsearch.Elasticsearch) -> Iterator[None]:
     """Remove any ES indices starting with ``test_`` from the test cluster."""
     yield None
 
-    es.indices.delete(index="test_*")
+    for index in es.indices.get_alias(index="test_*").keys():
+        es.indices.delete(index=index)
