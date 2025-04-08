@@ -38,6 +38,7 @@ class Arguments(Protocol):
     index: List[str]
     alias: List[str]
     prefix: str
+    scheme: str
     host: str
     port: int
     ssl: bool
@@ -71,6 +72,13 @@ def get_parser() -> ArgumentParser:
     )
     parser.add_argument(
         "--prefix", dest="prefix", required=True, help="prefix for the index name"
+    )
+    parser.add_argument(
+        "--scheme",
+        dest="scheme",
+        default="http",
+        required=False,
+        help="Elasticsearch server scheme",
     )
     parser.add_argument(
         "--host",
@@ -115,8 +123,7 @@ def get_elasticsearch(args: Arguments) -> elasticsearch.Elasticsearch:
         Elasticsearch: ES client instance
     """
     return elasticsearch.Elasticsearch(
-        hosts=[{"host": args.host, "port": args.port}],
-        use_ssl=args.ssl,
+        hosts=[{"scheme": args.scheme, "host": args.host, "port": args.port}],
         ca_certs=args.ssl_ca,
         http_auth=(args.user, args.password),
         timeout=60,

@@ -89,10 +89,10 @@ def get_args(es: elasticsearch.Elasticsearch) -> GetArgs:
     """
 
     # Assume we only configured one host for the ES client fixture.
-    assert es.transport.hosts
+    assert es.transport.node_pool.all()
 
-    host_info = es.transport.hosts[0]
-    es_args = ("--host", host_info["host"], "--port", str(host_info["port"]))
+    es_node = [node for node in es.transport.node_pool.all()][0]
+    es_args = ("--scheme", es_node.scheme, "--host", es_node.host, "--port", str(es_node.port))
 
     def parse(*args: str) -> init_index.Arguments:
         actual_args = (*es_args, *args)
