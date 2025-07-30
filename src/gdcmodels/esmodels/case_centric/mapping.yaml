@@ -154,6 +154,9 @@ properties:
       race:
         normalizer: clinical_normalizer
         type: keyword
+      sex_at_birth:
+        normalizer: clinical_normalizer
+        type: keyword
       state:
         normalizer: clinical_normalizer
         type: keyword
@@ -531,6 +534,9 @@ properties:
             type: keyword
           breslow_thickness:
             type: double
+          breslow_thickness_category:
+            normalizer: clinical_normalizer
+            type: keyword
           circumferential_resection_margin:
             type: double
           columnar_mucosa_present:
@@ -1143,6 +1149,9 @@ properties:
       relationship_primary_diagnosis:
         normalizer: clinical_normalizer
         type: keyword
+      relationship_sex_at_birth:
+        normalizer: clinical_normalizer
+        type: keyword
       relationship_type:
         normalizer: clinical_normalizer
         type: keyword
@@ -1296,6 +1305,14 @@ properties:
                 type: double
               submitter_id:
                 type: keyword
+              tmb:
+                type: double
+              tmb_exonic:
+                type: double
+              tmb_nonsynonymous:
+                type: double
+              tmb_nonsynonymous_exonic:
+                type: double
               total_reads:
                 type: long
               tumor_ploidy:
@@ -1765,6 +1782,14 @@ properties:
                 type: double
               submitter_id:
                 type: keyword
+              tmb:
+                type: double
+              tmb_exonic:
+                type: double
+              tmb_nonsynonymous:
+                type: double
+              tmb_nonsynonymous_exonic:
+                type: double
               total_reads:
                 type: long
               tumor_ploidy:
@@ -1930,6 +1955,14 @@ properties:
             type: double
           submitter_id:
             type: keyword
+          tmb:
+            type: double
+          tmb_exonic:
+            type: double
+          tmb_nonsynonymous:
+            type: double
+          tmb_nonsynonymous_exonic:
+            type: double
           total_reads:
             type: long
           tumor_ploidy:
@@ -2047,6 +2080,14 @@ properties:
       tags:
         normalizer: clinical_normalizer
         type: keyword
+      tmb:
+        type: double
+      tmb_exonic:
+        type: double
+      tmb_nonsynonymous:
+        type: double
+      tmb_nonsynonymous_exonic:
+        type: double
       total_reads:
         type: long
       tumor_ploidy:
@@ -2405,6 +2446,9 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           eye_color:
+            normalizer: clinical_normalizer
+            type: keyword
+          fertility_history:
             normalizer: clinical_normalizer
             type: keyword
           fev1_fvc_post_bronch_percent:
@@ -3289,6 +3333,8 @@ properties:
               created_datetime:
                 normalizer: clinical_normalizer
                 type: keyword
+              dna_integrity_number:
+                type: double
               experimental_protocol_type:
                 normalizer: clinical_normalizer
                 type: keyword
@@ -3296,6 +3342,8 @@ properties:
                 normalizer: clinical_normalizer
                 type: keyword
               ribosomal_rna_28s_16s_ratio:
+                type: double
+              ribosomal_rna_28s_18s_ratio:
                 type: double
               rna_integrity_number:
                 type: double

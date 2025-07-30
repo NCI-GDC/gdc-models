@@ -1,15 +1,58 @@
 [build-system]
-requires = ["setuptools>=60", "wheel", "setuptools_scm==8.0.4", "setuptools_git_versioning<2"]
 build-backend = "setuptools.build_meta"
+requires = ["setuptools>=77", "wheel", "setuptools_scm[toml]>=7.0", "versionista>=1.1.0"]
+
+[project]
+authors = [
+  {name = "NCI GDC", email = "gdc_dev_questions-aaaaae2lhsbell56tlvh3upgoq@cdis.slack.com"}
+]
+classifiers = [
+  "Intended Audience :: Developers",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: PythonLicense :: OSI Approved :: Apache Software License",
+  "Topic :: Software Development :: Libraries :: Python Modules"
+]
+dependencies = [
+  "deepdiff",
+  "elasticsearch~=7.0",
+  "importlib-resources",
+  "mergedeep",
+  "more-itertools",
+  "PyYAML",
+  "typing-extensions"
+]
+description = "Stores and serves GDC data models defined in static YAML files."
+dynamic = ["version"]
+keywords = ["python3", "gdcmodels", "yaml"]
+license-files = ["LICENSE"]
+name = "gdcmodels"
+readme = "README.md"
+requires-python = ">=3.9"
+
+[project.optional-dependencies]
+dev = ["coverage", "elasticsearch-dsl~=7.0", "pytest"]
+sync = ["click", "gdcdictionary", "gdcdatamodel2"]
+
+[project.scripts]
+init_index = "gdcmodels.init_index:main"
+sync-models = "gdcmodels.sync.cli:cli"
+
+[project.urls]
+Repository = "https://github.com/NCI-GDC/gdc-models"
 
 [tool.black]
-line-length = 98
 include = '\.pyi?$'
+line-length = 98
 
 [tool.coverage.html]
-title = "gdc-models coverage report"
 directory = "docs/htmlcov"
 show_contexts = true
+title = "gdc-models coverage report"
 
 [tool.coverage.run]
 branch = true
@@ -17,10 +60,10 @@ context = "unit tests"
 source = ["gdcmodels"]
 
 [tool.isort]
-profile = "black"
-line_length = 98 # match black config
 known_first_party = ["gdcmodels"]
+line_length = 98 # match black config
+profile = "black"
 
 [tool.setuptools_scm]
-local_scheme = "no-local-version"
-fallback_version = "local"
+local_scheme = "versionista-local-format"
+version_scheme = "versionista-format"
