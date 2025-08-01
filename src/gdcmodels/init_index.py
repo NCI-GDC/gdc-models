@@ -145,7 +145,9 @@ def init_index(args: Arguments):
     indices = [ESIndexBuilder(index_name, args.prefix) for index_name in args.index]
     if args.alias:
         if len(args.index) != len(args.alias):
-            logger.error(f"Mismatching arguments for index: {args.index} and alias: {args.alias}")
+            logger.error(
+                f"Mismatching arguments for index: {args.index} and alias: {args.alias}"
+            )
             return
 
         for index, alias_name in zip(indices, args.alias):
@@ -177,7 +179,9 @@ def init_index(args: Arguments):
                         f"Elasticsearch index '{index_builder.full_index_name}' exists, '--delete' specified"
                     )
                     if confirm_delete(index_builder.full_index_name):
-                        logger.info(f"Deleting existing index '{index_builder.full_index_name}'")
+                        logger.info(
+                            f"Deleting existing index '{index_builder.full_index_name}'"
+                        )
                         es.indices.delete(index=index_builder.full_index_name)
                     else:
                         logger.info("Index name mismatch, skipping deleting")
@@ -223,7 +227,9 @@ def init_index(args: Arguments):
             continue
 
         logger.info(f"Creating alias '{index_builder.alias_name}'")
-        es.indices.put_alias(name=index_builder.alias_name, index=index_builder.full_index_name)
+        es.indices.put_alias(
+            name=index_builder.alias_name, index=index_builder.full_index_name
+        )
 
 
 def main():

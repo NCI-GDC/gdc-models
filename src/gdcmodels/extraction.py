@@ -87,7 +87,9 @@ def _extract_details(models: abc.Traversable) -> Iterator[_MappingDetail]:
             yield from map(extract_detail, doc_types)
 
 
-def _extract_es_mapping(detail: _MappingDetail, vestigial_included: bool) -> esmodels.ESMapping:
+def _extract_es_mapping(
+    detail: _MappingDetail, vestigial_included: bool
+) -> esmodels.ESMapping:
     """Extract the elasticsearch mapping described in the given detail.
 
     Args:
@@ -164,7 +166,9 @@ def get_es_models(
 
     return types.MappingProxyType(
         {
-            index_name: types.MappingProxyType(dict(_extract_index(details, vestigial_included)))
+            index_name: types.MappingProxyType(
+                dict(_extract_index(details, vestigial_included))
+            )
             for index_name, details in indices
         }
     )

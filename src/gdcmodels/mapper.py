@@ -104,7 +104,9 @@ class ModelMapper:
         if self.doc_type in [doc_type, f"{doc_type}_centric"]:
             return self.mappings
 
-        mappings = {p: m for p, m in _walk_mapping(self.mappings) if p.endswith(f".{doc_type}")}
+        mappings = {
+            p: m for p, m in _walk_mapping(self.mappings) if p.endswith(f".{doc_type}")
+        }
 
         if callable(selector):
             paths = selector(mappings.keys())

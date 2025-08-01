@@ -43,7 +43,9 @@ class VestigialDelta(deepdiff.Delta):
         # NOTE: The vestigial data is only data which must be added to the current
         #       dictionary.
         if "dictionary_item_added" in self.diff:
-            return self.serializer({"dictionary_item_added": self.diff["dictionary_item_added"]})
+            return self.serializer(
+                {"dictionary_item_added": self.diff["dictionary_item_added"]}
+            )
 
         return self.serializer({})
 

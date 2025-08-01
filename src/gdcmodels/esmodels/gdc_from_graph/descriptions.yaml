@@ -6,8 +6,6 @@ annotations.aliquot.aliquot_volume: The volume in microliters (ul) of the aliquo
 annotations.aliquot.amount: Weight in grams or volume in mL.
 annotations.aliquot.analyte_type: Text term that represents the kind of molecular
   specimen analyte.
-annotations.aliquot.analyte_type_id: A single letter code used to identify a type
-  of molecular analyte.
 annotations.aliquot.batch_id: GDC submission batch indicator. It is unique within
   the context of a project.
 annotations.aliquot.concentration: Numeric value that represents the concentration
@@ -57,10 +55,8 @@ annotations.analyte.analyte_quantity: The quantity in micrograms (ug) of the ana
   derived from the analyte(s) shipped for sequencing and characterization.
 annotations.analyte.analyte_type: Text term that represents the kind of molecular
   specimen analyte.
-annotations.analyte.analyte_type_id: A single letter code used to identify a type
-  of molecular analyte.
-annotations.analyte.analyte_volume: The volume in microliters (ul) of the aliquot(s)
-  derived from the analyte(s) shipped for sequencing and characterization.
+annotations.analyte.analyte_volume: "The volume in microliters (ul) of the analyte(s)\
+  \ shipped for sequencing and\n characterization."
 annotations.analyte.batch_id: GDC submission batch indicator. It is unique within
   the context of a project.
 annotations.analyte.concentration: Numeric value that represents the concentration
@@ -68,6 +64,9 @@ annotations.analyte.concentration: Numeric value that represents the concentrati
   milligrams per milliliter.
 annotations.analyte.created_datetime: A combination of date and time of day in the
   form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+annotations.analyte.dna_integrity_number: An assessment of the amount of fragmentation
+  in a genomic DNA sample. It is derived by an algorithm that assesses the distribution
+  of signal across the size range and generates a calculated integrity number.
 annotations.analyte.experimental_protocol_type: The type of experiment used to extract
   the analyte.
 annotations.analyte.normal_tumor_genotype_snp_match: Text term that represents whether
@@ -75,6 +74,8 @@ annotations.analyte.normal_tumor_genotype_snp_match: Text term that represents w
 annotations.analyte.project_id: Unique ID for any specific defined piece of work that
   is undertaken or attempted to meet a single requirement.
 annotations.analyte.ribosomal_rna_28s_16s_ratio: The 28S/18S ribosomal RNA band ratio
+  used to assess the quality of total RNA.
+annotations.analyte.ribosomal_rna_28s_18s_ratio: The 28S/18S ribosomal RNA band ratio
   used to assess the quality of total RNA.
 annotations.analyte.rna_integrity_number: A numerical assessment of the integrity
   of RNA based on the entire electrophoretic trace of the RNA sample, including the
@@ -210,8 +211,6 @@ annotations.sample.biospecimen_anatomic_site: Text term that represents the name
 annotations.sample.biospecimen_laterality: For tumors in paired organs, designates
   the side on which the specimen was obtained.
 annotations.sample.catalog_reference: HCMI catalog reference number for cancer model.
-annotations.sample.composition: Text term that represents the cellular composition
-  of the sample.
 annotations.sample.created_datetime: A combination of date and time of day in the
   form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
 annotations.sample.current_weight: Numeric value that represents the current weight
@@ -239,14 +238,10 @@ annotations.sample.initial_weight: Numeric value that represents the initial wei
   of the sample, measured in milligrams.
 annotations.sample.intermediate_dimension: Intermediate dimension of the sample, in
   millimeters.
-annotations.sample.is_ffpe: Indicator to signify whether or not the tissue sample
-  was fixed in formalin and embedded in paraffin (FFPE).
 annotations.sample.longest_dimension: Numeric value that represents the longest dimension
   of the sample, measured in millimeters.
 annotations.sample.method_of_sample_procurement: The method used to procure the sample
   used to extract analyte(s).
-annotations.sample.oct_embedded: Indicator of whether or not the sample was embedded
-  in Optimal Cutting Temperature (OCT) compound.
 annotations.sample.passage_count: Number of passages (splits) between the original
   tissue and this model.
 annotations.sample.pathology_report_uuid: UUID of the related pathology report.
@@ -258,8 +253,6 @@ annotations.sample.sample_ordinal: A number describing the samples place in an o
   sequence.
 annotations.sample.sample_type: Text term to describe the source of a biospecimen
   used for a laboratory test.
-annotations.sample.sample_type_id: The accompanying sample type id for the sample
-  type.
 annotations.sample.shortest_dimension: Numeric value that represents the shortest
   dimension of the sample, measured in millimeters.
 annotations.sample.specimen_type: The type of a material sample taken from a biological
@@ -279,7 +272,6 @@ annotations.sample.tissue_collection_type: The text term used to describe the ty
   of collection used to obtain tissue.
 annotations.sample.tissue_type: Text term that represents a description of the kind
   of tissue collected with respect to disease status or proximity to tumor tissue.
-annotations.sample.tumor_code: Diagnostic tumor code of the tissue sample source.
 annotations.sample.tumor_code_id: BCR-defined id code for the tumor sample.
 annotations.sample.tumor_descriptor: Text that describes the kind of disease present
   in the tumor specimen as related to a specific timepoint.
@@ -434,9 +426,7 @@ cases.demographic.marital_status: A demographic parameter indicating a person's 
 cases.demographic.occupation_duration_years: The number of years a patient worked
   in a specific occupation.
 cases.demographic.population_group: A group of individuals united by a common factor
-  (e.g., geographic location, ethnicity, disease, age, gender).
-cases.demographic.premature_at_birth: The yes/no/unknown indicator used to describe
-  whether the patient was premature (less than 37 weeks gestation) at birth.
+  (e.g., geographic location, ethnicity, disease, age, sex).
 cases.demographic.project_id: Unique ID for any specific defined piece of work that
   is undertaken or attempted to meet a single requirement.
 cases.demographic.race: An arbitrary classification of a taxonomic group that is a
@@ -445,6 +435,7 @@ cases.demographic.race: An arbitrary classification of a taxonomic group that is
   behavior, and in the case of humans, by common history, nationality, or geographic
   distribution. The provided values are based on the categories defined by the U.S.
   Office of Management and Business and used by the U.S. Census Bureau.
+cases.demographic.sex_at_birth: A textual description of a person's sex at birth.
 cases.demographic.state: The current state of the object.
 cases.demographic.submitter_id: A project-specific identifier for a node. This property
   is the calling card/nickname/alias for a unit of submission. It can be used in place
@@ -453,9 +444,6 @@ cases.demographic.updated_datetime: A combination of date and time of day in the
   [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
 cases.demographic.vital_status: The survival state of the person registered on the
   protocol.
-cases.demographic.weeks_gestation_at_birth: Numeric value used to describe the number
-  of weeks starting from the approximate date of the biological mother's last menstrual
-  period and ending with the birth of the patient.
 cases.demographic.year_of_birth: Numeric value to represent the calendar year in which
   an individual was born.
 cases.demographic.year_of_death: Numeric value to represent the year of the death
@@ -695,19 +683,11 @@ cases.diagnoses.melanoma_known_primary: A melanoma which has metastasized from a
   primary anatomic site.
 cases.diagnoses.metastasis_at_diagnosis: The text term used to describe the extent
   of metastatic disease present at diagnosis.
-cases.diagnoses.metastasis_at_diagnosis_site: Text term to identify an anatomic site
-  in which metastatic disease involvement is found.
 cases.diagnoses.method_of_diagnosis: Text term used to describe the method used to
   confirm the patients malignant diagnosis.
-cases.diagnoses.micropapillary_features: The yes/no/unknown indicator used to describe
-  whether micropapillary features were determined to be present.
 cases.diagnoses.mitosis_karyorrhexis_index: Text term that represents the component
   of the International Neuroblastoma Pathology Classification (INPC) for mitosis-karyorrhexis
   index (MKI).
-cases.diagnoses.mitotic_count: The number of mitoses identified under the microscope
-  in tumors. The method of counting varies, according to the specific tumor examined.
-  Usually, the mitotic count is determined based on the number of mitoses per high
-  power field (40X) or 10 high power fields.
 cases.diagnoses.molecular_tests.aa_change: 'Alphanumeric value used to describe the
   amino acid change for a specific genetic variant. Example: R116Q.'
 cases.diagnoses.molecular_tests.aneuploidy: A chromosomal abnormality in which there
@@ -778,7 +758,7 @@ cases.diagnoses.molecular_tests.locus: The position of a gene or a chromosomal m
   The use of locus is sometimes restricted to mean regions of DNA that are expressed.
 cases.diagnoses.molecular_tests.mismatch_repair_mutation: The yes/no/unknown indicator
   used to describe whether the mutation included in molecular testing was known to
-  have an affect on the mismatch repair process.
+  have an effect on the mismatch repair process.
 cases.diagnoses.molecular_tests.mitotic_count: The number of mitoses identified under
   the microscope in tumors. The method of counting varies, according to the specific
   tumor examined. Usually, the mitotic count is determined based on the number of
@@ -852,9 +832,6 @@ cases.diagnoses.ovarian_specimen_status: The text term used to describe the phys
 cases.diagnoses.ovarian_surface_involvement: The text term that describes whether
   the surface tissue (outer boundary) of the ovary shows evidence of involvement or
   presence of cancer.
-cases.diagnoses.papillary_renal_cell_type: The text term used to describe the type
-  of papillary renal cell carcinoma characterized by the presence of papillae covered
-  by small cells with scant amount of cytoplasm.
 cases.diagnoses.pathology_details.additional_pathology_findings: A section header
   that includes additional pathologic findings.
 cases.diagnoses.pathology_details.anaplasia_present: Yes/no/unknown/not reported indicator
@@ -869,6 +846,9 @@ cases.diagnoses.pathology_details.bone_marrow_malignant_cells: The text term use
   to indicate whether there are malignant cells in the bone marrow.
 cases.diagnoses.pathology_details.breslow_thickness: The number that describes the
   distance, in millimeters, between the upper layer of the epidermis and the deepest
+  point of tumor penetration.
+cases.diagnoses.pathology_details.breslow_thickness_category: The number that describes
+  the distance, in millimeters, between the upper layer of the epidermis and the deepest
   point of tumor penetration.
 cases.diagnoses.pathology_details.circumferential_resection_margin: Numeric value
   used to describe the non-peritonealised bare area of rectum, comprising anterior
@@ -1055,13 +1035,9 @@ cases.diagnoses.pediatric_kidney_staging: A modified version of the Children's O
   Group (COG) National Wilms Tumor Study Group (NWTS) staging system.
 cases.diagnoses.peritoneal_fluid_cytological_status: The text term used to describe
   the malignant status of the peritoneal fluid determined by cytologic testing.
-cases.diagnoses.pregnant_at_diagnosis: The text term used to indicate whether the
-  patient was pregnant at the time they were diagnosed.
 cases.diagnoses.primary_diagnosis: Text term used to describe the patient's histologic
   diagnosis, as described by the World Health Organization's (WHO) International Classification
   of Diseases for Oncology (ICD-O).
-cases.diagnoses.primary_disease: Indicates whether the specific diagnosis represents
-  the disease that was the primary focus of the study.
 cases.diagnoses.primary_gleason_grade: The text term used to describe the primary
   Gleason score, which describes the pattern of cells making up the largest area of
   the tumor. The primary and secondary Gleason pattern grades are combined to determine
@@ -1177,12 +1153,8 @@ cases.diagnoses.treatments.therapeutic_target_level: Describes a specific target
   an administered treatment.
 cases.diagnoses.treatments.timepoint_category: Category describing a specific point
   in the time continuum, including those established relative to an event.
-cases.diagnoses.treatments.treatment_anatomic_site: The anatomic site or field targeted
-  by a treatment regimen or single agent therapy.
 cases.diagnoses.treatments.treatment_anatomic_sites: The anatomic site or field targeted
   by a treatment regimen or single agent therapy.
-cases.diagnoses.treatments.treatment_arm: Text term used to describe the treatment
-  arm assigned to a patient at the time eligibility is determined.
 cases.diagnoses.treatments.treatment_dose: The numeric value used to describe the
   total dose of an agent the patient received.
 cases.diagnoses.treatments.treatment_dose_max: A maximum quantity of an agent administered
@@ -1300,8 +1272,6 @@ cases.exposures.alcohol_history: A response to a question that asks whether the 
 cases.exposures.alcohol_intensity: Category to describe the patient's current level
   of alcohol use as self-reported by the patient.
 cases.exposures.alcohol_type: A specific type of alcohol.
-cases.exposures.asbestos_exposure: The yes/no/unknown indicator used to describe whether
-  the patient was exposed to asbestos.
 cases.exposures.asbestos_exposure_type: The type of asbestos exposure the study participant
   experienced.
 cases.exposures.batch_id: GDC submission batch indicator. It is unique within the
@@ -1309,8 +1279,6 @@ cases.exposures.batch_id: GDC submission batch indicator. It is unique within th
 cases.exposures.chemical_exposure_type: The specific type of contact with a chemical
   substance through touch, inhalation, or ingestion.
 cases.exposures.cigarettes_per_day: The average number of cigarettes smoked per day.
-cases.exposures.coal_dust_exposure: The yes/no/unknown indicator used to describe
-  whether a patient was exposed to fine powder derived by the crushing of coal.
 cases.exposures.created_datetime: A combination of date and time of day in the form
   [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
 cases.exposures.environmental_tobacco_smoke_exposure: The yes/no/unknown indicator
@@ -1338,12 +1306,6 @@ cases.exposures.parent_with_radiation_exposure: Indicates whether the patient's 
   were exposed to radiation
 cases.exposures.project_id: Unique ID for any specific defined piece of work that
   is undertaken or attempted to meet a single requirement.
-cases.exposures.radon_exposure: The yes/no/unknown indicator used to describe whether
-  the patient was exposed to radon.
-cases.exposures.respirable_crystalline_silica_exposure: The yes/no/unknown indicator
-  used to describe whether a patient was exposed to respirable crystalline silica,
-  a widespread, naturally occurring, crystalline metal oxide that consists of different
-  forms including quartz, cristobalite, tridymite, tripoli, ganister, chert, and novaculite.
 cases.exposures.secondhand_smoke_as_child: The text term used to indicate whether
   the patient was exposed to secondhand smoke as a child.
 cases.exposures.smoking_frequency: The text term used to generally describe how often
@@ -1368,8 +1330,6 @@ cases.exposures.type_of_tobacco_used: The text term used to describe the specifi
 cases.exposures.updated_datetime: A combination of date and time of day in the form
   [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
 cases.exposures.use_per_day: The average number of times the patient used per day.
-cases.exposures.years_smoked: Numeric value (or unknown) to represent the number of
-  years a person has been smoking.
 cases.family_histories.batch_id: GDC submission batch indicator. It is unique within
   the context of a project.
 cases.family_histories.created_datetime: A combination of date and time of day in
@@ -1382,6 +1342,8 @@ cases.family_histories.relationship_gender: The text term used to describe the g
   of the patient's relative with a history of cancer.
 cases.family_histories.relationship_primary_diagnosis: The text term used to describe
   the malignant diagnosis of the patient's relative with a history of cancer.
+cases.family_histories.relationship_sex_at_birth: A textual description of a person's
+  relative's sex at birth.
 cases.family_histories.relationship_type: The subgroup that describes the state of
   connectedness between members of the unit of society organized around kinship ties.
 cases.family_histories.relative_deceased: The historical fact that a legal or consanguineous
@@ -1423,37 +1385,17 @@ cases.follow_ups.adverse_event_grade: Numeric representation of the intensity/se
   symptom, syndrome, or disease, temporally associated with the use of a medical product
   or procedure, regardless of whether or not it is considered related to the product
   or procedure (attribution of unrelated, unlikely, possible, probable, or definite).
-cases.follow_ups.aids_risk_factors: The text term used to describe a risk factor of
-  the acquired immunodeficiency syndrome (AIDS) that the patient either had at the
-  time of the study or experienced in the past.
 cases.follow_ups.barretts_esophagus_goblet_cells_present: The yes/no/unknown indicator
   used to describe whether goblet cells were determined to be present in a patient
   diagnosed with Barrett's esophagus.
 cases.follow_ups.batch_id: GDC submission batch indicator. It is unique within the
   context of a project.
-cases.follow_ups.bmi: A calculated numerical quantity that represents an individual's
-  weight to height ratio.
-cases.follow_ups.body_surface_area: Numeric value used to represent the two-dimensional
-  extent of the body surface relating height to weight.
 cases.follow_ups.cause_of_response: The text term used to describe the suspected cause
   or reason for the patient disease response.
-cases.follow_ups.cd4_count: The text term used to describe the outcome of the procedure
-  to determine the amount of the CD4 expressing cells in a sample.
-cases.follow_ups.cdc_hiv_risk_factors: The text term used to describe a risk factor
-  for human immunodeficiency virus, as described by the Centers for Disease Control.
-cases.follow_ups.comorbidities: The text term used to describe a patient with one
-  or more diseases or conditions, which coexist with the patient's malignant disease
-  at the same time.
-cases.follow_ups.comorbidity: The text term used to describe a comorbidity disease,
-  which coexists with the patient's malignant disease.
-cases.follow_ups.comorbidity_method_of_diagnosis: The text term used to describe the
-  method used to diagnose the patient's comorbid disease.
 cases.follow_ups.created_datetime: A combination of date and time of day in the form
   [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
 cases.follow_ups.days_to_adverse_event: Number of days between the date used for index
   and the date of the patient's adverse event.
-cases.follow_ups.days_to_comorbidity: Number of days between the date used for index
-  and the date the patient was diagnosed with a comorbidity.
 cases.follow_ups.days_to_first_event: The number of days from the index date to the
   date of the first event.
 cases.follow_ups.days_to_follow_up: Number of days between the date used for index
@@ -1466,62 +1408,24 @@ cases.follow_ups.days_to_progression_free: Number of days between the date used 
   index and the date the patient's disease was formally confirmed as progression-free.
 cases.follow_ups.days_to_recurrence: Number of days between the date used for index
   and the date the patient's disease recurred.
-cases.follow_ups.days_to_risk_factor: The number of days from the index date to the
-  date the patient was diagnosed with a specific risk factor.
-cases.follow_ups.diabetes_treatment_type: Text term used to describe the types of
-  treatment used to manage diabetes.
 cases.follow_ups.discontiguous_lesion_count: The number of the discontiguous lesions
   in a new tumor event.
 cases.follow_ups.disease_response: Code assigned to describe the patient's response
   or outcome to the disease.
-cases.follow_ups.dlco_ref_predictive_percent: The value, as a percentage of predicted
-  lung volume, measuring the amount of carbon monoxide detected in a patient's lungs.
 cases.follow_ups.ecog_performance_status: The ECOG functional performance status of
   the patient/participant.
 cases.follow_ups.evidence_of_progression_type: The text term used to describe the
   type of evidence used to determine whether the patient's disease progressed.
 cases.follow_ups.evidence_of_recurrence_type: The text term used to describe the type
   of evidence used to determine whether the patient's disease recurred.
-cases.follow_ups.eye_color: The color of the iris of the eye
-cases.follow_ups.fev1_fvc_post_bronch_percent: Percentage value to represent result
-  of Forced Expiratory Volume in 1 second (FEV1) divided by the Forced Vital Capacity
-  (FVC) post-bronchodilator.
-cases.follow_ups.fev1_fvc_pre_bronch_percent: Percentage value to represent result
-  of Forced Expiratory Volume in 1 second (FEV1) divided by the Forced Vital Capacity
-  (FVC) pre-bronchodilator.
-cases.follow_ups.fev1_ref_post_bronch_percent: The percentage comparison to a normal
-  value reference range of the volume of air that a patient can forcibly exhale from
-  the lungs in one second post-bronchodilator.
-cases.follow_ups.fev1_ref_pre_bronch_percent: The percentage comparison to a normal
-  value reference range of the volume of air that a patient can forcibly exhale from
-  the lungs in one second pre-bronchodilator.
 cases.follow_ups.first_event: Describes the patient's first event after initial treatment.
-cases.follow_ups.haart_treatment_indicator: The text term used to indicate whether
-  the patient received Highly Active Antiretroviral Therapy (HAART).
-cases.follow_ups.height: The height of the patient in centimeters.
-cases.follow_ups.hepatitis_sustained_virological_response: An indication as to whether
-  sustained virological response was obtained in responses to viral hepatitis treatment.
 cases.follow_ups.histologic_progression: The evolution of a low-grade neoplastic pathologic
   process to a high grade malignancy.
 cases.follow_ups.history_of_tumor: Indicates whether patient has a history of tumors.
 cases.follow_ups.history_of_tumor_type: Describes the type of the patient's prior
   diagnosed tumor.
-cases.follow_ups.hiv_viral_load: Numeric value that represents the concentration of
-  an analyte or aliquot extracted from the sample or sample portion, measured in milligrams
-  per milliliter.
-cases.follow_ups.hormonal_contraceptive_type: The specific type of hormonal contraceptives
-  used by the subject.
-cases.follow_ups.hormonal_contraceptive_use: The text term used to indicate whether
-  the patient used hormonal contraceptives.
 cases.follow_ups.hormone_replacement_therapy_type: The specific type of hormone replacement
   therapy received by the patient.
-cases.follow_ups.hpv_positive_type: Text classification to represent the strain or
-  type of human papillomavirus identified in an individual.
-cases.follow_ups.hysterectomy_margins_involved: The text term used to indicate whether
-  the patient's disease was determined to be involved based on the surgical margins
-  of the hysterectomy.
-cases.follow_ups.hysterectomy_type: The text term used to describe the type of hysterectomy
-  the patient had.
 cases.follow_ups.imaging_anatomic_site: The named location(s) within the body where
   an image was taken.
 cases.follow_ups.imaging_findings: Recorded findings noted during the review of a
@@ -1539,12 +1443,8 @@ cases.follow_ups.imaging_suv_max: The standardized update value (SUV) is the eff
   maximum SUV recorded for a patient.
 cases.follow_ups.imaging_type: The text term used to describe the type of imaging
   or scan performed on the patient.
-cases.follow_ups.immunosuppressive_treatment_type: The text term used to describe
-  the type of immunosuppressive treatment the patient received.
 cases.follow_ups.karnofsky_performance_status: Text term used to describe the classification
   used of the functional capabilities of a person.
-cases.follow_ups.menopause_status: Text term used to describe the patient's menopause
-  status.
 cases.follow_ups.molecular_tests.aa_change: 'Alphanumeric value used to describe the
   amino acid change for a specific genetic variant. Example: R116Q.'
 cases.follow_ups.molecular_tests.aneuploidy: A chromosomal abnormality in which there
@@ -1615,7 +1515,7 @@ cases.follow_ups.molecular_tests.locus: The position of a gene or a chromosomal 
   The use of locus is sometimes restricted to mean regions of DNA that are expressed.
 cases.follow_ups.molecular_tests.mismatch_repair_mutation: The yes/no/unknown indicator
   used to describe whether the mutation included in molecular testing was known to
-  have an affect on the mismatch repair process.
+  have an effect on the mismatch repair process.
 cases.follow_ups.molecular_tests.mitotic_count: The number of mitoses identified under
   the microscope in tumors. The method of counting varies, according to the specific
   tumor examined. Usually, the mitotic count is determined based on the number of
@@ -1676,8 +1576,6 @@ cases.follow_ups.molecular_tests.variant_type: The text term used to describe th
   type of genetic variation.
 cases.follow_ups.molecular_tests.zygosity: The text term used to describe the zygosity
   of a specific genetic variant.
-cases.follow_ups.nadir_cd4_count: Numeric value that represents the lowest point to
-  which the CD4 count has dropped (nadir).
 cases.follow_ups.other_clinical_attributes.aids_risk_factors: The text term used to
   describe a risk factor of the acquired immunodeficiency syndrome (AIDS) that the
   patient either had at the time of the study or experienced in the past.
@@ -1713,6 +1611,8 @@ cases.follow_ups.other_clinical_attributes.exercise_frequency_weekly: Text term 
   indicates the number of days that exercise occurred in the past seven days.
 cases.follow_ups.other_clinical_attributes.eye_color: The color of the iris of the
   eye
+cases.follow_ups.other_clinical_attributes.fertility_history: Text term to describe
+  an individual's capacity to conceive or to induce conception
 cases.follow_ups.other_clinical_attributes.fev1_fvc_post_bronch_percent: Percentage
   value to represent result of Forced Expiratory Volume in 1 second (FEV1) divided
   by the Forced Vital Capacity (FVC) post-bronchodilator.
@@ -1769,8 +1669,6 @@ cases.follow_ups.other_clinical_attributes.oxygen_use_type: Text term to describ
   the type of oxygen the patient uses at home.
 cases.follow_ups.other_clinical_attributes.pancreatitis_onset_year: Numeric value
   to represent the year that the patient was diagnosed with clinical chronic pancreatitis.
-cases.follow_ups.other_clinical_attributes.pregnancy_count: The number of times an
-  individual has become pregnant.
 cases.follow_ups.other_clinical_attributes.pregnancy_outcome: The text term used to
   describe the type of pregnancy the patient had.
 cases.follow_ups.other_clinical_attributes.pregnant_at_diagnosis: The text term used
@@ -1815,9 +1713,6 @@ cases.follow_ups.other_clinical_attributes.undescended_testis_history_laterality
   the lateral location of the patient's undescended testis.
 cases.follow_ups.other_clinical_attributes.updated_datetime: A combination of date
   and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
-cases.follow_ups.other_clinical_attributes.viral_hepatitis_serologies: Text term that
-  describes the kind of serological laboratory test used to determine the patient's
-  hepatitis status.
 cases.follow_ups.other_clinical_attributes.viral_hepatitis_serology_tests: A set of
   tests that is used to determine if a subject has been or is currently infected with
   a Hepatitis virus, is shedding Hepatitis virus or has immunity to Hepatitis viruses.
@@ -1826,13 +1721,8 @@ cases.follow_ups.other_clinical_attributes.weeks_gestation_at_birth: Numeric val
   mother's last menstrual period and ending with the birth of the patient.
 cases.follow_ups.other_clinical_attributes.weight: The weight of the patient measured
   in kilograms.
-cases.follow_ups.pancreatitis_onset_year: Numeric value to represent the year that
-  the patient was diagnosed with clinical chronic pancreatitis.
 cases.follow_ups.peritoneal_washing_results: The results from this minimally invasive
   procedure that permits sampling of peritoneal fluid for cytopathologic analysis.
-cases.follow_ups.pregnancy_count: The number of times an individual has become pregnant.
-cases.follow_ups.pregnancy_outcome: The text term used to describe the type of pregnancy
-  the patient had.
 cases.follow_ups.procedures_performed: The type of procedures performed on the patient.
 cases.follow_ups.progression_or_recurrence: Indicates whether a patient has a progression
   or recurrence after initial treatment. This can include local, regional, or metastatic
@@ -1849,17 +1739,6 @@ cases.follow_ups.recist_targeted_regions_number: Numeric value that represents t
 cases.follow_ups.recist_targeted_regions_sum: Numeric value that represents the sum
   of baseline target lesions, as described by the Response Evaluation Criteria in
   Solid Tumours (RECIST) criteria.
-cases.follow_ups.reflux_treatment_type: Text term used to describe the types of treatment
-  used to manage gastroesophageal reflux disease (GERD).
-cases.follow_ups.risk_factor: The text term used to describe a risk factor the patient
-  had at the time of or prior to their diagnosis.
-cases.follow_ups.risk_factor_method_of_diagnosis: The clinical or laboratory procedure(s)
-  used in the determination of a diagnosis described in this context as a risk factor.
-cases.follow_ups.risk_factor_treatment: The yes/no/unknown indicator used to describe
-  whether the patient received treatment for a risk factor the patient had at the
-  time of or prior to their diagnosis.
-cases.follow_ups.risk_factors: The text term used to describe a risk factor the patient
-  had at the time of or prior to their diagnosis.
 cases.follow_ups.scan_tracer_used: The text term used to describe the type of tracer
   used during the imaging or scan of the patient.
 cases.follow_ups.state: The current state of the object.
@@ -1871,23 +1750,8 @@ cases.follow_ups.timepoint_category: Category describing a specific point in the
 cases.follow_ups.treatment_emergent_adverse_event: A situation that emerges during
   treatment, having been absent pretreatment, or worsens relative to the pretreatment
   state.
-cases.follow_ups.undescended_testis_corrected: Indicates whether the patient's undescended
-  testis was corrected.
-cases.follow_ups.undescended_testis_corrected_age: The patient's age when their undescended
-  testis was corrected.
-cases.follow_ups.undescended_testis_corrected_laterality: Describes the lateral location
-  of the patient's undescended testis correction.
-cases.follow_ups.undescended_testis_corrected_method: Describes the method used to
-  correct the patient's undescended testis.
-cases.follow_ups.undescended_testis_history: The persistent failure of one or both
-  testes to descend into the scrotum.
-cases.follow_ups.undescended_testis_history_laterality: Describes the lateral location
-  of the patient's undescended testis.
 cases.follow_ups.updated_datetime: A combination of date and time of day in the form
   [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
-cases.follow_ups.viral_hepatitis_serologies: Text term that describes the kind of
-  serological laboratory test used to determine the patient's hepatitis status.
-cases.follow_ups.weight: The weight of the patient measured in kilograms.
 cases.follow_ups.year_of_follow_up: The year of the patient's last follow-up appointment
   or contact.
 cases.project.awg_review: Indicates that the project is an AWG project.
@@ -1921,8 +1785,6 @@ cases.samples.aliquots.aliquot_volume: The volume in microliters (ul) of the ali
 cases.samples.aliquots.amount: Weight in grams or volume in mL.
 cases.samples.aliquots.analyte_type: Text term that represents the kind of molecular
   specimen analyte.
-cases.samples.aliquots.analyte_type_id: A single letter code used to identify a type
-  of molecular analyte.
 cases.samples.aliquots.batch_id: GDC submission batch indicator. It is unique within
   the context of a project.
 cases.samples.aliquots.concentration: Numeric value that represents the concentration
@@ -1974,8 +1836,6 @@ cases.samples.analytes.aliquots.aliquot_volume: The volume in microliters (ul) o
 cases.samples.analytes.aliquots.amount: Weight in grams or volume in mL.
 cases.samples.analytes.aliquots.analyte_type: Text term that represents the kind of
   molecular specimen analyte.
-cases.samples.analytes.aliquots.analyte_type_id: A single letter code used to identify
-  a type of molecular analyte.
 cases.samples.analytes.aliquots.batch_id: GDC submission batch indicator. It is unique
   within the context of a project.
 cases.samples.analytes.aliquots.concentration: Numeric value that represents the concentration
@@ -2024,10 +1884,8 @@ cases.samples.analytes.analyte_quantity: The quantity in micrograms (ug) of the 
   derived from the analyte(s) shipped for sequencing and characterization.
 cases.samples.analytes.analyte_type: Text term that represents the kind of molecular
   specimen analyte.
-cases.samples.analytes.analyte_type_id: A single letter code used to identify a type
-  of molecular analyte.
-cases.samples.analytes.analyte_volume: The volume in microliters (ul) of the aliquot(s)
-  derived from the analyte(s) shipped for sequencing and characterization.
+cases.samples.analytes.analyte_volume: "The volume in microliters (ul) of the analyte(s)\
+  \ shipped for sequencing and\n characterization."
 cases.samples.analytes.batch_id: GDC submission batch indicator. It is unique within
   the context of a project.
 cases.samples.analytes.concentration: Numeric value that represents the concentration
@@ -2035,6 +1893,9 @@ cases.samples.analytes.concentration: Numeric value that represents the concentr
   milligrams per milliliter.
 cases.samples.analytes.created_datetime: A combination of date and time of day in
   the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+cases.samples.analytes.dna_integrity_number: An assessment of the amount of fragmentation
+  in a genomic DNA sample. It is derived by an algorithm that assesses the distribution
+  of signal across the size range and generates a calculated integrity number.
 cases.samples.analytes.experimental_protocol_type: The type of experiment used to
   extract the analyte.
 cases.samples.analytes.normal_tumor_genotype_snp_match: Text term that represents
@@ -2042,6 +1903,8 @@ cases.samples.analytes.normal_tumor_genotype_snp_match: Text term that represent
 cases.samples.analytes.project_id: Unique ID for any specific defined piece of work
   that is undertaken or attempted to meet a single requirement.
 cases.samples.analytes.ribosomal_rna_28s_16s_ratio: The 28S/18S ribosomal RNA band
+  ratio used to assess the quality of total RNA.
+cases.samples.analytes.ribosomal_rna_28s_18s_ratio: The 28S/18S ribosomal RNA band
   ratio used to assess the quality of total RNA.
 cases.samples.analytes.rna_integrity_number: A numerical assessment of the integrity
   of RNA based on the entire electrophoretic trace of the RNA sample, including the
@@ -2086,8 +1949,6 @@ cases.samples.biospecimen_anatomic_site: Text term that represents the name of t
 cases.samples.biospecimen_laterality: For tumors in paired organs, designates the
   side on which the specimen was obtained.
 cases.samples.catalog_reference: HCMI catalog reference number for cancer model.
-cases.samples.composition: Text term that represents the cellular composition of the
-  sample.
 cases.samples.created_datetime: A combination of date and time of day in the form
   [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
 cases.samples.current_weight: Numeric value that represents the current weight of
@@ -2112,14 +1973,10 @@ cases.samples.growth_rate: Rate at which the model grows, measured as hours to t
 cases.samples.initial_weight: Numeric value that represents the initial weight of
   the sample, measured in milligrams.
 cases.samples.intermediate_dimension: Intermediate dimension of the sample, in millimeters.
-cases.samples.is_ffpe: Indicator to signify whether or not the tissue sample was fixed
-  in formalin and embedded in paraffin (FFPE).
 cases.samples.longest_dimension: Numeric value that represents the longest dimension
   of the sample, measured in millimeters.
 cases.samples.method_of_sample_procurement: The method used to procure the sample
   used to extract analyte(s).
-cases.samples.oct_embedded: Indicator of whether or not the sample was embedded in
-  Optimal Cutting Temperature (OCT) compound.
 cases.samples.passage_count: Number of passages (splits) between the original tissue
   and this model.
 cases.samples.pathology_report_uuid: UUID of the related pathology report.
@@ -2133,8 +1990,6 @@ cases.samples.portions.analytes.aliquots.aliquot_volume: The volume in microlite
 cases.samples.portions.analytes.aliquots.amount: Weight in grams or volume in mL.
 cases.samples.portions.analytes.aliquots.analyte_type: Text term that represents the
   kind of molecular specimen analyte.
-cases.samples.portions.analytes.aliquots.analyte_type_id: A single letter code used
-  to identify a type of molecular analyte.
 cases.samples.portions.analytes.aliquots.annotations.batch_id: GDC submission batch
   indicator. It is unique within the context of a project.
 cases.samples.portions.analytes.aliquots.annotations.category: Top level characterization
@@ -2220,10 +2075,8 @@ cases.samples.portions.analytes.analyte_quantity: The quantity in micrograms (ug
   of the analyte(s) derived from the analyte(s) shipped for sequencing and characterization.
 cases.samples.portions.analytes.analyte_type: Text term that represents the kind of
   molecular specimen analyte.
-cases.samples.portions.analytes.analyte_type_id: A single letter code used to identify
-  a type of molecular analyte.
-cases.samples.portions.analytes.analyte_volume: The volume in microliters (ul) of
-  the aliquot(s) derived from the analyte(s) shipped for sequencing and characterization.
+cases.samples.portions.analytes.analyte_volume: "The volume in microliters (ul) of\
+  \ the analyte(s) shipped for sequencing and\n characterization."
 cases.samples.portions.analytes.annotations.batch_id: GDC submission batch indicator.
   It is unique within the context of a project.
 cases.samples.portions.analytes.annotations.category: Top level characterization of
@@ -2256,6 +2109,10 @@ cases.samples.portions.analytes.concentration: Numeric value that represents the
   milligrams per milliliter.
 cases.samples.portions.analytes.created_datetime: A combination of date and time of
   day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+cases.samples.portions.analytes.dna_integrity_number: An assessment of the amount
+  of fragmentation in a genomic DNA sample. It is derived by an algorithm that assesses
+  the distribution of signal across the size range and generates a calculated integrity
+  number.
 cases.samples.portions.analytes.experimental_protocol_type: The type of experiment
   used to extract the analyte.
 cases.samples.portions.analytes.normal_tumor_genotype_snp_match: Text term that represents
@@ -2263,6 +2120,8 @@ cases.samples.portions.analytes.normal_tumor_genotype_snp_match: Text term that 
 cases.samples.portions.analytes.project_id: Unique ID for any specific defined piece
   of work that is undertaken or attempted to meet a single requirement.
 cases.samples.portions.analytes.ribosomal_rna_28s_16s_ratio: The 28S/18S ribosomal
+  RNA band ratio used to assess the quality of total RNA.
+cases.samples.portions.analytes.ribosomal_rna_28s_18s_ratio: The 28S/18S ribosomal
   RNA band ratio used to assess the quality of total RNA.
 cases.samples.portions.analytes.rna_integrity_number: A numerical assessment of the
   integrity of RNA based on the entire electrophoretic trace of the RNA sample, including
@@ -2424,7 +2283,6 @@ cases.samples.sample_ordinal: A number describing the samples place in an ordere
   sequence.
 cases.samples.sample_type: Text term to describe the source of a biospecimen used
   for a laboratory test.
-cases.samples.sample_type_id: The accompanying sample type id for the sample type.
 cases.samples.shortest_dimension: Numeric value that represents the shortest dimension
   of the sample, measured in millimeters.
 cases.samples.slides.annotations.batch_id: GDC submission batch indicator. It is unique
@@ -2527,7 +2385,6 @@ cases.samples.tissue_collection_type: The text term used to describe the type of
   used to obtain tissue.
 cases.samples.tissue_type: Text term that represents a description of the kind of
   tissue collected with respect to disease status or proximity to tumor tissue.
-cases.samples.tumor_code: Diagnostic tumor code of the tissue sample source.
 cases.samples.tumor_code_id: BCR-defined id code for the tumor sample.
 cases.samples.tumor_descriptor: Text that describes the kind of disease present in
   the tumor specimen as related to a specific timepoint.

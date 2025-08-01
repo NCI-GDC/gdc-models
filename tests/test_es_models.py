@@ -153,7 +153,9 @@ def test__get_es_models__with_descriptions(es_models: pathlib.Path) -> None:
 
     assert "foo" in models
     assert "foo" in models["foo"]
-    assert {"_meta": {"descriptions": descriptions}, **mapping} == models["foo"]["foo"].mappings
+    assert {"_meta": {"descriptions": descriptions}, **mapping} == models["foo"][
+        "foo"
+    ].mappings
 
 
 def test__get_es_models__with_vestigial_properties(es_models: pathlib.Path) -> None:

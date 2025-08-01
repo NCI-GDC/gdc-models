@@ -30,7 +30,9 @@ class Synchronizer(common.GraphSynchronizer):
         mapping: esmodels.ESMapping = {
             "properties": {
                 **self._cases.load_properties(),
-                "files": esmodels.Property(properties=self._get_file_properties(), type="nested"),
+                "files": esmodels.Property(
+                    properties=self._get_file_properties(), type="nested"
+                ),
             }
         }
 
