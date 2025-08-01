@@ -25,7 +25,9 @@ def _get_case_properties(case_properties: esmodels.Properties) -> esmodels.Prope
     ignore_keys = frozenset({"case_autocomplete"})
     result: esmodels.Properties = {}
     items: Iterable[Tuple[str, esmodels.Property]] = (
-        (n, p) for n, p in case_properties.items() if n not in ignore_keys and "analyzer" not in p
+        (n, p)
+        for n, p in case_properties.items()
+        if n not in ignore_keys and "analyzer" not in p
     )
 
     for name, property in items:

@@ -119,7 +119,9 @@ def test_index__with_wildcard(es):
     """Test excluding a nested property behaves as expected"""
 
     response = (
-        m.CaseCentricWithWildcard.search(using=es).filter("term", _id="case-centric-3").execute()
+        m.CaseCentricWithWildcard.search(using=es)
+        .filter("term", _id="case-centric-3")
+        .execute()
     )
 
     assert len(response.hits) == 1

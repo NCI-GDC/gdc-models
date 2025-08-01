@@ -315,7 +315,9 @@ class TestSetsIndices:
 
             assert self._es.exists(index="test_case_set", id=set_id)
 
-    def test_init_index__deletes_if_prompt_matches(self, recreate_index: RecreateIndex) -> None:
+    def test_init_index__deletes_if_prompt_matches(
+        self, recreate_index: RecreateIndex
+    ) -> None:
         """Confirm ``--delete`` deletes and recreates indices if the prompt passes."""
 
         with self._create_set("test_case_set", ("case-0", "case-1")) as set_id:

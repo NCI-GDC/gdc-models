@@ -1,6 +1,16 @@
 import abc
 import functools
-from typing import Any, Container, DefaultDict, Iterable, Mapping, Optional, Tuple, TypeVar, cast
+from typing import (
+    Any,
+    Container,
+    DefaultDict,
+    Iterable,
+    Mapping,
+    Optional,
+    Tuple,
+    TypeVar,
+    cast,
+)
 
 import gdcdictionary
 from gdcdatamodel2 import models
@@ -31,7 +41,10 @@ class NestedDict(DefaultDict[str, Any]):
         """
         return cast(
             TMapping,
-            {k: NestedDict.as_dict(v) if isinstance(v, dict) else v for k, v in mapping.items()},
+            {
+                k: NestedDict.as_dict(v) if isinstance(v, dict) else v
+                for k, v in mapping.items()
+            },
         )
 
 
@@ -271,7 +284,9 @@ class GraphSynchronizer(common.Synchronizer, abc.ABC):
 
 
 def _get_nodes_by_category(category: str) -> Iterable[models.Node]:
-    return filter(lambda n: n._dictionary["category"] == category, models.Node.get_subclasses())
+    return filter(
+        lambda n: n._dictionary["category"] == category, models.Node.get_subclasses()
+    )
 
 
 def _load_properties_from(
