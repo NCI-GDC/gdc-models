@@ -47,7 +47,7 @@ Repository = "https://github.com/NCI-GDC/gdc-models"
 
 [tool.black]
 include = '\.pyi?$'
-line-length = 98
+line-length = 95
 
 [tool.coverage.html]
 directory = "docs/htmlcov"
@@ -61,7 +61,7 @@ source = ["gdcmodels"]
 
 [tool.isort]
 known_first_party = ["gdcmodels"]
-line_length = 98 # match black config
+line_length = 95 # match black config
 profile = "black"
 
 [tool.setuptools_scm]
