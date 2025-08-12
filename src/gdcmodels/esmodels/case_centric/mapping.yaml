@@ -98,8 +98,6 @@ properties:
     type: keyword
   days_to_consent:
     type: long
-  days_to_index:
-    type: long
   days_to_lost_to_followup:
     type: long
   demographic:
@@ -291,9 +289,6 @@ properties:
       cancer_detection_method:
         normalizer: clinical_normalizer
         type: keyword
-      cause_of_death:
-        normalizer: clinical_normalizer
-        type: keyword
       child_pugh_classification:
         normalizer: clinical_normalizer
         type: keyword
@@ -315,9 +310,6 @@ properties:
       cog_rhabdomyosarcoma_risk_group:
         normalizer: clinical_normalizer
         type: keyword
-      colon_polyps_history:
-        normalizer: clinical_normalizer
-        type: keyword
       contiguous_organ_invaded:
         normalizer: clinical_normalizer
         type: keyword
@@ -328,14 +320,10 @@ properties:
         type: long
       days_to_diagnosis:
         type: long
-      days_to_hiv_diagnosis:
-        type: long
       days_to_last_follow_up:
         type: double
       days_to_last_known_disease_status:
         type: double
-      days_to_new_event:
-        type: long
       days_to_recurrence:
         type: double
       diagnosis_id:
@@ -414,15 +402,6 @@ properties:
       goblet_cells_columnar_mucosa_present:
         normalizer: clinical_normalizer
         type: keyword
-      hiv_positive:
-        normalizer: clinical_normalizer
-        type: keyword
-      hpv_positive_type:
-        normalizer: clinical_normalizer
-        type: keyword
-      hpv_status:
-        normalizer: clinical_normalizer
-        type: keyword
       icd_10_code:
         normalizer: clinical_normalizer
         type: keyword
@@ -462,10 +441,6 @@ properties:
       laterality:
         normalizer: clinical_normalizer
         type: keyword
-      ldh_level_at_diagnosis:
-        type: long
-      ldh_normal_range_upper:
-        type: long
       margin_distance:
         type: double
       margins_involved_site:
@@ -501,12 +476,6 @@ properties:
       mitotic_count:
         type: long
       morphology:
-        normalizer: clinical_normalizer
-        type: keyword
-      new_event_anatomic_site:
-        normalizer: clinical_normalizer
-        type: keyword
-      new_event_type:
         normalizer: clinical_normalizer
         type: keyword
       ovarian_specimen_status:

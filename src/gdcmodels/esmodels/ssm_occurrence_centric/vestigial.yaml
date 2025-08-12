@@ -1,1 +1,33 @@
---- {}
+---
+dictionary_item_added:
+  root['properties']['case']['properties']['days_to_index']:
+    type: long
+  root['properties']['case']['properties']['diagnoses']['properties']['cause_of_death']:
+    normalizer: clinical_normalizer
+    type: keyword
+  root['properties']['case']['properties']['diagnoses']['properties']['colon_polyps_history']:
+    normalizer: clinical_normalizer
+    type: keyword
+  root['properties']['case']['properties']['diagnoses']['properties']['days_to_hiv_diagnosis']:
+    type: long
+  root['properties']['case']['properties']['diagnoses']['properties']['days_to_new_event']:
+    type: long
+  root['properties']['case']['properties']['diagnoses']['properties']['hiv_positive']:
+    normalizer: clinical_normalizer
+    type: keyword
+  root['properties']['case']['properties']['diagnoses']['properties']['hpv_positive_type']:
+    normalizer: clinical_normalizer
+    type: keyword
+  root['properties']['case']['properties']['diagnoses']['properties']['hpv_status']:
+    normalizer: clinical_normalizer
+    type: keyword
+  root['properties']['case']['properties']['diagnoses']['properties']['ldh_level_at_diagnosis']:
+    type: long
+  root['properties']['case']['properties']['diagnoses']['properties']['ldh_normal_range_upper']:
+    type: long
+  root['properties']['case']['properties']['diagnoses']['properties']['new_event_anatomic_site']:
+    normalizer: clinical_normalizer
+    type: keyword
+  root['properties']['case']['properties']['diagnoses']['properties']['new_event_type']:
+    normalizer: clinical_normalizer
+    type: keyword
