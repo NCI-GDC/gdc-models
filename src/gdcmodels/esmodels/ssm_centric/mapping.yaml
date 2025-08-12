@@ -566,9 +566,6 @@ properties:
                   consistent_pathology_review:
                     normalizer: clinical_normalizer
                     type: keyword
-                  created_datetime:
-                    normalizer: clinical_normalizer
-                    type: keyword
                   days_to_pathology_detail:
                     type: long
                   dysplasia_degree:
@@ -756,9 +753,6 @@ properties:
                     type: double
                   tumor_width_measurement:
                     type: double
-                  updated_datetime:
-                    normalizer: clinical_normalizer
-                    type: keyword
                   vascular_invasion_present:
                     normalizer: clinical_normalizer
                     type: keyword
@@ -837,9 +831,6 @@ properties:
                     type: keyword
                   course_number:
                     type: double
-                  created_datetime:
-                    normalizer: clinical_normalizer
-                    type: keyword
                   days_to_treatment_end:
                     type: long
                   days_to_treatment_start:
@@ -958,9 +949,6 @@ properties:
                   treatment_outcome_duration:
                     type: long
                   treatment_type:
-                    normalizer: clinical_normalizer
-                    type: keyword
-                  updated_datetime:
                     normalizer: clinical_normalizer
                     type: keyword
                 type: nested
