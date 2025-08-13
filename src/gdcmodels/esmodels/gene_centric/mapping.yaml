@@ -1129,7 +1129,6 @@ properties:
           tumor_descriptor:
             normalizer: clinical_normalizer
             type: keyword
-        type: nested
       ssm:
         properties:
           chromosome:

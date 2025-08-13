@@ -206,6 +206,8 @@ class GeneCentricSynchronizer(CaseSynchronizer):
     def _structure_case_mappings(
         self, case_properties: esmodels.Properties
     ) -> esmodels.ESMapping:
+        _ = case_properties.get("samples", {}).pop("type", None)
+
         return {
             "properties": {
                 "case": {
@@ -233,6 +235,8 @@ class DataCentricSynchronizer(CaseSynchronizer):
     def _structure_case_mappings(
         self, case_properties: esmodels.Properties
     ) -> esmodels.ESMapping:
+        _ = case_properties.get("samples", {}).pop("type", None)
+
         return {
             "properties": {
                 "occurrence": {"properties": {"case": {"properties": case_properties}}}
@@ -255,6 +259,8 @@ class OccurrenceCentricSynchronizer(CaseSynchronizer):
     def _structure_case_mappings(
         self, case_properties: esmodels.Properties
     ) -> esmodels.ESMapping:
+        _ = case_properties.get("samples", {}).pop("type", None)
+
         return {"properties": {"case": {"properties": case_properties}}}
 
 

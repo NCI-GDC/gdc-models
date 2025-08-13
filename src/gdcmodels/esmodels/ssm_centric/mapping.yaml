@@ -1329,7 +1329,6 @@ properties:
               tumor_descriptor:
                 normalizer: clinical_normalizer
                 type: keyword
-            type: nested
           state:
             normalizer: clinical_normalizer
             type: keyword
