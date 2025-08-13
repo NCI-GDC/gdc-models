@@ -25,9 +25,21 @@ dictionary_item_added:
     type: long
   root['properties']['case']['properties']['diagnoses']['properties']['ldh_normal_range_upper']:
     type: long
+  root['properties']['case']['properties']['diagnoses']['properties']['metastasis_at_diagnosis_site']:
+    normalizer: clinical_normalizer
+    type: keyword
+  root['properties']['case']['properties']['diagnoses']['properties']['micropapillary_features']:
+    normalizer: clinical_normalizer
+    type: keyword
   root['properties']['case']['properties']['diagnoses']['properties']['new_event_anatomic_site']:
     normalizer: clinical_normalizer
     type: keyword
   root['properties']['case']['properties']['diagnoses']['properties']['new_event_type']:
+    normalizer: clinical_normalizer
+    type: keyword
+  root['properties']['case']['properties']['diagnoses']['properties']['pregnant_at_diagnosis']:
+    normalizer: clinical_normalizer
+    type: keyword
+  root['properties']['case']['properties']['diagnoses']['properties']['treatments']['properties']['treatment_anatomic_site']:
     normalizer: clinical_normalizer
     type: keyword

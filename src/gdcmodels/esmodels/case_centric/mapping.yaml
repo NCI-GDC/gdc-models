@@ -146,9 +146,6 @@ properties:
       population_group:
         normalizer: clinical_normalizer
         type: keyword
-      premature_at_birth:
-        normalizer: clinical_normalizer
-        type: keyword
       race:
         normalizer: clinical_normalizer
         type: keyword
@@ -166,8 +163,6 @@ properties:
       vital_status:
         normalizer: clinical_normalizer
         type: keyword
-      weeks_gestation_at_birth:
-        type: double
       year_of_birth:
         type: long
       year_of_death:
@@ -461,20 +456,12 @@ properties:
       metastasis_at_diagnosis:
         normalizer: clinical_normalizer
         type: keyword
-      metastasis_at_diagnosis_site:
-        normalizer: clinical_normalizer
-        type: keyword
       method_of_diagnosis:
-        normalizer: clinical_normalizer
-        type: keyword
-      micropapillary_features:
         normalizer: clinical_normalizer
         type: keyword
       mitosis_karyorrhexis_index:
         normalizer: clinical_normalizer
         type: keyword
-      mitotic_count:
-        type: long
       morphology:
         normalizer: clinical_normalizer
         type: keyword
@@ -482,9 +469,6 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       ovarian_surface_involvement:
-        normalizer: clinical_normalizer
-        type: keyword
-      papillary_renal_cell_type:
         normalizer: clinical_normalizer
         type: keyword
       pathology_details:
@@ -723,13 +707,7 @@ properties:
       peritoneal_fluid_cytological_status:
         normalizer: clinical_normalizer
         type: keyword
-      pregnant_at_diagnosis:
-        normalizer: clinical_normalizer
-        type: keyword
       primary_diagnosis:
-        normalizer: clinical_normalizer
-        type: keyword
-      primary_disease:
         normalizer: clinical_normalizer
         type: keyword
       primary_gleason_grade:
@@ -864,13 +842,7 @@ properties:
           timepoint_category:
             normalizer: clinical_normalizer
             type: keyword
-          treatment_anatomic_site:
-            normalizer: clinical_normalizer
-            type: keyword
           treatment_anatomic_sites:
-            normalizer: clinical_normalizer
-            type: keyword
-          treatment_arm:
             normalizer: clinical_normalizer
             type: keyword
           treatment_dose:
@@ -1015,9 +987,6 @@ properties:
       alcohol_type:
         normalizer: clinical_normalizer
         type: keyword
-      asbestos_exposure:
-        normalizer: clinical_normalizer
-        type: keyword
       asbestos_exposure_type:
         normalizer: clinical_normalizer
         type: keyword
@@ -1026,9 +995,6 @@ properties:
         type: keyword
       cigarettes_per_day:
         type: double
-      coal_dust_exposure:
-        normalizer: clinical_normalizer
-        type: keyword
       created_datetime:
         normalizer: clinical_normalizer
         type: keyword
@@ -1059,12 +1025,6 @@ properties:
       pack_years_smoked:
         type: double
       parent_with_radiation_exposure:
-        normalizer: clinical_normalizer
-        type: keyword
-      radon_exposure:
-        normalizer: clinical_normalizer
-        type: keyword
-      respirable_crystalline_silica_exposure:
         normalizer: clinical_normalizer
         type: keyword
       secondhand_smoke_as_child:
@@ -1098,8 +1058,6 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       use_per_day:
-        type: double
-      years_smoked:
         type: double
     type: nested
   family_histories:
@@ -2081,39 +2039,16 @@ properties:
       adverse_event_grade:
         normalizer: clinical_normalizer
         type: keyword
-      aids_risk_factors:
-        normalizer: clinical_normalizer
-        type: keyword
       barretts_esophagus_goblet_cells_present:
         normalizer: clinical_normalizer
         type: keyword
-      bmi:
-        type: double
-      body_surface_area:
-        type: double
       cause_of_response:
-        normalizer: clinical_normalizer
-        type: keyword
-      cd4_count:
-        type: double
-      cdc_hiv_risk_factors:
-        normalizer: clinical_normalizer
-        type: keyword
-      comorbidities:
-        normalizer: clinical_normalizer
-        type: keyword
-      comorbidity:
-        normalizer: clinical_normalizer
-        type: keyword
-      comorbidity_method_of_diagnosis:
         normalizer: clinical_normalizer
         type: keyword
       created_datetime:
         normalizer: clinical_normalizer
         type: keyword
       days_to_adverse_event:
-        type: long
-      days_to_comorbidity:
         type: long
       days_to_first_event:
         type: long
@@ -2127,18 +2062,11 @@ properties:
         type: long
       days_to_recurrence:
         type: long
-      days_to_risk_factor:
-        type: long
-      diabetes_treatment_type:
-        normalizer: clinical_normalizer
-        type: keyword
       discontiguous_lesion_count:
         type: long
       disease_response:
         normalizer: clinical_normalizer
         type: keyword
-      dlco_ref_predictive_percent:
-        type: double
       ecog_performance_status:
         normalizer: clinical_normalizer
         type: keyword
@@ -2148,29 +2076,10 @@ properties:
       evidence_of_recurrence_type:
         normalizer: clinical_normalizer
         type: keyword
-      eye_color:
-        normalizer: clinical_normalizer
-        type: keyword
-      fev1_fvc_post_bronch_percent:
-        type: double
-      fev1_fvc_pre_bronch_percent:
-        type: double
-      fev1_ref_post_bronch_percent:
-        type: double
-      fev1_ref_pre_bronch_percent:
-        type: double
       first_event:
         normalizer: clinical_normalizer
         type: keyword
       follow_up_id:
-        normalizer: clinical_normalizer
-        type: keyword
-      haart_treatment_indicator:
-        normalizer: clinical_normalizer
-        type: keyword
-      height:
-        type: double
-      hepatitis_sustained_virological_response:
         normalizer: clinical_normalizer
         type: keyword
       histologic_progression:
@@ -2182,24 +2091,7 @@ properties:
       history_of_tumor_type:
         normalizer: clinical_normalizer
         type: keyword
-      hiv_viral_load:
-        type: double
-      hormonal_contraceptive_type:
-        normalizer: clinical_normalizer
-        type: keyword
-      hormonal_contraceptive_use:
-        normalizer: clinical_normalizer
-        type: keyword
       hormone_replacement_therapy_type:
-        normalizer: clinical_normalizer
-        type: keyword
-      hpv_positive_type:
-        normalizer: clinical_normalizer
-        type: keyword
-      hysterectomy_margins_involved:
-        normalizer: clinical_normalizer
-        type: keyword
-      hysterectomy_type:
         normalizer: clinical_normalizer
         type: keyword
       imaging_anatomic_site:
@@ -2218,13 +2110,7 @@ properties:
       imaging_type:
         normalizer: clinical_normalizer
         type: keyword
-      immunosuppressive_treatment_type:
-        normalizer: clinical_normalizer
-        type: keyword
       karnofsky_performance_status:
-        normalizer: clinical_normalizer
-        type: keyword
-      menopause_status:
         normalizer: clinical_normalizer
         type: keyword
       molecular_tests:
@@ -2377,8 +2263,6 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
         type: nested
-      nadir_cd4_count:
-        type: double
       other_clinical_attributes:
         properties:
           aids_risk_factors:
@@ -2484,8 +2368,6 @@ properties:
             type: keyword
           pancreatitis_onset_year:
             type: long
-          pregnancy_count:
-            type: long
           pregnancy_outcome:
             normalizer: clinical_normalizer
             type: keyword
@@ -2541,9 +2423,6 @@ properties:
           updated_datetime:
             normalizer: clinical_normalizer
             type: keyword
-          viral_hepatitis_serologies:
-            normalizer: clinical_normalizer
-            type: keyword
           viral_hepatitis_serology_tests:
             normalizer: clinical_normalizer
             type: keyword
@@ -2552,14 +2431,7 @@ properties:
           weight:
             type: double
         type: nested
-      pancreatitis_onset_year:
-        type: long
       peritoneal_washing_results:
-        normalizer: clinical_normalizer
-        type: keyword
-      pregnancy_count:
-        type: long
-      pregnancy_outcome:
         normalizer: clinical_normalizer
         type: keyword
       procedures_performed:
@@ -2578,21 +2450,6 @@ properties:
         type: long
       recist_targeted_regions_sum:
         type: double
-      reflux_treatment_type:
-        normalizer: clinical_normalizer
-        type: keyword
-      risk_factor:
-        normalizer: clinical_normalizer
-        type: keyword
-      risk_factor_method_of_diagnosis:
-        normalizer: clinical_normalizer
-        type: keyword
-      risk_factor_treatment:
-        normalizer: clinical_normalizer
-        type: keyword
-      risk_factors:
-        normalizer: clinical_normalizer
-        type: keyword
       scan_tracer_used:
         normalizer: clinical_normalizer
         type: keyword
@@ -2607,31 +2464,9 @@ properties:
       treatment_emergent_adverse_event:
         normalizer: clinical_normalizer
         type: keyword
-      undescended_testis_corrected:
-        normalizer: clinical_normalizer
-        type: keyword
-      undescended_testis_corrected_age:
-        type: long
-      undescended_testis_corrected_laterality:
-        normalizer: clinical_normalizer
-        type: keyword
-      undescended_testis_corrected_method:
-        normalizer: clinical_normalizer
-        type: keyword
-      undescended_testis_history:
-        normalizer: clinical_normalizer
-        type: keyword
-      undescended_testis_history_laterality:
-        normalizer: clinical_normalizer
-        type: keyword
       updated_datetime:
         normalizer: clinical_normalizer
         type: keyword
-      viral_hepatitis_serologies:
-        normalizer: clinical_normalizer
-        type: keyword
-      weight:
-        type: double
       year_of_follow_up:
         type: long
     type: nested
@@ -3048,9 +2883,6 @@ properties:
       catalog_reference:
         normalizer: clinical_normalizer
         type: keyword
-      composition:
-        normalizer: clinical_normalizer
-        type: keyword
       created_datetime:
         normalizer: clinical_normalizer
         type: keyword
@@ -3078,15 +2910,9 @@ properties:
         type: double
       intermediate_dimension:
         type: double
-      is_ffpe:
-        normalizer: clinical_normalizer
-        type: keyword
       longest_dimension:
         type: double
       method_of_sample_procurement:
-        normalizer: clinical_normalizer
-        type: keyword
-      oct_embedded:
         normalizer: clinical_normalizer
         type: keyword
       passage_count:
@@ -3112,9 +2938,6 @@ properties:
                   amount:
                     type: double
                   analyte_type:
-                    normalizer: clinical_normalizer
-                    type: keyword
-                  analyte_type_id:
                     normalizer: clinical_normalizer
                     type: keyword
                   annotations:
@@ -3237,9 +3060,6 @@ properties:
               analyte_quantity:
                 type: double
               analyte_type:
-                normalizer: clinical_normalizer
-                type: keyword
-              analyte_type_id:
                 normalizer: clinical_normalizer
                 type: keyword
               analyte_volume:
@@ -3553,9 +3373,6 @@ properties:
       sample_type:
         normalizer: clinical_normalizer
         type: keyword
-      sample_type_id:
-        normalizer: clinical_normalizer
-        type: keyword
       shortest_dimension:
         type: double
       specimen_type:
@@ -3574,9 +3391,6 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       tissue_type:
-        normalizer: clinical_normalizer
-        type: keyword
-      tumor_code:
         normalizer: clinical_normalizer
         type: keyword
       tumor_code_id:

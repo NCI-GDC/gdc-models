@@ -64,9 +64,6 @@ properties:
           population_group:
             normalizer: clinical_normalizer
             type: keyword
-          premature_at_birth:
-            normalizer: clinical_normalizer
-            type: keyword
           race:
             normalizer: clinical_normalizer
             type: keyword
@@ -81,8 +78,6 @@ properties:
           vital_status:
             normalizer: clinical_normalizer
             type: keyword
-          weeks_gestation_at_birth:
-            type: double
           year_of_birth:
             type: long
           year_of_death:
@@ -320,20 +315,12 @@ properties:
           metastasis_at_diagnosis:
             normalizer: clinical_normalizer
             type: keyword
-          metastasis_at_diagnosis_site:
-            normalizer: clinical_normalizer
-            type: keyword
           method_of_diagnosis:
-            normalizer: clinical_normalizer
-            type: keyword
-          micropapillary_features:
             normalizer: clinical_normalizer
             type: keyword
           mitosis_karyorrhexis_index:
             normalizer: clinical_normalizer
             type: keyword
-          mitotic_count:
-            type: long
           morphology:
             normalizer: clinical_normalizer
             type: keyword
@@ -341,9 +328,6 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           ovarian_surface_involvement:
-            normalizer: clinical_normalizer
-            type: keyword
-          papillary_renal_cell_type:
             normalizer: clinical_normalizer
             type: keyword
           pathology_details:
@@ -576,13 +560,7 @@ properties:
           peritoneal_fluid_cytological_status:
             normalizer: clinical_normalizer
             type: keyword
-          pregnant_at_diagnosis:
-            normalizer: clinical_normalizer
-            type: keyword
           primary_diagnosis:
-            normalizer: clinical_normalizer
-            type: keyword
-          primary_disease:
             normalizer: clinical_normalizer
             type: keyword
           primary_gleason_grade:
@@ -714,13 +692,7 @@ properties:
               timepoint_category:
                 normalizer: clinical_normalizer
                 type: keyword
-              treatment_anatomic_site:
-                normalizer: clinical_normalizer
-                type: keyword
               treatment_anatomic_sites:
-                normalizer: clinical_normalizer
-                type: keyword
-              treatment_arm:
                 normalizer: clinical_normalizer
                 type: keyword
               treatment_dose:
@@ -854,9 +826,6 @@ properties:
           alcohol_type:
             normalizer: clinical_normalizer
             type: keyword
-          asbestos_exposure:
-            normalizer: clinical_normalizer
-            type: keyword
           asbestos_exposure_type:
             normalizer: clinical_normalizer
             type: keyword
@@ -865,9 +834,6 @@ properties:
             type: keyword
           cigarettes_per_day:
             type: double
-          coal_dust_exposure:
-            normalizer: clinical_normalizer
-            type: keyword
           environmental_tobacco_smoke_exposure:
             normalizer: clinical_normalizer
             type: keyword
@@ -895,12 +861,6 @@ properties:
           pack_years_smoked:
             type: double
           parent_with_radiation_exposure:
-            normalizer: clinical_normalizer
-            type: keyword
-          radon_exposure:
-            normalizer: clinical_normalizer
-            type: keyword
-          respirable_crystalline_silica_exposure:
             normalizer: clinical_normalizer
             type: keyword
           secondhand_smoke_as_child:
@@ -931,8 +891,6 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           use_per_day:
-            type: double
-          years_smoked:
             type: double
         type: nested
       family_histories:
@@ -1057,9 +1015,6 @@ properties:
           catalog_reference:
             normalizer: clinical_normalizer
             type: keyword
-          composition:
-            normalizer: clinical_normalizer
-            type: keyword
           current_weight:
             type: double
           days_to_collection:
@@ -1084,15 +1039,9 @@ properties:
             type: double
           intermediate_dimension:
             type: double
-          is_ffpe:
-            normalizer: clinical_normalizer
-            type: keyword
           longest_dimension:
             type: double
           method_of_sample_procurement:
-            normalizer: clinical_normalizer
-            type: keyword
-          oct_embedded:
             normalizer: clinical_normalizer
             type: keyword
           passage_count:
@@ -1109,9 +1058,6 @@ properties:
           sample_ordinal:
             type: long
           sample_type:
-            normalizer: clinical_normalizer
-            type: keyword
-          sample_type_id:
             normalizer: clinical_normalizer
             type: keyword
           shortest_dimension:
@@ -1132,9 +1078,6 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           tissue_type:
-            normalizer: clinical_normalizer
-            type: keyword
-          tumor_code:
             normalizer: clinical_normalizer
             type: keyword
           tumor_code_id:

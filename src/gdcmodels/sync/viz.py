@@ -139,7 +139,9 @@ class CaseSynchronizer(common.Synchronizer, abc.ABC):
         return {"available_variation_data": {"type": "keyword"}}
 
     def sync(self, mappings: esmodels.ESMapping, settings: Mapping[str, Any]) -> common.Export:
-        graph_mappings = gdcmodels.get_es_models()["gdc_from_graph"]["case"].mappings
+        graph_mappings = gdcmodels.get_es_models(vestigial_included=False)["gdc_from_graph"][
+            "case"
+        ].mappings
         case_properties = _get_case_properties(
             graph_mappings["properties"], self._excluded_properties
         )
