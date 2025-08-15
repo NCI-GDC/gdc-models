@@ -115,7 +115,7 @@ class DescriptionsSynchronizer(common.Synchronizer):
         self._gdc_dictionary = gdc_dictionary or gdcdictionary.gdcdictionary
 
     def _load_descriptions_from(
-        self, node: models.Node, prefix: str, description_label: Optional[str] = None
+        self, node: type[models.Node], prefix: str, description_label: Optional[str] = None
     ) -> NestedDict:
         descriptions = NestedDict()
         description_label = description_label or node.get_label()
@@ -290,7 +290,7 @@ def _get_nodes_by_category(category: str) -> Iterable[models.Node]:
 
 
 def _load_properties_from(
-    node: models.Node,
+    node: type[models.Node],
     include_id: bool = True,
     excluded_fields: Container[str] = frozenset(
         ("project_id", "batch_id", "file_state", "curated_model_index")

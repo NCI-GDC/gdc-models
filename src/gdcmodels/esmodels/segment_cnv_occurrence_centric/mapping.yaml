@@ -1,6 +1,9 @@
 ---
 _size:
   enabled: true
+_source:
+  excludes:
+    - __comment__
 dynamic: strict
 properties:
   case:
@@ -576,16 +579,16 @@ properties:
       cnv_change_5_category:
         normalizer: clinical_normalizer
         type: keyword
+      end_position:
+        type: long
+      length:
+        type: long
       segment_cnv_id:
         copy_to:
           - segment_cnv_occurrence_autocomplete
         normalizer: clinical_normalizer
         type: keyword
-      end_position:
-        type: long
       start_position:
-        type: long
-      length:
         type: long
   segment_cnv_occurrence_autocomplete:
     fields:
