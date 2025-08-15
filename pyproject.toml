@@ -3,6 +3,7 @@ build-backend = "setuptools.build_meta"
 requires = ["setuptools>=77", "wheel", "setuptools_scm[toml]>=7.0", "versionista>=1.1.0"]
 
 [project]
+version = "1.0.0"
 authors = [
   {name = "NCI GDC", email = "gdc_dev_questions-aaaaae2lhsbell56tlvh3upgoq@cdis.slack.com"}
 ]

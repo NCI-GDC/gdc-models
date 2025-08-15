@@ -1,10 +1,8 @@
 ---
-_size:
-  enabled: true
 _source:
   excludes:
     - __comment__
-dynamic: strict
+dynamic: true
 properties:
   aliquot_ids:
     normalizer: clinical_normalizer
@@ -160,6 +158,7 @@ properties:
         type: long
       year_of_death:
         type: long
+    type: nested
   diagnoses:
     properties:
       adrenal_hormone:
@@ -1466,6 +1465,7 @@ properties:
                     normalizer: clinical_normalizer
                     type: keyword
                 type: nested
+            type: nested
           state:
             normalizer: clinical_normalizer
             type: keyword
@@ -1488,6 +1488,7 @@ properties:
           workflow_version:
             normalizer: clinical_normalizer
             type: keyword
+        type: nested
       archive:
         properties:
           archive_id:
@@ -1528,6 +1529,7 @@ properties:
           updated_datetime:
             normalizer: clinical_normalizer
             type: keyword
+        type: nested
       average_base_quality:
         type: double
       average_insert_size:
@@ -1554,6 +1556,7 @@ properties:
           short_name:
             normalizer: clinical_normalizer
             type: keyword
+        type: nested
       channel:
         normalizer: clinical_normalizer
         type: keyword
@@ -2507,6 +2510,7 @@ properties:
           program_id:
             normalizer: clinical_normalizer
             type: keyword
+        type: nested
       project_id:
         copy_to:
           - case_autocomplete
@@ -2520,6 +2524,7 @@ properties:
       state:
         normalizer: clinical_normalizer
         type: keyword
+    type: nested
   sample_ids:
     normalizer: clinical_normalizer
     type: keyword
@@ -2713,6 +2718,7 @@ properties:
                       short_name:
                         normalizer: clinical_normalizer
                         type: keyword
+                    type: nested
                   concentration:
                     type: double
                   created_datetime:
@@ -2926,6 +2932,7 @@ properties:
               short_name:
                 normalizer: clinical_normalizer
                 type: keyword
+            type: nested
           created_datetime:
             normalizer: clinical_normalizer
             type: keyword
@@ -3166,6 +3173,7 @@ properties:
         type: long
       file_size:
         type: long
+    type: nested
   tissue_source_site:
     properties:
       bcr_id:
@@ -3180,6 +3188,7 @@ properties:
       tissue_source_site_id:
         normalizer: clinical_normalizer
         type: keyword
+    type: nested
   updated_datetime:
     normalizer: clinical_normalizer
     type: keyword

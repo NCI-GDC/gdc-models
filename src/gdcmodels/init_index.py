@@ -9,7 +9,7 @@ from typing import List, cast
 import elasticsearch
 from typing_extensions import Iterable, Optional, Protocol
 
-import gdcmodels
+import gdcmodels as gdcmodels
 
 logger = logging.getLogger("init_index")
 
