@@ -1,6 +1,4 @@
 ---
-_size:
-  enabled: true
 _source:
   excludes:
     - case.*.*
@@ -69,6 +67,7 @@ properties:
                   tumor_sample_uuid:
                     normalizer: clinical_normalizer
                     type: keyword
+                type: nested
               sample_ploidy_integer:
                 type: integer
               src_file_id:
@@ -79,6 +78,7 @@ properties:
                   variant_caller:
                     normalizer: clinical_normalizer
                     type: keyword
+                type: nested
               variant_status:
                 normalizer: clinical_normalizer
                 type: keyword
@@ -131,6 +131,7 @@ properties:
             type: long
           year_of_death:
             type: long
+        type: nested
       diagnoses:
         properties:
           age_at_diagnosis:
@@ -571,8 +572,10 @@ properties:
               program_id:
                 normalizer: clinical_normalizer
                 type: keyword
+            type: nested
           project_id:
             type: keyword
+        type: nested
       samples:
         properties:
           preservation_method:
@@ -590,6 +593,7 @@ properties:
           tumor_descriptor:
             normalizer: clinical_normalizer
             type: keyword
+        type: nested
       ssm:
         properties:
           chromosome:
@@ -604,6 +608,8 @@ properties:
                   variant_id:
                     normalizer: clinical_normalizer
                     type: keyword
+                type: nested
+            type: nested
           consequence:
             properties:
               consequence_id:
@@ -695,6 +701,7 @@ properties:
                       vep_impact:
                         normalizer: clinical_normalizer
                         type: keyword
+                    type: nested
                   consequence_type:
                     type: keyword
                   ref_seq_accession:
@@ -703,6 +710,7 @@ properties:
                   transcript_id:
                     normalizer: clinical_normalizer
                     type: keyword
+                type: nested
             type: nested
           cosmic_id:
             normalizer: clinical_normalizer
@@ -734,6 +742,7 @@ properties:
                   tumor_bam_uuid:
                     normalizer: clinical_normalizer
                     type: keyword
+                type: nested
               mutation_status:
                 normalizer: clinical_normalizer
                 type: keyword
@@ -745,6 +754,7 @@ properties:
                   match_norm_seq_allele2:
                     normalizer: clinical_normalizer
                     type: keyword
+                type: nested
               observation_id:
                 normalizer: clinical_normalizer
                 type: keyword
@@ -758,6 +768,7 @@ properties:
                     type: long
                   t_ref_count:
                     type: long
+                type: nested
               sample:
                 properties:
                   matched_norm_sample_barcode:
@@ -772,6 +783,7 @@ properties:
                   tumor_sample_uuid:
                     normalizer: clinical_normalizer
                     type: keyword
+                type: nested
               tumor_genotype:
                 properties:
                   tumor_seq_allele1:
@@ -780,6 +792,7 @@ properties:
                   tumor_seq_allele2:
                     normalizer: clinical_normalizer
                     type: keyword
+                type: nested
               validation:
                 properties:
                   tumor_validation_allele1:
@@ -791,6 +804,7 @@ properties:
                   validation_method:
                     normalizer: clinical_normalizer
                     type: keyword
+                type: nested
               variant_calling:
                 properties:
                   variant_caller:
@@ -799,6 +813,7 @@ properties:
                   variant_process:
                     normalizer: clinical_normalizer
                     type: keyword
+                type: nested
             type: nested
           reference_allele:
             normalizer: clinical_normalizer
@@ -831,6 +846,7 @@ properties:
           tissue_source_site_id:
             normalizer: clinical_normalizer
             type: keyword
+        type: nested
     type: nested
   cytoband:
     copy_to:
@@ -861,6 +877,7 @@ properties:
           - gene_autocomplete
         normalizer: clinical_normalizer
         type: keyword
+    type: nested
   gene_autocomplete:
     fields:
       analyzed:
