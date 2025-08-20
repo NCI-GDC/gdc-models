@@ -17,7 +17,7 @@ UNNORMALIZED_FIELDS = (
     common.DefaultNormalizerSynchronizer.DEFAULT_EXCLUDED_PROPERTIES
     - frozenset(("case_submitter_id", "entity_submitter_id"))
 )
-"""Fields with in the mappings which should NOT have the clinical normalizer applied."""
+"""Fields within the mappings which should NOT have the clinical normalizer applied."""
 NORMALIZER_SYNCHRONIZER = common.DefaultNormalizerSynchronizer(
     excluded_properties=UNNORMALIZED_FIELDS
 )
