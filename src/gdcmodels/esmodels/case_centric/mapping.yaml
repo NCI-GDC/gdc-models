@@ -1,9 +1,7 @@
 ---
 _source:
   excludes:
-    - gene.*.*
-    - gene.biotype
-    - gene.is_cancer_gene_census
+    - __comment__
 dynamic: true
 properties:
   aliquot_ids:

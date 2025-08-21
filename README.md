@@ -101,3 +101,9 @@ es_models = get_es_models()
 # initialize Elasticsearch indexes: case_set and file_set, add prefix 'gdc_r52' to index name
 python init_index.py --index case_set file_set --host localhost --prefix gdc_r52
 ```
+
+command line:
+```
+export PYTHONPATH=/...../Projects/CTDS/gdc/gdc-models/src
+python src/gdcmodels/init_index.py --index gene_centric --prefix test --host localhost --delete
+```
