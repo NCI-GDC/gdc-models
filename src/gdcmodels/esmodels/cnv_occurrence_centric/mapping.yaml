@@ -1,10 +1,8 @@
 ---
-_size:
-  enabled: true
 _source:
   excludes:
     - occurrence.*
-dynamic: strict
+dynamic: true
 properties:
   case:
     properties:
@@ -59,6 +57,7 @@ properties:
             type: long
           year_of_death:
             type: long
+        type: nested
       diagnoses:
         properties:
           age_at_diagnosis:
@@ -487,6 +486,7 @@ properties:
               tumor_sample_uuid:
                 normalizer: clinical_normalizer
                 type: keyword
+            type: nested
           sample_ploidy_integer:
             type: integer
           src_file_id:
@@ -497,6 +497,7 @@ properties:
               variant_caller:
                 normalizer: clinical_normalizer
                 type: keyword
+            type: nested
           variant_status:
             normalizer: clinical_normalizer
             type: keyword
@@ -530,8 +531,10 @@ properties:
               program_id:
                 normalizer: clinical_normalizer
                 type: keyword
+            type: nested
           project_id:
             type: keyword
+        type: nested
       samples:
         properties:
           preservation_method:
@@ -549,6 +552,7 @@ properties:
           tumor_descriptor:
             normalizer: clinical_normalizer
             type: keyword
+        type: nested
       state:
         normalizer: clinical_normalizer
         type: keyword
@@ -568,6 +572,8 @@ properties:
           tissue_source_site_id:
             normalizer: clinical_normalizer
             type: keyword
+        type: nested
+    type: nested
   cnv:
     properties:
       chromosome:
@@ -600,6 +606,7 @@ properties:
               symbol:
                 normalizer: clinical_normalizer
                 type: keyword
+            type: nested
         type: nested
       end_position:
         type: long
@@ -613,6 +620,7 @@ properties:
       variant_status:
         normalizer: clinical_normalizer
         type: keyword
+    type: nested
   cnv_occurrence_autocomplete:
     fields:
       analyzed:
