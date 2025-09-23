@@ -1,6 +1,6 @@
 [build-system]
 build-backend = "setuptools.build_meta"
-requires = ["setuptools>=77", "wheel", "setuptools_scm[toml]>=7.0", "versionista>=1.1.0"]
+requires = ["setuptools>=77", "wheel", "setuptools_scm[toml]>=7.0", "versionista @ file:///Users/craigrbarnes/Projects/CTDS/gdc/versionista"]
 
 [project]
 authors = [
