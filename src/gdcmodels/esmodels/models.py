@@ -10,6 +10,8 @@ VIZ_INDICES = tuple(
         "cnv_centric",
         "cnv_occurrence_centric",
         "gene_centric",
+        "segment_cnv_centric",
+        "segment_cnv_occurrence_centric",
         "ssm_centric",
         "ssm_occurrence_centric",
     )

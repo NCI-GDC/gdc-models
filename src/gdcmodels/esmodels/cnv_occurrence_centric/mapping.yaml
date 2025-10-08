@@ -1,8 +1,10 @@
 ---
+_size:
+  enabled: true
 _source:
   excludes:
     - occurrence.*
-dynamic: true
+dynamic: strict
 properties:
   case:
     properties:

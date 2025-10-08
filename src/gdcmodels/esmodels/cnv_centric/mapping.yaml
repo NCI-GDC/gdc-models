@@ -1,8 +1,10 @@
 ---
+_size:
+  enabled: true
 _source:
   excludes:
     - __comment__
-dynamic: true
+dynamic: strict
 properties:
   chromosome:
     normalizer: clinical_normalizer

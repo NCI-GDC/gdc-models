@@ -1,4 +1,6 @@
 ---
+_size:
+  enabled: true
 _source:
   excludes:
     - __comment__
