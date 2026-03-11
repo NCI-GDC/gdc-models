@@ -3,12 +3,16 @@ import itertools
 import types
 from collections.abc import Iterable, Iterator, Mapping
 from importlib import resources
-from importlib.resources import abc
 from typing import Any, NamedTuple
 
 import deepdiff
 
 from gdcmodels import esmodels, extraction_utils, mapper
+
+try:
+    from importlib.resources import abc
+except ImportError:
+    from importlib import abc
 
 
 class _MappingDetail(NamedTuple):

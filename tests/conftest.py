@@ -83,4 +83,6 @@ def clear_test_indices(es: elasticsearch.Elasticsearch) -> Iterator[None]:
     """Remove any ES indices starting with ``test_`` from the test cluster."""
     yield None
 
-    es.indices.delete(index="test_*")
+    indices = es.indices.get(index="test_*", expand_wildcards="all", allow_no_indices=True)
+
+    es.indices.delete(index=list(indices.keys()))
