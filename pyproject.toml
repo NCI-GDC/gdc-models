@@ -91,7 +91,7 @@ local_scheme = "versionista-local-format"
 version_scheme = "versionista-format"
 
 [tool.tox]
-env_list = ["py310", "py311", "py312", "py313", "py314"]
+env_list = ["python3.10", "python3.11", "python3.12", "python3.13", "python3.14"]
 skip_missing_interpreters = true
 
 [tool.tox.env_run_base]
@@ -103,7 +103,7 @@ commands = [
   ["coverage", "html"],
   ["coverage", "report", "-m"]
 ]
-pass_env = ["CI"]
+pass_env = ["CI", "ES_*"]
 
 [tool.tox.env_run_base.set_env]
 NO_PROXY = "localhost,postgres,elasticsearch"
