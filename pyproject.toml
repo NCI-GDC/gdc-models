@@ -98,7 +98,7 @@ skip_missing_interpreters = true
 dependency_groups = ["dev"]
 extras = ["sync"]
 commands = [
-  ["coverage", "run", "-m", "pytest", {replace = "posargs", default = ["-vvs", "--junit-xml", "test-reports/results.xml"], extend = true}],
+  ["coverage", "run", "-m", "pytest", {replace = "posargs", default = ["-vvs", "--junit-xml", "report.xml"], extend = true}],
   ["coverage", "xml"],
   ["coverage", "html"],
   ["coverage", "report", "-m"]
