@@ -12,11 +12,11 @@ authors = [
 classifiers = [
   "Intended Audience :: Developers",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
   "Programming Language :: PythonLicense :: OSI Approved :: Apache Software License",
   "Topic :: Software Development :: Libraries :: Python Modules"
 ]
@@ -34,7 +34,7 @@ keywords = ["python3", "gdcmodels", "yaml"]
 license-files = ["LICENSE"]
 name = "gdcmodels"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 
 [project.optional-dependencies]
 sync = ["click", "gdcdictionary", "gdcdatamodel2"]
