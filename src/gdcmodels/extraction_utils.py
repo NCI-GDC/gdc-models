@@ -1,13 +1,14 @@
 import functools
-from typing import IO, Any, Callable, Dict, Iterable, Mapping, Union
+from collections.abc import Callable, Iterable, Mapping
+from typing import IO, Any
 
 import yaml
 
 if yaml.__with_libyaml__:
-    load_yaml: Callable[[Union[str, bytes, IO[str], IO[bytes]]], Any] = functools.partial(
+    load_yaml: Callable[[str | bytes | IO[str] | IO[bytes]], Any] = functools.partial(
         yaml.load, Loader=yaml.CSafeLoader
     )
-    dump_yaml: Callable[[Any, Union[IO[str], IO[bytes]]], None] = functools.partial(
+    dump_yaml: Callable[[Any, IO[str] | IO[bytes]], None] = functools.partial(
         yaml.dump, Dumper=yaml.CSafeDumper
     )
 else:
@@ -15,7 +16,7 @@ else:
     dump_yaml = yaml.safe_dump
 
 
-def _expand_settings(settings: Dict[str, Any]) -> Dict[str, Any]:
+def _expand_settings(settings: dict[str, Any]) -> dict[str, Any]:
     """Expand any dot notations in the given settings.
 
     EXAMPLE:
@@ -43,7 +44,7 @@ def _expand_settings(settings: Dict[str, Any]) -> Dict[str, Any]:
     return settings
 
 
-def load_settings(stream: Union[str, bytes, IO[str], IO[bytes]]) -> Mapping[str, Any]:
+def load_settings(stream: str | bytes | IO[str] | IO[bytes]) -> Mapping[str, Any]:
     """Load the settings contained in the stream.
 
     NOTE: This will expand any settings which use dot notation in their key values.

@@ -1,16 +1,32 @@
 import os
 import pathlib
-import sys
 import tempfile
-from typing import Callable, Iterator
+from collections.abc import Callable, Iterator
+from importlib import resources
+from typing import Any
 
 import elasticsearch
 import pytest
+from testcontainers import compose
 
-if sys.version_info < (3, 9):
-    import importlib_resources as resources
-else:
-    from importlib import resources
+
+@pytest.fixture(scope="session")
+def services() -> Iterator[None]:
+    if os.environ.get("CI"):
+        yield
+        return
+
+    docker_resource = resources.files("tests") / "docker"
+
+    with (
+        resources.as_file(docker_resource) as docker_dir,
+        compose.DockerCompose(docker_dir) as services,
+    ):
+        es_port = services.get_service_port("elasticsearch", 9200)
+        os.environ["ES_HOST"] = "localhost"
+        os.environ["ES_PORT"] = str(es_port)
+
+        yield
 
 
 @pytest.fixture
@@ -28,11 +44,18 @@ def es_models(monkeypatch: pytest.MonkeyPatch) -> Iterator[pathlib.Path]:
 
 
 @pytest.fixture(scope="session")
-def es():
+def es(services: Any) -> Iterator[elasticsearch.Elasticsearch]:
     """Create an Elasticsearch client for the test cluster."""
-    return elasticsearch.Elasticsearch(
-        hosts=[f"{os.getenv('ES_HOST', 'localhost')}:9200"], timeout=30
-    )
+    with elasticsearch.Elasticsearch(
+        hosts=[
+            {
+                "host": os.getenv("ES_HOST", "localhost"),
+                "port": int(os.getenv("ES_PORT", "9200")),
+            }
+        ],
+        timeout=30,
+    ) as client:
+        yield client
 
 
 @pytest.fixture

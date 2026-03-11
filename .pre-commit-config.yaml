@@ -1,56 +1,38 @@
 ---
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v6.0.0
     hooks:
-      - id: check-json
-      - id: check-toml
-      - id: check-yaml
-      - id: end-of-file-fixer
-      - id: fix-encoding-pragma
-        args: [--remove]
-      - id: no-commit-to-branch
-        args: [--branch, develop, --branch, master, --pattern, release/.*]
-      - id: pretty-format-json
-        args: [--autofix]
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
-  - repo: https://github.com/psf/black
-    rev: 23.10.1
+      - id: check-yaml
+        exclude: ^\.gitlab-ci.yml|docker-compose\.yaml
+      - id: check-toml
+      - id: check-json
+      - id: pretty-format-json
+        args: [--autofix]
+      - id: end-of-file-fixer
+      - id: no-commit-to-branch
+        args: [--branch, develop, --branch, master, --pattern, release/.*]
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.5
     hooks:
-      - id: black
-  - repo: https://github.com/pycqa/isort
-    rev: 5.12.0
-    hooks:
-      - id: isort
-        name: isort (python)
-        args: [--profile, black]
-      - id: isort
-        name: isort (cython)
-        types: [cython]
-        args: [--profile, black]
-      - id: isort
-        name: isort (pyi)
-        types: [pyi]
-        args: [--profile, black]
-  - repo: https://github.com/pycqa/pydocstyle
-    rev: 6.3.0
-    hooks:
-      - id: pydocstyle
-        args: [convention=google, --add-ignore, 'D100,D101,D102,D103,D104,D105,D106,D107']
-        exclude: ^(tests|unit_tests)/
+      - id: ruff-check
+        args: [--fix]
+      - id: ruff-format
   - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
     rev: 0.2.3
     hooks:
       - id: yamlfmt
         args: [--mapping, '2', --sequence, '4', --offset, '2', --width, '80']
+        exclude: ^helm/templates/|^\.gitlab-ci.yml|^\.travis.yml
   - repo: https://github.com/pappasam/toml-sort
-    rev: v0.23.1
+    rev: v0.24.3
     hooks:
       - id: toml-sort
         args: [--in-place]
   - repo: https://github.com/Yelp/detect-secrets
-    rev: v1.4.0
+    rev: v1.5.0
     hooks:
       - id: detect-secrets
         args: [--baseline, .secrets.baseline]

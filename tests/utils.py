@@ -1,5 +1,4 @@
 import pathlib
-from typing import Optional
 
 import yaml
 
@@ -8,10 +7,10 @@ def load_model(
     models: pathlib.Path,
     index_name: str,
     mapping: dict,
-    settings: Optional[dict] = None,
-    doc_type: Optional[str] = None,
-    descriptions: Optional[dict] = None,
-    vestigial: Optional[dict] = None,
+    settings: dict | None = None,
+    doc_type: str | None = None,
+    descriptions: dict | None = None,
+    vestigial: dict | None = None,
 ) -> None:
     """A util for loading an index/doc_type into the given models directory.
 

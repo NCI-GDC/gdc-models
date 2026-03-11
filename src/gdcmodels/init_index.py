@@ -4,10 +4,11 @@ import argparse
 import dataclasses
 import logging
 import sys
-from typing import List, cast
+from collections.abc import Iterable
+from typing import cast
 
 import elasticsearch
-from typing_extensions import Iterable, Optional, Protocol
+from typing_extensions import Protocol
 
 import gdcmodels
 
@@ -35,8 +36,8 @@ class ESIndexBuilder:
 
 
 class Arguments(Protocol):
-    index: List[str]
-    alias: List[str]
+    index: list[str]
+    alias: list[str]
     prefix: str
     host: str
     port: int
@@ -48,7 +49,7 @@ class Arguments(Protocol):
 
 
 class ArgumentParser(Protocol):
-    def parse_args(self, args: Optional[Iterable] = None) -> Arguments:  # type: ignore
+    def parse_args(self, args: Iterable | None = None) -> Arguments:  # type: ignore
         pass  # pragma: no cover
 
 
@@ -156,7 +157,8 @@ def init_index(args: Arguments):
     for index_builder in indices:
         if not es_models.get(index_builder.index_name):
             logger.info(
-                f"Specified index '{index_builder.index_name}' is not defined in es-models, skipping it!"
+                f"Specified index '{index_builder.index_name}' is not defined in es-models, "
+                "skipping it!"
             )
             continue
 
@@ -176,7 +178,8 @@ def init_index(args: Arguments):
                     continue
                 else:
                     logger.info(
-                        f"Elasticsearch index '{index_builder.full_index_name}' exists, '--delete' specified"
+                        f"Elasticsearch index '{index_builder.full_index_name}' exists, "
+                        "'--delete' specified"
                     )
                     if confirm_delete(index_builder.full_index_name):
                         logger.info(
@@ -203,7 +206,8 @@ def init_index(args: Arguments):
         # Skip this step if no index was created in the above steps.
         if not es.indices.exists(index=index_builder.full_index_name):
             logger.warning(
-                f"Index '{index_builder.index_name}' not created so alias '{index_builder.alias_name}' will not be created."
+                f"Index '{index_builder.index_name}' not created so alias "
+                f"'{index_builder.alias_name}' will not be created."
             )
             continue
 
@@ -216,7 +220,8 @@ def init_index(args: Arguments):
         # happen in practice.
         if indices_created > 1:
             logger.warning(
-                f"Cannot create alias '{index_builder.alias_name}' because too many indices created for '{index_builder.index_name}'"
+                f"Cannot create alias '{index_builder.alias_name}' because too many indices "
+                f"created for '{index_builder.index_name}'"
             )
             continue
 

@@ -1,8 +1,9 @@
 """The common functionality for syncing indices."""
 
 import functools
-import sys
-from typing import Any, Container, Dict, Iterable, Mapping, Optional, Tuple, TypeVar, cast
+from collections.abc import Container, Iterable, Mapping
+from importlib import resources
+from typing import Any, TypeVar, cast
 
 import mergedeep
 from typing_extensions import Protocol
@@ -10,13 +11,7 @@ from typing_extensions import Protocol
 import gdcmodels
 from gdcmodels import common, esmodels, extraction_utils, mapper
 
-if sys.version_info < (3, 9):
-    import importlib_resources as resources
-else:
-    from importlib import resources
-
-
-Export = Tuple[esmodels.ESMapping, Mapping[str, Any]]
+Export = tuple[esmodels.ESMapping, Mapping[str, Any]]
 TMapping = TypeVar("TMapping", bound=Mapping[str, Any])
 
 
@@ -79,7 +74,7 @@ class DefaultSettingsSynchronizer(Synchronizer):
     """A synchronizer which sets the default settings values for the graph/viz indices."""
 
     def __init__(self) -> None:
-        self._default_settings: Optional[Mapping[str, Any]] = None
+        self._default_settings: Mapping[str, Any] | None = None
 
     @property
     def default_settings(self) -> Mapping[str, Any]:
@@ -87,7 +82,8 @@ class DefaultSettingsSynchronizer(Synchronizer):
             settings_file = resources.files(common) / "settings.yaml"
 
             self._default_settings = cast(
-                Mapping[str, Any], extraction_utils.load_settings(settings_file.read_bytes())
+                Mapping[str, Any],
+                extraction_utils.load_settings(settings_file.read_bytes()),
             )
 
         return self._default_settings
@@ -100,7 +96,7 @@ class DefaultMappingsSynchronizer(Synchronizer):
     """A synchronizer which sets the default mapping values for the viz/graph indices."""
 
     def __init__(self) -> None:
-        self._default_mappings: Optional[Mapping[str, Any]] = None
+        self._default_mappings: Mapping[str, Any] | None = None
 
     @property
     def default_mappings(self) -> Mapping[str, Any]:
@@ -108,7 +104,8 @@ class DefaultMappingsSynchronizer(Synchronizer):
             settings_file = resources.files(common) / "mapping.yaml"
 
             self._default_mappings = cast(
-                Mapping[str, Any], extraction_utils.load_yaml(settings_file.read_bytes())
+                Mapping[str, Any],
+                extraction_utils.load_yaml(settings_file.read_bytes()),
             )
 
         return self._default_mappings
@@ -167,7 +164,7 @@ class DefaultNormalizerSynchronizer(Synchronizer):
             return mapping.setdefault("properties", {}).setdefault(property, {})
 
         normalizer_paths = get_paths(mapping["properties"])
-        tree: Dict[str, Any] = {}
+        tree: dict[str, Any] = {}
 
         for path in normalizer_paths:
             property: dict = functools.reduce(get_property, path, tree)

@@ -1,7 +1,8 @@
 """This module maintains the abstraction between the models and the es mappings."""
 
 import re
-from typing import Any, Callable, Iterable, Iterator, Mapping, Optional, Tuple, Union
+from collections.abc import Callable, Iterable, Iterator, Mapping
+from typing import Any
 
 import more_itertools
 
@@ -10,12 +11,12 @@ from gdcmodels import esmodels
 # A type alias for the selector parameter of the select_mapping method of the
 # ModelMapper. For more information on its use, please see the documentation for the
 # method.
-Selector = Union[Callable[[Iterable[str]], Iterable[str]], str]
+Selector = Callable[[Iterable[str]], Iterable[str]] | str
 
 
 def _walk_mapping(
-    mapping: Union[esmodels.ESMapping, esmodels.Property], path: str = "root"
-) -> Iterator[Tuple[str, esmodels.Property]]:
+    mapping: esmodels.ESMapping | esmodels.Property, path: str = "root"
+) -> Iterator[tuple[str, esmodels.Property]]:
     """Walk the mapping/property returning all paths with their associated properties.
 
     Args:
@@ -37,7 +38,7 @@ class ModelMapper:
     NOTE: Instances of this class should be instantiated via `get_es_models`
     """
 
-    __slots__ = ("_index_name", "_doc_type", "_settings", "_mapping")
+    __slots__ = ("_doc_type", "_index_name", "_mapping", "_settings")
 
     def __init__(
         self,
@@ -72,8 +73,8 @@ class ModelMapper:
     def select_mapping(
         self,
         doc_type: str,
-        selector: Optional[Selector] = None,
-    ) -> Union[esmodels.ESMapping, esmodels.Property]:
+        selector: Selector | None = None,
+    ) -> esmodels.ESMapping | esmodels.Property:
         """Select a sub-mapping or the entire mapping based on the doc_type.
 
         Using the given doc_type any property within this mapping with that name will

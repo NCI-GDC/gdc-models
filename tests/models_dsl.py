@@ -3,6 +3,9 @@
 The aim to produce readable to codes that illustrates object nesting within a document.
 """
 
+from collections.abc import Mapping
+from typing import Any, Final
+
 from elasticsearch_dsl import Boolean, Document, InnerDoc, Keyword, MetaField, Nested
 
 
@@ -55,7 +58,7 @@ class CaseCentricWithGeneExcluded(Document):
 
     class Index:
         name = "case_centric__with_gene_excluded"
-        settings = {
+        settings: Final[Mapping[str, Any]] = {
             "index": {
                 "max_result_window": 100000000,
                 "mapping": {
@@ -67,20 +70,20 @@ class CaseCentricWithGeneExcluded(Document):
 
 
 class CaseCentricWithoutDeepNesting(CaseCentricWithGeneExcluded):
-    class Meta:
+    class Meta:  # type: ignore
         dynamic = MetaField("strict")
         source = MetaField({"excludes": ["gene.*.*"], "enabled": True})
 
-    class Index:
+    class Index:  # type: ignore
         name = "case_centric__without_deep_nesting"
 
 
 class CaseCentricWithWildcard(CaseCentricWithGeneExcluded):
-    class Meta:
+    class Meta:  # type: ignore
         dynamic = MetaField("strict")
         source = MetaField(
             {"excludes": ["gene.*.*", "gene.b*", "gene.*_*_*"], "enabled": True}
         )
 
-    class Index:
+    class Index:  # type: ignore
         name = "case_centric__with_wildcard"
