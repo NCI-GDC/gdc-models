@@ -103,6 +103,7 @@ commands = [
   ["coverage", "html"],
   ["coverage", "report", "-m"]
 ]
+pass_env = ["CI"]
 
 [tool.tox.env_run_base.set_env]
 NO_PROXY = "localhost,postgres,elasticsearch"
