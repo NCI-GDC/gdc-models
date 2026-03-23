@@ -1,0 +1,12 @@
+---
+services:
+  elasticsearch:
+    image: docker.osdc.io/ncigdc/ci-elasticsearch-7:3.2.2
+    hostname: elasticsearch.service.local
+    platform: linux/amd64
+    ports:
+      - '9200'
+    healthcheck:
+      test: [CMD, curl, -f, http://localhost:9200/]
+      interval: 5s
+      timeout: 3s

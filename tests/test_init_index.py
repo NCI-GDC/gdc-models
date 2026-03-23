@@ -1,6 +1,7 @@
 import contextlib
-import sys
-from typing import Any, Callable, Iterator, NamedTuple, Optional, Sequence
+from collections.abc import Callable, Iterator, Sequence
+from importlib import resources
+from typing import Any, NamedTuple
 
 import elasticsearch
 import pytest
@@ -9,16 +10,11 @@ from typing_extensions import Protocol
 
 from gdcmodels import esmodels, init_index
 
-if sys.version_info < (3, 9):
-    import importlib_resources as resources
-else:
-    from importlib import resources
-
 
 class Files(NamedTuple):
     mapping: str
     settings: str
-    descriptions: Optional[str] = None
+    descriptions: str | None = None
 
 
 class Models:
@@ -50,12 +46,14 @@ class Models:
         CASE_CENTRIC = Files("case_centric/mapping.yaml", "case_centric/settings.yaml")
         CNV_CENTRIC = Files("cnv_centric/mapping.yaml", "cnv_centric/settings.yaml")
         CNV_OCCURRENCE_CENTRIC = Files(
-            "cnv_occurrence_centric/mapping.yaml", "cnv_occurrence_centric/settings.yaml"
+            "cnv_occurrence_centric/mapping.yaml",
+            "cnv_occurrence_centric/settings.yaml",
         )
         GENE_CENTRIC = Files("gene_centric/mapping.yaml", "gene_centric/settings.yaml")
         SSM_CENTRIC = Files("ssm_centric/mapping.yaml", "ssm_centric/settings.yaml")
         SSM_OCCURRENCE_CENTRIC = Files(
-            "ssm_occurrence_centric/mapping.yaml", "ssm_occurrence_centric/settings.yaml"
+            "ssm_occurrence_centric/mapping.yaml",
+            "ssm_occurrence_centric/settings.yaml",
         )
 
     class Sets:
@@ -75,8 +73,7 @@ def load_yaml(resource_name: str) -> dict:
 class GetArgs(Protocol):
     """A function for parsing the given arges into a Namespace."""
 
-    def __call__(self, *args: str) -> init_index.Arguments:
-        ...
+    def __call__(self, *args: str) -> init_index.Arguments: ...
 
 
 @pytest.fixture(scope="class")
@@ -87,7 +84,6 @@ def get_args(es: elasticsearch.Elasticsearch) -> GetArgs:
     and it's an excuse to boost our test coverage. Add the host/port for the test
     Elasticsearch cluster so we don't have to keep passing that.
     """
-
     # Assume we only configured one host for the ES client fixture.
     assert es.transport.hosts
 
@@ -194,7 +190,9 @@ class TestGraphIndices:
         ("index", "files"),
         (
             pytest.param(
-                "test_gdc_from_graph_annotation", Models.Graph.ANNOTATION, id="annotation"
+                "test_gdc_from_graph_annotation",
+                Models.Graph.ANNOTATION,
+                id="annotation",
             ),
             pytest.param("test_gdc_from_graph_case", Models.Graph.CASE, id="case"),
             pytest.param("test_gdc_from_graph_file", Models.Graph.FILE, id="file"),
@@ -236,12 +234,12 @@ def create_set_indices(get_args: GetArgs, clear_test_indices: Any) -> None:
     init_index.init_index(args)
 
 
-RecreateIndex = Callable[[Sequence[str], Optional[str]], None]
+RecreateIndex = Callable[[Sequence[str], str | None], None]
 
 
 @pytest.fixture
 def recreate_index(get_args: GetArgs, patch_input: Callable[[str], None]) -> RecreateIndex:
-    def inner(args: Sequence[str], user_input: Optional[str]) -> None:
+    def inner(args: Sequence[str], user_input: str | None) -> None:
         if user_input is not None:
             patch_input(user_input)
 
@@ -286,7 +284,6 @@ class TestSetsIndices:
         files: Files,
     ) -> None:
         """Verify `init_index` can create the saved set indices correctly."""
-
         validate_index(index, files)
         assert alias_exists(alias)
 
@@ -299,7 +296,6 @@ class TestSetsIndices:
 
     def test_init_index__skips_existing_indices(self, recreate_index: RecreateIndex) -> None:
         """Confirm existing indices are not recreated when ``--delete`` is not passed."""
-
         with self._create_set("test_case_set", ("case-0", "case-1")) as set_id:
             recreate_index(("--index", "case_set", "--prefix", "test"), None)
 
@@ -319,7 +315,6 @@ class TestSetsIndices:
         self, recreate_index: RecreateIndex
     ) -> None:
         """Confirm ``--delete`` deletes and recreates indices if the prompt passes."""
-
         with self._create_set("test_case_set", ("case-0", "case-1")) as set_id:
             recreate_index(
                 ("--index", "case_set", "--prefix", "test", "--delete"), "test_case_set"

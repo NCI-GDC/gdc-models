@@ -1,6 +1,9 @@
 [build-system]
 build-backend = "setuptools.build_meta"
-requires = ["setuptools>=77", "wheel", "setuptools_scm[toml]>=7.0", "versionista>=1.1.0"]
+requires = ["setuptools>=77", "wheel", "setuptools-scm[toml]>=7.0", "versionista>=1.1.0"]
+
+[dependency-groups]
+dev = ["coverage", "elasticsearch-dsl~=7.0", "pytest", "testcontainers"]
 
 [project]
 authors = [
@@ -9,18 +12,17 @@ authors = [
 classifiers = [
   "Intended Audience :: Developers",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
   "Programming Language :: PythonLicense :: OSI Approved :: Apache Software License",
   "Topic :: Software Development :: Libraries :: Python Modules"
 ]
 dependencies = [
   "deepdiff",
   "elasticsearch~=7.0",
-  "importlib-resources",
   "mergedeep",
   "more-itertools",
   "PyYAML",
@@ -32,10 +34,9 @@ keywords = ["python3", "gdcmodels", "yaml"]
 license-files = ["LICENSE"]
 name = "gdcmodels"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 
 [project.optional-dependencies]
-dev = ["coverage", "elasticsearch-dsl~=7.0", "pytest"]
 sync = ["click", "gdcdictionary", "gdcdatamodel2"]
 
 [project.scripts]
@@ -59,11 +60,55 @@ branch = true
 context = "unit tests"
 source = ["gdcmodels"]
 
-[tool.isort]
-known_first_party = ["gdcmodels"]
-line_length = 95 # match black config
-profile = "black"
+[tool.ruff]
+line-length = 95
+src = ["src", "tests"]
+target-version = "py310"
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint]
+# see https://docs.astral.sh/ruff/rules/
+select = [
+  "E", # pydocstyle errors
+  "F", # pyflakes
+  "I", # isort
+  "N", # pep8 naming
+  "RUF", # ruff specific rules
+  "UP", # pyupgrade
+  "W" # pydocstyle warnings
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["gdcmodels"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
 
 [tool.setuptools_scm]
 local_scheme = "versionista-local-format"
 version_scheme = "versionista-format"
+
+[tool.tox]
+env_list = ["python3.10", "python3.11", "python3.12", "python3.13", "python3.14"]
+skip_missing_interpreters = true
+
+[tool.tox.env_run_base]
+dependency_groups = ["dev"]
+extras = ["sync"]
+commands = [
+  ["coverage", "run", "-m", "pytest", {replace = "posargs", default = ["-vvs", "--junit-xml", "report.xml"], extend = true}],
+  ["coverage", "xml"],
+  ["coverage", "html"],
+  ["coverage", "report", "-m"]
+]
+pass_env = ["CI", "ES_*"]
+
+[tool.tox.env_run_base.set_env]
+NO_PROXY = "localhost,postgres,elasticsearch"
+no_proxy = "localhost,postgres,elasticsearch"
+
+[[tool.uv.index]]
+name = "nexus"
+url = "https://nexus.osdc.io/repository/pypi-gdc-releases/simple"

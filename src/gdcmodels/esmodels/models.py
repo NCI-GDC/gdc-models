@@ -1,4 +1,5 @@
-from typing import Dict, Literal, Sequence, Union
+from collections.abc import Sequence
+from typing import Literal, Union
 
 from typing_extensions import NotRequired, TypedDict
 
@@ -21,10 +22,10 @@ VIZ_INDICES = tuple(
 class Meta(TypedDict):
     """The metadata associated with a mapping."""
 
-    descriptions: Dict[str, str]
+    descriptions: dict[str, str]
 
 
-Properties = Dict[str, Union["Property", "Autocomplete"]]
+Properties = dict[str, Union["Property", "Autocomplete"]]
 
 
 class Property(TypedDict):
@@ -47,7 +48,7 @@ class AutocompleteField(TypedDict):
 class Autocomplete(Property):
     """An autocomplete object in an es mapping."""
 
-    fields: Dict[str, AutocompleteField]
+    fields: dict[str, AutocompleteField]
 
 
 class ESMapping(TypedDict):

@@ -72,7 +72,6 @@ def case_centric_with_wildcard(es, inner_gene_doc):
 @pytest.mark.usefixtures("case_centric_with_gene_excluded")
 def test_index__with_excluded_genes(es):
     """Test excluding a nested property behaves as expected"""
-
     response = (
         m.CaseCentricWithGeneExcluded.search(using=es)
         .filter("term", _id="case-centric-1")
@@ -90,7 +89,6 @@ def test_index__with_excluded_genes(es):
 @pytest.mark.usefixtures("case_centric_without_deep_nesting")
 def test_index__without_deep_nesting(es):
     """Test excluding a nested property behaves as expected"""
-
     response = (
         m.CaseCentricWithoutDeepNesting.search(using=es)
         .filter("term", _id="case-centric-2")
@@ -117,7 +115,6 @@ def test_index__without_deep_nesting(es):
 @pytest.mark.usefixtures("case_centric_with_wildcard")
 def test_index__with_wildcard(es):
     """Test excluding a nested property behaves as expected"""
-
     response = (
         m.CaseCentricWithWildcard.search(using=es)
         .filter("term", _id="case-centric-3")

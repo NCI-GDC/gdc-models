@@ -6,9 +6,7 @@ from tests import utils
 
 
 def test__get_es_models__standard_behavior() -> None:
-    """
-    Test that correct number of index mappings are loaded from es-models.
-    """
+    """Test that correct number of index mappings are loaded from es-models."""
     models = gdcmodels.get_es_models()
 
     assert len(models) == 14
@@ -24,9 +22,7 @@ def test__get_es_models__standard_behavior() -> None:
 
 
 def test__get_es_models__multiple_indices(es_models: pathlib.Path) -> None:
-    """
-    Test that content of mappings and settings is correct
-    """
+    """Test that content of mappings and settings is correct"""
     mappings = {
         "foo": {
             "index_name": "foo",
@@ -75,9 +71,7 @@ def test__get_es_models__multiple_indices(es_models: pathlib.Path) -> None:
 
 
 def test__get_es_models__no_descriptions(es_models: pathlib.Path) -> None:
-    """
-    Test that default behavior without descriptions is preserved
-    """
+    """Test that default behavior without descriptions is preserved"""
     mapping = {
         "properties": {
             "foo": {"type": "keyword"},
@@ -96,9 +90,7 @@ def test__get_es_models__no_descriptions(es_models: pathlib.Path) -> None:
 
 
 def test__get_es_models__no_settings(es_models: pathlib.Path) -> None:
-    """
-    Test that default behavior without descriptions is preserved
-    """
+    """Test that default behavior without descriptions is preserved"""
     mapping = {
         "properties": {
             "foo": {"type": "keyword"},
@@ -117,9 +109,7 @@ def test__get_es_models__no_settings(es_models: pathlib.Path) -> None:
 
 
 def test__get_es_models__empty_descriptions(es_models: pathlib.Path) -> None:
-    """
-    Test that empty _meta descriptions are picked up as expected
-    """
+    """Test that empty _meta descriptions are picked up as expected"""
     mapping = {
         "properties": {
             "foo": {"type": "keyword"},

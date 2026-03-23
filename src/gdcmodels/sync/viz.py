@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import abc
 import types
-from typing import Any, ClassVar, Iterable, Mapping, Tuple
+from collections.abc import Iterable, Mapping
+from typing import Any, ClassVar
 
 import more_itertools
 from typing_extensions import override
@@ -124,16 +125,14 @@ def _get_case_properties(
         return (
             # If the property is not excluded or just the parent of an excluded property, it
             # should be included.
-            property not in excluded
-            or excluded[property].is_internal_node()
+            property not in excluded or excluded[property].is_internal_node()
         ) and (
             # Analyzers should always be excluded when copying mappings.
-            "analyzer"
-            not in details
+            "analyzer" not in details
         )
 
     result: esmodels.Properties = {}
-    items: Iterable[Tuple[str, esmodels.Property]] = (
+    items: Iterable[tuple[str, esmodels.Property]] = (
         (p, d) for p, d in case_properties.items() if _is_included(p, d)
     )
 
@@ -212,7 +211,7 @@ class CaseSynchronizer(common.Synchronizer, abc.ABC):
         This method is intended to allow implementing classes to insert the case
         properties into the correct place within their own mappings structure.
 
-        EXAMPLE:
+        Example:
             in the `gene_centric` index
             {
                 "properties": {
@@ -322,9 +321,9 @@ class DataCentricSynchronizer(CaseSynchronizer):
         occurrence = mappings["properties"]["occurrence"]
 
         assert "properties" in occurrence, "Occurrence must have a set of properties"
-        assert (
-            "properties" in occurrence["properties"]["case"]
-        ), "Case must have set of properties"
+        assert "properties" in occurrence["properties"]["case"], (
+            "Case must have set of properties"
+        )
 
         observation = occurrence["properties"]["case"]["properties"]["observation"]
         occurrence["properties"]["case"]["properties"] = {"observation": observation}
@@ -347,9 +346,9 @@ class OccurrenceCentricSynchronizer(CaseSynchronizer):
 
     @override
     def _remove_case_from(self, mappings: esmodels.ESMapping) -> None:
-        assert (
-            "properties" in mappings["properties"]["case"]
-        ), "Case must have set of properties"
+        assert "properties" in mappings["properties"]["case"], (
+            "Case must have set of properties"
+        )
 
         observation = mappings["properties"]["case"]["properties"]["observation"]
         mappings["properties"]["case"]["properties"] = {"observation": observation}

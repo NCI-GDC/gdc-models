@@ -1,18 +1,18 @@
 import functools
 import itertools
-import sys
 import types
-from typing import Any, Iterable, Iterator, Mapping, NamedTuple, Tuple
+from collections.abc import Iterable, Iterator, Mapping
+from importlib import resources
+from typing import Any, NamedTuple
 
 import deepdiff
 
 from gdcmodels import esmodels, extraction_utils, mapper
 
-if sys.version_info < (3, 9):
-    import importlib_resources as resources
-    from importlib_resources import abc
-else:
-    from importlib import abc, resources
+try:
+    from importlib.resources import abc
+except ImportError:
+    from importlib import abc
 
 
 class _MappingDetail(NamedTuple):
@@ -136,15 +136,16 @@ def _extract_settings(detail: _MappingDetail) -> Mapping[str, Any]:
 
 def _extract_index(
     details: Iterable[_MappingDetail], vestigial_included: bool
-) -> Iterator[Tuple[str, mapper.ModelMapper]]:
+) -> Iterator[tuple[str, mapper.ModelMapper]]:
     settings = None
 
     for detail in details:
         settings = settings or _extract_settings(detail)
         mapping = _extract_es_mapping(detail, vestigial_included)
 
-        yield detail.doc_type, mapper.ModelMapper(
-            detail.index_name, detail.doc_type, settings, mapping
+        yield (
+            detail.doc_type,
+            mapper.ModelMapper(detail.index_name, detail.doc_type, settings, mapping),
         )
 
 
