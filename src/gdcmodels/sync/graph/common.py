@@ -1,13 +1,9 @@
 import abc
 import functools
+from collections import defaultdict
+from collections.abc import Container, Iterable, Mapping
 from typing import (
     Any,
-    Container,
-    DefaultDict,
-    Iterable,
-    Mapping,
-    Optional,
-    Tuple,
     TypeVar,
     cast,
 )
@@ -22,7 +18,7 @@ from gdcmodels.sync import common
 TMapping = TypeVar("TMapping", bound=Mapping[str, Any])
 
 
-class NestedDict(DefaultDict[str, Any]):
+class NestedDict(defaultdict[str, Any]):
     """A default dictionary whose values default to a nested instance of itself."""
 
     def __init__(self, **kwargs: Any) -> None:
@@ -110,12 +106,15 @@ class GDCDictionary(Protocol):
 class DescriptionsSynchronizer(common.Synchronizer):
     def __init__(
         self,
-        gdc_dictionary: Optional[GDCDictionary] = None,
+        gdc_dictionary: GDCDictionary | None = None,
     ) -> None:
         self._gdc_dictionary = gdc_dictionary or gdcdictionary.gdcdictionary
 
     def _load_descriptions_from(
-        self, node: type[models.Node], prefix: str, description_label: Optional[str] = None
+        self,
+        node: type[models.Node],
+        prefix: str,
+        description_label: str | None = None,
     ) -> NestedDict:
         descriptions = NestedDict()
         description_label = description_label or node.get_label()
@@ -190,7 +189,11 @@ class DescriptionsSynchronizer(common.Synchronizer):
                 "cases.project.program",
                 "projects.program",
             ),
-            models.Project: ("annotations.project", "cases.project", "projects.project"),
+            models.Project: (
+                "annotations.project",
+                "cases.project",
+                "projects.project",
+            ),
             models.Sample: ("annotations.sample", "cases.samples"),
             models.Slide: (
                 "annotations.slide",
@@ -244,7 +247,7 @@ class GraphSynchronizer(common.Synchronizer, abc.ABC):
 
     def __init__(
         self,
-        gdc_dictionary: Optional[GDCDictionary] = None,
+        gdc_dictionary: GDCDictionary | None = None,
     ) -> None:
         self._gdc_dictionary = gdc_dictionary or gdcdictionary.gdcdictionary
 
@@ -265,7 +268,9 @@ class GraphSynchronizer(common.Synchronizer, abc.ABC):
             property = cast(
                 esmodels.Property,
                 functools.reduce(
-                    lambda m, p: m.get("properties", {}).get(p, {}), path.split("."), mapping
+                    lambda m, p: m.get("properties", {}).get(p, {}),
+                    path.split("."),
+                    mapping,
                 ),
             )
             property["copy_to"] = [name]
@@ -296,7 +301,7 @@ def _load_properties_from(
         ("project_id", "batch_id", "file_state", "curated_model_index")
     ),
 ) -> NestedDict:
-    def is_included(property: Tuple[str, Container[type]]) -> bool:
+    def is_included(property: tuple[str, Container[type]]) -> bool:
         return property[0] not in excluded_fields
 
     properties = NestedDict()
@@ -381,9 +386,9 @@ class CaseProperties:
 
     def __init__(
         self,
-        annotation: Optional[AnnotationProperties] = None,
-        projects: Optional[ProjectProperties] = None,
-        summaries: Optional[SummaryProperties] = None,
+        annotation: AnnotationProperties | None = None,
+        projects: ProjectProperties | None = None,
+        summaries: SummaryProperties | None = None,
     ) -> None:
         self._annotations = annotation or AnnotationProperties()
         self._projects = projects or ProjectProperties()
@@ -490,7 +495,8 @@ class CaseProperties:
             type="nested",
         )
         properties["other_clinical_attributes"] = NestedDict(
-            properties=_load_properties_from(models.OtherClinicalAttribute), type="nested"
+            properties=_load_properties_from(models.OtherClinicalAttribute),
+            type="nested",
         )
 
         return mapping
@@ -539,7 +545,7 @@ class CaseProperties:
 class FileProperties:
     __slots__ = ("_annotations",)
 
-    def __init__(self, annotations: Optional[AnnotationProperties] = None) -> None:
+    def __init__(self, annotations: AnnotationProperties | None = None) -> None:
         self._annotations = annotations or AnnotationProperties()
 
     def _get_associated_entities(self) -> NestedDict:

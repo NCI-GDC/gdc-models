@@ -10,12 +10,12 @@ from gdcmodels.esmodels.models import (
 )
 
 __all__ = (
+    "GRAPH_INDICES",
+    "VIZ_INDICES",
     "Autocomplete",
     "AutocompleteField",
     "ESMapping",
-    "GRAPH_INDICES",
     "Meta",
     "Properties",
     "Property",
-    "VIZ_INDICES",
 )

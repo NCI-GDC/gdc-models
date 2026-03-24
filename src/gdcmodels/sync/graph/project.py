@@ -1,5 +1,3 @@
-from typing import Optional
-
 from gdcmodels import esmodels
 from gdcmodels.sync.graph import common
 
@@ -9,9 +7,9 @@ class Synchronizer(common.GraphSynchronizer):
 
     def __init__(
         self,
-        projects: Optional[common.ProjectProperties] = None,
-        summaries: Optional[common.SummaryProperties] = None,
-        gdc_dictionary: Optional[common.GDCDictionary] = None,
+        projects: common.ProjectProperties | None = None,
+        summaries: common.SummaryProperties | None = None,
+        gdc_dictionary: common.GDCDictionary | None = None,
     ) -> None:
         super().__init__(gdc_dictionary)
 
@@ -22,15 +20,18 @@ class Synchronizer(common.GraphSynchronizer):
         properties = self._summaries.load_properties()
         properties["case_count"] = common.ESProperty.long()
         properties["data_categories"]["properties"]["case_count"] = common.ESProperty().long()
-        properties["experimental_strategies"]["properties"][
-            "case_count"
-        ] = common.ESProperty.long()
+        properties["experimental_strategies"]["properties"]["case_count"] = (
+            common.ESProperty.long()
+        )
 
         return {"properties": properties}
 
     def _load_mapping(self) -> esmodels.ESMapping:
         mapping = esmodels.ESMapping(
-            properties={**self._projects.load_properties(), "summary": self._get_summary()}
+            properties={
+                **self._projects.load_properties(),
+                "summary": self._get_summary(),
+            }
         )
 
         del mapping["properties"]["code"]

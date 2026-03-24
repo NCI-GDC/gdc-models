@@ -2,20 +2,16 @@
 
 import collections
 import itertools
-import sys
 import types
-from typing import AbstractSet, Any, Mapping, Optional, Sequence, Union
+from collections.abc import Mapping, Sequence, Set
+from importlib import resources
+from typing import Any
 
 import click
 import deepdiff
 
 from gdcmodels import esmodels, extraction_utils
 from gdcmodels.sync import common, gene_expression, graph, viz
-
-if sys.version_info < (3, 9):
-    import importlib_resources as resources
-else:
-    from importlib import resources
 
 # The order of these synchronizers will dive the order in which the mappings are synced.
 # Thus, the graph must be synced first in order to insure case_centric can sync w/ the
@@ -56,7 +52,7 @@ def _write_files(
     mapping: esmodels.ESMapping,
     delta: deepdiff.Delta,
     settings: Mapping[str, Any],
-    descriptions: Optional[Mapping[str, Any]],
+    descriptions: Mapping[str, Any] | None,
 ) -> None:
     """Write the various data points to their appropriate files in the models.
 
@@ -122,7 +118,7 @@ def run_synchronization(index_name: str, doc_type: str) -> None:
     default=DOC_TYPES,
     multiple=True,
 )
-def cli(index: Sequence[str], doc_type: AbstractSet[str]) -> None:
+def cli(index: Sequence[str], doc_type: Set[str]) -> None:
     """Sync a mapping with a different system and/or standardizes said mapping.
 
     Args:

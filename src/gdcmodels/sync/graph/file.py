@@ -1,5 +1,3 @@
-from typing import Optional
-
 from gdcmodels import esmodels
 from gdcmodels.sync.graph import common
 
@@ -9,9 +7,9 @@ class Synchronizer(common.GraphSynchronizer):
 
     def __init__(
         self,
-        cases: Optional[common.CaseProperties] = None,
-        files: Optional[common.FileProperties] = None,
-        gdc_dictionary: Optional[common.GDCDictionary] = None,
+        cases: common.CaseProperties | None = None,
+        files: common.FileProperties | None = None,
+        gdc_dictionary: common.GDCDictionary | None = None,
     ) -> None:
         super().__init__(gdc_dictionary)
 

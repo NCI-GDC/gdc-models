@@ -1,14 +1,8 @@
-import sys
-from typing import Optional, Type
+from importlib import resources
 
 import pytest
 
 from gdcmodels import extraction_utils, mapper
-
-if sys.version_info < (3, 9):
-    import importlib_resources as resources
-else:
-    from importlib import resources
 
 
 @pytest.fixture
@@ -30,8 +24,8 @@ def mock_mapper():
 def test_select_mapping_flow(
     mock_mapper: mapper.ModelMapper,
     doc_type: str,
-    selector: Optional[mapper.Selector],
-    exception_type: Type[BaseException],
+    selector: mapper.Selector | None,
+    exception_type: type[BaseException],
 ) -> None:
     with pytest.raises(exception_type):
         mock_mapper.select_mapping(doc_type, selector)
@@ -54,7 +48,7 @@ def test_select_mapping_flow(
 def test_select_mapping_results(
     mock_mapper: mapper.ModelMapper,
     doc_type: str,
-    selector: Optional[mapper.Selector],
+    selector: mapper.Selector | None,
     path: str,
 ) -> None:
     actual = mock_mapper.select_mapping(doc_type, selector)
