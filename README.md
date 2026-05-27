@@ -44,7 +44,7 @@ As stated above, much of the mappings structure is derived from data in the grap
   </tr>
   <tr>
     <td align="left" valign="top">
-      <pre><code>properties:
+      <pre><code class="language-yaml">properties:
   <span style="background-color: yellow">autocomplete:</span>
     <span style="background-color: yellow">lowercase:</span>
       <span style="background-color: yellow">analyzer: lowercase_keyword</span>
@@ -55,13 +55,13 @@ As stated above, much of the mappings structure is derived from data in the grap
       </code></pre>
     </td>
     <td align="left" valign="top">
-      <pre><code>properties:
+      <pre><code class="language-yaml">properties:
   id:
     <span style="background-color: #30E914">type: keyword</span>
       </code></pre>
     </td>
     <td align="left" valign="top">
-      <pre><code>properties:
+      <pre><code class="language-yaml">properties:
   <span style="background-color: yellow">autocomplete:</span>
     <span style="background-color: yellow">lowercase:</span>
       <span style="background-color: yellow">analyzer: lowercase_keyword</span>
@@ -77,10 +77,13 @@ As stated above, much of the mappings structure is derived from data in the grap
 
 #### Overlays
 All of the overlays for the sync process can be found within the `/src/gdcmodels/sync/overlays` directory & are generally stored as yaml files. They are further subdivided by the functionality that they add to the mappings. Below are the details of the various overlay categories:
-- *autocomplete*: The autocomplete overlay defines the autocomplete field for each index as well as all of the properties which will be copied to that autocomplete field.
-- *graph*: This overlay generates dynamically all mappings which are ultimately based on nodes and their associated properties as defined in `gdcdictionary`/`gdcdatamodel2`. This includes both `_meta` and `properties` values. For the `_meta` mapping, it supplies the `definitions` which the API's graphql functionality uses to annotate the fields within the graphql schema. Further, it adds an `arrays` value which is a list of all paths that are array values and need to be handled as such; this is used in mutation indexer to ensure these values are loaded properly via the elasticsearch spark integration. Finally, This overlay includes all of the `properties` which are directly loaded from the graph data via its nodes. These properties are structured into their denormalized tree structures. This is the only overlay which is generated at runtime and is _not_ stored as a yaml file.
-- *headers*: The headers overlay defines any static non-property fields which need to be defined for each index. This includes such things as `properties` which are excluded from the `_source` as well as ensuring that the elasticsearch `_size` module is configured for the index.
-- *static*: This overlay defines all static `properties` for the index. These field will be generated in either esbuild or mutation-indexer when the data is built but supplemental to the data found in the graph.
+- **autocomplete**: The autocomplete overlay defines the autocomplete field for each index as well as all of the properties which will be copied to that autocomplete field.
+- **graph**: This overlay generates dynamically all mappings which are ultimately based on nodes and their associated properties as defined in `gdcdictionary`/`gdcdatamodel2`. This includes both `_meta` and `properties` values. For the `_meta` mapping, it supplies the `definitions` which the API's graphql functionality uses to annotate the fields within the graphql schema. Further, it adds an `arrays` value which is a list of all paths that are array values and need to be handled as such; this is used in mutation indexer to ensure these values are loaded properly via the elasticsearch spark integration. Finally, This overlay includes all of the `properties` which are directly loaded from the graph data via its nodes. These properties are structured into their denormalized tree structures. This is the only overlay which is generated at runtime and is _not_ stored as a yaml file.
+- **headers**: The headers overlay defines any static non-property fields which need to be defined for each index. This includes such things as `properties` which are excluded from the `_source` as well as ensuring that the elasticsearch `_size` module is configured for the index.
+- **static**: This overlay defines all static `properties` for the index. These field will be generated in either esbuild or mutation-indexer when the data is built but supplemental to the data found in the graph.
+
+#### Clinical Normalizer
+The sync process does
 
 #### CLI
 - Run sync for all indices.
