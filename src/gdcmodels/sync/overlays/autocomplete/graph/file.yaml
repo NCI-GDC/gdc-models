@@ -1,0 +1,25 @@
+---
+properties:
+  data_category: &copy-to
+    copy_to:
+      - file_autocomplete
+  data_type: *copy-to
+  experimental_strategy: *copy-to
+  file_autocomplete:
+    fields:
+      analyzed:
+        analyzer: autocomplete_analyzed
+        search_analyzer: lowercase_keyword
+        type: text
+      lowercase:
+        analyzer: lowercase_keyword
+        type: text
+      prefix:
+        analyzer: autocomplete_prefix
+        search_analyzer: lowercase_keyword
+        type: text
+    type: keyword
+  file_id: *copy-to
+  file_name: *copy-to
+  md5sum: *copy-to
+  submitter_id: *copy-to

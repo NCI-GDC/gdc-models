@@ -1,0 +1,34 @@
+---
+properties:
+  canonical_transcript_id: &copy-to
+    copy_to:
+      - gene_autocomplete
+  cytoband: *copy-to
+  external_db_ids:
+    properties:
+      entrez_gene: *copy-to
+      hgnc: *copy-to
+      omim_gene: *copy-to
+      uniprotkb_swissprot: *copy-to
+  gene_autocomplete:
+    fields:
+      analyzed:
+        analyzer: autocomplete_analyzed
+        search_analyzer: lowercase_keyword
+        type: text
+      lowercase:
+        analyzer: lowercase_keyword
+        type: text
+      prefix:
+        analyzer: autocomplete_prefix
+        search_analyzer: lowercase_keyword
+        type: text
+    type: keyword
+  gene_id: *copy-to
+  name: *copy-to
+  symbol: *copy-to
+  synonyms: *copy-to
+  transcripts:
+    properties:
+      transcript_id: *copy-to
+      translation_id: *copy-to

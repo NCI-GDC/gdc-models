@@ -1,0 +1,144 @@
+---
+properties:
+  aliquot_ids: &keyword
+    type: keyword
+  analyte_ids: *keyword
+  annotations: &annotations
+    properties:
+      annotation_id: *keyword
+      case_id: *keyword
+      case_submitter_id: *keyword
+      entity_id: *keyword
+      entity_submitter_id: *keyword
+      entity_type: *keyword
+  case_id: *keyword
+  demographic:
+    properties:
+      demographic_id: *keyword
+  diagnoses:
+    properties:
+      annotations: *annotations
+      diagnosis_id: *keyword
+      pathology_details:
+        properties:
+          pathology_detail_id: *keyword
+      treatments:
+        properties:
+          treatment_id: *keyword
+  diagnosis_ids: *keyword
+  exposures:
+    properties:
+      exposure_id: *keyword
+  family_histories:
+    properties:
+      family_history_id: *keyword
+  files:
+    properties:
+      access: *keyword
+      acl: *keyword
+      analysis:
+        properties:
+          analysis_id: *keyword
+          analysis_type: *keyword
+          input_files:
+            properties: &sub-file
+              access: *keyword
+              file_id: *keyword
+          metadata:
+            properties:
+              read_groups:
+                properties:
+                  read_group_id: *keyword
+                  read_group_qcs:
+                    properties:
+                      read_group_qc_id: *keyword
+      archive:
+        properties:
+          archive_id: *keyword
+      center:
+        properties:
+          center_id: *keyword
+      downstream_analyses:
+        properties:
+          analysis_id: *keyword
+          analysis_type: *keyword
+          output_files:
+            properties: *sub-file
+      file_id: *keyword
+      index_files:
+        properties: *sub-file
+      metadata_files:
+        properties:
+          <<: *sub-file
+          data_category: *keyword
+          data_format: *keyword
+          data_type: *keyword
+          type: *keyword
+      tags: *keyword
+      type: *keyword
+  follow_ups:
+    properties:
+      follow_up_id: *keyword
+      molecular_tests:
+        properties:
+          molecular_test_id: *keyword
+      other_clinical_attributes:
+        properties:
+          other_clinical_attribute_id: *keyword
+  portion_ids: *keyword
+  project:
+    properties:
+      program:
+        properties:
+          program_id: *keyword
+      project_id: *keyword
+  sample_ids: *keyword
+  samples:
+    properties:
+      annotations: *annotations
+      portions:
+        properties:
+          analytes:
+            properties:
+              aliquots:
+                properties:
+                  aliquot_id: *keyword
+                  annotations: *annotations
+                  center: &center
+                    properties:
+                      center_id: *keyword
+              analyte_id: *keyword
+              annotations: *annotations
+          annotations: *annotations
+          center: *center
+          portion_id: *keyword
+          slides:
+            properties:
+              annotations: *annotations
+              slide_id: *keyword
+      sample_id: *keyword
+  slide_ids: *keyword
+  submitter_aliquot_ids: *keyword
+  submitter_analyte_ids: *keyword
+  submitter_diagnosis_ids: *keyword
+  submitter_portion_ids: *keyword
+  submitter_sample_ids: *keyword
+  submitter_slide_ids: *keyword
+  summary:
+    properties:
+      data_categories:
+        properties:
+          data_category: *keyword
+          file_count: &long
+            type: long
+        type: nested
+      experimental_strategies:
+        properties:
+          experimental_strategy: *keyword
+          file_count: *long
+        type: nested
+      file_count: *long
+      file_size: *long
+  tissue_source_site:
+    properties:
+      tissue_source_site_id: *keyword

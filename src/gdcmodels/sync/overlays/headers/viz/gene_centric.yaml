@@ -1,0 +1,13 @@
+---
+_size:
+  enabled: true
+_source:
+  excludes:
+    - case.*.*
+    - case.consent_type
+    - case.d*
+    - case.i*
+    - case.p*
+    - case.s*
+    - case.*_*_*
+dynamic: strict
