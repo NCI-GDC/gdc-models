@@ -1,0 +1,25 @@
+---
+properties:
+  program:
+    properties:
+      program_id: &keyword
+        type: keyword
+  project_id: *keyword
+  summary:
+    properties:
+      case_count: &long
+        type: long
+      data_categories:
+        properties:
+          case_count: *long
+          data_category: *keyword
+          file_count: *long
+        type: nested
+      experimental_strategies:
+        properties:
+          case_count: *long
+          experimental_strategy: *keyword
+          file_count: *long
+        type: nested
+      file_count: *long
+      file_size: *long

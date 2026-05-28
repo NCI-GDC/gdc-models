@@ -1,0 +1,16 @@
+---
+properties:
+  annotation_id: &keyword
+    type: keyword
+  case_id: *keyword
+  case_submitter_id: *keyword
+  entity_id: *keyword
+  entity_submitter_id: *keyword
+  entity_type: *keyword
+  project:
+    properties:
+      code: *keyword
+      program:
+        properties:
+          program_id: *keyword
+      project_id: *keyword

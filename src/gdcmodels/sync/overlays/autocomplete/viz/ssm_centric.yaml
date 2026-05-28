@@ -1,0 +1,30 @@
+---
+properties:
+  consequence:
+    properties:
+      transcript:
+        properties:
+          aa_change: &copy-to
+            copy_to:
+              - ssm_autocomplete
+          annotation:
+            properties:
+              dbsnp_rs: *copy-to
+  cosmic_id: *copy-to
+  gene_aa_change: *copy-to
+  genomic_dna_change: *copy-to
+  ssm_autocomplete:
+    fields:
+      analyzed:
+        analyzer: autocomplete_analyzed
+        search_analyzer: lowercase_keyword
+        type: text
+      lowercase:
+        analyzer: lowercase_keyword
+        type: text
+      prefix:
+        analyzer: autocomplete_prefix
+        search_analyzer: lowercase_keyword
+        type: text
+    type: keyword
+  ssm_id: *copy-to

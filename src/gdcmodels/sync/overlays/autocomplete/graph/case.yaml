@@ -1,0 +1,49 @@
+---
+properties:
+  case_autocomplete:
+    fields:
+      analyzed:
+        analyzer: autocomplete_analyzed
+        search_analyzer: lowercase_keyword
+        type: text
+      lowercase:
+        analyzer: lowercase_keyword
+        type: text
+      prefix:
+        analyzer: autocomplete_prefix
+        search_analyzer: lowercase_keyword
+        type: text
+    normalizer: clinical_normalizer
+    type: keyword
+  case_id: &copy-to
+    copy_to:
+      - case_autocomplete
+  disease_type: *copy-to
+  primary_site: *copy-to
+  project:
+    properties:
+      disease_type: *copy-to
+      intended_release_date: *copy-to
+      primary_site: *copy-to
+      project_id: *copy-to
+  samples:
+    properties:
+      portions:
+        properties:
+          analytes:
+            properties:
+              aliquots:
+                properties:
+                  aliquot_id: *copy-to
+                  submitter_id: *copy-to
+              analyte_id: *copy-to
+              submitter_id: *copy-to
+          portion_id: *copy-to
+          slides:
+            properties:
+              slide_id: *copy-to
+              submitter_id: *copy-to
+          submitter_id: *copy-to
+      sample_id: *copy-to
+      submitter_id: *copy-to
+  submitter_id: *copy-to
