@@ -11,10 +11,6 @@ Git repository centrally stores and serves GDC data models defined in static YAM
   - [Structure of esmodels directory](#structure-of-esmodels-directory)
   - [Update the data models](#update-the-data-models)
     - [Sync](#sync)
-      - [Install](#install)
-      - [Before syncing](#before-syncing)
-      - [Examples](#examples)
-      - [After Syncing](#after-syncing)
     - [WARNING: YAML \& Pre-Commit Hook](#warning-yaml--pre-commit-hook)
   - [Use the data models](#use-the-data-models)
     - [Import ES models into Python code](#import-es-models-into-python-code)
@@ -35,54 +31,105 @@ the vestigial properties.
 
 ### Sync
 
-Syncing is the process of updating the models with any properties which may be derived from external sources, normalizing keywords, as well as insuring all default mapping values are set. This process should be run after the gdcdictionary is updated and when any new property is added to the viz indices.
+Within `gdcmodels` there are index mappings for two sets of indices which are often referred to by group, the graph and viz indices. The graph indices are comprised of the annotation, case, file, and project indices. As for the viz indices, these are the case_centric, cnv_centric, cnv_occurrence_centric, gene_centric, segment_cnv_centric, segment_cnv_occurrence_centric, ssm_centric, and the ssm_occurrence_centric indices. The graph and viz indices' mappings are based on several structures including statically defined properties but also pull some of their structure and properties from the GDC graph and nodes therein. Hence, these mappings need to be updated with any new properties from their associated nodes whenever the `gdcdictionary` is updated; preferably this should be done within the context of the dictionary release. This update is referred to as the `gdcmodels`'s "sync" process.
 
-The process can be run for any index (-i) and any of its doc-types (-d). Multiple can be specified on the command line and if none are provided for either all of the respective type are run.
+#### How it works.
+As stated above, each of the graph/viz mapping structures are derived from data in the graph nodes. Specifically, properties as defined for the dictionary node's json schema. However, that is only one source of our mappings. Other portions of the mapping are completely manually maintained as static mappings. In order to better segregate the various functionality and sources for the mappings, the sync process merges several overlays each representing different components and properties which need to be combined in order to create the final mapping for a graph or viz index. Below is a high-level example of how this overlay system works.
 
-#### Install
-pip-compile --extra=sync \
-            --index-url=https://nexus.osdc.io/repository/pypi-gdc-releases/simple \
-            --output-file=requirements-sync.txt \
-            --strip-extras \
-            --upgrade
-pip install -r requirements-sync.txt
+<table>
+  <tr>
+    <th>Overlay 1</th>
+    <th>Overlay 2</th>
+    <th>Resulting Mapping</th>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      <pre><code>properties:
+  <mark>autocomplete</mark>
+    <mark>lowercase:</mark>
+      <mark>analyzer: lowercase_keyword</mark>
+      <mark>type: text</mark>
+  id:
+    <mark>copy_to:</mark>
+      <mark>- autocomplete</mark>
+      </code></pre>
+    </td>
+    <td align="left" valign="top">
+      <pre><code>properties:
+  id:
+    <mark>type: keyword</mark>
+      </code></pre>
+    </td>
+    <td align="left" valign="top">
+      <pre><code>properties:
+  # From Overlay 1
+  <mark>autocomplete:</mark>
+    <mark>lowercase:</mark>
+      <mark>analyzer: lowercase_keyword</mark>
+      <mark>type: text</mark>
+  id:
+    # From Overlay 1
+    <mark>copy_to:</mark>
+      <mark>- autocomplete</mark>
+    # From Overlay 2
+    <mark>type: keyword</mark>
+      </code></pre>
+    </td>
+  </tr>
+</table>
 
-#### Before syncing
-NOTE: Certain esmodels like `case_centric` are augmented from the mappings in `gdcmodels/esmodels/gdc_from_graph/case`. The mappings from `case` are overlayed on the `case_centric` mappings. This implies that previous sync operations may have added entries into the `case_centric` mapping file. In the situation where vestigial mappings are being removed from `gdc_from_graph/case`, then `case_centric` mappings will have to be hand edited to fully remove the vestigial mappings. Similar scenarios exist for the other `gdc_from_graph` folders.
+#### Overlays
+All of the overlays for the sync process can be found within the `/src/gdcmodels/sync/overlays` directory & are generally stored as yaml files. They are further subdivided by the functionality that they add to the mapping as well as the index grouping with which they are associated. Below are the details of the various overlay categories.
+- **autocomplete**: The autocomplete overlay defines the autocomplete field for each index as well as all of the properties which will be copied to that autocomplete field.
+- **graph**: This overlay generates dynamically all mappings which are ultimately based on nodes and their associated properties as defined in `gdcdictionary`/`gdcdatamodel2`. This includes both `_meta` and `properties` values. For the `_meta` mapping, it supplies the `definitions` which the API's graphql functionality uses to annotate the fields within the graphql schema. Further, it adds an `arrays` value which is a list of all paths that are array values and need to be handled as such when loading and handling the data (this is not something that elasticsearch denotes in the mapping itself as it has no concept of a collection in the mapping.) This functionality is used in mutation indexer to ensure these values are loaded properly via the elasticsearch spark integration. Finally, This overlay includes all of the `properties` which are directly loaded from the graph data via its nodes. These properties are structured into their denormalized tree structures. This is the only overlay which is generated at runtime and is _not_ stored as a yaml file.
+- **headers**: The headers overlay defines any static non-property fields which need to be defined for each index. This includes such things as `properties` values which will be excluded from the `_source` as well as ensuring that the elasticsearch `_size` module is configured for the index.
+- **static**: This overlay defines all static `properties` for the index. These field will be generated in either esbuild or mutation-indexer when the data is built but supplemental to the data found in the graph.
 
-#### Examples
-Run all indices/doc-types:
-```bash
-sync-models
+#### Clinical Normalizer
+The only element which works outside of the overlay system is the application of the clinical normalizer which is added after all overlays have been combined. This [normalizer](https://www.elastic.co/docs/reference/text-analysis/normalizers) is used to help standardize the searchable terms exposed by the index and is applied to basically every keyword property. Each index group however excludes a set of properties by name. In the table below, an `X` denotes that the property is _excluded_ from being normalized for that index group.
+
+| Property | Graph | Viz |
+| :------- | :---: | :-: |
+| biotype | X | X |
+| case_submitter_id | X |  |
+| code | X | X |
+| consequence_type | X | X |
+| data_type | X | X |
+| entity_submitter_id | X |  |
+| experimental_strategy | X | X |
+| gene_id | X | X |
+| name | X | X |
+| program | X | X |
+| program_name | X | X |
+| project | X | X |
+| project_code | X | X |
+| project_id | X | X |
+| project_name | X | X |
+| submitter_id | X | X |
+| uuid | X | X |
+| workflow_type | X | X |
+
+#### Vestigial properties
+After the entire sync process runs, including the application of the clinical normalizer, we generate the vestigial properties for a given index. These properties allow us to supplement the actual mapping with all properties which were removed during the sync process (or any previous sync if the vestigial properties file already contained data.) The models need to load these vestigial properties in places like the API for ensuring backwards compatibility for clients of the API who may be requesting the fields which were ultimately removed. These vestigial properties can be included when loading the models by setting the `vestigial_included` flag to `True`.
+
+```python
+models = gdcmodels.get_es_models(vestigial_included=True)
 ```
 
-Run all associated doc-types:
+#### CLI
+- Run sync for all indices.
 ```bash
-sync-models -i gdc_from_graph -i case_centric
+uv run -m gdcmodels.sync
 ```
-
-Run a singular doc-type:
+- Run sync for subset of indices.
 ```bash
-sync-models -i gdc_from_graph -d file
+uv run -m gdcmodels.sync --indices annotation case file project
 ```
 
 #### After Syncing
 Once the sync has been run, review and commit the generated models. These should
 contain all new properties from the graph (graph indices) and all keywords should have
 the clinical normalizer applied if appropriate.
-
-### WARNING: YAML & Pre-Commit Hook
-
-Edit the YAML files as usual, then commit changes to git. A pre-commit hook will
-validate YAML and ensure it's well formatted. It is important to keep YAML file formatted
-consistently, such as using 2 whitespaces for indentation, across all revisions. This
-will make change tracking much easier.
-
-If a YAML validation issue is reported, you will need to commit again.
-
-The pre-commit hook will automatically format all new or changed YAML files. A copy of unchanged original YAML file
-is kept with `.bak` suffix. Before proceed with retrying `git commit`, please `diff` your original YAML
-and the automatically formatted one to ensure YAML formatting did not create any error.
 
 ## Use the data models
 
