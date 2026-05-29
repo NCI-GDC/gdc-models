@@ -106,4 +106,4 @@ no_proxy = "localhost,postgres,elasticsearch"
 
 [[tool.uv.index]]
 name = "nexus"
-url = "https://nexus.osdc.io/repository/pypi-gdc-releases/simple"
+url = "https://nexus.osdc.io/repository/pypi-all/simple"
