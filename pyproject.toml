@@ -1,6 +1,6 @@
 [build-system]
 build-backend = "setuptools.build_meta"
-requires = ["setuptools>=77", "wheel", "setuptools-scm[toml]>=7.0", "versionista>=1.1.0"]
+requires = ["setuptools>=80", "setuptools-scm"]
 
 [dependency-groups]
 dev = ["coverage", "elasticsearch-dsl~=7.0", "pytest", "testcontainers"]
@@ -41,14 +41,9 @@ sync = ["click", "gdcdictionary", "gdcdatamodel2"]
 
 [project.scripts]
 init_index = "gdcmodels.init_index:main"
-sync-models = "gdcmodels.sync.cli:cli"
 
 [project.urls]
 Repository = "https://github.com/NCI-GDC/gdc-models"
-
-[tool.black]
-include = '\.pyi?$'
-line-length = 95
 
 [tool.coverage.html]
 directory = "docs/htmlcov"
@@ -87,8 +82,7 @@ known-first-party = ["gdcmodels"]
 convention = "google"
 
 [tool.setuptools_scm]
-local_scheme = "versionista-local-format"
-version_scheme = "versionista-format"
+fallback_version = "0.0.0"
 
 [tool.tox]
 env_list = ["python3.10", "python3.11", "python3.12", "python3.13", "python3.14"]
@@ -104,6 +98,7 @@ commands = [
   ["coverage", "report", "-m"]
 ]
 pass_env = ["CI", "ES_*"]
+runner = "uv-venv-lock-runner"
 
 [tool.tox.env_run_base.set_env]
 NO_PROXY = "localhost,postgres,elasticsearch"
@@ -111,4 +106,4 @@ no_proxy = "localhost,postgres,elasticsearch"
 
 [[tool.uv.index]]
 name = "nexus"
-url = "https://nexus.osdc.io/repository/pypi-gdc-releases/simple"
+url = "https://nexus.osdc.io/repository/pypi-all/simple"
