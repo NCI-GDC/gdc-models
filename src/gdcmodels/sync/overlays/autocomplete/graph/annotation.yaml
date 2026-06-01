@@ -1,0 +1,19 @@
+---
+properties:
+  annotation_autocomplete:
+    fields:
+      analyzed:
+        analyzer: autocomplete_analyzed
+        search_analyzer: lowercase_keyword
+        type: text
+      lowercase:
+        analyzer: lowercase_keyword
+        type: text
+      prefix:
+        analyzer: autocomplete_prefix
+        search_analyzer: lowercase_keyword
+        type: text
+    type: keyword
+  annotation_id:
+    copy_to:
+      - annotation_autocomplete

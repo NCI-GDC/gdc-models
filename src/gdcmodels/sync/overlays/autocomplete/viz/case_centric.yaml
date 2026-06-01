@@ -1,0 +1,28 @@
+---
+properties:
+  case_autocomplete:
+    fields:
+      analyzed:
+        analyzer: autocomplete_analyzed
+        search_analyzer: lowercase_keyword
+        type: text
+      lowercase:
+        analyzer: lowercase_keyword
+        type: text
+      prefix:
+        analyzer: autocomplete_prefix
+        search_analyzer: lowercase_keyword
+        type: text
+    type: keyword
+  case_id: &copy-to
+    copy_to:
+      - case_autocomplete
+  disease_type: *copy-to
+  primary_site: *copy-to
+  project:
+    properties:
+      disease_type: *copy-to
+      name: *copy-to
+      primary_site: *copy-to
+      project_id: *copy-to
+  submitter_id: *copy-to

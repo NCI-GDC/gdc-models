@@ -1,0 +1,22 @@
+---
+properties:
+  disease_type: &copy-to
+    copy_to:
+      - project_autocomplete
+  name: *copy-to
+  primary_site: *copy-to
+  project_autocomplete:
+    fields:
+      analyzed:
+        analyzer: autocomplete_analyzed
+        search_analyzer: lowercase_keyword
+        type: text
+      lowercase:
+        analyzer: lowercase_keyword
+        type: text
+      prefix:
+        analyzer: autocomplete_prefix
+        search_analyzer: lowercase_keyword
+        type: text
+    type: keyword
+  project_id: *copy-to
