@@ -135,18 +135,6 @@ wheels = [
 ]
 
 [[package]]
-name = "click"
-version = "8.3.1"
-source = { registry = "https://nexus.osdc.io/repository/pypi-all/simple" }
-dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
-]
-sdist = { url = "https://nexus.osdc.io/repository/pypi-all/packages/click/8.3.1/click-8.3.1.tar.gz", hash = "sha256:12ff4785d337a1bb490bb7e9c2b1ee5da3112e94a8622f26a6c77f5d2fc6842a" }
-wheels = [
-    { url = "https://nexus.osdc.io/repository/pypi-all/packages/click/8.3.1/click-8.3.1-py3-none-any.whl", hash = "sha256:981153a64e25f12d547d3426c367a4857371575ee7ad18df2a6183ab0545b2a6" },
-]
-
-[[package]]
 name = "colorama"
 version = "0.4.6"
 source = { registry = "https://nexus.osdc.io/repository/pypi-all/simple" }
@@ -383,7 +371,6 @@ dependencies = [
 
 [package.optional-dependencies]
 sync = [
-    { name = "click" },
     { name = "gdcdatamodel2" },
     { name = "gdcdictionary" },
     { name = "typed-argument-parser" },
@@ -400,7 +387,6 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "backports-strenum" },
-    { name = "click", marker = "extra == 'sync'" },
     { name = "deepdiff" },
     { name = "elasticsearch", specifier = "~=7.0" },
     { name = "gdcdatamodel2", marker = "extra == 'sync'" },
