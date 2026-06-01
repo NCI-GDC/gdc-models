@@ -21,6 +21,7 @@ classifiers = [
   "Topic :: Software Development :: Libraries :: Python Modules"
 ]
 dependencies = [
+  "backports.strenum",
   "deepdiff",
   "elasticsearch~=7.0",
   "mergedeep",
