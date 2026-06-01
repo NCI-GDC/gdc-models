@@ -38,7 +38,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 
 [project.optional-dependencies]
-sync = ["click", "gdcdictionary", "gdcdatamodel2"]
+sync = ["click", "gdcdictionary", "gdcdatamodel2", "typed-argument-parser"]
 
 [project.scripts]
 init_index = "gdcmodels.init_index:main"

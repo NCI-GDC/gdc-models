@@ -1,19 +1,25 @@
-import functools
-from collections.abc import Callable, Iterable, Mapping
+from collections.abc import Iterable, Mapping
 from typing import IO, Any
 
 import yaml
 
 if yaml.__with_libyaml__:
-    load_yaml: Callable[[str | bytes | IO[str] | IO[bytes]], Any] = functools.partial(
-        yaml.load, Loader=yaml.CSafeLoader
-    )
-    dump_yaml: Callable[[Any, IO[str] | IO[bytes]], None] = functools.partial(
-        yaml.dump, Dumper=yaml.CSafeDumper
-    )
+
+    def load_yaml(stream: str | bytes | IO[str] | IO[bytes]) -> Any:
+        return yaml.load(stream, yaml.CSafeLoader)
+
+    def dump_yaml(data: Any, stream: IO[str] | IO[bytes]) -> None:
+        yaml.dump(data, stream, yaml.CSafeDumper)
+
+    def dumps_yaml(data: Any) -> str:
+        return yaml.dump(data, Dumper=yaml.CSafeDumper)
+
 else:
     load_yaml = yaml.safe_load
     dump_yaml = yaml.safe_dump
+
+    def dumps_yaml(data: Any) -> str:
+        return yaml.dump(data)
 
 
 def _expand_settings(settings: dict[str, Any]) -> dict[str, Any]:

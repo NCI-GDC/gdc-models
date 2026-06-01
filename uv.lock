@@ -295,6 +295,15 @@ wheels = [
 ]
 
 [[package]]
+name = "docstring-parser"
+version = "0.18.0"
+source = { registry = "https://nexus.osdc.io/repository/pypi-all/simple" }
+sdist = { url = "https://nexus.osdc.io/repository/pypi-all/packages/docstring-parser/0.18.0/docstring_parser-0.18.0.tar.gz", hash = "sha256:292510982205c12b1248696f44959db3cdd1740237a968ea1e2e7a900eeb2015" }
+wheels = [
+    { url = "https://nexus.osdc.io/repository/pypi-all/packages/docstring-parser/0.18.0/docstring_parser-0.18.0-py3-none-any.whl", hash = "sha256:b3fcbed555c47d8479be0796ef7e19c2670d428d72e96da63f3a40122860374b" },
+]
+
+[[package]]
 name = "elasticsearch"
 version = "7.17.13"
 source = { registry = "https://nexus.osdc.io/repository/pypi-all/simple" }
@@ -377,6 +386,7 @@ sync = [
     { name = "click" },
     { name = "gdcdatamodel2" },
     { name = "gdcdictionary" },
+    { name = "typed-argument-parser" },
 ]
 
 [package.dev-dependencies]
@@ -398,6 +408,7 @@ requires-dist = [
     { name = "mergedeep" },
     { name = "more-itertools" },
     { name = "pyyaml" },
+    { name = "typed-argument-parser", marker = "extra == 'sync'" },
     { name = "typing-extensions" },
 ]
 provides-extras = ["sync"]
@@ -983,6 +994,18 @@ wheels = [
     { url = "https://nexus.osdc.io/repository/pypi-all/packages/tomli/2.4.0/tomli-2.4.0-cp314-cp314t-win_amd64.whl", hash = "sha256:2add28aacc7425117ff6364fe9e06a183bb0251b03f986df0e78e974047571fd" },
     { url = "https://nexus.osdc.io/repository/pypi-all/packages/tomli/2.4.0/tomli-2.4.0-cp314-cp314t-win_arm64.whl", hash = "sha256:2b1e3b80e1d5e52e40e9b924ec43d81570f0e7d09d11081b797bc4692765a3d4" },
     { url = "https://nexus.osdc.io/repository/pypi-all/packages/tomli/2.4.0/tomli-2.4.0-py3-none-any.whl", hash = "sha256:1f776e7d669ebceb01dee46484485f43a4048746235e683bcdffacdf1fb4785a" },
+]
+
+[[package]]
+name = "typed-argument-parser"
+version = "1.12.0"
+source = { registry = "https://nexus.osdc.io/repository/pypi-all/simple" }
+dependencies = [
+    { name = "docstring-parser" },
+]
+sdist = { url = "https://nexus.osdc.io/repository/pypi-all/packages/typed-argument-parser/1.12.0/typed_argument_parser-1.12.0.tar.gz", hash = "sha256:cf5f7cafac869fb9627c4c90394e321c895d58872d865ad2c62e65668d259fa0" }
+wheels = [
+    { url = "https://nexus.osdc.io/repository/pypi-all/packages/typed-argument-parser/1.12.0/typed_argument_parser-1.12.0-py3-none-any.whl", hash = "sha256:9cdf26c710b9cde2992ff0763288598628ac852d9a1accf5269837cd6e24a930" },
 ]
 
 [[package]]
