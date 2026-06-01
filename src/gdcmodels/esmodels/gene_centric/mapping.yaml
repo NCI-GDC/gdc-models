@@ -55,9 +55,9 @@ _meta:
       histologic diagnosis, as described by the World Health Organization's (WHO)
       International Classification of Diseases for Oncology (ICD-O).
     genes.case.diagnoses.site_of_resection_or_biopsy: The text term used to describe
-      the anatomic site of origin, of the patient's malignant disease, as described
-      by the World Health Organization's (WHO) International Classification of Diseases
-      for Oncology (ICD-O).
+      the anatomic site of the resection or biopsy of the patient's malignant disease,
+      as described by the World Health Organization's (WHO) International Classification
+      of Diseases for Oncology (ICD-O).
     genes.case.diagnoses.submitter_id: A project-specific identifier for a node. This
       property is the calling card/nickname/alias for a unit of submission. It can
       be used in place of the uuid for identifying or recalling a node.
@@ -68,6 +68,8 @@ _meta:
     genes.case.diagnoses.treatments.submitter_id: A project-specific identifier for
       a node. This property is the calling card/nickname/alias for a unit of submission.
       It can be used in place of the uuid for identifying or recalling a node.
+    genes.case.diagnoses.treatments.treatment_type_administered: Text term that describes
+      the kind of treatment administered to a patient.
     genes.case.disease_type: The text term used to describe the type of malignant
       disease, as categorized by the World Health Organization's (WHO) International
       Classification of Diseases for Oncology (ICD-O).
@@ -301,6 +303,9 @@ properties:
               submitter_id:
                 type: keyword
               treatment_id:
+                normalizer: clinical_normalizer
+                type: keyword
+              treatment_type_administered:
                 normalizer: clinical_normalizer
                 type: keyword
             type: nested
