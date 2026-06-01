@@ -15,7 +15,7 @@ class LazyLoader(dict[constants.Index, Mapping[str, Any]]):
 
         Args:
             loader: The functionality which should be called for the index in order to load a
-                dynamic overlay when the index is access in this mapping.
+                dynamic overlay when the index is accessed in this mapping.
         """
         super().__init__()
 
@@ -52,7 +52,7 @@ class LazyYAMLLoader(dict[constants.Index, Mapping[str, Any]]):
     """A mapping of indices to their overlay which are loaded lazily from a YAML."""
 
     def __init__(self, overlay: str) -> None:
-        """Initializes an the mapping.
+        """Initializes the mapping.
 
         Args:
             overlay: The name of the overlay i.e. the name of the overlay module within

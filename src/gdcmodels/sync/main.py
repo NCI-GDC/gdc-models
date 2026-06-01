@@ -1,3 +1,5 @@
+"""A module for the main function of the sync script."""
+
 from importlib import resources
 
 import tap
@@ -6,7 +8,12 @@ from gdcmodels import constants, extraction_utils
 from gdcmodels.sync import mappings, vestigial
 
 
-def _main(indices: tuple[constants.Index, ...] = tuple(constants.Index)):
+def _main(indices: tuple[constants.Index, ...] = tuple(constants.Index)) -> None:
+    """The main functionality fo the sync script
+
+    Args:
+        indices: The indices which should be synced.
+    """
     for index in indices:
         mapping = mappings.sync(index)
         mapping_resource = index.models_dir / constants.MAPPING_FILE
