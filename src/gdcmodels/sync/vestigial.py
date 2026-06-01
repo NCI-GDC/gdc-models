@@ -20,7 +20,7 @@ class VestigialDelta(deepdiff.Delta):
         Args:
             diff: The deep diff upon which this delta is based.
         """
-        super().__init__(diff, serializer=extraction_utils.dump_yaml)
+        super().__init__(diff, serializer=extraction_utils.dumps_yaml)
 
     def dumps(self):
         # NOTE: The vestigial data is only data which must be added to the current
