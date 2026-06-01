@@ -22,25 +22,11 @@ class Models:
 
     class Graph:
         ANNOTATION = Files(
-            "gdc_from_graph/annotation/mapping.yaml",
-            "gdc_from_graph/settings.yaml",
-            "gdc_from_graph/descriptions.yaml",
+            "gdc_from_graph/annotation/mapping.yaml", "gdc_from_graph/settings.yaml"
         )
-        CASE = Files(
-            "gdc_from_graph/case/mapping.yaml",
-            "gdc_from_graph/settings.yaml",
-            "gdc_from_graph/descriptions.yaml",
-        )
-        FILE = Files(
-            "gdc_from_graph/file/mapping.yaml",
-            "gdc_from_graph/settings.yaml",
-            "gdc_from_graph/descriptions.yaml",
-        )
-        PROJECT = Files(
-            "gdc_from_graph/project/mapping.yaml",
-            "gdc_from_graph/settings.yaml",
-            "gdc_from_graph/descriptions.yaml",
-        )
+        CASE = Files("gdc_from_graph/case/mapping.yaml", "gdc_from_graph/settings.yaml")
+        FILE = Files("gdc_from_graph/file/mapping.yaml", "gdc_from_graph/settings.yaml")
+        PROJECT = Files("gdc_from_graph/project/mapping.yaml", "gdc_from_graph/settings.yaml")
 
     class Viz:
         CASE_CENTRIC = Files("case_centric/mapping.yaml", "case_centric/settings.yaml")

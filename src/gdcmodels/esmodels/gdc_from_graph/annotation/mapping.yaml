@@ -1,4 +1,52 @@
 ---
+_meta:
+  arrays: []
+  descriptions:
+    annotations.category: Top level characterization of the annotation.
+    annotations.classification: Top level classification of the annotation.
+    annotations.created_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.id: A 128-bit identifier. Depending on the mechanism used to generate
+      it, it is either guaranteed to be different from all other UUIDs/GUIDs generated
+      until 3400 AD or extremely likely to be different. Its relatively small size
+      lends itself well to sorting, ordering, and hashing of all sorts, storing in
+      databases, simple allocation, and ease of programming in general.
+    annotations.legacy_created_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.legacy_updated_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    annotations.notes: Open entry for any further description or characterization
+      of the data.
+    annotations.project.dbgap_accession_number: The dbgap accession number for the
+      project.
+    annotations.project.disease_type: Full name for the project
+    annotations.project.id: UUID for the project
+    annotations.project.intended_release_date: Tracks a Project's intended release
+      date.
+    annotations.project.name: Display name for the project
+    annotations.project.primary_site: Primary site for the project
+    annotations.project.program.dbgap_accession_number: The dbgap accession number
+      provided for the program.
+    annotations.project.program.id: A 128-bit identifier. Depending on the mechanism
+      used to generate it, it is either guaranteed to be different from all other
+      UUIDs/GUIDs generated until 3400 AD or extremely likely to be different. Its
+      relatively small size lends itself well to sorting, ordering, and hashing of
+      all sorts, storing in databases, simple allocation, and ease of programming
+      in general.
+    annotations.project.program.name: Full name/title of the program.
+    annotations.project.releasable: A project can only be released by the user when
+      `releasable` is true.
+    annotations.project.released: To release a project is to tell the GDC to include
+      all submitted entities in the next GDC index.
+    annotations.project.state: The possible states a project can be in.  All but `open`
+      are equivalent to some type of locked state.
+    annotations.state: The current state of the object.
+    annotations.status: Status of the annotation.
+    annotations.submitter_id: A project-specific identifier for a node. This property
+      is the calling card/nickname/alias for a unit of submission. It can be used
+      in place of the uuid for identifying or recalling a node.
+    annotations.updated_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
 _size:
   enabled: true
 _source:

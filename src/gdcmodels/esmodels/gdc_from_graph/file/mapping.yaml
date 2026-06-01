@@ -1,4 +1,2596 @@
 ---
+_meta:
+  arrays:
+    - analysis.input_files
+    - analysis.metadata.read_groups
+    - analysis.metadata.read_groups.read_group_qcs
+    - annotations
+    - cases
+    - cases.annotations
+    - cases.diagnoses
+    - cases.diagnoses.annotations
+    - cases.diagnoses.pathology_details
+    - cases.diagnoses.pathology_details.tumor_level_prostate
+    - cases.diagnoses.sites_of_involvement
+    - cases.diagnoses.treatments
+    - cases.diagnoses.treatments.route_of_administration
+    - cases.diagnoses.treatments.treatment_anatomic_sites
+    - cases.diagnoses.weiss_assessment_findings
+    - cases.exposures
+    - cases.exposures.chemical_exposure_type
+    - cases.exposures.occupation_type
+    - cases.family_histories
+    - cases.follow_ups
+    - cases.follow_ups.imaging_anatomic_site
+    - cases.follow_ups.molecular_tests
+    - cases.follow_ups.other_clinical_attributes
+    - cases.follow_ups.other_clinical_attributes.comorbidities
+    - cases.follow_ups.other_clinical_attributes.risk_factors
+    - cases.follow_ups.other_clinical_attributes.viral_hepatitis_serology_tests
+    - cases.samples
+    - cases.samples.annotations
+    - cases.samples.portions
+    - cases.samples.portions.analytes
+    - cases.samples.portions.analytes.aliquots
+    - cases.samples.portions.analytes.aliquots.annotations
+    - cases.samples.portions.analytes.annotations
+    - cases.samples.portions.annotations
+    - cases.samples.portions.slides
+    - cases.samples.portions.slides.annotations
+    - downstream_analyses
+    - downstream_analyses.output_files
+    - index_files
+    - metadata_files
+  descriptions:
+    files.analysis.created_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.analysis.id: A 128-bit identifier. Depending on the mechanism used to generate
+      it, it is either guaranteed to be different from all other UUIDs/GUIDs generated
+      until 3400 AD or extremely likely to be different. Its relatively small size
+      lends itself well to sorting, ordering, and hashing of all sorts, storing in
+      databases, simple allocation, and ease of programming in general.
+    files.analysis.input_files.average_base_quality: Average base quality collected
+      from samtools.
+    files.analysis.input_files.average_insert_size: Average insert size collected
+      from samtools.
+    files.analysis.input_files.average_read_length: Average read length collected
+      from samtools.
+    files.analysis.input_files.cancer_dna_fraction: Fraction of cancer DNA in the
+      tumor tissue.
+    files.analysis.input_files.channel: The corresponding color channel used to generate
+      this data file.
+    files.analysis.input_files.chip_id: User specified identifier for the chip used
+      to perform the methylation microarray.
+    files.analysis.input_files.chip_position: User specified identifier for the specific
+      position on the chip that the sample was loaded into to perform the methylation
+      microarray.
+    files.analysis.input_files.contamination: Fraction of reads coming from cross-sample
+      contamination collected from GATK4.
+    files.analysis.input_files.contamination_error: Estimation error of cross-sample
+      contamination collected from GATK4.
+    files.analysis.input_files.created_datetime: A combination of date and time of
+      day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.analysis.input_files.data_category: Broad categorization of the contents
+      of the data file.
+    files.analysis.input_files.data_format: Format of the data files.
+    files.analysis.input_files.data_type: Specific content type of the data file.
+    files.analysis.input_files.error_type: Type of error for the data file object.
+    files.analysis.input_files.experimental_strategy: The sequencing strategy used
+      to generate the data file.
+    files.analysis.input_files.file_name: The name (or part of a name) of a file (of
+      any type).
+    files.analysis.input_files.file_size: The size of the data file (object) in bytes.
+    files.analysis.input_files.genome_doubling: Number of genome doubling events.
+    files.analysis.input_files.id: A 128-bit identifier. Depending on the mechanism
+      used to generate it, it is either guaranteed to be different from all other
+      UUIDs/GUIDs generated until 3400 AD or extremely likely to be different. Its
+      relatively small size lends itself well to sorting, ordering, and hashing of
+      all sorts, storing in databases, simple allocation, and ease of programming
+      in general.
+    files.analysis.input_files.imaging_date: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.analysis.input_files.magnification: Magnification used to capture the image.
+    files.analysis.input_files.md5sum: The 128-bit hash value expressed as a 32 digit
+      hexadecimal number (in lower case) used as a file's digital fingerprint.
+    files.analysis.input_files.mean_coverage: Mean coverage for whole genome sequencing,
+      or mean target coverage for whole exome and targeted sequencing, collected from
+      Picard Tools.
+    files.analysis.input_files.msi_score: Numeric score denoting the aligned reads
+      file's MSI score from MSIsensor.
+    files.analysis.input_files.msi_status: MSIsensor determination of either microsatellite
+      stability or instability.
+    files.analysis.input_files.pairs_on_diff_chr: Pairs on different chromosomes collected
+      from samtools.
+    files.analysis.input_files.plate_name: User specified identifier of the plate
+      used to prepare the sample for analysis.
+    files.analysis.input_files.plate_well: User specified identifier for the specific
+      well of the plate used to prepare the sample for analysis.
+    files.analysis.input_files.platform: Name of the platform used to obtain data.
+    files.analysis.input_files.proc_internal: Internal data processing flag
+    files.analysis.input_files.proportion_base_mismatch: Proportion of mismatched
+      bases collected from samtools.
+    files.analysis.input_files.proportion_coverage_10x: Proportion of all reference
+      bases for whole genome sequencing, or targeted bases for whole exome and targeted
+      sequencing, that achieves 10X or greater coverage from Picard Tools.
+    files.analysis.input_files.proportion_coverage_30x: Proportion of all reference
+      bases for whole genome sequencing, or targeted bases for whole exome and targeted
+      sequencing, that achieves 30X or greater coverage from Picard Tools.
+    files.analysis.input_files.proportion_reads_duplicated: Proportion of duplicated
+      reads collected from samtools.
+    files.analysis.input_files.proportion_reads_mapped: Proportion of mapped reads
+      collected from samtools.
+    files.analysis.input_files.proportion_targets_no_coverage: Proportion of targets
+      that did not reach 1X coverage over any base from Picard Tools.
+    files.analysis.input_files.read_pair_number: Denotes whether a submitted FASTQ
+      file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
+    files.analysis.input_files.revision: The revision of this archive in the DCC.
+    files.analysis.input_files.stain_type: The text term used to describe the type
+      of stain used on a slide.
+    files.analysis.input_files.state: The current state of the object.
+    files.analysis.input_files.state_comment: Optional comment about why the file
+      is in the current state, mainly for invalid state.
+    files.analysis.input_files.subclonal_genome_fraction: Fraction of subclonal genome
+      in the tumor tissue.
+    files.analysis.input_files.submitter_id: A project-specific identifier for a node.
+      This property is the calling card/nickname/alias for a unit of submission. It
+      can be used in place of the uuid for identifying or recalling a node.
+    files.analysis.input_files.tmb: Tumor Mutational Burden (TMB), reported in mutations
+      per megabase (mut/Mb), calculated within the targeted capture region or across
+      the whole genome for WGS data.
+    files.analysis.input_files.tmb_exonic: Tumor Mutational Burden (TMB), reported
+      in mutations per megabase (mut/Mb), calculated within the intersect of the targeted
+      capture region and exonic region.
+    files.analysis.input_files.tmb_nonsynonymous: Tumor Mutational Burden (TMB) of
+      nonsynonymous mutations only, reported in mutations per megabase (mut/Mb), calculated
+      within the targeted capture region or across the whole genome for WGS data.
+    files.analysis.input_files.tmb_nonsynonymous_exonic: Tumor Mutational Burden (TMB)
+      of nonsynonymous mutations only, reported in mutations per megabase (mut/Mb),
+      calculated within the intersect of the targeted capture region and exonic region.
+    files.analysis.input_files.total_reads: Total number of reads collected from samtools.
+    files.analysis.input_files.tumor_ploidy: Numeric value used to describe the number
+      of sets of chromosomes in a cell or an organism. For example, haploid means
+      one set and diploid means two sets.
+    files.analysis.input_files.tumor_purity: Numeric value used to describe the ratio
+      of tumor cells compared to total cells present in a sample.
+    files.analysis.input_files.updated_datetime: A combination of date and time of
+      day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.analysis.input_files.wgs_coverage: Range of coverage values for WGS aligned
+      reads. Each range is non-inclusive to the lower bound.
+    files.analysis.metadata.read_groups.adapter_name: Name of the sequencing adapter.
+    files.analysis.metadata.read_groups.adapter_sequence: Base sequence of the sequencing
+      adapter.
+    files.analysis.metadata.read_groups.base_caller_name: Name of the base caller.
+    files.analysis.metadata.read_groups.base_caller_version: Version of the base caller.
+    files.analysis.metadata.read_groups.chipseq_antibody: The antibody used in the
+      ChIP-Seq assay.
+    files.analysis.metadata.read_groups.chipseq_target: Antibody target of the ChIP-Seq
+      assay
+    files.analysis.metadata.read_groups.created_datetime: A combination of date and
+      time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.analysis.metadata.read_groups.days_to_sequencing: Number of days between
+      the date used for index and the date the read group was sequenced.
+    files.analysis.metadata.read_groups.experiment_name: Submitter-defined name for
+      the experiment.
+    files.analysis.metadata.read_groups.flow_cell_barcode: Flow cell barcode. Wrong
+      or missing information may affect analysis results.
+    files.analysis.metadata.read_groups.fragment_maximum_length: Maximum length of
+      the sequenced fragments (e.g., as predicted by Agilent Bioanalyzer).
+    files.analysis.metadata.read_groups.fragment_mean_length: Mean length of the sequenced
+      fragments (e.g., as predicted by Agilent Bioanalyzer).
+    files.analysis.metadata.read_groups.fragment_minimum_length: Minimum length of
+      the sequenced fragments (e.g., as predicted by Agilent Bioanalyzer).
+    files.analysis.metadata.read_groups.fragment_standard_deviation_length: Standard
+      deviation of the sequenced fragments length (e.g., as predicted by Agilent Bioanalyzer).
+    files.analysis.metadata.read_groups.fragmentation_enzyme: The restriction enzyme
+      used for nucleotide fragmentation.
+    files.analysis.metadata.read_groups.id: A 128-bit identifier. Depending on the
+      mechanism used to generate it, it is either guaranteed to be different from
+      all other UUIDs/GUIDs generated until 3400 AD or extremely likely to be different.
+      Its relatively small size lends itself well to sorting, ordering, and hashing
+      of all sorts, storing in databases, simple allocation, and ease of programming
+      in general.
+    files.analysis.metadata.read_groups.includes_spike_ins: Spike-in included?
+    files.analysis.metadata.read_groups.instrument_model: Specific model of sequencing
+      instrument used.
+    files.analysis.metadata.read_groups.is_paired_end: Are the reads paired end?
+    files.analysis.metadata.read_groups.lane_number: The basic machine unit for sequencing.
+      For Illumina machines, this reflects the physical lane number. Wrong or missing
+      information may affect analysis results.
+    files.analysis.metadata.read_groups.library_name: Name of the library.
+    files.analysis.metadata.read_groups.library_preparation_kit_catalog_number: Catalog
+      of Library Preparation Kit
+    files.analysis.metadata.read_groups.library_preparation_kit_name: Name of Library
+      Preparation Kit
+    files.analysis.metadata.read_groups.library_preparation_kit_vendor: Vendor of
+      Library Preparation Kit
+    files.analysis.metadata.read_groups.library_preparation_kit_version: Version of
+      Library Preparation Kit
+    files.analysis.metadata.read_groups.library_selection: Library Selection Method
+    files.analysis.metadata.read_groups.library_strand: Library stranded-ness.
+    files.analysis.metadata.read_groups.library_strategy: Library strategy.
+    files.analysis.metadata.read_groups.multiplex_barcode: The barcode/index sequence
+      used. Wrong or missing information may affect analysis results.
+    files.analysis.metadata.read_groups.number_expect_cells: Expected number of recovered
+      cells in droplet-based single-cell libraries.
+    files.analysis.metadata.read_groups.platform: Name of the platform used to obtain
+      data.
+    files.analysis.metadata.read_groups.read_group_name: Read Group Name
+    files.analysis.metadata.read_groups.read_group_qcs.adapter_content: State classification
+      given by FASTQC for the metric. Metric specific details about the states are
+      available on their website.
+    files.analysis.metadata.read_groups.read_group_qcs.basic_statistics: State classification
+      given by FASTQC for the metric. Metric specific details about the states are
+      available on their website.
+    files.analysis.metadata.read_groups.read_group_qcs.created_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.analysis.metadata.read_groups.read_group_qcs.encoding: The version of ASCII
+      used to encode the read group quality control data.
+    files.analysis.metadata.read_groups.read_group_qcs.fastq_name: The name (or part
+      of a name) of a file (of any type).
+    files.analysis.metadata.read_groups.read_group_qcs.id: A 128-bit identifier. Depending
+      on the mechanism used to generate it, it is either guaranteed to be different
+      from all other UUIDs/GUIDs generated until 3400 AD or extremely likely to be
+      different. Its relatively small size lends itself well to sorting, ordering,
+      and hashing of all sorts, storing in databases, simple allocation, and ease
+      of programming in general.
+    files.analysis.metadata.read_groups.read_group_qcs.kmer_content: State classification
+      given by FASTQC for the metric. Metric specific details about the states are
+      available on their website.
+    files.analysis.metadata.read_groups.read_group_qcs.overrepresented_sequences: State
+      classification given by FASTQC for the metric. Metric specific details about
+      the states are available on their website.
+    files.analysis.metadata.read_groups.read_group_qcs.per_base_n_content: State classification
+      given by FASTQC for the metric. Metric specific details about the states are
+      available on their website.
+    files.analysis.metadata.read_groups.read_group_qcs.per_base_sequence_content: State
+      classification given by FASTQC for the metric. Metric specific details about
+      the states are available on their website.
+    files.analysis.metadata.read_groups.read_group_qcs.per_base_sequence_quality: State
+      classification given by FASTQC for the metric. Metric specific details about
+      the states are available on their website.
+    files.analysis.metadata.read_groups.read_group_qcs.per_sequence_gc_content: State
+      classification given by FASTQC for the metric. Metric specific details about
+      the states are available on their website.
+    files.analysis.metadata.read_groups.read_group_qcs.per_sequence_quality_score: State
+      classification given by FASTQC for the metric. Metric specific details about
+      the states are available on their website.
+    files.analysis.metadata.read_groups.read_group_qcs.per_tile_sequence_quality: State
+      classification given by FASTQC for the metric. Metric specific details about
+      the states are available on their website.
+    files.analysis.metadata.read_groups.read_group_qcs.percent_gc_content: The overall
+      %GC of all bases in all sequences.
+    files.analysis.metadata.read_groups.read_group_qcs.sequence_duplication_levels: State
+      classification given by FASTQC for the metric. Metric specific details about
+      the states are available on their website.
+    files.analysis.metadata.read_groups.read_group_qcs.sequence_length_distribution: State
+      classification given by FASTQC for the metric. Metric specific details about
+      the states are available on their website.
+    files.analysis.metadata.read_groups.read_group_qcs.state: The current state of
+      the object.
+    files.analysis.metadata.read_groups.read_group_qcs.submitter_id: A project-specific
+      identifier for a node. This property is the calling card/nickname/alias for
+      a unit of submission. It can be used in place of the uuid for identifying or
+      recalling a node.
+    files.analysis.metadata.read_groups.read_group_qcs.total_sequences: The total
+      number of nucleotide sequences processed.
+    files.analysis.metadata.read_groups.read_group_qcs.updated_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.analysis.metadata.read_groups.read_group_qcs.workflow_end_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.analysis.metadata.read_groups.read_group_qcs.workflow_link: A URL-formatted
+      web address for a data analysis workflow.
+    files.analysis.metadata.read_groups.read_group_qcs.workflow_start_datetime: A
+      combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.analysis.metadata.read_groups.read_group_qcs.workflow_type: The name of
+      the workflow used to process and/or analyze a data set.
+    files.analysis.metadata.read_groups.read_group_qcs.workflow_version: The version
+      of the workflow used in data analysis.
+    files.analysis.metadata.read_groups.read_length: The length of the reads.
+    files.analysis.metadata.read_groups.rin: A numerical assessment of the integrity
+      of RNA based on the entire electrophoretic trace of the RNA sample including
+      the presence or absence of degradation products.
+    files.analysis.metadata.read_groups.sequencing_center: Name of the center that
+      provided the sequence files.
+    files.analysis.metadata.read_groups.sequencing_date: A combination of date and
+      time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.analysis.metadata.read_groups.single_cell_library: Library preparation strategy
+      that distinguishes different single-cell assays.
+    files.analysis.metadata.read_groups.size_selection_range: Range of size selection.
+    files.analysis.metadata.read_groups.spike_ins_concentration: Spike in concentration.
+    files.analysis.metadata.read_groups.spike_ins_fasta: Name of the FASTA file that
+      contains the spike-in sequences.
+    files.analysis.metadata.read_groups.state: The current state of the object.
+    files.analysis.metadata.read_groups.submitter_id: A project-specific identifier
+      for a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    files.analysis.metadata.read_groups.target_capture_kit: Description that can uniquely
+      identify a target capture kit. Suggested value is a combination of vendor, kit
+      name, and kit version.
+    files.analysis.metadata.read_groups.target_capture_kit_catalog_number: Catalog
+      of Target Capture Kit.
+    files.analysis.metadata.read_groups.target_capture_kit_name: Name of Target Capture
+      Kit.
+    files.analysis.metadata.read_groups.target_capture_kit_target_region: Target Capture
+      Kit BED file.
+    files.analysis.metadata.read_groups.target_capture_kit_vendor: Vendor of Target
+      Capture Kit.
+    files.analysis.metadata.read_groups.target_capture_kit_version: Version of Target
+      Capture Kit.
+    files.analysis.metadata.read_groups.to_trim_adapter_sequence: Does the user suggest
+      adapter trimming?
+    files.analysis.metadata.read_groups.updated_datetime: A combination of date and
+      time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.analysis.state: The current state of the object.
+    files.analysis.submitter_id: A project-specific identifier for a node. This property
+      is the calling card/nickname/alias for a unit of submission. It can be used
+      in place of the uuid for identifying or recalling a node.
+    files.analysis.updated_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.analysis.workflow_end_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.analysis.workflow_link: A URL-formatted web address for a data analysis
+      workflow.
+    files.analysis.workflow_start_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.analysis.workflow_type: The name of the workflow used to process and/or
+      analyze a data set.
+    files.analysis.workflow_version: The version of the workflow used in data analysis.
+    files.annotations.category: Top level characterization of the annotation.
+    files.annotations.classification: Top level classification of the annotation.
+    files.annotations.created_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.annotations.creator: Name of the person or entity responsible for the creation
+      of the annotation.
+    files.annotations.id: A 128-bit identifier. Depending on the mechanism used to
+      generate it, it is either guaranteed to be different from all other UUIDs/GUIDs
+      generated until 3400 AD or extremely likely to be different. Its relatively
+      small size lends itself well to sorting, ordering, and hashing of all sorts,
+      storing in databases, simple allocation, and ease of programming in general.
+    files.annotations.legacy_created_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.annotations.legacy_updated_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.annotations.notes: Open entry for any further description or characterization
+      of the data.
+    files.annotations.state: The current state of the object.
+    files.annotations.status: Status of the annotation.
+    files.annotations.submitter_id: A project-specific identifier for a node. This
+      property is the calling card/nickname/alias for a unit of submission. It can
+      be used in place of the uuid for identifying or recalling a node.
+    files.annotations.updated_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.archive.created_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.archive.data_category: Broad categorization of the contents of the data
+      file.
+    files.archive.data_format: Format of the data files.
+    files.archive.data_type: Specific content type of the data file.
+    files.archive.error_type: Type of error for the data file object.
+    files.archive.file_name: The name (or part of a name) of a file (of any type).
+    files.archive.file_size: The size of the data file (object) in bytes.
+    files.archive.id: A 128-bit identifier. Depending on the mechanism used to generate
+      it, it is either guaranteed to be different from all other UUIDs/GUIDs generated
+      until 3400 AD or extremely likely to be different. Its relatively small size
+      lends itself well to sorting, ordering, and hashing of all sorts, storing in
+      databases, simple allocation, and ease of programming in general.
+    files.archive.md5sum: The 128-bit hash value expressed as a 32 digit hexadecimal
+      number (in lower case) used as a file's digital fingerprint.
+    files.archive.revision: The revision of this archive in the DCC.
+    files.archive.state: The current state of the object.
+    files.archive.state_comment: Optional comment about why the file is in the current
+      state, mainly for invalid state.
+    files.archive.submitter_id: A project-specific identifier for a node. This property
+      is the calling card/nickname/alias for a unit of submission. It can be used
+      in place of the uuid for identifying or recalling a node.
+    files.archive.updated_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.average_base_quality: Average base quality collected from samtools.
+    files.average_insert_size: Average insert size collected from samtools.
+    files.average_read_length: Average read length collected from samtools.
+    files.cancer_dna_fraction: Fraction of cancer DNA in the tumor tissue.
+    files.cases.annotations.category: Top level characterization of the annotation.
+    files.cases.annotations.classification: Top level classification of the annotation.
+    files.cases.annotations.created_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.annotations.creator: Name of the person or entity responsible for
+      the creation of the annotation.
+    files.cases.annotations.id: A 128-bit identifier. Depending on the mechanism used
+      to generate it, it is either guaranteed to be different from all other UUIDs/GUIDs
+      generated until 3400 AD or extremely likely to be different. Its relatively
+      small size lends itself well to sorting, ordering, and hashing of all sorts,
+      storing in databases, simple allocation, and ease of programming in general.
+    files.cases.annotations.legacy_created_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.annotations.legacy_updated_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.annotations.notes: Open entry for any further description or characterization
+      of the data.
+    files.cases.annotations.state: The current state of the object.
+    files.cases.annotations.status: Status of the annotation.
+    files.cases.annotations.submitter_id: A project-specific identifier for a node.
+      This property is the calling card/nickname/alias for a unit of submission. It
+      can be used in place of the uuid for identifying or recalling a node.
+    files.cases.annotations.updated_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.consent_type: The text term used to describe the type of consent obtain
+      from the subject for participation in the study.
+    files.cases.created_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.days_to_consent: Number of days between the date used for index and
+      the date the subject consent was obtained for participation in the study.
+    files.cases.days_to_lost_to_followup: The number of days between the date used
+      for index and to the date the patient was lost to follow-up.
+    files.cases.demographic.age_at_index: The patient's age (in years) on the reference
+      or anchor date used during date obfuscation.
+    files.cases.demographic.age_is_obfuscated: The age or other properties related
+      to the patient's age have been modified for compliance reasons. The actual age
+      may differ from what was reported in order to comply with the Health Insurance
+      Portability and Accountability Act (HIPAA).
+    files.cases.demographic.cause_of_death: Text term to identify the cause of death
+      for a patient.
+    files.cases.demographic.cause_of_death_source: The text term used to describe
+      the source used to determine the patient's cause of death.
+    files.cases.demographic.country_of_birth: The name of the country in which the
+      patient is born.
+    files.cases.demographic.country_of_residence_at_enrollment: The text term used
+      to describe the patient's country of residence at the time they were enrolled
+      in the study.
+    files.cases.demographic.created_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.demographic.days_to_birth: Number of days between the date used for
+      index and the date from a person's date of birth represented as a calculated
+      negative number of days.
+    files.cases.demographic.days_to_death: Number of days between the date used for
+      index and the date from a person's date of death represented as a calculated
+      number of days.
+    files.cases.demographic.education_level: The years of schooling completed in graded
+      public, private, or parochial schools, and in colleges, universities, or professional
+      schools.
+    files.cases.demographic.ethnicity: An individual's self-described social and cultural
+      grouping, specifically whether an individual describes themselves as Hispanic
+      or Latino. The provided values are based on the categories defined by the U.S.
+      Office of Management and Business and used by the U.S. Census Bureau.
+    files.cases.demographic.gender: 'Text designations that identify gender. Gender
+      is described as the assemblage of properties that distinguish people on the
+      basis of their societal roles. [Explanatory Comment 1: Identification of gender
+      is based upon self-report and may come from a form, questionnaire, interview,
+      etc.]'
+    files.cases.demographic.id: A 128-bit identifier. Depending on the mechanism used
+      to generate it, it is either guaranteed to be different from all other UUIDs/GUIDs
+      generated until 3400 AD or extremely likely to be different. Its relatively
+      small size lends itself well to sorting, ordering, and hashing of all sorts,
+      storing in databases, simple allocation, and ease of programming in general.
+    files.cases.demographic.marital_status: A demographic parameter indicating a person's
+      current conjugal status.
+    files.cases.demographic.occupation_duration_years: The number of years a patient
+      worked in a specific occupation.
+    files.cases.demographic.population_group: A group of individuals united by a common
+      factor (e.g., geographic location, ethnicity, disease, age, sex).
+    files.cases.demographic.race: An arbitrary classification of a taxonomic group
+      that is a division of a species. It usually arises as a consequence of geographical
+      isolation within a species and is characterized by shared heredity, physical
+      attributes and behavior, and in the case of humans, by common history, nationality,
+      or geographic distribution. The provided values are based on the categories
+      defined by the U.S. Office of Management and Business and used by the U.S. Census
+      Bureau.
+    files.cases.demographic.sex_at_birth: A textual description of a person's sex
+      at birth.
+    files.cases.demographic.state: The current state of the object.
+    files.cases.demographic.submitter_id: A project-specific identifier for a node.
+      This property is the calling card/nickname/alias for a unit of submission. It
+      can be used in place of the uuid for identifying or recalling a node.
+    files.cases.demographic.updated_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.demographic.vital_status: The survival state of the person registered
+      on the protocol.
+    files.cases.demographic.year_of_birth: Numeric value to represent the calendar
+      year in which an individual was born.
+    files.cases.demographic.year_of_death: Numeric value to represent the year of
+      the death of an individual.
+    files.cases.diagnoses.adrenal_hormone: Indicates the presence of the adrenal hormone.
+      The adrenal hormone is made from cholesterol and protein produced by the adrenal
+      glands and regulate electrolyte balance, blood pressure, inflammation, blood
+      sugar balance, and immune system control.
+    files.cases.diagnoses.age_at_diagnosis: Age at the time of diagnosis expressed
+      in number of days since birth.
+    files.cases.diagnoses.ajcc_clinical_m: Extent of the distant metastasis for the
+      cancer based on evidence obtained from clinical assessment parameters determined
+      prior to treatment.
+    files.cases.diagnoses.ajcc_clinical_n: Extent of the regional lymph node involvement
+      for the cancer based on evidence obtained from clinical assessment parameters
+      determined prior to treatment.
+    files.cases.diagnoses.ajcc_clinical_stage: Stage group determined from clinical
+      information on the tumor (T), regional node (N) and metastases (M) and by grouping
+      cases with similar prognosis for cancer.
+    files.cases.diagnoses.ajcc_clinical_t: Extent of the primary cancer based on evidence
+      obtained from clinical assessment parameters determined prior to treatment.
+    files.cases.diagnoses.ajcc_pathologic_m: Code to represent the defined absence
+      or presence of distant spread or metastases (M) to locations via vascular channels
+      or lymphatics beyond the regional lymph nodes, using criteria established by
+      the American Joint Committee on Cancer (AJCC).
+    files.cases.diagnoses.ajcc_pathologic_n: The codes that represent the stage of
+      cancer based on the nodes present (N stage) according to criteria based on multiple
+      editions of the AJCC's Cancer Staging Manual.
+    files.cases.diagnoses.ajcc_pathologic_stage: The extent of a cancer, especially
+      whether the disease has spread from the original site to other parts of the
+      body based on AJCC staging criteria.
+    files.cases.diagnoses.ajcc_pathologic_t: Code of pathological T (primary tumor)
+      to define the size or contiguous extension of the primary tumor (T), using staging
+      criteria from the American Joint Committee on Cancer (AJCC).
+    files.cases.diagnoses.ajcc_serum_tumor_markers: A laboratory test result in which
+      markers for testicular cancer are tested in a blood sample for staging purposes.
+    files.cases.diagnoses.ajcc_staging_system_edition: The text term used to describe
+      the version or edition of the American Joint Committee on Cancer Staging Handbooks,
+      a publication by the group formed for the purpose of developing a system of
+      staging for cancer that is acceptable to the American medical profession and
+      is compatible with other accepted classifications.
+    files.cases.diagnoses.ann_arbor_b_symptoms: Text term to signify whether lymphoma
+      B-symptoms are present as noted in the patient's medical record.
+    files.cases.diagnoses.ann_arbor_b_symptoms_described: Text describing the specific
+      lymphoma B-symptoms present.
+    files.cases.diagnoses.ann_arbor_clinical_stage: The text term used to describe
+      the clinical classification of lymphoma, as defined by the Ann Arbor Lymphoma
+      Staging System.
+    files.cases.diagnoses.ann_arbor_extranodal_involvement: Indicator that identifies
+      whether a patient with malignant lymphoma has lymphomatous involvement of an
+      extranodal site.
+    files.cases.diagnoses.ann_arbor_pathologic_stage: The text term used to describe
+      the pathologic classification of lymphoma, as defined by the Ann Arbor Lymphoma
+      Staging System.
+    files.cases.diagnoses.annotations.category: Top level characterization of the
+      annotation.
+    files.cases.diagnoses.annotations.classification: Top level classification of
+      the annotation.
+    files.cases.diagnoses.annotations.created_datetime: A combination of date and
+      time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.diagnoses.annotations.creator: Name of the person or entity responsible
+      for the creation of the annotation.
+    files.cases.diagnoses.annotations.id: A 128-bit identifier. Depending on the mechanism
+      used to generate it, it is either guaranteed to be different from all other
+      UUIDs/GUIDs generated until 3400 AD or extremely likely to be different. Its
+      relatively small size lends itself well to sorting, ordering, and hashing of
+      all sorts, storing in databases, simple allocation, and ease of programming
+      in general.
+    files.cases.diagnoses.annotations.legacy_created_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.diagnoses.annotations.legacy_updated_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.diagnoses.annotations.notes: Open entry for any further description
+      or characterization of the data.
+    files.cases.diagnoses.annotations.state: The current state of the object.
+    files.cases.diagnoses.annotations.status: Status of the annotation.
+    files.cases.diagnoses.annotations.submitter_id: A project-specific identifier
+      for a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    files.cases.diagnoses.annotations.updated_datetime: A combination of date and
+      time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.diagnoses.best_overall_response: The best improvement achieved throughout
+      the entire course of protocol treatment.
+    files.cases.diagnoses.burkitt_lymphoma_clinical_variant: Burkitt's lymphoma categorization
+      based on clinical features that differ from other forms of the same disease.
+    files.cases.diagnoses.calgb_risk_group: A classification strategy for Acute Myeloid
+      Leukemia (AML) developed by the cancer research cooperative group Cancer And
+      Leukemia Group B that assigns a rating based on the cytogenetic and molecular
+      features of a particular disease.
+    files.cases.diagnoses.cancer_detection_method: The method used to detect disease.
+    files.cases.diagnoses.child_pugh_classification: The text term used to describe
+      the classification used in the prognosis of chronic liver disease, mainly cirrhosis.
+    files.cases.diagnoses.clark_level: A morphologic finding indicating the cutaneous
+      melanoma depth of invasion into the dermis and subcutaneous tissue.
+    files.cases.diagnoses.classification_of_tumor: Text that describes the kind of
+      disease present in the tumor specimen as related to a specific timepoint.
+    files.cases.diagnoses.cog_liver_stage: The text term used to describe the staging
+      classification of liver tumors, as defined by the Children's Oncology Group
+      (COG). This staging system specifically describes the extent of the primary
+      tumor prior to treatment.
+    files.cases.diagnoses.cog_neuroblastoma_risk_group: Text term that represents
+      the categorization of patients on the basis of prognostic factors per a system
+      developed by Children's Oncology Group (COG). Risk level is used to assign treatment
+      intensity.
+    files.cases.diagnoses.cog_renal_stage: The text term used to describe the staging
+      classification of renal tumors, as defined by the Children's Oncology Group
+      (COG).
+    files.cases.diagnoses.cog_rhabdomyosarcoma_risk_group: Text term used to describe
+      the classification of rhabdomyosarcoma, as defined by the Children's Oncology
+      Group (COG).
+    files.cases.diagnoses.contiguous_organ_invaded: The organ or contiguous site the
+      disease migrated to from the primary site.
+    files.cases.diagnoses.created_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.diagnoses.days_to_best_overall_response: Number of days between the
+      date used for index and the date of the patient was thought to have the best
+      overall response to their disease.
+    files.cases.diagnoses.days_to_diagnosis: Number of days between the date used
+      for index and the date the patient was diagnosed with the malignant disease.
+    files.cases.diagnoses.days_to_last_follow_up: Time interval from the date of last
+      follow up to the date of initial pathologic diagnosis, represented as a calculated
+      number of days.
+    files.cases.diagnoses.days_to_last_known_disease_status: Number of days between
+      the date used for index and the date the patient's disease status was known.
+    files.cases.diagnoses.days_to_recurrence: Number of days between the date used
+      for index and the date the patient's disease recurred.
+    files.cases.diagnoses.diagnosis_is_primary_disease: Indicates whether this specific
+      diagnosis represents the disease that was the primary focus of the study. Additionally,
+      this diagnosis is reflected at the case level, which is captured using the case.disease_type
+      property.
+    files.cases.diagnoses.double_expressor_lymphoma: An immunohistochemical finding
+      indicating the presence of double expression of MYC and BCL2 proteins in the
+      neoplastic cells of a tumor sample.
+    files.cases.diagnoses.double_hit_lymphoma: A rare B-cell non-Hodgkin lymphoma
+      that is characterized by the abnormal rearrangement of two genes, MYC gene and
+      either BCL2 or BCL6 genes. Patients with this type of lymphoma usually respond
+      poorly to standard treatments and have a poor prognosis.
+    files.cases.diagnoses.eln_risk_classification: A recommended risk stratification
+      system used to provide prognostic information in AML patients undergoing chemotherapy
+      as well as allogeneic hematopoietic stem cell transplantation.
+    files.cases.diagnoses.enneking_msts_grade: The text term used to describe the
+      surgical grade of the musculoskeletal sarcoma, using the Enneking staging system
+      approved by the Musculoskeletal Tumor Society (MSTS).
+    files.cases.diagnoses.enneking_msts_metastasis: Text term and code that represents
+      the metastatic stage of the musculoskeletal sarcoma, using the Enneking staging
+      system approved by the Musculoskeletal Tumor Society (MSTS).
+    files.cases.diagnoses.enneking_msts_stage: Text term used to describe the stage
+      of the musculoskeletal sarcoma, using the Enneking staging system approved by
+      the Musculoskeletal Tumor Society (MSTS).
+    files.cases.diagnoses.enneking_msts_tumor_site: Text term and code that represents
+      the tumor site of the musculoskeletal sarcoma, using the Enneking staging system
+      approved by the Musculoskeletal Tumor Society (MSTS).
+    files.cases.diagnoses.ensat_clinical_m: A clinical finding about one or more characteristics
+      of adrenal cancer, following the rules of the ENSAT staging v7 classification
+      system as they pertain to distant metastases.
+    files.cases.diagnoses.ensat_pathologic_n: A pathologic finding about one or more
+      characteristics of adrenal cancer, following the rules of the ENSAT staging
+      v7 classification system as they pertain to staging of the lymph nodes.
+    files.cases.diagnoses.ensat_pathologic_stage: An adrenal cancer stage defined
+      according to the European Network for the Study of Adrenal Tumors (ENSAT) criteria.
+    files.cases.diagnoses.ensat_pathologic_t: A pathologic finding about one or more
+      characteristics of adrenal cancer, following the rules of the ENSAT staging
+      v7 classification system as they pertain to staging of the primary tumor.
+    files.cases.diagnoses.esophageal_columnar_dysplasia_degree: Text term to describe
+      the amount of dysplasia found within the benign esophageal columnar mucosa.
+    files.cases.diagnoses.esophageal_columnar_metaplasia_present: The yes/no/unknown
+      indicator used to describe whether esophageal columnar metaplasia was determined
+      to be present.
+    files.cases.diagnoses.fab_morphology_code: A classification system for acute myeloid
+      leukemias, acute lymphoblastic leukemias, and myelodysplastic syndromes. It
+      is based on the morphologic and cytochemical evaluation of bone marrow and peripheral
+      blood smears.
+    files.cases.diagnoses.figo_stage: The extent of a cervical or endometrial cancer
+      within the body, especially whether the disease has spread from the original
+      site to other parts of the body, as described by the International Federation
+      of Gynecology and Obstetrics (FIGO) stages.
+    files.cases.diagnoses.figo_staging_edition_year: The text term used to describe
+      the edition year of the FIGO staging system used to stage the patient's gynecologic
+      tumor.
+    files.cases.diagnoses.first_symptom_longest_duration: The length of time the first
+      presenting symptom occurred that related to the diagnosis of the patient with
+      cancer.
+    files.cases.diagnoses.first_symptom_prior_to_diagnosis: Text term used to describe
+      the patient's first symptom experienced prior to diagnosis and thought to be
+      related to the disease.
+    files.cases.diagnoses.gastric_esophageal_junction_involvement: The yes/no/unknown/not
+      reported indicator used to describe whether the tumor is located across the
+      gastroesophageal junction.
+    files.cases.diagnoses.gleason_grade_group: The text term used to describe the
+      overall grouping of grades defined by the Gleason grading classification, which
+      is used to determine the aggressiveness of prostate cancer. Note that this grade
+      describes the entire prostatectomy specimen and is not specific to the sample
+      used for sequencing.
+    files.cases.diagnoses.gleason_grade_tertiary: The text term used to describe the
+      tertiary pattern as described by the Gleason Grading System.
+    files.cases.diagnoses.gleason_patterns_percent: Numeric value that represents
+      the percentage of Patterns 4 and 5, which is used when the Gleason score is
+      greater than 7 to predict prognosis.
+    files.cases.diagnoses.gleason_score: The score derived from universally embraced
+      prostate cancer grading system developed by Dr. Donald F. Gleason in 1977. The
+      system provides a reproducible description of the glandular architecture of
+      prostate tissue to which a pathologist assigns a score depending primarily on
+      the microscopic patterns of cancerous glands and cell morphology
+    files.cases.diagnoses.goblet_cells_columnar_mucosa_present: The yes/no/unknown
+      indicator used to describe whether goblet cells were determined to be present
+      in the esophageal columnar mucosa.
+    files.cases.diagnoses.icd_10_code: Alphanumeric value used to describe the disease
+      code from the tenth version of the International Classification of Disease (ICD-10).
+    files.cases.diagnoses.id: A 128-bit identifier. Depending on the mechanism used
+      to generate it, it is either guaranteed to be different from all other UUIDs/GUIDs
+      generated until 3400 AD or extremely likely to be different. Its relatively
+      small size lends itself well to sorting, ordering, and hashing of all sorts,
+      storing in databases, simple allocation, and ease of programming in general.
+    files.cases.diagnoses.igcccg_stage: The text term used to describe the International
+      Germ Cell Cancer Collaborative Group (IGCCCG), a grouping used to further classify
+      metastatic testicular tumors.
+    files.cases.diagnoses.inpc_grade: Text term used to describe the classification
+      of neuroblastic differentiation within neuroblastoma tumors, as defined by the
+      International Neuroblastoma Pathology Classification (INPC).
+    files.cases.diagnoses.inpc_histologic_group: The text term used to describe the
+      classification of neuroblastomas distinguishing between favorable and unfavorable
+      histologic groups. The histologic score, defined by the International Neuroblastoma
+      Pathology Classification (INPC), is based on age, mitosis-karyorrhexis index
+      (MKI), stromal content and degree of tumor cell differentiation.
+    files.cases.diagnoses.inrg_stage: The text term used to describe the staging classification
+      of neuroblastic tumors, as defined by the International Neuroblastoma Risk Group
+      (INRG).
+    files.cases.diagnoses.inss_stage: Text term used to describe the staging classification
+      of neuroblastic tumors, as defined by the International Neuroblastoma Staging
+      System (INSS).
+    files.cases.diagnoses.international_prognostic_index: The text term used to describe
+      the International Prognostic Index, which classifies the prognosis of patients
+      with aggressive non-Hodgkin's lymphoma.
+    files.cases.diagnoses.irs_group: Text term used to describe the classification
+      of rhabdomyosarcoma tumors, as defined by the Intergroup Rhabdomyosarcoma Study
+      (IRS).
+    files.cases.diagnoses.irs_stage: The text term used to describe the classification
+      of rhabdomyosarcoma tumors, as defined by the Intergroup Rhabdomyosarcoma Study
+      (IRS).
+    files.cases.diagnoses.ishak_fibrosis_score: The text term used to describe the
+      classification of the histopathologic degree of liver damage.
+    files.cases.diagnoses.iss_stage: The multiple myeloma disease stage at diagnosis.
+    files.cases.diagnoses.last_known_disease_status: Text term that describes the
+      last known state or condition of an individual's neoplasm.
+    files.cases.diagnoses.laterality: For tumors in paired organs, designates the
+      side on which the cancer originates.
+    files.cases.diagnoses.margin_distance: Numeric value that represents the distance
+      between the tumor and the surgical margin
+    files.cases.diagnoses.margins_involved_site: The text term used to describe the
+      anatomic sites that were involved in the survival margins.
+    files.cases.diagnoses.masaoka_stage: The text term used to describe the Masaoka
+      staging system, a classification that defines prognostic indicators for thymic
+      malignancies and predicts tumor recurrence.
+    files.cases.diagnoses.max_tumor_bulk_site: The site of the tumor where the dimension
+      or diameter is larger than any other part of the tumor.
+    files.cases.diagnoses.medulloblastoma_molecular_classification: The text term
+      used to describe the classification of medulloblastoma tumors based on molecular
+      features.
+    files.cases.diagnoses.melanoma_known_primary: A melanoma which has metastasized
+      from a known primary anatomic site.
+    files.cases.diagnoses.metastasis_at_diagnosis: The text term used to describe
+      the extent of metastatic disease present at diagnosis.
+    files.cases.diagnoses.method_of_diagnosis: Text term used to describe the method
+      used to confirm the patients malignant diagnosis.
+    files.cases.diagnoses.mitosis_karyorrhexis_index: Text term that represents the
+      component of the International Neuroblastoma Pathology Classification (INPC)
+      for mitosis-karyorrhexis index (MKI).
+    files.cases.diagnoses.morphology: The third edition of the International Classification
+      of Diseases for Oncology, published in 2000 used principally in tumor and cancer
+      registries for coding the site (topography) and the histology (morphology) of
+      neoplasms. The study of the structure of the cells and their arrangement to
+      constitute tissues and, finally, the association among these to form organs.
+      In pathology, the microscopic process of identifying normal and abnormal morphologic
+      characteristics in tissues, by employing various cytochemical and immunocytochemical
+      stains. A system of numbered categories for representation of data.
+    files.cases.diagnoses.ovarian_specimen_status: The text term used to describe
+      the physical condition of the involved ovary.
+    files.cases.diagnoses.ovarian_surface_involvement: The text term that describes
+      whether the surface tissue (outer boundary) of the ovary shows evidence of involvement
+      or presence of cancer.
+    files.cases.diagnoses.pathology_details.additional_pathology_findings: A section
+      header that includes additional pathologic findings.
+    files.cases.diagnoses.pathology_details.anaplasia_present: Yes/no/unknown/not
+      reported indicator used to describe whether anaplasia was present at the time
+      of diagnosis.
+    files.cases.diagnoses.pathology_details.anaplasia_present_type: The text term
+      used to describe the morphologic findings indicating the presence of a malignant
+      cellular infiltrate characterized by the presence of large pleomorphic cells,
+      necrosis, and high mitotic activity in a tissue sample.
+    files.cases.diagnoses.pathology_details.bone_marrow_malignant_cells: The text
+      term used to indicate whether there are malignant cells in the bone marrow.
+    files.cases.diagnoses.pathology_details.breslow_thickness: The number that describes
+      the distance, in millimeters, between the upper layer of the epidermis and the
+      deepest point of tumor penetration.
+    files.cases.diagnoses.pathology_details.breslow_thickness_category: The number
+      that describes the distance, in millimeters, between the upper layer of the
+      epidermis and the deepest point of tumor penetration.
+    files.cases.diagnoses.pathology_details.circumferential_resection_margin: Numeric
+      value used to describe the non-peritonealised bare area of rectum, comprising
+      anterior and posterior segments, when submitted as a surgical specimen resulting
+      from excision of cancer of the rectum.
+    files.cases.diagnoses.pathology_details.columnar_mucosa_present: Indicator noting
+      whether columnar mucosa was present within the tissue.
+    files.cases.diagnoses.pathology_details.consistent_pathology_review: Indicates
+      whether a recent review of tissue is consistent with a prior pathology review.
+    files.cases.diagnoses.pathology_details.created_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.diagnoses.pathology_details.days_to_pathology_detail: Number of days
+      between the date used for index and the date a pathologic review of a specific
+      sample or slide was performed.
+    files.cases.diagnoses.pathology_details.dysplasia_degree: The degree to which
+      dysplasia was involved.
+    files.cases.diagnoses.pathology_details.dysplasia_type: The type of dysplasia
+      involved.
+    files.cases.diagnoses.pathology_details.epithelioid_cell_percent: A quantitative
+      measurement of the percent of epithelioid melanocytes compared to the number
+      of total cells present in a sample.
+    files.cases.diagnoses.pathology_details.epithelioid_cell_percent_range: A quantitative
+      measurement of the percent of epithelioid melanocytes compared to the number
+      of total cells present in a sample.
+    files.cases.diagnoses.pathology_details.extracapsular_extension: The extension
+      of malignant tissue situated outside of a specific capsule.
+    files.cases.diagnoses.pathology_details.extranodal_extension: Extension of a malignant
+      neoplasm beyond the lymph node capsule.
+    files.cases.diagnoses.pathology_details.extraocular_nodule_size: The size of the
+      nodule that is outside the eye.
+    files.cases.diagnoses.pathology_details.extrascleral_extension: Spread of uveal
+      melanoma beyond the sclera.
+    files.cases.diagnoses.pathology_details.extrascleral_extension_present: Spread
+      of uveal melanoma beyond the sclera.
+    files.cases.diagnoses.pathology_details.extrathyroid_extension: Text term to describe
+      the degree to which the primary tumor has extra thyroid extension.
+    files.cases.diagnoses.pathology_details.greatest_tumor_dimension: Numeric value
+      that represents the measurement of the widest portion of the tumor in centimeters.
+    files.cases.diagnoses.pathology_details.gross_tumor_weight: Numeric value used
+      to describe the gross pathologic tumor weight, measured in grams.
+    files.cases.diagnoses.pathology_details.histologic_progression_type: Text term
+      to describe the disease progression as determined by microscopic review of cells
+      and their surrounding extracellular environment in tissues.
+    files.cases.diagnoses.pathology_details.id: A 128-bit identifier. Depending on
+      the mechanism used to generate it, it is either guaranteed to be different from
+      all other UUIDs/GUIDs generated until 3400 AD or extremely likely to be different.
+      Its relatively small size lends itself well to sorting, ordering, and hashing
+      of all sorts, storing in databases, simple allocation, and ease of programming
+      in general.
+    files.cases.diagnoses.pathology_details.intratubular_germ_cell_neoplasia_present: Text
+      term to indicate whether the intratubular germ cell neoplasm is present or absent.
+    files.cases.diagnoses.pathology_details.largest_extrapelvic_peritoneal_focus: The
+      text term used to describe the diameter of the largest focus originating outside
+      of the pelvic peritoneal region.
+    files.cases.diagnoses.pathology_details.lymph_node_dissection_method: The method
+      employed to remove a lymph nodes(s)
+    files.cases.diagnoses.pathology_details.lymph_node_dissection_site: The named
+      location(s) within the body where a lymph node(s) were removed.
+    files.cases.diagnoses.pathology_details.lymph_node_involved_site: The text term
+      used to describe the anatomic site of lymph node involvement.
+    files.cases.diagnoses.pathology_details.lymph_node_involvement: Indicator noting
+      whether lymph nodes were involved.
+    files.cases.diagnoses.pathology_details.lymph_nodes_positive: The number of lymph
+      nodes involved with disease as determined by pathologic examination.
+    files.cases.diagnoses.pathology_details.lymph_nodes_removed: The number of lymph
+      nodes removed during a biopsy or surgical procedure.
+    files.cases.diagnoses.pathology_details.lymph_nodes_tested: The number of lymph
+      nodes tested to determine whether lymph nodes were involved with disease as
+      determined by a pathologic examination.
+    files.cases.diagnoses.pathology_details.lymphatic_invasion_present: A yes/no indicator
+      to ask if small or thin-walled vessel invasion is present, indicating lymphatic
+      involvement
+    files.cases.diagnoses.pathology_details.margin_status: The determination of the
+      presence of actual or potential neoplastic tissue which has been left outside
+      the boundary of a resected specimen within the patient.
+    files.cases.diagnoses.pathology_details.measurement_type: The method used to measure
+      tumor size.
+    files.cases.diagnoses.pathology_details.measurement_unit: The type of unit of
+      measure being used to express a length or distance.
+    files.cases.diagnoses.pathology_details.metaplasia_present: Indicator noting whether
+      metaplasia was present.
+    files.cases.diagnoses.pathology_details.micrometastasis_present: Indication of
+      metastasis in the form of small clusters of malignant cells identifiable only
+      under the microscope.
+    files.cases.diagnoses.pathology_details.morphologic_architectural_pattern: A specific
+      morphologic or pathologic architectural pattern was discovered within the sample
+      studied.
+    files.cases.diagnoses.pathology_details.necrosis_percent: A quantitative measurement
+      of the percent of cells undergoing necrosis compared to the number of total
+      cells present in a sample.
+    files.cases.diagnoses.pathology_details.necrosis_present: Indicator describing
+      whether the presence of necrosis was confirmed.
+    files.cases.diagnoses.pathology_details.non_nodal_regional_disease: The text term
+      used to describe whether the patient had non-nodal regional disease.
+    files.cases.diagnoses.pathology_details.non_nodal_tumor_deposits: The yes/no/unknown
+      indicator used to describe the presence of tumor deposits in the pericolic or
+      perirectal fat or in adjacent mesentery away from the leading edge of the tumor.
+    files.cases.diagnoses.pathology_details.number_proliferating_cells: Numeric value
+      that represents the count of proliferating cells determined during pathologic
+      review of the sample slide(s).
+    files.cases.diagnoses.pathology_details.percent_tumor_invasion: The percentage
+      of tumor cells spread locally in a malignant neoplasm through infiltration or
+      destruction of adjacent tissue.
+    files.cases.diagnoses.pathology_details.percent_tumor_nuclei: Numeric value to
+      represent the percentage of tumor nuclei in a malignant neoplasm sample or specimen.
+    files.cases.diagnoses.pathology_details.perineural_invasion_present: a yes/no
+      indicator to ask if perineural invasion or infiltration of tumor or cancer is
+      present.
+    files.cases.diagnoses.pathology_details.peripancreatic_lymph_nodes_positive: Enumerated
+      numeric value or range of values used to describe the number of peripancreatic
+      lymph nodes determined to be positive.
+    files.cases.diagnoses.pathology_details.peripancreatic_lymph_nodes_tested: The
+      total number of peripancreatic lymph nodes tested for the presence of pancreatic
+      cancer cells.
+    files.cases.diagnoses.pathology_details.prcc_type: The type of papillary renal
+      cell carcinoma. It is classified as type 1 or 2, based on the cytoplasmic volume
+      and the thickness of the lining neoplastic cells.
+    files.cases.diagnoses.pathology_details.prostatic_chips_positive_count: The text
+      term used to describe the number of positive prostatic chips, which are generated
+      from transurethral resection of the prostate (TURP) procedures and are generally
+      used for relieving urinary obstruction due to nodular hyperplasia of the prostate
+      (benign prostatic hyperplasia).
+    files.cases.diagnoses.pathology_details.prostatic_chips_total_count: The text
+      term used to describe the total number of prostatic chips, which are generated
+      from transurethral resection of the prostate (TURP) procedures and are generally
+      used for relieving urinary obstruction due to nodular hyperplasia of the prostate
+      (benign prostatic hyperplasia).
+    files.cases.diagnoses.pathology_details.prostatic_involvement_percent: Numeric
+      value that represents the percentage of prostatic involvement found in a specific
+      tissue sample.
+    files.cases.diagnoses.pathology_details.residual_tumor: Tumor cells that remain
+      in the body following cancer treatment.
+    files.cases.diagnoses.pathology_details.residual_tumor_measurement: A measurement
+      of the tumor cells that remain in the body following cancer treatment.
+    files.cases.diagnoses.pathology_details.rhabdoid_percent: Numeric value that represents
+      the percentage of rhabdoid features found in a specific tissue sample.
+    files.cases.diagnoses.pathology_details.rhabdoid_present: Indicator describing
+      whether rhabdoid features were present.
+    files.cases.diagnoses.pathology_details.sarcomatoid_percent: Numeric value that
+      represents the percentage of sarcomatoid features found in a specific tissue
+      sample.
+    files.cases.diagnoses.pathology_details.sarcomatoid_present: Indicator describing
+      whether sarcomatoid features were present.
+    files.cases.diagnoses.pathology_details.size_extraocular_nodule: The size of the
+      nodule that is outside the eye.
+    files.cases.diagnoses.pathology_details.spindle_cell_percent: A quantitative measurement
+      of the percent of spindle-shaped melanocytes compared to the number of total
+      cells present in a sample.
+    files.cases.diagnoses.pathology_details.spindle_cell_percent_range: A quantitative
+      measurement of the percent of spindle-shaped melanocytes compared to the number
+      of total cells present in a sample.
+    files.cases.diagnoses.pathology_details.state: The current state of the object.
+    files.cases.diagnoses.pathology_details.submitter_id: A project-specific identifier
+      for a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    files.cases.diagnoses.pathology_details.timepoint_category: Category describing
+      a specific point in the time continuum, including those established relative
+      to an event.
+    files.cases.diagnoses.pathology_details.transglottic_extension: The text term
+      used to describe an extension of the tumor beyond the opening into the ventricles
+      and vocal cords.
+    files.cases.diagnoses.pathology_details.tumor_basal_diameter: Numeric value in
+      millimeters for the lowest layer of a tumor.
+    files.cases.diagnoses.pathology_details.tumor_burden: Refers to the number of
+      cancer cells, the size of a tumor, or the amount of cancer in the body.
+    files.cases.diagnoses.pathology_details.tumor_depth_descriptor: Text term for
+      the degree to which a tumor has penetrated into organ or tissue.
+    files.cases.diagnoses.pathology_details.tumor_depth_measurement: The numerical
+      measurement of tumor depth.
+    files.cases.diagnoses.pathology_details.tumor_infiltrating_lymphocytes: Lymphocytes
+      that show specificity for autologous tumor cells and can infiltrate a tumor.
+    files.cases.diagnoses.pathology_details.tumor_infiltrating_macrophages: Non-neoplastic
+      macrophages that infiltrate a tumor.
+    files.cases.diagnoses.pathology_details.tumor_largest_dimension_diameter: Numeric
+      value used to describe the maximum diameter or dimension of the primary tumor,
+      measured in centimeters.
+    files.cases.diagnoses.pathology_details.tumor_length_measurement: The numerical
+      measurement of tumor length.
+    files.cases.diagnoses.pathology_details.tumor_level_prostate: The level(s) of
+      the prostate from which the tumor originated.
+    files.cases.diagnoses.pathology_details.tumor_shape: Text term to represent the
+      description of the shape of a tumor determined by clinical or pathological techniques.
+    files.cases.diagnoses.pathology_details.tumor_thickness: A measurement of the
+      thickness of a sectioned slice (of tissue or mineral or other substance) in
+      millimeters (mm).
+    files.cases.diagnoses.pathology_details.tumor_width_measurement: The numerical
+      measurement of tumor width.
+    files.cases.diagnoses.pathology_details.updated_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.diagnoses.pathology_details.vascular_invasion_present: The yes/no
+      indicator to ask if large vessel or venous invasion was detected by surgery
+      or presence in a tumor specimen.
+    files.cases.diagnoses.pathology_details.vascular_invasion_type: Text term that
+      represents the type of vascular tumor invasion.
+    files.cases.diagnoses.pathology_details.zone_of_origin_prostate: The location
+      or position of the tumor by zone of the prostate.
+    files.cases.diagnoses.pediatric_kidney_staging: A modified version of the Children's
+      Oncology Group (COG) National Wilms Tumor Study Group (NWTS) staging system.
+    files.cases.diagnoses.peritoneal_fluid_cytological_status: The text term used
+      to describe the malignant status of the peritoneal fluid determined by cytologic
+      testing.
+    files.cases.diagnoses.primary_diagnosis: Text term used to describe the patient's
+      histologic diagnosis, as described by the World Health Organization's (WHO)
+      International Classification of Diseases for Oncology (ICD-O).
+    files.cases.diagnoses.primary_gleason_grade: The text term used to describe the
+      primary Gleason score, which describes the pattern of cells making up the largest
+      area of the tumor. The primary and secondary Gleason pattern grades are combined
+      to determine the patient's Gleason grade group, which is used to determine the
+      aggresiveness of prostate cancer. Note that this grade describes the entire
+      prostatectomy specimen and is not specific to the sample used for sequencing.
+    files.cases.diagnoses.prior_malignancy: The yes/no/unknown indicator used to describe
+      the patient's history of prior cancer diagnosis.
+    files.cases.diagnoses.prior_treatment: A yes/no/unknown/not applicable indicator
+      related to the administration of therapeutic agents received before the body
+      specimen was collected.
+    files.cases.diagnoses.progression_or_recurrence: Indicates whether a patient has
+      a progression or recurrence after initial treatment. This can include local,
+      regional, or metastatic disease.
+    files.cases.diagnoses.residual_disease: Tumor cells that remain in the body following
+      cancer treatment.
+    files.cases.diagnoses.satellite_nodule_present: Indicator noting whether a nodule
+      or tumor is located within a small distance (e.g. 2cm) of the primary tumor.
+    files.cases.diagnoses.secondary_gleason_grade: The text term used to describe
+      the secondary Gleason score, which describes the pattern of cells making up
+      the second largest area of the tumor. The primary and secondary Gleason pattern
+      grades are combined to determine the patient's Gleason grade group, which is
+      used to determine the aggresiveness of prostate cancer. Note that this grade
+      describes the entire prostatectomy specimen and is not specific to the sample
+      used for sequencing.
+    files.cases.diagnoses.site_of_resection_or_biopsy: The text term used to describe
+      the anatomic site of origin, of the patient's malignant disease, as described
+      by the World Health Organization's (WHO) International Classification of Diseases
+      for Oncology (ICD-O).
+    files.cases.diagnoses.sites_of_involvement: The anatomic sites of disease involvement
+      in addition to the primary anatomic site.
+    files.cases.diagnoses.sites_of_involvement_count: The number of anatomic sites
+      of disease.
+    files.cases.diagnoses.state: The current state of the object.
+    files.cases.diagnoses.submitter_id: A project-specific identifier for a node.
+      This property is the calling card/nickname/alias for a unit of submission. It
+      can be used in place of the uuid for identifying or recalling a node.
+    files.cases.diagnoses.supratentorial_localization: Text term to specify the location
+      of the supratentorial tumor.
+    files.cases.diagnoses.synchronous_malignancy: A yes/no/unknown indicator used
+      to describe whether the patient had an additional malignant diagnosis at the
+      same time the tumor used for sequencing was diagnosed. If both tumors were sequenced,
+      both tumors would have synchronous malignancies.
+    files.cases.diagnoses.tissue_or_organ_of_origin: The text term used to describe
+      the anatomic site of origin, of the patient's malignant disease, as described
+      by the World Health Organization's (WHO) International Classification of Diseases
+      for Oncology (ICD-O).
+    files.cases.diagnoses.treatments.chemo_concurrent_to_radiation: The text term
+      used to describe whether the patient was receiving chemotherapy concurrent to
+      radiation.
+    files.cases.diagnoses.treatments.clinical_trial_indicator: Indicator used to describe
+      whether the treatment was part of a clinical trial.
+    files.cases.diagnoses.treatments.course_number: The number assigned to a course
+      of therapeutic agent administration, indicating where a particular course of
+      treatment falls within a sequence of treatments.
+    files.cases.diagnoses.treatments.created_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.diagnoses.treatments.days_to_treatment_end: Number of days between
+      the date used for index and the date the treatment ended.
+    files.cases.diagnoses.treatments.days_to_treatment_start: Number of days between
+      the date used for index and the date the treatment started.
+    files.cases.diagnoses.treatments.drug_category: A broad categorization of the
+      type of drug administered.
+    files.cases.diagnoses.treatments.embolic_agent: A substance used to block an artery,
+      thereby eliminating the blood flow to a specific part of an organ. An embolic
+      agent may cause permanent or temporary blockage depending on the nature of the
+      material used.
+    files.cases.diagnoses.treatments.id: A 128-bit identifier. Depending on the mechanism
+      used to generate it, it is either guaranteed to be different from all other
+      UUIDs/GUIDs generated until 3400 AD or extremely likely to be different. Its
+      relatively small size lends itself well to sorting, ordering, and hashing of
+      all sorts, storing in databases, simple allocation, and ease of programming
+      in general.
+    files.cases.diagnoses.treatments.initial_disease_status: The text term used to
+      describe the status of the patient's malignancy when the treatment began.
+    files.cases.diagnoses.treatments.lesions_treated_number: The number of lesions
+      treated.
+    files.cases.diagnoses.treatments.margin_distance: Numeric value that represents
+      the distance between the tumor and the surgical margin
+    files.cases.diagnoses.treatments.margin_status: The determination of the presence
+      of actual or potential neoplastic tissue which has been left outside the boundary
+      of a resected specimen within the patient.
+    files.cases.diagnoses.treatments.margins_involved_site: The text term used to
+      describe the anatomic sites that were involved in the survival margins.
+    files.cases.diagnoses.treatments.number_of_cycles: The numeric value used to describe
+      the number of cycles of a specific treatment or regimen the patient received.
+    files.cases.diagnoses.treatments.number_of_fractions: The total number of divided
+      radiation doses received.
+    files.cases.diagnoses.treatments.prescribed_dose: A quantity of an agent prescribed
+      to the study participant.
+    files.cases.diagnoses.treatments.prescribed_dose_units: The units of the amount
+      of agent or medication formally prescribed to an individual.
+    files.cases.diagnoses.treatments.pretreatment: Any relevant actions that were
+      performed or occurred prior to a specific treatment.
+    files.cases.diagnoses.treatments.protocol_identifier: A sequence of letters, numbers,
+      or other characters that uniquely identifies a study protocol.
+    files.cases.diagnoses.treatments.radiosensitizing_agent: Indication if an agent
+      that makes tumor cells more sensitive to radiation therapy was used in treatment.
+    files.cases.diagnoses.treatments.reason_treatment_ended: The text term used to
+      describe the reason a specific treatment or regimen ended.
+    files.cases.diagnoses.treatments.reason_treatment_not_given: The reason the treatment
+      was not administered.
+    files.cases.diagnoses.treatments.regimen_or_line_of_therapy: The text term used
+      to describe the regimen or line of therapy.
+    files.cases.diagnoses.treatments.residual_disease: Tumor cells that remain in
+      the body following cancer treatment.
+    files.cases.diagnoses.treatments.route_of_administration: The pathway by which
+      a substance is administered in order to reach the site of action in the body.
+    files.cases.diagnoses.treatments.state: The current state of the object.
+    files.cases.diagnoses.treatments.submitter_id: A project-specific identifier for
+      a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    files.cases.diagnoses.treatments.therapeutic_agents: Text identification of the
+      individual agent(s) used as part of a treatment regimen.
+    files.cases.diagnoses.treatments.therapeutic_level_achieved: Indicates a target
+      level of treatment was reached, according to the patient's treatment plan.
+    files.cases.diagnoses.treatments.therapeutic_levels_achieved: An indication that
+      the intended level of therapeutic agent was achieved in an individual.
+    files.cases.diagnoses.treatments.therapeutic_target_level: Describes a specific
+      target for an administered treatment.
+    files.cases.diagnoses.treatments.timepoint_category: Category describing a specific
+      point in the time continuum, including those established relative to an event.
+    files.cases.diagnoses.treatments.treatment_anatomic_sites: The anatomic site or
+      field targeted by a treatment regimen or single agent therapy.
+    files.cases.diagnoses.treatments.treatment_dose: The numeric value used to describe
+      the total dose of an agent the patient received.
+    files.cases.diagnoses.treatments.treatment_dose_max: A maximum quantity of an
+      agent administered to the study participant.
+    files.cases.diagnoses.treatments.treatment_dose_units: The text term used to describe
+      the dose units of an agent the patient received.
+    files.cases.diagnoses.treatments.treatment_duration: The number of days during
+      which the treatment was given.
+    files.cases.diagnoses.treatments.treatment_effect: The text term used to describe
+      the pathologic effect a treatment(s) had on the tumor.
+    files.cases.diagnoses.treatments.treatment_effect_indicator: The text term used
+      to indicate whether the treatment had an effect on the patient.
+    files.cases.diagnoses.treatments.treatment_frequency: The text term used to describe
+      the frequency the patient received an agent or regimen.
+    files.cases.diagnoses.treatments.treatment_intent_type: Text term to identify
+      the reason for the administration of a treatment regimen. [Manually-curated]
+    files.cases.diagnoses.treatments.treatment_or_therapy: A yes/no/unknown/not applicable
+      indicator related to the administration of therapeutic agents received.
+    files.cases.diagnoses.treatments.treatment_outcome: Text term that describes the
+      patient's final outcome after the treatment was administered.
+    files.cases.diagnoses.treatments.treatment_outcome_duration: The number of days
+      a patient reached a specific result or effect after treatment.
+    files.cases.diagnoses.treatments.treatment_type: Text term that describes the
+      kind of treatment administered.
+    files.cases.diagnoses.treatments.updated_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.diagnoses.tumor_burden: Refers to the number of cancer cells, the
+      size of a tumor, or the amount of cancer in the body.
+    files.cases.diagnoses.tumor_confined_to_organ_of_origin: The yes/no/unknown indicator
+      used to describe whether the tumor is confined to the organ where it originated
+      and did not spread to a proximal or distant location within the body.
+    files.cases.diagnoses.tumor_depth: Numeric value that represents the depth of
+      tumor invasion, measured in millimeters (mm).
+    files.cases.diagnoses.tumor_focality: The text term used to describe whether the
+      patient's disease originated in a single location or multiple locations.
+    files.cases.diagnoses.tumor_grade: Numeric value to express the degree of abnormality
+      of cancer cells, a measure of differentiation and aggressiveness.
+    files.cases.diagnoses.tumor_grade_category: Describes the number of levels or
+      'tiers' in the system used to determine the degree of tumor differentiation.
+    files.cases.diagnoses.tumor_of_origin: The submitter_id string of the primary
+      diagnosis node.
+    files.cases.diagnoses.tumor_regression_grade: A numeric value used to measure
+      therapeutic response of the primary tumor and predict patient outcomes based
+      on a three-point tumor regression grading system.
+    files.cases.diagnoses.uicc_clinical_m: The UICC TNM Classification is an anatomically
+      based system that records the primary and regional nodal extent of the tumor
+      and the absence or presence of metastases. The clinical M category describes
+      the presence or otherwise of distant metastatic spread as determined during
+      a clinical exam.
+    files.cases.diagnoses.uicc_clinical_n: The UICC TNM Classification is an anatomically
+      based system that records the primary and regional nodal extent of the tumor
+      and the absence or presence of metastases. The clinical N category describes
+      the regional lymph node involvement as determined during a clinical exam.
+    files.cases.diagnoses.uicc_clinical_stage: The UICC TNM Classification is an anatomically
+      based system that records the primary and regional nodal extent of the tumor
+      and the absence or presence of metastases. The clinical stage is based on the
+      T, N, and M categories which are determined during a clinical exam.
+    files.cases.diagnoses.uicc_clinical_t: The UICC TNM Classification is an anatomically
+      based system that records the primary and regional nodal extent of the tumor
+      and the absence or presence of metastases. The clinical T category describes
+      the primary tumor site and size as determined during a clinical exam.
+    files.cases.diagnoses.uicc_pathologic_m: The UICC TNM Classification is an anatomically
+      based system that records the primary and regional nodal extent of the tumor
+      and the absence or presence of metastases. The pathological M category describes
+      the presence or otherwise of distant metastatic spread as determined during
+      a pathology review.
+    files.cases.diagnoses.uicc_pathologic_n: The UICC TNM Classification is an anatomically
+      based system that records the primary and regional nodal extent of the tumor
+      and the absence or presence of metastases. The pathological N category describes
+      the regional lymph node involvement as determined during a pathology review.
+    files.cases.diagnoses.uicc_pathologic_stage: The UICC TNM Classification is an
+      anatomically based system that records the primary and regional nodal extent
+      of the tumor and the absence or presence of metastases. The pathological stage
+      is based on the T, N, and M categories which are determined during a pathological
+      review.
+    files.cases.diagnoses.uicc_pathologic_t: The UICC TNM Classification is an anatomically
+      based system that records the primary and regional nodal extent of the tumor
+      and the absence or presence of metastases. The pathological T category describes
+      the primary tumor site and size as determined during a pathology review.
+    files.cases.diagnoses.uicc_staging_system_edition: The UICC TNM Classification
+      is an anatomically based system that records the primary and regional nodal
+      extent of the tumor and the absence or presence of metastases. The staging edition
+      describes the specific UICC edition used when a patient's stage was determined.
+    files.cases.diagnoses.ulceration_indicator: The formation or development of an
+      ulcer.
+    files.cases.diagnoses.updated_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.diagnoses.weiss_assessment_findings: Histopathologic criteria to evaluate
+      adrenocortical tumors.
+    files.cases.diagnoses.weiss_assessment_score: 'The text term used to describe
+      the overall Weiss assessment score, a commonly used assessment describing the
+      malignancy of adrenocortical tumors. The Weiss score is determined based on
+      nine histological criteria including the following: high nuclear grade, mitotic
+      rate greater than five per 50 high power fields (HPF), atypical mitotic figures,
+      eosinophilic tumor cell cytoplasm (greater than 75% tumor cells), diffuse architecture
+      (greater than 33% of tumor), necrosis, venous invasion, sinusoidal invasion,
+      and capsular invasion.'
+    files.cases.diagnoses.who_cns_grade: The WHO (World Health Organization) grading
+      classification of CNS tumors, which is based on histological characteristics
+      such as cellularity, mitotic activity, pleomorphism, necrosis, and endothelial
+      proliferation (neoangiogenesis).
+    files.cases.diagnoses.who_nte_grade: The WHO (World Health Organization) grading
+      classification of Neuroendocrine Tumors.
+    files.cases.diagnoses.wilms_tumor_histologic_subtype: The text term used to describe
+      the classification of Wilms tumors distinguishing between favorable and unfavorable
+      histologic groups.
+    files.cases.diagnoses.year_of_diagnosis: Numeric value to represent the year of
+      an individual's initial pathologic diagnosis of cancer.
+    files.cases.disease_type: The text term used to describe the type of malignant
+      disease, as categorized by the World Health Organization's (WHO) International
+      Classification of Diseases for Oncology (ICD-O).
+    files.cases.exposures.age_at_last_exposure: The study participant's age at the
+      time they were last exposed.
+    files.cases.exposures.age_at_onset: Numeric value used to represent the age of
+      the patient when exposure to a specific environmental factor began.
+    files.cases.exposures.alcohol_days_per_week: Numeric value used to describe the
+      average number of days each week that a person consumes an alcoholic beverage.
+    files.cases.exposures.alcohol_drinks_per_day: Numeric value used to describe the
+      average number of alcoholic beverages a person consumes per day.
+    files.cases.exposures.alcohol_frequency: Describes how often the subject drinks
+      alcohol.
+    files.cases.exposures.alcohol_history: A response to a question that asks whether
+      the participant has consumed at least 12 drinks of any kind of alcoholic beverage
+      in their lifetime.
+    files.cases.exposures.alcohol_intensity: Category to describe the patient's current
+      level of alcohol use as self-reported by the patient.
+    files.cases.exposures.alcohol_type: A specific type of alcohol.
+    files.cases.exposures.asbestos_exposure_type: The type of asbestos exposure the
+      study participant experienced.
+    files.cases.exposures.chemical_exposure_type: The specific type of contact with
+      a chemical substance through touch, inhalation, or ingestion.
+    files.cases.exposures.cigarettes_per_day: The average number of cigarettes smoked
+      per day.
+    files.cases.exposures.created_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.exposures.environmental_tobacco_smoke_exposure: The yes/no/unknown
+      indicator used to describe whether a patient was exposed to smoke that is emitted
+      from burning tobacco, including cigarettes, pipes, and cigars. This includes
+      tobacco smoke exhaled by smokers.
+    files.cases.exposures.exposure_duration: Text term used to describe the length
+      of time the patient was exposed to an environmental factor.
+    files.cases.exposures.exposure_duration_hrs_per_day: The duration (in hours per
+      day) that a person was exposed.
+    files.cases.exposures.exposure_duration_years: The period of time from start to
+      finish of exposure, in years.
+    files.cases.exposures.exposure_source: The source or location where the patient
+      was exposed.
+    files.cases.exposures.exposure_type: The text term used to describe the type of
+      environmental exposure.
+    files.cases.exposures.id: A 128-bit identifier. Depending on the mechanism used
+      to generate it, it is either guaranteed to be different from all other UUIDs/GUIDs
+      generated until 3400 AD or extremely likely to be different. Its relatively
+      small size lends itself well to sorting, ordering, and hashing of all sorts,
+      storing in databases, simple allocation, and ease of programming in general.
+    files.cases.exposures.occupation_duration_years: The number of years a patient
+      worked in a specific occupation.
+    files.cases.exposures.occupation_type: A categorization of the principal activity
+      that a person does to earn money, as defined by the International Classification
+      of Occupation (ISCO).
+    files.cases.exposures.pack_years_smoked: Numeric computed value to represent lifetime
+      tobacco exposure defined as number of cigarettes smoked per day x number of
+      years smoked divided by 20.
+    files.cases.exposures.parent_with_radiation_exposure: Indicates whether the patient's
+      parent(s) were exposed to radiation
+    files.cases.exposures.secondhand_smoke_as_child: The text term used to indicate
+      whether the patient was exposed to secondhand smoke as a child.
+    files.cases.exposures.smoking_frequency: The text term used to generally describe
+      how often the patient smokes.
+    files.cases.exposures.state: The current state of the object.
+    files.cases.exposures.submitter_id: A project-specific identifier for a node.
+      This property is the calling card/nickname/alias for a unit of submission. It
+      can be used in place of the uuid for identifying or recalling a node.
+    files.cases.exposures.time_between_waking_and_first_smoke: The text term used
+      to describe the approximate amount of time elapsed between the time the patient
+      wakes up in the morning to the time they smoke their first cigarette.
+    files.cases.exposures.tobacco_smoking_onset_year: The year in which the participant
+      began smoking.
+    files.cases.exposures.tobacco_smoking_quit_year: The year in which the participant
+      quit smoking.
+    files.cases.exposures.tobacco_smoking_status: Category describing current smoking
+      status and smoking history as self-reported by a patient.
+    files.cases.exposures.type_of_smoke_exposure: The text term used to describe the
+      patient's specific type of smoke exposure.
+    files.cases.exposures.type_of_tobacco_used: The text term used to describe the
+      specific type of tobacco used by the patient.
+    files.cases.exposures.updated_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.exposures.use_per_day: The average number of times the patient used
+      per day.
+    files.cases.family_histories.created_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.family_histories.id: A 128-bit identifier. Depending on the mechanism
+      used to generate it, it is either guaranteed to be different from all other
+      UUIDs/GUIDs generated until 3400 AD or extremely likely to be different. Its
+      relatively small size lends itself well to sorting, ordering, and hashing of
+      all sorts, storing in databases, simple allocation, and ease of programming
+      in general.
+    files.cases.family_histories.relationship_age_at_diagnosis: The age (in years)
+      when the patient's relative was first diagnosed.
+    files.cases.family_histories.relationship_gender: The text term used to describe
+      the gender of the patient's relative with a history of cancer.
+    files.cases.family_histories.relationship_primary_diagnosis: The text term used
+      to describe the malignant diagnosis of the patient's relative with a history
+      of cancer.
+    files.cases.family_histories.relationship_sex_at_birth: A textual description
+      of a person's relative's sex at birth.
+    files.cases.family_histories.relationship_type: The subgroup that describes the
+      state of connectedness between members of the unit of society organized around
+      kinship ties.
+    files.cases.family_histories.relative_deceased: The historical fact that a legal
+      or consanguineous family member has died.
+    files.cases.family_histories.relative_smoker: Indication that a legal or consanguineous
+      family member was a smoker.
+    files.cases.family_histories.relative_with_cancer_history: The yes/no/unknown
+      indicator used to describe whether any of the patient's relatives have a history
+      of cancer.
+    files.cases.family_histories.relatives_with_cancer_history_count: The number of
+      relatives the patient has with a known history of cancer.
+    files.cases.family_histories.state: The current state of the object.
+    files.cases.family_histories.submitter_id: A project-specific identifier for a
+      node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    files.cases.family_histories.updated_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.follow_ups.adverse_event: Text that represents the Common Terminology
+      Criteria for Adverse Events low level term name for an adverse event.
+    files.cases.follow_ups.adverse_event_grade: Numeric representation of the intensity/severity
+      of an unfavorable and unintended sign (including an abnormal laboratory finding),
+      symptom, syndrome, or disease, temporally associated with the use of a medical
+      product or procedure, regardless of whether or not it is considered related
+      to the product or procedure (attribution of unrelated, unlikely, possible, probable,
+      or definite).
+    files.cases.follow_ups.barretts_esophagus_goblet_cells_present: The yes/no/unknown
+      indicator used to describe whether goblet cells were determined to be present
+      in a patient diagnosed with Barrett's esophagus.
+    files.cases.follow_ups.cause_of_response: The text term used to describe the suspected
+      cause or reason for the patient disease response.
+    files.cases.follow_ups.created_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.follow_ups.days_to_adverse_event: Number of days between the date
+      used for index and the date of the patient's adverse event.
+    files.cases.follow_ups.days_to_first_event: The number of days from the index
+      date to the date of the first event.
+    files.cases.follow_ups.days_to_follow_up: Number of days between the date used
+      for index and the date of the patient's last follow-up appointment or contact.
+    files.cases.follow_ups.days_to_imaging: Number of days between the date used for
+      index and the date the imaging or scan was performed on the patient.
+    files.cases.follow_ups.days_to_progression: Number of days between the date used
+      for index and the date the patient's disease progressed.
+    files.cases.follow_ups.days_to_progression_free: Number of days between the date
+      used for index and the date the patient's disease was formally confirmed as
+      progression-free.
+    files.cases.follow_ups.days_to_recurrence: Number of days between the date used
+      for index and the date the patient's disease recurred.
+    files.cases.follow_ups.discontiguous_lesion_count: The number of the discontiguous
+      lesions in a new tumor event.
+    files.cases.follow_ups.disease_response: Code assigned to describe the patient's
+      response or outcome to the disease.
+    files.cases.follow_ups.ecog_performance_status: The ECOG functional performance
+      status of the patient/participant.
+    files.cases.follow_ups.evidence_of_progression_type: The text term used to describe
+      the type of evidence used to determine whether the patient's disease progressed.
+    files.cases.follow_ups.evidence_of_recurrence_type: The text term used to describe
+      the type of evidence used to determine whether the patient's disease recurred.
+    files.cases.follow_ups.first_event: Describes the patient's first event after
+      initial treatment.
+    files.cases.follow_ups.histologic_progression: The evolution of a low-grade neoplastic
+      pathologic process to a high grade malignancy.
+    files.cases.follow_ups.history_of_tumor: Indicates whether patient has a history
+      of tumors.
+    files.cases.follow_ups.history_of_tumor_type: Describes the type of the patient's
+      prior diagnosed tumor.
+    files.cases.follow_ups.hormone_replacement_therapy_type: The specific type of
+      hormone replacement therapy received by the patient.
+    files.cases.follow_ups.id: A 128-bit identifier. Depending on the mechanism used
+      to generate it, it is either guaranteed to be different from all other UUIDs/GUIDs
+      generated until 3400 AD or extremely likely to be different. Its relatively
+      small size lends itself well to sorting, ordering, and hashing of all sorts,
+      storing in databases, simple allocation, and ease of programming in general.
+    files.cases.follow_ups.imaging_anatomic_site: The named location(s) within the
+      body where an image was taken.
+    files.cases.follow_ups.imaging_findings: Recorded findings noted during the review
+      of a specific medical image.
+    files.cases.follow_ups.imaging_result: The text term used to describe the result
+      of the imaging or scan performed on the patient.
+    files.cases.follow_ups.imaging_suv: The standardized update value (SUV) is the
+      effectively dimensionless measure of regional tracer uptake calculated as the
+      activity concentration within a 2D region of interest (ROI) or 3D volume of
+      interest (VOI) measured on a PET image (nCi1mL) / [injected dose (nCi) / body
+      weight (g)].
+    files.cases.follow_ups.imaging_suv_max: The standardized update value (SUV) is
+      the effectively dimensionless measure of regional tracer uptake calculated as
+      the activity concentration within a 2D region of interest (ROI) or 3D volume
+      of interest (VOI) measured on a PET image (nCi1mL) / [injected dose (nCi) /
+      body weight (g)]. Specifically, the maximum SUV recorded for a patient.
+    files.cases.follow_ups.imaging_type: The text term used to describe the type of
+      imaging or scan performed on the patient.
+    files.cases.follow_ups.karnofsky_performance_status: Text term used to describe
+      the classification used of the functional capabilities of a person.
+    files.cases.follow_ups.molecular_tests.aa_change: 'Alphanumeric value used to
+      describe the amino acid change for a specific genetic variant. Example: R116Q.'
+    files.cases.follow_ups.molecular_tests.aneuploidy: A chromosomal abnormality in
+      which there is an addition or loss of chromosomes within a set (e.g., 23 + 22
+      or 23 + 24).
+    files.cases.follow_ups.molecular_tests.antigen: The text term used to describe
+      an antigen included in molecular testing.
+    files.cases.follow_ups.molecular_tests.biospecimen_type: The text term used to
+      describe the biological material used for testing, diagnostic, treatment or
+      research purposes.
+    files.cases.follow_ups.molecular_tests.biospecimen_volume: The volume of the biospecimen.
+    files.cases.follow_ups.molecular_tests.blood_test_normal_range_lower: Numeric
+      value used to describe the lower limit of the normal range used to describe
+      a healthy individual at the institution where the test was completed.
+    files.cases.follow_ups.molecular_tests.blood_test_normal_range_upper: Numeric
+      value used to describe the upper limit of the normal range used to describe
+      a healthy individual at the institution where the test was completed.
+    files.cases.follow_ups.molecular_tests.cell_count: Numeric value used to describe
+      the number of cells used for molecular testing.
+    files.cases.follow_ups.molecular_tests.chromosomal_translocation: A genetic exchange
+      where a piece of one chromosome is transferred to another chromosome.
+    files.cases.follow_ups.molecular_tests.chromosome: The text term used to describe
+      a chromosome targeted or included in molecular testing. If a specific genetic
+      variant is being reported, this property can be used to capture the chromosome
+      where that variant is located.
+    files.cases.follow_ups.molecular_tests.chromosome_arm: Under the microscope chromosomes
+      appear as thin, thread-like structures. They all have a short arm and long arm
+      separated by a primary constriction called the centromere. The short arm is
+      designated as p and the long arm as q.
+    files.cases.follow_ups.molecular_tests.clonality: The text term used to describe
+      whether a genomic variant is related by descent from a single progenitor cell.
+    files.cases.follow_ups.molecular_tests.copy_number: Numeric value used to describe
+      the number of times a section of the genome is repeated or copied within an
+      insertion, duplication or deletion variant.
+    files.cases.follow_ups.molecular_tests.created_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.follow_ups.molecular_tests.cytoband: 'Alphanumeric value used to describe
+      the cytoband or chromosomal location targeted or included in molecular analysis.
+      If a specific genetic variant is being reported, this property can be used to
+      capture the cytoband where the variant is located. Format: [chromosome][chromosome
+      arm].[band+sub-bands]. Example: 17p13.1.'
+    files.cases.follow_ups.molecular_tests.days_to_test: Number of days between the
+      date used for index and the date of the laboratory test.
+    files.cases.follow_ups.molecular_tests.exon: Exon number targeted or included
+      in a molecular analysis. If a specific genetic variant is being reported, this
+      property can be used to capture the exon where that variant is located.
+    files.cases.follow_ups.molecular_tests.gene_symbol: The text term used to describe
+      a gene targeted or included in molecular analysis. For rearrangements, this
+      should be used to represent the reference gene.
+    files.cases.follow_ups.molecular_tests.histone_family: The text term used to describe
+      the family, or classification of a group of basic proteins found in chromatin,
+      called histones.
+    files.cases.follow_ups.molecular_tests.histone_variant: The text term used to
+      describe a specific histone variants, which are proteins that substitute for
+      the core canonical histones.
+    files.cases.follow_ups.molecular_tests.hpv_strain: The specific hpv strain being
+      tested.
+    files.cases.follow_ups.molecular_tests.id: A 128-bit identifier. Depending on
+      the mechanism used to generate it, it is either guaranteed to be different from
+      all other UUIDs/GUIDs generated until 3400 AD or extremely likely to be different.
+      Its relatively small size lends itself well to sorting, ordering, and hashing
+      of all sorts, storing in databases, simple allocation, and ease of programming
+      in general.
+    files.cases.follow_ups.molecular_tests.intron: Intron number targeted or included
+      in molecular analysis. If a specific genetic variant is being reported, this
+      property can be used to capture the intron where that variant is located.
+    files.cases.follow_ups.molecular_tests.laboratory_test: The text term used to
+      describe the medical testing used to diagnose, treat or further understand a
+      patient's disease.
+    files.cases.follow_ups.molecular_tests.loci_abnormal_count: Numeric value used
+      to describe the number of loci determined to be abnormal.
+    files.cases.follow_ups.molecular_tests.loci_count: Numeric value used to describe
+      the number of loci tested.
+    files.cases.follow_ups.molecular_tests.locus: The position of a gene or a chromosomal
+      marker on a chromosome; also, a stretch of DNA at a particular place on a particular
+      chromosome. The use of locus is sometimes restricted to mean regions of DNA
+      that are expressed.
+    files.cases.follow_ups.molecular_tests.mismatch_repair_mutation: The yes/no/unknown
+      indicator used to describe whether the mutation included in molecular testing
+      was known to have an effect on the mismatch repair process.
+    files.cases.follow_ups.molecular_tests.mitotic_count: The number of mitoses identified
+      under the microscope in tumors. The method of counting varies, according to
+      the specific tumor examined. Usually, the mitotic count is determined based
+      on the number of mitoses per high power field (40X) or 10 high power fields.
+    files.cases.follow_ups.molecular_tests.mitotic_total_area: The total area reviewed
+      when calculating the mitotic index ratio.
+    files.cases.follow_ups.molecular_tests.molecular_analysis_method: The text term
+      used to describe the method used for molecular analysis.
+    files.cases.follow_ups.molecular_tests.molecular_consequence: The text term used
+      to describe the molecular consequence of genetic variation.
+    files.cases.follow_ups.molecular_tests.mutation_codon: The codon where a change
+      in the nucleotide sequence is occurring and causing an error.
+    files.cases.follow_ups.molecular_tests.pathogenicity: The text used to describe
+      a variant's level of involvement in the cause of the patient's disease according
+      to the standards outlined by the American College of Medical Genetics and Genomics
+      (ACMG).
+    files.cases.follow_ups.molecular_tests.ploidy: Text term used to describe the
+      number of sets of homologous chromosomes.
+    files.cases.follow_ups.molecular_tests.second_exon: The second exon number involved
+      in molecular variation. If a specific genetic variant is being reported, this
+      property can be used to capture the second exon where that variant is located.
+      This property is typically used for a translocation where two different locations
+      are involved in the variation.
+    files.cases.follow_ups.molecular_tests.second_gene_symbol: The text term used
+      to describe a secondary gene targeted or included in molecular analysis. For
+      rearrangements, this should represent the location of the variant.
+    files.cases.follow_ups.molecular_tests.specialized_molecular_test: Text term used
+      to describe a specific test that is not covered in the list of molecular analysis
+      methods.
+    files.cases.follow_ups.molecular_tests.staining_intensity_scale: The scale used
+      by the immunohistochemistry staining rating.
+    files.cases.follow_ups.molecular_tests.staining_intensity_value: The degree or
+      magnitude of staining by a dye or reagent within a microscopic specimen.
+    files.cases.follow_ups.molecular_tests.state: The current state of the object.
+    files.cases.follow_ups.molecular_tests.submitter_id: A project-specific identifier
+      for a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    files.cases.follow_ups.molecular_tests.test_analyte_type: The text term used to
+      describe the type of analyte used for molecular testing.
+    files.cases.follow_ups.molecular_tests.test_result: The text term used to describe
+      the result of the molecular test. If the test result was a numeric value see
+      test_value.
+    files.cases.follow_ups.molecular_tests.test_units: The text term used to describe
+      the units of the test value for a molecular test. This property is used in conjunction
+      with test_value.
+    files.cases.follow_ups.molecular_tests.test_value: The text term or numeric value
+      used to describe a specific result of a molecular test.
+    files.cases.follow_ups.molecular_tests.test_value_range: The range of values within
+      which the subject's results fall.
+    files.cases.follow_ups.molecular_tests.timepoint_category: Category describing
+      a specific point in the time continuum, including those established relative
+      to an event.
+    files.cases.follow_ups.molecular_tests.transcript: Alphanumeric value used to
+      describe the transcript of a specific genetic variant.
+    files.cases.follow_ups.molecular_tests.updated_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.follow_ups.molecular_tests.variant_origin: The text term used to describe
+      the biological origin of a specific genetic variant.
+    files.cases.follow_ups.molecular_tests.variant_type: The text term used to describe
+      the type of genetic variation.
+    files.cases.follow_ups.molecular_tests.zygosity: The text term used to describe
+      the zygosity of a specific genetic variant.
+    files.cases.follow_ups.other_clinical_attributes.aids_risk_factors: The text term
+      used to describe a risk factor of the acquired immunodeficiency syndrome (AIDS)
+      that the patient either had at the time of the study or experienced in the past.
+    files.cases.follow_ups.other_clinical_attributes.bmi: A calculated numerical quantity
+      that represents an individual's weight to height ratio.
+    files.cases.follow_ups.other_clinical_attributes.body_surface_area: Numeric value
+      used to represent the two-dimensional extent of the body surface relating height
+      to weight.
+    files.cases.follow_ups.other_clinical_attributes.cd4_count: The text term used
+      to describe the outcome of the procedure to determine the amount of the CD4
+      expressing cells in a sample.
+    files.cases.follow_ups.other_clinical_attributes.cdc_hiv_risk_factors: The text
+      term used to describe a risk factor for human immunodeficiency virus, as described
+      by the Centers for Disease Control.
+    files.cases.follow_ups.other_clinical_attributes.comorbidities: The text term
+      used to describe a patient with one or more diseases or conditions, which coexist
+      with the patient's malignant disease at the same time.
+    files.cases.follow_ups.other_clinical_attributes.comorbidity_method_of_diagnosis: The
+      text term used to describe the method used to diagnose the patient's comorbid
+      disease.
+    files.cases.follow_ups.other_clinical_attributes.created_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.follow_ups.other_clinical_attributes.days_to_comorbidity: Number of
+      days between the date used for index and the date the patient was diagnosed
+      with a comorbidity.
+    files.cases.follow_ups.other_clinical_attributes.days_to_risk_factor: The number
+      of days from the index date to the date the patient was diagnosed with a specific
+      risk factor.
+    files.cases.follow_ups.other_clinical_attributes.diabetes_treatment_type: Text
+      term used to describe the types of treatment used to manage diabetes.
+    files.cases.follow_ups.other_clinical_attributes.dlco_ref_predictive_percent: The
+      value, as a percentage of predicted lung volume, measuring the amount of carbon
+      monoxide detected in a patient's lungs.
+    files.cases.follow_ups.other_clinical_attributes.exercise_frequency_weekly: Text
+      term that indicates the number of days that exercise occurred in the past seven
+      days.
+    files.cases.follow_ups.other_clinical_attributes.eye_color: The color of the iris
+      of the eye
+    files.cases.follow_ups.other_clinical_attributes.fertility_history: Text term
+      to describe an individual's capacity to conceive or to induce conception
+    files.cases.follow_ups.other_clinical_attributes.fev1_fvc_post_bronch_percent: Percentage
+      value to represent result of Forced Expiratory Volume in 1 second (FEV1) divided
+      by the Forced Vital Capacity (FVC) post-bronchodilator.
+    files.cases.follow_ups.other_clinical_attributes.fev1_fvc_pre_bronch_percent: Percentage
+      value to represent result of Forced Expiratory Volume in 1 second (FEV1) divided
+      by the Forced Vital Capacity (FVC) pre-bronchodilator.
+    files.cases.follow_ups.other_clinical_attributes.fev1_ref_post_bronch_percent: The
+      percentage comparison to a normal value reference range of the volume of air
+      that a patient can forcibly exhale from the lungs in one second post-bronchodilator.
+    files.cases.follow_ups.other_clinical_attributes.fev1_ref_pre_bronch_percent: The
+      percentage comparison to a normal value reference range of the volume of air
+      that a patient can forcibly exhale from the lungs in one second pre-bronchodilator.
+    files.cases.follow_ups.other_clinical_attributes.haart_treatment_indicator: The
+      text term used to indicate whether the patient received Highly Active Antiretroviral
+      Therapy (HAART).
+    files.cases.follow_ups.other_clinical_attributes.height: The height of the patient
+      in centimeters.
+    files.cases.follow_ups.other_clinical_attributes.hepatitis_sustained_virological_response: An
+      indication as to whether sustained virological response was obtained in responses
+      to viral hepatitis treatment.
+    files.cases.follow_ups.other_clinical_attributes.hiv_viral_load: Numeric value
+      that represents the concentration of an analyte or aliquot extracted from the
+      sample or sample portion, measured in milligrams per milliliter.
+    files.cases.follow_ups.other_clinical_attributes.hormonal_contraceptive_type: The
+      specific type of hormonal contraceptives used by the subject.
+    files.cases.follow_ups.other_clinical_attributes.hormonal_contraceptive_use: The
+      text term used to indicate whether the patient used hormonal contraceptives.
+    files.cases.follow_ups.other_clinical_attributes.hormonal_replacement_therapy_status: Indicates
+      whether the patient has ever received hormone replacement therapy.
+    files.cases.follow_ups.other_clinical_attributes.hormone_replacement_therapy_type: The
+      specific type of hormone replacement therapy received by the patient.
+    files.cases.follow_ups.other_clinical_attributes.hysterectomy_margins_involved: The
+      text term used to indicate whether the patient's disease was determined to be
+      involved based on the surgical margins of the hysterectomy.
+    files.cases.follow_ups.other_clinical_attributes.hysterectomy_type: The text term
+      used to describe the type of hysterectomy the patient had.
+    files.cases.follow_ups.other_clinical_attributes.id: A 128-bit identifier. Depending
+      on the mechanism used to generate it, it is either guaranteed to be different
+      from all other UUIDs/GUIDs generated until 3400 AD or extremely likely to be
+      different. Its relatively small size lends itself well to sorting, ordering,
+      and hashing of all sorts, storing in databases, simple allocation, and ease
+      of programming in general.
+    files.cases.follow_ups.other_clinical_attributes.immunosuppressive_treatment_type: The
+      text term used to describe the type of immunosuppressive treatment the patient
+      received.
+    files.cases.follow_ups.other_clinical_attributes.menopause_status: Text term used
+      to describe the patient's menopause status.
+    files.cases.follow_ups.other_clinical_attributes.myasthenia_gravis_classification: A
+      finding associated with a patient with myasthenia gravis that is based on the
+      classification system developed by the Myasthenia Gravis Foundation of America
+      (MGFA) for grading myasthenia gravis that divides the disease into five main
+      classes and several subclasses.
+    files.cases.follow_ups.other_clinical_attributes.nadir_cd4_count: Numeric value
+      that represents the lowest point to which the CD4 count has dropped (nadir).
+    files.cases.follow_ups.other_clinical_attributes.nononcologic_therapeutic_agents: Text
+      identification of the individual agent(s) used as part of a treatment regimen
+      not related to an oncologic disease.
+    files.cases.follow_ups.other_clinical_attributes.number_of_pregnancies: A measurement
+      of the total number of pregnancy events experienced by the female subject.
+    files.cases.follow_ups.other_clinical_attributes.oxygen_use_indicator: An indication
+      whether administration of oxygen to an individual occurred.
+    files.cases.follow_ups.other_clinical_attributes.oxygen_use_type: Text term to
+      describe the type of oxygen the patient uses at home.
+    files.cases.follow_ups.other_clinical_attributes.pancreatitis_onset_year: Numeric
+      value to represent the year that the patient was diagnosed with clinical chronic
+      pancreatitis.
+    files.cases.follow_ups.other_clinical_attributes.pregnancy_outcome: The text term
+      used to describe the type of pregnancy the patient had.
+    files.cases.follow_ups.other_clinical_attributes.pregnant_at_diagnosis: The text
+      term used to indicate whether the patient was pregnant at the time they were
+      diagnosed.
+    files.cases.follow_ups.other_clinical_attributes.premature_at_birth: The yes/no/unknown
+      indicator used to describe whether the patient was premature (less than 37 weeks
+      gestation) at birth.
+    files.cases.follow_ups.other_clinical_attributes.reflux_treatment_type: Text term
+      used to describe the types of treatment used to manage gastroesophageal reflux
+      disease (GERD).
+    files.cases.follow_ups.other_clinical_attributes.risk_factor_method_of_diagnosis: The
+      clinical or laboratory procedure(s) used in the determination of a diagnosis
+      described in this context as a risk factor.
+    files.cases.follow_ups.other_clinical_attributes.risk_factor_treatment: The yes/no/unknown
+      indicator used to describe whether the patient received treatment for a risk
+      factor the patient had at the time of or prior to their diagnosis.
+    files.cases.follow_ups.other_clinical_attributes.risk_factors: The text term used
+      to describe a risk factor the patient had at the time of or prior to their diagnosis.
+    files.cases.follow_ups.other_clinical_attributes.state: The current state of the
+      object.
+    files.cases.follow_ups.other_clinical_attributes.submitter_id: A project-specific
+      identifier for a node. This property is the calling card/nickname/alias for
+      a unit of submission. It can be used in place of the uuid for identifying or
+      recalling a node.
+    files.cases.follow_ups.other_clinical_attributes.timepoint_category: Category
+      describing a specific point in the time continuum, including those established
+      relative to an event.
+    files.cases.follow_ups.other_clinical_attributes.treatment_frequency: The text
+      term used to describe the frequency the patient received an agent or regimen.
+    files.cases.follow_ups.other_clinical_attributes.undescended_testis_corrected: Indicates
+      whether the patient's undescended testis was corrected.
+    files.cases.follow_ups.other_clinical_attributes.undescended_testis_corrected_age: The
+      patient's age when their undescended testis was corrected.
+    files.cases.follow_ups.other_clinical_attributes.undescended_testis_corrected_age_range: The
+      patient's age when their undescended testis was corrected.
+    files.cases.follow_ups.other_clinical_attributes.undescended_testis_corrected_laterality: Describes
+      the lateral location of the patient's undescended testis correction.
+    files.cases.follow_ups.other_clinical_attributes.undescended_testis_corrected_method: Describes
+      the method used to correct the patient's undescended testis.
+    files.cases.follow_ups.other_clinical_attributes.undescended_testis_history: The
+      persistent failure of one or both testes to descend into the scrotum.
+    files.cases.follow_ups.other_clinical_attributes.undescended_testis_history_laterality: Describes
+      the lateral location of the patient's undescended testis.
+    files.cases.follow_ups.other_clinical_attributes.updated_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.follow_ups.other_clinical_attributes.viral_hepatitis_serology_tests: A
+      set of tests that is used to determine if a subject has been or is currently
+      infected with a Hepatitis virus, is shedding Hepatitis virus or has immunity
+      to Hepatitis viruses.
+    files.cases.follow_ups.other_clinical_attributes.weeks_gestation_at_birth: Numeric
+      value used to describe the number of weeks starting from the approximate date
+      of the biological mother's last menstrual period and ending with the birth of
+      the patient.
+    files.cases.follow_ups.other_clinical_attributes.weight: The weight of the patient
+      measured in kilograms.
+    files.cases.follow_ups.peritoneal_washing_results: The results from this minimally
+      invasive procedure that permits sampling of peritoneal fluid for cytopathologic
+      analysis.
+    files.cases.follow_ups.procedures_performed: The type of procedures performed
+      on the patient.
+    files.cases.follow_ups.progression_or_recurrence: Indicates whether a patient
+      has a progression or recurrence after initial treatment. This can include local,
+      regional, or metastatic disease.
+    files.cases.follow_ups.progression_or_recurrence_anatomic_site: The text term
+      used to describe the anatomic site of the progressive or recurrent disease.
+    files.cases.follow_ups.progression_or_recurrence_type: The text term used to describe
+      the type of progressive or recurrent disease or relapsed disease.
+    files.cases.follow_ups.recist_targeted_regions_number: Numeric value that represents
+      the number of baseline target lesions, as described by the Response Evaluation
+      Criteria in Solid Tumours (RECIST) criteria.
+    files.cases.follow_ups.recist_targeted_regions_sum: Numeric value that represents
+      the sum of baseline target lesions, as described by the Response Evaluation
+      Criteria in Solid Tumours (RECIST) criteria.
+    files.cases.follow_ups.scan_tracer_used: The text term used to describe the type
+      of tracer used during the imaging or scan of the patient.
+    files.cases.follow_ups.state: The current state of the object.
+    files.cases.follow_ups.submitter_id: A project-specific identifier for a node.
+      This property is the calling card/nickname/alias for a unit of submission. It
+      can be used in place of the uuid for identifying or recalling a node.
+    files.cases.follow_ups.timepoint_category: Category describing a specific point
+      in the time continuum, including those established relative to an event.
+    files.cases.follow_ups.treatment_emergent_adverse_event: A situation that emerges
+      during treatment, having been absent pretreatment, or worsens relative to the
+      pretreatment state.
+    files.cases.follow_ups.updated_datetime: A combination of date and time of day
+      in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.follow_ups.year_of_follow_up: The year of the patient's last follow-up
+      appointment or contact.
+    files.cases.id: A 128-bit identifier. Depending on the mechanism used to generate
+      it, it is either guaranteed to be different from all other UUIDs/GUIDs generated
+      until 3400 AD or extremely likely to be different. Its relatively small size
+      lends itself well to sorting, ordering, and hashing of all sorts, storing in
+      databases, simple allocation, and ease of programming in general.
+    files.cases.index_date: The text term used to describe the reference or anchor
+      date used when for date obfuscation, where a single date is obscurred by creating
+      one or more date ranges in relation to this date.
+    files.cases.lost_to_followup: The yes/no/unknown indicator used to describe whether
+      a patient was unable to be contacted or seen for follow-up information.
+    files.cases.primary_site: The text term used to describe the primary site of disease,
+      as categorized by the World Health Organization's (WHO) International Classification
+      of Diseases for Oncology (ICD-O). This categorization groups cases into general
+      categories. Reference tissue_or_organ_of_origin on the diagnosis node for more
+      specific primary sites of disease.
+    files.cases.project.dbgap_accession_number: The dbgap accession number for the
+      project.
+    files.cases.project.disease_type: Full name for the project
+    files.cases.project.id: UUID for the project
+    files.cases.project.intended_release_date: Tracks a Project's intended release
+      date.
+    files.cases.project.name: Display name for the project
+    files.cases.project.primary_site: Primary site for the project
+    files.cases.project.program.dbgap_accession_number: The dbgap accession number
+      provided for the program.
+    files.cases.project.program.id: A 128-bit identifier. Depending on the mechanism
+      used to generate it, it is either guaranteed to be different from all other
+      UUIDs/GUIDs generated until 3400 AD or extremely likely to be different. Its
+      relatively small size lends itself well to sorting, ordering, and hashing of
+      all sorts, storing in databases, simple allocation, and ease of programming
+      in general.
+    files.cases.project.program.name: Full name/title of the program.
+    files.cases.project.releasable: A project can only be released by the user when
+      `releasable` is true.
+    files.cases.project.released: To release a project is to tell the GDC to include
+      all submitted entities in the next GDC index.
+    files.cases.project.state: The possible states a project can be in.  All but `open`
+      are equivalent to some type of locked state.
+    files.cases.samples.annotations.category: Top level characterization of the annotation.
+    files.cases.samples.annotations.classification: Top level classification of the
+      annotation.
+    files.cases.samples.annotations.created_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.annotations.creator: Name of the person or entity responsible
+      for the creation of the annotation.
+    files.cases.samples.annotations.id: A 128-bit identifier. Depending on the mechanism
+      used to generate it, it is either guaranteed to be different from all other
+      UUIDs/GUIDs generated until 3400 AD or extremely likely to be different. Its
+      relatively small size lends itself well to sorting, ordering, and hashing of
+      all sorts, storing in databases, simple allocation, and ease of programming
+      in general.
+    files.cases.samples.annotations.legacy_created_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.annotations.legacy_updated_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.annotations.notes: Open entry for any further description
+      or characterization of the data.
+    files.cases.samples.annotations.state: The current state of the object.
+    files.cases.samples.annotations.status: Status of the annotation.
+    files.cases.samples.annotations.submitter_id: A project-specific identifier for
+      a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    files.cases.samples.annotations.updated_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.biospecimen_anatomic_site: Text term that represents the name
+      of the organ or tissue site of the submitted sample.
+    files.cases.samples.biospecimen_laterality: For tumors in paired organs, designates
+      the side on which the specimen was obtained.
+    files.cases.samples.catalog_reference: HCMI catalog reference number for cancer
+      model.
+    files.cases.samples.created_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.current_weight: Numeric value that represents the current
+      weight of the sample, measured in milligrams.
+    files.cases.samples.days_to_collection: The number of days from the index date
+      to the date a sample was received by the Biospecimen Core Resource (BCR) or
+      other center for processing.
+    files.cases.samples.days_to_sample_procurement: The number of days from the index
+      date to the date a patient underwent a procedure (e.g. surgical resection) to
+      yield or remove from the patient a sample that was eventually used for research.
+    files.cases.samples.diagnosis_pathologically_confirmed: The histologic description
+      of tissue or cells confirmed by a pathology review of frozen or formalin fixed
+      slide(s) completed after the diagnostic pathology review of the tumor sample
+      used to extract analyte(s).
+    files.cases.samples.distance_normal_to_tumor: Text term to signify the distance
+      between the tumor tissue and the normal control tissue that was procured for
+      matching normal DNA.
+    files.cases.samples.distributor_reference: Distributor reference number for cancer
+      model.
+    files.cases.samples.freezing_method: Text term that represents the method used
+      for freezing the sample.
+    files.cases.samples.growth_rate: Rate at which the model grows, measured as hours
+      to time to split.
+    files.cases.samples.id: A 128-bit identifier. Depending on the mechanism used
+      to generate it, it is either guaranteed to be different from all other UUIDs/GUIDs
+      generated until 3400 AD or extremely likely to be different. Its relatively
+      small size lends itself well to sorting, ordering, and hashing of all sorts,
+      storing in databases, simple allocation, and ease of programming in general.
+    files.cases.samples.initial_weight: Numeric value that represents the initial
+      weight of the sample, measured in milligrams.
+    files.cases.samples.intermediate_dimension: Intermediate dimension of the sample,
+      in millimeters.
+    files.cases.samples.longest_dimension: Numeric value that represents the longest
+      dimension of the sample, measured in millimeters.
+    files.cases.samples.method_of_sample_procurement: The method used to procure the
+      sample used to extract analyte(s).
+    files.cases.samples.passage_count: Number of passages (splits) between the original
+      tissue and this model.
+    files.cases.samples.pathology_report_uuid: UUID of the related pathology report.
+    files.cases.samples.portions.analytes.a260_a280_ratio: Numeric value that represents
+      the sample ratio of nucleic acid absorbance at 260 nm and 280 nm, used to determine
+      a measure of DNA purity.
+    files.cases.samples.portions.analytes.aliquots.aliquot_quantity: The quantity
+      in micrograms (ug) of the aliquot(s) derived from the analyte(s) shipped for
+      sequencing and characterization.
+    files.cases.samples.portions.analytes.aliquots.aliquot_volume: The volume in microliters
+      (ul) of the aliquot(s) derived from the analyte(s) shipped for sequencing and
+      characterization.
+    files.cases.samples.portions.analytes.aliquots.amount: Weight in grams or volume
+      in mL.
+    files.cases.samples.portions.analytes.aliquots.analyte_type: Text term that represents
+      the kind of molecular specimen analyte.
+    files.cases.samples.portions.analytes.aliquots.annotations.category: Top level
+      characterization of the annotation.
+    files.cases.samples.portions.analytes.aliquots.annotations.classification: Top
+      level classification of the annotation.
+    files.cases.samples.portions.analytes.aliquots.annotations.created_datetime: A
+      combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.analytes.aliquots.annotations.creator: Name of the
+      person or entity responsible for the creation of the annotation.
+    files.cases.samples.portions.analytes.aliquots.annotations.id: A 128-bit identifier.
+      Depending on the mechanism used to generate it, it is either guaranteed to be
+      different from all other UUIDs/GUIDs generated until 3400 AD or extremely likely
+      to be different. Its relatively small size lends itself well to sorting, ordering,
+      and hashing of all sorts, storing in databases, simple allocation, and ease
+      of programming in general.
+    files.cases.samples.portions.analytes.aliquots.annotations.legacy_created_datetime: A
+      combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.analytes.aliquots.annotations.legacy_updated_datetime: A
+      combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.analytes.aliquots.annotations.notes: Open entry for
+      any further description or characterization of the data.
+    files.cases.samples.portions.analytes.aliquots.annotations.state: The current
+      state of the object.
+    files.cases.samples.portions.analytes.aliquots.annotations.status: Status of the
+      annotation.
+    files.cases.samples.portions.analytes.aliquots.annotations.submitter_id: A project-specific
+      identifier for a node. This property is the calling card/nickname/alias for
+      a unit of submission. It can be used in place of the uuid for identifying or
+      recalling a node.
+    files.cases.samples.portions.analytes.aliquots.annotations.updated_datetime: A
+      combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.analytes.aliquots.center.center_type: Type classification
+      of the center (e.g. CGCC).
+    files.cases.samples.portions.analytes.aliquots.center.code: Numeric code for the
+      center.
+    files.cases.samples.portions.analytes.aliquots.center.id: UUID for the center.
+    files.cases.samples.portions.analytes.aliquots.center.name: Name of the center
+      (e.g. Broad Institute of MIT and Harvard).
+    files.cases.samples.portions.analytes.aliquots.center.namespace: Domain name of
+      the center (e.g. broad.mit.edu).
+    files.cases.samples.portions.analytes.aliquots.center.short_name: Shortened name
+      of the center (e.g. BI).
+    files.cases.samples.portions.analytes.aliquots.concentration: Numeric value that
+      represents the concentration of an analyte or aliquot extracted from the sample
+      or sample portion, measured in milligrams per milliliter.
+    files.cases.samples.portions.analytes.aliquots.created_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.analytes.aliquots.id: A 128-bit identifier. Depending
+      on the mechanism used to generate it, it is either guaranteed to be different
+      from all other UUIDs/GUIDs generated until 3400 AD or extremely likely to be
+      different. Its relatively small size lends itself well to sorting, ordering,
+      and hashing of all sorts, storing in databases, simple allocation, and ease
+      of programming in general.
+    files.cases.samples.portions.analytes.aliquots.no_matched_normal_low_pass_wgs: There
+      will be no matched normal low pass WGS aliquots for this case that can be used
+      for variant calling purposes. The GDC may elect to use a single tumor calling
+      pipeline to process this data.
+    files.cases.samples.portions.analytes.aliquots.no_matched_normal_targeted_sequencing: There
+      will be no matched normal Targeted Sequencing aliquots for this case that can
+      be used for variant calling purposes. The GDC may elect to use a single tumor
+      calling pipeline to process this data.
+    files.cases.samples.portions.analytes.aliquots.no_matched_normal_wgs: There will
+      be no matched normal WGS aliquots for this case that can be used for variant
+      calling purposes. The GDC may elect to use a single tumor calling pipeline to
+      process this data.
+    files.cases.samples.portions.analytes.aliquots.no_matched_normal_wxs: There will
+      be no matched normal WXS aliquots for this case that can be used for variant
+      calling purposes. The GDC may elect to use a single tumor calling pipeline to
+      process this data.
+    files.cases.samples.portions.analytes.aliquots.selected_normal_low_pass_wgs: Denotes
+      which low-pass WGS normal aliquot the submitter prefers to use for variant calling.
+      Only one normal per experimental strategy per case can be selected.
+    files.cases.samples.portions.analytes.aliquots.selected_normal_targeted_sequencing: Denotes
+      which targeted_sequencing normal aliquot the submitter prefers to use for variant
+      calling. Only one normal per experimental strategy per case can be selected.
+    files.cases.samples.portions.analytes.aliquots.selected_normal_wgs: Denotes which
+      WGS normal aliquot the submitter prefers to use for variant calling. Only one
+      normal per experimental strategy per case can be selected.
+    files.cases.samples.portions.analytes.aliquots.selected_normal_wxs: Denotes which
+      WXS normal aliquot the submitter prefers to use for variant calling. Only one
+      normal per experimental strategy per case can be selected.
+    files.cases.samples.portions.analytes.aliquots.source_center: Name of the center
+      that provided the item.
+    files.cases.samples.portions.analytes.aliquots.state: The current state of the
+      object.
+    files.cases.samples.portions.analytes.aliquots.submitter_id: A project-specific
+      identifier for a node. This property is the calling card/nickname/alias for
+      a unit of submission. It can be used in place of the uuid for identifying or
+      recalling a node.
+    files.cases.samples.portions.analytes.aliquots.updated_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.analytes.amount: Weight in grams or volume in mL.
+    files.cases.samples.portions.analytes.analyte_quantity: The quantity in micrograms
+      (ug) of the analyte(s) derived from the analyte(s) shipped for sequencing and
+      characterization.
+    files.cases.samples.portions.analytes.analyte_type: Text term that represents
+      the kind of molecular specimen analyte.
+    files.cases.samples.portions.analytes.analyte_volume: "The volume in microliters\
+      \ (ul) of the analyte(s) shipped for sequencing and\n characterization."
+    files.cases.samples.portions.analytes.annotations.category: Top level characterization
+      of the annotation.
+    files.cases.samples.portions.analytes.annotations.classification: Top level classification
+      of the annotation.
+    files.cases.samples.portions.analytes.annotations.created_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.analytes.annotations.creator: Name of the person
+      or entity responsible for the creation of the annotation.
+    files.cases.samples.portions.analytes.annotations.id: A 128-bit identifier. Depending
+      on the mechanism used to generate it, it is either guaranteed to be different
+      from all other UUIDs/GUIDs generated until 3400 AD or extremely likely to be
+      different. Its relatively small size lends itself well to sorting, ordering,
+      and hashing of all sorts, storing in databases, simple allocation, and ease
+      of programming in general.
+    files.cases.samples.portions.analytes.annotations.legacy_created_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.analytes.annotations.legacy_updated_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.analytes.annotations.notes: Open entry for any further
+      description or characterization of the data.
+    files.cases.samples.portions.analytes.annotations.state: The current state of
+      the object.
+    files.cases.samples.portions.analytes.annotations.status: Status of the annotation.
+    files.cases.samples.portions.analytes.annotations.submitter_id: A project-specific
+      identifier for a node. This property is the calling card/nickname/alias for
+      a unit of submission. It can be used in place of the uuid for identifying or
+      recalling a node.
+    files.cases.samples.portions.analytes.annotations.updated_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.analytes.concentration: Numeric value that represents
+      the concentration of an analyte or aliquot extracted from the sample or sample
+      portion, measured in milligrams per milliliter.
+    files.cases.samples.portions.analytes.created_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.analytes.dna_integrity_number: An assessment of the
+      amount of fragmentation in a genomic DNA sample. It is derived by an algorithm
+      that assesses the distribution of signal across the size range and generates
+      a calculated integrity number.
+    files.cases.samples.portions.analytes.experimental_protocol_type: The type of
+      experiment used to extract the analyte.
+    files.cases.samples.portions.analytes.id: A 128-bit identifier. Depending on the
+      mechanism used to generate it, it is either guaranteed to be different from
+      all other UUIDs/GUIDs generated until 3400 AD or extremely likely to be different.
+      Its relatively small size lends itself well to sorting, ordering, and hashing
+      of all sorts, storing in databases, simple allocation, and ease of programming
+      in general.
+    files.cases.samples.portions.analytes.normal_tumor_genotype_snp_match: Text term
+      that represents whether or not the genotype of the normal tumor matches or if
+      the data is not available.
+    files.cases.samples.portions.analytes.ribosomal_rna_28s_16s_ratio: The 28S/18S
+      ribosomal RNA band ratio used to assess the quality of total RNA.
+    files.cases.samples.portions.analytes.ribosomal_rna_28s_18s_ratio: The 28S/18S
+      ribosomal RNA band ratio used to assess the quality of total RNA.
+    files.cases.samples.portions.analytes.rna_integrity_number: A numerical assessment
+      of the integrity of RNA based on the entire electrophoretic trace of the RNA
+      sample, including the presence or absence of degradation products.
+    files.cases.samples.portions.analytes.spectrophotometer_method: Name of the method
+      used to determine the concentration of purified nucleic acid within a solution.
+    files.cases.samples.portions.analytes.state: The current state of the object.
+    files.cases.samples.portions.analytes.submitter_id: A project-specific identifier
+      for a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    files.cases.samples.portions.analytes.updated_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.analytes.well_number: Numeric value that represents
+      the well location within a plate for the analyte or aliquot from the sample.
+    files.cases.samples.portions.annotations.category: Top level characterization
+      of the annotation.
+    files.cases.samples.portions.annotations.classification: Top level classification
+      of the annotation.
+    files.cases.samples.portions.annotations.created_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.annotations.creator: Name of the person or entity
+      responsible for the creation of the annotation.
+    files.cases.samples.portions.annotations.id: A 128-bit identifier. Depending on
+      the mechanism used to generate it, it is either guaranteed to be different from
+      all other UUIDs/GUIDs generated until 3400 AD or extremely likely to be different.
+      Its relatively small size lends itself well to sorting, ordering, and hashing
+      of all sorts, storing in databases, simple allocation, and ease of programming
+      in general.
+    files.cases.samples.portions.annotations.legacy_created_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.annotations.legacy_updated_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.annotations.notes: Open entry for any further description
+      or characterization of the data.
+    files.cases.samples.portions.annotations.state: The current state of the object.
+    files.cases.samples.portions.annotations.status: Status of the annotation.
+    files.cases.samples.portions.annotations.submitter_id: A project-specific identifier
+      for a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    files.cases.samples.portions.annotations.updated_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.center.center_type: Type classification of the center
+      (e.g. CGCC).
+    files.cases.samples.portions.center.code: Numeric code for the center.
+    files.cases.samples.portions.center.id: UUID for the center.
+    files.cases.samples.portions.center.name: Name of the center (e.g. Broad Institute
+      of MIT and Harvard).
+    files.cases.samples.portions.center.namespace: Domain name of the center (e.g.
+      broad.mit.edu).
+    files.cases.samples.portions.center.short_name: Shortened name of the center (e.g.
+      BI).
+    files.cases.samples.portions.created_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.creation_datetime: The datetime of portion creation
+      encoded as seconds from epoch.
+    files.cases.samples.portions.id: A 128-bit identifier. Depending on the mechanism
+      used to generate it, it is either guaranteed to be different from all other
+      UUIDs/GUIDs generated until 3400 AD or extremely likely to be different. Its
+      relatively small size lends itself well to sorting, ordering, and hashing of
+      all sorts, storing in databases, simple allocation, and ease of programming
+      in general.
+    files.cases.samples.portions.is_ffpe: Indicator to signify whether or not the
+      tissue sample was fixed in formalin and embedded in paraffin (FFPE).
+    files.cases.samples.portions.portion_number: Numeric value that represents the
+      sequential number assigned to a portion of the sample.
+    files.cases.samples.portions.slides.annotations.category: Top level characterization
+      of the annotation.
+    files.cases.samples.portions.slides.annotations.classification: Top level classification
+      of the annotation.
+    files.cases.samples.portions.slides.annotations.created_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.slides.annotations.creator: Name of the person or
+      entity responsible for the creation of the annotation.
+    files.cases.samples.portions.slides.annotations.id: A 128-bit identifier. Depending
+      on the mechanism used to generate it, it is either guaranteed to be different
+      from all other UUIDs/GUIDs generated until 3400 AD or extremely likely to be
+      different. Its relatively small size lends itself well to sorting, ordering,
+      and hashing of all sorts, storing in databases, simple allocation, and ease
+      of programming in general.
+    files.cases.samples.portions.slides.annotations.legacy_created_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.slides.annotations.legacy_updated_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.slides.annotations.notes: Open entry for any further
+      description or characterization of the data.
+    files.cases.samples.portions.slides.annotations.state: The current state of the
+      object.
+    files.cases.samples.portions.slides.annotations.status: Status of the annotation.
+    files.cases.samples.portions.slides.annotations.submitter_id: A project-specific
+      identifier for a node. This property is the calling card/nickname/alias for
+      a unit of submission. It can be used in place of the uuid for identifying or
+      recalling a node.
+    files.cases.samples.portions.slides.annotations.updated_datetime: A combination
+      of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.slides.bone_marrow_malignant_cells: The text term
+      used to indicate whether there are malignant cells in the bone marrow.
+    files.cases.samples.portions.slides.created_datetime: A combination of date and
+      time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.slides.id: A 128-bit identifier. Depending on the
+      mechanism used to generate it, it is either guaranteed to be different from
+      all other UUIDs/GUIDs generated until 3400 AD or extremely likely to be different.
+      Its relatively small size lends itself well to sorting, ordering, and hashing
+      of all sorts, storing in databases, simple allocation, and ease of programming
+      in general.
+    files.cases.samples.portions.slides.number_proliferating_cells: Numeric value
+      that represents the count of proliferating cells determined during pathologic
+      review of the sample slide(s).
+    files.cases.samples.portions.slides.percent_eosinophil_infiltration: Numeric value
+      to represent the percentage of infiltration by eosinophils in a tumor sample
+      or specimen.
+    files.cases.samples.portions.slides.percent_follicular_component: Numeric value
+      that represents the percentage of follicular features found in a specific tissue
+      sample.
+    files.cases.samples.portions.slides.percent_granulocyte_infiltration: Numeric
+      value to represent the percentage of infiltration by granulocytes in a tumor
+      sample or specimen.
+    files.cases.samples.portions.slides.percent_inflam_infiltration: Numeric value
+      to represent local response to cellular injury, marked by capillary dilatation,
+      edema and leukocyte infiltration; clinically, inflammation is manifest by reddness,
+      heat, pain, swelling and loss of function, with the need to heal damaged tissue.
+    files.cases.samples.portions.slides.percent_lymphocyte_infiltration: Numeric value
+      to represent the percentage of infiltration by lymphocytes in a solid tissue
+      sample or specimen.
+    files.cases.samples.portions.slides.percent_monocyte_infiltration: Numeric value
+      to represent the percentage of monocyte infiltration in a sample or specimen.
+    files.cases.samples.portions.slides.percent_necrosis: Numeric value to represent
+      the percentage of cell death in a malignant tumor sample or specimen.
+    files.cases.samples.portions.slides.percent_neutrophil_infiltration: Numeric value
+      to represent the percentage of infiltration by neutrophils in a tumor sample
+      or specimen.
+    files.cases.samples.portions.slides.percent_normal_cells: Numeric value to represent
+      the percentage of normal cell content in a malignant tumor sample or specimen.
+    files.cases.samples.portions.slides.percent_rhabdoid_features: Numeric value that
+      represents the percentage of rhabdoid features found in a specific tissue sample.
+    files.cases.samples.portions.slides.percent_sarcomatoid_features: Numeric value
+      that represents the percentage of sarcomatoid features found in a specific tissue
+      sample.
+    files.cases.samples.portions.slides.percent_stromal_cells: Numeric value to represent
+      the percentage of reactive cells that are present in a malignant tumor sample
+      or specimen but are not malignant such as fibroblasts, vascular structures,
+      etc.
+    files.cases.samples.portions.slides.percent_tumor_cells: Numeric value that represents
+      the percentage of infiltration by tumor cells in a sample.
+    files.cases.samples.portions.slides.percent_tumor_nuclei: Numeric value to represent
+      the percentage of tumor nuclei in a malignant neoplasm sample or specimen.
+    files.cases.samples.portions.slides.prostatic_chips_positive_count: The text term
+      used to describe the number of positive prostatic chips, which are generated
+      from transurethral resection of the prostate (TURP) procedures and are generally
+      used for relieving urinary obstruction due to nodular hyperplasia of the prostate
+      (benign prostatic hyperplasia).
+    files.cases.samples.portions.slides.prostatic_chips_total_count: The text term
+      used to describe the total number of prostatic chips, which are generated from
+      transurethral resection of the prostate (TURP) procedures and are generally
+      used for relieving urinary obstruction due to nodular hyperplasia of the prostate
+      (benign prostatic hyperplasia).
+    files.cases.samples.portions.slides.prostatic_involvement_percent: Numeric value
+      that represents the percentage of prostatic involvement found in a specific
+      tissue sample.
+    files.cases.samples.portions.slides.section_location: Tissue source of the slide.
+    files.cases.samples.portions.slides.state: The current state of the object.
+    files.cases.samples.portions.slides.submitter_id: A project-specific identifier
+      for a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    files.cases.samples.portions.slides.tissue_microarray_coordinates: The alphanumeric
+      term used to describe the coordinates of a specific tissue located on a tissue
+      microarray slide.
+    files.cases.samples.portions.slides.updated_datetime: A combination of date and
+      time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.state: The current state of the object.
+    files.cases.samples.portions.submitter_id: A project-specific identifier for a
+      node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    files.cases.samples.portions.updated_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.samples.portions.weight: Numeric value that represents the sample
+      portion weight, measured in milligrams.
+    files.cases.samples.preservation_method: Text term that represents the method
+      used to preserve the sample.
+    files.cases.samples.sample_ordinal: A number describing the samples place in an
+      ordered sequence.
+    files.cases.samples.sample_type: Text term to describe the source of a biospecimen
+      used for a laboratory test.
+    files.cases.samples.shortest_dimension: Numeric value that represents the shortest
+      dimension of the sample, measured in millimeters.
+    files.cases.samples.specimen_type: The type of a material sample taken from a
+      biological entity for testing, diagnostic, propagation, treatment or research
+      purposes. This includes particular types of cellular molecules, cells, tissues,
+      organs, body fluids, embryos, and body excretory substances.
+    files.cases.samples.state: The current state of the object.
+    files.cases.samples.submitter_id: A project-specific identifier for a node. This
+      property is the calling card/nickname/alias for a unit of submission. It can
+      be used in place of the uuid for identifying or recalling a node.
+    files.cases.samples.time_between_clamping_and_freezing: Numeric representation
+      of the elapsed time between the surgical clamping of blood supply and freezing
+      of the sample, measured in minutes.
+    files.cases.samples.time_between_excision_and_freezing: Numeric representation
+      of the elapsed time between the excision and freezing of the sample, measured
+      in minutes.
+    files.cases.samples.tissue_collection_type: The text term used to describe the
+      type of collection used to obtain tissue.
+    files.cases.samples.tissue_type: Text term that represents a description of the
+      kind of tissue collected with respect to disease status or proximity to tumor
+      tissue.
+    files.cases.samples.tumor_code_id: BCR-defined id code for the tumor sample.
+    files.cases.samples.tumor_descriptor: Text that describes the kind of disease
+      present in the tumor specimen as related to a specific timepoint.
+    files.cases.samples.updated_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.cases.state: The current state of the object.
+    files.cases.submitter_id: A project-specific identifier for a node. This property
+      is the calling card/nickname/alias for a unit of submission. It can be used
+      in place of the uuid for identifying or recalling a node.
+    files.cases.tissue_source_site.bcr_id: TCGA-provided BCR id.
+    files.cases.tissue_source_site.code: TCGA-provided TSS code.
+    files.cases.tissue_source_site.id: UUID for the Tissue Source Site
+    files.cases.tissue_source_site.name: Name of the source site.
+    files.cases.tissue_source_site.project: Study name of the project.
+    files.cases.updated_datetime: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.center.center_type: Type classification of the center (e.g. CGCC).
+    files.center.code: Numeric code for the center.
+    files.center.id: UUID for the center.
+    files.center.name: Name of the center (e.g. Broad Institute of MIT and Harvard).
+    files.center.namespace: Domain name of the center (e.g. broad.mit.edu).
+    files.center.short_name: Shortened name of the center (e.g. BI).
+    files.channel: The corresponding color channel used to generate this data file.
+    files.chip_id: User specified identifier for the chip used to perform the methylation
+      microarray.
+    files.chip_position: User specified identifier for the specific position on the
+      chip that the sample was loaded into to perform the methylation microarray.
+    files.contamination: Fraction of reads coming from cross-sample contamination
+      collected from GATK4.
+    files.contamination_error: Estimation error of cross-sample contamination collected
+      from GATK4.
+    files.created_datetime: A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.data_category: Broad categorization of the contents of the data file.
+    files.data_format: Format of the data files.
+    files.data_type: Specific content type of the data file.
+    files.downstream_analyses.created_datetime: A combination of date and time of
+      day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.downstream_analyses.id: A 128-bit identifier. Depending on the mechanism
+      used to generate it, it is either guaranteed to be different from all other
+      UUIDs/GUIDs generated until 3400 AD or extremely likely to be different. Its
+      relatively small size lends itself well to sorting, ordering, and hashing of
+      all sorts, storing in databases, simple allocation, and ease of programming
+      in general.
+    files.downstream_analyses.output_files.average_base_quality: Average base quality
+      collected from samtools.
+    files.downstream_analyses.output_files.average_insert_size: Average insert size
+      collected from samtools.
+    files.downstream_analyses.output_files.average_read_length: Average read length
+      collected from samtools.
+    files.downstream_analyses.output_files.cancer_dna_fraction: Fraction of cancer
+      DNA in the tumor tissue.
+    files.downstream_analyses.output_files.channel: The corresponding color channel
+      used to generate this data file.
+    files.downstream_analyses.output_files.chip_id: User specified identifier for
+      the chip used to perform the methylation microarray.
+    files.downstream_analyses.output_files.chip_position: User specified identifier
+      for the specific position on the chip that the sample was loaded into to perform
+      the methylation microarray.
+    files.downstream_analyses.output_files.contamination: Fraction of reads coming
+      from cross-sample contamination collected from GATK4.
+    files.downstream_analyses.output_files.contamination_error: Estimation error of
+      cross-sample contamination collected from GATK4.
+    files.downstream_analyses.output_files.created_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.downstream_analyses.output_files.data_category: Broad categorization of
+      the contents of the data file.
+    files.downstream_analyses.output_files.data_format: Format of the data files.
+    files.downstream_analyses.output_files.data_type: Specific content type of the
+      data file.
+    files.downstream_analyses.output_files.error_type: Type of error for the data
+      file object.
+    files.downstream_analyses.output_files.experimental_strategy: The sequencing strategy
+      used to generate the data file.
+    files.downstream_analyses.output_files.file_name: The name (or part of a name)
+      of a file (of any type).
+    files.downstream_analyses.output_files.file_size: The size of the data file (object)
+      in bytes.
+    files.downstream_analyses.output_files.genome_doubling: Number of genome doubling
+      events.
+    files.downstream_analyses.output_files.id: A 128-bit identifier. Depending on
+      the mechanism used to generate it, it is either guaranteed to be different from
+      all other UUIDs/GUIDs generated until 3400 AD or extremely likely to be different.
+      Its relatively small size lends itself well to sorting, ordering, and hashing
+      of all sorts, storing in databases, simple allocation, and ease of programming
+      in general.
+    files.downstream_analyses.output_files.imaging_date: A combination of date and
+      time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.downstream_analyses.output_files.magnification: Magnification used to capture
+      the image.
+    files.downstream_analyses.output_files.md5sum: The 128-bit hash value expressed
+      as a 32 digit hexadecimal number (in lower case) used as a file's digital fingerprint.
+    files.downstream_analyses.output_files.mean_coverage: Mean coverage for whole
+      genome sequencing, or mean target coverage for whole exome and targeted sequencing,
+      collected from Picard Tools.
+    files.downstream_analyses.output_files.msi_score: Numeric score denoting the aligned
+      reads file's MSI score from MSIsensor.
+    files.downstream_analyses.output_files.msi_status: MSIsensor determination of
+      either microsatellite stability or instability.
+    files.downstream_analyses.output_files.pairs_on_diff_chr: Pairs on different chromosomes
+      collected from samtools.
+    files.downstream_analyses.output_files.plate_name: User specified identifier of
+      the plate used to prepare the sample for analysis.
+    files.downstream_analyses.output_files.plate_well: User specified identifier for
+      the specific well of the plate used to prepare the sample for analysis.
+    files.downstream_analyses.output_files.platform: Name of the platform used to
+      obtain data.
+    files.downstream_analyses.output_files.proc_internal: Internal data processing
+      flag
+    files.downstream_analyses.output_files.proportion_base_mismatch: Proportion of
+      mismatched bases collected from samtools.
+    files.downstream_analyses.output_files.proportion_coverage_10x: Proportion of
+      all reference bases for whole genome sequencing, or targeted bases for whole
+      exome and targeted sequencing, that achieves 10X or greater coverage from Picard
+      Tools.
+    files.downstream_analyses.output_files.proportion_coverage_30x: Proportion of
+      all reference bases for whole genome sequencing, or targeted bases for whole
+      exome and targeted sequencing, that achieves 30X or greater coverage from Picard
+      Tools.
+    files.downstream_analyses.output_files.proportion_reads_duplicated: Proportion
+      of duplicated reads collected from samtools.
+    files.downstream_analyses.output_files.proportion_reads_mapped: Proportion of
+      mapped reads collected from samtools.
+    files.downstream_analyses.output_files.proportion_targets_no_coverage: Proportion
+      of targets that did not reach 1X coverage over any base from Picard Tools.
+    files.downstream_analyses.output_files.read_pair_number: Denotes whether a submitted
+      FASTQ file contains forward (R1) or reverse (R2) reads for paired-end sequencing.
+    files.downstream_analyses.output_files.revision: The revision of this archive
+      in the DCC.
+    files.downstream_analyses.output_files.stain_type: The text term used to describe
+      the type of stain used on a slide.
+    files.downstream_analyses.output_files.state: The current state of the object.
+    files.downstream_analyses.output_files.state_comment: Optional comment about why
+      the file is in the current state, mainly for invalid state.
+    files.downstream_analyses.output_files.subclonal_genome_fraction: Fraction of
+      subclonal genome in the tumor tissue.
+    files.downstream_analyses.output_files.submitter_id: A project-specific identifier
+      for a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    files.downstream_analyses.output_files.tmb: Tumor Mutational Burden (TMB), reported
+      in mutations per megabase (mut/Mb), calculated within the targeted capture region
+      or across the whole genome for WGS data.
+    files.downstream_analyses.output_files.tmb_exonic: Tumor Mutational Burden (TMB),
+      reported in mutations per megabase (mut/Mb), calculated within the intersect
+      of the targeted capture region and exonic region.
+    files.downstream_analyses.output_files.tmb_nonsynonymous: Tumor Mutational Burden
+      (TMB) of nonsynonymous mutations only, reported in mutations per megabase (mut/Mb),
+      calculated within the targeted capture region or across the whole genome for
+      WGS data.
+    files.downstream_analyses.output_files.tmb_nonsynonymous_exonic: Tumor Mutational
+      Burden (TMB) of nonsynonymous mutations only, reported in mutations per megabase
+      (mut/Mb), calculated within the intersect of the targeted capture region and
+      exonic region.
+    files.downstream_analyses.output_files.total_reads: Total number of reads collected
+      from samtools.
+    files.downstream_analyses.output_files.tumor_ploidy: Numeric value used to describe
+      the number of sets of chromosomes in a cell or an organism. For example, haploid
+      means one set and diploid means two sets.
+    files.downstream_analyses.output_files.tumor_purity: Numeric value used to describe
+      the ratio of tumor cells compared to total cells present in a sample.
+    files.downstream_analyses.output_files.updated_datetime: A combination of date
+      and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.downstream_analyses.output_files.wgs_coverage: Range of coverage values
+      for WGS aligned reads. Each range is non-inclusive to the lower bound.
+    files.downstream_analyses.state: The current state of the object.
+    files.downstream_analyses.submitter_id: A project-specific identifier for a node.
+      This property is the calling card/nickname/alias for a unit of submission. It
+      can be used in place of the uuid for identifying or recalling a node.
+    files.downstream_analyses.updated_datetime: A combination of date and time of
+      day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.downstream_analyses.workflow_end_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.downstream_analyses.workflow_link: A URL-formatted web address for a data
+      analysis workflow.
+    files.downstream_analyses.workflow_start_datetime: A combination of date and time
+      of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.downstream_analyses.workflow_type: The name of the workflow used to process
+      and/or analyze a data set.
+    files.downstream_analyses.workflow_version: The version of the workflow used in
+      data analysis.
+    files.error_type: Type of error for the data file object.
+    files.experimental_strategy: The sequencing strategy used to generate the data
+      file.
+    files.file_name: The name (or part of a name) of a file (of any type).
+    files.file_size: The size of the data file (object) in bytes.
+    files.genome_doubling: Number of genome doubling events.
+    files.id: A 128-bit identifier. Depending on the mechanism used to generate it,
+      it is either guaranteed to be different from all other UUIDs/GUIDs generated
+      until 3400 AD or extremely likely to be different. Its relatively small size
+      lends itself well to sorting, ordering, and hashing of all sorts, storing in
+      databases, simple allocation, and ease of programming in general.
+    files.imaging_date: A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.index_files.average_base_quality: Average base quality collected from samtools.
+    files.index_files.average_insert_size: Average insert size collected from samtools.
+    files.index_files.average_read_length: Average read length collected from samtools.
+    files.index_files.cancer_dna_fraction: Fraction of cancer DNA in the tumor tissue.
+    files.index_files.channel: The corresponding color channel used to generate this
+      data file.
+    files.index_files.chip_id: User specified identifier for the chip used to perform
+      the methylation microarray.
+    files.index_files.chip_position: User specified identifier for the specific position
+      on the chip that the sample was loaded into to perform the methylation microarray.
+    files.index_files.contamination: Fraction of reads coming from cross-sample contamination
+      collected from GATK4.
+    files.index_files.contamination_error: Estimation error of cross-sample contamination
+      collected from GATK4.
+    files.index_files.created_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.index_files.data_category: Broad categorization of the contents of the data
+      file.
+    files.index_files.data_format: Format of the data files.
+    files.index_files.data_type: Specific content type of the data file.
+    files.index_files.error_type: Type of error for the data file object.
+    files.index_files.experimental_strategy: The sequencing strategy used to generate
+      the data file.
+    files.index_files.file_name: The name (or part of a name) of a file (of any type).
+    files.index_files.file_size: The size of the data file (object) in bytes.
+    files.index_files.genome_doubling: Number of genome doubling events.
+    files.index_files.id: A 128-bit identifier. Depending on the mechanism used to
+      generate it, it is either guaranteed to be different from all other UUIDs/GUIDs
+      generated until 3400 AD or extremely likely to be different. Its relatively
+      small size lends itself well to sorting, ordering, and hashing of all sorts,
+      storing in databases, simple allocation, and ease of programming in general.
+    files.index_files.imaging_date: A combination of date and time of day in the form
+      [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.index_files.magnification: Magnification used to capture the image.
+    files.index_files.md5sum: The 128-bit hash value expressed as a 32 digit hexadecimal
+      number (in lower case) used as a file's digital fingerprint.
+    files.index_files.mean_coverage: Mean coverage for whole genome sequencing, or
+      mean target coverage for whole exome and targeted sequencing, collected from
+      Picard Tools.
+    files.index_files.msi_score: Numeric score denoting the aligned reads file's MSI
+      score from MSIsensor.
+    files.index_files.msi_status: MSIsensor determination of either microsatellite
+      stability or instability.
+    files.index_files.pairs_on_diff_chr: Pairs on different chromosomes collected
+      from samtools.
+    files.index_files.plate_name: User specified identifier of the plate used to prepare
+      the sample for analysis.
+    files.index_files.plate_well: User specified identifier for the specific well
+      of the plate used to prepare the sample for analysis.
+    files.index_files.platform: Name of the platform used to obtain data.
+    files.index_files.proc_internal: Internal data processing flag
+    files.index_files.proportion_base_mismatch: Proportion of mismatched bases collected
+      from samtools.
+    files.index_files.proportion_coverage_10x: Proportion of all reference bases for
+      whole genome sequencing, or targeted bases for whole exome and targeted sequencing,
+      that achieves 10X or greater coverage from Picard Tools.
+    files.index_files.proportion_coverage_30x: Proportion of all reference bases for
+      whole genome sequencing, or targeted bases for whole exome and targeted sequencing,
+      that achieves 30X or greater coverage from Picard Tools.
+    files.index_files.proportion_reads_duplicated: Proportion of duplicated reads
+      collected from samtools.
+    files.index_files.proportion_reads_mapped: Proportion of mapped reads collected
+      from samtools.
+    files.index_files.proportion_targets_no_coverage: Proportion of targets that did
+      not reach 1X coverage over any base from Picard Tools.
+    files.index_files.read_pair_number: Denotes whether a submitted FASTQ file contains
+      forward (R1) or reverse (R2) reads for paired-end sequencing.
+    files.index_files.revision: The revision of this archive in the DCC.
+    files.index_files.stain_type: The text term used to describe the type of stain
+      used on a slide.
+    files.index_files.state: The current state of the object.
+    files.index_files.state_comment: Optional comment about why the file is in the
+      current state, mainly for invalid state.
+    files.index_files.subclonal_genome_fraction: Fraction of subclonal genome in the
+      tumor tissue.
+    files.index_files.submitter_id: A project-specific identifier for a node. This
+      property is the calling card/nickname/alias for a unit of submission. It can
+      be used in place of the uuid for identifying or recalling a node.
+    files.index_files.tmb: Tumor Mutational Burden (TMB), reported in mutations per
+      megabase (mut/Mb), calculated within the targeted capture region or across the
+      whole genome for WGS data.
+    files.index_files.tmb_exonic: Tumor Mutational Burden (TMB), reported in mutations
+      per megabase (mut/Mb), calculated within the intersect of the targeted capture
+      region and exonic region.
+    files.index_files.tmb_nonsynonymous: Tumor Mutational Burden (TMB) of nonsynonymous
+      mutations only, reported in mutations per megabase (mut/Mb), calculated within
+      the targeted capture region or across the whole genome for WGS data.
+    files.index_files.tmb_nonsynonymous_exonic: Tumor Mutational Burden (TMB) of nonsynonymous
+      mutations only, reported in mutations per megabase (mut/Mb), calculated within
+      the intersect of the targeted capture region and exonic region.
+    files.index_files.total_reads: Total number of reads collected from samtools.
+    files.index_files.tumor_ploidy: Numeric value used to describe the number of sets
+      of chromosomes in a cell or an organism. For example, haploid means one set
+      and diploid means two sets.
+    files.index_files.tumor_purity: Numeric value used to describe the ratio of tumor
+      cells compared to total cells present in a sample.
+    files.index_files.updated_datetime: A combination of date and time of day in the
+      form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.index_files.wgs_coverage: Range of coverage values for WGS aligned reads.
+      Each range is non-inclusive to the lower bound.
+    files.magnification: Magnification used to capture the image.
+    files.md5sum: The 128-bit hash value expressed as a 32 digit hexadecimal number
+      (in lower case) used as a file's digital fingerprint.
+    files.mean_coverage: Mean coverage for whole genome sequencing, or mean target
+      coverage for whole exome and targeted sequencing, collected from Picard Tools.
+    files.metadata_files.created_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.metadata_files.error_type: Type of error for the data file object.
+    files.metadata_files.file_name: The name (or part of a name) of a file (of any
+      type).
+    files.metadata_files.file_size: The size of the data file (object) in bytes.
+    files.metadata_files.id: A 128-bit identifier. Depending on the mechanism used
+      to generate it, it is either guaranteed to be different from all other UUIDs/GUIDs
+      generated until 3400 AD or extremely likely to be different. Its relatively
+      small size lends itself well to sorting, ordering, and hashing of all sorts,
+      storing in databases, simple allocation, and ease of programming in general.
+    files.metadata_files.md5sum: The 128-bit hash value expressed as a 32 digit hexadecimal
+      number (in lower case) used as a file's digital fingerprint.
+    files.metadata_files.state: The current state of the object.
+    files.metadata_files.state_comment: Optional comment about why the file is in
+      the current state, mainly for invalid state.
+    files.metadata_files.submitter_id: A project-specific identifier for a node. This
+      property is the calling card/nickname/alias for a unit of submission. It can
+      be used in place of the uuid for identifying or recalling a node.
+    files.metadata_files.updated_datetime: A combination of date and time of day in
+      the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.msi_score: Numeric score denoting the aligned reads file's MSI score from
+      MSIsensor.
+    files.msi_status: MSIsensor determination of either microsatellite stability or
+      instability.
+    files.pairs_on_diff_chr: Pairs on different chromosomes collected from samtools.
+    files.plate_name: User specified identifier of the plate used to prepare the sample
+      for analysis.
+    files.plate_well: User specified identifier for the specific well of the plate
+      used to prepare the sample for analysis.
+    files.platform: Name of the platform used to obtain data.
+    files.proc_internal: Internal data processing flag
+    files.proportion_base_mismatch: Proportion of mismatched bases collected from
+      samtools.
+    files.proportion_coverage_10x: Proportion of all reference bases for whole genome
+      sequencing, or targeted bases for whole exome and targeted sequencing, that
+      achieves 10X or greater coverage from Picard Tools.
+    files.proportion_coverage_30x: Proportion of all reference bases for whole genome
+      sequencing, or targeted bases for whole exome and targeted sequencing, that
+      achieves 30X or greater coverage from Picard Tools.
+    files.proportion_reads_duplicated: Proportion of duplicated reads collected from
+      samtools.
+    files.proportion_reads_mapped: Proportion of mapped reads collected from samtools.
+    files.proportion_targets_no_coverage: Proportion of targets that did not reach
+      1X coverage over any base from Picard Tools.
+    files.read_pair_number: Denotes whether a submitted FASTQ file contains forward
+      (R1) or reverse (R2) reads for paired-end sequencing.
+    files.revision: The revision of this archive in the DCC.
+    files.stain_type: The text term used to describe the type of stain used on a slide.
+    files.state: The current state of the object.
+    files.state_comment: Optional comment about why the file is in the current state,
+      mainly for invalid state.
+    files.subclonal_genome_fraction: Fraction of subclonal genome in the tumor tissue.
+    files.submitter_id: A project-specific identifier for a node. This property is
+      the calling card/nickname/alias for a unit of submission. It can be used in
+      place of the uuid for identifying or recalling a node.
+    files.tmb: Tumor Mutational Burden (TMB), reported in mutations per megabase (mut/Mb),
+      calculated within the targeted capture region or across the whole genome for
+      WGS data.
+    files.tmb_exonic: Tumor Mutational Burden (TMB), reported in mutations per megabase
+      (mut/Mb), calculated within the intersect of the targeted capture region and
+      exonic region.
+    files.tmb_nonsynonymous: Tumor Mutational Burden (TMB) of nonsynonymous mutations
+      only, reported in mutations per megabase (mut/Mb), calculated within the targeted
+      capture region or across the whole genome for WGS data.
+    files.tmb_nonsynonymous_exonic: Tumor Mutational Burden (TMB) of nonsynonymous
+      mutations only, reported in mutations per megabase (mut/Mb), calculated within
+      the intersect of the targeted capture region and exonic region.
+    files.total_reads: Total number of reads collected from samtools.
+    files.tumor_ploidy: Numeric value used to describe the number of sets of chromosomes
+      in a cell or an organism. For example, haploid means one set and diploid means
+      two sets.
+    files.tumor_purity: Numeric value used to describe the ratio of tumor cells compared
+      to total cells present in a sample.
+    files.updated_datetime: A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    files.wgs_coverage: Range of coverage values for WGS aligned reads. Each range
+      is non-inclusive to the lower bound.
 _size:
   enabled: true
 _source:
@@ -2747,7 +5339,7 @@ properties:
     normalizer: clinical_normalizer
     type: keyword
   data_category:
-    copy_to:
+    copy_to: &id001
       - file_autocomplete
     normalizer: clinical_normalizer
     type: keyword
@@ -2755,8 +5347,7 @@ properties:
     normalizer: clinical_normalizer
     type: keyword
   data_type:
-    copy_to:
-      - file_autocomplete
+    copy_to: *id001
     type: keyword
   downstream_analyses:
     properties:
@@ -2928,8 +5519,7 @@ properties:
     normalizer: clinical_normalizer
     type: keyword
   experimental_strategy:
-    copy_to:
-      - file_autocomplete
+    copy_to: *id001
     type: keyword
   file_autocomplete:
     fields:
@@ -2947,13 +5537,11 @@ properties:
     normalizer: clinical_normalizer
     type: keyword
   file_id:
-    copy_to:
-      - file_autocomplete
+    copy_to: *id001
     normalizer: clinical_normalizer
     type: keyword
   file_name:
-    copy_to:
-      - file_autocomplete
+    copy_to: *id001
     normalizer: clinical_normalizer
     type: keyword
   file_size:
@@ -3098,8 +5686,7 @@ properties:
   magnification:
     type: double
   md5sum:
-    copy_to:
-      - file_autocomplete
+    copy_to: *id001
     normalizer: clinical_normalizer
     type: keyword
   mean_coverage:
@@ -3197,8 +5784,7 @@ properties:
   subclonal_genome_fraction:
     type: double
   submitter_id:
-    copy_to:
-      - file_autocomplete
+    copy_to: *id001
     type: keyword
   tags:
     normalizer: clinical_normalizer

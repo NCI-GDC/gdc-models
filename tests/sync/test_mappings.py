@@ -14,9 +14,7 @@ def test__sync(index: constants.Index) -> None:
     README for further details.
     """
     index_name, doc_type = index.components
-    current_mapping = dict(CURRENT_MAPPINGS[index_name][doc_type].mappings)
+    current_mapping = CURRENT_MAPPINGS[index_name][doc_type].mappings
     synced_mapping = mappings.sync(index)
-
-    current_mapping.pop("_meta", None)  # TODO: DEV-4065 Remove when we start syncing _meta
 
     assert not deepdiff.DeepDiff(current_mapping, synced_mapping, ignore_order=True)
