@@ -15,7 +15,7 @@ def _apply_normalizer(excluded: Set[str], mapping: Mapping[str, Any]) -> None:
     Args:
         excluded: The properties which need to be excluded from having the clinical normalizer
             applied to them.
-        mapping: The mapping which needs to have the normalized applied to it.
+        mapping: The mapping which needs to have the normalizer applied to it.
     """
     for prop, details in mapping["properties"].items():
         if "properties" in details:
