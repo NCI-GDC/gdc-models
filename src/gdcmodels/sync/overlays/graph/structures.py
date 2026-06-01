@@ -731,23 +731,15 @@ STRUCTURES = types.MappingProxyType(
         constants.Index.FILE: FILE,
         constants.Index.PROJECT: PROJECT,
         constants.Index.CASE_CENTRIC: CASE,
-        # TODO: DEV-4065 Use these dynamic mappings to drive the non-case_centric indices.
-        # constants.Index.CNV_CENTRIC: _occurrence_structure("cnvs"),
-        # constants.Index.CNV_OCCURRENCE_CENTRIC: _case_structure("cnv_occurrences"),
-        # constants.Index.GENE_CENTRIC: _case_structure("genes", is_nested=True),
-        # constants.Index.SEGMENT_CNV_CENTRIC: _occurrence_structure("segment_cnvs"),
-        # constants.Index.SEGMENT_CNV_OCCURRENCE_CENTRIC: _case_structure(
-        #     "segment_cnv_occurrences"
-        # ),
-        # constants.Index.SSM_CENTRIC: _occurrence_structure("ssms"),
-        # constants.Index.SSM_OCCURRENCE_CENTRIC: _case_structure("ssm_occurrences"),
-        constants.Index.CNV_CENTRIC: _EMPTY,
-        constants.Index.CNV_OCCURRENCE_CENTRIC: _EMPTY,
-        constants.Index.GENE_CENTRIC: _EMPTY,
-        constants.Index.SEGMENT_CNV_CENTRIC: _EMPTY,
-        constants.Index.SEGMENT_CNV_OCCURRENCE_CENTRIC: _EMPTY,
-        constants.Index.SSM_CENTRIC: _EMPTY,
-        constants.Index.SSM_OCCURRENCE_CENTRIC: _EMPTY,
+        constants.Index.CNV_CENTRIC: _occurrence_structure("cnvs"),
+        constants.Index.CNV_OCCURRENCE_CENTRIC: _case_structure("cnv_occurrences"),
+        constants.Index.GENE_CENTRIC: _case_structure("genes", is_nested=True),
+        constants.Index.SEGMENT_CNV_CENTRIC: _occurrence_structure("segment_cnvs"),
+        constants.Index.SEGMENT_CNV_OCCURRENCE_CENTRIC: _case_structure(
+            "segment_cnv_occurrences"
+        ),
+        constants.Index.SSM_CENTRIC: _occurrence_structure("ssms"),
+        constants.Index.SSM_OCCURRENCE_CENTRIC: _case_structure("ssm_occurrences"),
     }
 )
 """A mapping of the indices to their associated graph structures."""
