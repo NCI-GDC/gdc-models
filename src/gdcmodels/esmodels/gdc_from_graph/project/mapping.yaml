@@ -1,4 +1,27 @@
 ---
+_meta:
+  arrays: []
+  descriptions:
+    projects.dbgap_accession_number: The dbgap accession number for the project.
+    projects.disease_type: Full name for the project
+    projects.id: UUID for the project
+    projects.intended_release_date: Tracks a Project's intended release date.
+    projects.name: Display name for the project
+    projects.primary_site: Primary site for the project
+    projects.program.dbgap_accession_number: The dbgap accession number provided for
+      the program.
+    projects.program.id: A 128-bit identifier. Depending on the mechanism used to
+      generate it, it is either guaranteed to be different from all other UUIDs/GUIDs
+      generated until 3400 AD or extremely likely to be different. Its relatively
+      small size lends itself well to sorting, ordering, and hashing of all sorts,
+      storing in databases, simple allocation, and ease of programming in general.
+    projects.program.name: Full name/title of the program.
+    projects.releasable: A project can only be released by the user when `releasable`
+      is true.
+    projects.released: To release a project is to tell the GDC to include all submitted
+      entities in the next GDC index.
+    projects.state: The possible states a project can be in.  All but `open` are equivalent
+      to some type of locked state.
 _size:
   enabled: true
 _source:
@@ -10,7 +33,7 @@ properties:
     normalizer: clinical_normalizer
     type: keyword
   disease_type:
-    copy_to:
+    copy_to: &id001
       - project_autocomplete
     normalizer: clinical_normalizer
     type: keyword
@@ -18,12 +41,10 @@ properties:
     normalizer: clinical_normalizer
     type: keyword
   name:
-    copy_to:
-      - project_autocomplete
+    copy_to: *id001
     type: keyword
   primary_site:
-    copy_to:
-      - project_autocomplete
+    copy_to: *id001
     normalizer: clinical_normalizer
     type: keyword
   program:
@@ -52,8 +73,7 @@ properties:
     normalizer: clinical_normalizer
     type: keyword
   project_id:
-    copy_to:
-      - project_autocomplete
+    copy_to: *id001
     type: keyword
   releasable:
     normalizer: clinical_normalizer

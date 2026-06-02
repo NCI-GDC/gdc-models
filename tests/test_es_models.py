@@ -1,24 +1,31 @@
 import functools
 import pathlib
 
+import pytest
+
 import gdcmodels
 from tests import utils
 
 
-def test__get_es_models__standard_behavior() -> None:
+@pytest.mark.parametrize(
+    ("doc_type", "project_name_field"),
+    (
+        ("case", "cases.project.name"),
+        ("project", "projects.name"),
+        ("file", "files.cases.project.name"),
+        ("annotation", "annotations.project.name"),
+    ),
+)
+def test__get_es_models__standard_behavior(doc_type: str, project_name_field: str) -> None:
     """Test that correct number of index mappings are loaded from es-models."""
     models = gdcmodels.get_es_models()
 
     assert len(models) == 14
 
-    for dtype in ["case", "project", "file", "annotation"]:
-        dtype_mapping = models["gdc_from_graph"][dtype].mappings
-        assert "_meta" in dtype_mapping, dtype_mapping.keys()
-        assert "descriptions" in dtype_mapping["_meta"]
-        # The description field below is somewhat random, but something that
-        # will most likely preserve during dictionary updates, if this is not
-        # the case at some point, update it
-        assert "cases.case.project_id" in dtype_mapping["_meta"]["descriptions"]
+    mapping = models["gdc_from_graph"][doc_type].mappings
+    assert "_meta" in mapping, mapping.keys()
+    assert "descriptions" in mapping["_meta"]
+    assert project_name_field in mapping["_meta"]["descriptions"]
 
 
 def test__get_es_models__multiple_indices(es_models: pathlib.Path) -> None:

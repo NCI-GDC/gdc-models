@@ -1,4 +1,172 @@
 ---
+_meta:
+  arrays:
+    - case.diagnoses
+    - case.diagnoses.pathology_details
+    - case.diagnoses.treatments
+    - case.exposures
+    - case.family_histories
+    - case.follow_ups
+    - case.follow_ups.molecular_tests
+    - case.follow_ups.other_clinical_attributes
+    - case.samples
+    - case.samples.portions
+    - case.samples.portions.analytes
+    - case.samples.portions.analytes.aliquots
+    - case.samples.portions.slides
+  descriptions:
+    segment_cnv_occurrences.case.demographic.ethnicity: An individual's self-described
+      social and cultural grouping, specifically whether an individual describes themselves
+      as Hispanic or Latino. The provided values are based on the categories defined
+      by the U.S. Office of Management and Business and used by the U.S. Census Bureau.
+    segment_cnv_occurrences.case.demographic.race: An arbitrary classification of
+      a taxonomic group that is a division of a species. It usually arises as a consequence
+      of geographical isolation within a species and is characterized by shared heredity,
+      physical attributes and behavior, and in the case of humans, by common history,
+      nationality, or geographic distribution. The provided values are based on the
+      categories defined by the U.S. Office of Management and Business and used by
+      the U.S. Census Bureau.
+    segment_cnv_occurrences.case.demographic.sex_at_birth: A textual description of
+      a person's sex at birth.
+    segment_cnv_occurrences.case.demographic.submitter_id: A project-specific identifier
+      for a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    segment_cnv_occurrences.case.demographic.vital_status: The survival state of the
+      person registered on the protocol.
+    segment_cnv_occurrences.case.diagnoses.age_at_diagnosis: Age at the time of diagnosis
+      expressed in number of days since birth.
+    segment_cnv_occurrences.case.diagnoses.diagnosis_is_primary_disease: Indicates
+      whether this specific diagnosis represents the disease that was the primary
+      focus of the study. Additionally, this diagnosis is reflected at the case level,
+      which is captured using the case.disease_type property.
+    segment_cnv_occurrences.case.diagnoses.morphology: The third edition of the International
+      Classification of Diseases for Oncology, published in 2000 used principally
+      in tumor and cancer registries for coding the site (topography) and the histology
+      (morphology) of neoplasms. The study of the structure of the cells and their
+      arrangement to constitute tissues and, finally, the association among these
+      to form organs. In pathology, the microscopic process of identifying normal
+      and abnormal morphologic characteristics in tissues, by employing various cytochemical
+      and immunocytochemical stains. A system of numbered categories for representation
+      of data.
+    segment_cnv_occurrences.case.diagnoses.pathology_details.submitter_id: A project-specific
+      identifier for a node. This property is the calling card/nickname/alias for
+      a unit of submission. It can be used in place of the uuid for identifying or
+      recalling a node.
+    segment_cnv_occurrences.case.diagnoses.primary_diagnosis: Text term used to describe
+      the patient's histologic diagnosis, as described by the World Health Organization's
+      (WHO) International Classification of Diseases for Oncology (ICD-O).
+    segment_cnv_occurrences.case.diagnoses.site_of_resection_or_biopsy: The text term
+      used to describe the anatomic site of origin, of the patient's malignant disease,
+      as described by the World Health Organization's (WHO) International Classification
+      of Diseases for Oncology (ICD-O).
+    segment_cnv_occurrences.case.diagnoses.submitter_id: A project-specific identifier
+      for a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    segment_cnv_occurrences.case.diagnoses.tissue_or_organ_of_origin: The text term
+      used to describe the anatomic site of origin, of the patient's malignant disease,
+      as described by the World Health Organization's (WHO) International Classification
+      of Diseases for Oncology (ICD-O).
+    segment_cnv_occurrences.case.diagnoses.treatments.submitter_id: A project-specific
+      identifier for a node. This property is the calling card/nickname/alias for
+      a unit of submission. It can be used in place of the uuid for identifying or
+      recalling a node.
+    segment_cnv_occurrences.case.disease_type: The text term used to describe the
+      type of malignant disease, as categorized by the World Health Organization's
+      (WHO) International Classification of Diseases for Oncology (ICD-O).
+    segment_cnv_occurrences.case.exposures.submitter_id: A project-specific identifier
+      for a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    segment_cnv_occurrences.case.family_histories.submitter_id: A project-specific
+      identifier for a node. This property is the calling card/nickname/alias for
+      a unit of submission. It can be used in place of the uuid for identifying or
+      recalling a node.
+    segment_cnv_occurrences.case.follow_ups.days_to_follow_up: Number of days between
+      the date used for index and the date of the patient's last follow-up appointment
+      or contact.
+    segment_cnv_occurrences.case.follow_ups.molecular_tests.gene_symbol: The text
+      term used to describe a gene targeted or included in molecular analysis. For
+      rearrangements, this should be used to represent the reference gene.
+    segment_cnv_occurrences.case.follow_ups.molecular_tests.molecular_analysis_method: The
+      text term used to describe the method used for molecular analysis.
+    segment_cnv_occurrences.case.follow_ups.molecular_tests.submitter_id: A project-specific
+      identifier for a node. This property is the calling card/nickname/alias for
+      a unit of submission. It can be used in place of the uuid for identifying or
+      recalling a node.
+    segment_cnv_occurrences.case.follow_ups.molecular_tests.test_result: The text
+      term used to describe the result of the molecular test. If the test result was
+      a numeric value see test_value.
+    segment_cnv_occurrences.case.follow_ups.other_clinical_attributes.submitter_id: A
+      project-specific identifier for a node. This property is the calling card/nickname/alias
+      for a unit of submission. It can be used in place of the uuid for identifying
+      or recalling a node.
+    segment_cnv_occurrences.case.follow_ups.submitter_id: A project-specific identifier
+      for a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    segment_cnv_occurrences.case.primary_site: The text term used to describe the
+      primary site of disease, as categorized by the World Health Organization's (WHO)
+      International Classification of Diseases for Oncology (ICD-O). This categorization
+      groups cases into general categories. Reference tissue_or_organ_of_origin on
+      the diagnosis node for more specific primary sites of disease.
+    segment_cnv_occurrences.case.project.dbgap_accession_number: The dbgap accession
+      number for the project.
+    segment_cnv_occurrences.case.project.disease_type: Full name for the project
+    segment_cnv_occurrences.case.project.id: UUID for the project
+    segment_cnv_occurrences.case.project.intended_release_date: Tracks a Project's
+      intended release date.
+    segment_cnv_occurrences.case.project.name: Display name for the project
+    segment_cnv_occurrences.case.project.primary_site: Primary site for the project
+    segment_cnv_occurrences.case.project.program.dbgap_accession_number: The dbgap
+      accession number provided for the program.
+    segment_cnv_occurrences.case.project.program.id: A 128-bit identifier. Depending
+      on the mechanism used to generate it, it is either guaranteed to be different
+      from all other UUIDs/GUIDs generated until 3400 AD or extremely likely to be
+      different. Its relatively small size lends itself well to sorting, ordering,
+      and hashing of all sorts, storing in databases, simple allocation, and ease
+      of programming in general.
+    segment_cnv_occurrences.case.project.program.name: Full name/title of the program.
+    segment_cnv_occurrences.case.project.releasable: A project can only be released
+      by the user when `releasable` is true.
+    segment_cnv_occurrences.case.project.released: To release a project is to tell
+      the GDC to include all submitted entities in the next GDC index.
+    segment_cnv_occurrences.case.project.state: The possible states a project can
+      be in.  All but `open` are equivalent to some type of locked state.
+    segment_cnv_occurrences.case.samples.portions.analytes.aliquots.submitter_id: A
+      project-specific identifier for a node. This property is the calling card/nickname/alias
+      for a unit of submission. It can be used in place of the uuid for identifying
+      or recalling a node.
+    segment_cnv_occurrences.case.samples.portions.analytes.analyte_type: Text term
+      that represents the kind of molecular specimen analyte.
+    segment_cnv_occurrences.case.samples.portions.analytes.submitter_id: A project-specific
+      identifier for a node. This property is the calling card/nickname/alias for
+      a unit of submission. It can be used in place of the uuid for identifying or
+      recalling a node.
+    segment_cnv_occurrences.case.samples.portions.slides.section_location: Tissue
+      source of the slide.
+    segment_cnv_occurrences.case.samples.portions.slides.submitter_id: A project-specific
+      identifier for a node. This property is the calling card/nickname/alias for
+      a unit of submission. It can be used in place of the uuid for identifying or
+      recalling a node.
+    segment_cnv_occurrences.case.samples.portions.submitter_id: A project-specific
+      identifier for a node. This property is the calling card/nickname/alias for
+      a unit of submission. It can be used in place of the uuid for identifying or
+      recalling a node.
+    segment_cnv_occurrences.case.samples.preservation_method: Text term that represents
+      the method used to preserve the sample.
+    segment_cnv_occurrences.case.samples.specimen_type: The type of a material sample
+      taken from a biological entity for testing, diagnostic, propagation, treatment
+      or research purposes. This includes particular types of cellular molecules,
+      cells, tissues, organs, body fluids, embryos, and body excretory substances.
+    segment_cnv_occurrences.case.samples.submitter_id: A project-specific identifier
+      for a node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
+    segment_cnv_occurrences.case.samples.tissue_type: Text term that represents a
+      description of the kind of tissue collected with respect to disease status or
+      proximity to tumor tissue.
+    segment_cnv_occurrences.case.samples.tumor_descriptor: Text that describes the
+      kind of disease present in the tumor specimen as related to a specific timepoint.
+    segment_cnv_occurrences.case.submitter_id: A project-specific identifier for a
+      node. This property is the calling card/nickname/alias for a unit of submission.
+      It can be used in place of the uuid for identifying or recalling a node.
 _size:
   enabled: true
 _source:
