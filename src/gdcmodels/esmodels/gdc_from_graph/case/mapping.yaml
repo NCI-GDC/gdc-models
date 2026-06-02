@@ -3,6 +3,7 @@ _meta:
   arrays:
     - annotations
     - diagnoses
+    - diagnoses.ann_arbor_b_symptoms_described_array
     - diagnoses.annotations
     - diagnoses.pathology_details
     - diagnoses.pathology_details.tumor_level_prostate
@@ -101,10 +102,6 @@ _meta:
       grouping, specifically whether an individual describes themselves as Hispanic
       or Latino. The provided values are based on the categories defined by the U.S.
       Office of Management and Business and used by the U.S. Census Bureau.
-    cases.demographic.gender: 'Text designations that identify gender. Gender is described
-      as the assemblage of properties that distinguish people on the basis of their
-      societal roles. [Explanatory Comment 1: Identification of gender is based upon
-      self-report and may come from a form, questionnaire, interview, etc.]'
     cases.demographic.id: A 128-bit identifier. Depending on the mechanism used to
       generate it, it is either guaranteed to be different from all other UUIDs/GUIDs
       generated until 3400 AD or extremely likely to be different. Its relatively
@@ -134,6 +131,8 @@ _meta:
       the protocol.
     cases.demographic.year_of_birth: Numeric value to represent the calendar year
       in which an individual was born.
+    cases.demographic.year_of_birth_range: A categorical value to represent ranges
+      of calendar years, during which an individual was born.
     cases.demographic.year_of_death: Numeric value to represent the year of the death
       of an individual.
     cases.diagnoses.adrenal_hormone: Indicates the presence of the adrenal hormone.
@@ -177,6 +176,8 @@ _meta:
       are present as noted in the patient's medical record.
     cases.diagnoses.ann_arbor_b_symptoms_described: Text describing the specific lymphoma
       B-symptoms present.
+    cases.diagnoses.ann_arbor_b_symptoms_described_array: Text describing the specific
+      lymphoma B-symptoms present.
     cases.diagnoses.ann_arbor_clinical_stage: The text term used to describe the clinical
       classification of lymphoma, as defined by the Ann Arbor Lymphoma Staging System.
     cases.diagnoses.ann_arbor_extranodal_involvement: Indicator that identifies whether
@@ -435,20 +436,18 @@ _meta:
     cases.diagnoses.pathology_details.dysplasia_degree: The degree to which dysplasia
       was involved.
     cases.diagnoses.pathology_details.dysplasia_type: The type of dysplasia involved.
-    cases.diagnoses.pathology_details.epithelioid_cell_percent: A quantitative measurement
-      of the percent of epithelioid melanocytes compared to the number of total cells
-      present in a sample.
     cases.diagnoses.pathology_details.epithelioid_cell_percent_range: A quantitative
       measurement of the percent of epithelioid melanocytes compared to the number
       of total cells present in a sample.
     cases.diagnoses.pathology_details.extracapsular_extension: The extension of malignant
       tissue situated outside of a specific capsule.
+    cases.diagnoses.pathology_details.extracapsular_extension_present: An indication
+      of the presence of the extension of malignant tissue situated outside of a specific
+      capsule.
     cases.diagnoses.pathology_details.extranodal_extension: Extension of a malignant
       neoplasm beyond the lymph node capsule.
     cases.diagnoses.pathology_details.extraocular_nodule_size: The size of the nodule
       that is outside the eye.
-    cases.diagnoses.pathology_details.extrascleral_extension: Spread of uveal melanoma
-      beyond the sclera.
     cases.diagnoses.pathology_details.extrascleral_extension_present: Spread of uveal
       melanoma beyond the sclera.
     cases.diagnoses.pathology_details.extrathyroid_extension: Text term to describe
@@ -558,11 +557,6 @@ _meta:
       the percentage of sarcomatoid features found in a specific tissue sample.
     cases.diagnoses.pathology_details.sarcomatoid_present: Indicator describing whether
       sarcomatoid features were present.
-    cases.diagnoses.pathology_details.size_extraocular_nodule: The size of the nodule
-      that is outside the eye.
-    cases.diagnoses.pathology_details.spindle_cell_percent: A quantitative measurement
-      of the percent of spindle-shaped melanocytes compared to the number of total
-      cells present in a sample.
     cases.diagnoses.pathology_details.spindle_cell_percent_range: A quantitative measurement
       of the percent of spindle-shaped melanocytes compared to the number of total
       cells present in a sample.
@@ -642,9 +636,9 @@ _meta:
       aggresiveness of prostate cancer. Note that this grade describes the entire
       prostatectomy specimen and is not specific to the sample used for sequencing.
     cases.diagnoses.site_of_resection_or_biopsy: The text term used to describe the
-      anatomic site of origin, of the patient's malignant disease, as described by
-      the World Health Organization's (WHO) International Classification of Diseases
-      for Oncology (ICD-O).
+      anatomic site of the resection or biopsy of the patient's malignant disease,
+      as described by the World Health Organization's (WHO) International Classification
+      of Diseases for Oncology (ICD-O).
     cases.diagnoses.sites_of_involvement: The anatomic sites of disease involvement
       in addition to the primary anatomic site.
     cases.diagnoses.sites_of_involvement_count: The number of anatomic sites of disease.
@@ -727,8 +721,6 @@ _meta:
       can be used in place of the uuid for identifying or recalling a node.
     cases.diagnoses.treatments.therapeutic_agents: Text identification of the individual
       agent(s) used as part of a treatment regimen.
-    cases.diagnoses.treatments.therapeutic_level_achieved: Indicates a target level
-      of treatment was reached, according to the patient's treatment plan.
     cases.diagnoses.treatments.therapeutic_levels_achieved: An indication that the
       intended level of therapeutic agent was achieved in an individual.
     cases.diagnoses.treatments.therapeutic_target_level: Describes a specific target
@@ -753,14 +745,19 @@ _meta:
       the frequency the patient received an agent or regimen.
     cases.diagnoses.treatments.treatment_intent_type: Text term to identify the reason
       for the administration of a treatment regimen. [Manually-curated]
-    cases.diagnoses.treatments.treatment_or_therapy: A yes/no/unknown/not applicable
-      indicator related to the administration of therapeutic agents received.
+    cases.diagnoses.treatments.treatment_or_therapy: An indicator related to the administration
+      of the treatment specified in the treatment_type field.
     cases.diagnoses.treatments.treatment_outcome: Text term that describes the patient's
       final outcome after the treatment was administered.
     cases.diagnoses.treatments.treatment_outcome_duration: The number of days a patient
       reached a specific result or effect after treatment.
-    cases.diagnoses.treatments.treatment_type: Text term that describes the kind of
-      treatment administered.
+    cases.diagnoses.treatments.treatment_type: Text term that describes the type of
+      treatment information available within this dataset. Note the value of this
+      field may not be an indication that the treatment type was administered to this
+      patient. Please reference the treatment_or_therapy property where it is indicated
+      whether the patient received this treatment type.
+    cases.diagnoses.treatments.treatment_type_administered: Text term that describes
+      the kind of treatment administered to a patient.
     cases.diagnoses.treatments.updated_datetime: A combination of date and time of
       day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     cases.diagnoses.tumor_burden: Refers to the number of cancer cells, the size of
@@ -845,10 +842,10 @@ _meta:
     cases.disease_type: The text term used to describe the type of malignant disease,
       as categorized by the World Health Organization's (WHO) International Classification
       of Diseases for Oncology (ICD-O).
-    cases.exposures.age_at_last_exposure: The study participant's age at the time
-      they were last exposed.
-    cases.exposures.age_at_onset: Numeric value used to represent the age of the patient
-      when exposure to a specific environmental factor began.
+    cases.exposures.age_at_last_exposure: The study participant's age (in years) at
+      the time they were last exposed.
+    cases.exposures.age_at_onset: Numeric value used to represent the age (in years)
+      of the patient when exposure to a specific environmental factor began.
     cases.exposures.alcohol_days_per_week: Numeric value used to describe the average
       number of days each week that a person consumes an alcoholic beverage.
     cases.exposures.alcohol_drinks_per_day: Numeric value used to describe the average
@@ -931,8 +928,6 @@ _meta:
       storing in databases, simple allocation, and ease of programming in general.
     cases.family_histories.relationship_age_at_diagnosis: The age (in years) when
       the patient's relative was first diagnosed.
-    cases.family_histories.relationship_gender: The text term used to describe the
-      gender of the patient's relative with a history of cancer.
     cases.family_histories.relationship_primary_diagnosis: The text term used to describe
       the malignant diagnosis of the patient's relative with a history of cancer.
     cases.family_histories.relationship_sex_at_birth: A textual description of a person's
@@ -1913,7 +1908,7 @@ _meta:
     cases.follow_ups.other_clinical_attributes.eye_color: The color of the iris of
       the eye
     cases.follow_ups.other_clinical_attributes.fertility_history: Text term to describe
-      an individual's capacity to conceive or to induce conception
+      an individual's capacity to conceive or to induce conception.
     cases.follow_ups.other_clinical_attributes.fev1_fvc_post_bronch_percent: Percentage
       value to represent result of Forced Expiratory Volume in 1 second (FEV1) divided
       by the Forced Vital Capacity (FVC) post-bronchodilator.
@@ -2008,8 +2003,6 @@ _meta:
       used to describe the frequency the patient received an agent or regimen.
     cases.follow_ups.other_clinical_attributes.undescended_testis_corrected: Indicates
       whether the patient's undescended testis was corrected.
-    cases.follow_ups.other_clinical_attributes.undescended_testis_corrected_age: The
-      patient's age when their undescended testis was corrected.
     cases.follow_ups.other_clinical_attributes.undescended_testis_corrected_age_range: The
       patient's age when their undescended testis was corrected.
     cases.follow_ups.other_clinical_attributes.undescended_testis_corrected_laterality: Describes
@@ -2319,8 +2312,6 @@ _meta:
     cases.samples.portions.analytes.normal_tumor_genotype_snp_match: Text term that
       represents whether or not the genotype of the normal tumor matches or if the
       data is not available.
-    cases.samples.portions.analytes.ribosomal_rna_28s_16s_ratio: The 28S/18S ribosomal
-      RNA band ratio used to assess the quality of total RNA.
     cases.samples.portions.analytes.ribosomal_rna_28s_18s_ratio: The 28S/18S ribosomal
       RNA band ratio used to assess the quality of total RNA.
     cases.samples.portions.analytes.rna_integrity_number: A numerical assessment of
@@ -2518,7 +2509,6 @@ _meta:
       of collection used to obtain tissue.
     cases.samples.tissue_type: Text term that represents a description of the kind
       of tissue collected with respect to disease status or proximity to tumor tissue.
-    cases.samples.tumor_code_id: BCR-defined id code for the tumor sample.
     cases.samples.tumor_descriptor: Text that describes the kind of disease present
       in the tumor specimen as related to a specific timepoint.
     cases.samples.updated_datetime: A combination of date and time of day in the form
@@ -2662,9 +2652,6 @@ properties:
       ethnicity:
         normalizer: clinical_normalizer
         type: keyword
-      gender:
-        normalizer: clinical_normalizer
-        type: keyword
       marital_status:
         normalizer: clinical_normalizer
         type: keyword
@@ -2692,6 +2679,9 @@ properties:
         type: keyword
       year_of_birth:
         type: long
+      year_of_birth_range:
+        normalizer: clinical_normalizer
+        type: keyword
       year_of_death:
         type: long
   diagnoses:
@@ -2735,6 +2725,9 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       ann_arbor_b_symptoms_described:
+        normalizer: clinical_normalizer
+        type: keyword
+      ann_arbor_b_symptoms_described_array:
         normalizer: clinical_normalizer
         type: keyword
       ann_arbor_clinical_stage:
@@ -3034,8 +3027,6 @@ properties:
           dysplasia_type:
             normalizer: clinical_normalizer
             type: keyword
-          epithelioid_cell_percent:
-            type: double
           epithelioid_cell_percent_range:
             normalizer: clinical_normalizer
             type: keyword
@@ -3049,9 +3040,6 @@ properties:
             normalizer: clinical_normalizer
             type: keyword
           extraocular_nodule_size:
-            normalizer: clinical_normalizer
-            type: keyword
-          extrascleral_extension:
             normalizer: clinical_normalizer
             type: keyword
           extrascleral_extension_present:
@@ -3166,10 +3154,6 @@ properties:
           sarcomatoid_present:
             normalizer: clinical_normalizer
             type: keyword
-          size_extraocular_nodule:
-            type: double
-          spindle_cell_percent:
-            type: double
           spindle_cell_percent_range:
             normalizer: clinical_normalizer
             type: keyword
@@ -3355,9 +3339,6 @@ properties:
           therapeutic_agents:
             normalizer: clinical_normalizer
             type: keyword
-          therapeutic_level_achieved:
-            normalizer: clinical_normalizer
-            type: keyword
           therapeutic_levels_achieved:
             normalizer: clinical_normalizer
             type: keyword
@@ -3403,6 +3384,9 @@ properties:
           treatment_outcome_duration:
             type: long
           treatment_type:
+            normalizer: clinical_normalizer
+            type: keyword
+          treatment_type_administered:
             normalizer: clinical_normalizer
             type: keyword
           updated_datetime:
@@ -3594,9 +3578,6 @@ properties:
         type: keyword
       relationship_age_at_diagnosis:
         type: double
-      relationship_gender:
-        normalizer: clinical_normalizer
-        type: keyword
       relationship_primary_diagnosis:
         normalizer: clinical_normalizer
         type: keyword
@@ -4927,8 +4908,6 @@ properties:
           undescended_testis_corrected:
             normalizer: clinical_normalizer
             type: keyword
-          undescended_testis_corrected_age:
-            type: long
           undescended_testis_corrected_age_range:
             normalizer: clinical_normalizer
             type: keyword
@@ -5359,8 +5338,6 @@ properties:
               normal_tumor_genotype_snp_match:
                 normalizer: clinical_normalizer
                 type: keyword
-              ribosomal_rna_28s_16s_ratio:
-                type: double
               ribosomal_rna_28s_18s_ratio:
                 type: double
               rna_integrity_number:
@@ -5623,9 +5600,6 @@ properties:
         normalizer: clinical_normalizer
         type: keyword
       tissue_type:
-        normalizer: clinical_normalizer
-        type: keyword
-      tumor_code_id:
         normalizer: clinical_normalizer
         type: keyword
       tumor_descriptor:
