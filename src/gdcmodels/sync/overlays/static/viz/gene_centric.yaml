@@ -1,107 +1,78 @@
 ---
 properties:
-  biotype:
+  biotype: &keyword
     type: keyword
-  canonical_transcript_id:
-    type: keyword
-  canonical_transcript_length:
+  canonical_transcript_id: *keyword
+  canonical_transcript_length: &long
     type: long
-  canonical_transcript_length_cds:
-    type: long
-  canonical_transcript_length_genomic:
-    type: long
+  canonical_transcript_length_cds: *long
+  canonical_transcript_length_genomic: *long
   case:
     properties:
-      available_variation_data:
-        type: keyword
-      case_id:
-        type: keyword
+      available_variation_data: *keyword
+      case_id: *keyword
       cnv:
         properties:
-          chromosome:
-            type: keyword
-          cnv_change:
-            type: keyword
-          cnv_change_5_category:
-            type: keyword
-          cnv_id:
-            type: keyword
-          end_position:
-            type: long
-          gene_level_cn:
+          chromosome: *keyword
+          cnv_change: *keyword
+          cnv_change_5_category: *keyword
+          cnv_id: *keyword
+          end_position: *long
+          gene_level_cn: &boolean
             type: boolean
-          ncbi_build:
-            type: keyword
+          ncbi_build: *keyword
           observation:
             properties:
               copy_number:
                 type: integer
-              observation_id:
-                type: keyword
+              observation_id: *keyword
               sample:
                 properties:
-                  tumor_sample_barcode:
-                    type: keyword
-                  tumor_sample_uuid:
-                    type: keyword
+                  tumor_sample_barcode: *keyword
+                  tumor_sample_uuid: *keyword
               sample_ploidy_integer:
                 type: integer
-              src_file_id:
-                type: keyword
+              src_file_id: *keyword
               variant_calling:
                 properties:
-                  variant_caller:
-                    type: keyword
-              variant_status:
-                type: keyword
+                  variant_caller: *keyword
+              variant_status: *keyword
             type: nested
-          start_position:
-            type: long
+          start_position: *long
         type: nested
       demographic:
         properties:
-          demographic_id:
-            type: keyword
+          demographic_id: *keyword
       diagnoses:
         properties:
-          diagnosis_id:
-            type: keyword
+          diagnosis_id: *keyword
           pathology_details:
             properties:
-              pathology_detail_id:
-                type: keyword
+              pathology_detail_id: *keyword
           treatments:
             properties:
-              treatment_id:
-                type: keyword
+              treatment_id: *keyword
       exposures:
         properties:
-          exposure_id:
-            type: keyword
+          exposure_id: *keyword
       family_histories:
         properties:
-          family_history_id:
-            type: keyword
+          family_history_id: *keyword
       follow_ups:
         properties:
-          follow_up_id:
-            type: keyword
+          follow_up_id: *keyword
           molecular_tests:
             properties:
-              molecular_test_id:
-                type: keyword
+              molecular_test_id: *keyword
           other_clinical_attributes:
             properties:
-              other_clinical_attribute_id:
-                type: keyword
+              other_clinical_attribute_id: *keyword
       project:
         properties:
           program:
             properties:
-              program_id:
-                type: keyword
-          project_id:
-            type: keyword
+              program_id: *keyword
+          project_id: *keyword
       samples:
         properties:
           portions:
@@ -110,297 +81,176 @@ properties:
                 properties:
                   aliquots:
                     properties:
-                      aliquot_id:
-                        type: keyword
-                  analyte_id:
-                    type: keyword
-              portion_id:
-                type: keyword
+                      aliquot_id: *keyword
+                  analyte_id: *keyword
+              portion_id: *keyword
               slides:
                 properties:
-                  slide_id:
-                    type: keyword
-          sample_id:
-            type: keyword
+                  slide_id: *keyword
+          sample_id: *keyword
       ssm:
         properties:
-          chromosome:
-            type: keyword
+          chromosome: *keyword
           clinical_annotations:
             properties:
               civic:
                 properties:
-                  gene_id:
-                    type: keyword
-                  variant_id:
-                    type: keyword
+                  gene_id: *keyword
+                  variant_id: *keyword
           consequence:
             properties:
-              consequence_id:
-                type: keyword
+              consequence_id: *keyword
               transcript:
                 properties:
-                  aa_change:
-                    type: keyword
+                  aa_change: *keyword
                   annotation:
                     properties:
-                      amino_acids:
-                        type: keyword
-                      ccds:
-                        type: keyword
-                      cdna_position:
-                        type: keyword
-                      cds_end:
-                        type: long
-                      cds_length:
-                        type: long
-                      cds_position:
-                        type: keyword
-                      cds_start:
-                        type: long
-                      clin_sig:
-                        type: keyword
-                      codons:
-                        type: keyword
-                      dbsnp_rs:
-                        type: keyword
-                      dbsnp_val_status:
-                        type: keyword
-                      domains:
-                        type: keyword
-                      ensp:
-                        type: keyword
-                      existing_variation:
-                        type: keyword
-                      hgvsc:
-                        type: keyword
-                      hgvsp:
-                        type: keyword
-                      hgvsp_short:
-                        type: keyword
-                      polyphen_impact:
-                        type: keyword
+                      amino_acids: *keyword
+                      ccds: *keyword
+                      cdna_position: *keyword
+                      cds_end: *long
+                      cds_length: *long
+                      cds_position: *keyword
+                      cds_start: *long
+                      clin_sig: *keyword
+                      codons: *keyword
+                      dbsnp_rs: *keyword
+                      dbsnp_val_status: *keyword
+                      domains: *keyword
+                      ensp: *keyword
+                      existing_variation: *keyword
+                      hgvsc: *keyword
+                      hgvsp: *keyword
+                      hgvsp_short: *keyword
+                      polyphen_impact: *keyword
                       polyphen_score:
                         type: float
-                      protein_position:
-                        type: keyword
-                      pubmed:
-                        type: keyword
-                      sift_impact:
-                        type: keyword
+                      protein_position: *keyword
+                      pubmed: *keyword
+                      sift_impact: *keyword
                       sift_score:
                         type: float
-                      swissprot:
-                        type: keyword
-                      transcript_id:
-                        type: keyword
-                      trembl:
-                        type: keyword
-                      uniparc:
-                        type: keyword
-                      vep_impact:
-                        type: keyword
-                  consequence_type:
-                    type: keyword
-                  ref_seq_accession:
-                    type: keyword
-                  transcript_id:
-                    type: keyword
+                      swissprot: *keyword
+                      transcript_id: *keyword
+                      trembl: *keyword
+                      uniparc: *keyword
+                      vep_impact: *keyword
+                  consequence_type: *keyword
+                  ref_seq_accession: *keyword
+                  transcript_id: *keyword
             type: nested
-          cosmic_id:
-            type: keyword
-          end_position:
-            type: long
-          genomic_dna_change:
-            type: keyword
-          mutation_subtype:
-            type: keyword
-          mutation_type:
-            type: keyword
-          ncbi_build:
-            type: keyword
+          cosmic_id: *keyword
+          end_position: *long
+          genomic_dna_change: *keyword
+          mutation_subtype: *keyword
+          mutation_type: *keyword
+          ncbi_build: *keyword
           observation:
             properties:
-              center:
-                type: keyword
+              center: *keyword
               input_bam_file:
                 properties:
-                  normal_bam_uuid:
-                    type: keyword
-                  tumor_bam_uuid:
-                    type: keyword
-              mutation_status:
-                type: keyword
+                  normal_bam_uuid: *keyword
+                  tumor_bam_uuid: *keyword
+              mutation_status: *keyword
               normal_genotype:
                 properties:
-                  match_norm_seq_allele1:
-                    type: keyword
-                  match_norm_seq_allele2:
-                    type: keyword
-              observation_id:
-                type: keyword
+                  match_norm_seq_allele1: *keyword
+                  match_norm_seq_allele2: *keyword
+              observation_id: *keyword
               read_depth:
                 properties:
-                  n_depth:
-                    type: long
-                  t_alt_count:
-                    type: long
-                  t_depth:
-                    type: long
-                  t_ref_count:
-                    type: long
+                  n_depth: *long
+                  t_alt_count: *long
+                  t_depth: *long
+                  t_ref_count: *long
               sample:
                 properties:
-                  matched_norm_sample_barcode:
-                    type: keyword
-                  matched_norm_sample_uuid:
-                    type: keyword
-                  tumor_sample_barcode:
-                    type: keyword
-                  tumor_sample_uuid:
-                    type: keyword
+                  matched_norm_sample_barcode: *keyword
+                  matched_norm_sample_uuid: *keyword
+                  tumor_sample_barcode: *keyword
+                  tumor_sample_uuid: *keyword
               tumor_genotype:
                 properties:
-                  tumor_seq_allele1:
-                    type: keyword
-                  tumor_seq_allele2:
-                    type: keyword
+                  tumor_seq_allele1: *keyword
+                  tumor_seq_allele2: *keyword
               validation:
                 properties:
-                  tumor_validation_allele1:
-                    type: keyword
-                  tumor_validation_allele2:
-                    type: keyword
-                  validation_method:
-                    type: keyword
+                  tumor_validation_allele1: *keyword
+                  tumor_validation_allele2: *keyword
+                  validation_method: *keyword
               variant_calling:
                 properties:
-                  variant_caller:
-                    type: keyword
-                  variant_process:
-                    type: keyword
+                  variant_caller: *keyword
+                  variant_process: *keyword
             type: nested
-          reference_allele:
-            type: keyword
-          ssm_id:
-            type: keyword
-          start_position:
-            type: long
-          tumor_allele:
-            type: keyword
+          reference_allele: *keyword
+          ssm_id: *keyword
+          start_position: *long
+          tumor_allele: *keyword
         type: nested
       tissue_source_site:
         properties:
-          tissue_source_site_id:
-            type: keyword
-  cytoband:
-    type: keyword
+          tissue_source_site_id: *keyword
+  cytoband: *keyword
   description:
     type: text
   external_db_ids:
     properties:
-      entrez_gene:
-        type: keyword
-      hgnc:
-        type: keyword
-      omim_gene:
-        type: keyword
-      uniprotkb_swissprot:
-        type: keyword
-  gene_chromosome:
-    type: keyword
-  gene_end:
-    type: long
-  gene_id:
-    type: keyword
-  gene_start:
-    type: long
-  gene_strand:
-    type: long
-  is_cancer_gene_census:
-    type: boolean
-  name:
-    type: keyword
-  symbol:
-    type: keyword
-  synonyms:
-    type: keyword
+      entrez_gene: *keyword
+      hgnc: *keyword
+      omim_gene: *keyword
+      uniprotkb_swissprot: *keyword
+  gene_chromosome: *keyword
+  gene_end: *long
+  gene_id: *keyword
+  gene_start: *long
+  gene_strand: *long
+  is_cancer_gene_census: *boolean
+  name: *keyword
+  symbol: *keyword
+  synonyms: *keyword
   transcripts:
     properties:
-      biotype:
-        type: keyword
-      cdna_coding_end:
-        type: long
-      cdna_coding_start:
-        type: long
-      coding_region_end:
-        type: long
-      coding_region_start:
-        type: long
+      biotype: *keyword
+      cdna_coding_end: *long
+      cdna_coding_start: *long
+      coding_region_end: *long
+      coding_region_start: *long
       domains:
         properties:
-          description:
-            type: keyword
-          end:
-            type: long
-          gff_source:
-            type: keyword
-          hit_name:
-            type: keyword
-          interpro_id:
-            type: keyword
-          start:
-            type: long
+          description: *keyword
+          end: *long
+          gff_source: *keyword
+          hit_name: *keyword
+          interpro_id: *keyword
+          start: *long
         type: nested
-      end:
-        type: long
-      end_exon:
-        type: long
+      end: *long
+      end_exon: *long
       exons:
         properties:
-          cdna_coding_end:
-            type: long
-          cdna_coding_start:
-            type: long
-          cdna_end:
-            type: long
-          cdna_start:
-            type: long
-          end:
-            type: long
-          end_phase:
-            type: long
-          genomic_coding_end:
-            type: long
-          genomic_coding_start:
-            type: long
-          start:
-            type: long
-          start_phase:
-            type: long
+          cdna_coding_end: *long
+          cdna_coding_start: *long
+          cdna_end: *long
+          cdna_start: *long
+          end: *long
+          end_phase: *long
+          genomic_coding_end: *long
+          genomic_coding_start: *long
+          start: *long
+          start_phase: *long
         type: nested
-      is_canonical:
-        type: boolean
-      length:
-        type: long
-      length_amino_acid:
-        type: long
-      length_cds:
-        type: long
-      name:
-        type: keyword
-      number_of_exons:
-        type: long
-      seq_exon_end:
-        type: long
-      seq_exon_start:
-        type: long
-      start:
-        type: long
-      start_exon:
-        type: long
-      transcript_id:
-        type: keyword
-      translation_id:
-        type: keyword
+      is_canonical: *boolean
+      length: *long
+      length_amino_acid: *long
+      length_cds: *long
+      name: *keyword
+      number_of_exons: *long
+      seq_exon_end: *long
+      seq_exon_start: *long
+      start: *long
+      start_exon: *long
+      transcript_id: *keyword
+      translation_id: *keyword
     type: nested
