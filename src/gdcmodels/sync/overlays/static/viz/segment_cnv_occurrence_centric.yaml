@@ -2,77 +2,58 @@
 properties:
   case:
     properties:
-      available_variation_data:
+      available_variation_data: &keyword
         type: keyword
-      case_id:
-        type: keyword
+      case_id: *keyword
       demographic:
         properties:
-          demographic_id:
-            type: keyword
+          demographic_id: *keyword
       diagnoses:
         properties:
-          diagnosis_id:
-            type: keyword
+          diagnosis_id: *keyword
           pathology_details:
             properties:
-              pathology_detail_id:
-                type: keyword
+              pathology_detail_id: *keyword
           treatments:
             properties:
-              treatment_id:
-                type: keyword
+              treatment_id: *keyword
       exposures:
         properties:
-          exposure_id:
-            type: keyword
+          exposure_id: *keyword
       family_histories:
         properties:
-          family_history_id:
-            type: keyword
+          family_history_id: *keyword
       follow_ups:
         properties:
-          follow_up_id:
-            type: keyword
+          follow_up_id: *keyword
           molecular_tests:
             properties:
-              molecular_test_id:
-                type: keyword
+              molecular_test_id: *keyword
           other_clinical_attributes:
             properties:
-              other_clinical_attribute_id:
-                type: keyword
+              other_clinical_attribute_id: *keyword
       observation:
         properties:
-          copy_number:
+          copy_number: &integer
             type: integer
-          observation_id:
-            type: keyword
+          observation_id: *keyword
           sample:
             properties:
-              tumor_sample_barcode:
-                type: keyword
-              tumor_sample_uuid:
-                type: keyword
-          sample_ploidy_integer:
-            type: integer
-          src_file_id:
-            type: keyword
+              tumor_sample_barcode: *keyword
+              tumor_sample_uuid: *keyword
+          sample_ploidy_integer: *integer
+          src_file_id: *keyword
           variant_calling:
             properties:
-              variant_caller:
-                type: keyword
-          variant_status:
-            type: keyword
+              variant_caller: *keyword
+          variant_status: *keyword
         type: nested
       project:
         properties:
           program:
             properties:
-              program_id:
-                type: keyword
-          project_id:
-            type: keyword
+              program_id: *keyword
+          project_id: *keyword
       samples:
         properties:
           portions:
@@ -81,37 +62,24 @@ properties:
                 properties:
                   aliquots:
                     properties:
-                      aliquot_id:
-                        type: keyword
-                  analyte_id:
-                    type: keyword
-              portion_id:
-                type: keyword
+                      aliquot_id: *keyword
+                  analyte_id: *keyword
+              portion_id: *keyword
               slides:
                 properties:
-                  slide_id:
-                    type: keyword
-          sample_id:
-            type: keyword
+                  slide_id: *keyword
+          sample_id: *keyword
       tissue_source_site:
         properties:
-          tissue_source_site_id:
-            type: keyword
+          tissue_source_site_id: *keyword
   segment_cnv:
     properties:
-      chromosome:
-        type: keyword
-      cnv_change:
-        type: keyword
-      cnv_change_5_category:
-        type: keyword
-      end_position:
+      chromosome: *keyword
+      cnv_change: *keyword
+      cnv_change_5_category: *keyword
+      end_position: &long
         type: long
-      length:
-        type: long
-      segment_cnv_id:
-        type: keyword
-      start_position:
-        type: long
-  segment_cnv_occurrence_id:
-    type: keyword
+      length: *long
+      segment_cnv_id: *keyword
+      start_position: *long
+  segment_cnv_occurrence_id: *keyword
