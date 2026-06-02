@@ -5,188 +5,33 @@ properties:
       available_variation_data: &keyword
         type: keyword
       case_id: *keyword
-      consent_type: *keyword
-      days_to_consent: &long
-        type: long
-      days_to_index: *long
       demographic:
         properties:
-          age_at_index: *long
-          age_is_obfuscated: *keyword
-          cause_of_death: *keyword
-          days_to_birth: *long
-          days_to_death: *long
           demographic_id: *keyword
-          ethnicity: *keyword
-          gender: *keyword
-          race: *keyword
-          state: *keyword
-          submitter_id: *keyword
-          vital_status: *keyword
-          year_of_birth: *long
-          year_of_death: *long
       diagnoses:
         properties:
-          age_at_diagnosis: *long
-          ajcc_clinical_m: *keyword
-          ajcc_clinical_n: *keyword
-          ajcc_clinical_stage: *keyword
-          ajcc_clinical_t: *keyword
-          ajcc_pathologic_m: *keyword
-          ajcc_pathologic_n: *keyword
-          ajcc_pathologic_stage: *keyword
-          ajcc_pathologic_t: *keyword
-          ajcc_staging_system_edition: *keyword
-          ann_arbor_b_symptoms: *keyword
-          ann_arbor_clinical_stage: *keyword
-          ann_arbor_extranodal_involvement: *keyword
-          ann_arbor_pathologic_stage: *keyword
-          burkitt_lymphoma_clinical_variant: *keyword
-          cause_of_death: *keyword
-          classification_of_tumor: *keyword
-          cog_renal_stage: *keyword
-          colon_polyps_history: *keyword
-          days_to_diagnosis: *long
-          days_to_hiv_diagnosis: *long
-          days_to_last_follow_up: &double
-            type: double
-          days_to_last_known_disease_status: *double
-          days_to_new_event: *long
-          days_to_recurrence: *double
           diagnosis_id: *keyword
-          esophageal_columnar_dysplasia_degree: *keyword
-          esophageal_columnar_metaplasia_present: *keyword
-          figo_stage: *keyword
-          figo_staging_edition_year: *keyword
-          gastric_esophageal_junction_involvement: *keyword
-          goblet_cells_columnar_mucosa_present: *keyword
-          hiv_positive: *keyword
-          hpv_positive_type: *keyword
-          hpv_status: *keyword
-          icd_10_code: *keyword
-          igcccg_stage: *keyword
-          inss_stage: *keyword
-          international_prognostic_index: *keyword
-          iss_stage: *keyword
-          last_known_disease_status: *keyword
-          laterality: *keyword
-          ldh_level_at_diagnosis: *long
-          ldh_normal_range_upper: *long
-          masaoka_stage: *keyword
-          metastasis_at_diagnosis: *keyword
-          metastasis_at_diagnosis_site: *keyword
-          method_of_diagnosis: *keyword
-          micropapillary_features: *keyword
-          morphology: *keyword
-          new_event_anatomic_site: *keyword
-          new_event_type: *keyword
           pathology_details:
             properties:
-              anaplasia_present: *keyword
-              anaplasia_present_type: *keyword
-              bone_marrow_malignant_cells: *keyword
-              breslow_thickness: *double
-              circumferential_resection_margin: *double
-              columnar_mucosa_present: *keyword
-              dysplasia_degree: *keyword
-              dysplasia_type: *keyword
-              greatest_tumor_dimension: *double
-              gross_tumor_weight: *double
-              largest_extrapelvic_peritoneal_focus: *keyword
-              lymph_node_involved_site: *keyword
-              lymph_node_involvement: *keyword
-              lymph_nodes_positive: *long
-              lymph_nodes_tested: *long
-              lymphatic_invasion_present: *keyword
-              margin_status: *keyword
-              metaplasia_present: *keyword
-              morphologic_architectural_pattern: *keyword
-              non_nodal_regional_disease: *keyword
-              non_nodal_tumor_deposits: *keyword
-              number_proliferating_cells: *long
               pathology_detail_id: *keyword
-              percent_tumor_invasion: *double
-              perineural_invasion_present: *keyword
-              peripancreatic_lymph_nodes_positive: *keyword
-              peripancreatic_lymph_nodes_tested: *long
-              prostatic_chips_positive_count: *double
-              prostatic_chips_total_count: *double
-              prostatic_involvement_percent: *double
-              state: *keyword
-              submitter_id: *keyword
-              transglottic_extension: *keyword
-              tumor_largest_dimension_diameter: *double
-              vascular_invasion_present: *keyword
-              vascular_invasion_type: *keyword
-            type: nested
-          pregnant_at_diagnosis: *keyword
-          primary_diagnosis: *keyword
-          primary_gleason_grade: *keyword
-          prior_malignancy: *keyword
-          prior_treatment: *keyword
-          progression_or_recurrence: *keyword
-          residual_disease: *keyword
-          secondary_gleason_grade: *keyword
-          site_of_resection_or_biopsy: *keyword
-          state: *keyword
-          submitter_id: *keyword
-          synchronous_malignancy: *keyword
-          tissue_or_organ_of_origin: *keyword
           treatments:
             properties:
-              chemo_concurrent_to_radiation: *keyword
-              days_to_treatment_end: *long
-              days_to_treatment_start: *long
-              initial_disease_status: *keyword
-              number_of_cycles: *long
-              regimen_or_line_of_therapy: *keyword
-              state: *keyword
-              submitter_id: *keyword
-              therapeutic_agents: *keyword
-              treatment_anatomic_site: *keyword
-              treatment_dose: *long
-              treatment_frequency: *keyword
               treatment_id: *keyword
-              treatment_intent_type: *keyword
-              treatment_or_therapy: *keyword
-              treatment_outcome: *keyword
-              treatment_type: *keyword
-            type: nested
-          tumor_grade: *keyword
-          year_of_diagnosis: *long
-        type: nested
-      disease_type: *keyword
       exposures:
         properties:
-          alcohol_days_per_week: *double
-          alcohol_history: *keyword
-          alcohol_intensity: *keyword
-          asbestos_exposure: *keyword
-          bmi: *double
-          cigarettes_per_day: *double
           exposure_id: *keyword
-          pack_years_smoked: *double
-          radon_exposure: *keyword
-          state: *keyword
-          submitter_id: *keyword
-          tobacco_smoking_onset_year: *long
-          tobacco_smoking_quit_year: *long
-          tobacco_smoking_status: *keyword
-          years_smoked: *double
-        type: nested
+      follow_ups:
+        properties:
+          follow_up_id: *keyword
+          molecular_tests:
+            properties:
+              molecular_test_id: *keyword
+          other_clinical_attributes:
+            properties:
+              other_clinical_attribute_id: *keyword
       family_histories:
         properties:
           family_history_id: *keyword
-          relationship_age_at_diagnosis: *double
-          relationship_gender: *keyword
-          relationship_primary_diagnosis: *keyword
-          relationship_type: *keyword
-          relative_with_cancer_history: *keyword
-          state: *keyword
-          submitter_id: *keyword
-        type: nested
-      index_date: *keyword
-      lost_to_followup: *keyword
       observation:
         properties:
           copy_number: &integer
@@ -203,35 +48,29 @@ properties:
               variant_caller: *keyword
           variant_status: *keyword
         type: nested
-      primary_site: *keyword
       project:
         properties:
-          dbgap_accession_number: *keyword
-          disease_type: *keyword
-          intended_release_date: *keyword
-          name: *keyword
-          primary_site: *keyword
           program:
             properties:
-              dbgap_accession_number: *keyword
-              name: *keyword
               program_id: *keyword
           project_id: *keyword
       samples:
         properties:
-          preservation_method: *keyword
-          sample_type: *keyword
-          specimen_type: *keyword
-          tissue_type: *keyword
-          tumor_descriptor: *keyword
-      state: *keyword
-      submitter_id: *keyword
+          portions:
+            properties:
+              analytes:
+                properties:
+                  aliquots:
+                    properties:
+                      aliquot_id: *keyword
+                  analyte_id: *keyword
+              portion_id: *keyword
+              slides:
+                properties:
+                  slide_id: *keyword
+          sample_id: *keyword
       tissue_source_site:
         properties:
-          bcr_id: *keyword
-          code: *keyword
-          name: *keyword
-          project: *keyword
           tissue_source_site_id: *keyword
   cnv:
     properties:
@@ -250,7 +89,8 @@ properties:
                 type: boolean
               symbol: *keyword
         type: nested
-      end_position: *long
+      end_position: &long
+        type: long
       gene_level_cn: *boolean
       ncbi_build: *keyword
       start_position: *long
