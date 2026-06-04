@@ -284,7 +284,9 @@ class NodesStructureABC(Structure, abc.ABC):
         """
         return prop not in UNIVERSALLY_EXCLUDED_PROPERTIES
 
+    @property
     def _pg_properties(self) -> Mapping[str, tuple[type, ...]]:
+        """All pg properties and their associated types found in the node definitions."""
         return {
             prop: _types
             for node in self.nodes
@@ -300,7 +302,7 @@ class NodesStructureABC(Structure, abc.ABC):
         """
         return {
             prop: _get_details(_types)
-            for prop, _types in self._pg_properties().items()
+            for prop, _types in self._pg_properties.items()
             if self._is_prop_included(prop)
         }
 
@@ -408,7 +410,7 @@ class NodesStructure(NodesStructureABC):
         # Warn devs that there are old properties which should be removed from configured
         # excluded properties.
         # !!!DOES NOT CHANGE OUTPUT BUT KEEPS CODE CLEAN!!!
-        if removed_properties := (excluded_properties - self._pg_properties().keys()):
+        if removed_properties := (excluded_properties - self._pg_properties.keys()):
             labels = [n.get_label() for n in self.nodes]
             removed_properties = list(removed_properties)
 
@@ -493,7 +495,7 @@ class NodesRequiredStructure(NodesStructureABC):
         # Warn devs that there are old properties which should be removed from configured
         # additional properties.
         # !!!DOES NOT CHANGE OUTPUT BUT KEEPS CODE CLEAN!!!
-        if removed_properties := (additional_properties - self._pg_properties().keys()):
+        if removed_properties := (additional_properties - self._pg_properties.keys()):
             labels = [n.get_label() for n in self.nodes]
             removed_properties = list(removed_properties)
 
