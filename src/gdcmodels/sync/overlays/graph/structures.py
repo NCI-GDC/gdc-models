@@ -451,6 +451,7 @@ class NodesRequiredStructure(NodesStructureABC):
         nodes: Sequence[type[models.Node]],
         is_nested: bool,
         description_root: str | None = None,
+        additional_properties: Set[str] = frozenset(),
         children: Mapping[str, Structure] = types.MappingProxyType({}),
     ) -> None:
         """Initializes a node based structure in a tree.
@@ -467,10 +468,13 @@ class NodesRequiredStructure(NodesStructureABC):
         """
         super().__init__(nodes, is_nested, description_root, children)
 
-        self._required_properties = frozenset(
-            prop
-            for node in nodes
-            for prop in node._dictionary.get("required", ())  # type: ignore
+        self._required_properties = (
+            frozenset(
+                prop
+                for node in nodes
+                for prop in node._dictionary.get("required", ())  # type: ignore
+            )
+            | additional_properties
         )
 
     @override
@@ -486,6 +490,7 @@ class NodeRequiredStructure(NodesRequiredStructure):
         node: type[models.Node],
         is_nested: bool,
         description_root: str | None = None,
+        additional_properties: Set[str] = frozenset(),
         children: Mapping[str, Structure] = types.MappingProxyType({}),
     ) -> None:
         """Initializes a node based structure in a tree.
@@ -499,7 +504,7 @@ class NodeRequiredStructure(NodesRequiredStructure):
                 `_meta.descriptions`. This should only be defined for the root structure.
             children: All children structures which are nested within this one.
         """
-        super().__init__((node,), is_nested, description_root, children)
+        super().__init__((node,), is_nested, description_root, additional_properties, children)
 
     @property
     def node(self) -> type[models.Node]:
@@ -663,6 +668,7 @@ _CORE_CASE = NodeRequiredStructure(
         samples=NodeRequiredStructure(
             node=models.Sample,
             is_nested=True,
+            additional_properties=frozenset({"sample_type"}),
             children=dict(
                 portions=NodeRequiredStructure(
                     node=models.Portion,

@@ -155,6 +155,8 @@ _meta:
       recalling a node.
     segment_cnvs.occurrence.case.samples.preservation_method: Text term that represents
       the method used to preserve the sample.
+    segment_cnvs.occurrence.case.samples.sample_type: Text term to describe the source
+      of a biospecimen used for a laboratory test.
     segment_cnvs.occurrence.case.samples.specimen_type: The type of a material sample
       taken from a biological entity for testing, diagnostic, propagation, treatment
       or research purposes. This includes particular types of cellular molecules,
@@ -430,6 +432,9 @@ properties:
                 normalizer: clinical_normalizer
                 type: keyword
               sample_id:
+                normalizer: clinical_normalizer
+                type: keyword
+              sample_type:
                 normalizer: clinical_normalizer
                 type: keyword
               specimen_type:
