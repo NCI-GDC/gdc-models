@@ -284,6 +284,13 @@ class NodesStructureABC(Structure, abc.ABC):
         """
         return prop not in UNIVERSALLY_EXCLUDED_PROPERTIES
 
+    def _pg_properties(self) -> Mapping[str, tuple[type, ...]]:
+        return {
+            prop: _types
+            for node in self.nodes
+            for prop, _types in node.get_pg_properties().items()
+        }
+
     def _extract_properties(self) -> Mapping[str, PropertyDetail]:
         """Extracts all properties that need to be included in the generated mapping.
 
@@ -293,8 +300,7 @@ class NodesStructureABC(Structure, abc.ABC):
         """
         return {
             prop: _get_details(_types)
-            for node in self.nodes
-            for prop, _types in node.get_pg_properties().items()
+            for prop, _types in self._pg_properties().items()
             if self._is_prop_included(prop)
         }
 
@@ -399,6 +405,17 @@ class NodesStructure(NodesStructureABC):
         """
         super().__init__(nodes, is_nested, description_root, children)
 
+        # Warn devs that there are old properties which should be removed from configured
+        # excluded properties.
+        # !!!DOES NOT CHANGE OUTPUT BUT KEEPS CODE CLEAN!!!
+        if removed_properties := (excluded_properties - self._pg_properties().keys()):
+            labels = [n.get_label() for n in self.nodes]
+            removed_properties = list(removed_properties)
+
+            logger.warning(
+                f"Excluded properties {removed_properties} have been removed from {labels}."
+            )
+
         self._excluded_properties = excluded_properties
 
     @property
@@ -476,11 +493,12 @@ class NodesRequiredStructure(NodesStructureABC):
         # Warn devs that there are old properties which should be removed from configured
         # additional properties.
         # !!!DOES NOT CHANGE OUTPUT BUT KEEPS CODE CLEAN!!!
-        if removed_properties := (additional_properties - self._extract_properties().keys()):
+        if removed_properties := (additional_properties - self._pg_properties().keys()):
             labels = [n.get_label() for n in self.nodes]
+            removed_properties = list(removed_properties)
 
             logger.warning(
-                f"Properties {list(removed_properties)} have been removed from {labels}."
+                f"Additional properties {removed_properties} have been removed from {labels}."
             )
 
         self._required_properties = (
