@@ -6,6 +6,7 @@ import abc
 import copy
 import functools
 import itertools
+import logging
 import types
 from collections.abc import Iterator, Mapping, Sequence, Set
 from typing import Any, TypedDict
@@ -18,6 +19,8 @@ from typing_extensions import ReadOnly, Self, override
 from gdcmodels import constants
 
 __all__ = ("STRUCTURES",)
+
+logger = logging.getLogger(__name__)
 
 DICTIONARY = gdcdictionary.gdcdictionary
 """The GDC dictionary object."""
@@ -464,9 +467,21 @@ class NodesRequiredStructure(NodesStructureABC):
                 type within resulting mappings.
             description_root: The name which should prepend all descriptions within
                 `_meta.descriptions`. This should only be defined for the root structure.
+            additional_properties: Any non-required properties which should be included in the
+                output mapping.
             children: All children structures which are nested within this one.
         """
         super().__init__(nodes, is_nested, description_root, children)
+
+        # Warn devs that there are old properties which should be removed from configured
+        # additional properties.
+        # !!!DOES NOT CHANGE OUTPUT BUT KEEPS CODE CLEAN!!!
+        if removed_properties := (additional_properties - self._extract_properties().keys()):
+            labels = [n.get_label() for n in self.nodes]
+
+            logger.warning(
+                f"Properties {list(removed_properties)} have been removed from {labels}."
+            )
 
         self._required_properties = (
             frozenset(
@@ -502,6 +517,8 @@ class NodeRequiredStructure(NodesRequiredStructure):
                 type within resulting mappings.
             description_root: The name which should prepend all descriptions within
                 `_meta.descriptions`. This should only be defined for the root structure.
+            additional_properties: Any non-required properties which should be included in the
+                output mapping.
             children: All children structures which are nested within this one.
         """
         super().__init__((node,), is_nested, description_root, additional_properties, children)
