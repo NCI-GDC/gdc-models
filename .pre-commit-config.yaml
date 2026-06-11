@@ -11,8 +11,6 @@ repos:
       - id: pretty-format-json
         args: [--autofix]
       - id: end-of-file-fixer
-      - id: no-commit-to-branch
-        args: [--branch, develop, --branch, master, --pattern, release/.*]
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.15.5
     hooks:

@@ -85,6 +85,16 @@ All of the overlays for the sync process can be found within the [src/gdcmodels/
 - **headers**: The headers overlay defines any static non-property fields which need to be defined for each index. This includes such things as `properties` values which will be excluded from the `_source` as well as ensuring that the elasticsearch `_size` module is configured for the index.
 - **static**: This overlay defines all static `properties` for the index. These field will be generated in either esbuild or mutation-indexer when the data is built but supplemental to the data found in the graph.
 
+
+##### Graph Overlays
+There are currently two subtypes of graph overlays. They are distinct in which properties they are configured to synchronize from their related graph nodes. These two types can be described as: those that sync all properties & those that sync only required properties.
+
+The graph & `case_centric` indices are designed to pull *all* properties from the dictionary except in all cases: `project_id`, `batch_id`, `file_state`, and `curated_model_index`. For individual nodes, they may also exclude additional fields; reference the code for details.
+
+The non-`case_centric` viz indices sync only the *required* properties. Individual nodes within the structure can and are configured with additional fields that need to be synced beyond this.
+
+The sync process will raise a warning if any nodes have been configured to exclude or include properties which has been removed from the dictionary. In both cases, the output of the sync is valid but the developer should remove the said property/properties from the code to minimize our overhead.
+
 #### Clinical Normalizer
 The only element which works outside of the overlay system is the application of the clinical normalizer which is added after all overlays have been combined. This [normalizer](https://www.elastic.co/docs/reference/text-analysis/normalizers) is used to help standardize the searchable terms exposed by the index and is applied to basically every keyword property. Each index group however excludes a set of properties by name. In the table below, an `X` denotes that the property is _excluded_ from being normalized for that index group.
 
