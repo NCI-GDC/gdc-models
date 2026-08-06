@@ -209,11 +209,20 @@ class Structure:
             )
         )
 
+    def _load_constraints(self, root: str) -> Mapping[str, str]:
+        return dict(
+            itertools.chain.from_iterable(
+                child._load_constraints(f"{root}.{name}").items()
+                for name, child in self.children.items()
+            )
+        )
+
     def _meta(self) -> Mapping[str, Any]:
         """Loads all data which should be found in the mappings' `_meta` field."""
         return {
             "arrays": self._array_fields(),
             "descriptions": self._load_descriptions(self._description_root),
+            "constraints": self._load_constraints(self._description_root),
         }
 
     def to_mapping(self, include_meta: bool = True) -> dict[str, Any]:
@@ -340,9 +349,40 @@ class NodesStructureABC(Structure, abc.ABC):
 
         return descriptions
 
+    def search_details_for_constraint(self, field: str, details: Mapping[str, str]):
+        if details.get("oneOf"):
+            details_entry = [d[field] for d in details["oneOf"] if d.get(field) is not None]
+            if details_entry:
+                return details_entry[0]
+
+        elif details.get(field) is not None:
+            return details[field]
+
+    def _load_node_constraints(self, root: str) -> Mapping[str, str]:
+        constraints = {}
+
+        for prop, details in self._load_schema_properties():
+            field_constraints = {}
+            minimum = self.search_details_for_constraint("minimum", details)
+            if minimum:
+                field_constraints["minimum"] = minimum
+
+            maximum = self.search_details_for_constraint("maximum", details)
+            if maximum:
+                field_constraints["maximum"] = maximum
+
+            if field_constraints:
+                constraints[f"{root}.{prop}"] = field_constraints
+
+        return constraints
+
     @override
     def _load_descriptions(self, root: str) -> Mapping[str, str]:
         return {**super()._load_descriptions(root), **self._load_node_descriptions(root)}
+
+    @override
+    def _load_constraints(self, root: str) -> Mapping[str, str]:
+        return {**super()._load_constraints(root), **self._load_node_constraints(root)}
 
     def _node_array_fields(self, path: Sequence[str]) -> Iterator[str]:
         """Recursively loads array fields associated with the structures nodes & children.

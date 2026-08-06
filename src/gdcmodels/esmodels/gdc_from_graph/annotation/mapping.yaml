@@ -1,6 +1,7 @@
 ---
 _meta:
   arrays: []
+  constraints: {}
   descriptions:
     annotations.category: Top level characterization of the annotation.
     annotations.classification: Top level classification of the annotation.

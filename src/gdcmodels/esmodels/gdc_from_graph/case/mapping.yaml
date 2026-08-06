@@ -41,6 +41,255 @@ _meta:
     - samples.portions.annotations
     - samples.portions.slides
     - samples.portions.slides.annotations
+  constraints:
+    cases.days_to_consent:
+      maximum: 32872
+      minimum: -32872
+    cases.days_to_lost_to_followup:
+      maximum: 32872
+      minimum: -32872
+    cases.demographic.age_at_index:
+      maximum: 89
+    cases.demographic.days_to_birth:
+      minimum: -32872
+    cases.demographic.days_to_death:
+      maximum: 32872
+      minimum: -32872
+    cases.demographic.occupation_duration_years:
+      maximum: 89
+    cases.demographic.year_of_birth:
+      minimum: 1900
+    cases.demographic.year_of_death:
+      minimum: 1900
+    cases.diagnoses.age_at_diagnosis:
+      maximum: 32872
+    cases.diagnoses.days_to_best_overall_response:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.days_to_diagnosis:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.days_to_last_follow_up:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.days_to_last_known_disease_status:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.days_to_recurrence:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.gleason_patterns_percent:
+      maximum: 100
+    cases.diagnoses.gleason_score:
+      maximum: 10
+    cases.diagnoses.pathology_details.days_to_pathology_detail:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.pathology_details.necrosis_percent:
+      maximum: 100
+    cases.diagnoses.pathology_details.percent_tumor_invasion:
+      maximum: 100
+    cases.diagnoses.pathology_details.percent_tumor_nuclei:
+      maximum: 100
+    cases.diagnoses.pathology_details.prostatic_involvement_percent:
+      maximum: 100
+    cases.diagnoses.pathology_details.rhabdoid_percent:
+      maximum: 100
+    cases.diagnoses.pathology_details.sarcomatoid_percent:
+      maximum: 100
+    cases.diagnoses.sites_of_involvement_count:
+      minimum: 1
+    cases.diagnoses.treatments.days_to_treatment_end:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.treatments.days_to_treatment_start:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.treatments.treatment_duration:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.treatments.treatment_outcome_duration:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.year_of_diagnosis:
+      maximum: 2050
+      minimum: 1900
+    cases.exposures.age_at_last_exposure:
+      maximum: 89
+    cases.exposures.age_at_onset:
+      maximum: 89
+    cases.exposures.alcohol_days_per_week:
+      maximum: 7
+    cases.exposures.exposure_duration_hrs_per_day:
+      maximum: 24
+    cases.exposures.exposure_duration_years:
+      maximum: 89
+    cases.exposures.occupation_duration_years:
+      maximum: 89
+    cases.exposures.tobacco_smoking_onset_year:
+      maximum: 2050
+      minimum: 1900
+    cases.exposures.tobacco_smoking_quit_year:
+      maximum: 2050
+      minimum: 1900
+    cases.family_histories.relationship_age_at_diagnosis:
+      maximum: 89
+    cases.files.analysis.input_files.cancer_dna_fraction:
+      maximum: 1
+    cases.files.analysis.input_files.contamination:
+      maximum: 1
+    cases.files.analysis.input_files.proportion_base_mismatch:
+      maximum: 1
+    cases.files.analysis.input_files.proportion_coverage_10x:
+      maximum: 1
+    cases.files.analysis.input_files.proportion_coverage_30x:
+      maximum: 1
+    cases.files.analysis.input_files.proportion_reads_mapped:
+      maximum: 1
+    cases.files.analysis.input_files.proportion_targets_no_coverage:
+      maximum: 1
+    cases.files.analysis.input_files.subclonal_genome_fraction:
+      maximum: 1
+    cases.files.analysis.input_files.tumor_purity:
+      maximum: 1
+    cases.files.analysis.metadata.read_groups.days_to_sequencing:
+      minimum: -32872
+    cases.files.analysis.metadata.read_groups.lane_number:
+      minimum: 1
+    cases.files.analysis.metadata.read_groups.read_group_qcs.percent_gc_content:
+      maximum: 100
+    cases.files.analysis.metadata.read_groups.rin:
+      maximum: 10
+      minimum: 1
+    cases.files.cancer_dna_fraction:
+      maximum: 1
+    cases.files.contamination:
+      maximum: 1
+    cases.files.downstream_analyses.output_files.cancer_dna_fraction:
+      maximum: 1
+    cases.files.downstream_analyses.output_files.contamination:
+      maximum: 1
+    cases.files.downstream_analyses.output_files.proportion_base_mismatch:
+      maximum: 1
+    cases.files.downstream_analyses.output_files.proportion_coverage_10x:
+      maximum: 1
+    cases.files.downstream_analyses.output_files.proportion_coverage_30x:
+      maximum: 1
+    cases.files.downstream_analyses.output_files.proportion_reads_mapped:
+      maximum: 1
+    cases.files.downstream_analyses.output_files.proportion_targets_no_coverage:
+      maximum: 1
+    cases.files.downstream_analyses.output_files.subclonal_genome_fraction:
+      maximum: 1
+    cases.files.downstream_analyses.output_files.tumor_purity:
+      maximum: 1
+    cases.files.index_files.cancer_dna_fraction:
+      maximum: 1
+    cases.files.index_files.contamination:
+      maximum: 1
+    cases.files.index_files.proportion_base_mismatch:
+      maximum: 1
+    cases.files.index_files.proportion_coverage_10x:
+      maximum: 1
+    cases.files.index_files.proportion_coverage_30x:
+      maximum: 1
+    cases.files.index_files.proportion_reads_mapped:
+      maximum: 1
+    cases.files.index_files.proportion_targets_no_coverage:
+      maximum: 1
+    cases.files.index_files.subclonal_genome_fraction:
+      maximum: 1
+    cases.files.index_files.tumor_purity:
+      maximum: 1
+    cases.files.proportion_base_mismatch:
+      maximum: 1
+    cases.files.proportion_coverage_10x:
+      maximum: 1
+    cases.files.proportion_coverage_30x:
+      maximum: 1
+    cases.files.proportion_reads_mapped:
+      maximum: 1
+    cases.files.proportion_targets_no_coverage:
+      maximum: 1
+    cases.files.subclonal_genome_fraction:
+      maximum: 1
+    cases.files.tumor_purity:
+      maximum: 1
+    cases.follow_ups.days_to_adverse_event:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.days_to_first_event:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.days_to_follow_up:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.days_to_imaging:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.days_to_progression:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.days_to_progression_free:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.days_to_recurrence:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.molecular_tests.days_to_test:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.other_clinical_attributes.days_to_comorbidity:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.other_clinical_attributes.days_to_risk_factor:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.other_clinical_attributes.pancreatitis_onset_year:
+      minimum: 1900
+    cases.follow_ups.year_of_follow_up:
+      maximum: 2050
+      minimum: 1900
+    cases.samples.days_to_collection:
+      maximum: 32872
+      minimum: -32872
+    cases.samples.days_to_sample_procurement:
+      maximum: 32872
+      minimum: -32872
+    cases.samples.portions.analytes.rna_integrity_number:
+      maximum: 10
+    cases.samples.portions.slides.percent_eosinophil_infiltration:
+      maximum: 100
+    cases.samples.portions.slides.percent_follicular_component:
+      maximum: 100
+    cases.samples.portions.slides.percent_granulocyte_infiltration:
+      maximum: 100
+    cases.samples.portions.slides.percent_inflam_infiltration:
+      maximum: 100
+    cases.samples.portions.slides.percent_lymphocyte_infiltration:
+      maximum: 100
+    cases.samples.portions.slides.percent_monocyte_infiltration:
+      maximum: 100
+    cases.samples.portions.slides.percent_necrosis:
+      maximum: 100
+    cases.samples.portions.slides.percent_neutrophil_infiltration:
+      maximum: 100
+    cases.samples.portions.slides.percent_normal_cells:
+      maximum: 100
+    cases.samples.portions.slides.percent_rhabdoid_features:
+      maximum: 100
+    cases.samples.portions.slides.percent_sarcomatoid_features:
+      maximum: 100
+    cases.samples.portions.slides.percent_stromal_cells:
+      maximum: 100
+    cases.samples.portions.slides.percent_tumor_cells:
+      maximum: 100
+    cases.samples.portions.slides.percent_tumor_nuclei:
+      maximum: 100
+    cases.samples.portions.slides.prostatic_involvement_percent:
+      maximum: 100
+    cases.samples.sample_ordinal:
+      minimum: 1
   descriptions:
     cases.annotations.category: Top level characterization of the annotation.
     cases.annotations.classification: Top level classification of the annotation.
