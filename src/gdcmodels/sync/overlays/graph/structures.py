@@ -360,7 +360,7 @@ class NodesStructureABC(Structure, abc.ABC):
 
         return descriptions
 
-    def search_details_for_constraint(self, field: str, details: Mapping[str, str]):
+    def _search_details_for_constraint(self, field: str, details: Mapping[str, str]):
         if details.get("oneOf"):
             details_entry = [d[field] for d in details["oneOf"] if d.get(field) is not None]
             if details_entry:
@@ -383,11 +383,11 @@ class NodesStructureABC(Structure, abc.ABC):
 
         for prop, details in self._load_schema_properties():
             field_constraints = {}
-            minimum = self.search_details_for_constraint("minimum", details)
+            minimum = self._search_details_for_constraint("minimum", details)
             if minimum:
                 field_constraints["minimum"] = minimum
 
-            maximum = self.search_details_for_constraint("maximum", details)
+            maximum = self._search_details_for_constraint("maximum", details)
             if maximum:
                 field_constraints["maximum"] = maximum
 
