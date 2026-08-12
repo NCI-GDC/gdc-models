@@ -27,6 +27,8 @@ DICTIONARY = gdcdictionary.gdcdictionary
 UNIVERSALLY_EXCLUDED_PROPERTIES = frozenset(
     {"project_id", "batch_id", "file_state", "curated_model_index"}
 )
+MIN_MAX_CONSTRAINTS = frozenset({"minimum", "maximum"})
+
 """These are properties from the graph which are always to be excluded from the mapping."""
 
 
@@ -209,7 +211,7 @@ class Structure:
             )
         )
 
-    def _load_constraints(self, root: str) -> Mapping[str, str]:
+    def _load_constraints(self, root: str) -> Mapping[str, Any]:
         """Loads the numerical constraints of each field within
            the structure from the dictionary.
 
@@ -340,7 +342,7 @@ class NodesStructureABC(Structure, abc.ABC):
                 if self._is_prop_included(prop):
                     yield prop, details
 
-    def _load_node_descriptions(self, root: str) -> Mapping[str, str]:
+    def _load_node_descriptions(self, root: str) -> Mapping[str, dict]:
         """Loads the property description associated with this structure's nodes.
 
         Args:
@@ -360,16 +362,7 @@ class NodesStructureABC(Structure, abc.ABC):
 
         return descriptions
 
-    def _search_details_for_constraint(self, field: str, details: Mapping[str, str]):
-        if details.get("oneOf"):
-            details_entry = [d[field] for d in details["oneOf"] if d.get(field) is not None]
-            if details_entry:
-                return details_entry[0]
-
-        elif details.get(field) is not None:
-            return details[field]
-
-    def _load_node_constraints(self, root: str) -> Mapping[str, str]:
+    def _load_node_constraints(self, root: str) -> Mapping[str, Any]:
         """Loads the property numerical constraints associated with this structure's nodes.
 
         Args:
@@ -382,15 +375,15 @@ class NodesStructureABC(Structure, abc.ABC):
         constraints = {}
 
         for prop, details in self._load_schema_properties():
-            field_constraints = {}
-            minimum = self._search_details_for_constraint("minimum", details)
-            if minimum:
-                field_constraints["minimum"] = minimum
+            min_max_details = more_itertools.first_true(
+                details.get("oneOf") or (details,),
+                pred=lambda d: d.keys() & MIN_MAX_CONSTRAINTS,
+                default={},
+            )
 
-            maximum = self._search_details_for_constraint("maximum", details)
-            if maximum:
-                field_constraints["maximum"] = maximum
-
+            field_constraints = {
+                c: min_max_details[c] for c in MIN_MAX_CONSTRAINTS if c in min_max_details
+            }
             if field_constraints:
                 constraints[f"{root}.{prop}"] = field_constraints
 
@@ -401,7 +394,7 @@ class NodesStructureABC(Structure, abc.ABC):
         return {**super()._load_descriptions(root), **self._load_node_descriptions(root)}
 
     @override
-    def _load_constraints(self, root: str) -> Mapping[str, str]:
+    def _load_constraints(self, root: str) -> Mapping[str, Any]:
         return {**super()._load_constraints(root), **self._load_node_constraints(root)}
 
     def _node_array_fields(self, path: Sequence[str]) -> Iterator[str]:
