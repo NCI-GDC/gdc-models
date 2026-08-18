@@ -211,7 +211,7 @@ class Structure:
             )
         )
 
-    def _load_constraints(self, root: str) -> Mapping[str, Any]:
+    def _load_constraints(self, root: str) -> Mapping[str, dict]:
         """Loads the numerical constraints of each field within
            the structure from the dictionary.
 
@@ -362,7 +362,7 @@ class NodesStructureABC(Structure, abc.ABC):
 
         return descriptions
 
-    def _load_node_constraints(self, root: str) -> Mapping[str, Any]:
+    def _load_node_constraints(self, root: str) -> Mapping[str, dict]:
         """Loads the property numerical constraints associated with this structure's nodes.
 
         Args:
@@ -394,7 +394,7 @@ class NodesStructureABC(Structure, abc.ABC):
         return {**super()._load_descriptions(root), **self._load_node_descriptions(root)}
 
     @override
-    def _load_constraints(self, root: str) -> Mapping[str, Any]:
+    def _load_constraints(self, root: str) -> Mapping[str, dict]:
         return {**super()._load_constraints(root), **self._load_node_constraints(root)}
 
     def _node_array_fields(self, path: Sequence[str]) -> Iterator[str]:
