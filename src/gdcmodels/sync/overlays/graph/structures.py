@@ -27,6 +27,8 @@ DICTIONARY = gdcdictionary.gdcdictionary
 UNIVERSALLY_EXCLUDED_PROPERTIES = frozenset(
     {"project_id", "batch_id", "file_state", "curated_model_index"}
 )
+MIN_MAX_CONSTRAINTS = frozenset({"minimum", "maximum"})
+
 """These are properties from the graph which are always to be excluded from the mapping."""
 
 
@@ -73,12 +75,12 @@ def _get_nodes_by_category(*categories: str) -> Iterator[type[models.Node]]:
     )
 
 
-def _to_occurrence_structure(case: Structure, description_root: str) -> Structure:
+def _to_occurrence_structure(case: Structure, property_root: str) -> Structure:
     """Nests the given case structure within an occurrence structure.
 
     Args:
         case: The structure which represents the case data.
-        description_root: The root name to append before all property descriptions in the
+        property_root: The root name to append before all properties in the
             metadata.
 
     Returns:
@@ -87,7 +89,7 @@ def _to_occurrence_structure(case: Structure, description_root: str) -> Structur
     """
     return Structure(
         is_nested=False,
-        description_root=description_root,
+        property_root=property_root,
         children=dict(
             occurrence=Structure(is_nested=True, children=dict(case=case.as_unnested()))
         ),
@@ -95,13 +97,13 @@ def _to_occurrence_structure(case: Structure, description_root: str) -> Structur
 
 
 def _to_case_structure(
-    case: Structure, description_root: str, is_nested: bool = False
+    case: Structure, property_root: str, is_nested: bool = False
 ) -> Structure:
     """Nests the given case structure within an single case structure.
 
     Args:
         case: The structure which represents the case data.
-        description_root: The root name to append before all property descriptions in the
+        property_root: The root name to append before all properties in the
             metadata.
 
     Returns:
@@ -110,7 +112,7 @@ def _to_case_structure(
     """
     return Structure(
         is_nested=False,
-        description_root=description_root,
+        property_root=property_root,
         children=dict(case=case.as_nested() if is_nested else case.as_unnested()),
     )
 
@@ -118,12 +120,12 @@ def _to_case_structure(
 class Structure:
     """A structure which represents an object in an elasticsearch mapping."""
 
-    __slots__ = ("_children", "_description_root", "_is_nested")
+    __slots__ = ("_children", "_is_nested", "_property_root")
 
     def __init__(
         self,
         is_nested: bool,
-        description_root: str | None = None,
+        property_root: str | None = None,
         children: Mapping[str, Structure] = types.MappingProxyType({}),
     ) -> None:
         """Initializes a structure.
@@ -131,12 +133,12 @@ class Structure:
         Args:
             is_nested: A flag indicating if this structure needs to be configured as a nested
                 type within resulting mappings.
-            description_root: The name which should prepend all descriptions within
-                `_meta.descriptions`. This should only be defined for the root structure.
+            property_root: The name which should prepend all properties within
+                `_meta`. This should only be defined for the root structure.
             children: All children structures which are nested within this one.
         """
         self._children = children
-        self._description_root = description_root or "$"
+        self._property_root = property_root or "$"
         self._is_nested = is_nested
 
     @property
@@ -209,11 +211,31 @@ class Structure:
             )
         )
 
+    def _load_constraints(self, root: str) -> Mapping[str, dict]:
+        """Loads the numerical constraints of each field within
+           the structure from the dictionary.
+
+        Args:
+            root: This is the namespace for which any constraints that is resolved in this
+                load process should be nested within.
+
+        Returns:
+            A mapping of field names to their numerical constraints from the dictionary. E.g.
+            `{"cases.demographic.age_at_index": { minimum: 0, maximum: 89}}`
+        """
+        return dict(
+            itertools.chain.from_iterable(
+                child._load_constraints(f"{root}.{name}").items()
+                for name, child in self.children.items()
+            )
+        )
+
     def _meta(self) -> Mapping[str, Any]:
         """Loads all data which should be found in the mappings' `_meta` field."""
         return {
             "arrays": self._array_fields(),
-            "descriptions": self._load_descriptions(self._description_root),
+            "descriptions": self._load_descriptions(self._property_root),
+            "constraints": self._load_constraints(self._property_root),
         }
 
     def to_mapping(self, include_meta: bool = True) -> dict[str, Any]:
@@ -251,7 +273,7 @@ class NodesStructureABC(Structure, abc.ABC):
         self,
         nodes: Sequence[type[models.Node]],
         is_nested: bool,
-        description_root: str | None = None,
+        property_root: str | None = None,
         children: Mapping[str, Structure] = types.MappingProxyType({}),
     ) -> None:
         """Initializes a node based structure in a tree.
@@ -262,11 +284,11 @@ class NodesStructureABC(Structure, abc.ABC):
                 properties.
             is_nested: A flag indicating if this structure needs to be configured as a nested
                 type within resulting mappings.
-            description_root: The name which should prepend all descriptions within
-                `_meta.descriptions`. This should only be defined for the root structure.
+            property_root: The name which should prepend all properties within
+                `_meta`. This should only be defined for the root structure.
             children: All children structures which are nested within this one.
         """
-        super().__init__(is_nested, description_root, children)
+        super().__init__(is_nested, property_root, children)
 
         self._nodes = nodes
 
@@ -320,7 +342,7 @@ class NodesStructureABC(Structure, abc.ABC):
                 if self._is_prop_included(prop):
                     yield prop, details
 
-    def _load_node_descriptions(self, root: str) -> Mapping[str, str]:
+    def _load_node_descriptions(self, root: str) -> Mapping[str, dict]:
         """Loads the property description associated with this structure's nodes.
 
         Args:
@@ -340,9 +362,40 @@ class NodesStructureABC(Structure, abc.ABC):
 
         return descriptions
 
+    def _load_node_constraints(self, root: str) -> Mapping[str, dict]:
+        """Loads the property numerical constraints associated with this structure's nodes.
+
+        Args:
+            root: The current `.` delimited path from this node back to the mapping root.
+
+        Returns:
+            A mapping of fields contained in this structures mapping with their associated
+            numerical constraints from the dictionary.
+        """
+        constraints = {}
+
+        for prop, details in self._load_schema_properties():
+            min_max_details = more_itertools.first_true(
+                details.get("oneOf") or (details,),
+                pred=lambda d: d.keys() & MIN_MAX_CONSTRAINTS,
+                default={},
+            )
+
+            field_constraints = {
+                c: min_max_details[c] for c in MIN_MAX_CONSTRAINTS if c in min_max_details
+            }
+            if field_constraints:
+                constraints[f"{root}.{prop}"] = field_constraints
+
+        return constraints
+
     @override
     def _load_descriptions(self, root: str) -> Mapping[str, str]:
         return {**super()._load_descriptions(root), **self._load_node_descriptions(root)}
+
+    @override
+    def _load_constraints(self, root: str) -> Mapping[str, dict]:
+        return {**super()._load_constraints(root), **self._load_node_constraints(root)}
 
     def _node_array_fields(self, path: Sequence[str]) -> Iterator[str]:
         """Recursively loads array fields associated with the structures nodes & children.
@@ -386,7 +439,7 @@ class NodesStructure(NodesStructureABC):
         self,
         nodes: Sequence[type[models.Node]],
         is_nested: bool,
-        description_root: str | None = None,
+        property_root: str | None = None,
         children: Mapping[str, Structure] = types.MappingProxyType({}),
         excluded_properties: Set[str] = frozenset(),
     ) -> None:
@@ -398,14 +451,14 @@ class NodesStructure(NodesStructureABC):
                 elasticsearch properties unless explicitly excluded.
             is_nested: A flag indicating if this structure needs to be configured as a nested
                 type within resulting mappings.
-            description_root: The name which should prepend all descriptions within
-                `_meta.descriptions`. This should only be defined for the root structure.
+            property_root: The name which should prepend all properties within
+                `_meta`. This should only be defined for the root structure.
             children: All children structures which are nested within this one.
             excluded_properties: A set of property names which should be excluded when
                 generating the mapping for this structure. By default, all properties are
                 included.
         """
-        super().__init__(nodes, is_nested, description_root, children)
+        super().__init__(nodes, is_nested, property_root, children)
 
         # Warn devs that there are old properties which should be removed from configured
         # excluded properties.
@@ -437,7 +490,7 @@ class NodeStructure(NodesStructure):
         self,
         node: type[models.Node],
         is_nested: bool,
-        description_root: str | None = None,
+        property_root: str | None = None,
         children: Mapping[str, Structure] = types.MappingProxyType({}),
         excluded_properties: Set[str] = frozenset(),
     ) -> None:
@@ -448,14 +501,14 @@ class NodeStructure(NodesStructure):
                 structure's mapped properties are derived.
             is_nested: A flag indicating if this structure needs to be configured as a nested
                 type within resulting mappings.
-            description_root: The name which should prepend all descriptions within
+            property_root: The name which should prepend all descriptions within
                 `_meta.descriptions`. This should only be defined for the root structure.
             children: All children structures which are nested within this one.
             excluded_properties: A set of property names which should be excluded when
                 generating the mapping for this structure. By default, all properties are
                 included.
         """
-        super().__init__((node,), is_nested, description_root, children, excluded_properties)
+        super().__init__((node,), is_nested, property_root, children, excluded_properties)
 
     @property
     def node(self) -> type[models.Node]:
@@ -472,7 +525,7 @@ class NodesRequiredStructure(NodesStructureABC):
         self,
         nodes: Sequence[type[models.Node]],
         is_nested: bool,
-        description_root: str | None = None,
+        property_root: str | None = None,
         additional_properties: Set[str] = frozenset(),
         children: Mapping[str, Structure] = types.MappingProxyType({}),
     ) -> None:
@@ -484,13 +537,13 @@ class NodesRequiredStructure(NodesStructureABC):
                 elasticsearch properties.
             is_nested: A flag indicating if this structure needs to be configured as a nested
                 type within resulting mappings.
-            description_root: The name which should prepend all descriptions within
-                `_meta.descriptions`. This should only be defined for the root structure.
+            property_root: The name which should prepend all properties within
+                `_meta`. This should only be defined for the root structure.
             additional_properties: Any non-required properties which should be included in the
                 output mapping.
             children: All children structures which are nested within this one.
         """
-        super().__init__(nodes, is_nested, description_root, children)
+        super().__init__(nodes, is_nested, property_root, children)
 
         # Warn devs that there are old properties which should be removed from configured
         # additional properties.
@@ -524,7 +577,7 @@ class NodeRequiredStructure(NodesRequiredStructure):
         self,
         node: type[models.Node],
         is_nested: bool,
-        description_root: str | None = None,
+        property_root: str | None = None,
         additional_properties: Set[str] = frozenset(),
         children: Mapping[str, Structure] = types.MappingProxyType({}),
     ) -> None:
@@ -535,13 +588,13 @@ class NodeRequiredStructure(NodesRequiredStructure):
                 structure's mapped properties are derived.
             is_nested: A flag indicating if this structure needs to be configured as a nested
                 type within resulting mappings.
-            description_root: The name which should prepend all descriptions within
-                `_meta.descriptions`. This should only be defined for the root structure.
+            property_root: The name which should prepend all properties within
+                `_meta`. This should only be defined for the root structure.
             additional_properties: Any non-required properties which should be included in the
                 output mapping.
             children: All children structures which are nested within this one.
         """
-        super().__init__((node,), is_nested, description_root, additional_properties, children)
+        super().__init__((node,), is_nested, property_root, additional_properties, children)
 
     @property
     def node(self) -> type[models.Node]:
@@ -896,7 +949,7 @@ _EMPTY = Structure(is_nested=False)
 ANNOTATION = NodeStructure(
     node=_ANNOTATIONS.node,
     is_nested=False,
-    description_root="annotations",
+    property_root="annotations",
     excluded_properties=_ANNOTATIONS.excluded_properties | frozenset({"creator"}),
     children={
         "project": _PROJECT,
@@ -906,21 +959,21 @@ ANNOTATION = NodeStructure(
 CASE = NodeStructure(
     node=_CASE.node,
     is_nested=False,
-    description_root="cases",
+    property_root="cases",
     excluded_properties=_CASE.excluded_properties,
     children={"files": _FILE, **_CASE.children},
 )
 FILE = NodesStructure(
     nodes=_FILE.nodes,
     is_nested=False,
-    description_root="files",
+    property_root="files",
     excluded_properties=_FILE.excluded_properties,
     children={"cases": _CASE, "annotations": _ANNOTATIONS, **_FILE.children},
 )
 PROJECT = NodeStructure(
     node=_PROJECT.node,
     is_nested=False,
-    description_root="projects",
+    property_root="projects",
     excluded_properties=_PROJECT.excluded_properties,
     children=_PROJECT.children,
 )

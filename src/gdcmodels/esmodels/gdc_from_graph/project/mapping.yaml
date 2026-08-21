@@ -1,6 +1,7 @@
 ---
 _meta:
   arrays: []
+  constraints: {}
   descriptions:
     projects.dbgap_accession_number: The dbgap accession number for the project.
     projects.disease_type: Full name for the project

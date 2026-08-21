@@ -41,6 +41,618 @@ _meta:
     - samples.portions.annotations
     - samples.portions.slides
     - samples.portions.slides.annotations
+  constraints:
+    cases.days_to_consent:
+      maximum: 32872
+      minimum: -32872
+    cases.days_to_lost_to_followup:
+      maximum: 32872
+      minimum: -32872
+    cases.demographic.age_at_index:
+      maximum: 89
+      minimum: 0
+    cases.demographic.days_to_birth:
+      maximum: 0
+      minimum: -32872
+    cases.demographic.days_to_death:
+      maximum: 32872
+      minimum: -32872
+    cases.demographic.occupation_duration_years:
+      maximum: 89
+      minimum: 0
+    cases.demographic.year_of_birth:
+      minimum: 1900
+    cases.demographic.year_of_death:
+      minimum: 1900
+    cases.diagnoses.age_at_diagnosis:
+      maximum: 32872
+      minimum: 0
+    cases.diagnoses.days_to_best_overall_response:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.days_to_diagnosis:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.days_to_last_follow_up:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.days_to_last_known_disease_status:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.days_to_recurrence:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.gleason_patterns_percent:
+      maximum: 100
+      minimum: 0
+    cases.diagnoses.gleason_score:
+      maximum: 10
+      minimum: 0
+    cases.diagnoses.margin_distance:
+      minimum: 0
+    cases.diagnoses.pathology_details.breslow_thickness:
+      minimum: 0
+    cases.diagnoses.pathology_details.circumferential_resection_margin:
+      minimum: 0
+    cases.diagnoses.pathology_details.days_to_pathology_detail:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.pathology_details.greatest_tumor_dimension:
+      minimum: 0
+    cases.diagnoses.pathology_details.gross_tumor_weight:
+      minimum: 0
+    cases.diagnoses.pathology_details.lymph_nodes_positive:
+      minimum: 0
+    cases.diagnoses.pathology_details.lymph_nodes_tested:
+      minimum: 0
+    cases.diagnoses.pathology_details.necrosis_percent:
+      maximum: 100
+      minimum: 0
+    cases.diagnoses.pathology_details.number_proliferating_cells:
+      minimum: 0
+    cases.diagnoses.pathology_details.percent_tumor_invasion:
+      maximum: 100
+      minimum: 0
+    cases.diagnoses.pathology_details.percent_tumor_nuclei:
+      maximum: 100
+      minimum: 0
+    cases.diagnoses.pathology_details.peripancreatic_lymph_nodes_tested:
+      minimum: 0
+    cases.diagnoses.pathology_details.prostatic_chips_positive_count:
+      minimum: 0
+    cases.diagnoses.pathology_details.prostatic_chips_total_count:
+      minimum: 0
+    cases.diagnoses.pathology_details.prostatic_involvement_percent:
+      maximum: 100
+      minimum: 0
+    cases.diagnoses.pathology_details.rhabdoid_percent:
+      maximum: 100
+      minimum: 0
+    cases.diagnoses.pathology_details.sarcomatoid_percent:
+      maximum: 100
+      minimum: 0
+    cases.diagnoses.pathology_details.tumor_basal_diameter:
+      minimum: 0
+    cases.diagnoses.pathology_details.tumor_burden:
+      minimum: 0
+    cases.diagnoses.pathology_details.tumor_depth_measurement:
+      minimum: 0
+    cases.diagnoses.pathology_details.tumor_largest_dimension_diameter:
+      minimum: 0
+    cases.diagnoses.pathology_details.tumor_length_measurement:
+      minimum: 0
+    cases.diagnoses.pathology_details.tumor_thickness:
+      minimum: 0
+    cases.diagnoses.pathology_details.tumor_width_measurement:
+      minimum: 0
+    cases.diagnoses.sites_of_involvement_count:
+      minimum: 1
+    cases.diagnoses.treatments.days_to_treatment_end:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.treatments.days_to_treatment_start:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.treatments.lesions_treated_number:
+      minimum: 0
+    cases.diagnoses.treatments.margin_distance:
+      minimum: 0
+    cases.diagnoses.treatments.number_of_cycles:
+      minimum: 0
+    cases.diagnoses.treatments.number_of_fractions:
+      minimum: 0
+    cases.diagnoses.treatments.prescribed_dose:
+      minimum: 0
+    cases.diagnoses.treatments.treatment_dose:
+      minimum: 0
+    cases.diagnoses.treatments.treatment_dose_max:
+      minimum: 0
+    cases.diagnoses.treatments.treatment_duration:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.treatments.treatment_outcome_duration:
+      maximum: 32872
+      minimum: -32872
+    cases.diagnoses.tumor_burden:
+      minimum: 0
+    cases.diagnoses.tumor_depth:
+      minimum: 0
+    cases.diagnoses.year_of_diagnosis:
+      maximum: 2050
+      minimum: 1900
+    cases.exposures.age_at_last_exposure:
+      maximum: 89
+      minimum: 0
+    cases.exposures.age_at_onset:
+      maximum: 89
+      minimum: 0
+    cases.exposures.alcohol_days_per_week:
+      maximum: 7
+      minimum: 0
+    cases.exposures.alcohol_drinks_per_day:
+      minimum: 0
+    cases.exposures.cigarettes_per_day:
+      minimum: 0
+    cases.exposures.exposure_duration_hrs_per_day:
+      maximum: 24
+      minimum: 0
+    cases.exposures.exposure_duration_years:
+      maximum: 89
+      minimum: 0
+    cases.exposures.occupation_duration_years:
+      maximum: 89
+      minimum: 0
+    cases.exposures.pack_years_smoked:
+      minimum: 0
+    cases.exposures.tobacco_smoking_onset_year:
+      maximum: 2050
+      minimum: 1900
+    cases.exposures.tobacco_smoking_quit_year:
+      maximum: 2050
+      minimum: 1900
+    cases.exposures.use_per_day:
+      minimum: 0
+    cases.family_histories.relationship_age_at_diagnosis:
+      maximum: 89
+      minimum: 0
+    cases.family_histories.relatives_with_cancer_history_count:
+      minimum: 0
+    cases.files.analysis.input_files.average_base_quality:
+      minimum: 0
+    cases.files.analysis.input_files.average_insert_size:
+      minimum: 0
+    cases.files.analysis.input_files.average_read_length:
+      minimum: 0
+    cases.files.analysis.input_files.cancer_dna_fraction:
+      maximum: 1
+      minimum: 0
+    cases.files.analysis.input_files.contamination:
+      maximum: 1
+      minimum: 0
+    cases.files.analysis.input_files.contamination_error:
+      minimum: 0
+    cases.files.analysis.input_files.genome_doubling:
+      minimum: 0
+    cases.files.analysis.input_files.mean_coverage:
+      minimum: 0
+    cases.files.analysis.input_files.msi_score:
+      minimum: 0
+    cases.files.analysis.input_files.pairs_on_diff_chr:
+      minimum: 0
+    cases.files.analysis.input_files.proportion_base_mismatch:
+      maximum: 1
+      minimum: 0
+    cases.files.analysis.input_files.proportion_coverage_10x:
+      maximum: 1
+      minimum: 0
+    cases.files.analysis.input_files.proportion_coverage_30x:
+      maximum: 1
+      minimum: 0
+    cases.files.analysis.input_files.proportion_reads_duplicated:
+      minimum: 0
+    cases.files.analysis.input_files.proportion_reads_mapped:
+      maximum: 1
+      minimum: 0
+    cases.files.analysis.input_files.proportion_targets_no_coverage:
+      maximum: 1
+      minimum: 0
+    cases.files.analysis.input_files.subclonal_genome_fraction:
+      maximum: 1
+      minimum: 0
+    cases.files.analysis.input_files.tmb:
+      minimum: 0
+    cases.files.analysis.input_files.tmb_exonic:
+      minimum: 0
+    cases.files.analysis.input_files.tmb_nonsynonymous:
+      minimum: 0
+    cases.files.analysis.input_files.tmb_nonsynonymous_exonic:
+      minimum: 0
+    cases.files.analysis.input_files.total_reads:
+      minimum: 0
+    cases.files.analysis.input_files.tumor_ploidy:
+      minimum: 0
+    cases.files.analysis.input_files.tumor_purity:
+      maximum: 1
+      minimum: 0
+    cases.files.analysis.metadata.read_groups.days_to_sequencing:
+      minimum: -32872
+    cases.files.analysis.metadata.read_groups.fragment_maximum_length:
+      minimum: 0
+    cases.files.analysis.metadata.read_groups.fragment_mean_length:
+      minimum: 0
+    cases.files.analysis.metadata.read_groups.fragment_minimum_length:
+      minimum: 0
+    cases.files.analysis.metadata.read_groups.fragment_standard_deviation_length:
+      minimum: 0
+    cases.files.analysis.metadata.read_groups.lane_number:
+      minimum: 1
+    cases.files.analysis.metadata.read_groups.number_expect_cells:
+      minimum: 0
+    cases.files.analysis.metadata.read_groups.read_group_qcs.percent_gc_content:
+      maximum: 100
+      minimum: 0
+    cases.files.analysis.metadata.read_groups.read_length:
+      minimum: 0
+    cases.files.analysis.metadata.read_groups.rin:
+      maximum: 10
+      minimum: 1
+    cases.files.average_base_quality:
+      minimum: 0
+    cases.files.average_insert_size:
+      minimum: 0
+    cases.files.average_read_length:
+      minimum: 0
+    cases.files.cancer_dna_fraction:
+      maximum: 1
+      minimum: 0
+    cases.files.contamination:
+      maximum: 1
+      minimum: 0
+    cases.files.contamination_error:
+      minimum: 0
+    cases.files.downstream_analyses.output_files.average_base_quality:
+      minimum: 0
+    cases.files.downstream_analyses.output_files.average_insert_size:
+      minimum: 0
+    cases.files.downstream_analyses.output_files.average_read_length:
+      minimum: 0
+    cases.files.downstream_analyses.output_files.cancer_dna_fraction:
+      maximum: 1
+      minimum: 0
+    cases.files.downstream_analyses.output_files.contamination:
+      maximum: 1
+      minimum: 0
+    cases.files.downstream_analyses.output_files.contamination_error:
+      minimum: 0
+    cases.files.downstream_analyses.output_files.genome_doubling:
+      minimum: 0
+    cases.files.downstream_analyses.output_files.mean_coverage:
+      minimum: 0
+    cases.files.downstream_analyses.output_files.msi_score:
+      minimum: 0
+    cases.files.downstream_analyses.output_files.pairs_on_diff_chr:
+      minimum: 0
+    cases.files.downstream_analyses.output_files.proportion_base_mismatch:
+      maximum: 1
+      minimum: 0
+    cases.files.downstream_analyses.output_files.proportion_coverage_10x:
+      maximum: 1
+      minimum: 0
+    cases.files.downstream_analyses.output_files.proportion_coverage_30x:
+      maximum: 1
+      minimum: 0
+    cases.files.downstream_analyses.output_files.proportion_reads_duplicated:
+      minimum: 0
+    cases.files.downstream_analyses.output_files.proportion_reads_mapped:
+      maximum: 1
+      minimum: 0
+    cases.files.downstream_analyses.output_files.proportion_targets_no_coverage:
+      maximum: 1
+      minimum: 0
+    cases.files.downstream_analyses.output_files.subclonal_genome_fraction:
+      maximum: 1
+      minimum: 0
+    cases.files.downstream_analyses.output_files.tmb:
+      minimum: 0
+    cases.files.downstream_analyses.output_files.tmb_exonic:
+      minimum: 0
+    cases.files.downstream_analyses.output_files.tmb_nonsynonymous:
+      minimum: 0
+    cases.files.downstream_analyses.output_files.tmb_nonsynonymous_exonic:
+      minimum: 0
+    cases.files.downstream_analyses.output_files.total_reads:
+      minimum: 0
+    cases.files.downstream_analyses.output_files.tumor_ploidy:
+      minimum: 0
+    cases.files.downstream_analyses.output_files.tumor_purity:
+      maximum: 1
+      minimum: 0
+    cases.files.genome_doubling:
+      minimum: 0
+    cases.files.index_files.average_base_quality:
+      minimum: 0
+    cases.files.index_files.average_insert_size:
+      minimum: 0
+    cases.files.index_files.average_read_length:
+      minimum: 0
+    cases.files.index_files.cancer_dna_fraction:
+      maximum: 1
+      minimum: 0
+    cases.files.index_files.contamination:
+      maximum: 1
+      minimum: 0
+    cases.files.index_files.contamination_error:
+      minimum: 0
+    cases.files.index_files.genome_doubling:
+      minimum: 0
+    cases.files.index_files.mean_coverage:
+      minimum: 0
+    cases.files.index_files.msi_score:
+      minimum: 0
+    cases.files.index_files.pairs_on_diff_chr:
+      minimum: 0
+    cases.files.index_files.proportion_base_mismatch:
+      maximum: 1
+      minimum: 0
+    cases.files.index_files.proportion_coverage_10x:
+      maximum: 1
+      minimum: 0
+    cases.files.index_files.proportion_coverage_30x:
+      maximum: 1
+      minimum: 0
+    cases.files.index_files.proportion_reads_duplicated:
+      minimum: 0
+    cases.files.index_files.proportion_reads_mapped:
+      maximum: 1
+      minimum: 0
+    cases.files.index_files.proportion_targets_no_coverage:
+      maximum: 1
+      minimum: 0
+    cases.files.index_files.subclonal_genome_fraction:
+      maximum: 1
+      minimum: 0
+    cases.files.index_files.tmb:
+      minimum: 0
+    cases.files.index_files.tmb_exonic:
+      minimum: 0
+    cases.files.index_files.tmb_nonsynonymous:
+      minimum: 0
+    cases.files.index_files.tmb_nonsynonymous_exonic:
+      minimum: 0
+    cases.files.index_files.total_reads:
+      minimum: 0
+    cases.files.index_files.tumor_ploidy:
+      minimum: 0
+    cases.files.index_files.tumor_purity:
+      maximum: 1
+      minimum: 0
+    cases.files.mean_coverage:
+      minimum: 0
+    cases.files.msi_score:
+      minimum: 0
+    cases.files.pairs_on_diff_chr:
+      minimum: 0
+    cases.files.proportion_base_mismatch:
+      maximum: 1
+      minimum: 0
+    cases.files.proportion_coverage_10x:
+      maximum: 1
+      minimum: 0
+    cases.files.proportion_coverage_30x:
+      maximum: 1
+      minimum: 0
+    cases.files.proportion_reads_duplicated:
+      minimum: 0
+    cases.files.proportion_reads_mapped:
+      maximum: 1
+      minimum: 0
+    cases.files.proportion_targets_no_coverage:
+      maximum: 1
+      minimum: 0
+    cases.files.subclonal_genome_fraction:
+      maximum: 1
+      minimum: 0
+    cases.files.tmb:
+      minimum: 0
+    cases.files.tmb_exonic:
+      minimum: 0
+    cases.files.tmb_nonsynonymous:
+      minimum: 0
+    cases.files.tmb_nonsynonymous_exonic:
+      minimum: 0
+    cases.files.total_reads:
+      minimum: 0
+    cases.files.tumor_ploidy:
+      minimum: 0
+    cases.files.tumor_purity:
+      maximum: 1
+      minimum: 0
+    cases.follow_ups.days_to_adverse_event:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.days_to_first_event:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.days_to_follow_up:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.days_to_imaging:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.days_to_progression:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.days_to_progression_free:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.days_to_recurrence:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.discontiguous_lesion_count:
+      minimum: 0
+    cases.follow_ups.molecular_tests.biospecimen_volume:
+      minimum: 0
+    cases.follow_ups.molecular_tests.cell_count:
+      minimum: 0
+    cases.follow_ups.molecular_tests.copy_number:
+      minimum: 0
+    cases.follow_ups.molecular_tests.days_to_test:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.molecular_tests.loci_abnormal_count:
+      minimum: 0
+    cases.follow_ups.molecular_tests.loci_count:
+      minimum: 0
+    cases.follow_ups.molecular_tests.mitotic_count:
+      minimum: 0
+    cases.follow_ups.molecular_tests.mitotic_total_area:
+      minimum: 0
+    cases.follow_ups.other_clinical_attributes.bmi:
+      minimum: 0
+    cases.follow_ups.other_clinical_attributes.body_surface_area:
+      minimum: 0
+    cases.follow_ups.other_clinical_attributes.cd4_count:
+      minimum: 0
+    cases.follow_ups.other_clinical_attributes.days_to_comorbidity:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.other_clinical_attributes.days_to_risk_factor:
+      maximum: 32872
+      minimum: -32872
+    cases.follow_ups.other_clinical_attributes.dlco_ref_predictive_percent:
+      minimum: 0
+    cases.follow_ups.other_clinical_attributes.fev1_fvc_post_bronch_percent:
+      minimum: 0
+    cases.follow_ups.other_clinical_attributes.fev1_fvc_pre_bronch_percent:
+      minimum: 0
+    cases.follow_ups.other_clinical_attributes.fev1_ref_post_bronch_percent:
+      minimum: 0
+    cases.follow_ups.other_clinical_attributes.fev1_ref_pre_bronch_percent:
+      minimum: 0
+    cases.follow_ups.other_clinical_attributes.height:
+      minimum: 0
+    cases.follow_ups.other_clinical_attributes.hiv_viral_load:
+      minimum: 0
+    cases.follow_ups.other_clinical_attributes.nadir_cd4_count:
+      minimum: 0
+    cases.follow_ups.other_clinical_attributes.pancreatitis_onset_year:
+      minimum: 1900
+    cases.follow_ups.other_clinical_attributes.weeks_gestation_at_birth:
+      minimum: 0
+    cases.follow_ups.other_clinical_attributes.weight:
+      minimum: 0
+    cases.follow_ups.recist_targeted_regions_number:
+      minimum: 0
+    cases.follow_ups.recist_targeted_regions_sum:
+      minimum: 0
+    cases.follow_ups.year_of_follow_up:
+      maximum: 2050
+      minimum: 1900
+    cases.samples.current_weight:
+      minimum: 0
+    cases.samples.days_to_collection:
+      maximum: 32872
+      minimum: -32872
+    cases.samples.days_to_sample_procurement:
+      maximum: 32872
+      minimum: -32872
+    cases.samples.growth_rate:
+      minimum: 0
+    cases.samples.initial_weight:
+      minimum: 0
+    cases.samples.intermediate_dimension:
+      minimum: 0
+    cases.samples.longest_dimension:
+      minimum: 0
+    cases.samples.passage_count:
+      minimum: 0
+    cases.samples.portions.analytes.a260_a280_ratio:
+      minimum: 0
+    cases.samples.portions.analytes.aliquots.aliquot_quantity:
+      minimum: 0
+    cases.samples.portions.analytes.aliquots.aliquot_volume:
+      minimum: 0
+    cases.samples.portions.analytes.aliquots.amount:
+      minimum: 0
+    cases.samples.portions.analytes.aliquots.concentration:
+      minimum: 0
+    cases.samples.portions.analytes.amount:
+      minimum: 0
+    cases.samples.portions.analytes.analyte_quantity:
+      minimum: 0
+    cases.samples.portions.analytes.analyte_volume:
+      minimum: 0
+    cases.samples.portions.analytes.concentration:
+      minimum: 0
+    cases.samples.portions.analytes.dna_integrity_number:
+      minimum: 0
+    cases.samples.portions.analytes.ribosomal_rna_28s_18s_ratio:
+      minimum: 0
+    cases.samples.portions.analytes.rna_integrity_number:
+      maximum: 10
+    cases.samples.portions.creation_datetime:
+      minimum: 0
+    cases.samples.portions.slides.number_proliferating_cells:
+      minimum: 0
+    cases.samples.portions.slides.percent_eosinophil_infiltration:
+      maximum: 100
+      minimum: 0
+    cases.samples.portions.slides.percent_follicular_component:
+      maximum: 100
+      minimum: 0
+    cases.samples.portions.slides.percent_granulocyte_infiltration:
+      maximum: 100
+      minimum: 0
+    cases.samples.portions.slides.percent_inflam_infiltration:
+      maximum: 100
+      minimum: 0
+    cases.samples.portions.slides.percent_lymphocyte_infiltration:
+      maximum: 100
+      minimum: 0
+    cases.samples.portions.slides.percent_monocyte_infiltration:
+      maximum: 100
+      minimum: 0
+    cases.samples.portions.slides.percent_necrosis:
+      maximum: 100
+      minimum: 0
+    cases.samples.portions.slides.percent_neutrophil_infiltration:
+      maximum: 100
+      minimum: 0
+    cases.samples.portions.slides.percent_normal_cells:
+      maximum: 100
+      minimum: 0
+    cases.samples.portions.slides.percent_rhabdoid_features:
+      maximum: 100
+      minimum: 0
+    cases.samples.portions.slides.percent_sarcomatoid_features:
+      maximum: 100
+      minimum: 0
+    cases.samples.portions.slides.percent_stromal_cells:
+      maximum: 100
+      minimum: 0
+    cases.samples.portions.slides.percent_tumor_cells:
+      maximum: 100
+      minimum: 0
+    cases.samples.portions.slides.percent_tumor_nuclei:
+      maximum: 100
+      minimum: 0
+    cases.samples.portions.slides.prostatic_chips_positive_count:
+      minimum: 0
+    cases.samples.portions.slides.prostatic_chips_total_count:
+      minimum: 0
+    cases.samples.portions.slides.prostatic_involvement_percent:
+      maximum: 100
+      minimum: 0
+    cases.samples.portions.weight:
+      minimum: 0
+    cases.samples.sample_ordinal:
+      minimum: 1
+    cases.samples.shortest_dimension:
+      minimum: 0
+    cases.samples.time_between_clamping_and_freezing:
+      minimum: 0
+    cases.samples.time_between_excision_and_freezing:
+      minimum: 0
   descriptions:
     cases.annotations.category: Top level characterization of the annotation.
     cases.annotations.classification: Top level classification of the annotation.
